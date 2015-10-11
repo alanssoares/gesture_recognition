@@ -111,10 +111,12 @@ Gesture::updateRecognition()
 {
     if (isGesturePerformed())
     {
-        for (it = m_Hands.begin(); it != m_Hands.end(); ++it){
+        recognizeDTW();
+        
+        /*for (it = m_Hands.begin(); it != m_Hands.end(); ++it){
             calcCentroid(it->second.positions);
             it->second.positions.clear();
-        }
+        }*/
         
     }
 }

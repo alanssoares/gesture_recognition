@@ -44,7 +44,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/alan_curtindoafesta/Documents/workspaceXCode/GestureTracking"
+      customWorkingDirectory = "/Users/alan_curtindoafesta/Repositorios/alan/Gesture-Recognition"
       buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"

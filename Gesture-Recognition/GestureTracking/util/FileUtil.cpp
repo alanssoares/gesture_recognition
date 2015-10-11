@@ -61,6 +61,11 @@ FileUtil::getPointFile(const std::string str){
  
  gesture nomegesto
  X Y Z
+ ...
+ 
+ gesture segundogesto
+ X Y Z
+ ...
  
  */
 void
@@ -77,7 +82,9 @@ FileUtil::loadGestures(){
         
         while (getline(file, line)){
             
-            if(isNewGesture(line)){
+            if(line.empty()){
+                continue;
+            }else if(isNewGesture(line)){
                 LOGGER->Log("Novo gesto encontrado no arquivo.");
                 std::vector<std::string> nameGesture;
                 split(line,' ', nameGesture);
@@ -104,5 +111,3 @@ std::vector<type_gesture>
 FileUtil::getGestures(){
     return mGestures;
 }
-
-

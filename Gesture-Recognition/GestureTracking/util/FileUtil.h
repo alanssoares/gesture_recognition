@@ -19,7 +19,7 @@
 #include "../logger/Logger.h"
 
 #define GESTURE "gesture"
-#define NAME_FILE_DATA "gestures.txt"
+#define NAME_FILE_DATA "Samples.txt"
 
 class FileUtil {
     
