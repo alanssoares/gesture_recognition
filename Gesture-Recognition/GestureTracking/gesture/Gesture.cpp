@@ -387,11 +387,20 @@ Gesture::recognizeDTW(){
     for( int i = 0; i < numberSequences; i++ ) {
         LOGGER->Log("iter: ", i);
         for( int j = 0; j < numberSequences; j++ ) {
-            mDTW = new DTW( length[i], length[j], CONTINUOUS );
-            distmatrix[i][j] = mDTW->run( O[i], length[i], O[j], length[j], dim );
+            //mDTW = new DTW( length[i], length[j], CONTINUOUS );
+            //distmatrix[i][j] = mDTW->run( O[i], length[i], O[j], length[j], dim );
             delete mDTW;
         }
     }
 
     LOGGER->Log("End DTW");
+}
+
+/*
+ Método responsável por setar os gestos
+ carregados do arquivo de dados.
+ */
+void
+Gesture::setGesturesFromFile(std::vector<type_gesture> gestures){
+    mGesturesFromFile = gestures;
 }

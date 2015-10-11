@@ -14,6 +14,8 @@
 		<string>https://github.com/alanssoares/Gesture-Recognition.git</string>
 		<key>A27781D9A260449542FE8DA775AA2EECFC2ED18A</key>
 		<string>https://bitbucket.org/AlanSantos/gesture-recognition.git</string>
+		<key>ED7526E2DDD2E113129246A27A470A9AC8E35FDA</key>
+		<string>https://bitbucket.org/gesturerecognitionufba/alan.git</string>
 		<key>ff6023b0-8c9b-4f6d-a268-394ce445c7cd++26</key>
 		<string>svn://192.168.1.116/svn/brt/robocup/3D/Bahia3D/branches/BahiaRT-Cebola/geometry</string>
 	</dict>
@@ -24,6 +26,8 @@
 		<key>6F864BBC03DD19331D61805B8B71A81804DC7AB5</key>
 		<string>../../../../GestureTracking</string>
 		<key>A27781D9A260449542FE8DA775AA2EECFC2ED18A</key>
+		<string>../../../../gesture-recognition</string>
+		<key>ED7526E2DDD2E113129246A27A470A9AC8E35FDA</key>
 		<string>../../..</string>
 		<key>ff6023b0-8c9b-4f6d-a268-394ce445c7cd++26</key>
 		<string>../../../../GestureTracking/GestureTracking/geometry</string>
@@ -34,13 +38,21 @@
 		<string>svn://192.168.1.116/svn/brt/robocup/3D/Bahia3D</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://bitbucket.org/AlanSantos/gesture-recognition.git</string>
+	<string>https://bitbucket.org/gesturerecognitionufba/alan.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>A27781D9A260449542FE8DA775AA2EECFC2ED18A</string>
+	<string>ED7526E2DDD2E113129246A27A470A9AC8E35FDA</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>ED7526E2DDD2E113129246A27A470A9AC8E35FDA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>alan</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.subversion</string>

@@ -22,7 +22,7 @@
 // Includes
 //---------------------------------------------------------------------------
 #include "view/NiHandViewer.h"
-
+#include "util/FileUtil.h"
 //---------------------------------------------------------------------------
 // Defines
 //---------------------------------------------------------------------------
@@ -39,6 +39,11 @@ int main(int argc, char* argv[])
 {
 	XnStatus				rc;
 	xn::EnumerationErrors	errors;
+    FileUtil                fileUtil;
+    
+    // Load the gestures data
+    fileUtil.loadGestures();
+    Gesture::getInstance().setGesturesFromFile(fileUtil.getGestures());
     
 	// Create a context with default settings
 	rc = g_context.InitFromXmlFile(SAMPLE_XML_PATH, g_scriptNode, &errors);

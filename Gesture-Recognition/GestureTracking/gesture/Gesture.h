@@ -56,6 +56,10 @@ typedef struct type_hand{
     vector<XnPoint3D> positions;
 }type_hand;
 
+typedef struct type_gesture{
+    std::string name;
+    vector<XnPoint3D> positions;
+}type_gesture;
 
 class Gesture{
     
@@ -92,9 +96,12 @@ public:
     float   getSumAngles();
     float   getSumDiff(vector<XnPoint3D> positions);
     
+    void    setGesturesFromFile(std::vector<type_gesture> gestures);
+    
     int     m_StateGesture;
     int     m_StateGesturePrev;
     float   m_Diff;
+    std::vector<type_gesture> mGesturesFromFile;
     
     map<int, type_hand> m_Hands;
     map<int,type_hand>::iterator it;
