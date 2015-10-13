@@ -18,8 +18,6 @@
 		C9647DA91BB819C500EBE3C2 /* RotationMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9647D9F1BB819C500EBE3C2 /* RotationMatrix.cpp */; };
 		C9647DAA1BB819C500EBE3C2 /* Vector3f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9647DA11BB819C500EBE3C2 /* Vector3f.cpp */; };
 		C9647DD91BB819E500EBE3C2 /* Gesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9647DAC1BB819E500EBE3C2 /* Gesture.cpp */; };
-		C9647DDA1BB819E500EBE3C2 /* glut32.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = C9647DC41BB819E500EBE3C2 /* glut32.lib */; };
-		C9647DDB1BB819E500EBE3C2 /* glut64.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = C9647DC51BB819E500EBE3C2 /* glut64.lib */; };
 		C9647DDC1BB819E500EBE3C2 /* Hmm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9647DC71BB819E500EBE3C2 /* Hmm.cpp */; };
 		C9647DDD1BB819E500EBE3C2 /* LogProbs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9647DC91BB819E500EBE3C2 /* LogProbs.cpp */; };
 		C9647DDE1BB819E500EBE3C2 /* Tables.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9647DCC1BB819E500EBE3C2 /* Tables.cpp */; };
@@ -120,8 +118,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9647DDA1BB819E500EBE3C2 /* glut32.lib in Frameworks */,
-				C9647DDB1BB819E500EBE3C2 /* glut64.lib in Frameworks */,
 				C9E6D60F1A0644BB0081FC78 /* GLUT.framework in Frameworks */,
 				C9E6D60D1A0644B50081FC78 /* OpenGL.framework in Frameworks */,
 			);

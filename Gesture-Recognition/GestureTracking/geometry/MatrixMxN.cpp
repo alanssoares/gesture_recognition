@@ -106,7 +106,7 @@ MatrixMxN& MatrixMxN::operator*=(const MatrixMxN& other)
 			for(int k=0; k<dy; k++)
 				prod.pData[i][j] += pData[i][k] * other.pData[k][j];
 
-	return prod;
+	return *this;
 }
 
 MatrixMxN operator*(const MatrixMxN& m1, const MatrixMxN& m2)

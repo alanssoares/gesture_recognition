@@ -72,6 +72,7 @@ public:
     
     void    printPoints();
     void    computeCurve();
+    void    clearHands();
     
     void    removeHand(const int idHand);
     void    addHand(const int idHand, XnPoint3D position);

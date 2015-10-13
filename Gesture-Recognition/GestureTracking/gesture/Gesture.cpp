@@ -113,11 +113,7 @@ Gesture::updateRecognition()
     {
         recognizeDTW();
         
-        /*for (it = m_Hands.begin(); it != m_Hands.end(); ++it){
-            calcCentroid(it->second.positions);
-            it->second.positions.clear();
-        }*/
-        
+        clearHands();
     }
 }
 
@@ -370,31 +366,43 @@ void
 Gesture::recognizeDTW(){
     LOGGER->Log("Init DTW");
     
-    int numberSequences = 2;
+    std::vector<XnPoint3D> trajectoryHand;
+    std::vector<XnPoint3D> trajectoryComp;
+    double distance = 0.0;
+    double bestDistance = 999999999;
+    type_gesture gestureRecognized;
     
-    // Set up the ragged array
-    double **distmatrix;
-    distmatrix = new double*[numberSequences + 1];
-    // The zeroth row has zero columns. We allocate it anyway for convenience.
-    for( int i = 0; i < numberSequences; i++ ) {
-        distmatrix[i] = new double[numberSequences + 1];
-    }
-    // Initialize the distance matrix
-    for( int i = 0; i < numberSequences; i++ ) {
-        for( int j = 0; j < numberSequences; j++ ) {
-            distmatrix[i][j] = 0;
+    for (it = m_Hands.begin(); it != m_Hands.end(); ++it){
+        
+        //Translate the hand trajectory to origin
+        trajectoryHand = translateToOrigin(it->second.positions);
+        //Total number of points
+        unsigned long numberPoints = trajectoryHand.size();
+        
+        for (int i = 0; i < mGesturesFromFile.size(); i++) {
+            trajectoryComp = mGesturesFromFile[i].positions;
+            trajectoryComp = translateToOrigin(trajectoryComp);
+            
+            //Initialize the dynamic time warping
+            DTW dtw(numberPoints, 0.3);
+            
+            //Calc dtw distance dtw between two trajectories
+            distance = dtw.fastDynamic(trajectoryHand, trajectoryComp);
+            
+            if(distance < bestDistance){
+                bestDistance = distance;
+                gestureRecognized = mGesturesFromFile[i];
+            }
         }
     }
     
-    for( int i = 0; i < numberSequences; i++ ) {
-        LOGGER->Log("iter: ", i);
-        for( int j = 0; j < numberSequences; j++ ) {
-            //mDTW = new DTW( length[i], length[j], CONTINUOUS );
-            //distmatrix[i][j] = mDTW->run( O[i], length[i], O[j], length[j], dim );
-            delete mDTW;
-        }
+    LOGGER->Log("Best distance: " + std::to_string(bestDistance));
+    if(bestDistance > MIN_DISTANCE_TRESHOLD){
+        LOGGER->Log("Gesture not recognized");
+    }else{
+        LOGGER->Log("Gesture recognized: " + gestureRecognized.name);
     }
-
+    
     LOGGER->Log("End DTW");
 }
 
@@ -405,4 +413,16 @@ Gesture::recognizeDTW(){
 void
 Gesture::setGesturesFromFile(std::vector<type_gesture> gestures){
     mGesturesFromFile = gestures;
+}
+
+/*
+ Método responsável por limpar os vetores
+ de posições das mãos que estavam sendo rastreadas.
+ */
+void
+Gesture::clearHands(){
+    for (it = m_Hands.begin(); it != m_Hands.end(); ++it){
+        calcCentroid(it->second.positions);
+        it->second.positions.clear();
+    }
 }
