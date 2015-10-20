@@ -1,9 +1,49 @@
 
-Sun Oct 11 17:55:58 2015
-:	Novo gesto encontrado no arquivo.
-Sun Oct 11 17:55:58 2015
-:	Novo gesto encontrado no arquivo.
-Sun Oct 11 17:55:58 2015
-:	Novo gesto encontrado no arquivo.
-Sun Oct 11 17:55:58 2015
-:	Fim de leitura do arquivo: 
+Mon Oct 12 22:07:48 2015
+:	Não foi possível abrir o arquivo: 
+Mon Oct 12 22:07:48 2015
+:	Instance Gesture Created
+Mon Oct 12 22:08:00 2015
+:	Hand add
+Mon Oct 12 22:08:03 2015
+:	Gesture performed
+Mon Oct 12 22:08:03 2015
+:	Init DTW
+Mon Oct 12 22:08:03 2015
+:	Centroid X = 
+Mon Oct 12 22:08:03 2015
+:	Best distance: 999999999.000000
+Mon Oct 12 22:08:03 2015
+:	Gesture not recognized
+Mon Oct 12 22:08:03 2015
+:	End DTW
+Mon Oct 12 22:08:03 2015
+:	Centroid X = 
+Mon Oct 12 22:08:06 2015
+:	Gesture performed
+Mon Oct 12 22:08:06 2015
+:	Init DTW
+Mon Oct 12 22:08:06 2015
+:	Centroid X = 
+Mon Oct 12 22:08:06 2015
+:	Best distance: 999999999.000000
+Mon Oct 12 22:08:06 2015
+:	Gesture not recognized
+Mon Oct 12 22:08:06 2015
+:	End DTW
+Mon Oct 12 22:08:06 2015
+:	Centroid X = 
+Mon Oct 12 22:08:07 2015
+:	Gesture performed
+Mon Oct 12 22:08:07 2015
+:	Init DTW
+Mon Oct 12 22:08:07 2015
+:	Centroid X = 
+Mon Oct 12 22:08:07 2015
+:	Best distance: 999999999.000000
+Mon Oct 12 22:08:07 2015
+:	Gesture not recognized
+Mon Oct 12 22:08:07 2015
+:	End DTW
+Mon Oct 12 22:08:07 2015
+:	Centroid X = 

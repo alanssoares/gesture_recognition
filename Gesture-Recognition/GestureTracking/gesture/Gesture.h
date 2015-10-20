@@ -86,6 +86,10 @@ public:
     
     void    recognizeDTW();
     
+    vector<XnPoint3D> resampleTrajectory(vector<XnPoint3D> a, vector<XnPoint3D> b);
+    void    createPointTrajectory(vector<XnPoint3D> *trajectory);
+    void    removePointTrajectory(vector<XnPoint3D> *trajectory);
+    
     float     length(XnPoint3D point);
     XnPoint3D subtract(XnPoint3D a, XnPoint3D b);
     XnPoint3D normalize(XnPoint3D point);

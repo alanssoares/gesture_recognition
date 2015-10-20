@@ -159,7 +159,7 @@ Gesture::updateState()
     m_StateGesturePrev = m_StateGesture;
     m_StateGesture = m_Diff > MIN_DIFF_LENGTH ? GESTURE_DOING : GESTURE_STOPED;
     
-    LOGGER->Log("State updated");
+    //LOGGER->Log("State updated");
 }
 
 /*
@@ -376,20 +376,23 @@ Gesture::recognizeDTW(){
         
         //Translate the hand trajectory to origin
         trajectoryHand = translateToOrigin(it->second.positions);
-        //Total number of points
-        unsigned long numberPoints = trajectoryHand.size();
         
         for (int i = 0; i < mGesturesFromFile.size(); i++) {
             trajectoryComp = mGesturesFromFile[i].positions;
             trajectoryComp = translateToOrigin(trajectoryComp);
             
             //Initialize the dynamic time warping
-            DTW dtw(numberPoints, 0.3);
+            DTW2 dtw(trajectoryHand, trajectoryComp);
             
             //Calc dtw distance dtw between two trajectories
-            distance = dtw.fastDynamic(trajectoryHand, trajectoryComp);
+            dtw.compute();
             
+            //Get the best cost distance computed by dtw
+            distance = dtw.getDistance();
+            
+            //LOGGER->Log("Distance found: " + std::to_string(distance));
             if(distance < bestDistance){
+                //LOGGER->Log("Distance lower: " + std::to_string(distance));
                 bestDistance = distance;
                 gestureRecognized = mGesturesFromFile[i];
             }
@@ -399,8 +402,10 @@ Gesture::recognizeDTW(){
     LOGGER->Log("Best distance: " + std::to_string(bestDistance));
     if(bestDistance > MIN_DISTANCE_TRESHOLD){
         LOGGER->Log("Gesture not recognized");
+        cout<<"Gesture not recognized : "<<bestDistance<<endl;
     }else{
         LOGGER->Log("Gesture recognized: " + gestureRecognized.name);
+        cout<< gestureRecognized.name<<endl;
     }
     
     LOGGER->Log("End DTW");

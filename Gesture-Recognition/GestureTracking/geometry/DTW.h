@@ -92,4 +92,58 @@ public:
     static inline double max (double x, double y ) { return x > y ? x : y; }
 };
 
+
+/**
+ This class implements the Dynamic Time Warping algorithm
+ given two sequences
+  <pre>
+    X = x1, x2,..., xi,..., xn
+    Y = y1, y2,..., yj,..., ym
+   </pre>
+ 
+  @author   Cheol-Woo Jung (cjung@gatech.edu)
+  @version  1.0
+  @link http://trac.research.cc.gatech.edu/GART/browser/GART/weka/edu/gatech/gart/ml/weka/DTW.java?rev=9
+ */
+class DTW2 {
+private:
+    int mN, mM, mK;
+    double mWarpingDistance;
+    vector<XnPoint3D> mSequence1;
+    vector<XnPoint3D> mSequence2;
+public:
+    
+    DTW2();
+    DTW2(std::vector<XnPoint3D> &v, std::vector<XnPoint3D> &w);
+    ~DTW2(){};
+    
+    void compute();
+    
+    /**
+     Specific the sequences that are matching
+     @param v sequence sample
+     @param w sequence template
+     **/
+    void setSequences(std::vector<XnPoint3D> &v, std::vector<XnPoint3D> &w);
+    /**
+     Finds the index of the minimum element from the given array
+     @param array the array containing numeric values
+     @return the min value among elements
+     **/
+    int getIndexOfMinimum(std::vector<double> array);
+    /**
+     Return the best distance path
+     @return warpingDistance
+     **/
+    double getDistance() { return mWarpingDistance; };
+    /**
+     Calc the Euclidian Distance of p to q
+     */
+    double euclidDistance(const XnPoint3D &p, const XnPoint3D &q);
+    
+    /**
+     computes the l1 distance with another point
+     */
+    double l1Distance(const XnPoint3D &p, const XnPoint3D &q);
+};
 #endif /* defined(__GestureTracking__DTW__) */

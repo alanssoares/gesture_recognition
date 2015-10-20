@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C910B4051BCA91B400463D97 /* FileUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C910B4031BCA91B400463D97 /* FileUtil.cpp */; };
-		C910B4071BCAA50400463D97 /* gestures.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = C910B4061BCAA50400463D97 /* gestures.txt */; };
+		C910B4071BCAA50400463D97 /* Samples.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = C910B4061BCAA50400463D97 /* Samples.txt */; };
 		C9647DA31BB819C500EBE3C2 /* Bezier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9647D931BB819C500EBE3C2 /* Bezier.cpp */; };
 		C9647DA41BB819C500EBE3C2 /* DTW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9647D951BB819C500EBE3C2 /* DTW.cpp */; };
 		C9647DA51BB819C500EBE3C2 /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9647D971BB819C500EBE3C2 /* Geometry.cpp */; };
@@ -39,7 +39,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
-				C910B4071BCAA50400463D97 /* gestures.txt in CopyFiles */,
+				C910B4071BCAA50400463D97 /* Samples.txt in CopyFiles */,
 				C9E6D6291A0647770081FC78 /* SamplesConfig.xml in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -49,7 +49,7 @@
 /* Begin PBXFileReference section */
 		C910B4031BCA91B400463D97 /* FileUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FileUtil.cpp; path = util/FileUtil.cpp; sourceTree = "<group>"; };
 		C910B4041BCA91B400463D97 /* FileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileUtil.h; path = util/FileUtil.h; sourceTree = "<group>"; };
-		C910B4061BCAA50400463D97 /* gestures.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = gestures.txt; sourceTree = "<group>"; };
+		C910B4061BCAA50400463D97 /* Samples.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Samples.txt; sourceTree = "<group>"; };
 		C9647D931BB819C500EBE3C2 /* Bezier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bezier.cpp; sourceTree = "<group>"; };
 		C9647D941BB819C500EBE3C2 /* Bezier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bezier.h; sourceTree = "<group>"; };
 		C9647D951BB819C500EBE3C2 /* DTW.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DTW.cpp; sourceTree = "<group>"; };
@@ -267,7 +267,7 @@
 		C9E6D5E81A0643B40081FC78 = {
 			isa = PBXGroup;
 			children = (
-				C910B4061BCAA50400463D97 /* gestures.txt */,
+				C910B4061BCAA50400463D97 /* Samples.txt */,
 				C9E6D6281A0647770081FC78 /* SamplesConfig.xml */,
 				C9E6D60E1A0644BB0081FC78 /* GLUT.framework */,
 				C9E6D60C1A0644B50081FC78 /* OpenGL.framework */,
