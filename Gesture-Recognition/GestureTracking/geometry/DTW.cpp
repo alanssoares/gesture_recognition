@@ -58,6 +58,8 @@ DTW2::DTW2(vector<XnPoint3D> &v, vector<XnPoint3D> &w){
     mSequence2 = w;
     mWarpingDistance = 0.0;
     mK = 1;
+    mN = (int)v.size();
+    mM = (int)w.size();
 }
 
 double
@@ -109,6 +111,7 @@ DTW2::compute(){
     warpingPath[mK - 1][0] = i;
     warpingPath[mK - 1][1] = j;
     
+    std::vector<double> array;
     while ((i + j) != 0) {
         if (i == 0) {
             j -= 1;
@@ -116,7 +119,10 @@ DTW2::compute(){
             i -= 1;
         } else {
             // i != 0 && j != 0
-            std::vector<double> array = { D[i - 1][j], D[i][j - 1], D[i - 1][j - 1] };
+            array.push_back(D[i - 1][j]);
+            array.push_back(D[i][j - 1]);
+            array.push_back(D[i - 1][j - 1]);
+            
             minIndex = getIndexOfMinimum(array);
             if (minIndex == 0) {
                 i -= 1;
@@ -126,11 +132,14 @@ DTW2::compute(){
                 i -= 1;
                 j -= 1;
             }
-        } // end else
+            
+            array.clear();
+        }
+        
         mK++;
         warpingPath[mK - 1][0] = i;
         warpingPath[mK - 1][1] = j;
-    } // end while
+    }
     
     mWarpingDistance = accumulatedDistance / mK;
 }

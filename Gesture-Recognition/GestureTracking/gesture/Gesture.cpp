@@ -321,16 +321,15 @@ Gesture::calcCentroid(vector<XnPoint3D> positions)
 {
     XnPoint3D centroid;
     centroid.X = centroid.Y = centroid.Z = 0;
-    for(XnPoint3D point : positions)
-    {
-        centroid.X += point.X;
-        centroid.Y += point.Y;
-        centroid.Z += point.Z;
+    for(int i = 0; i < positions.size(); i++) {
+        centroid.X += positions[i].X;
+        centroid.Y += positions[i].Y;
+        centroid.Z += positions[i].Z;
     }
-    
-    centroid.X = centroid.X / positions.size();
-    centroid.Y = centroid.Y / positions.size();
-    centroid.Z = centroid.Z / positions.size();
+    //Sum 1 to prevent division by zero
+    centroid.X = (centroid.X + 1)/(positions.size() + 1) - 1;
+    centroid.Y = (centroid.Y + 1)/(positions.size() + 1) - 1;
+    centroid.Z = (centroid.Z + 1)/(positions.size() + 1) - 1;
     
     LOGGER->Log("Centroid X = ", centroid.X, " Y = ", centroid.Y, " Z = ", centroid.Z);
     return centroid;
@@ -347,11 +346,10 @@ Gesture::translateToOrigin(vector<XnPoint3D> positions){
 
     XnPoint3D centroid = calcCentroid(positions);
     
-    for(XnPoint3D point : positions)
-    {
-        point.X -= centroid.X;
-        point.Y -= centroid.Y;
-        point.Z -= centroid.Z;
+    for(int i = 0; i < positions.size(); i++) {
+        positions[i].X -= centroid.X;
+        positions[i].Y -= centroid.Y;
+        positions[i].Z -= centroid.Z;
     }
     
     return positions;
@@ -405,7 +403,7 @@ Gesture::recognizeDTW(){
         cout<<"Gesture not recognized : "<<bestDistance<<endl;
     }else{
         LOGGER->Log("Gesture recognized: " + gestureRecognized.name);
-        cout<< gestureRecognized.name<<endl;
+        cout<< "Gesture: "<<gestureRecognized.name<<" Distance: "<<bestDistance<<endl;
     }
     
     LOGGER->Log("End DTW");

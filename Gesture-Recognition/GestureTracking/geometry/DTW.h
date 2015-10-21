@@ -20,11 +20,6 @@
 #include <assert.h>
 #include <XnCppWrapper.h>
 
-/*
- Define the minimum distance threshold
- */
-#define MIN_DISTANCE_TRESHOLD 0.5
-
 using namespace std;
 
 /*

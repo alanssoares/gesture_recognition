@@ -47,3 +47,5379 @@ Mon Oct 12 22:08:07 2015
 :	End DTW
 Mon Oct 12 22:08:07 2015
 :	Centroid X = 
+
+Tue Oct 20 21:37:37 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 21:37:37 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 21:37:37 2015
+:	Fim de leitura do arquivo: 
+Tue Oct 20 21:37:37 2015
+:	Instance Gesture Created
+Tue Oct 20 21:37:49 2015
+:	Hand add
+Tue Oct 20 21:37:52 2015
+:	Hand removed
+Tue Oct 20 21:37:54 2015
+:	Hand add
+Tue Oct 20 21:37:58 2015
+:	Gesture performed
+Tue Oct 20 21:37:58 2015
+:	Init DTW
+Tue Oct 20 21:37:58 2015
+:	Centroid X = 
+Tue Oct 20 21:37:58 2015
+:	Centroid X = 
+Tue Oct 20 21:37:58 2015
+:	Centroid X = 
+Tue Oct 20 21:37:58 2015
+:	Best distance: 598.268312
+Tue Oct 20 21:37:58 2015
+:	Gesture not recognized
+Tue Oct 20 21:37:58 2015
+:	End DTW
+Tue Oct 20 21:37:58 2015
+:	Centroid X = 
+Tue Oct 20 21:38:04 2015
+:	Gesture performed
+Tue Oct 20 21:38:04 2015
+:	Init DTW
+Tue Oct 20 21:38:04 2015
+:	Centroid X = 
+Tue Oct 20 21:38:04 2015
+:	Centroid X = 
+Tue Oct 20 21:38:04 2015
+:	Centroid X = 
+Tue Oct 20 21:38:04 2015
+:	Best distance: 576.820317
+Tue Oct 20 21:38:04 2015
+:	Gesture not recognized
+Tue Oct 20 21:38:04 2015
+:	End DTW
+Tue Oct 20 21:38:04 2015
+:	Centroid X = 
+Tue Oct 20 21:38:07 2015
+:	Gesture performed
+Tue Oct 20 21:38:07 2015
+:	Init DTW
+Tue Oct 20 21:38:07 2015
+:	Centroid X = 
+Tue Oct 20 21:38:07 2015
+:	Centroid X = 
+Tue Oct 20 21:38:07 2015
+:	Centroid X = 
+Tue Oct 20 21:38:07 2015
+:	Best distance: 653.256292
+Tue Oct 20 21:38:07 2015
+:	Gesture not recognized
+Tue Oct 20 21:38:07 2015
+:	End DTW
+Tue Oct 20 21:38:07 2015
+:	Centroid X = 
+Tue Oct 20 21:40:06 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 21:40:06 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 21:40:06 2015
+:	Fim de leitura do arquivo: 
+Tue Oct 20 21:40:06 2015
+:	Instance Gesture Created
+Tue Oct 20 21:40:29 2015
+:	Hand add
+Tue Oct 20 21:40:32 2015
+:	Gesture performed
+Tue Oct 20 21:40:32 2015
+:	Init DTW
+Tue Oct 20 21:40:32 2015
+:	Centroid X = 
+Tue Oct 20 21:40:32 2015
+:	Centroid X = 
+Tue Oct 20 21:40:32 2015
+:	Centroid X = 
+Tue Oct 20 21:40:32 2015
+:	Best distance: 215.480342
+Tue Oct 20 21:40:32 2015
+:	Gesture not recognized
+Tue Oct 20 21:40:32 2015
+:	End DTW
+Tue Oct 20 21:40:32 2015
+:	Centroid X = 
+Tue Oct 20 21:40:33 2015
+:	Gesture performed
+Tue Oct 20 21:40:33 2015
+:	Init DTW
+Tue Oct 20 21:40:33 2015
+:	Centroid X = 
+Tue Oct 20 21:40:33 2015
+:	Centroid X = 
+Tue Oct 20 21:40:33 2015
+:	Centroid X = 
+Tue Oct 20 21:40:33 2015
+:	Best distance: 295.568057
+Tue Oct 20 21:40:33 2015
+:	Gesture not recognized
+Tue Oct 20 21:40:33 2015
+:	End DTW
+Tue Oct 20 21:40:33 2015
+:	Centroid X = 
+Tue Oct 20 21:40:34 2015
+:	Gesture performed
+Tue Oct 20 21:40:34 2015
+:	Init DTW
+Tue Oct 20 21:40:34 2015
+:	Centroid X = 
+Tue Oct 20 21:40:34 2015
+:	Centroid X = 
+Tue Oct 20 21:40:34 2015
+:	Centroid X = 
+Tue Oct 20 21:40:34 2015
+:	Best distance: 272.312523
+Tue Oct 20 21:40:34 2015
+:	Gesture not recognized
+Tue Oct 20 21:40:34 2015
+:	End DTW
+Tue Oct 20 21:40:34 2015
+:	Centroid X = 
+Tue Oct 20 21:40:35 2015
+:	Gesture performed
+Tue Oct 20 21:40:35 2015
+:	Init DTW
+Tue Oct 20 21:40:35 2015
+:	Centroid X = 
+Tue Oct 20 21:40:35 2015
+:	Centroid X = 
+Tue Oct 20 21:40:35 2015
+:	Centroid X = 
+Tue Oct 20 21:40:35 2015
+:	Best distance: 266.236377
+Tue Oct 20 21:40:35 2015
+:	Gesture not recognized
+Tue Oct 20 21:40:35 2015
+:	End DTW
+Tue Oct 20 21:40:35 2015
+:	Centroid X = 
+Tue Oct 20 21:40:37 2015
+:	Gesture performed
+Tue Oct 20 21:40:37 2015
+:	Init DTW
+Tue Oct 20 21:40:37 2015
+:	Centroid X = 
+Tue Oct 20 21:40:37 2015
+:	Centroid X = 
+Tue Oct 20 21:40:37 2015
+:	Centroid X = 
+Tue Oct 20 21:40:37 2015
+:	Best distance: 183.534079
+Tue Oct 20 21:40:37 2015
+:	Gesture not recognized
+Tue Oct 20 21:40:37 2015
+:	End DTW
+Tue Oct 20 21:40:37 2015
+:	Centroid X = 
+Tue Oct 20 21:40:43 2015
+:	Gesture performed
+Tue Oct 20 21:40:43 2015
+:	Init DTW
+Tue Oct 20 21:40:43 2015
+:	Centroid X = 
+Tue Oct 20 21:40:43 2015
+:	Centroid X = 
+Tue Oct 20 21:40:43 2015
+:	Centroid X = 
+Tue Oct 20 21:40:43 2015
+:	Best distance: 190.137783
+Tue Oct 20 21:40:43 2015
+:	Gesture not recognized
+Tue Oct 20 21:40:43 2015
+:	End DTW
+Tue Oct 20 21:40:43 2015
+:	Centroid X = 
+Tue Oct 20 21:40:46 2015
+:	Gesture performed
+Tue Oct 20 21:40:46 2015
+:	Init DTW
+Tue Oct 20 21:40:46 2015
+:	Centroid X = 
+Tue Oct 20 21:40:46 2015
+:	Centroid X = 
+Tue Oct 20 21:40:46 2015
+:	Centroid X = 
+Tue Oct 20 21:40:46 2015
+:	Best distance: 309.809080
+Tue Oct 20 21:40:46 2015
+:	Gesture not recognized
+Tue Oct 20 21:40:46 2015
+:	End DTW
+Tue Oct 20 21:40:46 2015
+:	Centroid X = 
+Tue Oct 20 21:40:48 2015
+:	Gesture performed
+Tue Oct 20 21:40:48 2015
+:	Init DTW
+Tue Oct 20 21:40:48 2015
+:	Centroid X = 
+Tue Oct 20 21:40:48 2015
+:	Centroid X = 
+Tue Oct 20 21:40:48 2015
+:	Centroid X = 
+Tue Oct 20 21:40:48 2015
+:	Best distance: 223.434644
+Tue Oct 20 21:40:48 2015
+:	Gesture not recognized
+Tue Oct 20 21:40:48 2015
+:	End DTW
+Tue Oct 20 21:40:48 2015
+:	Centroid X = 
+Tue Oct 20 21:40:51 2015
+:	Gesture performed
+Tue Oct 20 21:40:51 2015
+:	Init DTW
+Tue Oct 20 21:40:51 2015
+:	Centroid X = 
+Tue Oct 20 21:40:51 2015
+:	Centroid X = 
+Tue Oct 20 21:40:51 2015
+:	Centroid X = 
+Tue Oct 20 21:40:51 2015
+:	Best distance: 255.350161
+Tue Oct 20 21:40:51 2015
+:	Gesture not recognized
+Tue Oct 20 21:40:51 2015
+:	End DTW
+Tue Oct 20 21:40:51 2015
+:	Centroid X = 
+Tue Oct 20 21:40:53 2015
+:	Gesture performed
+Tue Oct 20 21:40:53 2015
+:	Init DTW
+Tue Oct 20 21:40:53 2015
+:	Centroid X = 
+Tue Oct 20 21:40:53 2015
+:	Centroid X = 
+Tue Oct 20 21:40:53 2015
+:	Centroid X = 
+Tue Oct 20 21:40:53 2015
+:	Best distance: 190.737016
+Tue Oct 20 21:40:53 2015
+:	Gesture not recognized
+Tue Oct 20 21:40:53 2015
+:	End DTW
+Tue Oct 20 21:40:53 2015
+:	Centroid X = 
+Tue Oct 20 21:40:54 2015
+:	Gesture performed
+Tue Oct 20 21:40:54 2015
+:	Init DTW
+Tue Oct 20 21:40:54 2015
+:	Centroid X = 
+Tue Oct 20 21:40:54 2015
+:	Centroid X = 
+Tue Oct 20 21:40:54 2015
+:	Centroid X = 
+Tue Oct 20 21:40:54 2015
+:	Best distance: 232.658344
+Tue Oct 20 21:40:54 2015
+:	Gesture not recognized
+Tue Oct 20 21:40:54 2015
+:	End DTW
+Tue Oct 20 21:40:54 2015
+:	Centroid X = 
+Tue Oct 20 21:40:56 2015
+:	Gesture performed
+Tue Oct 20 21:40:56 2015
+:	Init DTW
+Tue Oct 20 21:40:56 2015
+:	Centroid X = 
+Tue Oct 20 21:40:56 2015
+:	Centroid X = 
+Tue Oct 20 21:40:56 2015
+:	Centroid X = 
+Tue Oct 20 21:40:56 2015
+:	Best distance: 169.829473
+Tue Oct 20 21:40:56 2015
+:	Gesture not recognized
+Tue Oct 20 21:40:56 2015
+:	End DTW
+Tue Oct 20 21:40:56 2015
+:	Centroid X = 
+Tue Oct 20 21:40:59 2015
+:	Gesture performed
+Tue Oct 20 21:40:59 2015
+:	Init DTW
+Tue Oct 20 21:40:59 2015
+:	Centroid X = 
+Tue Oct 20 21:40:59 2015
+:	Centroid X = 
+Tue Oct 20 21:40:59 2015
+:	Centroid X = 
+Tue Oct 20 21:40:59 2015
+:	Best distance: 317.804948
+Tue Oct 20 21:40:59 2015
+:	Gesture not recognized
+Tue Oct 20 21:40:59 2015
+:	End DTW
+Tue Oct 20 21:40:59 2015
+:	Centroid X = 
+Tue Oct 20 21:41:02 2015
+:	Gesture performed
+Tue Oct 20 21:41:02 2015
+:	Init DTW
+Tue Oct 20 21:41:02 2015
+:	Centroid X = 
+Tue Oct 20 21:41:02 2015
+:	Centroid X = 
+Tue Oct 20 21:41:02 2015
+:	Centroid X = 
+Tue Oct 20 21:41:02 2015
+:	Best distance: 206.513511
+Tue Oct 20 21:41:02 2015
+:	Gesture not recognized
+Tue Oct 20 21:41:02 2015
+:	End DTW
+Tue Oct 20 21:41:02 2015
+:	Centroid X = 
+Tue Oct 20 21:41:03 2015
+:	Gesture performed
+Tue Oct 20 21:41:03 2015
+:	Init DTW
+Tue Oct 20 21:41:03 2015
+:	Centroid X = 
+Tue Oct 20 21:41:03 2015
+:	Centroid X = 
+Tue Oct 20 21:41:03 2015
+:	Centroid X = 
+Tue Oct 20 21:41:03 2015
+:	Best distance: 233.542920
+Tue Oct 20 21:41:03 2015
+:	Gesture not recognized
+Tue Oct 20 21:41:03 2015
+:	End DTW
+Tue Oct 20 21:41:03 2015
+:	Centroid X = 
+Tue Oct 20 21:41:04 2015
+:	Gesture performed
+Tue Oct 20 21:41:04 2015
+:	Init DTW
+Tue Oct 20 21:41:04 2015
+:	Centroid X = 
+Tue Oct 20 21:41:04 2015
+:	Centroid X = 
+Tue Oct 20 21:41:04 2015
+:	Centroid X = 
+Tue Oct 20 21:41:04 2015
+:	Best distance: 230.399517
+Tue Oct 20 21:41:04 2015
+:	Gesture not recognized
+Tue Oct 20 21:41:04 2015
+:	End DTW
+Tue Oct 20 21:41:04 2015
+:	Centroid X = 
+Tue Oct 20 21:41:05 2015
+:	Gesture performed
+Tue Oct 20 21:41:05 2015
+:	Init DTW
+Tue Oct 20 21:41:05 2015
+:	Centroid X = 
+Tue Oct 20 21:41:05 2015
+:	Centroid X = 
+Tue Oct 20 21:41:05 2015
+:	Centroid X = 
+Tue Oct 20 21:41:05 2015
+:	Best distance: 226.770965
+Tue Oct 20 21:41:05 2015
+:	Gesture not recognized
+Tue Oct 20 21:41:05 2015
+:	End DTW
+Tue Oct 20 21:41:05 2015
+:	Centroid X = 
+Tue Oct 20 21:41:05 2015
+:	Gesture performed
+Tue Oct 20 21:41:05 2015
+:	Init DTW
+Tue Oct 20 21:41:05 2015
+:	Centroid X = 
+Tue Oct 20 21:41:05 2015
+:	Centroid X = 
+Tue Oct 20 21:41:05 2015
+:	Centroid X = 
+Tue Oct 20 21:41:05 2015
+:	Best distance: 226.984586
+Tue Oct 20 21:41:05 2015
+:	Gesture not recognized
+Tue Oct 20 21:41:05 2015
+:	End DTW
+Tue Oct 20 21:41:05 2015
+:	Centroid X = 
+Tue Oct 20 21:41:07 2015
+:	Gesture performed
+Tue Oct 20 21:41:07 2015
+:	Init DTW
+Tue Oct 20 21:41:07 2015
+:	Centroid X = 
+Tue Oct 20 21:41:07 2015
+:	Centroid X = 
+Tue Oct 20 21:41:07 2015
+:	Centroid X = 
+Tue Oct 20 21:41:07 2015
+:	Best distance: 229.901849
+Tue Oct 20 21:41:07 2015
+:	Gesture not recognized
+Tue Oct 20 21:41:07 2015
+:	End DTW
+Tue Oct 20 21:41:07 2015
+:	Centroid X = 
+Tue Oct 20 21:41:07 2015
+:	Gesture performed
+Tue Oct 20 21:41:07 2015
+:	Init DTW
+Tue Oct 20 21:41:07 2015
+:	Centroid X = 
+Tue Oct 20 21:41:07 2015
+:	Centroid X = 
+Tue Oct 20 21:41:07 2015
+:	Centroid X = 
+Tue Oct 20 21:41:07 2015
+:	Best distance: 226.156625
+Tue Oct 20 21:41:07 2015
+:	Gesture not recognized
+Tue Oct 20 21:41:07 2015
+:	End DTW
+Tue Oct 20 21:41:07 2015
+:	Centroid X = 
+Tue Oct 20 21:41:10 2015
+:	Gesture performed
+Tue Oct 20 21:41:10 2015
+:	Init DTW
+Tue Oct 20 21:41:10 2015
+:	Centroid X = 
+Tue Oct 20 21:41:10 2015
+:	Centroid X = 
+Tue Oct 20 21:41:10 2015
+:	Centroid X = 
+Tue Oct 20 21:41:10 2015
+:	Best distance: 440.959844
+Tue Oct 2
+Tue Oct 20 21:42:28 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 21:42:28 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 21:42:28 2015
+:	Fim de leitura do arquivo: 
+Tue Oct 20 21:42:28 2015
+:	Instance Gesture Created
+Tue Oct 20 21:42:42 2015
+:	Hand add
+Tue Oct 20 21:42:45 2015
+:	Gesture performed
+Tue Oct 20 21:42:45 2015
+:	Init DTW
+Tue Oct 20 21:42:45 2015
+:	Centroid X = 
+Tue Oct 20 21:42:45 2015
+:	Centroid X = 
+Tue Oct 20 21:42:45 2015
+:	Centroid X = 
+Tue Oct 20 21:42:45 2015
+:	Best distance: 202.971849
+Tue Oct 20 21:42:45 2015
+:	Gesture not recognized
+Tue Oct 20 21:42:45 2015
+:	End DTW
+Tue Oct 20 21:42:45 2015
+:	Centroid X = 
+Tue Oct 20 21:42:46 2015
+:	Gesture performed
+Tue Oct 20 21:42:46 2015
+:	Init DTW
+Tue Oct 20 21:42:46 2015
+:	Centroid X = 
+Tue Oct 20 21:42:46 2015
+:	Centroid X = 
+Tue Oct 20 21:42:46 2015
+:	Centroid X = 
+Tue Oct 20 21:42:46 2015
+:	Best distance: 314.775630
+Tue Oct 20 21:42:46 2015
+:	Gesture not recognized
+Tue Oct 20 21:42:46 2015
+:	End DTW
+Tue Oct 20 21:42:46 2015
+:	Centroid X = 
+Tue Oct 20 21:42:47 2015
+:	Gesture performed
+Tue Oct 20 21:42:47 2015
+:	Init DTW
+Tue Oct 20 21:42:47 2015
+:	Centroid X = 
+Tue Oct 20 21:42:47 2015
+:	Centroid X = 
+Tue Oct 20 21:42:47 2015
+:	Centroid X = 
+Tue Oct 20 21:42:47 2015
+:	Best distance: 320.865775
+Tue Oct 20 21:42:47 2015
+:	Gesture not recognized
+Tue Oct 20 21:42:47 2015
+:	End DTW
+Tue Oct 20 21:42:47 2015
+:	Centroid X = 
+Tue Oct 20 21:42:48 2015
+:	Gesture performed
+Tue Oct 20 21:42:48 2015
+:	Init DTW
+Tue Oct 20 21:42:48 2015
+:	Centroid X = 
+Tue Oct 20 21:42:48 2015
+:	Centroid X = 
+Tue Oct 20 21:42:48 2015
+:	Centroid X = 
+Tue Oct 20 21:42:48 2015
+:	Best distance: 329.519752
+Tue Oct 20 21:42:48 2015
+:	Gesture not recognized
+Tue Oct 20 21:42:48 2015
+:	End DTW
+Tue Oct 20 21:42:48 2015
+:	Centroid X = 
+Tue Oct 20 21:42:48 2015
+:	Gesture performed
+Tue Oct 20 21:42:48 2015
+:	Init DTW
+Tue Oct 20 21:42:48 2015
+:	Centroid X = 
+Tue Oct 20 21:42:48 2015
+:	Centroid X = 
+Tue Oct 20 21:42:48 2015
+:	Centroid X = 
+Tue Oct 20 21:42:48 2015
+:	Best distance: 329.043392
+Tue Oct 20 21:42:48 2015
+:	Gesture not recognized
+Tue Oct 20 21:42:48 2015
+:	End DTW
+Tue Oct 20 21:42:48 2015
+:	Centroid X = 
+Tue Oct 20 21:42:51 2015
+:	Gesture performed
+Tue Oct 20 21:42:51 2015
+:	Init DTW
+Tue Oct 20 21:42:51 2015
+:	Centroid X = 
+Tue Oct 20 21:42:51 2015
+:	Centroid X = 
+Tue Oct 20 21:42:51 2015
+:	Centroid X = 
+Tue Oct 20 21:42:51 2015
+:	Best distance: 266.265860
+Tue Oct 20 21:42:51 2015
+:	Gesture not recognized
+Tue Oct 20 21:42:51 2015
+:	End DTW
+Tue Oct 20 21:42:51 2015
+:	Centroid X = 
+Tue Oct 20 21:42:55 2015
+:	Gesture performed
+Tue Oct 20 21:42:55 2015
+:	Init DTW
+Tue Oct 20 21:42:55 2015
+:	Centroid X = 
+Tue Oct 20 21:42:55 2015
+:	Centroid X = 
+Tue Oct 20 21:42:55 2015
+:	Centroid X = 
+Tue Oct 20 21:42:55 2015
+:	Best distance: 224.271753
+Tue Oct 20 21:42:55 2015
+:	Gesture not recognized
+Tue Oct 20 21:42:55 2015
+:	End DTW
+Tue Oct 20 21:42:55 2015
+:	Centroid X = 
+Tue Oct 20 21:42:58 2015
+:	Gesture performed
+Tue Oct 20 21:42:58 2015
+:	Init DTW
+Tue Oct 20 21:42:58 2015
+:	Centroid X = 
+Tue Oct 20 21:42:58 2015
+:	Centroid X = 
+Tue Oct 20 21:42:58 2015
+:	Centroid X = 
+Tue Oct 20 21:42:58 2015
+:	Best distance: 222.130464
+Tue Oct 20 21:42:58 2015
+:	Gesture not recognized
+Tue Oct 20 21:42:58 2015
+:	End DTW
+Tue Oct 20 21:42:58 2015
+:	Centroid X = 
+Tue Oct 20 21:43:01 2015
+:	Gesture performed
+Tue Oct 20 21:43:01 2015
+:	Init DTW
+Tue Oct 20 21:43:01 2015
+:	Centroid X = 
+Tue Oct 20 21:43:01 2015
+:	Centroid X = 
+Tue Oct 20 21:43:01 2015
+:	Centroid X = 
+Tue Oct 20 21:43:01 2015
+:	Best distance: 205.814862
+Tue Oct 20 21:43:01 2015
+:	Gesture not recognized
+Tue Oct 20 21:43:01 2015
+:	End DTW
+Tue Oct 20 21:43:01 2015
+:	Centroid X = 
+Tue Oct 20 21:43:03 2015
+:	Gesture performed
+Tue Oct 20 21:43:03 2015
+:	Init DTW
+Tue Oct 20 21:43:03 2015
+:	Centroid X = 
+Tue Oct 20 21:43:03 2015
+:	Centroid X = 
+Tue Oct 20 21:43:03 2015
+:	Centroid X = 
+Tue Oct 20 21:43:03 2015
+:	Best distance: 298.277772
+Tue Oct 20 21:43:03 2015
+:	Gesture not recognized
+Tue Oct 20 21:43:03 2015
+:	End DTW
+Tue Oct 20 21:43:03 2015
+:	Centroid X = 
+Tue Oct 20 21:43:07 2015
+:	Gesture performed
+Tue Oct 20 21:43:07 2015
+:	Init DTW
+Tue Oct 20 21:43:07 2015
+:	Centroid X = 
+Tue Oct 20 21:43:07 2015
+:	Centroid X = 
+Tue Oct 20 21:43:07 2015
+:	Centroid X = 
+Tue Oct 20 21:43:07 2015
+:	Best distance: 342.871671
+Tue Oct 20 21:43:07 2015
+:	Gesture not recognized
+Tue Oct 20 21:43:07 2015
+:	End DTW
+Tue Oct 20 21:43:07 2015
+:	Centroid X = 
+Tue Oct 20 21:43:10 2015
+:	Gesture performed
+Tue Oct 20 21:43:10 2015
+:	Init DTW
+Tue Oct 20 21:43:10 2015
+:	Centroid X = 
+Tue Oct 20 21:43:10 2015
+:	Centroid X = 
+Tue Oct 20 21:43:10 2015
+:	Centroid X = 
+Tue Oct 20 21:43:10 2015
+:	Best distance: 296.140956
+Tue Oct 20 21:43:10 2015
+:	Gesture not recognized
+Tue Oct 20 21:43:10 2015
+:	End DTW
+Tue Oct 20 21:43:10 2015
+:	Centroid X = 
+Tue Oct 20 21:43:13 2015
+:	Gesture performed
+Tue Oct 20 21:43:13 2015
+:	Init DTW
+Tue Oct 20 21:43:13 2015
+:	Centroid X = 
+Tue Oct 20 21:43:13 2015
+:	Centroid X = 
+Tue Oct 20 21:43:13 2015
+:	Centroid X = 
+Tue Oct 20 21:43:13 2015
+:	Best distance: 315.131820
+Tue Oct 20 21:43:13 2015
+:	Gesture not recognized
+Tue Oct 20 21:43:13 2015
+:	End DTW
+Tue Oct 20 21:43:13 2015
+:	Centroid X = 
+Tue Oct 20 21:43:15 2015
+:	Gesture performed
+Tue Oct 20 21:43:15 2015
+:	Init DTW
+Tue Oct 20 21:43:15 2015
+:	Centroid X = 
+Tue Oct 20 21:43:15 2015
+:	Centroid X = 
+Tue Oct 20 21:43:15 2015
+:	Centroid X = 
+Tue Oct 20 21:43:15 2015
+:	Best distance: 184.948204
+Tue Oct 20 21:43:15 2015
+:	Gesture not recognized
+Tue Oct 20 21:43:15 2015
+:	End DTW
+Tue Oct 20 21:43:15 2015
+:	Centroid X = 
+Tue Oct 20 21:43:20 2015
+:	Gesture performed
+Tue Oct 20 21:43:20 2015
+:	Init DTW
+Tue Oct 20 21:43:20 2015
+:	Centroid X = 
+Tue Oct 20 21:43:20 2015
+:	Centroid X = 
+Tue Oct 20 21:43:20 2015
+:	Centroid X = 
+Tue Oct 20 21:43:20 2015
+:	Best distance: 149.209337
+Tue Oct 20 21:43:20 2015
+:	Gesture not recognized
+Tue Oct 20 21:43:20 2015
+:	End DTW
+Tue Oct 20 21:43:20 2015
+:	Centroid X = 
+Tue Oct 20 21:43:21 2015
+:	Gesture performed
+Tue Oct 20 21:43:21 2015
+:	Init DTW
+Tue Oct 20 21:43:21 2015
+:	Centroid X = 
+Tue Oct 20 21:43:21 2015
+:	Centroid X = 
+Tue Oct 20 21:43:21 2015
+:	Centroid X = 
+Tue Oct 20 21:43:21 2015
+:	Best distance: 306.735813
+Tue Oct 20 21:43:21 2015
+:	Gesture not recognized
+Tue Oct 20 21:43:21 2015
+:	End DTW
+Tue Oct 20 21:43:21 2015
+:	Centroid X = 
+Tue Oct 20 21:43:23 2015
+:	Gesture performed
+Tue Oct 20 21:43:23 2015
+:	Init DTW
+Tue Oct 20 21:43:23 2015
+:	Centroid X = 
+Tue Oct 20 21:43:23 2015
+:	Centroid X = 
+Tue Oct 20 21:43:23 2015
+:	Centroid X = 
+Tue Oct 20 21:43:23 2015
+:	Best distance: 196.956978
+Tue Oct 20 21:43:23 2015
+:	Gesture not recognized
+Tue Oct 20 21:43:23 2015
+:	End DTW
+Tue Oct 20 21:43:23 2015
+:	Centroid X = 
+Tue Oct 20 21:43:24 2015
+:	Gesture performed
+Tue Oct 20 21:43:24 2015
+:	Init DTW
+Tue Oct 20 21:43:24 2015
+:	Centroid X = 
+Tue Oct 20 21:43:24 2015
+:	Centroid X = 
+Tue Oct 20 21:43:24 2015
+:	Centroid X = 
+Tue Oct 20 21:43:24 2015
+:	Best distance: 232.594804
+Tue Oct 20 21:43:24 2015
+:	Gesture not recognized
+Tue Oct 20 21:43:24 2015
+:	End DTW
+Tue Oct 20 21:43:24 2015
+:	Centroid X = 
+Tue Oct 20 21:43:24 2015
+:	Gesture performed
+Tue Oct 20 21:43:24 2015
+:	Init DTW
+Tue Oct 20 21:43:24 2015
+:	Centroid X = 
+Tue Oct 20 21:43:24 2015
+:	Centroid X = 
+Tue Oct 20 21:43:24 2015
+:	Centroid X = 
+Tue Oct 20 21:43:24 2015
+:	Best distance: 228.942218
+Tue Oct 20 21:43:24 2015
+:	Gesture not recognized
+Tue Oct 20 21:43:24 2015
+:	End DTW
+Tue Oct 20 21:43:24 2015
+:	Centroid X = 
+Tue Oct 20 21:43:26 2015
+:	Gesture performed
+Tue Oct 20 21:43:26 2015
+:	Init DTW
+Tue Oct 20 21:43:26 2015
+:	Centroid X = 
+Tue Oct 20 21:43:26 2015
+:	Centroid X = 
+Tue Oct 20 21:43:26 2015
+:	Centroid X = 
+Tue Oct 20 21:43:26 2015
+:	Best distance: 199.620598
+Tue Oct 20 21:43:26 2015
+:	Gesture not recognized
+Tue Oct 20 21:43:26 2015
+:	End DTW
+Tue Oct 20 21:43:26 2015
+:	Centroid X = 
+Tue Oct 20 21:43:27 2015
+:	Gesture performed
+Tue Oct 20 21:43:27 2015
+:	Init DTW
+Tue Oct 20 21:43:27 2015
+:	Centroid X = 
+Tue Oct 20 21:43:27 2015
+:	Centroid X = 
+Tue Oct 20 21:43:27 2015
+:	Centroid X = 
+Tue Oct 20 21:43:27 2015
+:	Best distance: 223.507259
+Tue Oct 2
+Tue Oct 20 21:46:09 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 21:46:09 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 21:46:09 2015
+:	Fim de leitura do arquivo: 
+Tue Oct 20 21:46:09 2015
+:	Instance Gesture Created
+Tue Oct 20 21:46:20 2015
+:	Hand add
+Tue Oct 20 21:46:23 2015
+:	Gesture performed
+Tue Oct 20 21:46:23 2015
+:	Init DTW
+Tue Oct 20 21:46:23 2015
+:	Centroid X = 
+Tue Oct 20 21:46:23 2015
+:	Centroid X = 
+Tue Oct 20 21:46:23 2015
+:	Centroid X = 
+Tue Oct 20 21:46:23 2015
+:	Best distance: 178.608431
+Tue Oct 20 21:46:23 2015
+:	Gesture not recognized
+Tue Oct 20 21:46:23 2015
+:	End DTW
+Tue Oct 20 21:46:23 2015
+:	Centroid X = 
+Tue Oct 20 21:46:28 2015
+:	Gesture performed
+Tue Oct 20 21:46:28 2015
+:	Init DTW
+Tue Oct 20 21:46:28 2015
+:	Centroid X = 
+Tue Oct 20 21:46:28 2015
+:	Centroid X = 
+Tue Oct 20 21:46:28 2015
+:	Centroid X = 
+Tue Oct 20 21:46:28 2015
+:	Best distance: 257.684520
+Tue Oct 20 21:46:28 2015
+:	Gesture not recognized
+Tue Oct 20 21:46:28 2015
+:	End DTW
+Tue Oct 20 21:46:28 2015
+:	Centroid X = 
+Tue Oct 20 21:46:32 2015
+:	Gesture performed
+Tue Oct 20 21:46:32 2015
+:	Init DTW
+Tue Oct 20 21:46:32 2015
+:	Centroid X = 
+Tue Oct 20 21:46:32 2015
+:	Centroid X = 
+Tue Oct 20 21:46:32 2015
+:	Centroid X = 
+Tue Oct 20 21:46:32 2015
+:	Best distance: 208.984762
+Tue Oct 20 21:46:32 2015
+:	Gesture not recognized
+Tue Oct 20 21:46:32 2015
+:	End DTW
+Tue Oct 20 21:46:32 2015
+:	Centroid X = 
+Tue Oct 20 21:46:34 2015
+:	Gesture performed
+Tue Oct 20 21:46:34 2015
+:	Init DTW
+Tue Oct 20 21:46:34 2015
+:	Centroid X = 
+Tue Oct 20 21:46:34 2015
+:	Centroid X = 
+Tue Oct 20 21:46:34 2015
+:	Centroid X = 
+Tue Oct 20 21:46:34 2015
+:	Best distance: 212.591728
+Tue Oct 20 21:46:34 2015
+:	Gesture not recognized
+Tue Oct 20 21:46:34 2015
+:	End DTW
+Tue Oct 20 21:46:34 2015
+:	Centroid X = 
+Tue Oct 20 21:46:37 2015
+:	Gesture performed
+Tue Oct 20 21:46:37 2015
+:	Init DTW
+Tue Oct 20 21:46:37 2015
+:	Centroid X = 
+Tue Oct 20 21:46:37 2015
+:	Centroid X = 
+Tue Oct 20 21:46:37 2015
+:	Centroid X = 
+Tue Oct 20 21:46:37 2015
+:	Best distance: 219.549638
+Tue Oct 20 21:46:37 2015
+:	Gesture not recognized
+Tue Oct 20 21:46:37 2015
+:	End DTW
+Tue Oct 20 21:46:37 2015
+:	Centroid X = 
+Tue Oct 20 21:46:40 2015
+:	Gesture performed
+Tue Oct 20 21:46:40 2015
+:	Init DTW
+Tue Oct 20 21:46:40 2015
+:	Centroid X = 
+Tue Oct 20 21:46:40 2015
+:	Centroid X = 
+Tue Oct 20 21:46:40 2015
+:	Centroid X = 
+Tue Oct 20 21:46:40 2015
+:	Best distance: 290.444451
+Tue Oct 20 21:46:40 2015
+:	Gesture not recognized
+Tue Oct 20 21:46:40 2015
+:	End DTW
+Tue Oct 20 21:46:40 2015
+:	Centroid X = 
+Tue Oct 20 21:46:42 2015
+:	Gesture performed
+Tue Oct 20 21:46:42 2015
+:	Init DTW
+Tue Oct 20 21:46:42 2015
+:	Centroid X = 
+Tue Oct 20 21:46:42 2015
+:	Centroid X = 
+Tue Oct 20 21:46:42 2015
+:	Centroid X = 
+Tue Oct 20 21:46:42 2015
+:	Best distance: 233.654561
+Tue Oct 20 21:46:42 2015
+:	Gesture not recognized
+Tue Oct 20 21:46:42 2015
+:	End DTW
+Tue Oct 20 21:46:42 2015
+:	Centroid X = 
+Tue Oct 20 21:46:45 2015
+:	Gesture performed
+Tue Oct 20 21:46:45 2015
+:	Init DTW
+Tue Oct 20 21:46:45 2015
+:	Centroid X = 
+Tue Oct 20 21:46:45 2015
+:	Centroid X = 
+Tue Oct 20 21:46:45 2015
+:	Centroid X = 
+Tue Oct 20 21:46:45 2015
+:	Best distance: 374.893446
+Tue Oct 20 21:46:45 2015
+:	Gesture not recognized
+Tue Oct 20 21:46:45 2015
+:	End DTW
+Tue Oct 20 21:46:45 2015
+:	Centroid X = 
+Tue Oct 20 21:46:47 2015
+:	Gesture performed
+Tue Oct 20 21:46:47 2015
+:	Init DTW
+Tue Oct 20 21:46:47 2015
+:	Centroid X = 
+Tue Oct 20 21:46:47 2015
+:	Centroid X = 
+Tue Oct 20 21:46:47 2015
+:	Centroid X = 
+Tue Oct 20 21:46:47 2015
+:	Best distance: 251.135886
+Tue Oct 20 21:46:47 2015
+:	Gesture not recognized
+Tue Oct 20 21:46:47 2015
+:	End DTW
+Tue Oct 20 21:46:47 2015
+:	Centroid X = 
+Tue Oct 20 21:46:49 2015
+:	Gesture performed
+Tue Oct 20 21:46:49 2015
+:	Init DTW
+Tue Oct 20 21:46:49 2015
+:	Centroid X = 
+Tue Oct 20 21:46:49 2015
+:	Centroid X = 
+Tue Oct 20 21:46:49 2015
+:	Centroid X = 
+Tue Oct 20 21:46:49 2015
+:	Best distance: 370.624940
+Tue Oct 20 21:46:49 2015
+:	Gesture not recognized
+Tue Oct 20 21:46:49 2015
+:	End DTW
+Tue Oct 20 21:46:49 2015
+:	Centroid X = 
+Tue Oct 20 21:46:52 2015
+:	Gesture performed
+Tue Oct 20 21:46:52 2015
+:	Init DTW
+Tue Oct 20 21:46:52 2015
+:	Centroid X = 
+Tue Oct 20 21:46:52 2015
+:	Centroid X = 
+Tue Oct 20 21:46:52 2015
+:	Centroid X = 
+Tue Oct 20 21:46:52 2015
+:	Best distance: 247.095618
+Tue Oct 20 21:46:52 2015
+:	Gesture not recognized
+Tue Oct 20 21:46:52 2015
+:	End DTW
+Tue Oct 20 21:46:52 2015
+:	Centroid X = 
+Tue Oct 20 21:46:54 2015
+:	Gesture performed
+Tue Oct 20 21:46:54 2015
+:	Init DTW
+Tue Oct 20 21:46:54 2015
+:	Centroid X = 
+Tue Oct 20 21:46:54 2015
+:	Centroid X = 
+Tue Oct 20 21:46:54 2015
+:	Centroid X = 
+Tue Oct 20 21:46:54 2015
+:	Best distance: 378.645694
+Tue Oct 20 21:46:54 2015
+:	Gesture not recognized
+Tue Oct 20 21:46:54 2015
+:	End DTW
+Tue Oct 20 21:46:54 2015
+:	Centroid X = 
+Tue Oct 20 21:46:56 2015
+:	Gesture performed
+Tue Oct 20 21:46:56 2015
+:	Init DTW
+Tue Oct 20 21:46:56 2015
+:	Centroid X = 
+Tue Oct 20 21:46:56 2015
+:	Centroid X = 
+Tue Oct 20 21:46:56 2015
+:	Centroid X = 
+Tue Oct 20 21:46:56 2015
+:	Best distance: 268.165421
+Tue Oct 20 21:46:56 2015
+:	Gesture not recognized
+Tue Oct 20 21:46:56 2015
+:	End DTW
+Tue Oct 20 21:46:56 2015
+:	Centroid X = 
+Tue Oct 20 21:46:58 2015
+:	Gesture performed
+Tue Oct 20 21:46:58 2015
+:	Init DTW
+Tue Oct 20 21:46:58 2015
+:	Centroid X = 
+Tue Oct 20 21:46:58 2015
+:	Centroid X = 
+Tue Oct 20 21:46:58 2015
+:	Centroid X = 
+Tue Oct 20 21:46:58 2015
+:	Best distance: 372.529557
+Tue Oct 20 21:46:58 2015
+:	Gesture not recognized
+Tue Oct 20 21:46:58 2015
+:	End DTW
+Tue Oct 20 21:46:58 2015
+:	Centroid X = 
+Tue Oct 20 21:47:01 2015
+:	Gesture performed
+Tue Oct 20 21:47:01 2015
+:	Init DTW
+Tue Oct 20 21:47:01 2015
+:	Centroid X = 
+Tue Oct 20 21:47:01 2015
+:	Centroid X = 
+Tue Oct 20 21:47:01 2015
+:	Centroid X = 
+Tue Oct 20 21:47:01 2015
+:	Best distance: 281.464159
+Tue Oct 20 21:47:01 2015
+:	Gesture not recognized
+Tue Oct 20 21:47:01 2015
+:	End DTW
+Tue Oct 20 21:47:01 2015
+:	Centroid X = 
+Tue Oct 20 21:47:03 2015
+:	Gesture performed
+Tue Oct 20 21:47:03 2015
+:	Init DTW
+Tue Oct 20 21:47:03 2015
+:	Centroid X = 
+Tue Oct 20 21:47:03 2015
+:	Centroid X = 
+Tue Oct 20 21:47:03 2015
+:	Centroid X = 
+Tue Oct 20 21:47:03 2015
+:	Best distance: 259.077008
+Tue Oct 20 21:47:03 2015
+:	Gesture not recognized
+Tue Oct 20 21:47:03 2015
+:	End DTW
+Tue Oct 20 21:47:03 2015
+:	Centroid X = 
+Tue Oct 20 21:47:04 2015
+:	Gesture performed
+Tue Oct 20 21:47:04 2015
+:	Init DTW
+Tue Oct 20 21:47:04 2015
+:	Centroid X = 
+Tue Oct 20 21:47:04 2015
+:	Centroid X = 
+Tue Oct 20 21:47:04 2015
+:	Centroid X = 
+Tue Oct 20 21:47:04 2015
+:	Best distance: 249.315637
+Tue Oct 20 21:47:04 2015
+:	Gesture not recognized
+Tue Oct 20 21:47:04 2015
+:	End DTW
+Tue Oct 20 21:47:04 2015
+:	Centroid X = 
+Tue Oct 20 21:47:07 2015
+:	Gesture performed
+Tue Oct 20 21:47:07 2015
+:	Init DTW
+Tue Oct 20 21:47:07 2015
+:	Centroid X = 
+Tue Oct 20 21:47:07 2015
+:	Centroid X = 
+Tue Oct 20 21:47:07 2015
+:	Centroid X = 
+Tue Oct 20 21:47:07 2015
+:	Best distance: 517.220186
+Tue Oct 20 21:47:07 2015
+:	Gesture not recognized
+Tue Oct 20 21:47:07 2015
+:	End DTW
+Tue Oct 20 21:47:07 2015
+:	Centroid X = 
+Tue Oct 20 21:48:41 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 21:48:41 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 21:48:41 2015
+:	Fim de leitura do arquivo: 
+Tue Oct 20 21:48:41 2015
+:	Instance Gesture Created
+Tue Oct 20 21:48:52 2015
+:	Hand add
+Tue Oct 20 21:48:54 2015
+:	Gesture performed
+Tue Oct 20 21:48:54 2015
+:	Init DTW
+Tue Oct 20 21:48:54 2015
+:	Centroid X = 
+Tue Oct 20 21:48:54 2015
+:	Centroid X = 
+Tue Oct 20 21:48:54 2015
+:	Centroid X = 
+Tue Oct 20 21:48:54 2015
+:	Best distance: 334.614418
+Tue Oct 20 21:48:54 2015
+:	Gesture not recognized
+Tue Oct 20 21:48:54 2015
+:	End DTW
+Tue Oct 20 21:48:54 2015
+:	Centroid X = 
+Tue Oct 20 21:48:58 2015
+:	Gesture performed
+Tue Oct 20 21:48:58 2015
+:	Init DTW
+Tue Oct 20 21:48:58 2015
+:	Centroid X = 
+Tue Oct 20 21:48:58 2015
+:	Centroid X = 
+Tue Oct 20 21:48:58 2015
+:	Centroid X = 
+Tue Oct 20 21:48:58 2015
+:	Best distance: 300.329162
+Tue Oct 20 21:48:58 2015
+:	Gesture not recognized
+Tue Oct 20 21:48:58 2015
+:	End DTW
+Tue Oct 20 21:48:58 2015
+:	Centroid X = 
+Tue Oct 20 21:49:01 2015
+:	Gesture performed
+Tue Oct 20 21:49:01 2015
+:	Init DTW
+Tue Oct 20 21:49:01 2015
+:	Centroid X = 
+Tue Oct 20 21:49:01 2015
+:	Centroid X = 
+Tue Oct 20 21:49:01 2015
+:	Centroid X = 
+Tue Oct 20 21:49:01 2015
+:	Best distance: 213.786542
+Tue Oct 20 21:49:01 2015
+:	Gesture not recognized
+Tue Oct 20 21:49:01 2015
+:	End DTW
+Tue Oct 20 21:49:01 2015
+:	Centroid X = 
+Tue Oct 20 21:49:03 2015
+:	Gesture performed
+Tue Oct 20 21:49:03 2015
+:	Init DTW
+Tue Oct 20 21:49:03 2015
+:	Centroid X = 
+Tue Oct 20 21:49:03 2015
+:	Centroid X = 
+Tue Oct 20 21:49:03 2015
+:	Centroid X = 
+Tue Oct 20 21:49:03 2015
+:	Best distance: 238.570948
+Tue Oct 20 21:49:03 2015
+:	Gesture not recognized
+Tue Oct 20 21:49:03 2015
+:	End DTW
+Tue Oct 20 21:49:03 2015
+:	Centroid X = 
+Tue Oct 20 21:49:06 2015
+:	Gesture performed
+Tue Oct 20 21:49:06 2015
+:	Init DTW
+Tue Oct 20 21:49:06 2015
+:	Centroid X = 
+Tue Oct 20 21:49:06 2015
+:	Centroid X = 
+Tue Oct 20 21:49:06 2015
+:	Centroid X = 
+Tue Oct 20 21:49:06 2015
+:	Best distance: 221.727170
+Tue Oct 20 21:49:06 2015
+:	Gesture not recognized
+Tue Oct 20 21:49:06 2015
+:	End DTW
+Tue Oct 20 21:49:06 2015
+:	Centroid X = 
+Tue Oct 20 21:49:08 2015
+:	Gesture performed
+Tue Oct 20 21:49:08 2015
+:	Init DTW
+Tue Oct 20 21:49:08 2015
+:	Centroid X = 
+Tue Oct 20 21:49:08 2015
+:	Centroid X = 
+Tue Oct 20 21:49:08 2015
+:	Centroid X = 
+Tue Oct 20 21:49:08 2015
+:	Best distance: 465.835794
+Tue Oct 20 21:49:08 2015
+:	Gesture not recognized
+Tue Oct 20 21:49:08 2015
+:	End DTW
+Tue Oct 20 21:49:08 2015
+:	Centroid X = 
+Tue Oct 20 21:49:10 2015
+:	Gesture performed
+Tue Oct 20 21:49:10 2015
+:	Init DTW
+Tue Oct 20 21:49:10 2015
+:	Centroid X = 
+Tue Oct 20 21:49:10 2015
+:	Centroid X = 
+Tue Oct 20 21:49:10 2015
+:	Centroid X = 
+Tue Oct 20 21:49:10 2015
+:	Best distance: 287.489448
+Tue Oct 20 21:49:10 2015
+:	Gesture not recognized
+Tue Oct 20 21:49:10 2015
+:	End DTW
+Tue Oct 20 21:49:10 2015
+:	Centroid X = 
+Tue Oct 20 21:49:13 2015
+:	Gesture performed
+Tue Oct 20 21:49:13 2015
+:	Init DTW
+Tue Oct 20 21:49:13 2015
+:	Centroid X = 
+Tue Oct 20 21:49:13 2015
+:	Centroid X = 
+Tue Oct 20 21:49:13 2015
+:	Centroid X = 
+Tue Oct 20 21:49:13 2015
+:	Best distance: 233.324667
+Tue Oct 20 21:49:13 2015
+:	Gesture not recognized
+Tue Oct 20 21:49:13 2015
+:	End DTW
+Tue Oct 20 21:49:13 2015
+:	Centroid X = 
+Tue Oct 20 21:49:15 2015
+:	Gesture performed
+Tue Oct 20 21:49:15 2015
+:	Init DTW
+Tue Oct 20 21:49:15 2015
+:	Centroid X = 
+Tue Oct 20 21:49:15 2015
+:	Centroid X = 
+Tue Oct 20 21:49:15 2015
+:	Centroid X = 
+Tue Oct 20 21:49:15 2015
+:	Best distance: 247.914547
+Tue Oct 20 21:49:15 2015
+:	Gesture not recognized
+Tue Oct 20 21:49:15 2015
+:	End DTW
+Tue Oct 20 21:49:15 2015
+:	Centroid X = 
+Tue Oct 20 21:49:17 2015
+:	Gesture performed
+Tue Oct 20 21:49:17 2015
+:	Init DTW
+Tue Oct 20 21:49:17 2015
+:	Centroid X = 
+Tue Oct 20 21:49:17 2015
+:	Centroid X = 
+Tue Oct 20 21:49:17 2015
+:	Centroid X = 
+Tue Oct 20 21:49:17 2015
+:	Best distance: 430.004047
+Tue Oct 20 21:49:17 2015
+:	Gesture not recognized
+Tue Oct 20 21:49:17 2015
+:	End DTW
+Tue Oct 20 21:49:17 2015
+:	Centroid X = 
+
+Tue Oct 20 22:05:13 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 22:05:13 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 22:05:13 2015
+:	Fim de leitura do arquivo: 
+Tue Oct 20 22:05:13 2015
+:	Instance Gesture Created
+Tue Oct 20 22:05:22 2015
+:	Hand add
+Tue Oct 20 22:05:25 2015
+:	Gesture performed
+Tue Oct 20 22:05:25 2015
+:	Init DTW
+Tue Oct 20 22:05:25 2015
+:	Centroid X = 
+Tue Oct 20 22:05:25 2015
+:	Centroid X = 
+Tue Oct 20 22:05:25 2015
+:	Centroid X = 
+Tue Oct 20 22:05:25 2015
+:	Best distance: 493.627131
+Tue Oct 20 22:05:25 2015
+:	Gesture not recognized
+Tue Oct 20 22:05:25 2015
+:	End DTW
+Tue Oct 20 22:05:25 2015
+:	Centroid X = 
+Tue Oct 20 22:05:28 2015
+:	Hand removed
+Tue Oct 20 22:05:41 2015
+:	Hand add
+Tue Oct 20 22:05:44 2015
+:	Gesture performed
+Tue Oct 20 22:05:44 2015
+:	Init DTW
+Tue Oct 20 22:05:44 2015
+:	Centroid X = 
+Tue Oct 20 22:05:44 2015
+:	Centroid X = 
+Tue Oct 20 22:05:44 2015
+:	Centroid X = 
+Tue Oct 20 22:05:44 2015
+:	Best distance: 302.134034
+Tue Oct 20 22:05:44 2015
+:	Gesture not recognized
+Tue Oct 20 22:05:44 2015
+:	End DTW
+Tue Oct 20 22:05:44 2015
+:	Centroid X = 
+Tue Oct 20 22:05:47 2015
+:	Gesture performed
+Tue Oct 20 22:05:47 2015
+:	Init DTW
+Tue Oct 20 22:05:47 2015
+:	Centroid X = 
+Tue Oct 20 22:05:47 2015
+:	Centroid X = 
+Tue Oct 20 22:05:47 2015
+:	Centroid X = 
+Tue Oct 20 22:05:47 2015
+:	Best distance: 380.251864
+Tue Oct 20 22:05:47 2015
+:	Gesture not recognized
+Tue Oct 20 22:05:47 2015
+:	End DTW
+Tue Oct 20 22:05:47 2015
+:	Centroid X = 
+Tue Oct 20 22:05:50 2015
+:	Gesture performed
+Tue Oct 20 22:05:50 2015
+:	Init DTW
+Tue Oct 20 22:05:50 2015
+:	Centroid X = 
+Tue Oct 20 22:05:50 2015
+:	Centroid X = 
+Tue Oct 20 22:05:50 2015
+:	Centroid X = 
+Tue Oct 20 22:05:50 2015
+:	Best distance: 438.834079
+Tue Oct 20 22:05:50 2015
+:	Gesture not recognized
+Tue Oct 20 22:05:50 2015
+:	End DTW
+Tue Oct 20 22:05:50 2015
+:	Centroid X = 
+Tue Oct 20 22:05:52 2015
+:	Gesture performed
+Tue Oct 20 22:05:52 2015
+:	Init DTW
+Tue Oct 20 22:05:52 2015
+:	Centroid X = 
+Tue Oct 20 22:05:52 2015
+:	Centroid X = 
+Tue Oct 20 22:05:52 2015
+:	Centroid X = 
+Tue Oct 20 22:05:52 2015
+:	Best distance: 383.946046
+Tue Oct 20 22:05:52 2015
+:	Gesture not recognized
+Tue Oct 20 22:05:52 2015
+:	End DTW
+Tue Oct 20 22:05:52 2015
+:	Centroid X = 
+Tue Oct 20 22:05:54 2015
+:	Gesture performed
+Tue Oct 20 22:05:54 2015
+:	Init DTW
+Tue Oct 20 22:05:54 2015
+:	Centroid X = 
+Tue Oct 20 22:05:54 2015
+:	Centroid X = 
+Tue Oct 20 22:05:54 2015
+:	Centroid X = 
+Tue Oct 20 22:05:54 2015
+:	Best distance: 402.614344
+Tue Oct 20 22:05:54 2015
+:	Gesture not recognized
+Tue Oct 20 22:05:54 2015
+:	End DTW
+Tue Oct 20 22:05:54 2015
+:	Centroid X = 
+Tue Oct 20 22:05:54 2015
+:	Gesture performed
+Tue Oct 20 22:05:54 2015
+:	Init DTW
+Tue Oct 20 22:05:54 2015
+:	Centroid X = 
+Tue Oct 20 22:05:54 2015
+:	Centroid X = 
+Tue Oct 20 22:05:54 2015
+:	Centroid X = 
+Tue Oct 20 22:05:54 2015
+:	Best distance: 399.501356
+Tue Oct 20 22:05:54 2015
+:	Gesture not recognized
+Tue Oct 20 22:05:54 2015
+:	End DTW
+Tue Oct 20 22:05:54 2015
+:	Centroid X = 
+Tue Oct 20 22:05:56 2015
+:	Gesture performed
+Tue Oct 20 22:05:56 2015
+:	Init DTW
+Tue Oct 20 22:05:56 2015
+:	Centroid X = 
+Tue Oct 20 22:05:56 2015
+:	Centroid X = 
+Tue Oct 20 22:05:56 2015
+:	Centroid X = 
+Tue Oct 20 22:05:56 2015
+:	Best distance: 439.060507
+Tue Oct 20 22:05:56 2015
+:	Gesture not recognized
+Tue Oct 20 22:05:56 2015
+:	End DTW
+Tue Oct 20 22:05:56 2015
+:	Centroid X = 
+Tue Oct 20 22:05:59 2015
+:	Gesture performed
+Tue Oct 20 22:05:59 2015
+:	Init DTW
+Tue Oct 20 22:05:59 2015
+:	Centroid X = 
+Tue Oct 20 22:05:59 2015
+:	Centroid X = 
+Tue Oct 20 22:05:59 2015
+:	Centroid X = 
+Tue Oct 20 22:05:59 2015
+:	Best distance: 305.288192
+Tue Oct 20 22:05:59 2015
+:	Gesture not recognized
+Tue Oct 20 22:05:59 2015
+:	End DTW
+Tue Oct 20 22:05:59 2015
+:	Centroid X = 
+Tue Oct 20 22:06:01 2015
+:	Gesture performed
+Tue Oct 20 22:06:01 2015
+:	Init DTW
+Tue Oct 20 22:06:01 2015
+:	Centroid X = 
+Tue Oct 20 22:06:01 2015
+:	Centroid X = 
+Tue Oct 20 22:06:01 2015
+:	Centroid X = 
+Tue Oct 20 22:06:01 2015
+:	Best distance: 453.186100
+Tue Oct 20 22:06:01 2015
+:	Gesture not recognized
+Tue Oct 20 22:06:01 2015
+:	End DTW
+Tue Oct 20 22:06:01 2015
+:	Centroid X = 
+Tue Oct 20 22:06:04 2015
+:	Gesture performed
+Tue Oct 20 22:06:04 2015
+:	Init DTW
+Tue Oct 20 22:06:04 2015
+:	Centroid X = 
+Tue Oct 20 22:06:04 2015
+:	Centroid X = 
+Tue Oct 20 22:06:04 2015
+:	Centroid X = 
+Tue Oct 20 22:06:04 2015
+:	Best distance: 332.241793
+Tue Oct 20 22:06:04 2015
+:	Gesture not recognized
+Tue Oct 20 22:06:04 2015
+:	End DTW
+Tue Oct 20 22:06:04 2015
+:	Centroid X = 
+Tue Oct 20 22:06:06 2015
+:	Gesture performed
+Tue Oct 20 22:06:06 2015
+:	Init DTW
+Tue Oct 20 22:06:06 2015
+:	Centroid X = 
+Tue Oct 20 22:06:06 2015
+:	Centroid X = 
+Tue Oct 20 22:06:06 2015
+:	Centroid X = 
+Tue Oct 20 22:06:06 2015
+:	Best distance: 477.614900
+Tue Oct 20 22:06:06 2015
+:	Gesture not recognized
+Tue Oct 20 22:06:06 2015
+:	End DTW
+Tue Oct 20 22:06:06 2015
+:	Centroid X = 
+Tue Oct 20 22:06:09 2015
+:	Gesture performed
+Tue Oct 20 22:06:09 2015
+:	Init DTW
+Tue Oct 20 22:06:09 2015
+:	Centroid X = 
+Tue Oct 20 22:06:09 2015
+:	Centroid X = 
+Tue Oct 20 22:06:09 2015
+:	Centroid X = 
+Tue Oct 20 22:06:09 2015
+:	Best distance: 306.365421
+Tue Oct 20 22:06:09 2015
+:	Gesture not recognized
+Tue Oct 20 22:06:09 2015
+:	End DTW
+Tue Oct 20 22:06:09 2015
+:	Centroid X = 
+Tue Oct 20 22:06:12 2015
+:	Gesture performed
+Tue Oct 20 22:06:12 2015
+:	Init DTW
+Tue Oct 20 22:06:12 2015
+:	Centroid X = 
+Tue Oct 20 22:06:12 2015
+:	Centroid X = 
+Tue Oct 20 22:06:12 2015
+:	Centroid X = 
+Tue Oct 20 22:06:12 2015
+:	Best distance: 251.468857
+Tue Oct 20 22:06:12 2015
+:	Gesture not recognized
+Tue Oct 20 22:06:12 2015
+:	End DTW
+Tue Oct 20 22:06:12 2015
+:	Centroid X = 
+Tue Oct 20 22:06:14 2015
+:	Gesture performed
+Tue Oct 20 22:06:14 2015
+:	Init DTW
+Tue Oct 20 22:06:14 2015
+:	Centroid X = 
+Tue Oct 20 22:06:14 2015
+:	Centroid X = 
+Tue Oct 20 22:06:14 2015
+:	Centroid X = 
+Tue Oct 20 22:06:14 2015
+:	Best distance: 404.835461
+Tue Oct 20 22:06:14 2015
+:	Gesture not recognized
+Tue Oct 20 22:06:14 2015
+:	End DTW
+Tue Oct 20 22:06:14 2015
+:	Centroid X = 
+Tue Oct 20 22:06:16 2015
+:	Gesture performed
+Tue Oct 20 22:06:16 2015
+:	Init DTW
+Tue Oct 20 22:06:16 2015
+:	Centroid X = 
+Tue Oct 20 22:06:16 2015
+:	Centroid X = 
+Tue Oct 20 22:06:16 2015
+:	Centroid X = 
+Tue Oct 20 22:06:16 2015
+:	Best distance: 228.564594
+Tue Oct 20 22:06:16 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:06:16 2015
+:	End DTW
+Tue Oct 20 22:06:16 2015
+:	Centroid X = 
+Tue Oct 20 22:06:23 2015
+:	Gesture performed
+Tue Oct 20 22:06:23 2015
+:	Init DTW
+Tue Oct 20 22:06:23 2015
+:	Centroid X = 
+Tue Oct 20 22:06:23 2015
+:	Centroid X = 
+Tue Oct 20 22:06:23 2015
+:	Centroid X = 
+Tue Oct 20 22:06:23 2015
+:	Best distance: 362.251388
+Tue Oct 20 22:06:23 2015
+:	Gesture not recognized
+Tue Oct 20 22:06:23 2015
+:	End DTW
+Tue Oct 20 22:06:23 2015
+:	Centroid X = 
+Tue Oct 20 22:06:25 2015
+:	Gesture performed
+Tue Oct 20 22:06:25 2015
+:	Init DTW
+Tue Oct 20 22:06:25 2015
+:	Centroid X = 
+Tue Oct 20 22:06:25 2015
+:	Centroid X = 
+Tue Oct 20 22:06:25 2015
+:	Centroid X = 
+Tue Oct 20 22:06:25 2015
+:	Best distance: 252.042958
+Tue Oct 20 22:06:25 2015
+:	Gesture not recognized
+Tue Oct 20 22:06:25 2015
+:	End DTW
+Tue Oct 20 22:06:25 2015
+:	Centroid X = 
+Tue Oct 20 22:06:29 2015
+:	Gesture performed
+Tue Oct 20 22:06:29 2015
+:	Init DTW
+Tue Oct 20 22:06:29 2015
+:	Centroid X = 
+Tue Oct 20 22:06:29 2015
+:	Centroid X = 
+Tue Oct 20 22:06:29 2015
+:	Centroid X = 
+Tue Oct 20 22:06:29 2015
+:	Best distance: 416.256852
+Tue Oct 20 22:06:29 2015
+:	Gesture not recognized
+Tue Oct 20 22:06:29 2015
+:	End DTW
+Tue Oct 20 22:06:29 2015
+:	Centroid X = 
+Tue Oct 20 22:06:30 2015
+:	Gesture performed
+Tue Oct 20 22:06:30 2015
+:	Init DTW
+Tue Oct 20 22:06:30 2015
+:	Centroid X = 
+Tue Oct 20 22:06:30 2015
+:	Centroid X = 
+Tue Oct 20 22:06:30 2015
+:	Centroid X = 
+Tue Oct 20 22:06:30 2015
+:	Best distance: 403.573602
+Tue Oct 20 22:06:30 2015
+:	Gesture not recognized
+Tue Oct 20 22:06:30 2015
+:	End DTW
+Tue Oct 20 22:06:30 2015
+:	Centroid X = 
+Tue Oct 20 22:06:33 2015
+:	Gesture performed
+Tue Oct 20 22:06:33 2015
+:	Init DTW
+Tue Oct 20 22:06:33 2015
+:	Centroid X = 
+Tue Oct 20 22:06:33 2015
+:	Centroid X = 
+Tue Oct 20 22:06:33 2015
+:	Centroid X = 
+Tue Oct 20 22:06:33 2015
+:	Best distance: 249.447527
+Tue Oct 20 22:06:33 2015
+:	Gesture not recognized
+Tue Oct 20 22:06:33 2015
+:	End DTW
+Tue Oct 20 22:06:33 2015
+:	Centroid X = 
+Tue Oct 20 22:06:36 2015
+:	Gesture performed
+Tue Oct 20 22:06:36 2015
+:	Init DTW
+Tue Oct 20 22:06:36 2015
+:	Centroid X = 
+Tue Oct 20 22:06:36 2015
+:	Centroid X = 
+Tue Oct 20 22:06:36 2015
+:	Centroid X = 
+Tue Oct 20 22:06:36 2015
+:	Best distance: 493.974904
+Tue Oct 20 22:06:36 2015
+:	Gesture not recognized
+Tue Oct 20 22:06:36 2015
+:	End DTW
+Tue Oct 20 22:06:36 2015
+:	Centroid X = 
+Tue Oct 20 22:06:39 2015
+:	Gesture performed
+Tue Oct 20 22:06:39 2015
+:	Init DTW
+Tue Oct 20 22:06:39 2015
+:	Centroid X = 
+Tue Oct 20 22:06:39 2015
+:	Centroid X = 
+Tue Oct 20 22:06:39 2015
+:	Centroid X = 
+Tue Oct 20 22:06:39 2015
+:	Best distance: 346.925027
+Tue Oct 20 22:06:39 2015
+:	Gesture not recognized
+Tue Oct 20 22:06:39 2015
+:	End DTW
+Tue Oct 20 22:06:39 2015
+:	Centroid X = 
+Tue Oct 20 22:06:41 2015
+:	Gesture performed
+Tue Oct 20 22:06:41 2015
+:	Init DTW
+Tue Oct 20 22:06:41 2015
+:	Centroid X = 
+Tue Oct 20 22:06:41 2015
+:	Centroid X = 
+Tue Oct 20 22:06:41 2015
+:	Centroid X = 
+Tue Oct 20 22:06:41 2015
+:	Best distance: 139.611815
+Tue Oct 20 22:06:41 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:06:41 2015
+:	End DTW
+Tue Oct 20 22:06:41 2015
+:	Centroid X = 
+Tue Oct 20 22:06:44 2015
+:	Gesture performed
+Tue Oct 20 22:06:44 2015
+:	Init DTW
+Tue Oct 20 22:06:44 2015
+:	Centroid X = 
+Tue Oct 20 22:06:44 2015
+:	Centroid X = 
+Tue Oct 20 22:06:44 2015
+:	Centroid X = 
+Tue Oct 20 22:06:44 2015
+:	Best distance: 296.303225
+Tue Oct 20 22:06:44 2015
+:	Gesture not recognized
+Tue Oct 20 22:06:44 2015
+:	End DTW
+Tue Oct 20 22:06:44 2015
+:	Centroid X = 
+Tue Oct 20 22:06:46 2015
+:	Gesture performed
+Tue Oct 20 22:06:46 2015
+:	Init DTW
+Tue Oct 20 22:06:46 2015
+:	Centroid X = 
+Tue Oct 20 22:06:46 2015
+:	Centroid X = 
+Tue Oct 20 22:06:46 2015
+:	Centroid X = 
+Tue Oct 20 22:06:46 2015
+:	Best distance: 153.721036
+Tue Oct 20 22:06:46 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:06:46 2015
+:	End DTW
+Tue Oct 20 22:06:46 2015
+:	Centroid X = 
+Tue Oct 20 22:06:48 2015
+:	Gesture performed
+Tue Oct 20 22:06:48 2015
+:	Init DTW
+Tue Oct 20 22:06:48 2015
+:	Centroid X = 
+Tue Oct 20 22:06:48 2015
+:	Centroid X = 
+Tue Oct 20 22:06:48 2015
+:	Centroid X = 
+Tue Oct 20 22:06:48 2015
+:	Best distance: 309.176627
+Tue Oct 20 22:06:48 2015
+:	Gesture not recognized
+Tue Oct 20 22:06:48 2015
+:	End DTW
+Tue Oct 20 22:06:48 2015
+:	Centroid X = 
+Tue Oct 20 22:06:50 2015
+:	Gesture performed
+Tue Oct 20 22:06:50 2015
+:	Init DTW
+Tue Oct 20 22:06:50 2015
+:	Centroid X = 
+Tue Oct 20 22:06:50 2015
+:	Centroid X = 
+Tue Oct 20 22:06:50 2015
+:	Centroid X = 
+Tue Oct 20 22:06:50 2015
+:	Best distance: 156.674352
+Tue Oct 20 22:06:50 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:06:50 2015
+:	End DTW
+Tue Oct 20 22:06:50 2015
+:	Centroid X = 
+Tue Oct 20 22:06:52 2015
+:	Gesture performed
+Tue Oct 20 22:06:52 2015
+:	Init DTW
+Tue Oct 20 22:06:52 2015
+:	Centroid X = 
+Tue Oct 20 22:06:52 2015
+:	Centroid X = 
+Tue Oct 20 22:06:52 2015
+:	Centroid X = 
+Tue Oct 20 22:06:52 2015
+:	Best distance: 311.754508
+Tue Oct 20 22:06:52 2015
+:	Gesture not recognized
+Tue Oct 20 22:06:52 2015
+:	End DTW
+Tue Oct 20 22:06:52 2015
+:	Centroid X = 
+Tue Oct 20 22:06:54 2015
+:	Gesture performed
+Tue Oct 20 22:06:54 2015
+:	Init DTW
+Tue Oct 20 22:06:54 2015
+:	Centroid X = 
+Tue Oct 20 22:06:54 2015
+:	Centroid X = 
+Tue Oct 20 22:06:54 2015
+:	Centroid X = 
+Tue Oct 20 22:06:54 2015
+:	Best distance: 181.762611
+Tue Oct 20 22:06:54 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:06:54 2015
+:	End DTW
+Tue Oct 20 22:06:54 2015
+:	Centroid X = 
+Tue Oct 20 22:06:57 2015
+:	Gesture performed
+Tue Oct 20 22:06:57 2015
+:	Init DTW
+Tue Oct 20 22:06:57 2015
+:	Centroid X = 
+Tue Oct 20 22:06:57 2015
+:	Centroid X = 
+Tue Oct 20 22:06:57 2015
+:	Centroid X = 
+Tue Oct 20 22:06:57 2015
+:	Best distance: 383.046700
+Tue Oct 20 22:06:57 2015
+:	Gesture not recognized
+Tue Oct 20 22:06:57 2015
+:	End DTW
+Tue Oct 20 22:06:57 2015
+:	Centroid X = 
+Tue Oct 20 22:06:58 2015
+:	Gesture performed
+Tue Oct 20 22:06:58 2015
+:	Init DTW
+Tue Oct 20 22:06:58 2015
+:	Centroid X = 
+Tue Oct 20 22:06:58 2015
+:	Centroid X = 
+Tue Oct 20 22:06:58 2015
+:	Centroid X = 
+Tue Oct 20 22:06:58 2015
+:	Best distance: 247.395228
+Tue Oct 20 22:06:58 2015
+:	Gesture not recognized
+Tue Oct 20 22:06:58 2015
+:	End DTW
+Tue Oct 20 22:06:58 2015
+:	Centroid X = 
+Tue Oct 20 22:07:00 2015
+:	Gesture performed
+Tue Oct 20 22:07:00 2015
+:	Init DTW
+Tue Oct 20 22:07:00 2015
+:	Centroid X = 
+Tue Oct 20 22:07:00 2015
+:	Centroid X = 
+Tue Oct 20 22:07:00 2015
+:	Centroid X = 
+Tue Oct 20 22:07:00 2015
+:	Best distance: 348.308243
+Tue Oct 20 22:07:00 2015
+:	Gesture not recognized
+Tue Oct 20 22:07:00 2015
+:	End DTW
+Tue Oct 20 22:07:00 2015
+:	Centroid X = 
+Tue Oct 20 22:07:02 2015
+:	Gesture performed
+Tue Oct 20 22:07:02 2015
+:	Init DTW
+Tue Oct 20 22:07:02 2015
+:	Centroid X = 
+Tue Oct 20 22:07:02 2015
+:	Centroid X = 
+Tue Oct 20 22:07:02 2015
+:	Centroid X = 
+Tue Oct 20 22:07:02 2015
+:	Best distance: 468.407137
+Tue Oct 20 22:07:02 2015
+:	Gesture not recognized
+Tue Oct 20 22:07:02 2015
+:	End DTW
+Tue Oct 20 22:07:02 2015
+:	Centroid X = 
+Tue Oct 20 22:07:03 2015
+:	Gesture performed
+Tue Oct 20 22:07:03 2015
+:	Init DTW
+Tue Oct 20 22:07:03 2015
+:	Centroid X = 
+Tue Oct 20 22:07:03 2015
+:	Centroid X = 
+Tue Oct 20 22:07:03 2015
+:	Centroid X = 
+Tue Oct 20 22:07:03 2015
+:	Best distance: 222.616384
+Tue Oct 20 22:07:03 2015
+:	Gesture recognized: paisagem
+Tue Oct 20 22:07:03 2015
+:	End DTW
+Tue Oct 20 22:07:03 2015
+:	Centroid X = 
+Tue Oct 20 22:07:04 2015
+:	Gesture performed
+Tue Oct 20 22:07:04 2015
+:	Init DTW
+Tue Oct 20 22:07:04 2015
+:	Centroid X = 
+Tue Oct 20 22:07:04 2015
+:	Centroid X = 
+Tue Oct 20 22:07:04 2015
+:	Centroid X = 
+Tue Oct 20 22:07:04 2015
+:	Best distance: 243.808812
+Tue Oct 20 22:07:04 2015
+:	Gesture not recognized
+Tue Oct 20 22:07:04 2015
+:	End DTW
+Tue Oct 20 22:07:04 2015
+:	Centroid X = 
+Tue Oct 20 22:07:05 2015
+:	Gesture performed
+Tue Oct 20 22:07:05 2015
+:	Init DTW
+Tue Oct 20 22:07:05 2015
+:	Centroid X = 
+Tue Oct 20 22:07:05 2015
+:	Centroid X = 
+Tue Oct 20 22:07:05 2015
+:	Centroid X = 
+Tue Oct 20 22:07:05 2015
+:	Best distance: 271.624571
+Tue Oct 20 22:07:05 2015
+:	Gesture not recognized
+Tue Oct 20 22:07:05 2015
+:	End DTW
+Tue Oct 20 22:07:05 2015
+:	Centroid X = 
+Tue Oct 20 22:07:07 2015
+:	Gesture performed
+Tue Oct 20 22:07:07 2015
+:	Init DTW
+Tue Oct 20 22:07:07 2015
+:	Centroid X = 
+Tue Oct 20 22:07:07 2015
+:	Centroid X = 
+Tue Oct 20 22:07:07 2015
+:	Centroid X = 
+Tue Oct 20 22:07:07 2015
+:	Best distance: 154.429120
+Tue Oct 20 22:07:07 2015
+:	Gesture recognized: paisagem
+Tue Oct 20 22:07:07 2015
+:	End DTW
+Tue Oct 20 22:07:07 2015
+:	Centroid X = 
+Tue Oct 20 22:07:09 2015
+:	Gesture performed
+Tue Oct 20 22:07:09 2015
+:	Init DTW
+Tue Oct 20 22:07:09 2015
+:	Centroid X = 
+Tue Oct 20 22:07:09 2015
+:	Centroid X = 
+Tue Oct 20 22:07:09 2015
+:	Centroid X = 
+Tue Oct 20 22:07:09 2015
+:	Best distance: 325.911342
+Tue Oct 20 22:07:09 2015
+:	Gesture not recognized
+Tue Oct 20 22:07:09 2015
+:	End DTW
+Tue Oct 20 22:07:09 2015
+:	Centroid X = 
+Tue Oct 20 22:07:11 2015
+:	Gesture performed
+Tue Oct 20 22:07:11 2015
+:	Init DTW
+Tue Oct 20 22:07:11 2015
+:	Centroid X = 
+Tue Oct 20 22:07:11 2015
+:	Centroid X = 
+Tue Oct 20 22:07:11 2015
+:	Centroid X = 
+Tue Oct 20 22:07:11 2015
+:	Best distance: 219.233505
+Tue Oct 20 22:07:11 2015
+:	Gesture recognized: paisagem
+Tue Oct 20 22:07:11 2015
+:	End DTW
+Tue Oct 20 22:07:11 2015
+:	Centroid X = 
+Tue Oct 20 22:07:13 2015
+:	Gesture performed
+Tue Oct 20 22:07:13 2015
+:	Init DTW
+Tue Oct 20 22:07:13 2015
+:	Centroid X = 
+Tue Oct 20 22:07:13 2015
+:	Centroid X = 
+Tue Oct 20 22:07:13 2015
+:	Centroid X = 
+Tue Oct 20 22:07:13 2015
+:	Best distance: 215.357364
+Tue Oct 20 22:07:13 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:07:13 2015
+:	End DTW
+Tue Oct 20 22:07:13 2015
+:	Centroid X = 
+Tue Oct 20 22:07:14 2015
+:	Gesture performed
+Tue Oct 20 22:07:14 2015
+:	Init DTW
+Tue Oct 20 22:07:14 2015
+:	Centroid X = 
+Tue Oct 20 22:07:14 2015
+:	Centroid X = 
+Tue Oct 20 22:07:14 2015
+:	Centroid X = 
+Tue Oct 20 22:07:14 2015
+:	Best distance: 185.205874
+Tue Oct 20 22:07:14 2015
+:	Gesture recognized: paisagem
+Tue Oct 20 22:07:14 2015
+:	End DTW
+Tue Oct 20 22:07:14 2015
+:	Centroid X = 
+Tue Oct 20 22:07:16 2015
+:	Gesture performed
+Tue Oct 20 22:07:16 2015
+:	Init DTW
+Tue Oct 20 22:07:16 2015
+:	Centroid X = 
+Tue Oct 20 22:07:16 2015
+:	Centroid X = 
+Tue Oct 20 22:07:16 2015
+:	Centroid X = 
+Tue Oct 20 22:07:16 2015
+:	Best distance: 241.652065
+Tue Oct 20 22:07:16 2015
+:	Gesture not recognized
+Tue Oct 20 22:07:16 2015
+:	End DTW
+Tue Oct 20 22:07:16 2015
+:	Centroid X = 
+Tue Oct 20 22:07:18 2015
+:	Gesture performed
+Tue Oct 20 22:07:18 2015
+:	Init DTW
+Tue Oct 20 22:07:18 2015
+:	Centroid X = 
+Tue Oct 20 22:07:18 2015
+:	Centroid X = 
+Tue Oct 20 22:07:18 2015
+:	Centroid X = 
+Tue Oct 20 22:07:18 2015
+:	Best distance: 175.442645
+Tue Oct 20 22:07:18 2015
+:	Gesture recognized: paisagem
+Tue Oct 20 22:07:18 2015
+:	End DTW
+Tue Oct 20 22:07:18 2015
+:	Centroid X = 
+Tue Oct 20 22:07:20 2015
+:	Gesture performed
+Tue Oct 20 22:07:20 2015
+:	Init DTW
+Tue Oct 20 22:07:20 2015
+:	Centroid X = 
+Tue Oct 20 22:07:20 2015
+:	Centroid X = 
+Tue Oct 20 22:07:20 2015
+:	Centroid X = 
+Tue Oct 20 22:07:20 2015
+:	Best distance: 226.513008
+Tue Oct 20 22:07:20 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:07:20 2015
+:	End DTW
+Tue Oct 20 22:07:20 2015
+:	Centroid X = 
+Tue Oct 20 22:07:24 2015
+:	Gesture performed
+Tue Oct 20 22:07:24 2015
+:	Init DTW
+Tue Oct 20 22:07:24 2015
+:	Centroid X = 
+Tue Oct 20 22:07:24 2015
+:	Centroid X = 
+Tue Oct 20 22:07:24 2015
+:	Centroid X = 
+Tue Oct 20 22:07:24 2015
+:	Best distance: 103.312091
+Tue Oct 20 22:07:24 2015
+:	Gesture recognized: paisagem
+Tue Oct 20 22:07:24 2015
+:	End DTW
+Tue Oct 20 22:07:24 2015
+:	Centroid X = 
+Tue Oct 20 22:07:26 2015
+:	Gesture performed
+Tue Oct 20 22:07:26 2015
+:	Init DTW
+Tue Oct 20 22:07:26 2015
+:	Centroid X = 
+Tue Oct 20 22:07:26 2015
+:	Centroid X = 
+Tue Oct 20 22:07:26 2015
+:	Centroid X = 
+Tue Oct 20 22:07:26 2015
+:	Best distance: 304.375575
+Tue Oct 20 22:07:26 2015
+:	Gesture not recognized
+Tue Oct 20 22:07:26 2015
+:	End DTW
+Tue Oct 20 22:07:26 2015
+:	Centroid X = 
+Tue Oct 20 22:07:28 2015
+:	Gesture performed
+Tue Oct 20 22:07:28 2015
+:	Init DTW
+Tue Oct 20 22:07:28 2015
+:	Centroid X = 
+Tue Oct 20 22:07:28 2015
+:	Centroid X = 
+Tue Oct 20 22:07:28 2015
+:	Centroid X = 
+Tue Oct 20 22:07:28 2015
+:	Best distance: 156.055129
+Tue Oct 20 22:07:28 2015
+:	Gesture recognized: paisagem
+Tue Oct 20 22:07:28 2015
+:	End DTW
+Tue Oct 20 22:07:28 2015
+:	Centroid X = 
+Tue Oct 20 22:07:31 2015
+:	Gesture performed
+Tue Oct 20 22:07:31 2015
+:	Init DTW
+Tue Oct 20 22:07:31 2015
+:	Centroid X = 
+Tue Oct 20 22:07:31 2015
+:	Centroid X = 
+Tue Oct 20 22:07:31 2015
+:	Centroid X = 
+Tue Oct 20 22:07:31 2015
+:	Best distance: 220.409296
+Tue Oct 20 22:07:31 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:07:31 2015
+:	End DTW
+Tue Oct 20 22:07:31 2015
+:	Centroid X = 
+Tue Oct 20 22:07:34 2015
+:	Gesture performed
+Tue Oct 20 22:07:34 2015
+:	Init DTW
+Tue Oct 20 22:07:34 2015
+:	Centroid X = 
+Tue Oct 20 22:07:34 2015
+:	Centroid X = 
+Tue Oct 20 22:07:34 2015
+:	Centroid X = 
+Tue Oct 20 22:07:34 2015
+:	Best distance: 153.448333
+Tue Oct 20 22:07:34 2015
+:	Gesture recognized: paisagem
+Tue Oct 20 22:07:34 2015
+:	End DTW
+Tue Oct 20 22:07:34 2015
+:	Centroid X = 
+Tue Oct 20 22:07:38 2015
+:	Gesture performed
+Tue Oct 20 22:07:38 2015
+:	Init DTW
+Tue Oct 20 22:07:38 2015
+:	Centroid X = 
+Tue Oct 20 22:07:38 2015
+:	Centroid X = 
+Tue Oct 20 22:07:38 2015
+:	Centroid X = 
+Tue Oct 20 22:07:38 2015
+:	Best distance: 178.492835
+Tue Oct 20 22:07:38 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:07:38 2015
+:	End DTW
+Tue Oct 20 22:07:38 2015
+:	Centroid X = 
+Tue Oct 20 22:07:39 2015
+:	Gesture performed
+Tue Oct 20 22:07:39 2015
+:	Init DTW
+Tue Oct 20 22:07:39 2015
+:	Centroid X = 
+Tue Oct 20 22:07:39 2015
+:	Centroid X = 
+Tue Oct 20 22:07:39 2015
+:	Centroid X = 
+Tue Oct 20 22:07:39 2015
+:	Best distance: 308.117665
+Tue Oct 20 22:07:39 2015
+:	Gesture not recognized
+Tue Oct 20 22:07:39 2015
+:	End DTW
+Tue Oct 20 22:07:39 2015
+:	Centroid X = 
+Tue Oct 20 22:07:40 2015
+:	Gesture performed
+Tue Oct 20 22:07:40 2015
+:	Init DTW
+Tue Oct 20 22:07:40 2015
+:	Centroid X =
+Tue Oct 20 22:10:17 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 22:10:17 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 22:10:17 2015
+:	Fim de leitura do arquivo: 
+Tue Oct 20 22:10:17 2015
+:	Instance Gesture Created
+Tue Oct 20 22:10:28 2015
+:	Hand add
+Tue Oct 20 22:10:31 2015
+:	Gesture performed
+Tue Oct 20 22:10:31 2015
+:	Init DTW
+Tue Oct 20 22:10:31 2015
+:	Centroid X = 
+Tue Oct 20 22:10:31 2015
+:	Centroid X = 
+Tue Oct 20 22:10:31 2015
+:	Centroid X = 
+Tue Oct 20 22:10:31 2015
+:	Best distance: 168.474775
+Tue Oct 20 22:10:31 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:10:31 2015
+:	End DTW
+Tue Oct 20 22:10:31 2015
+:	Centroid X = 
+Tue Oct 20 22:10:38 2015
+:	Gesture performed
+Tue Oct 20 22:10:38 2015
+:	Init DTW
+Tue Oct 20 22:10:38 2015
+:	Centroid X = 
+Tue Oct 20 22:10:38 2015
+:	Centroid X = 
+Tue Oct 20 22:10:38 2015
+:	Centroid X = 
+Tue Oct 20 22:10:38 2015
+:	Best distance: 289.303435
+Tue Oct 20 22:10:38 2015
+:	Gesture not recognized
+Tue Oct 20 22:10:38 2015
+:	End DTW
+Tue Oct 20 22:10:38 2015
+:	Centroid X = 
+Tue Oct 20 22:10:46 2015
+:	Gesture performed
+Tue Oct 20 22:10:46 2015
+:	Init DTW
+Tue Oct 20 22:10:46 2015
+:	Centroid X = 
+Tue Oct 20 22:10:46 2015
+:	Centroid X = 
+Tue Oct 20 22:10:46 2015
+:	Centroid X = 
+Tue Oct 20 22:10:46 2015
+:	Best distance: 242.114776
+Tue Oct 20 22:10:46 2015
+:	Gesture not recognized
+Tue Oct 20 22:10:46 2015
+:	End DTW
+Tue Oct 20 22:10:46 2015
+:	Centroid X = 
+Tue Oct 20 22:10:48 2015
+:	Gesture performed
+Tue Oct 20 22:10:48 2015
+:	Init DTW
+Tue Oct 20 22:10:48 2015
+:	Centroid X = 
+Tue Oct 20 22:10:48 2015
+:	Centroid X = 
+Tue Oct 20 22:10:48 2015
+:	Centroid X = 
+Tue Oct 20 22:10:48 2015
+:	Best distance: 452.866825
+Tue Oct 20 22:10:48 2015
+:	Gesture not recognized
+Tue Oct 20 22:10:48 2015
+:	End DTW
+Tue Oct 20 22:10:48 2015
+:	Centroid X = 
+Tue Oct 20 22:10:54 2015
+:	Gesture performed
+Tue Oct 20 22:10:54 2015
+:	Init DTW
+Tue Oct 20 22:10:54 2015
+:	Centroid X = 
+Tue Oct 20 22:10:54 2015
+:	Centroid X = 
+Tue Oct 20 22:10:54 2015
+:	Centroid X = 
+Tue Oct 20 22:10:54 2015
+:	Best distance: 373.497909
+Tue Oct 20 22:10:54 2015
+:	Gesture not recognized
+Tue Oct 20 22:10:54 2015
+:	End DTW
+Tue Oct 20 22:10:54 2015
+:	Centroid X = 
+Tue Oct 20 22:10:57 2015
+:	Gesture performed
+Tue Oct 20 22:10:57 2015
+:	Init DTW
+Tue Oct 20 22:10:57 2015
+:	Centroid X = 
+Tue Oct 20 22:10:57 2015
+:	Centroid X = 
+Tue Oct 20 22:10:57 2015
+:	Centroid X = 
+Tue Oct 20 22:10:57 2015
+:	Best distance: 279.862277
+Tue Oct 20 22:10:57 2015
+:	Gesture not recognized
+Tue Oct 20 22:10:57 2015
+:	End DTW
+Tue Oct 20 22:10:57 2015
+:	Centroid X = 
+Tue Oct 20 22:11:02 2015
+:	Gesture performed
+Tue Oct 20 22:11:02 2015
+:	Init DTW
+Tue Oct 20 22:11:02 2015
+:	Centroid X = 
+Tue Oct 20 22:11:02 2015
+:	Centroid X = 
+Tue Oct 20 22:11:02 2015
+:	Centroid X = 
+Tue Oct 20 22:11:02 2015
+:	Best distance: 190.612452
+Tue Oct 20 22:11:02 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:11:02 2015
+:	End DTW
+Tue Oct 20 22:11:02 2015
+:	Centroid X = 
+Tue Oct 20 22:11:05 2015
+:	Gesture performed
+Tue Oct 20 22:11:05 2015
+:	Init DTW
+Tue Oct 20 22:11:05 2015
+:	Centroid X = 
+Tue Oct 20 22:11:05 2015
+:	Centroid X = 
+Tue Oct 20 22:11:05 2015
+:	Centroid X = 
+Tue Oct 20 22:11:05 2015
+:	Best distance: 223.867412
+Tue Oct 20 22:11:05 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:11:05 2015
+:	End DTW
+Tue Oct 20 22:11:05 2015
+:	Centroid X = 
+Tue Oct 20 22:11:08 2015
+:	Gesture performed
+Tue Oct 20 22:11:08 2015
+:	Init DTW
+Tue Oct 20 22:11:08 2015
+:	Centroid X = 
+Tue Oct 20 22:11:08 2015
+:	Centroid X = 
+Tue Oct 20 22:11:08 2015
+:	Centroid X = 
+Tue Oct 20 22:11:08 2015
+:	Best distance: 183.758555
+Tue Oct 20 22:11:08 2015
+:	Gesture recognized: paisagem
+Tue Oct 20 22:11:08 2015
+:	End DTW
+Tue Oct 20 22:11:08 2015
+:	Centroid X = 
+Tue Oct 20 22:11:11 2015
+:	Gesture performed
+Tue Oct 20 22:11:11 2015
+:	Init DTW
+Tue Oct 20 22:11:11 2015
+:	Centroid X = 
+Tue Oct 20 22:11:11 2015
+:	Centroid X = 
+Tue Oct 20 22:11:11 2015
+:	Centroid X = 
+Tue Oct 20 22:11:11 2015
+:	Best distance: 259.602753
+Tue Oct 20 22:11:11 2015
+:	Gesture not recognized
+Tue Oct 20 22:11:11 2015
+:	End DTW
+Tue Oct 20 22:11:11 2015
+:	Centroid X = 
+Tue Oct 20 22:11:14 2015
+:	Gesture performed
+Tue Oct 20 22:11:14 2015
+:	Init DTW
+Tue Oct 20 22:11:14 2015
+:	Centroid X = 
+Tue Oct 20 22:11:14 2015
+:	Centroid X = 
+Tue Oct 20 22:11:14 2015
+:	Centroid X = 
+Tue Oct 20 22:11:14 2015
+:	Best distance: 315.061029
+Tue Oct 20 22:11:14 2015
+:	Gesture not recognized
+Tue Oct 20 22:11:14 2015
+:	End DTW
+Tue Oct 20 22:11:14 2015
+:	Centroid X = 
+Tue Oct 20 22:11:17 2015
+:	Gesture performed
+Tue Oct 20 22:11:17 2015
+:	Init DTW
+Tue Oct 20 22:11:17 2015
+:	Centroid X = 
+Tue Oct 20 22:11:17 2015
+:	Centroid X = 
+Tue Oct 20 22:11:17 2015
+:	Centroid X = 
+Tue Oct 20 22:11:17 2015
+:	Best distance: 236.904246
+Tue Oct 20 22:11:17 2015
+:	Gesture not recognized
+Tue Oct 20 22:11:17 2015
+:	End DTW
+Tue Oct 20 22:11:17 2015
+:	Centroid X = 
+Tue Oct 20 22:11:17 2015
+:	Gesture performed
+Tue Oct 20 22:11:17 2015
+:	Init DTW
+Tue Oct 20 22:11:17 2015
+:	Centroid X = 
+Tue Oct 20 22:11:17 2015
+:	Centroid X = 
+Tue Oct 20 22:11:17 2015
+:	Centroid X = 
+Tue Oct 20 22:11:17 2015
+:	Best distance: 331.168339
+Tue Oct 20 22:11:17 2015
+:	Gesture not recognized
+Tue Oct 20 22:11:17 2015
+:	End DTW
+Tue Oct 20 22:11:17 2015
+:	Centroid X = 
+Tue Oct 20 22:11:20 2015
+:	Gesture performed
+Tue Oct 20 22:11:20 2015
+:	Init DTW
+Tue Oct 20 22:11:20 2015
+:	Centroid X = 
+Tue Oct 20 22:11:20 2015
+:	Centroid X = 
+Tue Oct 20 22:11:20 2015
+:	Centroid X = 
+Tue Oct 20 22:11:20 2015
+:	Best distance: 238.457526
+Tue Oct 20 22:11:20 2015
+:	Gesture not recognized
+Tue Oct 20 22:11:20 2015
+:	End DTW
+Tue Oct 20 22:11:20 2015
+:	Centroid X = 
+Tue Oct 20 22:11:20 2015
+:	Gesture performed
+Tue Oct 20 22:11:20 2015
+:	Init DTW
+Tue Oct 20 22:11:20 2015
+:	Centroid X = 
+Tue Oct 20 22:11:20 2015
+:	Centroid X = 
+Tue Oct 20 22:11:20 2015
+:	Centroid X = 
+Tue Oct 20 22:11:20 2015
+:	Best distance: 386.480060
+Tue Oct 20 22:11:20 2015
+:	Gesture not recognized
+Tue Oct 20 22:11:20 2015
+:	End DTW
+Tue Oct 20 22:11:20 2015
+:	Centroid X = 
+Tue Oct 20 22:11:21 2015
+:	Gesture performed
+Tue Oct 20 22:11:21 2015
+:	Init DTW
+Tue Oct 20 22:11:21 2015
+:	Centroid X = 
+Tue Oct 20 22:11:21 2015
+:	Centroid X = 
+Tue Oct 20 22:11:21 2015
+:	Centroid X = 
+Tue Oct 20 22:11:21 2015
+:	Best distance: 385.871049
+Tue Oct 20 22:11:21 2015
+:	Gesture not recognized
+Tue Oct 20 22:11:21 2015
+:	End DTW
+Tue Oct 20 22:11:21 2015
+:	Centroid X = 
+Tue Oct 20 22:11:23 2015
+:	Gesture performed
+Tue Oct 20 22:11:23 2015
+:	Init DTW
+Tue Oct 20 22:11:23 2015
+:	Centroid X = 
+Tue Oct 20 22:11:23 2015
+:	Centroid X = 
+Tue Oct 20 22:11:23 2015
+:	Centroid X = 
+Tue Oct 20 22:11:23 2015
+:	Best distance: 287.485368
+Tue Oct 20 22:11:23 2015
+:	Gesture not recognized
+Tue Oct 20 22:11:23 2015
+:	End DTW
+Tue Oct 20 22:11:23 2015
+:	Centroid X = 
+Tue Oct 20 22:11:25 2015
+:	Gesture performed
+Tue Oct 20 22:11:25 2015
+:	Init DTW
+Tue Oct 20 22:11:25 2015
+:	Centroid X = 
+Tue Oct 20 22:11:25 2015
+:	Centroid X = 
+Tue Oct 20 22:11:25 2015
+:	Centroid X = 
+Tue Oct 20 22:11:25 2015
+:	Best distance: 121.368896
+Tue Oct 20 22:11:25 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:11:25 2015
+:	End DTW
+Tue Oct 20 22:11:25 2015
+:	Centroid X = 
+Tue Oct 20 22:11:27 2015
+:	Gesture performed
+Tue Oct 20 22:11:27 2015
+:	Init DTW
+Tue Oct 20 22:11:27 2015
+:	Centroid X = 
+Tue Oct 20 22:11:27 2015
+:	Centroid X = 
+Tue Oct 20 22:11:27 2015
+:	Centroid X = 
+Tue Oct 20 22:11:27 2015
+:	Best distance: 323.620892
+Tue Oct 20 22:11:27 2015
+:	Gesture not recognized
+Tue Oct 20 22:11:27 2015
+:	End DTW
+Tue Oct 20 22:11:27 2015
+:	Centroid X = 
+Tue Oct 20 22:11:28 2015
+:	Gesture performed
+Tue Oct 20 22:11:28 2015
+:	Init DTW
+Tue Oct 20 22:11:28 2015
+:	Centroid X = 
+Tue Oct 20 22:11:28 2015
+:	Centroid X = 
+Tue Oct 20 22:11:28 2015
+:	Centroid X = 
+Tue Oct 20 22:11:28 2015
+:	Best distance: 299.747114
+Tue Oct 20 22:11:28 2015
+:	Gesture not recognized
+Tue Oct 20 22:11:28 2015
+:	End DTW
+Tue Oct 20 22:11:28 2015
+:	Centroid X = 
+Tue Oct 20 22:11:30 2015
+:	Gesture performed
+Tue Oct 20 22:11:30 2015
+:	Init DTW
+Tue Oct 20 22:11:30 2015
+:	Centroid X = 
+Tue Oct 20 22:11:30 2015
+:	Centroid X = 
+Tue Oct 20 22:11:30 2015
+:	Centroid X = 
+Tue Oct 20 22:11:30 2015
+:	Best distance: 144.327272
+Tue Oct 20 22:11:30 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:11:30 2015
+:	End DTW
+Tue Oct 20 22:11:30 2015
+:	Centroid X = 
+Tue Oct 20 22:11:32 2015
+:	Gesture performed
+Tue Oct 20 22:11:32 2015
+:	Init DTW
+Tue Oct 20 22:11:32 2015
+:	Centroid X = 
+Tue Oct 20 22:11:32 2015
+:	Centroid X = 
+Tue Oct 20 22:11:32 2015
+:	Centroid X = 
+Tue Oct 20 22:11:32 2015
+:	Best distance: 330.870389
+Tue Oct 20 22:11:32 2015
+:	Gesture not recognized
+Tue Oct 20 22:11:32 2015
+:	End DTW
+Tue Oct 20 22:11:32 2015
+:	Centroid X = 
+Tue Oct 20 22:11:34 2015
+:	Gesture performed
+Tue Oct 20 22:11:34 2015
+:	Init DTW
+Tue Oct 20 22:11:34 2015
+:	Centroid X = 
+Tue Oct 20 22:11:34 2015
+:	Centroid X = 
+Tue Oct 20 22:11:34 2015
+:	Centroid X = 
+Tue Oct 20 22:11:34 2015
+:	Best distance: 150.556290
+Tue Oct 20 22:11:34 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:11:34 2015
+:	End DTW
+Tue Oct 20 22:11:34 2015
+:	Centroid X = 
+Tue Oct 20 22:11:39 2015
+:	Gesture performed
+Tue Oct 20 22:11:39 2015
+:	Init DTW
+Tue Oct 20 22:11:39 2015
+:	Centroid X = 
+Tue Oct 20 22:11:39 2015
+:	Centroid X = 
+Tue Oct 20 22:11:39 2015
+:	Centroid X = 
+Tue Oct 20 22:11:39 2015
+:	Best distance: 187.051270
+Tue Oct 20 22:11:39 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:11:39 2015
+:	End DTW
+Tue Oct 20 22:11:39 2015
+:	Centroid X = 
+Tue Oct 20 22:11:43 2015
+:	Gesture performed
+Tue Oct 20 22:11:43 2015
+:	Init DTW
+Tue Oct 20 22:11:43 2015
+:	Centroid X = 
+Tue Oct 20 22:11:43 2015
+:	Centroid X = 
+Tue Oct 20 22:11:43 2015
+:	Centroid X = 
+Tue Oct 20 22:11:43 2015
+:	Best distance: 128.826554
+Tue Oct 20 22:11:43 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:11:43 2015
+:	End DTW
+Tue Oct 20 22:11:43 2015
+:	Centroid X = 
+Tue Oct 20 22:11:46 2015
+:	Gesture performed
+Tue Oct 20 22:11:46 2015
+:	Init DTW
+Tue Oct 20 22:11:46 2015
+:	Centroid X = 
+Tue Oct 20 22:11:46 2015
+:	Centroid X = 
+Tue Oct 20 22:11:46 2015
+:	Centroid X = 
+Tue Oct 20 22:11:46 2015
+:	Best distance: 159.867767
+Tue Oct 20 22:11:46 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:11:46 2015
+:	End DTW
+Tue Oct 20 22:11:46 2015
+:	Centroid X = 
+Tue Oct 20 22:11:48 2015
+:	Gesture performed
+Tue Oct 20 22:11:48 2015
+:	Init DTW
+Tue Oct 20 22:11:48 2015
+:	Centroid X = 
+Tue Oct 20 22:11:48 2015
+:	Centroid X = 
+Tue Oct 20 22:11:48 2015
+:	Centroid X = 
+Tue Oct 20 22:11:48 2015
+:	Best distance: 259.096756
+Tue Oct 20 22:11:48 2015
+:	Gesture not recognized
+Tue Oct 20 22:11:48 2015
+:	End DTW
+Tue Oct 20 22:11:48 2015
+:	Centroid X = 
+Tue Oct 20 22:11:51 2015
+:	Gesture performed
+Tue Oct 20 22:11:51 2015
+:	Init DTW
+Tue Oct 20 22:11:51 2015
+:	Centroid X = 
+Tue Oct 20 22:11:51 2015
+:	Centroid X = 
+Tue Oct 20 22:11:51 2015
+:	Centroid X = 
+Tue Oct 20 22:11:51 2015
+:	Best distance: 201.788196
+Tue Oct 20 22:11:51 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:11:51 2015
+:	End DTW
+Tue Oct 20 22:11:51 2015
+:	Centroid X = 
+Tue Oct 20 22:11:55 2015
+:	Gesture performed
+Tue Oct 20 22:11:55 2015
+:	Init DTW
+Tue Oct 20 22:11:55 2015
+:	Centroid X = 
+Tue Oct 20 22:11:55 2015
+:	Centroid X = 
+Tue Oct 20 22:11:55 2015
+:	Centroid X = 
+Tue Oct 20 22:11:55 2015
+:	Best distance: 261.160726
+Tue Oct 20 22:11:55 2015
+:	Gesture not recognized
+Tue Oct 20 22:11:55 2015
+:	End DTW
+Tue Oct 20 22:11:55 2015
+:	Centroid X = 
+Tue Oct 20 22:11:57 2015
+:	Gesture performed
+Tue Oct 20 22:11:57 2015
+:	Init DTW
+Tue Oct 20 22:11:57 2015
+:	Centroid X = 
+Tue Oct 20 22:11:57 2015
+:	Centroid X = 
+Tue Oct 20 22:11:57 2015
+:	Centroid X = 
+Tue Oct 20 22:11:57 2015
+:	Best distance: 271.435404
+Tue Oct 20 22:11:57 2015
+:	Gesture not recognized
+Tue Oct 20 22:11:57 2015
+:	End DTW
+Tue Oct 20 22:11:57 2015
+:	Centroid X = 
+Tue Oct 20 22:12:01 2015
+:	Gesture performed
+Tue Oct 20 22:12:01 2015
+:	Init DTW
+Tue Oct 20 22:12:01 2015
+:	Centroid X = 
+Tue Oct 20 22:12:01 2015
+:	Centroid X = 
+Tue Oct 20 22:12:01 2015
+:	Centroid X = 
+Tue Oct 20 22:12:01 2015
+:	Best distance: 221.823556
+Tue Oct 20 22:12:01 2015
+:	Gesture recognized: paisagem
+Tue Oct 20 22:12:01 2015
+:	End DTW
+Tue Oct 20 22:12:01 2015
+:	Centroid X = 
+Tue Oct 20 22:12:04 2015
+:	Gesture performed
+Tue Oct 20 22:12:04 2015
+:	Init DTW
+Tue Oct 20 22:12:04 2015
+:	Centroid X = 
+Tue Oct 20 22:12:04 2015
+:	Centroid X = 
+Tue Oct 20 22:12:04 2015
+:	Centroid X = 
+Tue Oct 20 22:12:04 2015
+:	Best distance: 197.966848
+Tue Oct 20 22:12:04 2015
+:	Gesture recognized: paisagem
+Tue Oct 20 22:12:04 2015
+:	End DTW
+Tue Oct 20 22:12:04 2015
+:	Centroid X = 
+Tue Oct 20 22:12:08 2015
+:	Gesture performed
+Tue Oct 20 22:12:08 2015
+:	Init DTW
+Tue Oct 20 22:12:08 2015
+:	Centroid X = 
+Tue Oct 20 22:12:08 2015
+:	Centroid X = 
+Tue Oct 20 22:12:08 2015
+:	Centroid X = 
+Tue Oct 20 22:12:08 2015
+:	Best distance: 207.667313
+Tue Oct 20 22:12:08 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:12:08 2015
+:	End DTW
+Tue Oct 20 22:12:08 2015
+:	Centroid X = 
+Tue Oct 20 22:12:11 2015
+:	Gesture performed
+Tue Oct 20 22:12:11 2015
+:	Init DTW
+Tue Oct 20 22:12:11 2015
+:	Centroid X = 
+Tue Oct 20 22:12:11 2015
+:	Centroid X = 
+Tue Oct 20 22:12:11 2015
+:	Centroid X = 
+Tue Oct 20 22:12:11 2015
+:	Best distance: 256.255267
+Tue Oct 20 22:12:11 2015
+:	Gesture not recognized
+Tue Oct 20 22:12:11 2015
+:	End DTW
+Tue Oct 20 22:12:11 2015
+:	Centroid X = 
+Tue Oct 20 22:12:14 2015
+:	Gesture performed
+Tue Oct 20 22:12:14 2015
+:	Init DTW
+Tue Oct 20 22:12:14 2015
+:	Centroid X = 
+Tue Oct 20 22:12:14 2015
+:	Centroid X = 
+Tue Oct 20 22:12:14 2015
+:	Centroid X = 
+Tue Oct 20 22:12:14 2015
+:	Best distance: 328.525085
+Tue Oct 20 22:12:14 2015
+:	Gesture not recognized
+Tue Oct 20 22:12:14 2015
+:	End DTW
+Tue Oct 20 22:12:14 2015
+:	Centroid X = 
+Tue Oct 20 22:12:17 2015
+:	Gesture performed
+Tue Oct 20 22:12:17 2015
+:	Init DTW
+Tue Oct 20 22:12:17 2015
+:	Centroid X = 
+Tue Oct 20 22:12:17 2015
+:	Centroid X = 
+Tue Oct 20 22:12:17 2015
+:	Centroid X = 
+Tue Oct 20 22:12:17 2015
+:	Best distance: 225.218895
+Tue Oct 20 22:12:17 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:12:17 2015
+:	End DTW
+Tue Oct 20 22:12:17 2015
+:	Centroid X = 
+Tue Oct 20 22:12:23 2015
+:	Gesture performed
+Tue Oct 20 22:12:23 2015
+:	Init DTW
+Tue Oct 20 22:12:23 2015
+:	Centroid X = 
+Tue Oct 20 22:12:23 2015
+:	Centroid X = 
+Tue Oct 20 22:12:23 2015
+:	Centroid X = 
+Tue Oct 20 22:12:23 2015
+:	Best distance: 153.880508
+Tue Oct 20 22:12:23 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:12:23 2015
+:	End DTW
+Tue Oct 20 22:12:23 2015
+:	Centroid X = 
+Tue Oct 20 22:12:26 2015
+:	Gesture performed
+Tue Oct 20 22:12:26 2015
+:	Init DTW
+Tue Oct 20 22:12:26 2015
+:	Centroid X = 
+Tue Oct 20 22:12:26 2015
+:	Centroid X = 
+Tue Oct 20 22:12:26 2015
+:	Centroid X = 
+Tue Oct 20 22:12:26 2015
+:	Best distance: 267.311689
+Tue Oct 20 22:12:26 2015
+:	Gesture not recognized
+Tue Oct 20 22:12:26 2015
+:	End DTW
+Tue Oct 20 22:12:26 2015
+:	Centroid X = 
+Tue Oct 20 22:12:30 2015
+:	Gesture performed
+Tue Oct 20 22:12:30 2015
+:	Init DTW
+Tue Oct 20 22:12:30 2015
+:	Centroid X = 
+Tue Oct 20 22:12:30 2015
+:	Centroid X = 
+Tue Oct 20 22:12:30 2015
+:	Centroid X = 
+Tue Oct 20 22:12:30 2015
+:	Best distance: 319.145404
+Tue Oct 20 22:12:30 2015
+:	Gesture not recognized
+Tue Oct 20 22:12:30 2015
+:	End DTW
+Tue Oct 20 22:12:30 2015
+:	Centroid X = 
+Tue Oct 20 22:12:32 2015
+:	Gesture performed
+Tue Oct 20 22:12:32 2015
+:	Init DTW
+Tue Oct 20 22:12:32 2015
+:	Centroid X = 
+Tue Oct 20 22:12:32 2015
+:	Centroid X = 
+Tue Oct 20 22:12:32 2015
+:	Centroid X = 
+Tue Oct 20 22:12:32 2015
+:	Best distance: 301.221077
+Tue Oct 20 22:12:32 2015
+:	Gesture not recognized
+Tue Oct 20 22:12:32 2015
+:	End DTW
+Tue Oct 20 22:12:32 2015
+:	Centroid X = 
+Tue Oct 20 22:12:36 2015
+:	Gesture performed
+Tue Oct 20 22:12:36 2015
+:	Init DTW
+Tue Oct 20 22:12:36 2015
+:	Centroid X = 
+Tue Oct 20 22:12:36 2015
+:	Centroid X = 
+Tue Oct 20 22:12:36 2015
+:	Centroid X = 
+Tue Oct 20 22:12:36 2015
+:	Best distance: 233.387175
+Tue Oct 20 22:12:36 2015
+:	Gesture not recognized
+Tue Oct 20 22:12:36 2015
+:	End DTW
+Tue Oct 20 22:12:36 2015
+:	Centroid X = 
+Tue Oct 20 22:12:39 2015
+:	Gesture performed
+Tue Oct 20 22:12:39 2015
+:	Init DTW
+Tue Oct 20 22:12:39 2015
+:	Centroid X = 
+Tue Oct 20 22:12:39 2015
+:	Centroid X = 
+Tue Oct 20 22:12:39 2015
+:	Centroid X = 
+Tue Oct 20 22:12:39 2015
+:	Best distance: 193.315764
+Tue Oct 20 22:12:39 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:12:39 2015
+:	End DTW
+Tue Oct 20 22:12:39 2015
+:	Centroid X = 
+Tue Oct 20 22:12:42 2015
+:	Gesture performed
+Tue Oct 20 22:12:42 2015
+:	Init DTW
+Tue Oct 20 22:12:42 2015
+:	Centroid X = 
+Tue Oct 20 22:12:42 2015
+:	Centroid X = 
+Tue Oct 20 22:12:42 2015
+:	Centroid X = 
+Tue Oct 20 22:12:42 2015
+:	Best distance: 178.739395
+Tue Oct 20 22:12:42 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:12:42 2015
+:	End DTW
+Tue Oct 20 22:12:42 2015
+:	Centroid X = 
+Tue Oct 20 22:12:45 2015
+:	Gesture performed
+Tue Oct 20 22:12:45 2015
+:	Init DTW
+Tue Oct 20 22:12:45 2015
+:	Centroid X = 
+Tue Oct 20 22:12:45 2015
+:	Centroid X = 
+Tue Oct 20 22:12:45 2015
+:	Centroid X = 
+Tue Oct 20 22:12:45 2015
+:	Best distance: 185.391843
+Tue Oct 20 22:12:45 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:12:45 2015
+:	End DTW
+Tue Oct 20 22:12:45 2015
+:	Centroid X = 
+Tue Oct 20 22:12:49 2015
+:	Gesture performed
+Tue Oct 20 22:12:49 2015
+:	Init DTW
+Tue Oct 20 22:12:49 2015
+:	Centroid X = 
+Tue Oct 20 22:12:49 2015
+:	Centroid X = 
+Tue Oct 20 22:12:49 2015
+:	Centroid X = 
+Tue Oct 20 22:12:49 2015
+:	Best distance: 194.643848
+Tue Oct 20 22:12:49 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:12:49 2015
+:	End DTW
+Tue Oct 20 22:12:49 2015
+:	Centroid X = 
+Tue Oct 20 22:12:54 2015
+:	Gesture performed
+Tue Oct 20 22:12:54 2015
+:	Init DTW
+Tue Oct 20 22:12:54 2015
+:	Centroid X = 
+Tue Oct 20 22:12:54 2015
+:	Centroid X = 
+Tue Oct 20 22:12:54 2015
+:	Centroid X = 
+Tue Oct 20 22:12:54 2015
+:	Best distance: 243.936323
+Tue Oct 20 22:12:54 2015
+:	Gesture not recognized
+Tue Oct 20 22:12:54 2015
+:	End DTW
+Tue Oct 20 22:12:54 2015
+:	Centroid X = 
+Tue Oct 20 22:12:55 2015
+:	Gesture performed
+Tue Oct 20 22:12:55 2015
+:	Init DTW
+Tue Oct 20 22:12:55 2015
+:	Centroid X = 
+Tue Oct 20 22:12:55 2015
+:	Centroid X = 
+Tue Oct 20 22:12:55 2015
+:	Centroid X = 
+Tue Oct 20 22:12:55 2015
+:	Best distance: 357.792817
+Tue Oct 20 22:12:55 2015
+:	Gesture not recognized
+Tue Oct 20 22:12:55 2015
+:	End DTW
+Tue Oct 20 22:12:55 2015
+:	Centroid X = 
+Tue Oct 20 22:12:57 2015
+:	Gesture performed
+Tue Oct 20 22:12:57 2015
+:	Init DTW
+Tue Oct 20 22:12:57 2015
+:	Centroid X = 
+Tue Oct 20 22:12:57 2015
+:	Centroid X = 
+Tue Oct 20 22:12:57 2015
+:	Centroid X = 
+Tue Oct 20 22:12:57 2015
+:	Best distance: 359.377162
+Tue Oct 20 22:12:57 2015
+:	Gesture not recognized
+Tue Oct 20 22:12:57 2015
+:	End DTW
+Tue Oct 20 22:12:57 2015
+:	Centroid X = 
+Tue Oct 20 22:12:58 2015
+:	Gesture performed
+Tue Oct 20 22:12:58 2015
+:	Init DTW
+Tue Oct 20 22:12:58 2015
+:	Centroid X = 
+Tue Oct 20 22:12:58 2015
+:	Centroid X = 
+Tue Oct 20 22:12:58 2015
+:	Centroid X = 
+Tue Oct 20 22:12:58 2015
+:	Best distance: 383.936428
+Tue Oct 20 22:12:58 2015
+:	Gesture not recognized
+Tue Oct 20 22:12:58 2015
+:	End DTW
+Tue Oct 20 22:12:58 2015
+:	Centroid X = 
+Tue Oct 20 22:12:59 2015
+:	Gesture performed
+Tue Oct 20 22:12:59 2015
+:	Init DTW
+Tue Oct 20 22:12:59 2015
+:	Centroid X = 
+Tue Oct 20 22:12:59 2015
+:	Centroid X = 
+Tue Oct 20 22:12:59 2015
+:	Centroid X = 
+Tue Oct 20 22:12:59 2015
+:	Best distance: 406.580269
+Tue Oct 20 22:12:59 2015
+:	Gesture not recognized
+Tue Oct 20 22:12:59 2015
+:	End DTW
+Tue Oct 20 22:12:59 2015
+:	Centroid X = 
+Tue Oct 20 22:13:00 2015
+:	Gesture performed
+Tue Oct 20 22:13:00 2015
+:	Init DTW
+Tue Oct 20 22:13:00 2015
+:	Centroid X = 
+Tue Oct 20 22:13:00 2015
+:	Centroid X = 
+Tue Oct 20 22:13:00 2015
+:	Centroid X = 
+Tue Oct 20 22:13:00 2015
+:	Best distance: 400.701529
+Tue Oct 20 22:13:00 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:00 2015
+:	End DTW
+Tue Oct 20 22:13:00 2015
+:	Centroid X = 
+Tue Oct 20 22:13:02 2015
+:	Gesture performed
+Tue Oct 20 22:13:02 2015
+:	Init DTW
+Tue Oct 20 22:13:02 2015
+:	Centroid X = 
+Tue Oct 20 22:13:02 2015
+:	Centroid X = 
+Tue Oct 20 22:13:02 2015
+:	Centroid X = 
+Tue Oct 20 22:13:02 2015
+:	Best distance: 389.791166
+Tue Oct 20 22:13:02 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:02 2015
+:	End DTW
+Tue Oct 20 22:13:02 2015
+:	Centroid X = 
+Tue Oct 20 22:13:02 2015
+:	Gesture performed
+Tue Oct 20 22:13:02 2015
+:	Init DTW
+Tue Oct 20 22:13:02 2015
+:	Centroid X = 
+Tue Oct 20 22:13:02 2015
+:	Centroid X = 
+Tue Oct 20 22:13:02 2015
+:	Centroid X = 
+Tue Oct 20 22:13:02 2015
+:	Best distance: 365.992750
+Tue Oct 20 22:13:02 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:02 2015
+:	End DTW
+Tue Oct 20 22:13:02 2015
+:	Centroid X = 
+Tue Oct 20 22:13:03 2015
+:	Gesture performed
+Tue Oct 20 22:13:03 2015
+:	Init DTW
+Tue Oct 20 22:13:03 2015
+:	Centroid X = 
+Tue Oct 20 22:13:03 2015
+:	Centroid X = 
+Tue Oct 20 22:13:03 2015
+:	Centroid X = 
+Tue Oct 20 22:13:03 2015
+:	Best distance: 332.152538
+Tue Oct 20 22:13:03 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:03 2015
+:	End DTW
+Tue Oct 20 22:13:03 2015
+:	Centroid X = 
+Tue Oct 20 22:13:04 2015
+:	Gesture performed
+Tue Oct 20 22:13:04 2015
+:	Init DTW
+Tue Oct 20 22:13:04 2015
+:	Centroid X = 
+Tue Oct 20 22:13:04 2015
+:	Centroid X = 
+Tue Oct 20 22:13:04 2015
+:	Centroid X = 
+Tue Oct 20 22:13:04 2015
+:	Best distance: 338.840421
+Tue Oct 20 22:13:04 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:04 2015
+:	End DTW
+Tue Oct 20 22:13:04 2015
+:	Centroid X = 
+Tue Oct 20 22:13:05 2015
+:	Gesture performed
+Tue Oct 20 22:13:05 2015
+:	Init DTW
+Tue Oct 20 22:13:05 2015
+:	Centroid X = 
+Tue Oct 20 22:13:05 2015
+:	Centroid X = 
+Tue Oct 20 22:13:05 2015
+:	Centroid X = 
+Tue Oct 20 22:13:05 2015
+:	Best distance: 367.545720
+Tue Oct 20 22:13:05 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:05 2015
+:	End DTW
+Tue Oct 20 22:13:05 2015
+:	Centroid X = 
+Tue Oct 20 22:13:06 2015
+:	Gesture performed
+Tue Oct 20 22:13:06 2015
+:	Init DTW
+Tue Oct 20 22:13:06 2015
+:	Centroid X = 
+Tue Oct 20 22:13:06 2015
+:	Centroid X = 
+Tue Oct 20 22:13:06 2015
+:	Centroid X = 
+Tue Oct 20 22:13:06 2015
+:	Best distance: 343.290061
+Tue Oct 20 22:13:06 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:06 2015
+:	End DTW
+Tue Oct 20 22:13:06 2015
+:	Centroid X = 
+Tue Oct 20 22:13:06 2015
+:	Gesture performed
+Tue Oct 20 22:13:06 2015
+:	Init DTW
+Tue Oct 20 22:13:06 2015
+:	Centroid X = 
+Tue Oct 20 22:13:06 2015
+:	Centroid X = 
+Tue Oct 20 22:13:06 2015
+:	Centroid X = 
+Tue Oct 20 22:13:06 2015
+:	Best distance: 342.435178
+Tue Oct 20 22:13:06 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:06 2015
+:	End DTW
+Tue Oct 20 22:13:06 2015
+:	Centroid X = 
+Tue Oct 20 22:13:07 2015
+:	Gesture performed
+Tue Oct 20 22:13:07 2015
+:	Init DTW
+Tue Oct 20 22:13:07 2015
+:	Centroid X = 
+Tue Oct 20 22:13:07 2015
+:	Centroid X = 
+Tue Oct 20 22:13:07 2015
+:	Centroid X = 
+Tue Oct 20 22:13:07 2015
+:	Best distance: 365.193900
+Tue Oct 20 22:13:07 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:07 2015
+:	End DTW
+Tue Oct 20 22:13:07 2015
+:	Centroid X = 
+Tue Oct 20 22:13:10 2015
+:	Gesture performed
+Tue Oct 20 22:13:10 2015
+:	Init DTW
+Tue Oct 20 22:13:10 2015
+:	Centroid X = 
+Tue Oct 20 22:13:10 2015
+:	Centroid X = 
+Tue Oct 20 22:13:10 2015
+:	Centroid X = 
+Tue Oct 20 22:13:10 2015
+:	Best distance: 365.548434
+Tue Oct 20 22:13:10 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:10 2015
+:	End DTW
+Tue Oct 20 22:13:10 2015
+:	Centroid X = 
+Tue Oct 20 22:13:11 2015
+:	Gesture performed
+Tue Oct 20 22:13:11 2015
+:	Init DTW
+Tue Oct 20 22:13:11 2015
+:	Centroid X = 
+Tue Oct 20 22:13:11 2015
+:	Centroid X = 
+Tue Oct 20 22:13:11 2015
+:	Centroid X = 
+Tue Oct 20 22:13:11 2015
+:	Best distance: 368.891244
+Tue Oct 20 22:13:11 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:11 2015
+:	End DTW
+Tue Oct 20 22:13:11 2015
+:	Centroid X = 
+Tue Oct 20 22:13:12 2015
+:	Gesture performed
+Tue Oct 20 22:13:12 2015
+:	Init DTW
+Tue Oct 20 22:13:12 2015
+:	Centroid X = 
+Tue Oct 20 22:13:12 2015
+:	Centroid X = 
+Tue Oct 20 22:13:12 2015
+:	Centroid X = 
+Tue Oct 20 22:13:12 2015
+:	Best distance: 357.951595
+Tue Oct 20 22:13:12 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:12 2015
+:	End DTW
+Tue Oct 20 22:13:12 2015
+:	Centroid X = 
+Tue Oct 20 22:13:13 2015
+:	Gesture performed
+Tue Oct 20 22:13:13 2015
+:	Init DTW
+Tue Oct 20 22:13:13 2015
+:	Centroid X = 
+Tue Oct 20 22:13:13 2015
+:	Centroid X = 
+Tue Oct 20 22:13:13 2015
+:	Centroid X = 
+Tue Oct 20 22:13:13 2015
+:	Best distance: 348.824540
+Tue Oct 20 22:13:13 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:13 2015
+:	End DTW
+Tue Oct 20 22:13:13 2015
+:	Centroid X = 
+Tue Oct 20 22:13:14 2015
+:	Gesture performed
+Tue Oct 20 22:13:14 2015
+:	Init DTW
+Tue Oct 20 22:13:14 2015
+:	Centroid X = 
+Tue Oct 20 22:13:14 2015
+:	Centroid X = 
+Tue Oct 20 22:13:14 2015
+:	Centroid X = 
+Tue Oct 20 22:13:14 2015
+:	Best distance: 359.334289
+Tue Oct 20 22:13:14 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:14 2015
+:	End DTW
+Tue Oct 20 22:13:14 2015
+:	Centroid X = 
+Tue Oct 20 22:13:15 2015
+:	Gesture performed
+Tue Oct 20 22:13:15 2015
+:	Init DTW
+Tue Oct 20 22:13:15 2015
+:	Centroid X = 
+Tue Oct 20 22:13:15 2015
+:	Centroid X = 
+Tue Oct 20 22:13:15 2015
+:	Centroid X = 
+Tue Oct 20 22:13:15 2015
+:	Best distance: 367.145472
+Tue Oct 20 22:13:15 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:15 2015
+:	End DTW
+Tue Oct 20 22:13:15 2015
+:	Centroid X = 
+Tue Oct 20 22:13:20 2015
+:	Gesture performed
+Tue Oct 20 22:13:20 2015
+:	Init DTW
+Tue Oct 20 22:13:20 2015
+:	Centroid X = 
+Tue Oct 20 22:13:20 2015
+:	Centroid X = 
+Tue Oct 20 22:13:20 2015
+:	Centroid X = 
+Tue Oct 20 22:13:20 2015
+:	Best distance: 293.547308
+Tue Oct 20 22:13:20 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:20 2015
+:	End DTW
+Tue Oct 20 22:13:20 2015
+:	Centroid X = 
+Tue Oct 20 22:13:21 2015
+:	Gesture performed
+Tue Oct 20 22:13:21 2015
+:	Init DTW
+Tue Oct 20 22:13:21 2015
+:	Centroid X = 
+Tue Oct 20 22:13:21 2015
+:	Centroid X = 
+Tue Oct 20 22:13:21 2015
+:	Centroid X = 
+Tue Oct 20 22:13:21 2015
+:	Best distance: 413.454600
+Tue Oct 20 22:13:21 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:21 2015
+:	End DTW
+Tue Oct 20 22:13:21 2015
+:	Centroid X = 
+Tue Oct 20 22:13:22 2015
+:	Gesture performed
+Tue Oct 20 22:13:22 2015
+:	Init DTW
+Tue Oct 20 22:13:22 2015
+:	Centroid X = 
+Tue Oct 20 22:13:22 2015
+:	Centroid X = 
+Tue Oct 20 22:13:22 2015
+:	Centroid X = 
+Tue Oct 20 22:13:22 2015
+:	Best distance: 384.405635
+Tue Oct 20 22:13:22 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:22 2015
+:	End DTW
+Tue Oct 20 22:13:22 2015
+:	Centroid X = 
+Tue Oct 20 22:13:24 2015
+:	Gesture performed
+Tue Oct 20 22:13:24 2015
+:	Init DTW
+Tue Oct 20 22:13:24 2015
+:	Centroid X = 
+Tue Oct 20 22:13:24 2015
+:	Centroid X = 
+Tue Oct 20 22:13:24 2015
+:	Centroid X = 
+Tue Oct 20 22:13:24 2015
+:	Best distance: 377.149923
+Tue Oct 20 22:13:24 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:24 2015
+:	End DTW
+Tue Oct 20 22:13:24 2015
+:	Centroid X = 
+Tue Oct 20 22:13:25 2015
+:	Gesture performed
+Tue Oct 20 22:13:25 2015
+:	Init DTW
+Tue Oct 20 22:13:25 2015
+:	Centroid X = 
+Tue Oct 20 22:13:25 2015
+:	Centroid X = 
+Tue Oct 20 22:13:25 2015
+:	Centroid X = 
+Tue Oct 20 22:13:25 2015
+:	Best distance: 364.450788
+Tue Oct 20 22:13:25 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:25 2015
+:	End DTW
+Tue Oct 20 22:13:25 2015
+:	Centroid X = 
+Tue Oct 20 22:13:30 2015
+:	Gesture performed
+Tue Oct 20 22:13:30 2015
+:	Init DTW
+Tue Oct 20 22:13:30 2015
+:	Centroid X = 
+Tue Oct 20 22:13:30 2015
+:	Centroid X = 
+Tue Oct 20 22:13:30 2015
+:	Centroid X = 
+Tue Oct 20 22:13:30 2015
+:	Best distance: 293.008512
+Tue Oct 20 22:13:30 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:30 2015
+:	End DTW
+Tue Oct 20 22:13:30 2015
+:	Centroid X = 
+Tue Oct 20 22:13:30 2015
+:	Gesture performed
+Tue Oct 20 22:13:30 2015
+:	Init DTW
+Tue Oct 20 22:13:30 2015
+:	Centroid X = 
+Tue Oct 20 22:13:30 2015
+:	Centroid X = 
+Tue Oct 20 22:13:30 2015
+:	Centroid X = 
+Tue Oct 20 22:13:30 2015
+:	Best distance: 413.723324
+Tue Oct 20 22:13:30 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:30 2015
+:	End DTW
+Tue Oct 20 22:13:30 2015
+:	Centroid X = 
+Tue Oct 20 22:13:31 2015
+:	Gesture performed
+Tue Oct 20 22:13:31 2015
+:	Init DTW
+Tue Oct 20 22:13:31 2015
+:	Centroid X = 
+Tue Oct 20 22:13:31 2015
+:	Centroid X = 
+Tue Oct 20 22:13:31 2015
+:	Centroid X = 
+Tue Oct 20 22:13:31 2015
+:	Best distance: 389.682730
+Tue Oct 20 22:13:31 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:31 2015
+:	End DTW
+Tue Oct 20 22:13:31 2015
+:	Centroid X = 
+Tue Oct 20 22:13:34 2015
+:	Gesture performed
+Tue Oct 20 22:13:34 2015
+:	Init DTW
+Tue Oct 20 22:13:34 2015
+:	Centroid X = 
+Tue Oct 20 22:13:34 2015
+:	Centroid X = 
+Tue Oct 20 22:13:34 2015
+:	Centroid X = 
+Tue Oct 20 22:13:34 2015
+:	Best distance: 357.376225
+Tue Oct 20 22:13:34 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:34 2015
+:	End DTW
+Tue Oct 20 22:13:34 2015
+:	Centroid X = 
+Tue Oct 20 22:13:35 2015
+:	Gesture performed
+Tue Oct 20 22:13:35 2015
+:	Init DTW
+Tue Oct 20 22:13:35 2015
+:	Centroid X = 
+Tue Oct 20 22:13:35 2015
+:	Centroid X = 
+Tue Oct 20 22:13:35 2015
+:	Centroid X = 
+Tue Oct 20 22:13:35 2015
+:	Best distance: 380.576900
+Tue Oct 20 22:13:35 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:35 2015
+:	End DTW
+Tue Oct 20 22:13:35 2015
+:	Centroid X = 
+Tue Oct 20 22:13:37 2015
+:	Gesture performed
+Tue Oct 20 22:13:37 2015
+:	Init DTW
+Tue Oct 20 22:13:37 2015
+:	Centroid X = 
+Tue Oct 20 22:13:37 2015
+:	Centroid X = 
+Tue Oct 20 22:13:37 2015
+:	Centroid X = 
+Tue Oct 20 22:13:37 2015
+:	Best distance: 415.268931
+Tue Oct 20 22:13:37 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:37 2015
+:	End DTW
+Tue Oct 20 22:13:37 2015
+:	Centroid X = 
+Tue Oct 20 22:13:37 2015
+:	Gesture performed
+Tue Oct 20 22:13:37 2015
+:	Init DTW
+Tue Oct 20 22:13:37 2015
+:	Centroid X = 
+Tue Oct 20 22:13:37 2015
+:	Centroid X = 
+Tue Oct 20 22:13:37 2015
+:	Centroid X = 
+Tue Oct 20 22:13:37 2015
+:	Best distance: 401.026368
+Tue Oct 20 22:13:37 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:37 2015
+:	End DTW
+Tue Oct 20 22:13:37 2015
+:	Centroid X = 
+Tue Oct 20 22:13:38 2015
+:	Gesture performed
+Tue Oct 20 22:13:38 2015
+:	Init DTW
+Tue Oct 20 22:13:38 2015
+:	Centroid X = 
+Tue Oct 20 22:13:38 2015
+:	Centroid X = 
+Tue Oct 20 22:13:38 2015
+:	Centroid X = 
+Tue Oct 20 22:13:38 2015
+:	Best distance: 432.648926
+Tue Oct 20 22:13:38 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:38 2015
+:	End DTW
+Tue Oct 20 22:13:38 2015
+:	Centroid X = 
+Tue Oct 20 22:13:41 2015
+:	Gesture performed
+Tue Oct 20 22:13:41 2015
+:	Init DTW
+Tue Oct 20 22:13:41 2015
+:	Centroid X = 
+Tue Oct 20 22:13:41 2015
+:	Centroid X = 
+Tue Oct 20 22:13:41 2015
+:	Centroid X = 
+Tue Oct 20 22:13:41 2015
+:	Best distance: 214.307808
+Tue Oct 20 22:13:41 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:13:41 2015
+:	End DTW
+Tue Oct 20 22:13:41 2015
+:	Centroid X = 
+Tue Oct 20 22:13:44 2015
+:	Gesture performed
+Tue Oct 20 22:13:44 2015
+:	Init DTW
+Tue Oct 20 22:13:44 2015
+:	Centroid X = 
+Tue Oct 20 22:13:44 2015
+:	Centroid X = 
+Tue Oct 20 22:13:44 2015
+:	Centroid X = 
+Tue Oct 20 22:13:44 2015
+:	Best distance: 289.077376
+Tue Oct 20 22:13:44 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:44 2015
+:	End DTW
+Tue Oct 20 22:13:44 2015
+:	Centroid X = 
+Tue Oct 20 22:13:45 2015
+:	Gesture performed
+Tue Oct 20 22:13:45 2015
+:	Init DTW
+Tue Oct 20 22:13:45 2015
+:	Centroid X = 
+Tue Oct 20 22:13:45 2015
+:	Centroid X = 
+Tue Oct 20 22:13:45 2015
+:	Centroid X = 
+Tue Oct 20 22:13:45 2015
+:	Best distance: 293.269742
+Tue Oct 20 22:13:45 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:45 2015
+:	End DTW
+Tue Oct 20 22:13:45 2015
+:	Centroid X = 
+Tue Oct 20 22:13:47 2015
+:	Gesture performed
+Tue Oct 20 22:13:47 2015
+:	Init DTW
+Tue Oct 20 22:13:47 2015
+:	Centroid X = 
+Tue Oct 20 22:13:47 2015
+:	Centroid X = 
+Tue Oct 20 22:13:47 2015
+:	Centroid X = 
+Tue Oct 20 22:13:47 2015
+:	Best distance: 286.677005
+Tue Oct 20 22:13:47 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:47 2015
+:	End DTW
+Tue Oct 20 22:13:47 2015
+:	Centroid X = 
+Tue Oct 20 22:13:48 2015
+:	Gesture performed
+Tue Oct 20 22:13:48 2015
+:	Init DTW
+Tue Oct 20 22:13:48 2015
+:	Centroid X = 
+Tue Oct 20 22:13:48 2015
+:	Centroid X = 
+Tue Oct 20 22:13:48 2015
+:	Centroid X = 
+Tue Oct 20 22:13:48 2015
+:	Best distance: 273.856821
+Tue Oct 20 22:13:48 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:48 2015
+:	End DTW
+Tue Oct 20 22:13:48 2015
+:	Centroid X = 
+Tue Oct 20 22:13:50 2015
+:	Gesture performed
+Tue Oct 20 22:13:50 2015
+:	Init DTW
+Tue Oct 20 22:13:50 2015
+:	Centroid X = 
+Tue Oct 20 22:13:50 2015
+:	Centroid X = 
+Tue Oct 20 22:13:50 2015
+:	Centroid X = 
+Tue Oct 20 22:13:50 2015
+:	Best distance: 297.508924
+Tue Oct 20 22:13:50 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:50 2015
+:	End DTW
+Tue Oct 20 22:13:50 2015
+:	Centroid X = 
+Tue Oct 20 22:13:52 2015
+:	Gesture performed
+Tue Oct 20 22:13:52 2015
+:	Init DTW
+Tue Oct 20 22:13:52 2015
+:	Centroid X = 
+Tue Oct 20 22:13:52 2015
+:	Centroid X = 
+Tue Oct 20 22:13:52 2015
+:	Centroid X = 
+Tue Oct 20 22:13:52 2015
+:	Best distance: 334.143343
+Tue Oct 20 22:13:52 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:52 2015
+:	End DTW
+Tue Oct 20 22:13:52 2015
+:	Centroid X = 
+Tue Oct 20 22:13:54 2015
+:	Gesture performed
+Tue Oct 20 22:13:54 2015
+:	Init DTW
+Tue Oct 20 22:13:54 2015
+:	Centroid X = 
+Tue Oct 20 22:13:54 2015
+:	Centroid X = 
+Tue Oct 20 22:13:54 2015
+:	Centroid X = 
+Tue Oct 20 22:13:54 2015
+:	Best distance: 319.532908
+Tue Oct 20 22:13:54 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:54 2015
+:	End DTW
+Tue Oct 20 22:13:54 2015
+:	Centroid X = 
+Tue Oct 20 22:13:56 2015
+:	Gesture performed
+Tue Oct 20 22:13:56 2015
+:	Init DTW
+Tue Oct 20 22:13:56 2015
+:	Centroid X = 
+Tue Oct 20 22:13:56 2015
+:	Centroid X = 
+Tue Oct 20 22:13:56 2015
+:	Centroid X = 
+Tue Oct 20 22:13:56 2015
+:	Best distance: 315.798369
+Tue Oct 20 22:13:56 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:56 2015
+:	End DTW
+Tue Oct 20 22:13:56 2015
+:	Centroid X = 
+Tue Oct 20 22:13:56 2015
+:	Gesture performed
+Tue Oct 20 22:13:56 2015
+:	Init DTW
+Tue Oct 20 22:13:56 2015
+:	Centroid X = 
+Tue Oct 20 22:13:56 2015
+:	Centroid X = 
+Tue Oct 20 22:13:56 2015
+:	Centroid X = 
+Tue Oct 20 22:13:56 2015
+:	Best distance: 310.721096
+Tue Oct 20 22:13:56 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:56 2015
+:	End DTW
+Tue Oct 20 22:13:56 2015
+:	Centroid X = 
+Tue Oct 20 22:13:57 2015
+:	Gesture performed
+Tue Oct 20 22:13:57 2015
+:	Init DTW
+Tue Oct 20 22:13:57 2015
+:	Centroid X = 
+Tue Oct 20 22:13:57 2015
+:	Centroid X = 
+Tue Oct 20 22:13:57 2015
+:	Centroid X = 
+Tue Oct 20 22:13:57 2015
+:	Best distance: 304.143003
+Tue Oct 20 22:13:57 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:57 2015
+:	End DTW
+Tue Oct 20 22:13:57 2015
+:	Centroid X = 
+Tue Oct 20 22:13:59 2015
+:	Gesture performed
+Tue Oct 20 22:13:59 2015
+:	Init DTW
+Tue Oct 20 22:13:59 2015
+:	Centroid X = 
+Tue Oct 20 22:13:59 2015
+:	Centroid X = 
+Tue Oct 20 22:13:59 2015
+:	Centroid X = 
+Tue Oct 20 22:13:59 2015
+:	Best distance: 302.692924
+Tue Oct 20 22:13:59 2015
+:	Gesture not recognized
+Tue Oct 20 22:13:59 2015
+:	End DTW
+Tue Oct 20 22:13:59 2015
+:	Centroid X = 
+Tue Oct 20 22:14:01 2015
+:	Gesture performed
+Tue Oct 20 22:14:01 2015
+:	Init DTW
+Tue Oct 20 22:14:01 2015
+:	Centroid X = 
+Tue Oct 20 22:14:01 2015
+:	Centroid X = 
+Tue Oct 20 22:14:01 2015
+:	Centroid X = 
+Tue Oct 20 22:14:01 2015
+:	Best distance: 311.151961
+Tue Oct 20 22:14:01 2015
+:	Gesture not recognized
+Tue Oct 20 22:14:01 2015
+:	End DTW
+Tue Oct 20 22:14:01 2015
+:	Centroid X = 
+Tue Oct 20 22:14:03 2015
+:	Gesture performed
+Tue Oct 20 22:14:03 2015
+:	Init DTW
+Tue Oct 20 22:14:03 2015
+:	Centroid X = 
+Tue Oct 20 22:14:03 2015
+:	Centroid X = 
+Tue Oct 20 22:14:03 2015
+:	Centroid X = 
+Tue Oct 20 22:14:03 2015
+:	Best distance: 313.282780
+Tue Oct 20 22:14:03 2015
+:	Gesture not recognized
+Tue Oct 20 22:14:03 2015
+:	End DTW
+Tue Oct 20 22:14:03 2015
+:	Centroid X = 
+Tue Oct 20 22:14:04 2015
+:	Gesture performed
+Tue Oct 20 22:14:04 2015
+:	Init DTW
+Tue Oct 20 22:14:04 2015
+:	Centroid X = 
+Tue Oct 20 22:14:04 2015
+:	Centroid X = 
+Tue Oct 20 22:14:04 2015
+:	Centroid X = 
+Tue Oct 20 22:14:04 2015
+:	Best distance: 320.856804
+Tue Oct 20 22:14:04 2015
+:	Gesture not recognized
+Tue Oct 20 22:14:04 2015
+:	End DTW
+Tue Oct 20 22:14:04 2015
+:	Centroid X = 
+Tue Oct 20 22:14:06 2015
+:	Gesture performed
+Tue Oct 20 22:14:06 2015
+:	Init DTW
+Tue Oct 20 22:14:06 2015
+:	Centroid X = 
+Tue Oct 20 22:14:06 2015
+:	Centroid X = 
+Tue Oct 20 22:14:06 2015
+:	Centroid X = 
+Tue Oct 20 22:14:06 2015
+:	Best distance: 300.349782
+Tue Oct 20 22:14:06 2015
+:	Gesture not recognized
+Tue Oct 20 22:14:06 2015
+:	End DTW
+Tue Oct 20 22:14:06 2015
+:	Centroid X = 
+Tue Oct 20 22:14:09 2015
+:	Gesture performed
+Tue Oct 20 22:14:09 2015
+:	Init DTW
+Tue Oct 20 22:14:09 2015
+:	Centroid X = 
+Tue Oct 20 22:14:09 2015
+:	Centroid X = 
+Tue Oct 20 22:14:09 2015
+:	Centroid X = 
+Tue Oct 20 22:14:09 2015
+:	Best distance: 303.900521
+Tue Oct 20 22:14:09 2015
+:	Gesture not recognized
+Tue Oct 20 22:14:09 2015
+:	End DTW
+Tue Oct 20 22:14:09 2015
+:	Centroid X = 
+Tue Oct 20 22:14:09 2015
+:	Gesture performed
+Tue Oct 20 22:14:09 2015
+:	Init DTW
+Tue Oc
+Tue Oct 20 22:20:46 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 22:20:46 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 22:20:46 2015
+:	Fim de leitura do arquivo: 
+Tue Oct 20 22:20:46 2015
+:	Instance Gesture Created
+Tue Oct 20 22:20:55 2015
+:	Hand add
+Tue Oct 20 22:20:58 2015
+:	Gesture performed
+Tue Oct 20 22:20:58 2015
+:	Init DTW
+Tue Oct 20 22:20:58 2015
+:	Centroid X = 
+Tue Oct 20 22:20:58 2015
+:	Centroid X = 
+Tue Oct 20 22:20:58 2015
+:	Centroid X = 
+Tue Oct 20 22:20:58 2015
+:	Best distance: 98.884975
+Tue Oct 20 22:20:58 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:20:58 2015
+:	End DTW
+Tue Oct 20 22:20:58 2015
+:	Centroid X = 
+Tue Oct 20 22:21:02 2015
+:	Gesture performed
+Tue Oct 20 22:21:02 2015
+:	Init DTW
+Tue Oct 20 22:21:02 2015
+:	Centroid X = 
+Tue Oct 20 22:21:02 2015
+:	Centroid X = 
+Tue Oct 20 22:21:02 2015
+:	Centroid X = 
+Tue Oct 20 22:21:02 2015
+:	Best distance: 134.183353
+Tue Oct 20 22:21:02 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:21:02 2015
+:	End DTW
+Tue Oct 20 22:21:02 2015
+:	Centroid X = 
+Tue Oct 20 22:21:03 2015
+:	Gesture performed
+Tue Oct 20 22:21:03 2015
+:	Init DTW
+Tue Oct 20 22:21:03 2015
+:	Centroid X = 
+Tue Oct 20 22:21:03 2015
+:	Centroid X = 
+Tue Oct 20 22:21:03 2015
+:	Centroid X = 
+Tue Oct 20 22:21:03 2015
+:	Best distance: 212.544252
+Tue Oct 20 22:21:03 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:21:03 2015
+:	End DTW
+Tue Oct 20 22:21:03 2015
+:	Centroid X = 
+Tue Oct 20 22:21:06 2015
+:	Gesture performed
+Tue Oct 20 22:21:06 2015
+:	Init DTW
+Tue Oct 20 22:21:06 2015
+:	Centroid X = 
+Tue Oct 20 22:21:06 2015
+:	Centroid X = 
+Tue Oct 20 22:21:06 2015
+:	Centroid X = 
+Tue Oct 20 22:21:06 2015
+:	Best distance: 144.975211
+Tue Oct 20 22:21:06 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:21:06 2015
+:	End DTW
+Tue Oct 20 22:21:06 2015
+:	Centroid X = 
+Tue Oct 20 22:21:09 2015
+:	Gesture performed
+Tue Oct 20 22:21:09 2015
+:	Init DTW
+Tue Oct 20 22:21:09 2015
+:	Centroid X = 
+Tue Oct 20 22:21:09 2015
+:	Centroid X = 
+Tue Oct 20 22:21:09 2015
+:	Centroid X = 
+Tue Oct 20 22:21:09 2015
+:	Best distance: 171.615843
+Tue Oct 20 22:21:09 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:21:09 2015
+:	End DTW
+Tue Oct 20 22:21:09 2015
+:	Centroid X = 
+Tue Oct 20 22:21:11 2015
+:	Gesture performed
+Tue Oct 20 22:21:11 2015
+:	Init DTW
+Tue Oct 20 22:21:11 2015
+:	Centroid X = 
+Tue Oct 20 22:21:11 2015
+:	Centroid X = 
+Tue Oct 20 22:21:11 2015
+:	Centroid X = 
+Tue Oct 20 22:21:11 2015
+:	Best distance: 212.545129
+Tue Oct 20 22:21:11 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:21:11 2015
+:	End DTW
+Tue Oct 20 22:21:11 2015
+:	Centroid X = 
+Tue Oct 20 22:21:14 2015
+:	Gesture performed
+Tue Oct 20 22:21:14 2015
+:	Init DTW
+Tue Oct 20 22:21:14 2015
+:	Centroid X = 
+Tue Oct 20 22:21:14 2015
+:	Centroid X = 
+Tue Oct 20 22:21:14 2015
+:	Centroid X = 
+Tue Oct 20 22:21:14 2015
+:	Best distance: 76.604733
+Tue Oct 20 22:21:14 2015
+:	Gesture recognized: paisagem
+Tue Oct 20 22:21:14 2015
+:	End DTW
+Tue Oct 20 22:21:14 2015
+:	Centroid X = 
+Tue Oct 20 22:21:18 2015
+:	Gesture performed
+Tue Oct 20 22:21:18 2015
+:	Init DTW
+Tue Oct 20 22:21:18 2015
+:	Centroid X = 
+Tue Oct 20 22:21:18 2015
+:	Centroid X = 
+Tue Oct 20 22:21:18 2015
+:	Centroid X = 
+Tue Oct 20 22:21:18 2015
+:	Best distance: 178.020557
+Tue Oct 20 22:21:18 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:21:18 2015
+:	End DTW
+Tue Oct 20 22:21:18 2015
+:	Centroid X = 
+Tue Oct 20 22:21:21 2015
+:	Gesture performed
+Tue Oct 20 22:21:21 2015
+:	Init DTW
+Tue Oct 20 22:21:21 2015
+:	Centroid X = 
+Tue Oct 20 22:21:21 2015
+:	Centroid X = 
+Tue Oct 20 22:21:21 2015
+:	Centroid X = 
+Tue Oct 20 22:21:21 2015
+:	Best distance: 229.440982
+Tue Oct 20 22:21:21 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:21:21 2015
+:	End DTW
+Tue Oct 20 22:21:21 2015
+:	Centroid X = 
+Tue Oct 20 22:21:23 2015
+:	Gesture performed
+Tue Oct 20 22:21:23 2015
+:	Init DTW
+Tue Oct 20 22:21:23 2015
+:	Centroid X = 
+Tue Oct 20 22:21:23 2015
+:	Centroid X = 
+Tue Oct 20 22:21:23 2015
+:	Centroid X = 
+Tue Oct 20 22:21:23 2015
+:	Best distance: 96.740770
+Tue Oct 20 22:21:23 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:21:23
+Tue Oct 20 22:23:49 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 22:23:49 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 22:23:49 2015
+:	Fim de leitura do arquivo: 
+Tue Oct 20 22:23:49 2015
+:	Instance Gesture Created
+Tue Oct 20 22:23:58 2015
+:	Hand add
+Tue Oct 20 22:24:02 2015
+:	Gesture performed
+Tue Oct 20 22:24:02 2015
+:	Init DTW
+Tue Oct 20 22:24:02 2015
+:	Centroid X = 
+Tue Oct 20 22:24:02 2015
+:	Centroid X = 
+Tue Oct 20 22:24:02 2015
+:	Centroid X = 
+Tue Oct 20 22:24:02 2015
+:	Best distance: 186.836798
+Tue Oct 20 22:24:02 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:24:02 2015
+:	End DTW
+Tue Oct 20 22:24:02 2015
+:	Centroid X = 
+Tue Oct 20 22:24:05 2015
+:	Gesture performed
+Tue Oct 20 22:24:05 2015
+:	Init DTW
+Tue Oct 20 22:24:05 2015
+:	Centroid X = 
+Tue Oct 20 22:24:05 2015
+:	Centroid X = 
+Tue Oct 20 22:24:05 2015
+:	Centroid X = 
+Tue Oct 20 22:24:05 2015
+:	Best distance: 108.191760
+Tue Oct 20 22:24:05 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:24:05 2015
+:	End DTW
+Tue Oct 20 22:24:05 2015
+:	Centroid X = 
+Tue Oct 20 22:24:07 2015
+:	Gesture performed
+Tue Oct 20 22:24:07 2015
+:	Init DTW
+Tue Oct 20 22:24:07 2015
+:	Centroid X = 
+Tue Oct 20 22:24:07 2015
+:	Centroid X = 
+Tue Oct 20 22:24:07 2015
+:	Centroid X = 
+Tue Oct 20 22:24:07 2015
+:	Best distance: 288.179557
+Tue Oct 20 22:24:07 2015
+:	Gesture not recognized
+Tue Oct 20 22:24:07 2015
+:	End DTW
+Tue Oct 20 22:24:07 2015
+:	Centroid X = 
+Tue Oct 20 22:24:10 2015
+:	Gesture performed
+Tue Oct 20 22:24:10 2015
+:	Init DTW
+Tue Oct 20 22:24:10 2015
+:	Centroid X = 
+Tue Oct 20 22:24:10 2015
+:	Centroid X = 
+Tue Oct 20 22:24:10 2015
+:	Centroid X = 
+Tue Oct 20 22:24:10 2015
+:	Best distance: 101.182468
+Tue Oct 20 22:24:10 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:24:10 2015
+:	End DTW
+Tue Oct 20 22:24:10 2015
+:	Centroid X = 
+Tue Oct 20 22:24:12 2015
+:	Gesture performed
+Tue Oct 20 22:24:12 2015
+:	Init DTW
+Tue Oct 20 22:24:12 2015
+:	Centroid X = 
+Tue Oct 20 22:24:12 2015
+:	Centroid X = 
+Tue Oct 20 22:24:12 2015
+:	Centroid X = 
+Tue Oct 20 22:24:12 2015
+:	Best distance: 287.831409
+Tue Oct 20 22:24:12 2015
+:	Gesture not recognized
+Tue Oct 20 22:24:12 2015
+:	End DTW
+Tue Oct 20 22:24:12 2015
+:	Centroid X = 
+Tue Oct 20 22:24:15 2015
+:	Gesture performed
+Tue Oct 20 22:24:15 2015
+:	Init DTW
+Tue Oct 20 22:24:15 2015
+:	Centroid X = 
+Tue Oct 20 22:24:15 2015
+:	Centroid X = 
+Tue Oct 20 22:24:15 2015
+:	Centroid X = 
+Tue Oct 20 22:24:15 2015
+:	Best distance: 88.365209
+Tue Oct 20 22:24:15 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:24:15 2015
+:	End DTW
+Tue Oct 20 22:24:15 2015
+:	Centroid X = 
+Tue Oct 20 22:24:16 2015
+:	Gesture performed
+Tue Oct 20 22:24:16 2015
+:	Init DTW
+Tue Oct 20 22:24:16 2015
+:	Centroid X = 
+Tue Oct 20 22:24:16 2015
+:	Centroid X = 
+Tue Oct 20 22:24:16 2015
+:	Centroid X = 
+Tue Oct 20 22:24:16 2015
+:	Best distance: 293.906753
+Tue Oct 20 22:24:16 2015
+:	Gesture not recognized
+Tue Oct 20 22:24:16 2015
+:	End DTW
+Tue Oct 20 22:24:16 2015
+:	Centroid X = 
+Tue Oct 20 22:24:19 2015
+:	Gesture performed
+Tue Oct 20 22:24:19 2015
+:	Init DTW
+Tue Oct 20 22:24:19 2015
+:	Centroid X = 
+Tue Oct 20 22:24:19 2015
+:	Centroid X = 
+Tue Oct 20 22:24:19 2015
+:	Centroid X = 
+Tue Oct 20 22:24:19 2015
+:	Best distance: 87.281743
+Tue Oct 20 22:24:19 2015
+:	Gesture recognized: paisagem
+Tue Oct 20 22:24:19 2015
+:	End DTW
+Tue Oct 20 22:24:19 2015
+:	Centroid X = 
+Tue Oct 20 22:24:21 2015
+:	Gesture performed
+Tue Oct 20 22:24:21 2015
+:	Init DTW
+Tue Oct 20 22:24:21 2015
+:	Centroid X = 
+Tue Oct 20 22:24:21 2015
+:	Centroid X = 
+Tue Oct 20 22:24:21 2015
+:	Centroid X = 
+Tue Oct 20 22:24:21 2015
+:	Best distance: 200.782097
+Tue Oct 20 22:24:21 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:24:21 2015
+:	End DTW
+Tue Oct 20 22:24:21 2015
+:	Centroid X = 
+Tue Oct 20 22:24:24 2015
+:	Gesture performed
+Tue Oct 20 22:24:24 2015
+:	Init DTW
+Tue Oct 20 22:24:24 2015
+:	Centroid X = 
+Tue Oct 20 22:24:24 2015
+:	Centroid X = 
+Tue Oct 20 22:24:24 2015
+:	Centroid X = 
+Tue Oct 20 22:24:24 2015
+:	Best distance: 71.327201
+Tue Oct 20 22:24:24 2015
+:	Gesture recognized: paisagem
+Tue Oct 20 22:24:24 2015
+:	End DTW
+Tu
+Tue Oct 20 22:24:54 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 22:24:54 2015
+:	Novo gesto encontrado no arquivo.
+Tue Oct 20 22:24:54 2015
+:	Fim de leitura do arquivo: 
+Tue Oct 20 22:24:54 2015
+:	Instance Gesture Created
+Tue Oct 20 22:25:03 2015
+:	Hand add
+Tue Oct 20 22:25:05 2015
+:	Gesture performed
+Tue Oct 20 22:25:05 2015
+:	Init DTW
+Tue Oct 20 22:25:05 2015
+:	Centroid X = 
+Tue Oct 20 22:25:05 2015
+:	Centroid X = 
+Tue Oct 20 22:25:05 2015
+:	Centroid X = 
+Tue Oct 20 22:25:05 2015
+:	Best distance: 127.068125
+Tue Oct 20 22:25:05 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:05 2015
+:	End DTW
+Tue Oct 20 22:25:05 2015
+:	Centroid X = 
+Tue Oct 20 22:25:10 2015
+:	Gesture performed
+Tue Oct 20 22:25:10 2015
+:	Init DTW
+Tue Oct 20 22:25:10 2015
+:	Centroid X = 
+Tue Oct 20 22:25:10 2015
+:	Centroid X = 
+Tue Oct 20 22:25:10 2015
+:	Centroid X = 
+Tue Oct 20 22:25:10 2015
+:	Best distance: 158.033087
+Tue Oct 20 22:25:10 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:10 2015
+:	End DTW
+Tue Oct 20 22:25:10 2015
+:	Centroid X = 
+Tue Oct 20 22:25:12 2015
+:	Gesture performed
+Tue Oct 20 22:25:12 2015
+:	Init DTW
+Tue Oct 20 22:25:12 2015
+:	Centroid X = 
+Tue Oct 20 22:25:12 2015
+:	Centroid X = 
+Tue Oct 20 22:25:12 2015
+:	Centroid X = 
+Tue Oct 20 22:25:12 2015
+:	Best distance: 161.704708
+Tue Oct 20 22:25:12 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:12 2015
+:	End DTW
+Tue Oct 20 22:25:12 2015
+:	Centroid X = 
+Tue Oct 20 22:25:14 2015
+:	Gesture performed
+Tue Oct 20 22:25:14 2015
+:	Init DTW
+Tue Oct 20 22:25:14 2015
+:	Centroid X = 
+Tue Oct 20 22:25:14 2015
+:	Centroid X = 
+Tue Oct 20 22:25:14 2015
+:	Centroid X = 
+Tue Oct 20 22:25:14 2015
+:	Best distance: 223.801367
+Tue Oct 20 22:25:14 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:14 2015
+:	End DTW
+Tue Oct 20 22:25:14 2015
+:	Centroid X = 
+Tue Oct 20 22:25:15 2015
+:	Gesture performed
+Tue Oct 20 22:25:15 2015
+:	Init DTW
+Tue Oct 20 22:25:15 2015
+:	Centroid X = 
+Tue Oct 20 22:25:15 2015
+:	Centroid X = 
+Tue Oct 20 22:25:15 2015
+:	Centroid X = 
+Tue Oct 20 22:25:15 2015
+:	Best distance: 203.499669
+Tue Oct 20 22:25:15 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:15 2015
+:	End DTW
+Tue Oct 20 22:25:15 2015
+:	Centroid X = 
+Tue Oct 20 22:25:17 2015
+:	Gesture performed
+Tue Oct 20 22:25:17 2015
+:	Init DTW
+Tue Oct 20 22:25:17 2015
+:	Centroid X = 
+Tue Oct 20 22:25:17 2015
+:	Centroid X = 
+Tue Oct 20 22:25:17 2015
+:	Centroid X = 
+Tue Oct 20 22:25:17 2015
+:	Best distance: 176.059150
+Tue Oct 20 22:25:17 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:17 2015
+:	End DTW
+Tue Oct 20 22:25:17 2015
+:	Centroid X = 
+Tue Oct 20 22:25:19 2015
+:	Gesture performed
+Tue Oct 20 22:25:19 2015
+:	Init DTW
+Tue Oct 20 22:25:19 2015
+:	Centroid X = 
+Tue Oct 20 22:25:19 2015
+:	Centroid X = 
+Tue Oct 20 22:25:19 2015
+:	Centroid X = 
+Tue Oct 20 22:25:19 2015
+:	Best distance: 205.423668
+Tue Oct 20 22:25:19 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:19 2015
+:	End DTW
+Tue Oct 20 22:25:19 2015
+:	Centroid X = 
+Tue Oct 20 22:25:21 2015
+:	Gesture performed
+Tue Oct 20 22:25:21 2015
+:	Init DTW
+Tue Oct 20 22:25:21 2015
+:	Centroid X = 
+Tue Oct 20 22:25:21 2015
+:	Centroid X = 
+Tue Oct 20 22:25:21 2015
+:	Centroid X = 
+Tue Oct 20 22:25:21 2015
+:	Best distance: 204.848152
+Tue Oct 20 22:25:21 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:21 2015
+:	End DTW
+Tue Oct 20 22:25:21 2015
+:	Centroid X = 
+Tue Oct 20 22:25:23 2015
+:	Gesture performed
+Tue Oct 20 22:25:23 2015
+:	Init DTW
+Tue Oct 20 22:25:23 2015
+:	Centroid X = 
+Tue Oct 20 22:25:23 2015
+:	Centroid X = 
+Tue Oct 20 22:25:23 2015
+:	Centroid X = 
+Tue Oct 20 22:25:23 2015
+:	Best distance: 171.244377
+Tue Oct 20 22:25:23 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:23 2015
+:	End DTW
+Tue Oct 20 22:25:23 2015
+:	Centroid X = 
+Tue Oct 20 22:25:25 2015
+:	Gesture performed
+Tue Oct 20 22:25:25 2015
+:	Init DTW
+Tue Oct 20 22:25:25 2015
+:	Centroid X = 
+Tue Oct 20 22:25:25 2015
+:	Centroid X = 
+Tue Oct 20 22:25:25 2015
+:	Centroid X = 
+Tue Oct 20 22:25:25 2015
+:	Best distance: 162.366629
+Tue Oct 20 22:25:25 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:25 2015
+:	End DTW
+Tue Oct 20 22:25:25 2015
+:	Centroid X = 
+Tue Oct 20 22:25:27 2015
+:	Gesture performed
+Tue Oct 20 22:25:27 2015
+:	Init DTW
+Tue Oct 20 22:25:27 2015
+:	Centroid X = 
+Tue Oct 20 22:25:27 2015
+:	Centroid X = 
+Tue Oct 20 22:25:27 2015
+:	Centroid X = 
+Tue Oct 20 22:25:27 2015
+:	Best distance: 222.881316
+Tue Oct 20 22:25:27 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:27 2015
+:	End DTW
+Tue Oct 20 22:25:27 2015
+:	Centroid X = 
+Tue Oct 20 22:25:29 2015
+:	Gesture performed
+Tue Oct 20 22:25:29 2015
+:	Init DTW
+Tue Oct 20 22:25:29 2015
+:	Centroid X = 
+Tue Oct 20 22:25:29 2015
+:	Centroid X = 
+Tue Oct 20 22:25:29 2015
+:	Centroid X = 
+Tue Oct 20 22:25:29 2015
+:	Best distance: 253.251318
+Tue Oct 20 22:25:29 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:29 2015
+:	End DTW
+Tue Oct 20 22:25:29 2015
+:	Centroid X = 
+Tue Oct 20 22:25:31 2015
+:	Gesture performed
+Tue Oct 20 22:25:31 2015
+:	Init DTW
+Tue Oct 20 22:25:31 2015
+:	Centroid X = 
+Tue Oct 20 22:25:31 2015
+:	Centroid X = 
+Tue Oct 20 22:25:31 2015
+:	Centroid X = 
+Tue Oct 20 22:25:31 2015
+:	Best distance: 83.482254
+Tue Oct 20 22:25:31 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:25:31 2015
+:	End DTW
+Tue Oct 20 22:25:31 2015
+:	Centroid X = 
+Tue Oct 20 22:25:35 2015
+:	Gesture performed
+Tue Oct 20 22:25:35 2015
+:	Init DTW
+Tue Oct 20 22:25:35 2015
+:	Centroid X = 
+Tue Oct 20 22:25:35 2015
+:	Centroid X = 
+Tue Oct 20 22:25:35 2015
+:	Centroid X = 
+Tue Oct 20 22:25:35 2015
+:	Best distance: 124.380619
+Tue Oct 20 22:25:35 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:35 2015
+:	End DTW
+Tue Oct 20 22:25:35 2015
+:	Centroid X = 
+Tue Oct 20 22:25:37 2015
+:	Gesture performed
+Tue Oct 20 22:25:37 2015
+:	Init DTW
+Tue Oct 20 22:25:37 2015
+:	Centroid X = 
+Tue Oct 20 22:25:37 2015
+:	Centroid X = 
+Tue Oct 20 22:25:37 2015
+:	Centroid X = 
+Tue Oct 20 22:25:37 2015
+:	Best distance: 224.859481
+Tue Oct 20 22:25:37 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:37 2015
+:	End DTW
+Tue Oct 20 22:25:37 2015
+:	Centroid X = 
+Tue Oct 20 22:25:40 2015
+:	Gesture performed
+Tue Oct 20 22:25:40 2015
+:	Init DTW
+Tue Oct 20 22:25:40 2015
+:	Centroid X = 
+Tue Oct 20 22:25:40 2015
+:	Centroid X = 
+Tue Oct 20 22:25:40 2015
+:	Centroid X = 
+Tue Oct 20 22:25:40 2015
+:	Best distance: 103.049976
+Tue Oct 20 22:25:40 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:40 2015
+:	End DTW
+Tue Oct 20 22:25:40 2015
+:	Centroid X = 
+Tue Oct 20 22:25:42 2015
+:	Gesture performed
+Tue Oct 20 22:25:42 2015
+:	Init DTW
+Tue Oct 20 22:25:42 2015
+:	Centroid X = 
+Tue Oct 20 22:25:42 2015
+:	Centroid X = 
+Tue Oct 20 22:25:42 2015
+:	Centroid X = 
+Tue Oct 20 22:25:42 2015
+:	Best distance: 199.238097
+Tue Oct 20 22:25:42 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:42 2015
+:	End DTW
+Tue Oct 20 22:25:42 2015
+:	Centroid X = 
+Tue Oct 20 22:25:45 2015
+:	Gesture performed
+Tue Oct 20 22:25:45 2015
+:	Init DTW
+Tue Oct 20 22:25:45 2015
+:	Centroid X = 
+Tue Oct 20 22:25:45 2015
+:	Centroid X = 
+Tue Oct 20 22:25:45 2015
+:	Centroid X = 
+Tue Oct 20 22:25:45 2015
+:	Best distance: 64.314034
+Tue Oct 20 22:25:45 2015
+:	Gesture recognized: paisagem
+Tue Oct 20 22:25:45 2015
+:	End DTW
+Tue Oct 20 22:25:45 2015
+:	Centroid X = 
+Tue Oct 20 22:25:48 2015
+:	Gesture performed
+Tue Oct 20 22:25:48 2015
+:	Init DTW
+Tue Oct 20 22:25:48 2015
+:	Centroid X = 
+Tue Oct 20 22:25:48 2015
+:	Centroid X = 
+Tue Oct 20 22:25:48 2015
+:	Centroid X = 
+Tue Oct 20 22:25:48 2015
+:	Best distance: 150.535152
+Tue Oct 20 22:25:48 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:48 2015
+:	End DTW
+Tue Oct 20 22:25:48 2015
+:	Centroid X = 
+Tue Oct 20 22:25:49 2015
+:	Gesture performed
+Tue Oct 20 22:25:49 2015
+:	Init DTW
+Tue Oct 20 22:25:49 2015
+:	Centroid X = 
+Tue Oct 20 22:25:49 2015
+:	Centroid X = 
+Tue Oct 20 22:25:49 2015
+:	Centroid X = 
+Tue Oct 20 22:25:49 2015
+:	Best distance: 215.875206
+Tue Oct 20 22:25:49 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:49 2015
+:	End DTW
+Tue Oct 20 22:25:49 2015
+:	Centroid X = 
+Tue Oct 20 22:25:50 2015
+:	Gesture performed
+Tue Oct 20 22:25:50 2015
+:	Init DTW
+Tue Oct 20 22:25:50 2015
+:	Centroid X = 
+Tue Oct 20 22:25:50 2015
+:	Centroid X = 
+Tue Oct 20 22:25:50 2015
+:	Centroid X = 
+Tue Oct 20 22:25:50 2015
+:	Best distance: 203.601373
+Tue Oct 20 22:25:50 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:50 2015
+:	End DTW
+Tue Oct 20 22:25:50 2015
+:	Centroid X = 
+Tue Oct 20 22:25:52 2015
+:	Gesture performed
+Tue Oct 20 22:25:52 2015
+:	Init DTW
+Tue Oct 20 22:25:52 2015
+:	Centroid X = 
+Tue Oct 20 22:25:52 2015
+:	Centroid X = 
+Tue Oct 20 22:25:52 2015
+:	Centroid X = 
+Tue Oct 20 22:25:52 2015
+:	Best distance: 211.537327
+Tue Oct 20 22:25:52 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:52 2015
+:	End DTW
+Tue Oct 20 22:25:52 2015
+:	Centroid X = 
+Tue Oct 20 22:25:53 2015
+:	Gesture performed
+Tue Oct 20 22:25:53 2015
+:	Init DTW
+Tue Oct 20 22:25:53 2015
+:	Centroid X = 
+Tue Oct 20 22:25:53 2015
+:	Centroid X = 
+Tue Oct 20 22:25:53 2015
+:	Centroid X = 
+Tue Oct 20 22:25:53 2015
+:	Best distance: 180.131511
+Tue Oct 20 22:25:53 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:53 2015
+:	End DTW
+Tue Oct 20 22:25:53 2015
+:	Centroid X = 
+Tue Oct 20 22:25:55 2015
+:	Gesture performed
+Tue Oct 20 22:25:55 2015
+:	Init DTW
+Tue Oct 20 22:25:55 2015
+:	Centroid X = 
+Tue Oct 20 22:25:55 2015
+:	Centroid X = 
+Tue Oct 20 22:25:55 2015
+:	Centroid X = 
+Tue Oct 20 22:25:55 2015
+:	Best distance: 188.890056
+Tue Oct 20 22:25:55 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:55 2015
+:	End DTW
+Tue Oct 20 22:25:55 2015
+:	Centroid X = 
+Tue Oct 20 22:25:58 2015
+:	Gesture performed
+Tue Oct 20 22:25:58 2015
+:	Init DTW
+Tue Oct 20 22:25:58 2015
+:	Centroid X = 
+Tue Oct 20 22:25:58 2015
+:	Centroid X = 
+Tue Oct 20 22:25:58 2015
+:	Centroid X = 
+Tue Oct 20 22:25:58 2015
+:	Best distance: 151.443588
+Tue Oct 20 22:25:58 2015
+:	Gesture not recognized
+Tue Oct 20 22:25:58 2015
+:	End DTW
+Tue Oct 20 22:25:58 2015
+:	Centroid X = 
+Tue Oct 20 22:26:00 2015
+:	Gesture performed
+Tue Oct 20 22:26:00 2015
+:	Init DTW
+Tue Oct 20 22:26:00 2015
+:	Centroid X = 
+Tue Oct 20 22:26:00 2015
+:	Centroid X = 
+Tue Oct 20 22:26:00 2015
+:	Centroid X = 
+Tue Oct 20 22:26:00 2015
+:	Best distance: 290.119172
+Tue Oct 20 22:26:00 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:00 2015
+:	End DTW
+Tue Oct 20 22:26:00 2015
+:	Centroid X = 
+Tue Oct 20 22:26:01 2015
+:	Gesture performed
+Tue Oct 20 22:26:01 2015
+:	Init DTW
+Tue Oct 20 22:26:01 2015
+:	Centroid X = 
+Tue Oct 20 22:26:01 2015
+:	Centroid X = 
+Tue Oct 20 22:26:01 2015
+:	Centroid X = 
+Tue Oct 20 22:26:01 2015
+:	Best distance: 223.561691
+Tue Oct 20 22:26:01 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:01 2015
+:	End DTW
+Tue Oct 20 22:26:01 2015
+:	Centroid X = 
+Tue Oct 20 22:26:02 2015
+:	Gesture performed
+Tue Oct 20 22:26:02 2015
+:	Init DTW
+Tue Oct 20 22:26:02 2015
+:	Centroid X = 
+Tue Oct 20 22:26:02 2015
+:	Centroid X = 
+Tue Oct 20 22:26:02 2015
+:	Centroid X = 
+Tue Oct 20 22:26:02 2015
+:	Best distance: 77.935297
+Tue Oct 20 22:26:02 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:26:02 2015
+:	End DTW
+Tue Oct 20 22:26:02 2015
+:	Centroid X = 
+Tue Oct 20 22:26:05 2015
+:	Gesture performed
+Tue Oct 20 22:26:05 2015
+:	Init DTW
+Tue Oct 20 22:26:05 2015
+:	Centroid X = 
+Tue Oct 20 22:26:05 2015
+:	Centroid X = 
+Tue Oct 20 22:26:05 2015
+:	Centroid X = 
+Tue Oct 20 22:26:05 2015
+:	Best distance: 189.610584
+Tue Oct 20 22:26:05 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:05 2015
+:	End DTW
+Tue Oct 20 22:26:05 2015
+:	Centroid X = 
+Tue Oct 20 22:26:08 2015
+:	Gesture performed
+Tue Oct 20 22:26:08 2015
+:	Init DTW
+Tue Oct 20 22:26:08 2015
+:	Centroid X = 
+Tue Oct 20 22:26:08 2015
+:	Centroid X = 
+Tue Oct 20 22:26:08 2015
+:	Centroid X = 
+Tue Oct 20 22:26:08 2015
+:	Best distance: 74.787418
+Tue Oct 20 22:26:08 2015
+:	Gesture recognized: paisagem
+Tue Oct 20 22:26:08 2015
+:	End DTW
+Tue Oct 20 22:26:08 2015
+:	Centroid X = 
+Tue Oct 20 22:26:11 2015
+:	Gesture performed
+Tue Oct 20 22:26:11 2015
+:	Init DTW
+Tue Oct 20 22:26:11 2015
+:	Centroid X = 
+Tue Oct 20 22:26:11 2015
+:	Centroid X = 
+Tue Oct 20 22:26:11 2015
+:	Centroid X = 
+Tue Oct 20 22:26:11 2015
+:	Best distance: 264.583240
+Tue Oct 20 22:26:11 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:11 2015
+:	End DTW
+Tue Oct 20 22:26:11 2015
+:	Centroid X = 
+Tue Oct 20 22:26:15 2015
+:	Gesture performed
+Tue Oct 20 22:26:15 2015
+:	Init DTW
+Tue Oct 20 22:26:15 2015
+:	Centroid X = 
+Tue Oct 20 22:26:15 2015
+:	Centroid X = 
+Tue Oct 20 22:26:15 2015
+:	Centroid X = 
+Tue Oct 20 22:26:15 2015
+:	Best distance: 101.852715
+Tue Oct 20 22:26:15 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:15 2015
+:	End DTW
+Tue Oct 20 22:26:15 2015
+:	Centroid X = 
+Tue Oct 20 22:26:17 2015
+:	Gesture performed
+Tue Oct 20 22:26:17 2015
+:	Init DTW
+Tue Oct 20 22:26:17 2015
+:	Centroid X = 
+Tue Oct 20 22:26:17 2015
+:	Centroid X = 
+Tue Oct 20 22:26:17 2015
+:	Centroid X = 
+Tue Oct 20 22:26:17 2015
+:	Best distance: 198.129218
+Tue Oct 20 22:26:17 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:17 2015
+:	End DTW
+Tue Oct 20 22:26:17 2015
+:	Centroid X = 
+Tue Oct 20 22:26:20 2015
+:	Gesture performed
+Tue Oct 20 22:26:20 2015
+:	Init DTW
+Tue Oct 20 22:26:20 2015
+:	Centroid X = 
+Tue Oct 20 22:26:20 2015
+:	Centroid X = 
+Tue Oct 20 22:26:20 2015
+:	Centroid X = 
+Tue Oct 20 22:26:20 2015
+:	Best distance: 71.597621
+Tue Oct 20 22:26:20 2015
+:	Gesture recognized: paisagem
+Tue Oct 20 22:26:20 2015
+:	End DTW
+Tue Oct 20 22:26:20 2015
+:	Centroid X = 
+Tue Oct 20 22:26:22 2015
+:	Gesture performed
+Tue Oct 20 22:26:22 2015
+:	Init DTW
+Tue Oct 20 22:26:22 2015
+:	Centroid X = 
+Tue Oct 20 22:26:22 2015
+:	Centroid X = 
+Tue Oct 20 22:26:22 2015
+:	Centroid X = 
+Tue Oct 20 22:26:22 2015
+:	Best distance: 176.953587
+Tue Oct 20 22:26:22 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:22 2015
+:	End DTW
+Tue Oct 20 22:26:22 2015
+:	Centroid X = 
+Tue Oct 20 22:26:23 2015
+:	Gesture performed
+Tue Oct 20 22:26:23 2015
+:	Init DTW
+Tue Oct 20 22:26:23 2015
+:	Centroid X = 
+Tue Oct 20 22:26:23 2015
+:	Centroid X = 
+Tue Oct 20 22:26:23 2015
+:	Centroid X = 
+Tue Oct 20 22:26:23 2015
+:	Best distance: 259.678312
+Tue Oct 20 22:26:23 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:23 2015
+:	End DTW
+Tue Oct 20 22:26:23 2015
+:	Centroid X = 
+Tue Oct 20 22:26:26 2015
+:	Gesture performed
+Tue Oct 20 22:26:26 2015
+:	Init DTW
+Tue Oct 20 22:26:26 2015
+:	Centroid X = 
+Tue Oct 20 22:26:26 2015
+:	Centroid X = 
+Tue Oct 20 22:26:26 2015
+:	Centroid X = 
+Tue Oct 20 22:26:26 2015
+:	Best distance: 129.958427
+Tue Oct 20 22:26:26 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:26 2015
+:	End DTW
+Tue Oct 20 22:26:26 2015
+:	Centroid X = 
+Tue Oct 20 22:26:28 2015
+:	Gesture performed
+Tue Oct 20 22:26:28 2015
+:	Init DTW
+Tue Oct 20 22:26:28 2015
+:	Centroid X = 
+Tue Oct 20 22:26:28 2015
+:	Centroid X = 
+Tue Oct 20 22:26:28 2015
+:	Centroid X = 
+Tue Oct 20 22:26:28 2015
+:	Best distance: 315.650460
+Tue Oct 20 22:26:28 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:28 2015
+:	End DTW
+Tue Oct 20 22:26:28 2015
+:	Centroid X = 
+Tue Oct 20 22:26:30 2015
+:	Gesture performed
+Tue Oct 20 22:26:30 2015
+:	Init DTW
+Tue Oct 20 22:26:30 2015
+:	Centroid X = 
+Tue Oct 20 22:26:30 2015
+:	Centroid X = 
+Tue Oct 20 22:26:30 2015
+:	Centroid X = 
+Tue Oct 20 22:26:30 2015
+:	Best distance: 107.578141
+Tue Oct 20 22:26:30 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:30 2015
+:	End DTW
+Tue Oct 20 22:26:30 2015
+:	Centroid X = 
+Tue Oct 20 22:26:32 2015
+:	Gesture performed
+Tue Oct 20 22:26:32 2015
+:	Init DTW
+Tue Oct 20 22:26:32 2015
+:	Centroid X = 
+Tue Oct 20 22:26:32 2015
+:	Centroid X = 
+Tue Oct 20 22:26:32 2015
+:	Centroid X = 
+Tue Oct 20 22:26:32 2015
+:	Best distance: 289.154123
+Tue Oct 20 22:26:32 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:32 2015
+:	End DTW
+Tue Oct 20 22:26:32 2015
+:	Centroid X = 
+Tue Oct 20 22:26:35 2015
+:	Gesture performed
+Tue Oct 20 22:26:35 2015
+:	Init DTW
+Tue Oct 20 22:26:35 2015
+:	Centroid X = 
+Tue Oct 20 22:26:35 2015
+:	Centroid X = 
+Tue Oct 20 22:26:35 2015
+:	Centroid X = 
+Tue Oct 20 22:26:35 2015
+:	Best distance: 109.090690
+Tue Oct 20 22:26:35 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:35 2015
+:	End DTW
+Tue Oct 20 22:26:35 2015
+:	Centroid X = 
+Tue Oct 20 22:26:36 2015
+:	Gesture performed
+Tue Oct 20 22:26:36 2015
+:	Init DTW
+Tue Oct 20 22:26:36 2015
+:	Centroid X = 
+Tue Oct 20 22:26:36 2015
+:	Centroid X = 
+Tue Oct 20 22:26:36 2015
+:	Centroid X = 
+Tue Oct 20 22:26:36 2015
+:	Best distance: 300.713884
+Tue Oct 20 22:26:36 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:36 2015
+:	End DTW
+Tue Oct 20 22:26:36 2015
+:	Centroid X = 
+Tue Oct 20 22:26:39 2015
+:	Gesture performed
+Tue Oct 20 22:26:39 2015
+:	Init DTW
+Tue Oct 20 22:26:39 2015
+:	Centroid X = 
+Tue Oct 20 22:26:39 2015
+:	Centroid X = 
+Tue Oct 20 22:26:39 2015
+:	Centroid X = 
+Tue Oct 20 22:26:39 2015
+:	Best distance: 101.105671
+Tue Oct 20 22:26:39 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:39 2015
+:	End DTW
+Tue Oct 20 22:26:39 2015
+:	Centroid X = 
+Tue Oct 20 22:26:41 2015
+:	Gesture performed
+Tue Oct 20 22:26:41 2015
+:	Init DTW
+Tue Oct 20 22:26:41 2015
+:	Centroid X = 
+Tue Oct 20 22:26:41 2015
+:	Centroid X = 
+Tue Oct 20 22:26:41 2015
+:	Centroid X = 
+Tue Oct 20 22:26:41 2015
+:	Best distance: 313.557949
+Tue Oct 20 22:26:41 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:41 2015
+:	End DTW
+Tue Oct 20 22:26:41 2015
+:	Centroid X = 
+Tue Oct 20 22:26:43 2015
+:	Gesture performed
+Tue Oct 20 22:26:43 2015
+:	Init DTW
+Tue Oct 20 22:26:43 2015
+:	Centroid X = 
+Tue Oct 20 22:26:43 2015
+:	Centroid X = 
+Tue Oct 20 22:26:43 2015
+:	Centroid X = 
+Tue Oct 20 22:26:43 2015
+:	Best distance: 131.158429
+Tue Oct 20 22:26:43 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:43 2015
+:	End DTW
+Tue Oct 20 22:26:43 2015
+:	Centroid X = 
+Tue Oct 20 22:26:45 2015
+:	Gesture performed
+Tue Oct 20 22:26:45 2015
+:	Init DTW
+Tue Oct 20 22:26:45 2015
+:	Centroid X = 
+Tue Oct 20 22:26:45 2015
+:	Centroid X = 
+Tue Oct 20 22:26:45 2015
+:	Centroid X = 
+Tue Oct 20 22:26:45 2015
+:	Best distance: 268.219121
+Tue Oct 20 22:26:45 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:45 2015
+:	End DTW
+Tue Oct 20 22:26:45 2015
+:	Centroid X = 
+Tue Oct 20 22:26:48 2015
+:	Gesture performed
+Tue Oct 20 22:26:48 2015
+:	Init DTW
+Tue Oct 20 22:26:48 2015
+:	Centroid X = 
+Tue Oct 20 22:26:48 2015
+:	Centroid X = 
+Tue Oct 20 22:26:48 2015
+:	Centroid X = 
+Tue Oct 20 22:26:48 2015
+:	Best distance: 83.107981
+Tue Oct 20 22:26:48 2015
+:	Gesture recognized: paisagem
+Tue Oct 20 22:26:48 2015
+:	End DTW
+Tue Oct 20 22:26:48 2015
+:	Centroid X = 
+Tue Oct 20 22:26:50 2015
+:	Gesture performed
+Tue Oct 20 22:26:50 2015
+:	Init DTW
+Tue Oct 20 22:26:50 2015
+:	Centroid X = 
+Tue Oct 20 22:26:50 2015
+:	Centroid X = 
+Tue Oct 20 22:26:50 2015
+:	Centroid X = 
+Tue Oct 20 22:26:50 2015
+:	Best distance: 281.199855
+Tue Oct 20 22:26:50 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:50 2015
+:	End DTW
+Tue Oct 20 22:26:50 2015
+:	Centroid X = 
+Tue Oct 20 22:26:52 2015
+:	Gesture performed
+Tue Oct 20 22:26:52 2015
+:	Init DTW
+Tue Oct 20 22:26:52 2015
+:	Centroid X = 
+Tue Oct 20 22:26:52 2015
+:	Centroid X = 
+Tue Oct 20 22:26:52 2015
+:	Centroid X = 
+Tue Oct 20 22:26:52 2015
+:	Best distance: 136.936391
+Tue Oct 20 22:26:52 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:52 2015
+:	End DTW
+Tue Oct 20 22:26:52 2015
+:	Centroid X = 
+Tue Oct 20 22:26:52 2015
+:	Gesture performed
+Tue Oct 20 22:26:52 2015
+:	Init DTW
+Tue Oct 20 22:26:52 2015
+:	Centroid X = 
+Tue Oct 20 22:26:52 2015
+:	Centroid X = 
+Tue Oct 20 22:26:52 2015
+:	Centroid X = 
+Tue Oct 20 22:26:52 2015
+:	Best distance: 230.550081
+Tue Oct 20 22:26:52 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:52 2015
+:	End DTW
+Tue Oct 20 22:26:52 2015
+:	Centroid X = 
+Tue Oct 20 22:26:55 2015
+:	Gesture performed
+Tue Oct 20 22:26:55 2015
+:	Init DTW
+Tue Oct 20 22:26:55 2015
+:	Centroid X = 
+Tue Oct 20 22:26:55 2015
+:	Centroid X = 
+Tue Oct 20 22:26:55 2015
+:	Centroid X = 
+Tue Oct 20 22:26:55 2015
+:	Best distance: 289.909541
+Tue Oct 20 22:26:55 2015
+:	Gesture not recognized
+Tue Oct 20 22:26:55 2015
+:	End DTW
+Tue Oct 20 22:26:55 2015
+:	Centroid X = 
+Tue Oct 20 22:26:57 2015
+:	Gesture performed
+Tue Oct 20 22:26:57 2015
+:	Init DTW
+Tue Oct 20 22:26:57 2015
+:	Centroid X = 
+Tue Oct 20 22:26:57 2015
+:	Centroid X = 
+Tue Oct 20 22:26:57 2015
+:	Centroid X = 
+Tue Oct 20 22:26:57 2015
+:	Best distance: 91.025086
+Tue Oct 20 22:26:57 2015
+:	Gesture recognized: cancelar
+Tue Oct 20 22:26:57 2015
+:	End DTW
+Tue Oct 20 22:26:57 2015
+:	Centroid X = 
+Tue Oct 20 22:27:01 2015
+:	Gesture performed
+Tue Oct 20 22:27:01 2015
+:	Init DTW
+Tue Oct 20 22:27:01 2015
+:	Centroid X = 
+Tue Oct 20 22:27:01 2015
+:	Centroid X = 
+Tue Oct 20 22:27:01 2015
+:	Centroid X = 
+Tue Oct 20 22:27:01 2015
+:	Best distance: 343.717324
+Tue Oc
