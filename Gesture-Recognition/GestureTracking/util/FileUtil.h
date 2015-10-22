@@ -24,16 +24,12 @@
 class FileUtil {
     
 private:
-    
     std::vector<type_gesture> mGestures;
 public:
-    
-    
     std::vector<std::string>& split(const std::string &s, char delim, std::vector<std::string> &elems);
     
     void loadGestures();
     bool isNewGesture(std::string str);
-    
     
     std::vector<type_gesture> getGestures();
     XnPoint3D getPointFile(std::string str);

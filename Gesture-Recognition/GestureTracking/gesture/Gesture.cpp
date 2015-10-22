@@ -148,211 +148,18 @@ Gesture::isGesturePerformed()
 void
 Gesture::updateState()
 {
-    vector<float> diff;
+    vector<double> diff;
     for (it = m_Hands.begin(); it != m_Hands.end(); ++it){
         if(!it->second.positions.empty()){
-            diff.push_back(getSumDiff(it->second.positions));
+            diff.push_back(MathUtil::getSumDiff(it->second.positions));
         }
     }
     
-    m_Diff = getMaxValue(diff);
+    m_Diff = MathUtil::getMaxValue(diff);
     m_StateGesturePrev = m_StateGesture;
     m_StateGesture = m_Diff > MIN_DIFF_LENGTH ? GESTURE_DOING : GESTURE_STOPED;
     
     //LOGGER->Log("State updated");
-}
-
-/*
- Somatório das diferenças de distância euclidiana entre as n posições anteriores
- */
-float
-Gesture::getSumDiff(vector<XnPoint3D> positions)
-{
-    float total = 0.0;
-    size_t n = positions.size();
-    size_t len = n - MAX_HAND_CONTROL_POINTS;
-    
-    XnPoint3D ant = positions[n-1];
-    XnPoint3D result;
-    for (size_t i = len; i < n; i++){
-        result = subtract(ant, positions[i]);
-        total += length(result);
-        ant = positions[i];
-    }
-    
-    return total;
-}
-
-float
-Gesture::getMaxValue(vector<float> values)
-{
-    float max = 0.0;
-    for (float value : values)
-    {
-        if (max < value) {
-            max = value;
-        }
-    }
-    
-    return max;
-}
-
-/*
- TODO: calcula a amplitude/módulo escalar de um vetor.
- */
-float
-Gesture::length(XnPoint3D point)
-{
-    return sqrt(pow(point.X, 2) + pow(point.Y, 2) + pow(point.Z, 2));
-}
-
-/*
- TODO: realiza a subtração entre dois vetores a e b.
- */
-XnPoint3D
-Gesture::subtract(XnPoint3D a, XnPoint3D b)
-{
-    a.X = a.X - b.X;
-    a.Y = a.Y - b.Y;
-    a.Z = a.Z - b.Z;
-    
-    return a;
-}
-
-/*
- TODO: Normaliza um vetor dividindo cada componente pelo 
- módulo do vetor.
- */
-XnPoint3D
-Gesture::normalize(XnPoint3D point)
-{
-    float len = length(point);
-    point.X = point.X / len;
-    point.Y = point.Y / len;
-    point.Z = point.Z / len;
-    
-    return point;
-}
-
-/*
- TODO: Imprime a trajetória que foi realizada pela mão. Cada 
- ponto é normalizado utilizando o módulo de cada vetor.
- */
-void
-Gesture::printPoints()
-{
-    /**
-    static int numGesture = 1;
-    int i = 1;
-    ofstream file;
-    
-    if(numGesture % 2 == 0) {
-        file.open("Results/gesture"+to_string(numGesture)+".txt");
-        
-        for ( hand : m_Hands){
-            if (!hand.positions.empty()) {
-                for (XnPoint3D point : hand.positions) {
-                    //point = normalize(point);
-                    file << i++ <<" "<<point.X <<" "<<point.Y <<" "<<point.Z <<endl;
-                }
-            }
-        }
-        
-        file.close();
-    }
-    
-    numGesture++;
-     */
-}
-/*
- TODO: Calcula o ângulo formado entre dois vetores a e b, com
- uma reta saindo da origem e passando pelos pontos
- */
-float
-Gesture::getAngleBetween2Points(XnPoint3D a, XnPoint3D b){
-    float mU, mV, mUV, uv, angle;
-    
-    //Produto vetorial
-    uv = a.X * b.X + a.Y * b.Y;
-    
-    //Módulo dos vetores
-    mU = sqrt(pow(a.X, 2) + pow(a.Y, 2));
-    mV = sqrt(pow(b.X, 2) + pow(b.Y, 2));
-    
-    //Produto vetorial dos módulos
-    mUV = mU * mV;
-    
-    angle = cos(uv/mUV);
-    
-    angle = acos(angle);
-    
-    printf("angle %f\n", angle);
-    
-    return angle;
-}
-
-/*
- TODO: Calcula o somatorio dos angulos formados pelo conjunto de pontos S = {p1, p2, p3,...,pn}
- */
-float
-Gesture::getSumAngles(){
-    
-    float sum = 0.0;
-    /*
-    for (int i = 1; i < m_Hands[0].positions.size(); i++) {
-        sum += getAngleBetween2Points(m_Hands[0].positions[i], m_Hands[0].positions[i-1]);
-    }
-    
-    printf("Sum = %f\n", sum);
-    */
-    return sum;
-}
-
-/*
- Método responsável por calcular o centro geométrico
- da trajetória, designado como centróide. O calculo
- é realizado através da razão entre somatório dos pontos
- e o número de pontos da trajetória. A centróide fornece
- a direção e distância para realizar a translação do movimento
- afim de obter invariância de posição.
- */
-XnPoint3D
-Gesture::calcCentroid(vector<XnPoint3D> positions)
-{
-    XnPoint3D centroid;
-    centroid.X = centroid.Y = centroid.Z = 0;
-    for(int i = 0; i < positions.size(); i++) {
-        centroid.X += positions[i].X;
-        centroid.Y += positions[i].Y;
-        centroid.Z += positions[i].Z;
-    }
-    //Sum 1 to prevent division by zero
-    centroid.X = (centroid.X + 1)/(positions.size() + 1) - 1;
-    centroid.Y = (centroid.Y + 1)/(positions.size() + 1) - 1;
-    centroid.Z = (centroid.Z + 1)/(positions.size() + 1) - 1;
-    
-    LOGGER->Log("Centroid X = ", centroid.X, " Y = ", centroid.Y, " Z = ", centroid.Z);
-    return centroid;
-}
-
-/*
- Método responsável por normalizar a trajetória para reduzir
- o impacto de gestos realizados por pessoas com aspectos físicos
- diferentes. A normalização é realizada através de uma translação
- da trajetória para a origem (0,0,0) usando a centróide da trajetória.
- */
-vector<XnPoint3D>
-Gesture::translateToOrigin(vector<XnPoint3D> positions){
-
-    XnPoint3D centroid = calcCentroid(positions);
-    
-    for(int i = 0; i < positions.size(); i++) {
-        positions[i].X -= centroid.X;
-        positions[i].Y -= centroid.Y;
-        positions[i].Z -= centroid.Z;
-    }
-    
-    return positions;
 }
 
 /*
@@ -373,11 +180,11 @@ Gesture::recognizeDTW(){
     for (it = m_Hands.begin(); it != m_Hands.end(); ++it){
         
         //Translate the hand trajectory to origin
-        trajectoryHand = translateToOrigin(it->second.positions);
+        trajectoryHand = MathUtil::translateToOrigin(it->second.positions);
         
         for (int i = 0; i < mGesturesFromFile.size(); i++) {
             trajectoryComp = mGesturesFromFile[i].positions;
-            trajectoryComp = translateToOrigin(trajectoryComp);
+            trajectoryComp = MathUtil::translateToOrigin(trajectoryComp);
             
             //Initialize the dynamic time warping
             DTW2 dtw(trajectoryHand, trajectoryComp);
@@ -388,9 +195,8 @@ Gesture::recognizeDTW(){
             //Get the best cost distance computed by dtw
             distance = dtw.getDistance();
             
-            //LOGGER->Log("Distance found: " + std::to_string(distance));
+            LOGGER->Log("Distance found: " + std::to_string(distance));
             if(distance < bestDistance){
-                //LOGGER->Log("Distance lower: " + std::to_string(distance));
                 bestDistance = distance;
                 gestureRecognized = mGesturesFromFile[i];
             }
@@ -425,7 +231,6 @@ Gesture::setGesturesFromFile(std::vector<type_gesture> gestures){
 void
 Gesture::clearHands(){
     for (it = m_Hands.begin(); it != m_Hands.end(); ++it){
-        calcCentroid(it->second.positions);
         it->second.positions.clear();
     }
 }

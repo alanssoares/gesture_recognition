@@ -25,6 +25,7 @@
 		C9647DE01BB819E500EBE3C2 /* NiHandTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9647DD21BB819E500EBE3C2 /* NiHandTracker.cpp */; };
 		C9647DE11BB819E500EBE3C2 /* NiHandViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9647DD51BB819E500EBE3C2 /* NiHandViewer.cpp */; };
 		C9647DE21BB819E500EBE3C2 /* NiSimpleViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9647DD71BB819E500EBE3C2 /* NiSimpleViewer.cpp */; };
+		C997D40C1BD9A59600B96BFE /* MathUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C997D40A1BD9A59600B96BFE /* MathUtil.cpp */; };
 		C9E683CA1BBA1C000021A369 /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9E683C81BBA1C000021A369 /* Logger.cpp */; };
 		C9E6D6081A0644A50081FC78 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9E6D6011A0644A50081FC78 /* main.cpp */; };
 		C9E6D60D1A0644B50081FC78 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E6D60C1A0644B50081FC78 /* OpenGL.framework */; };
@@ -104,6 +105,9 @@
 		C9647DF51BB8290100EBE3C2 /* glh_mipmaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_mipmaps.h; sourceTree = "<group>"; };
 		C9647DF61BB8290100EBE3C2 /* glh_obs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_obs.h; sourceTree = "<group>"; };
 		C9647DF71BB8290100EBE3C2 /* glh_text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glh_text.h; sourceTree = "<group>"; };
+		C997D40A1BD9A59600B96BFE /* MathUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MathUtil.cpp; path = GestureTracking/util/MathUtil.cpp; sourceTree = SOURCE_ROOT; };
+		C997D40B1BD9A59600B96BFE /* MathUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MathUtil.h; path = GestureTracking/util/MathUtil.h; sourceTree = SOURCE_ROOT; };
+		C997D40D1BD9A7A600B96BFE /* ConstantsUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConstantsUtil.h; path = util/ConstantsUtil.h; sourceTree = "<group>"; };
 		C9E683C81BBA1C000021A369 /* Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Logger.cpp; path = logger/Logger.cpp; sourceTree = "<group>"; };
 		C9E683C91BBA1C000021A369 /* Logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Logger.h; path = logger/Logger.h; sourceTree = "<group>"; };
 		C9E6D5F11A0643B40081FC78 /* GestureTracking */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GestureTracking; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,8 +133,11 @@
 		C910B4021BCA917400463D97 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				C997D40A1BD9A59600B96BFE /* MathUtil.cpp */,
+				C997D40B1BD9A59600B96BFE /* MathUtil.h */,
 				C910B4031BCA91B400463D97 /* FileUtil.cpp */,
 				C910B4041BCA91B400463D97 /* FileUtil.h */,
+				C997D40D1BD9A7A600B96BFE /* ConstantsUtil.h */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -374,6 +381,7 @@
 				C9647DA61BB819C500EBE3C2 /* HomogMatrix.cpp in Sources */,
 				C9647DA31BB819C500EBE3C2 /* Bezier.cpp in Sources */,
 				C9E6D6081A0644A50081FC78 /* main.cpp in Sources */,
+				C997D40C1BD9A59600B96BFE /* MathUtil.cpp in Sources */,
 				C9647DAA1BB819C500EBE3C2 /* Vector3f.cpp in Sources */,
 				C9647DDF1BB819E500EBE3C2 /* Testes.cpp in Sources */,
 			);

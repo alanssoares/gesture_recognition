@@ -2052,5 +2052,6 @@ int RayCircleIntersect(Ray r, float rad, Vector center,
 
   return 0;
 }
+
 #endif
 

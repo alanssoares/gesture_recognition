@@ -17,66 +17,10 @@
 #include <XnCppWrapper.h>
 #include "../logger/Logger.h"
 #include "../geometry/DTW.h"
-
-/*
-  ========== DEFINES ==========
- */
-
-/* Max number of hands to recognize */
-#define MAX_HANDS 2
-
-/* Max number of last points to verify the hand stopped ou moving */
-#define MAX_HAND_CONTROL_POINTS 10
-/*
- Define the min diff length between the MAX_HAND_CONTROL_POINTS
- to verify if the hand is stopped or moving
-*/
-#define MIN_DIFF_LENGTH 50 //Best aproximated
-
-/* The gesture is considered when have more then 3 points */
-#define MIN_CONTROL_POINTS 3 //Quadratic Bezier Curve
-
-/* Is not an hand */
-#define NOT_HAND -1
-
-/*
- Define the minimum distance threshold to recognize gestures
- */
-#define MIN_DISTANCE_TRESHOLD 100
+#include "../util/MathUtil.h"
+#include "../util/ConstantsUtil.h"
 
 using namespace std;
-
-/*
- --------- TYPES Gestures ----------
- */
-enum{
-    
-    BEM_VINDO = 1,
-    CANCELAR = 2,
-    CATEGORIA = 3,
-    PAISAGEM = 4,
-    MESTRADO = 5,
-    PERFEITO = 6
-};
-
-/*
- ---------- STATE Gesture -----------
- */
-enum{
-
-    GESTURE_DOING = 1,
-    GESTURE_STOPED = 2
-};
-
-typedef struct type_hand{
-    int id_hand;
-    vector<XnPoint3D> positions;
-}type_hand;
-
-typedef struct type_gesture{
-    std::string name;
-    vector<XnPoint3D> positions;
-}type_gesture;
 
 class Gesture{
     
@@ -87,7 +31,6 @@ private:
     
 public:
     
-    void    printPoints();
     void    computeCurve();
     void    clearHands();
     
@@ -103,32 +46,18 @@ public:
     
     void    recognizeDTW();
     
-    vector<XnPoint3D> resampleTrajectory(vector<XnPoint3D> a, vector<XnPoint3D> b);
-    void    createPointTrajectory(vector<XnPoint3D> *trajectory);
-    void    removePointTrajectory(vector<XnPoint3D> *trajectory);
-    
-    float     length(XnPoint3D point);
-    XnPoint3D subtract(XnPoint3D a, XnPoint3D b);
-    XnPoint3D normalize(XnPoint3D point);
-    XnPoint3D calcCentroid(vector<XnPoint3D> positions);
-    vector<XnPoint3D> translateToOrigin(vector<XnPoint3D> positions);
-    
-    float   getMaxValue(vector<float> values);
-    float   getAngleBetween2Points(XnPoint3D a, XnPoint3D b);
-    float   getSumAngles();
-    float   getSumDiff(vector<XnPoint3D> positions);
-    
     void    setGesturesFromFile(std::vector<type_gesture> gestures);
     
     int     m_StateGesture;
     int     m_StateGesturePrev;
     float   m_Diff;
-    std::vector<type_gesture> mGesturesFromFile;
     
     map<int, type_hand> m_Hands;
     map<int,type_hand>::iterator it;
     
     DTW*     mDTW;
+    
+    std::vector<type_gesture> mGesturesFromFile;
     
 public:
     static Gesture& getInstance();

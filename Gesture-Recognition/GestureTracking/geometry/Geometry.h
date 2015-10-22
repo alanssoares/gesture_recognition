@@ -5,7 +5,10 @@
 #include <string>
 #include <iostream>
 #include <math.h>
+#include <vector>
 #include <float.h>
+#include <XnCppWrapper.h>
+
 using namespace std;
 
 typedef float AngleRad;
@@ -485,6 +488,5 @@ class Rect
 };
 
 class Rectangle;
-
 
 #endif // GEOMETRY_H
