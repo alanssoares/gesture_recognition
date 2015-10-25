@@ -38,8 +38,8 @@ using namespace xn;
 //---------------------------------------------------------------------------
 // Defines
 //---------------------------------------------------------------------------
-#define GL_WIN_SIZE_X   1024
-#define GL_WIN_SIZE_Y   1024
+#define GL_WIN_SIZE_X   720
+#define GL_WIN_SIZE_Y   480
 #define TEXTURE_SIZE	512
 
 #define DEFAULT_DISPLAY_MODE	DISPLAY_MODE_DEPTH

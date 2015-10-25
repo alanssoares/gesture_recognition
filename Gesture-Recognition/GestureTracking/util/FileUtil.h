@@ -15,12 +15,19 @@
 #include <sstream>
 #include <vector>
 #include <XnCppWrapper.h>
-#include "../gesture/Gesture.h"
+#include "../util/ConstantsUtil.h"
 #include "../logger/Logger.h"
 
 #define GESTURE "gesture"
 #define NAME_FILE_DATA "Samples.txt"
 
+/*
+  Class created to read and write in files
+
+ Exemple: How to remove the first line in a text file:
+  awk '{$1=""; sub("",""); print}' gesture35.txt > output.txt
+ 
+ */
 class FileUtil {
     
 private:

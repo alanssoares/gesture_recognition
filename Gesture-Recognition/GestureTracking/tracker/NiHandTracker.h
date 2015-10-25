@@ -23,7 +23,6 @@
 
 #include <XnCppWrapper.h>
 #include <XnHashT.h>
-#include "Vector3f.h"
 
 class HandTracker
 {

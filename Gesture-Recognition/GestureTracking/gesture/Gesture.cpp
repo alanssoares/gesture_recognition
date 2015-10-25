@@ -183,19 +183,18 @@ Gesture::recognizeDTW(){
         trajectoryHand = MathUtil::translateToOrigin(it->second.positions);
         
         for (int i = 0; i < mGesturesFromFile.size(); i++) {
-            trajectoryComp = mGesturesFromFile[i].positions;
-            trajectoryComp = MathUtil::translateToOrigin(trajectoryComp);
+            trajectoryComp = MathUtil::translateToOrigin(mGesturesFromFile[i].positions);
             
             //Initialize the dynamic time warping
             DTW2 dtw(trajectoryHand, trajectoryComp);
             
-            //Calc dtw distance dtw between two trajectories
+            //Calc dtw distance between two trajectories
             dtw.compute();
             
             //Get the best cost distance computed by dtw
             distance = dtw.getDistance();
             
-            LOGGER->Log("Distance found: " + std::to_string(distance));
+            //Verify if the computed distance is lower that previous best
             if(distance < bestDistance){
                 bestDistance = distance;
                 gestureRecognized = mGesturesFromFile[i];
@@ -203,7 +202,6 @@ Gesture::recognizeDTW(){
         }
     }
     
-    LOGGER->Log("Best distance: " + std::to_string(bestDistance));
     if(bestDistance > MIN_DISTANCE_TRESHOLD){
         LOGGER->Log("Gesture not recognized");
         cout<<"Gesture not recognized : "<<bestDistance<<endl;
