@@ -115,6 +115,10 @@ public:
     void compute();
     
     /**
+    This method was created to init the parameters used in this class
+    **/
+    void init();
+    /**
      Specific the sequences that are matching
      @param v sequence sample
      @param w sequence template

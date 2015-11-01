@@ -171,6 +171,7 @@ void
 Gesture::recognizeDTW(){
     LOGGER->Log("Init DTW");
     
+    DTW2 dtw;
     std::vector<XnPoint3D> trajectoryHand;
     std::vector<XnPoint3D> trajectoryComp;
     double distance = 0.0;
@@ -184,9 +185,12 @@ Gesture::recognizeDTW(){
         
         for (int i = 0; i < mGesturesFromFile.size(); i++) {
             trajectoryComp = MathUtil::translateToOrigin(mGesturesFromFile[i].positions);
-            
+
             //Initialize the dynamic time warping
-            DTW2 dtw(trajectoryHand, trajectoryComp);
+            dtw.init();
+            
+            //Set sequences that will be computed
+            dtw.setSequences(trajectoryHand, trajectoryComp);
             
             //Calc dtw distance between two trajectories
             dtw.compute();

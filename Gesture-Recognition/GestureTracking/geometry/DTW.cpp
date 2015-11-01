@@ -162,3 +162,13 @@ DTW2::setSequences(std::vector<XnPoint3D> &v, std::vector<XnPoint3D> &w){
     mSequence1 = v;
     mSequence2 = w;
 }
+
+void
+DTW2::init(){
+    mSequence1.clear();
+    mSequence2.clear();
+    mWarpingDistance = 0;
+    mM = 0;
+    mN = 0;
+    mK = 0;
+}
