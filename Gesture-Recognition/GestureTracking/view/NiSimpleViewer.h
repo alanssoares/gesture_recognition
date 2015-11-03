@@ -22,6 +22,7 @@
 #define NI_SIMPLE_VIEWER_H__
 
 #include <XnCppWrapper.h>
+#include "../util/ConstantsUtil.h"
 
 enum DisplayModes_e
 {
@@ -41,6 +42,12 @@ public:
 	virtual XnStatus Init(int argc, char **argv);
 	virtual XnStatus Run();	//Does not return
 
+    /** 
+     Method created to record the input data
+     Link reference: http://kinectcar.ronsper.com/docs/openni/tut_recording.html
+     */
+    XnStatus createRecorder();
+    
 protected:
 	SimpleViewer(xn::Context& context);
 	virtual ~SimpleViewer();
@@ -58,7 +65,11 @@ protected:
 	xn::Context&		m_rContext;
 	xn::DepthGenerator	m_depth;
 	xn::ImageGenerator	m_image;
-
+    
+    //To recorder the input data
+    xn::Recorder*       m_RecorderDepth;
+    xn::Recorder*       m_RecorderImage;
+    
 	static SimpleViewer*	sm_pInstance;
 
 	void ScalePoint(XnPoint3D& point);

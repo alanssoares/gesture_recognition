@@ -161,6 +161,8 @@ void
 DTW2::setSequences(std::vector<XnPoint3D> &v, std::vector<XnPoint3D> &w){
     mSequence1 = v;
     mSequence2 = w;
+    mN = (int) mSequence1.size();
+    mM = (int) mSequence2.size();
 }
 
 void

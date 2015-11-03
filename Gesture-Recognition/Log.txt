@@ -8870,3 +8870,1133 @@ Sun Oct 25 13:10:32 2015
 Sun Oct 25 13:10:34 2015
 :	Gesture performed
 Sun Oct 25 13
+Mon Nov  2 12:23:35 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:23:35 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:23:35 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:23:35 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:23:35 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:23:35 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:23:35 2015
+:	Fim de leitura do arquivo: 
+Mon Nov  2 12:23:35 2015
+:	Instance Gesture Created
+Mon Nov  2 12:46:24 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:46:24 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:46:24 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:46:24 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:46:24 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:46:24 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:46:24 2015
+:	Fim de leitura do arquivo: 
+Mon Nov  2 12:46:24 2015
+:	Instance Gesture Created
+Mon Nov  2 12:47:16 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:47:16 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:47:16 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:47:16 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:47:16 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:47:16 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:47:16 2015
+:	Fim de leitura do arquivo: 
+Mon Nov  2 12:47:16 2015
+:	Instance Gesture Created
+Mon Nov  2 12:47:58 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:47:58 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:47:58 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:47:58 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:47:58 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:47:58 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 12:47:58 2015
+:	Fim de leitura do arquivo: 
+Mon Nov  2 12:47:58 2015
+:	Instance Gesture Created
+Mon Nov  2 20:18:34 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 20:18:34 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 20:18:34 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 20:18:34 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 20:18:34 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 20:18:34 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 20:18:34 2015
+:	Fim de leitura do arquivo: 
+Mon Nov  2 20:18:34 2015
+:	Instance Gesture Created
+Mon Nov  2 20:18:59 2015
+:	Hand add
+Mon Nov  2 20:19:01 2015
+:	Gesture performed
+Mon Nov  2 20:19:01 2015
+:	Init DTW
+Mon Nov  2 20:19:01 2015
+:	Gesture not recognized
+Mon Nov  2 20:19:01 2015
+:	End DTW
+Mon Nov  2 20:19:03 2015
+:	Gesture performed
+Mon Nov  2 20:19:03 2015
+:	Init DTW
+Mon Nov  2 20:19:03 2015
+:	Gesture not recognized
+Mon Nov  2 20:19:03 2015
+:	End DTW
+Mon Nov  2 20:19:06 2015
+:	Gesture performed
+Mon Nov  2 20:19:06 2015
+:	Init DTW
+Mon Nov  2 20:19:06 2015
+:	Gesture not recognized
+Mon Nov  2 20:19:06 2015
+:	End DTW
+Mon Nov  2 20:19:08 2015
+:	Gesture performed
+Mon Nov  2 20:19:08 2015
+:	Init DTW
+Mon Nov  2 20:19:08 2015
+:	Gesture not recognized
+Mon Nov  2 20:19:08 2015
+:	End DTW
+Mon Nov  2 20:19:12 2015
+:	Hand removed
+Mon Nov  2 20:19:15 2015
+:	Hand add
+Mon Nov  2 20:19:16 2015
+:	Gesture performed
+Mon Nov  2 20:19:16 2015
+:	Init DTW
+Mon Nov  2 20:19:16 2015
+:	Gesture not recognized
+Mon Nov  2 20:19:16 2015
+:	End DTW
+Mon Nov  2 20:19:18 2015
+:	Gesture performed
+Mon Nov  2 20:19:18 2015
+:	Init DTW
+Mon Nov  2 20:19:18 2015
+:	Gesture recognized: cancelar
+Mon Nov  2 20:19:18 2015
+:	End DTW
+Mon Nov  2 20:19:20 2015
+:	Gesture performed
+Mon Nov  2 20:19:20 2015
+:	Init DTW
+Mon Nov  2 20:19:20 2015
+:	Gesture not recognized
+Mon Nov  2 20:19:20 2015
+:	End DTW
+Mon Nov  2 20:19:22 2015
+:	Gesture performed
+Mon Nov  2 20:19:22 2015
+:	Init DTW
+Mon Nov  2 20:19:22 2015
+:	Gesture recognized: cancelar
+Mon Nov  2 20:19:22 2015
+:	End DTW
+Mon Nov  2 20:19:24 2015
+:	Gesture performed
+Mon Nov  2 20:19:24 2015
+:	Init DTW
+Mon Nov  2 20:19:24 2015
+:	Gesture not recognized
+Mon Nov  2 20:19:24 2015
+:	End DTW
+Mon Nov  2 20:19:26 2015
+:	Gesture performed
+Mon Nov  2 20:19:26 2015
+:	Init DTW
+Mon Nov  2 20:19:26 2015
+:	Gesture recognized: cancelar
+Mon Nov  2 20:19:26 2015
+:	End DTW
+Mon Nov  2 20:19:27 2015
+:	Gesture performed
+Mon Nov  2 20:19:27 2015
+:	Init DTW
+Mon Nov  2 20:19:27 2015
+:	Gesture not recognized
+Mon Nov  2 20:19:27 2015
+:	End DTW
+Mon Nov  2 20:19:29 2015
+:	Gesture performed
+Mon Nov  2 20:19:29 2015
+:	Init DTW
+Mon Nov  2 20:19:29 2015
+:	Gesture recognized: cancelar
+Mon Nov  2 20:19:29 2015
+:	End DTW
+Mon Nov  2 20:19:30 2015
+:	Gesture performed
+Mon Nov  2 20:19:30 2015
+:	Init DTW
+Mon Nov  2 20:19:30 2015
+:	Gesture not recognized
+Mon Nov  2 20:19:30 2015
+:	End DTW
+Mon Nov  2 20:19:32 2015
+:	Gesture performed
+Mon Nov  2 20:19:32 2015
+:	Init DTW
+Mon Nov  2 20:19:32 2015
+:	Gesture not recognized
+Mon Nov  2 20:19:32 2015
+:	End DTW
+Mon Nov  2 20:19:33 2015
+:	Gesture performed
+Mon Nov  2 20:19:33 2015
+:	Init DTW
+Mon Nov  2 20:19:33 2015
+:	Gesture not recognized
+Mon Nov  2 20:19:33 2015
+:	End DTW
+Mon Nov  2 20:19:35 2015
+:	Gesture performed
+Mon Nov  2 20:19:35 2015
+:	Init DTW
+Mon Nov  2 20:19:35 2015
+:	Gesture not recognized
+Mon Nov  2 20:19:35 2015
+:	End DTW
+Mon Nov  2 20:19:36 2015
+:	Gesture performed
+Mon Nov  2 20:19:36 2015
+:	Init DTW
+Mon Nov  2 20:19:36 2015
+:	Gesture not recognized
+Mon Nov  2 20:19:36 2015
+:	End DTW
+Mon Nov  2 20:19:38 2015
+:	Gesture performed
+Mon Nov  2 20:19:38 2015
+:	Init DTW
+Mon Nov  2 20:19:38 2015
+:	Gesture not recognized
+Mon Nov  2 20:19:38 2015
+:	End DTW
+Mon Nov  2 20:19:39 2015
+:	Gesture performed
+Mon Nov  2 20:19:39 2015
+:	Init DTW
+Mon Nov  2 20:19:39 2015
+:	Gesture not recognized
+Mon Nov  2 20:19:39 2015
+:	End DTW
+Mon Nov  2 20:19:41 2015
+:	Gesture performed
+Mon Nov  2 20:19:41 2015
+:	Init DTW
+Mon Nov  2 20:19:41 2015
+:	Gesture not recognized
+Mon Nov  2 20:19:41 2015
+:	End DTW
+Mon Nov  2 20:19:42 2015
+:	Gesture performed
+Mon Nov  2 20:19:42 2015
+:	Init DTW
+Mon Nov  2 20:19:42 2015
+:	Gesture not recognized
+Mon Nov  2 20:19:42 2015
+:	End DTW
+
+Mon Nov  2 20:33:44 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 20:33:44 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 20:33:44 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 20:33:44 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 20:33:44 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 20:33:44 2015
+:	Novo gesto encontrado no arquivo.
+Mon Nov  2 20:33:44 2015
+:	Fim de leitura do arquivo: 
+Mon Nov  2 20:33:44 2015
+:	Instance Gesture Created
+Mon Nov  2 20:33:54 2015
+:	Hand add
+Mon Nov  2 20:33:54 2015
+:	Hand add
+Mon Nov  2 20:33:57 2015
+:	Gesture performed
+Mon Nov  2 20:33:57 2015
+:	Init DTW
+Mon Nov  2 20:33:57 2015
+:	Gesture not recognized
+Mon Nov  2 20:33:57 2015
+:	End DTW
+Mon Nov  2 20:34:01 2015
+:	Gesture performed
+Mon Nov  2 20:34:01 2015
+:	Init DTW
+Mon Nov  2 20:34:01 2015
+:	Gesture recognized: cancelar
+Mon Nov  2 20:34:01 2015
+:	End DTW
+Mon Nov  2 20:34:02 2015
+:	Gesture performed
+Mon Nov  2 20:34:02 2015
+:	Init DTW
+Mon Nov  2 20:34:02 2015
+:	Gesture not recognized
+Mon Nov  2 20:34:02 2015
+:	End DTW
+Mon Nov  2 20:34:03 2015
+:	Gesture performed
+Mon Nov  2 20:34:03 2015
+:	Init DTW
+Mon Nov  2 20:34:03 2015
+:	Gesture not recognized
+Mon Nov  2 20:34:03 2015
+:	End DTW
+Mon Nov  2 20:34:05 2015
+:	Gesture performed
+Mon Nov  2 20:34:05 2015
+:	Init DTW
+Mon Nov  2 20:34:05 2015
+:	Gesture not recognized
+Mon Nov  2 20:34:05 2015
+:	End DTW
+Mon Nov  2 20:34:06 2015
+:	Gesture performed
+Mon Nov  2 20:34:06 2015
+:	Init DTW
+Mon Nov  2 20:34:06 2015
+:	Gesture not recognized
+Mon Nov  2 20:34:06 2015
+:	End DTW
+Mon Nov  2 20:34:08 2015
+:	Gesture performed
+Mon Nov  2 20:34:08 2015
+:	Init DTW
+Mon Nov  2 20:34:08 2015
+:	Gesture not recognized
+Mon Nov  2 20:34:08 2015
+:	End DTW
+Mon Nov  2 20:34:10 2015
+:	Gesture performed
+Mon Nov  2 20:34:10 2015
+:	Init DTW
+Mon Nov  2 20:34:10 2015
+:	Gesture not recognized
+Mon Nov  2 20:34:10 2015
+:	End DTW
+Mon Nov  2 20:34:12 2015
+:	Gesture performed
+Mon Nov  2 20:34:12 2015
+:	Init DTW
+Mon Nov  2 20:34:12 2015
+:	Gesture recognized: cancelar
+Mon Nov  2 20:34:12 2015
+:	End DTW
+Mon Nov  2 20:34:14 2015
+:	Gesture performed
+Mon Nov  2 20:34:14 2015
+:	Init DTW
+Mon Nov  2 20:34:14 2015
+:	Gesture not recognized
+Mon Nov  2 20:34:14 2015
+:	End DTW
+Mon Nov  2 20:34:18 2015
+:	Gesture performed
+Mon Nov  2 20:34:18 2015
+:	Init DTW
+Mon Nov  2 20:34:18 2015
+:	Gesture recognized: cancelar
+Mon Nov  2 20:34:18 2015
+:	End DTW
+Mon Nov  2 20:34:21 2015
+:	Gesture performed
+Mon Nov  2 20:34:21 2015
+:	Init DTW
+Mon Nov  2 20:34:21 2015
+:	Gesture not recognized
+Mon Nov  2 20:34:21 2015
+:	End DTW
+Mon Nov  2 20:34:24 2015
+:	Gesture performed
+Mon Nov  2 20:34:24 2015
+:	Init DTW
+Mon Nov  2 20:34:24 2015
+:	Gesture recognized: cancelar
+Mon Nov  2 20:34:24 2015
+:	End DTW
+Mon Nov  2 20:34:26 2015
+:	Gesture performed
+Mon Nov  2 20:34:26 2015
+:	Init DTW
+Mon Nov  2 20:34:26 2015
+:	Gesture not recognized
+Mon Nov  2 20:34:26 2015
+:	End DTW
+Mon Nov  2 20:34:28 2015
+:	Gesture performed
+Mon Nov  2 20:34:28 2015
+:	Init DTW
+Mon Nov  2 20:34:28 2015
+:	Gesture recognized: cancelar
+Mon Nov  2 20:34:28 2015
+:	End DTW
+Mon Nov  2 20:34:30 2015
+:	Gesture performed
+Mon Nov  2 20:34:30 2015
+:	Init DTW
+Mon Nov  2 20:34:30 2015
+:	Gesture not recognized
+Mon Nov  2 20:34:30 2015
+:	End DTW
+Mon Nov  2 20:34:32 2015
+:	Gesture performed
+Mon Nov  2 20:34:32 2015
+:	Init DTW
+Mon Nov  2 20:34:32 2015
+:	Gesture recognized: cancelar
+Mon Nov  2 20:34:32 2015
+:	End DTW
+Mon Nov  2 20:34:33 2015
+:	Gesture performed
+Mon Nov  2 20:34:33 2015
+:	Init DTW
+Mon Nov  2 20:34:33 2015
+:	Gesture not recognized
+Mon Nov  2 20:34:33 2015
+:	End DTW
+Mon Nov  2 20:34:34 2015
+:	Gesture performed
+Mon Nov  2 20:34:34 2015
+:	Init DTW
+Mon Nov  2 20:34:34 2015
+:	Gesture not recognized
+Mon Nov  2 20:34:34 2015
+:	End DTW
+Mon Nov  2 20:34:36 2015
+:	Gesture performed
+Mon Nov  2 20:34:36 2015
+:	Init DTW
+Mon Nov  2 20:34:36 2015
+:	Gesture recognized: cancelar
+Mon Nov  2 20:34:36 2015
+:	End DTW
+Mon Nov  2 20:34:38 2015
+:	Gesture performed
+Mon Nov  2 20:34:38 2015
+:	Init DTW
+Mon Nov  2 20:34:38 2015
+:	Gesture not recognized
+Mon Nov  2 20:34:38 2015
+:	End DTW
+Mon Nov  2 20:34:41 20
+Tue Nov  3 18:47:47 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 18:47:47 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 18:47:47 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 18:47:47 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 18:47:47 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 18:47:47 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 18:47:47 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 18:47:47 2015
+:	Instance Gesture Created
+Tue Nov  3 18:52:12 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 18:52:12 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 18:52:12 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 18:52:12 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 18:52:12 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 18:52:12 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 18:52:12 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 18:52:12 2015
+:	Instance Gesture Created
+Tue Nov  3 18:52:21 2015
+:	Hand add
+Tue Nov  3 18:52:26 2015
+:	Gesture performed
+Tue Nov  3 18:52:26 2015
+:	Init DTW
+Tue Nov  3 18:52:26 2015
+:	Gesture not recognized
+Tue Nov  3 18:52:26 2015
+:	End DTW
+Tue Nov  3 18:52:30 2015
+:	Gesture performed
+Tue Nov  3 18:52:30 2015
+:	Init DTW
+Tue Nov  3 18:52:30 2015
+:	Gesture not recognized
+Tue Nov  3 18:52:30 2015
+:	End DTW
+Tue Nov  3 18:52:31 2015
+:	Gesture performed
+Tue Nov  3 18:52:31 2015
+:	Init DTW
+Tue Nov  3 18:52:31 2015
+:	Gesture not recognized
+Tue Nov  3 18:52:31 2015
+:	End DTW
+Tue Nov  3 18:52:33 2015
+:	Gesture performed
+Tue Nov  3 18:52:33 2015
+:	Init DTW
+Tue Nov  3 18:52:33 2015
+:	Gesture not recognized
+Tue Nov  3 18:52:33 2015
+:	End DTW
+Tue Nov  3 18:52:33 2015
+:	Gesture performed
+Tue Nov  3 18:52:33 2015
+:	Init DTW
+Tue Nov  3 18:52:33 2015
+:	Gesture not recognized
+Tue Nov  3 18:52:33 2015
+:	End DTW
+Tue Nov  3 18:52:34 2015
+:	Gesture performed
+Tue Nov  3 18:52:34 2015
+:	Init DTW
+Tue Nov  3 18:52:34 2015
+:	Gesture not recognized
+Tue Nov  3 18:52:34 2015
+:	End DTW
+Tue Nov  3 18:52:36 2015
+:	Gesture performed
+Tue Nov  3 18:52:36 2015
+:	Init DTW
+Tue Nov  3 18:52:36 2015
+:	Gesture not recognized
+Tue Nov  3 18:52:36 2015
+:	End DTW
+Tue Nov  3 18:52:38 2015
+:	Gesture performed
+Tue Nov  3 18:52:38 2015
+:	Init DTW
+Tue Nov  3 18:52:38 2015
+:	Gesture not recognized
+Tue Nov  3 18:52:38 2015
+:	End DTW
+Tue Nov  3 18:52:55 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 18:52:55 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 18:52:55 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 18:52:55 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 18:52:55 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 18:52:55 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 18:52:55 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 18:52:55 2015
+:	Instance Gesture Created
+Tue Nov  3 18:52:58 2015
+:	Hand add
+Tue Nov  3 18:52:59 2015
+:	Gesture performed
+Tue Nov  3 18:52:59 2015
+:	Init DTW
+Tue Nov  3 18:52:59 2015
+:	Gesture not recognized
+Tue Nov  3 18:52:59 2015
+:	End DTW
+Tue Nov  3 18:53:01 2015
+:	Gesture performed
+Tue Nov  3 18:53:01 2015
+:	Init DTW
+Tue Nov  3 18:53:01 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 18:53:01 2015
+:	End DTW
+Tue Nov  3 18:53:03 2015
+:	Gesture performed
+Tue Nov  3 18:53:03 2015
+:	Init DTW
+Tue Nov  3 18:53:03 2015
+:	Gesture not recognized
+Tue Nov  3 18:53:03 2015
+:	End DTW
+Tue Nov  3 18:53:05 2015
+:	Gesture performed
+Tue Nov  3 18:53:05 2015
+:	Init DTW
+Tue Nov  3 18:53:05 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 18:53:05 2015
+:	End DTW
+Tue Nov  3 19:02:44 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:02:44 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:02:44 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:02:44 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:02:44 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:02:44 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:02:44 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 19:02:44 2015
+:	Instance Gesture Created
+Tue Nov  3 19:02:48 2015
+:	Hand add
+Tue Nov  3 19:02:49 2015
+:	Gesture performed
+Tue Nov  3 19:02:49 2015
+:	Init DTW
+Tue Nov  3 19:02:49 2015
+:	Gesture not recognized
+Tue Nov  3 19:02:49 2015
+:	End DTW
+Tue Nov  3 19:02:51 2015
+:	Gesture performed
+Tue Nov  3 19:02:51 2015
+:	Init DTW
+Tue Nov  3 19:02:51 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 19:02:51 2015
+:	End DTW
+Tue Nov  3 19:02:52 2015
+:	Gesture performed
+Tue Nov  3 19:02:52 2015
+:	Init DTW
+Tue Nov  3 19:02:52 2015
+:	Gesture not recognized
+Tue Nov  3 19:02:52 2015
+:	End DTW
+Tue Nov  3 19:02:54 2015
+:	Gesture performed
+Tue Nov  3 19:02:54 2015
+:	Init DTW
+Tue Nov  3 19:02:54 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 19:02:54 2015
+:	End DTW
+Tue Nov  3 19:02:56 2015
+:	Gesture performed
+Tue Nov  3 19:02:56 2015
+:	Init DTW
+Tue Nov  3 19:02:56 2015
+:	Gesture not recognized
+Tue Nov  3 19:02:56 2015
+:	End DTW
+Tue Nov  3 19:02:58 2015
+:	Gesture performed
+Tue Nov  3 19:02:58 2015
+:	Init DTW
+Tue Nov  3 19:02:58 2015
+:	Gesture not recognized
+Tue Nov  3 19:02:58 2015
+:	End DTW
+Tue Nov  3 19:03:00 2015
+:	Gesture performed
+Tue Nov  3 19:03:00 2015
+:	Init DTW
+Tue Nov  3 19:03:00 2015
+:	Gesture not recognized
+Tue Nov  3 19:03:00 2015
+:	End DTW
+Tue Nov  3 19:03:01 2015
+:	Gesture performed
+Tue Nov  3 19:03:01 2015
+:	Init DTW
+Tue Nov  3 19:03:01 2015
+:	Gesture not recognized
+Tue Nov  3 19:03:01 2015
+:	End DTW
+Tue Nov  3 19:03:03 2015
+:	Gesture performed
+Tue Nov  3 19:03:03 2015
+:	Init DTW
+Tue Nov  3 19:03:03 2015
+:	Gesture not recognized
+Tue Nov  3 19:03:03 2015
+:	End DTW
+Tue Nov  3 19:03:04 2015
+:	Gesture performed
+Tue Nov  3 19:03:04 2015
+:	Init DTW
+Tue Nov  3 19:03:04 2015
+:	Gesture not recognized
+Tue Nov  3 19:03:04 2015
+:	End DTW
+Tue Nov  3 19:03:05 2015
+:	Gesture performed
+Tue Nov  3 19:03:05 2015
+:	Init DTW
+Tue Nov  3 19:03:05 2015
+:	Gesture not recognized
+Tue Nov  3 19:03:05 2015
+:	End DTW
+Tue Nov  3 19:03:07 2015
+:	Gesture performed
+Tue Nov  3 19:03:07 2015
+:	Init DTW
+Tue Nov  3 19:03:07 2015
+:	Gesture not recognized
+Tue Nov  3 19:03:07 2015
+:	End DTW
+Tue Nov  3 19:03:08 2015
+:	Gesture performed
+Tue Nov  3 19:03:08 2015
+:	Init DTW
+Tue Nov  3 19:03:08 2015
+:	Gesture not recognized
+Tue Nov  3 19:03:08 2015
+:	End DTW
+Tue Nov  3 19:03:09 2015
+:	Gesture performed
+Tue Nov  3 19:03:09 2015
+:	Init DTW
+Tue Nov  3 19:03:09 2015
+:	Gesture not recognized
+Tue Nov  3 19:03:09 2015
+:	End DTW
+Tue Nov  3 19:03:11 2015
+:	Gesture performed
+Tue Nov  3 19:03:11 2015
+:	Init DTW
+Tue Nov  3 19:03:11 2015
+:	Gesture not recognized
+Tue Nov  3 19:03:11 2015
+:	End DTW
+Tue Nov  3 19:03:12 2015
+:	Gesture performed
+Tue Nov  3 19:03:12 2015
+:	Init DTW
+Tue Nov  3 19:03:12 2015
+:	Gesture not recognized
+Tue Nov  3 19:03:12 2015
+:	End DTW
+Tue Nov  3 19:03:13 2015
+:	Gesture performed
+Tue Nov  3 19:03:13 2015
+:	Init DTW
+Tue Nov  3 19:03:13 2015
+:	Gesture not recognized
+Tue Nov  3 19:03:13 2015
+:	End DTW
+Tue Nov  3 19:03:15 2015
+:	Gesture performed
+Tue Nov  3 19:03:15 2015
+:	Init DTW
+Tue Nov  3 19:03:15 2015
+:	Gesture not recognized
+Tue Nov  3 19:03:15 2015
+:	End DTW
+Tue Nov  3 19:03:15 2015
+:	Gesture performed
+Tue Nov  3 19:03:15 2015
+:	Init DTW
+Tue Nov  3 19:03:15 2015
+:	Gesture not recognized
+Tue Nov  3 19:03:15 2015
+:	End DTW
+Tue Nov  3 19:03:19 2015
+:	Gesture performed
+Tue Nov  3 19:03:19 2015
+:	Init DTW
+Tue Nov  3 19:03:19 2015
+:	Gesture not recognized
+Tue Nov  3 19:03:19 2015
+:	End DTW
+Tue Nov  3 19:03:21 2015
+:	Gesture performed
+Tue Nov  3 19:03:21 2015
+:	Init DTW
+Tue Nov  3 19:03:21 2015
+:	Gesture not recognized
+Tue Nov  3 19:03:21 2015
+:	End DTW
+Tue Nov  3 19:03:23 2015
+:	Gesture performed
+Tue Nov  3 19:03:23 2015
+:	Init DTW
+Tue Nov  3 19:03:23 2015
+:	Gesture not recognized
+Tue Nov  3 19:03:23 2015
+:	End DTW
+Tue Nov  3 19:03:24 2015
+:	Gesture performed
+Tue Nov  3 19:03:24 2015
+:	Init DTW
+Tue Nov  3 19:03:24 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 19:03:24 2015
+:	End DTW
+Tue Nov  3 19:03:26 2015
+:	Gesture performed
+Tue Nov  3 19:03:26 2015
+:	Init DTW
+Tue Nov  3 19:03:26 2015
+:	Gesture not recognized
+Tue Nov  3 19:03:26 2015
+:	End DTW
+Tue Nov  3 19:03:27 2015
+:	Gesture performed
+Tue Nov  3 19:03:27 2015
+:	Init DTW
+Tue Nov  3 19:03:27 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 19:03:27 2015
+:	End DTW
+Tue Nov  3 19:06:28 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:06:28 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:06:28 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:06:28 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:06:28 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:06:28 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:06:28 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 19:06:28 2015
+:	Instance Gesture Created
+Tue Nov  3 19:07:09 2015
+:	Hand add
+Tue Nov  3 19:07:11 2015
+:	Gesture performed
+Tue Nov  3 19:07:11 2015
+:	Init DTW
+Tue Nov  3 19:07:11 2015
+:	Gesture not recognized
+Tue Nov  3 19:07:11 2015
+:	End DTW
+Tue Nov  3 19:07:11 2015
+:	Gesture performed
+Tue Nov  3 19:07:11 2015
+:	Init DTW
+Tue Nov  3 19:07:11 2015
+:	Gesture not recognized
+Tue Nov  3 19:07:11 2015
+:	End DTW
+Tue Nov  3 19:07:15 2015
+:	Hand removed
+Tue Nov  3 19:07:19 2015
+:	Hand add
+Tue Nov  3 19:07:20 2015
+:	Gesture performed
+Tue Nov  3 19:07:20 2015
+:	Init DTW
+Tue Nov  3 19:07:20 2015
+:	Gesture not recognized
+Tue Nov  3 19:07:20 2015
+:	End DTW
+Tue Nov  3 19:07:21 2015
+:	Hand add
+Tue Nov  3 19:07:23 2015
+:	Gesture performed
+Tue Nov  3 19:07:23 2015
+:	Init DTW
+Tue Nov  3 19:07:23 2015
+:	Gesture not recognized
+Tue Nov  3 19:07:23 2015
+:	End DTW
+Tue Nov  3 19:07:26 2015
+:	Gesture performed
+Tue Nov  3 19:07:26 2015
+:	Init DTW
+Tue Nov  3 19:07:26 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 19:07:26 2015
+:	End DTW
+Tue Nov  3 19:07:27 2015
+:	Gesture performed
+Tue Nov  3 19:07:27 2015
+:	Init DTW
+Tue Nov  3 19:07:27 2015
+:	Gesture not recognized
+Tue Nov  3 19:07:27 2015
+:	End DTW
+Tue Nov  3 19:07:28 2015
+:	Gesture performed
+Tue Nov  3 19:07:28 2015
+:	Init DTW
+Tue Nov  3 19:07:28 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 19:07:28 2015
+:	End DTW
+Tue Nov  3 19:07:29 2015
+:	Gesture performed
+Tue Nov  3 19:07:29 2015
+:	Init DTW
+Tue Nov  3 19:07:29 2015
+:	Gesture not recognized
+Tue Nov  3 19:07:29 2015
+:	End DTW
+Tue Nov  3 19:07:31 2015
+:	Gesture performed
+Tue Nov  3 19:07:31 2015
+:	Init DTW
+Tue Nov  3 19:07:31 2015
+:	Gesture not recognized
+Tue Nov  3 19:07:31 2015
+:	End DTW
+Tue Nov  3 19:07:33 2015
+:	Gesture performed
+Tue Nov  3 19:07:33 2015
+:	Init DTW
+Tue Nov  3 19:07:33 2015
+:	Gesture not recognized
+Tue Nov  3 19:07:33 2015
+:	End DTW
+Tue Nov  3 19:07:34 2015
+:	Gesture performed
+Tue Nov  3 19:07:34 2015
+:	Init DTW
+Tue Nov  3 19:07:34 2015
+:	Gesture not recognized
+Tue Nov  3 19:07:34 2015
+:	End DTW
+Tue Nov  3 19:07:37 2015
+:	Gesture performed
+Tue Nov  3 19:07:37 2015
+:	Init DTW
+Tue Nov  3 19:07:37 2015
+:	Gesture not recognized
+Tue Nov  3 19:07:37 2015
+:	End DTW
+Tue Nov  3 19:07:39 2015
+:	Gesture performed
+Tue Nov  3 19:07:39 2015
+:	Init DTW
+Tue Nov  3 19:07:39 2015
+:	Gesture not recognized
+Tue Nov  3 19:07:39 2015
+:	End DTW
+Tue Nov  3 19:07:41 2015
+:	Gesture performed
+Tue Nov  3 19:07:41 2015
+:	Init DTW
+Tue Nov  3 19:07:41 2015
+:	Gesture not recognized
+Tue Nov  3 19:07:41 2015
+:	End DTW
+Tue Nov  3 19:07:44 2015
+:	Gesture performed
+Tue Nov  3 19:07:44 2015
+:	Init DTW
+Tue Nov  3 19:07:44 2015
+:	Gesture recognized: paisagem
+Tue Nov  3 19:07:44 2015
+:	End DTW
+Tue Nov  3 19:07:47 2015
+:	Gesture performed
+Tue Nov  3 19:07:47 2015
+:	Init DTW
+Tue Nov  3 19:07:47 2015
+:	Gesture not recognized
+Tue Nov  3 19:07:47 2015
+:	End DTW
+Tue Nov  3 19:07:50 2015
+:	Gesture performed
+Tue Nov  3 19:07:50 2015
+:	Init DTW
+Tue Nov  3 19:07:50 2015
+:	Gesture not recognized
+Tue Nov  3 19:07:50 2015
+:	End DTW
+Tue Nov  3 19:07:53 2015
+:	Gesture performed
+Tue Nov  3 19:07:53 2015
+:	Init DTW
+Tue Nov  3 19:07:53 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 19:07:53 2015
+:	End DTW
+Tue Nov  3 19:07:54 2015
+:	Gesture performed
+Tue Nov  3 19:07:54 2015
+:	Init DTW
+Tue Nov  3 19:07:54 2015
+:	Gesture not recognized
+Tue Nov  3 19:07:54 2015
+:	End DTW
+Tue Nov  3 19:07:55 2015
+:	Gesture performed
+Tue Nov  3 19:07:55 2015
+:	Init DTW
+Tue Nov  3 19:07:55 2015
+:	Gesture not recognized
+Tue Nov  3 19:07:55 2015
+:	End DTW
+Tue Nov  3 19:07:57 2015
+:	Gesture performed
+Tue Nov  3 19:07:57 2015
+:	Init DTW
+Tue Nov  3 19:07:57 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 19:07:57 2015
+:	End DTW
+Tue Nov  3 19:07:57 2015
+:	Gesture performed
+Tue Nov  3 19:07:57 2015
+:	Init DTW
+Tue Nov  3 19:07:57 2015
+:	Gesture not recognized
+Tue Nov  3 19:07:57 2015
+:	End DTW
+Tue Nov  3 19:07:59 2015
+:	Gesture performed
+Tue Nov  3 19:07:59 2015
+:	Init DTW
+Tue Nov  3 19:07:59 2015
+:	Gesture not recognized
+Tue Nov  3 19:07:59 2015
+:	End DTW
+Tue Nov  3 19:08:02 2015
+:	Gesture performed
+Tue Nov  3 19:08:02 2015
+:	Init DTW
+Tue Nov  3 19:08:02 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 19:08:02 2015
+:	End DTW
+Tue Nov  3 19:08:03 2015
+:	Gesture performed
+Tue Nov  3 19:08:03 2015
+:	Init DTW
+Tue Nov  3 19:08:03 2015
+:	Gesture not recognized
+Tue Nov  3 19:08:03 2015
+:	End DTW
+Tue Nov  3 19:08:04 2015
+:	Gesture performed
+Tue Nov  3 19:08:04 2015
+:	Init DTW
+Tue Nov  3 19:08:04 2015
+:	Gesture not recognized
+Tue Nov  3 19:08:04 2015
+:	End DTW
+Tue Nov  3 19:08:05 2015
+:	Gesture performed
+Tue Nov  3 19:08:05 2015
+:	Init DTW
+Tue Nov  3 19:08:05 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 19:08:05 2015
+:	End DTW
+Tue Nov  3 19:08:06 2015
+:	Gesture performed
+Tue Nov  3 19:08:06 2015
+:	Init DTW
+Tue Nov  3 19:08:06 2015
+:	Gesture not recognized
+Tue Nov  3 19:08:06 2015
+:	End DTW
+Tue Nov  3 19:08:07 2015
+:	Gesture performed
+Tue Nov  3 19:08:07 2015
+:	Init DTW
+Tue Nov  3 19:08:07 2015
+:	Gesture not recognized
+Tue Nov  3 19:08:07 2015
+:	End DTW
+Tue Nov  3 19:08:10 2015
+:	Gesture performed
+Tue Nov  3 19:08:10 2015
+:	Init DTW
+Tue Nov  3 19:08:10 2015
+:	Gesture not recognized
+Tue Nov  3 19:08:10 2015
+:	End DTW
+Tue Nov  3 19:08:17 2015
+:	Gesture performed
+Tue Nov  3 19:08:17 2015
+:	Init DTW
+Tue Nov  3 19:08:17 2015
+:	Gesture not recognized
+Tue Nov  3 19:08:17 2015
+:	End DTW
+Tue Nov  3 19:08:17 2015
+:	Gesture performed
+Tue Nov  3 19:08:17 2015
+:	Init DTW
+Tue Nov  3 19:08:17 2015
+:	Gesture not recognized
+Tue Nov  3 19:08:17 2015
+:	End DTW
+Tue Nov  3 19:08:18 2015
+:	Gesture performed
+Tue Nov  3 19:08:18 2015
+:	Init DTW
+Tue Nov  3 19:08:18 2015
+:	Gesture not recognized
+Tue Nov  3 19:08:18 2015
+:	End DTW
+Tue Nov  3 19:08:19 2015
+:	Gesture performed
+Tue Nov  3 19:08:19 2015
+:	Init DTW
+Tue Nov  3 19:08:19 2015
+:	Gesture not recognized
+Tue Nov  3 19:08:19 2015
+:	End DTW
+Tue Nov  3 19:08:20 2015
+:	Hand removed
+Tue Nov  3 19:08:20 2015
+:	Hand removed
+Tue Nov  3 19:08:22 2015
+:	Hand add
+Tue Nov  3 19:08:22 2015
+:	Hand add
+Tue Nov  3 19:08:25 2015
+:	Hand removed
+Tue Nov  3 19:08:26 2015
+:	Gesture performed
+Tue Nov  3 19:08:26 2015
+:	Init DTW
+Tue Nov  3 19:08:26 2015
+:	Gesture not recognized
+Tue Nov  3 19:08:26 2015
+:	End DTW
+Tue Nov  3 19:08:27 2015
+:	Hand add
+Tue Nov  3 19:08:48 2015
+:	Hand removed
+Tue Nov  3 19:08:51 2015
+:	Hand removed

@@ -24,6 +24,7 @@
 #include "view/NiHandViewer.h"
 #include "util/FileUtil.h"
 #include "gesture/Gesture.h"
+#include "util/ConstantsUtil.h"
 
 //---------------------------------------------------------------------------
 // Defines
@@ -45,6 +46,8 @@ int main(int argc, char* argv[])
     
     // Load the gestures data
     fileUtil.loadGestures();
+    
+    // Setter the gestures from file
     Gesture::getInstance().setGesturesFromFile(fileUtil.getGestures());
     
 	// Create a context with default settings
@@ -56,27 +59,16 @@ int main(int argc, char* argv[])
 		printf("%s\n", strError);
 		return (rc);
 	}
-	else if (rc != XN_STATUS_OK)
-	{
-		printf("Open failed: %s\n", xnGetStatusString(rc));
-		return (rc);
-	}
-
+    
+    CHECK_RC(rc, "Open failed: %s\n");
+    
 	SimpleViewer& viewer = HandViewer::CreateInstance(g_context);
-
+    
 	rc = viewer.Init(argc, argv);
-	if (rc != XN_STATUS_OK)
-	{
-		printf("Viewer init failed: %s\n", xnGetStatusString(rc));
-		return 1;
-	}
-
+    CHECK_RC(rc, "Viewer init failed: %s\n");
+    
 	rc = viewer.Run();
-	if (rc != XN_STATUS_OK)
-	{
-		printf("Viewer run failed: %s\n", xnGetStatusString(rc));
-		return 1;
-	}
+    CHECK_RC(rc, "Viewer run failed: %s\n");
 
 	return 0;
 }

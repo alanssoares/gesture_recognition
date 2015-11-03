@@ -175,46 +175,26 @@ HandTracker::Init()
     
 	// Create generators
 	rc = m_GestureGenerator.Create(m_rContext);
-	if (rc != XN_STATUS_OK)
-    {
-		printf("Unable to create GestureGenerator.");
-		return rc;
-	}
-
+    CHECK_RC(rc, "Unable to create GestureGenerator: %s");
+    
 	rc = m_HandsGenerator.Create(m_rContext);
-	if (rc != XN_STATUS_OK)
-	{
-		printf("Unable to create HandsGenerator.");
-		return rc;
-	}
+    CHECK_RC(rc, "Unable to create HandsGenerator: %s");
 
 	/* Register callbacks Using this as cookie */
 	rc = m_GestureGenerator.RegisterGestureCallbacks(Gesture_Recognized, Gesture_Process, this, chandle);
-	if (rc != XN_STATUS_OK)
-	{
-		printf("Unable to register gesture callbacks.");
-		return rc;
-	}
+    CHECK_RC(rc, "Unable to register gesture callbacks: %s");
 
 	rc = m_HandsGenerator.RegisterHandCallbacks(Hand_Create, Hand_Update, Hand_Destroy, this, chandle);
-	if (rc != XN_STATUS_OK)
-	{
-		printf("Unable to register hand callbacks.");
-		return rc;
-	}
+    CHECK_RC(rc, "Unable to register hand callbacks: %s");
 
 	return XN_STATUS_OK;
 }
 
 XnStatus
-HandTracker::Run(){
-    
+HandTracker::Run()
+{
 	XnStatus rc = m_rContext.StartGeneratingAll();
-	if (rc != XN_STATUS_OK)
-	{
-		printf("Unable to start generating.");
-		return rc;
-	}
+    CHECK_RC(rc, "Unable to start generating: %s");
 
 	ADD_ALL_GESTURES;
 

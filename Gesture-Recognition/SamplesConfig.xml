@@ -19,7 +19,7 @@
          -->
         
         <!-- Set global mirror -->
-        <GlobalMirror on="true"/>
+        <!-- <GlobalMirror on="true"/> -->
         
         <!-- Create a depth node and give it a name alias (useful if referenced ahead in this script) -->
         <Node type="Depth" name="MyDepth">
@@ -34,13 +34,11 @@
                  -->
             </Query>
             <Configuration>
-                <!-- Uncomment to set requested mode
+                <!-- Uncomment to set requested mode -->
                  <MapOutputMode xRes="640" yRes="480" FPS="30"/>
-                 -->
                 
-                <!-- Uncomment to override global mirror
-                 <Mirror on="false" />
-                 -->
+                <!-- Uncomment to override global mirror -->
+                 <Mirror on="true" />
             </Configuration>
         </Node>
         

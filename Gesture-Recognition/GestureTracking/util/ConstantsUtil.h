@@ -13,6 +13,10 @@
 #include <vector>
 #include <XnCppWrapper.h>
 
+
+#define CHECK_RC(rc, message){ if(rc != XN_STATUS_OK){ printf(message, xnGetStatusString(rc)); return 1; }}
+#define CHECK_RC_VOID(rc, message){ if(rc != XN_STATUS_OK){ printf(message, xnGetStatusString(rc)); return; }}
+
 using namespace std;
 
 /* Max number of hands to recognize */
@@ -36,6 +40,12 @@ using namespace std;
  Define the minimum distance threshold to recognize gestures
  */
 #define MIN_DISTANCE_TRESHOLD 100
+
+/*
+ Define the name of the file that will be saved
+ */
+#define FILE_NAME_RECORD_DEPTH "StreamDepth.oni"
+#define FILE_NAME_RECORD_IMAGE "StreamImage.oni"
 
 /*
  --------- TYPES Gestures ----------

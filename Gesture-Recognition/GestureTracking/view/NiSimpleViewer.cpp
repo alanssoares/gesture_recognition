@@ -38,11 +38,11 @@ using namespace xn;
 //---------------------------------------------------------------------------
 // Defines
 //---------------------------------------------------------------------------
-#define GL_WIN_SIZE_X   720
+#define GL_WIN_SIZE_X   640
 #define GL_WIN_SIZE_Y   480
 #define TEXTURE_SIZE	512
 
-#define DEFAULT_DISPLAY_MODE	DISPLAY_MODE_DEPTH
+#define DEFAULT_DISPLAY_MODE	DISPLAY_MODE_IMAGE
 
 #define MIN_NUM_CHUNKS(data_size, chunk_size)	((((data_size)-1) / (chunk_size) + 1))
 #define MIN_CHUNKS_SIZE(data_size, chunk_size)	(MIN_NUM_CHUNKS(data_size, chunk_size) * (chunk_size))
@@ -92,6 +92,8 @@ SimpleViewer::~SimpleViewer()
 {
 	delete[] m_pTexMap;
 	delete[] m_pDepthHist;
+    delete[] m_RecorderDepth;
+    delete[] m_RecorderImage;
 }
 
 SimpleViewer& SimpleViewer::CreateInstance( xn::Context& context )
@@ -122,18 +124,10 @@ SimpleViewer::Init(int argc, char **argv)
 	XnStatus rc;
     
 	rc = m_rContext.FindExistingNode(XN_NODE_TYPE_DEPTH, m_depth);
-	if (rc != XN_STATUS_OK)
-	{
-		printf("No depth node exists! Check your XML.");
-		return rc;
-	}
-
+    CHECK_RC(rc, "No depth node exists! Check your XML: %s\n");
+    
 	rc = m_rContext.FindExistingNode(XN_NODE_TYPE_IMAGE, m_image);
-	if (rc != XN_STATUS_OK)
-	{
-		printf("No image node exists! Check your XML.");
-		return rc;
-	}
+    CHECK_RC(rc, "No image node exists! Check your XML: %s\n");
 
 	m_depth.GetMetaData(m_depthMD);
 	m_image.GetMetaData(m_imageMD);
@@ -151,7 +145,7 @@ SimpleViewer::Init(int argc, char **argv)
 		printf("The device image format must be RGB24\n");
 		return 1;
 	}
-
+    
 	// Texture map init
 	m_nTexMapX = MIN_CHUNKS_SIZE(m_depthMD.FullXRes(), TEXTURE_SIZE);
 	m_nTexMapY = MIN_CHUNKS_SIZE(m_depthMD.FullYRes(), TEXTURE_SIZE);
@@ -159,6 +153,9 @@ SimpleViewer::Init(int argc, char **argv)
 
 	m_pDepthHist = new float[m_depth.GetDeviceMaxDepth() + 1];
 
+    // Create the recorder object to save the stream buffer
+    createRecorder();
+    
 	return InitOpenGL(argc, argv);
 }
 
@@ -169,6 +166,33 @@ SimpleViewer::Run()
 	glutMainLoop();	// Does not return!
 
 	return XN_STATUS_OK;
+}
+
+XnStatus
+SimpleViewer::createRecorder()
+{
+    XnStatus	rc;
+    
+    m_RecorderDepth = new Recorder();
+    m_RecorderImage = new Recorder();
+    
+    rc = m_RecorderDepth->Create(m_rContext);
+    CHECK_RC(rc, "Create recorder depth failed: %s\n");
+    
+    rc = m_RecorderDepth->SetDestination(XN_RECORD_MEDIUM_FILE, FILE_NAME_RECORD_DEPTH);
+    CHECK_RC(rc, "Set destination record depth %s\n");
+    rc = m_RecorderDepth->AddNodeToRecording(m_depth, XN_CODEC_16Z);
+    CHECK_RC(rc, "AddNode Depth to Recording failed: %s\n");
+
+    rc = m_RecorderImage->Create(m_rContext);
+    CHECK_RC(rc, "Create recorder image failed: %s\n");
+    
+    rc = m_RecorderImage->SetDestination(XN_RECORD_MEDIUM_FILE, FILE_NAME_RECORD_IMAGE);
+    CHECK_RC(rc, "Set destination record image %s\n");
+    rc = m_RecorderImage->AddNodeToRecording(m_image, XN_CODEC_JPEG);
+    CHECK_RC(rc, "AddNode Image to Recording failed: %s\n");
+    
+    return XN_STATUS_OK;
 }
 
 XnStatus
@@ -200,16 +224,20 @@ SimpleViewer::InitOpenGLHooks()
 void
 SimpleViewer::Display()
 {
-	XnStatus		rc = XN_STATUS_OK;
+	XnStatus rc = XN_STATUS_OK;
 
 	// Read a new frame
 	rc = m_rContext.WaitAnyUpdateAll();
-	if (rc != XN_STATUS_OK)
-	{
-		printf("Read failed: %s\n", xnGetStatusString(rc));
-		return;
-	}
+    CHECK_RC_VOID(rc, "Read failed: %s\n");
 
+    // Record the input data
+    rc = m_RecorderDepth->Record();
+    CHECK_RC_VOID(rc, "Record the data depth failed: %s\n");
+    
+    // Record the input data
+    rc = m_RecorderImage->Record();
+    CHECK_RC_VOID(rc, "Record the data image failed: %s\n");
+    
 	m_depth.GetMetaData(m_depthMD);
 	m_image.GetMetaData(m_imageMD);
 
@@ -319,8 +347,7 @@ SimpleViewer::Display()
 
 	int nXRes = m_depthMD.FullXRes();
 	int nYRes = m_depthMD.FullYRes();
-
-	
+    
 	// upper left
 	glTexCoord2f(0, 0);
 	glVertex2f(0, 0);
