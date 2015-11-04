@@ -37,22 +37,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GestureTracking/main.cpp"
-            timestampString = "468198155.350363"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "main(int argc, char* argv[])"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "GestureTracking/Gesture.h"
             timestampString = "464998655.023139"
             startingColumnNumber = "9223372036854775807"
@@ -100,43 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GestureTracking/main.cpp"
-            timestampString = "468198155.350363"
+            timestampString = "468284782.106597"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "main(int argc, char* argv[])"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GestureTracking/main.cpp"
-            timestampString = "468198155.350363"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "main(int argc, char* argv[])"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GestureTracking/main.cpp"
-            timestampString = "468198155.350363"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "main(int argc, char* argv[])"
             landmarkType = "7">
          </BreakpointContent>
@@ -494,11 +446,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GestureTracking/view/NiSimpleViewer.cpp"
-            timestampString = "468200526.552539"
+            timestampString = "468288392.661368"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "SimpleViewer::Init(int argc, char **argv)"
             landmarkType = "5">
          </BreakpointContent>
@@ -510,11 +462,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GestureTracking/view/NiSimpleViewer.cpp"
-            timestampString = "468200526.552539"
+            timestampString = "468288392.661368"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "SimpleViewer::createRecorder()"
             landmarkType = "5">
          </BreakpointContent>
@@ -526,11 +478,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GestureTracking/view/NiSimpleViewer.cpp"
-            timestampString = "468200526.552539"
+            timestampString = "468288392.661368"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "SimpleViewer::InitOpenGLHooks()"
             landmarkType = "5">
          </BreakpointContent>
@@ -542,11 +494,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GestureTracking/view/NiSimpleViewer.cpp"
-            timestampString = "468200526.552539"
+            timestampString = "468288392.661368"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "SimpleViewer::createRecorder()"
             landmarkType = "5">
          </BreakpointContent>
@@ -558,11 +510,91 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GestureTracking/view/NiSimpleViewer.cpp"
-            timestampString = "468280963.555373"
+            timestampString = "468288392.661368"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "SimpleViewer::createRecorder()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GestureTracking/view/NiSimpleViewer.cpp"
+            timestampString = "468288392.661368"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
+            landmarkName = "SimpleViewer::deleteRecorder(void)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GestureTracking/main.cpp"
+            timestampString = "468287159.782394"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "main(int argc, char* argv[])"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GestureTracking/view/NiSimpleViewer.cpp"
+            timestampString = "468288392.661368"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "SimpleViewer::Init(int argc, char **argv)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GestureTracking/view/NiHandViewer.cpp"
+            timestampString = "468286945.295216"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "HandViewer::Init(int argc, char **argv)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GestureTracking/view/NiSimpleViewer.cpp"
+            timestampString = "468288392.661368"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "SimpleViewer::Display()"
             landmarkType = "5">
          </BreakpointContent>
@@ -573,13 +605,109 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GestureTracking/view/NiSimpleViewer.cpp"
-            timestampString = "468280251.752072"
+            filePath = "GestureTracking/main.cpp"
+            timestampString = "468288039.024458"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "SimpleViewer::createRecorder()"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "main(int argc, char* argv[])"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GestureTracking/tracker/NiHandTracker.cpp"
+            timestampString = "468288175.955529"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "HandTracker::Init()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GestureTracking/gesture/Gesture.cpp"
+            timestampString = "468288798.605901"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
+            landmarkName = "Gesture::recognizeDTW()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GestureTracking/view/NiSimpleViewer.cpp"
+            timestampString = "468288865.197001"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
+            landmarkName = "SimpleViewer::Display()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GestureTracking/view/NiHandViewer.cpp"
+            timestampString = "468289070.863093"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "HandViewer::Init(int argc, char **argv)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GestureTracking/tracker/NiHandTracker.cpp"
+            timestampString = "468289088.462069"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "HandTracker::Init()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GestureTracking/tracker/NiHandTracker.cpp"
+            timestampString = "468289141.691439"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "HandTracker::Run()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

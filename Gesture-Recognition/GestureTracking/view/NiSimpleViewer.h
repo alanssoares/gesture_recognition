@@ -47,6 +47,8 @@ public:
      Link reference: http://kinectcar.ronsper.com/docs/openni/tut_recording.html
      */
     XnStatus createRecorder();
+    void     deleteRecorder();
+    void     activeModeOnline();
     
 protected:
 	SimpleViewer(xn::Context& context);
@@ -70,7 +72,9 @@ protected:
     xn::Recorder*       m_RecorderDepth;
     xn::Recorder*       m_RecorderImage;
     
-	static SimpleViewer*	sm_pInstance;
+    bool                m_ModeOnline;
+	
+    static SimpleViewer*	sm_pInstance;
 
 	void ScalePoint(XnPoint3D& point);
 private:

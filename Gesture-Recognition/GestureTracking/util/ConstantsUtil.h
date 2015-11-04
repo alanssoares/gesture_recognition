@@ -4,6 +4,7 @@
 //
 //  Created by Alan Santos on 22/10/15.
 //  Copyright (c) 2015 Alan Santos. All rights reserved.
+//  Link - http://www.nsl.tuis.ac.jp/doxygen/JunkBox_Lib++/OpenNiDevice_8cpp_source.html
 //
 
 #ifndef GestureTracking_ConstantsUtil_h
@@ -13,11 +14,16 @@
 #include <vector>
 #include <XnCppWrapper.h>
 
+using namespace std;
 
+/* Check the result and return 1 if XN_STATUS is not ok */
 #define CHECK_RC(rc, message){ if(rc != XN_STATUS_OK){ printf(message, xnGetStatusString(rc)); return 1; }}
+
+/* Check the result and return if XN_STATUS is not ok */
 #define CHECK_RC_VOID(rc, message){ if(rc != XN_STATUS_OK){ printf(message, xnGetStatusString(rc)); return; }}
 
-using namespace std;
+/* Receive a time to sleep */
+#define Sleep(t) usleep((t)*1000)
 
 /* Max number of hands to recognize */
 #define MAX_HANDS 2

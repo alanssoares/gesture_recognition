@@ -37,11 +37,13 @@
 //---------------------------------------------------------------------------
 xn::Context		g_context;
 xn::ScriptNode	g_scriptNode;
+int MODE_ONLINE = false;
 
 int main(int argc, char* argv[])
 {
 	XnStatus				rc;
 	xn::EnumerationErrors	errors;
+    xn::Player              player;
     FileUtil                fileUtil;
     
     // Load the gestures data
@@ -50,25 +52,40 @@ int main(int argc, char* argv[])
     // Setter the gestures from file
     Gesture::getInstance().setGesturesFromFile(fileUtil.getGestures());
     
-	// Create a context with default settings
-	rc = g_context.InitFromXmlFile(SAMPLE_XML_PATH, g_scriptNode, &errors);
-	if (rc == XN_STATUS_NO_NODE_PRESENT)
-	{
-		XnChar strError[1024];
-		errors.ToString(strError, 1024);
-		printf("%s\n", strError);
-		return (rc);
-	}
-    
-    CHECK_RC(rc, "Open failed: %s\n");
+    if(MODE_ONLINE){
+        // Create a context with default settings
+        rc = g_context.InitFromXmlFile(SAMPLE_XML_PATH, g_scriptNode, &errors);
+        if (rc == XN_STATUS_NO_NODE_PRESENT)
+        {
+            XnChar strError[1024];
+            errors.ToString(strError, 1024);
+            printf("%s\n", strError);
+            return (rc);
+        }
+        CHECK_RC(rc, "Open failed: %s\n");
+        
+    }else{
+        rc = g_context.Init();
+        CHECK_RC(rc, "Init context: %s");
+        
+        rc = g_context.OpenFileRecording(FILE_NAME_RECORD_DEPTH);
+        CHECK_RC(rc, "Open depth file recorgind %s");
+        
+        rc = g_context.OpenFileRecording(FILE_NAME_RECORD_IMAGE);
+        CHECK_RC(rc, "Open image file recorgind %s");
+    }
     
 	SimpleViewer& viewer = HandViewer::CreateInstance(g_context);
+    
+    if(MODE_ONLINE){
+        viewer.activeModeOnline();
+    }
     
 	rc = viewer.Init(argc, argv);
     CHECK_RC(rc, "Viewer init failed: %s\n");
     
 	rc = viewer.Run();
     CHECK_RC(rc, "Viewer run failed: %s\n");
-
+    
 	return 0;
 }

@@ -10000,3 +10000,1065 @@ Tue Nov  3 19:08:48 2015
 :	Hand removed
 Tue Nov  3 19:08:51 2015
 :	Hand removed
+Tue Nov  3 19:24:36 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:24:36 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:24:36 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:24:36 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:24:36 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:24:36 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:24:36 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 19:24:36 2015
+:	Instance Gesture Created
+Tue Nov  3 19:26:32 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:26:32 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:26:32 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:26:32 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:26:32 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:26:32 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:26:32 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 19:26:32 2015
+:	Instance Gesture Created
+Tue Nov  3 19:26:46 2015
+:	Hand add
+Tue Nov  3 19:26:49 2015
+:	Gesture performed
+Tue Nov  3 19:26:49 2015
+:	Init DTW
+Tue Nov  3 19:26:49 2015
+:	Gesture not recognized
+Tue Nov  3 19:26:49 2015
+:	End DTW
+Tue Nov  3 19:26:51 2015
+:	Gesture performed
+Tue Nov  3 19:26:51 2015
+:	Init DTW
+Tue Nov  3 19:26:51 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 19:26:51 2015
+:	End DTW
+Tue Nov  3 19:26:52 2015
+:	Gesture performed
+Tue Nov  3 19:26:52 2015
+:	Init DTW
+Tue Nov  3 19:26:52 2015
+:	Gesture not recognized
+Tue Nov  3 19:26:52 2015
+:	End DTW
+Tue Nov  3 19:26:54 2015
+:	Gesture performed
+Tue Nov  3 19:26:54 2015
+:	Init DTW
+Tue Nov  3 19:26:54 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 19:26:54 2015
+:	End DTW
+Tue Nov  3 19:26:56 2015
+:	Gesture performed
+Tue Nov  3 19:26:56 2015
+:	Init DTW
+Tue Nov  3 19:26:56 2015
+:	Gesture not recognized
+Tue Nov  3 19:26:56 2015
+:	End DTW
+Tue Nov  3 19:26:58 2015
+:	Gesture performed
+Tue Nov  3 19:26:58 2015
+:	Init DTW
+Tue Nov  3 19:26:58 2015
+:	Gesture recognized: paisagem
+Tue Nov  3 19:26:58 2015
+:	End DTW
+Tue Nov  3 19:26:58 2015
+:	Gesture performed
+Tue Nov  3 19:26:58 2015
+:	Init DTW
+Tue Nov  3 19:26:58 2015
+:	Gesture not recognized
+Tue Nov  3 19:26:58 2015
+:	End DTW
+Tue Nov  3 19:27:19 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:27:19 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:27:19 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:27:19 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:27:19 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:27:19 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:27:19 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 19:27:19 2015
+:	Instance Gesture Created
+Tue Nov  3 19:27:48 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:27:48 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:27:48 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:27:48 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:27:48 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:27:48 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:27:48 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 19:27:48 2015
+:	Instance Gesture Created
+Tue Nov  3 19:39:03 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:39:03 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:39:03 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:39:03 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:39:03 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:39:03 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:39:03 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 19:39:03 2015
+:	Instance Gesture Created
+Tue Nov  3 19:39:09 2015
+:	Hand add
+Tue Nov  3 19:39:10 2015
+:	Gesture performed
+Tue Nov  3 19:39:10 2015
+:	Init DTW
+Tue Nov  3 19:39:10 2015
+:	Gesture not recognized
+Tue Nov  3 19:39:10 2015
+:	End DTW
+Tue Nov  3 19:39:12 2015
+:	Gesture performed
+Tue Nov  3 19:39:12 2015
+:	Init DTW
+Tue Nov  3 19:39:12 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 19:39:12 2015
+:	End DTW
+Tue Nov  3 19:39:13 2015
+:	Gesture performed
+Tue Nov  3 19:39:13 2015
+:	Init DTW
+Tue Nov  3 19:39:13 2015
+:	Gesture not recognized
+Tue Nov  3 19:39:13 2015
+:	End DTW
+Tue Nov  3 19:39:15 2015
+:	Gesture performed
+Tue Nov  3 19:39:15 2015
+:	Init DTW
+Tue Nov  3 19:39:15 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 19:39:15 2015
+:	End DTW
+Tue Nov  3 19:39:18 2015
+:	Gesture performed
+Tue Nov  3 19:39:18 2015
+:	Init DTW
+Tue Nov  3 19:39:18 2015
+:	Gesture not recognized
+Tue Nov  3 19:39:18 2015
+:	End DTW
+Tue Nov  3 19:39:19 2015
+:	Gesture performed
+Tue Nov  3 19:39:19 2015
+:	Init DTW
+Tue Nov  3 19:39:19 2015
+:	Gesture not recognized
+Tue Nov  3 19:39:19 2015
+:	End DTW
+Tue Nov  3 19:39:21 2015
+:	Gesture performed
+Tue Nov  3 19:39:21 2015
+:	Init DTW
+Tue Nov  3 19:39:21 2015
+:	Gesture recognized: paisagem
+Tue Nov  3 19:39:21 2015
+:	End DTW
+Tue Nov  3 19:42:01 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:42:01 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:42:01 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:42:01 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:42:01 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:42:01 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:42:01 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 19:42:01 2015
+:	Instance Gesture Created
+Tue Nov  3 19:43:40 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:43:40 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:43:40 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:43:40 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:43:40 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:43:40 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:43:40 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 19:43:40 2015
+:	Instance Gesture Created
+Tue Nov  3 19:43:44 2015
+:	Hand add
+Tue Nov  3 19:43:47 2015
+:	Gesture performed
+Tue Nov  3 19:43:47 2015
+:	Init DTW
+Tue Nov  3 19:43:47 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 19:43:47 2015
+:	End DTW
+Tue Nov  3 19:45:18 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:45:18 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:45:18 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:45:18 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:45:18 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:45:18 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:45:18 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 19:45:18 2015
+:	Instance Gesture Created
+Tue Nov  3 19:45:23 2015
+:	Hand add
+Tue Nov  3 19:45:25 2015
+:	Gesture performed
+Tue Nov  3 19:45:25 2015
+:	Init DTW
+Tue Nov  3 19:45:25 2015
+:	Gesture not recognized
+Tue Nov  3 19:45:25 2015
+:	End DTW
+Tue Nov  3 19:45:31 2015
+:	Gesture performed
+Tue Nov  3 19:45:31 2015
+:	Init DTW
+Tue Nov  3 19:45:31 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 19:45:31 2015
+:	End DTW
+Tue Nov  3 19:46:09 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:46:09 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:46:09 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:46:09 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:46:09 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:46:09 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:46:09 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 19:46:09 2015
+:	Instance Gesture Created
+Tue Nov  3 19:46:13 2015
+:	Hand add
+Tue Nov  3 19:46:15 2015
+:	Gesture performed
+Tue Nov  3 19:46:15 2015
+:	Init DTW
+Tue Nov  3 19:46:15 2015
+:	Gesture not recognized
+Tue Nov  3 19:46:15 2015
+:	End DTW
+Tue Nov  3 19:46:54 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:46:54 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:46:54 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:46:54 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:46:54 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:46:54 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:46:54 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 19:46:54 2015
+:	Instance Gesture Created
+Tue Nov  3 19:47:52 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:47:52 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:47:52 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:47:52 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:47:52 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:47:52 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:47:52 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 19:47:52 2015
+:	Instance Gesture Created
+Tue Nov  3 19:49:40 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:49:40 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:49:40 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:49:40 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:49:40 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:49:40 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:49:40 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 19:49:40 2015
+:	Instance Gesture Created
+Tue Nov  3 19:54:09 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:54:09 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:54:09 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:54:09 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:54:09 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:54:09 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:54:09 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 19:54:09 2015
+:	Instance Gesture Created
+Tue Nov  3 19:55:22 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:55:22 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:55:22 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:55:22 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:55:22 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:55:22 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:55:22 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 19:55:22 2015
+:	Instance Gesture Created
+Tue Nov  3 19:55:26 2015
+:	Hand add
+Tue Nov  3 19:55:26 2015
+:	Gesture performed
+Tue Nov  3 19:55:26 2015
+:	Init DTW
+Tue Nov  3 19:55:26 2015
+:	Gesture not recognized
+Tue Nov  3 19:55:26 2015
+:	End DTW
+Tue Nov  3 19:55:28 2015
+:	Gesture performed
+Tue Nov  3 19:55:28 2015
+:	Init DTW
+Tue Nov  3 19:55:28 2015
+:	Gesture not recognized
+Tue Nov  3 19:55:28 2015
+:	End DTW
+Tue Nov  3 19:55:28 2015
+:	Gesture performed
+Tue Nov  3 19:55:28 2015
+:	Init DTW
+Tue Nov  3 19:55:28 2015
+:	Gesture not recognized
+Tue Nov  3 19:55:28 2015
+:	End DTW
+Tue Nov  3 19:55:45 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:55:45 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:55:45 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:55:45 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:55:45 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:55:45 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:55:45 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 19:55:45 2015
+:	Instance Gesture Created
+Tue Nov  3 19:58:15 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:58:15 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:58:15 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:58:15 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:58:15 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:58:15 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 19:58:15 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 19:58:15 2015
+:	Instance Gesture Created
+Tue Nov  3 20:06:22 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:06:22 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:06:22 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:06:22 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:06:22 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:06:22 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:06:22 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 20:06:22 2015
+:	Instance Gesture Created
+Tue Nov  3 20:29:26 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:29:26 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:29:26 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:29:26 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:29:26 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:29:26 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:29:26 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 20:29:26 2015
+:	Instance Gesture Created
+Tue Nov  3 20:32:17 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:32:17 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:32:17 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:32:17 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:32:17 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:32:17 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:32:17 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 20:32:17 2015
+:	Instance Gesture Created
+Tue Nov  3 20:32:24 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:32:24 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:32:24 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:32:24 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:32:24 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:32:24 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:32:24 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 20:32:24 2015
+:	Instance Gesture Created
+Tue Nov  3 20:34:39 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:34:39 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:34:39 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:34:39 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:34:39 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:34:39 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:34:39 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 20:34:39 2015
+:	Instance Gesture Created
+Tue Nov  3 20:35:37 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:35:37 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:35:37 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:35:37 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:35:37 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:35:37 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:35:37 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 20:35:37 2015
+:	Instance Gesture Created
+Tue Nov  3 20:39:18 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:39:18 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:39:18 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:39:18 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:39:18 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:39:18 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:39:18 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 20:39:18 2015
+:	Instance Gesture Created
+Tue Nov  3 20:40:14 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:40:14 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:40:14 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:40:14 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:40:14 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:40:14 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:40:14 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 20:40:14 2015
+:	Instance Gesture Created
+Tue Nov  3 20:41:45 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:41:45 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:41:45 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:41:45 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:41:45 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:41:45 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:41:45 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 20:41:45 2015
+:	Instance Gesture Created
+Tue Nov  3 20:46:00 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:46:00 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:46:00 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:46:00 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:46:00 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:46:00 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:46:00 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 20:46:00 2015
+:	Instance Gesture Created
+Tue Nov  3 20:47:12 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:47:12 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:47:12 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:47:12 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:47:12 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:47:12 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:47:12 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 20:47:12 2015
+:	Instance Gesture Created
+Tue Nov  3 20:47:26 2015
+:	Hand add
+Tue Nov  3 20:47:31 2015
+:	Gesture performed
+Tue Nov  3 20:47:31 2015
+:	Init DTW
+Tue Nov  3 20:47:31 2015
+:	Gesture not recognized
+Tue Nov  3 20:47:31 2015
+:	End DTW
+Tue Nov  3 20:47:52 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:47:52 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:47:52 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:47:52 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:47:52 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:47:52 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:47:52 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 20:47:52 2015
+:	Instance Gesture Created
+Tue Nov  3 20:51:46 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:51:46 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:51:46 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:51:46 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:51:46 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:51:46 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:51:46 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 20:51:46 2015
+:	Instance Gesture Created
+Tue Nov  3 20:52:03 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:52:03 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:52:03 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:52:03 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:52:03 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:52:03 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 20:52:03 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 20:52:03 2015
+:	Instance Gesture Created
+Tue Nov  3 21:08:31 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:08:31 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:08:31 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:08:31 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:08:31 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:08:31 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:08:31 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 21:08:31 2015
+:	Instance Gesture Created
+Tue Nov  3 21:08:46 2015
+:	Hand add
+Tue Nov  3 21:08:49 2015
+:	Gesture performed
+Tue Nov  3 21:08:49 2015
+:	Init DTW
+Tue Nov  3 21:08:49 2015
+:	Gesture not recognized
+Tue Nov  3 21:08:49 2015
+:	End DTW
+Tue Nov  3 21:09:02 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:09:02 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:09:02 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:09:02 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:09:02 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:09:02 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:09:02 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 21:09:02 2015
+:	Instance Gesture Created
+Tue Nov  3 21:09:05 2015
+:	Hand add
+Tue Nov  3 21:09:08 2015
+:	Gesture performed
+Tue Nov  3 21:09:08 2015
+:	Init DTW
+Tue Nov  3 21:09:08 2015
+:	Gesture not recognized
+Tue Nov  3 21:09:08 2015
+:	End DTW
+Tue Nov  3 21:09:10 2015
+:	Gesture performed
+Tue Nov  3 21:09:10 2015
+:	Init DTW
+Tue Nov  3 21:09:10 2015
+:	Gesture not recognized
+Tue Nov  3 21:09:10 2015
+:	End DTW
+Tue Nov  3 21:09:11 2015
+:	Gesture performed
+Tue Nov  3 21:09:11 2015
+:	Init DTW
+Tue Nov  3 21:09:11 2015
+:	Gesture not recognized
+Tue Nov  3 21:09:11 2015
+:	End DTW
+Tue Nov  3 21:09:13 2015
+:	Gesture performed
+Tue Nov  3 21:09:13 2015
+:	Init DTW
+Tue Nov  3 21:09:13 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 21:09:13 2015
+:	End DTW
+Tue Nov  3 21:09:38 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:09:38 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:09:38 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:09:38 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:09:38 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:09:38 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:09:38 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 21:09:38 2015
+:	Instance Gesture Created
+Tue Nov  3 21:12:30 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:12:30 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:12:30 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:12:30 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:12:30 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:12:30 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:12:30 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 21:12:30 2015
+:	Instance Gesture Created
+Tue Nov  3 21:13:21 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:13:21 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:13:21 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:13:21 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:13:21 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:13:21 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:13:21 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 21:13:21 2015
+:	Instance Gesture Created
+Tue Nov  3 21:13:56 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:13:56 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:13:56 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:13:56 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:13:56 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:13:56 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:13:56 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 21:13:56 2015
+:	Instance Gesture Created
+Tue Nov  3 21:14:28 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:14:28 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:14:28 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:14:28 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:14:28 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:14:28 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:14:28 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 21:14:28 2015
+:	Instance Gesture Created
+Tue Nov  3 21:16:30 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:16:30 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:16:30 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:16:30 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:16:30 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:16:30 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:16:30 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 21:16:30 2015
+:	Instance Gesture Created
+Tue Nov  3 21:17:52 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:17:53 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:17:53 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:17:53 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:17:53 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:17:53 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:17:53 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 21:17:53 2015
+:	Instance Gesture Created
+Tue Nov  3 21:19:05 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:19:05 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:19:05 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:19:05 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:19:05 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:19:05 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:19:05 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 21:19:05 2015
+:	Instance Gesture Created
+Tue Nov  3 21:19:59 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:19:59 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:19:59 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:19:59 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:19:59 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:19:59 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:19:59 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 21:19:59 2015
+:	Instance Gesture Created
+Tue Nov  3 21:20:04 2015
+:	Hand add
+Tue Nov  3 21:20:05 2015
+:	Gesture performed
+Tue Nov  3 21:20:05 2015
+:	Init DTW
+Tue Nov  3 21:20:05 2015
+:	Gesture not recognized
+Tue Nov  3 21:20:05 2015
+:	End DTW
+Tue Nov  3 21:20:07 2015
+:	Gesture performed
+Tue Nov  3 21:20:07 2015
+:	Init DTW
+Tue Nov  3 21:20:07 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 21:20:07 2015
+:	End DTW
+Tue Nov  3 21:20:08 2015
+:	Gesture performed
+Tue Nov  3 21:20:08 2015
+:	Init DTW
+Tue Nov  3 21:20:08 2015
+:	Gesture not recognized
+Tue Nov  3 21:20:08 2015
+:	End DTW
+Tue Nov  3 21:20:10 2015
+:	Gesture performed
+Tue Nov  3 21:20:10 2015
+:	Init DTW
+Tue Nov  3 21:20:10 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 21:20:10 2015
+:	End DTW
+Tue Nov  3 21:20:11 2015
+:	Gesture performed
+Tue Nov  3 21:20:11 2015
+:	Init DTW
+Tue Nov  3 21:20:11 2015
+:	Gesture not recognized
+Tue Nov  3 21:20:11 2015
+:	End DTW
+Tue Nov  3 21:20:13 2015
+:	Gesture performed
+Tue Nov  3 21:20:13 2015
+:	Init DTW
+Tue Nov  3 21:20:13 2015
+:	Gesture recognized: paisagem
+Tue Nov  3 21:20:13 2015
+:	End DTW
+Tue Nov  3 21:20:27 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:20:27 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:20:27 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:20:27 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:20:27 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:20:27 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:20:27 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 21:20:27 2015
+:	Instance Gesture Created
+Tue Nov  3 21:23:34 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:23:34 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:23:34 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:23:34 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:23:34 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:23:34 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:23:34 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 21:23:34 2015
+:	Instance Gesture Created
+Tue Nov  3 21:23:42 2015
+:	Hand add
+Tue Nov  3 21:23:43 2015
+:	Gesture performed
+Tue Nov  3 21:23:43 2015
+:	Init DTW
+Tue Nov  3 21:23:43 2015
+:	Gesture not recognized
+Tue Nov  3 21:23:43 2015
+:	End DTW
+Tue Nov  3 21:23:45 2015
+:	Gesture performed
+Tue Nov  3 21:23:45 2015
+:	Init DTW
+Tue Nov  3 21:23:45 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 21:23:45 2015
+:	End DTW
+Tue Nov  3 21:23:46 2015
+:	Gesture performed
+Tue Nov  3 21:23:46 2015
+:	Init DTW
+Tue Nov  3 21:23:46 2015
+:	Gesture not recognized
+Tue Nov  3 21:23:46 2015
+:	End DTW
+Tue Nov  3 21:23:48 2015
+:	Gesture performed
+Tue Nov  3 21:23:48 2015
+:	Init DTW
+Tue Nov  3 21:23:48 2015
+:	Gesture recognized: cancelar
+Tue Nov  3 21:23:48 2015
+:	End DTW
+Tue Nov  3 21:23:49 2015
+:	Gesture performed
+Tue Nov  3 21:23:49 2015
+:	Init DTW
+Tue Nov  3 21:23:49 2015
+:	Gesture not recognized
+Tue Nov  3 21:23:49 2015
+:	End DTW
+Tue Nov  3 21:23:52 2015
+:	Gesture performed
+Tue Nov  3 21:23:52 2015
+:	Init DTW
+Tue Nov  3 21:23:52 2015
+:	Gesture recognized: paisagem
+Tue Nov  3 21:23:52 2015
+:	End DTW
+Tue Nov  3 21:23:53 2015
+:	Gesture performed
+Tue Nov  3 21:23:53 2015
+:	Init DTW
+Tue Nov  3 21:23:53 2015
+:	Gesture not recognized
+Tue Nov  3 21:23:53 2015
+:	End DTW
+Tue Nov  3 21:23:56 2015
+:	Gesture performed
+Tue Nov  3 21:23:56 2015
+:	Init DTW
+Tue Nov  3 21:23:56 2015
+:	Gesture not recognized
+Tue Nov  3 21:23:56 2015
+:	End DTW
+Tue Nov  3 21:23:57 2015
+:	Gesture performed
+Tue Nov  3 21:23:57 2015
+:	Init DTW
+Tue Nov  3 21:23:57 2015
+:	Gesture not recognized
+Tue Nov  3 21:23:57 2015
+:	End DTW
+Tue Nov  3 21:24:27 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:24:27 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:24:27 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:24:27 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:24:27 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:24:27 2015
+:	Novo gesto encontrado no arquivo.
+Tue Nov  3 21:24:27 2015
+:	Fim de leitura do arquivo: 
+Tue Nov  3 21:24:27 2015
+:	Instance Gesture Created

@@ -42,7 +42,7 @@ using namespace xn;
 #define GL_WIN_SIZE_Y   480
 #define TEXTURE_SIZE	512
 
-#define DEFAULT_DISPLAY_MODE	DISPLAY_MODE_IMAGE
+#define DEFAULT_DISPLAY_MODE	DISPLAY_MODE_DEPTH
 
 #define MIN_NUM_CHUNKS(data_size, chunk_size)	((((data_size)-1) / (chunk_size) + 1))
 #define MIN_CHUNKS_SIZE(data_size, chunk_size)	(MIN_NUM_CHUNKS(data_size, chunk_size) * (chunk_size))
@@ -85,15 +85,14 @@ SimpleViewer::SimpleViewer(xn::Context& context)
 	m_nTexMapX(0),
 	m_nTexMapY(0),
 	m_eViewState(DISPLAY_MODE_DEPTH),
-	m_rContext(context)
+	m_rContext(context),
+    m_ModeOnline(false)
 {}
 
 SimpleViewer::~SimpleViewer()
 {
 	delete[] m_pTexMap;
 	delete[] m_pDepthHist;
-    delete[] m_RecorderDepth;
-    delete[] m_RecorderImage;
 }
 
 SimpleViewer& SimpleViewer::CreateInstance( xn::Context& context )
@@ -153,8 +152,10 @@ SimpleViewer::Init(int argc, char **argv)
 
 	m_pDepthHist = new float[m_depth.GetDeviceMaxDepth() + 1];
 
-    // Create the recorder object to save the stream buffer
-    createRecorder();
+    if(m_ModeOnline){
+        // Create the recorder object to save the stream buffer
+        createRecorder();
+    }
     
 	return InitOpenGL(argc, argv);
 }
@@ -225,18 +226,20 @@ void
 SimpleViewer::Display()
 {
 	XnStatus rc = XN_STATUS_OK;
-
+    
 	// Read a new frame
 	rc = m_rContext.WaitAnyUpdateAll();
     CHECK_RC_VOID(rc, "Read failed: %s\n");
 
-    // Record the input data
-    rc = m_RecorderDepth->Record();
-    CHECK_RC_VOID(rc, "Record the data depth failed: %s\n");
-    
-    // Record the input data
-    rc = m_RecorderImage->Record();
-    CHECK_RC_VOID(rc, "Record the data image failed: %s\n");
+    if(m_ModeOnline){
+        // Record the input data
+        rc = m_RecorderDepth->Record();
+        CHECK_RC_VOID(rc, "Record the data depth failed: %s\n");
+        
+        // Record the input data
+        rc = m_RecorderImage->Record();
+        CHECK_RC_VOID(rc, "Record the data image failed: %s\n");
+    }
     
 	m_depth.GetMetaData(m_depthMD);
 	m_image.GetMetaData(m_imageMD);
@@ -376,6 +379,9 @@ SimpleViewer::OnKey(unsigned char key, int /*x*/, int /*y*/)
 {
 	switch (key){
         case 27:
+            if(m_ModeOnline){
+                deleteRecorder();
+            }
             exit (1);
         case '1':
             m_eViewState = DISPLAY_MODE_OVERLAY;
@@ -403,4 +409,32 @@ SimpleViewer::ScalePoint(XnPoint3D& point)
 
 	point.Y *= GL_WIN_SIZE_Y;
 	point.Y /= m_depthMD.YRes();
+}
+
+
+void
+SimpleViewer::deleteRecorder(void)
+{
+    /** Wait a moment to continue */
+    Sleep(300);
+    
+    /** Finalize the depth recorder */
+    if (m_RecorderDepth != NULL){
+        m_RecorderDepth->RemoveNodeFromRecording(m_depth);
+        m_RecorderDepth->Release();
+        delete(m_RecorderDepth);
+        m_RecorderDepth = NULL;
+    }
+    /** Finalize the image recorder */
+    if (m_RecorderImage != NULL) {
+        m_RecorderImage->RemoveNodeFromRecording(m_image);
+        m_RecorderImage->Release();
+        delete(m_RecorderImage);
+        m_RecorderImage = NULL;
+    }
+}
+
+void
+SimpleViewer::activeModeOnline(){
+    m_ModeOnline = true;
 }
