@@ -41,5 +41,7 @@ public:
     std::vector<type_gesture> getGestures();
     XnPoint3D getPointFile(std::string str);
     
+    void saveGesture(const type_gesture gesture, const std::string fileName);
+    
 };
 #endif /* defined(__GestureTracking__FileUtil__) */

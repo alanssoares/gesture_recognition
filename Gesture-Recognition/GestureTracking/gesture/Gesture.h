@@ -19,6 +19,7 @@
 #include "../geometry/DTW.h"
 #include "../util/MathUtil.h"
 #include "../util/ConstantsUtil.h"
+#include "../util/FileUtil.h"
 
 using namespace std;
 
@@ -56,6 +57,7 @@ public:
     map<int,type_hand>::iterator it;
     
     DTW*     mDTW;
+    FileUtil mFileUtil;
     
     std::vector<type_gesture> mGesturesFromFile;
     

@@ -37,7 +37,9 @@
 //---------------------------------------------------------------------------
 xn::Context		g_context;
 xn::ScriptNode	g_scriptNode;
-int MODE_ONLINE = false;
+
+/** Set this flag true if you want reproduce the video from file */
+int MODE_ONLINE = true;
 
 int main(int argc, char* argv[])
 {

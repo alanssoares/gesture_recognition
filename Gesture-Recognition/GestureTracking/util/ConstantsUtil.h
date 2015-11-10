@@ -45,7 +45,7 @@ using namespace std;
 /*
  Define the minimum distance threshold to recognize gestures
  */
-#define MIN_DISTANCE_TRESHOLD 100
+#define MIN_DISTANCE_TRESHOLD 0.3
 
 /*
  Define the name of the file that will be saved

@@ -182,10 +182,13 @@ Gesture::recognizeDTW(){
         
         //Translate the hand trajectory to origin
         trajectoryHand = MathUtil::translateToOrigin(it->second.positions);
+        trajectoryHand = MathUtil::normalizeTrajectory(trajectoryHand);
         
         for (int i = 0; i < mGesturesFromFile.size(); i++) {
+            
             trajectoryComp = MathUtil::translateToOrigin(mGesturesFromFile[i].positions);
-
+            trajectoryComp = MathUtil::normalizeTrajectory(trajectoryComp);
+            
             //Initialize the dynamic time warping
             dtw.init();
             
@@ -201,7 +204,8 @@ Gesture::recognizeDTW(){
             //Verify if the computed distance is lower that previous best
             if(distance < bestDistance){
                 bestDistance = distance;
-                gestureRecognized = mGesturesFromFile[i];
+                gestureRecognized.name = mGesturesFromFile[i].name;
+                gestureRecognized.positions = trajectoryComp;
             }
         }
     }
@@ -210,8 +214,12 @@ Gesture::recognizeDTW(){
         LOGGER->Log("Gesture not recognized");
         cout<<"Gesture not recognized : "<<bestDistance<<endl;
     }else{
+        
         LOGGER->Log("Gesture recognized: " + gestureRecognized.name);
         cout<< "Gesture: "<<gestureRecognized.name<<" Distance: "<<bestDistance<<endl;
+        
+        //Save the gesture recognized
+        mFileUtil.saveGesture(gestureRecognized, NAME_FILE_DATA);
     }
     
     LOGGER->Log("End DTW");

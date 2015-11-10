@@ -85,7 +85,7 @@ FileUtil::loadGestures(){
             if(line.empty()){
                 continue;
             }else if(isNewGesture(line)){
-                LOGGER->Log("Novo gesto encontrado no arquivo.");
+                LOGGER->Log("New gesture found\n");
                 std::vector<std::string> nameGesture;
                 split(line,' ', nameGesture);
                 newGesture.name = nameGesture[1];
@@ -97,9 +97,9 @@ FileUtil::loadGestures(){
             }
         }
         
-        LOGGER->Log("Fim de leitura do arquivo: ", NAME_FILE_DATA);
+        LOGGER->Log("The file was successfully read:: " + std::string(NAME_FILE_DATA) + "\n");
     }else{
-        LOGGER->Log("Não foi possível abrir o arquivo: ", NAME_FILE_DATA);
+        LOGGER->Log("The file can't be open:: " + std::string(NAME_FILE_DATA) + "\n");
     }
 }
 
@@ -111,3 +111,27 @@ std::vector<type_gesture>
 FileUtil::getGestures(){
     return mGestures;
 }
+
+void
+FileUtil::saveGesture(const type_gesture gesture, const std::string fileName){
+    std::fstream file;
+    
+    file.open(fileName, ios::in | ios::out | ios::ate);
+    
+    if(file.is_open()){
+        
+        file << "gesture "<< gesture.name << std::endl;
+        
+        for(XnPoint3D position : gesture.positions){
+            file << position.X << " " << position.Y << " " << position.Z << std::endl;
+        }
+        
+        file << std::endl;
+        file.close();
+        
+        LOGGER->Log("The gesture was successfully saved\n");
+    }else{
+        LOGGER->Log("The file can't be open::" + fileName + "\n");
+    }
+}
+

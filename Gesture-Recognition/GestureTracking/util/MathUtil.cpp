@@ -8,17 +8,11 @@
 
 #include "MathUtil.h"
 
-/**
- Calcula a amplitude/módulo escalar de um vetor.
- */
 double
 MathUtil::length(XnPoint3D point){
     return sqrt(pow(point.X, 2) + pow(point.Y, 2) + pow(point.Z, 2));
 }
 
-/*
- TODO: realiza a subtração entre dois vetores a e b.
- */
 XnPoint3D
 MathUtil::subtract(XnPoint3D a, XnPoint3D b){
     a.X = a.X - b.X;
@@ -27,10 +21,6 @@ MathUtil::subtract(XnPoint3D a, XnPoint3D b){
     return a;
 }
 
-/**
- Normaliza um vetor dividindo cada componente pelo
- módulo do vetor.
- */
 XnPoint3D
 MathUtil::normalize(XnPoint3D point) {
     float len = length(point);
@@ -40,10 +30,6 @@ MathUtil::normalize(XnPoint3D point) {
     return point;
 }
 
-/**
- Calcula o ângulo formado entre dois vetores a e b, com
- uma reta saindo da origem e passando pelos pontos
- */
 double
 MathUtil::getAngleBetween2Points(XnPoint3D a, XnPoint3D b){
     double mU, mV, mUV, uv, angle;
@@ -65,9 +51,6 @@ MathUtil::getAngleBetween2Points(XnPoint3D a, XnPoint3D b){
     return angle;
 }
 
-/**
- Método que retorna o maior valor dentro de um vetor
- */
 double
 MathUtil::getMaxValue(vector<double> values)
 {
@@ -103,14 +86,6 @@ MathUtil::getSumDiff(vector<XnPoint3D> positions)
     return total;
 }
 
-/*
- Método responsável por calcular o centro geométrico
- da trajetória, designado como centróide. O calculo
- é realizado através da razão entre somatório dos pontos
- e o número de pontos da trajetória. A centróide fornece
- a direção e distância para realizar a translação do movimento
- afim de obter invariância de posição.
- */
 XnPoint3D
 MathUtil::calcCentroid(vector<XnPoint3D> positions)
 {
@@ -129,12 +104,6 @@ MathUtil::calcCentroid(vector<XnPoint3D> positions)
     return centroid;
 }
 
-/*
- Método responsável por normalizar a trajetória para reduzir
- o impacto de gestos realizados por pessoas com aspectos físicos
- diferentes. A normalização é realizada através de uma translação
- da trajetória para a origem (0,0,0) usando a centróide da trajetória.
- */
 vector<XnPoint3D>
 MathUtil::translateToOrigin(vector<XnPoint3D> positions){
     
@@ -147,4 +116,54 @@ MathUtil::translateToOrigin(vector<XnPoint3D> positions){
     }
     
     return positions;
+}
+
+vector<XnPoint3D>
+MathUtil::normalizeTrajectory(vector<XnPoint3D> positions){
+    double desiredMin = -1.0;
+    double desiredMax = 1.0;
+    double desiredRange = desiredMax - desiredMin;
+    
+    XnPoint3D minPos = minValueXYZ(positions);
+    XnPoint3D maxPos = maxValueXYZ(positions);
+    
+    double originalRangeX = maxPos.X - minPos.X;
+    double originalRangeY = maxPos.Y - minPos.Y;
+    double originalRangeZ = maxPos.Z - minPos.Z;
+    
+    for(int i = 0; i < positions.size(); i++) {
+        positions[i].X = desiredRange * (positions[i].X - minPos.X)/ originalRangeX + desiredMin;
+        positions[i].Y = desiredRange * (positions[i].Y - minPos.Y)/ originalRangeY + desiredMin;
+        positions[i].Z = desiredRange * (positions[i].Z - minPos.Z)/ originalRangeZ + desiredMin;
+    }
+    
+    return positions;
+}
+
+XnPoint3D
+MathUtil::minValueXYZ(vector<XnPoint3D> positions){
+    XnPoint3D minPos;
+    minPos.X = 99999999;
+    minPos.Y = 99999999;
+    minPos.Z = 99999999;
+    for(XnPoint3D pos : positions) {
+        if(pos.X < minPos.X) minPos.X = pos.X;
+        if(pos.Y < minPos.Y) minPos.Y = pos.Y;
+        if(pos.Z < minPos.Z) minPos.Z = pos.Z;
+    }
+    return minPos;
+}
+
+XnPoint3D
+MathUtil::maxValueXYZ(vector<XnPoint3D> positions){
+    XnPoint3D maxPos;
+    maxPos.X = -99999999;
+    maxPos.Y = -99999999;
+    maxPos.Z = -99999999;
+    for(XnPoint3D pos : positions) {
+        if(pos.X > maxPos.X) maxPos.X = pos.X;
+        if(pos.Y > maxPos.Y) maxPos.Y = pos.Y;
+        if(pos.Z > maxPos.Z) maxPos.Z = pos.Z;
+    }
+    return maxPos;
 }
