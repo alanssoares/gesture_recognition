@@ -81,6 +81,15 @@ void Bezier::setCubic(const Vector3f p0, const Vector3f p1, const Vector3f p2, c
 */
 }
 
+void Bezier::setCubic(const XnPoint3D p0, const XnPoint3D p1, const XnPoint3D p2, const XnPoint3D p3, float duration)
+{
+    this->p0.setCoordinates(p0.X, p0.Y, p0.Z);
+    this->p1.setCoordinates(p1.X, p1.Y, p1.Z);
+    this->p2.setCoordinates(p2.X, p2.Y, p2.Z);
+    this->p3.setCoordinates(p3.X, p3.Y, p3.Z);
+    this->duration = duration;
+    type = "Cubic";
+}
 
 float Bezier::getDuration() const
 {

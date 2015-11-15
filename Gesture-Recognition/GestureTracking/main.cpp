@@ -38,7 +38,7 @@
 xn::Context		g_context;
 xn::ScriptNode	g_scriptNode;
 
-/** Set this flag true if you want reproduce the video from file */
+/** Set this flag false if you want reproduce the video from file */
 int MODE_ONLINE = true;
 
 int main(int argc, char* argv[])
@@ -55,6 +55,7 @@ int main(int argc, char* argv[])
     Gesture::getInstance().setGesturesFromFile(fileUtil.getGestures());
     
     if(MODE_ONLINE){
+        
         // Create a context with default settings
         rc = g_context.InitFromXmlFile(SAMPLE_XML_PATH, g_scriptNode, &errors);
         if (rc == XN_STATUS_NO_NODE_PRESENT)
@@ -64,17 +65,20 @@ int main(int argc, char* argv[])
             printf("%s\n", strError);
             return (rc);
         }
+        
         CHECK_RC(rc, "Open failed: %s\n");
         
     }else{
+        
         rc = g_context.Init();
         CHECK_RC(rc, "Init context: %s");
+        
+        rc = g_context.OpenFileRecording(FILE_NAME_RECORD_IMAGE);
+        CHECK_RC(rc, "Open image file recorgind %s");
         
         rc = g_context.OpenFileRecording(FILE_NAME_RECORD_DEPTH);
         CHECK_RC(rc, "Open depth file recorgind %s");
         
-        rc = g_context.OpenFileRecording(FILE_NAME_RECORD_IMAGE);
-        CHECK_RC(rc, "Open image file recorgind %s");
     }
     
 	SimpleViewer& viewer = HandViewer::CreateInstance(g_context);

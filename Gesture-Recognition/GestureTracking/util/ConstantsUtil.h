@@ -48,6 +48,11 @@ using namespace std;
 #define MIN_DISTANCE_TRESHOLD 0.3
 
 /*
+ Define a taxa de incremento usada na interpolação das curvas
+ */
+#define INCREMENT_RATE_INTERPOLATION 0.02
+
+/*
  Define the name of the file that will be saved
  */
 #define FILE_NAME_RECORD_DEPTH "StreamDepth.oni"

@@ -14,6 +14,7 @@
 #include <vector>
 #include <math.h>
 #include "../util/ConstantsUtil.h"
+#include "../geometry/Bezier.h"
 
 using namespace std;
 
@@ -119,6 +120,14 @@ public:
      @return vector<XnPoint3D> deslocada para a origem
      */
     static vector<XnPoint3D> translateToOrigin(vector<XnPoint3D> positions);
+    
+    /*
+     Método responsável por aplicar interpolação cúbica de Bézier sobre
+     n pontos da trajetória
+     @param positions of the trajectory
+     @return std::vector<XnPoint3D> da nova trajetória interpolada
+     */
+    static std::vector<XnPoint3D> applyCubicBezier(std::vector<XnPoint3D> positions);
 };
 
 #endif /* defined(__GestureTracking__MathUtil__) */

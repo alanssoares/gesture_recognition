@@ -14,10 +14,6 @@
 //---------------------------------------------------------------------------
 Gesture* Gesture::m_Instance = NULL;
 
-/*
- O construtor inicializa as mãos com um valor negativo indicando que não existe nenhuma
- mão sendo rastreada.
- */
 Gesture::Gesture()
 {
     m_StateGesture = GESTURE_STOPED;
@@ -37,21 +33,12 @@ Gesture::getInstance()
     return *m_Instance;
 }
 
-/*
- O método addPosition recebe como parametro o id da mão e a posição que será adicionada
- a sua trajetória. A trajetória será utilizada para reconhecer o movimento.
- */
 void
 Gesture::updatePosition(const int idHand, XnPoint3D position)
 {
     m_Hands.at(idHand).positions.push_back(position);
 }
 
-/*
- O método addHand recebe como parametro o id da mão detectada e sua respectiva posição
- no momento da detecção. A partir desse momento, a mão será rastreada para capturar a 
- trajetória do movimento.
- */
 void
 Gesture::addHand(int idHand, XnPoint3D position)
 {
@@ -65,11 +52,6 @@ Gesture::addHand(int idHand, XnPoint3D position)
     LOGGER->Log("Hand add");
 }
 
-/*
- O método removeHand é chamado no momento em que a mão que estava sendo rastreada sai
- do campo de visão e deixa de ser rastreada. A mão removida é identificada através de
- um identificador da mão, o id.
- */
 void
 Gesture::removeHand(int idHand)
 {
@@ -78,19 +60,6 @@ Gesture::removeHand(int idHand)
     LOGGER->Log("Hand removed");
 }
 
-/*
- O método update() é chamado todos os ciclos para atualizar todas as informações relacionadas
- ao estado do sistema de reconhecimento de gestos.
- 
- DOING:
- Caso o usuário esteja realizando um gesto, a mão deve ser rastreada através do armazenamento
- das posições/quadros/frames anteriores para posteriormente classificar o gesto realizado.
- 
- STOPED:
- Verificar se algum gesto foi realizado através da verificação da quantidade
- de posições que foram armazenadas. Caso um gesto tenha sido realizado, é necessário
- verificar qual o gesto foi realizado e classifica-lo.
- */
 void
 Gesture::update(const int idHand, XnPoint3D position)
 {
@@ -101,11 +70,6 @@ Gesture::update(const int idHand, XnPoint3D position)
     updateRecognition();
 }
 
-/*
- Método updateRecognition() é utilizado para reconhecimento do gesto.
- Para isso no momento em que a mão pára, o método gesturePerformed verifica
- se algum gesto foi realizado. Em caso positivo, o gesto será classificado.
- */
 void
 Gesture::updateRecognition()
 {
@@ -117,12 +81,6 @@ Gesture::updateRecognition()
     }
 }
 
-/**
- O método gesturePerformed() verifica se algum gesto foi realizado.
- A verificação consiste em saber se o estado anterior era DOING e se a quantidade
- de posições é maior que a mínima definida.
- @return status
- **/
 bool
 Gesture::isGesturePerformed()
 {
@@ -139,12 +97,6 @@ Gesture::isGesturePerformed()
     return false;
 }
 
-/*
- Método utilizado para verificar se o usuário está realizando um gesto ou se está parado.
- Eu posso ter duas mãos fazendo um movimento.
- Se uma mão está parada e a outra está realizando um movimento, então o estado é DOING.
- Se as duas mãos estão em movimento, então o estado é DOING.
- */
 void
 Gesture::updateState()
 {
@@ -159,14 +111,9 @@ Gesture::updateState()
     m_StateGesturePrev = m_StateGesture;
     m_StateGesture = m_Diff > MIN_DIFF_LENGTH ? GESTURE_DOING : GESTURE_STOPED;
     
-    //LOGGER->Log("State updated");
+    LOGGER->Log("State updated");
 }
 
-/*
- Obter a trajetória do gesto, normalizar utilizando
- a centróide. Carregar todos os gestos, normalizá-los
- e comparar o realizado com os n carregados.
- */
 void
 Gesture::recognizeDTW(){
     LOGGER->Log("Init DTW");
@@ -183,11 +130,13 @@ Gesture::recognizeDTW(){
         //Translate the hand trajectory to origin
         trajectoryHand = MathUtil::translateToOrigin(it->second.positions);
         trajectoryHand = MathUtil::normalizeTrajectory(trajectoryHand);
+        //trajectoryHand = MathUtil::applyCubicBezier(trajectoryHand);
         
         for (int i = 0; i < mGesturesFromFile.size(); i++) {
             
             trajectoryComp = MathUtil::translateToOrigin(mGesturesFromFile[i].positions);
             trajectoryComp = MathUtil::normalizeTrajectory(trajectoryComp);
+            //trajectoryComp = MathUtil::applyCubicBezier(trajectoryComp);
             
             //Initialize the dynamic time warping
             dtw.init();
@@ -210,34 +159,21 @@ Gesture::recognizeDTW(){
         }
     }
     
-    if(bestDistance > MIN_DISTANCE_TRESHOLD){
-        LOGGER->Log("Gesture not recognized");
-        cout<<"Gesture not recognized : "<<bestDistance<<endl;
-    }else{
-        
+    if(bestDistance < MIN_DISTANCE_TRESHOLD){
         LOGGER->Log("Gesture recognized: " + gestureRecognized.name);
         cout<< "Gesture: "<<gestureRecognized.name<<" Distance: "<<bestDistance<<endl;
-        
         //Save the gesture recognized
-        mFileUtil.saveGesture(gestureRecognized, NAME_FILE_DATA);
+        //mFileUtil.saveGesture(gestureRecognized, NAME_FILE_DATA);
     }
     
     LOGGER->Log("End DTW");
 }
 
-/*
- Método responsável por setar os gestos
- carregados do arquivo de dados.
- */
 void
 Gesture::setGesturesFromFile(std::vector<type_gesture> gestures){
     mGesturesFromFile = gestures;
 }
 
-/*
- Método responsável por limpar os vetores
- de posições das mãos que estavam sendo rastreadas.
- */
 void
 Gesture::clearHands(){
     for (it = m_Hands.begin(); it != m_Hands.end(); ++it){

@@ -167,3 +167,29 @@ MathUtil::maxValueXYZ(vector<XnPoint3D> positions){
     }
     return maxPos;
 }
+
+std::vector<XnPoint3D>
+MathUtil::applyCubicBezier(std::vector<XnPoint3D> positions){
+    Bezier bezier;
+    size_t n  = positions.size();
+    size_t mean = ceil(n/2);
+    XnPoint3D p0, p1, p2, p3, newPos;
+    std::vector<XnPoint3D> positionsInterpolated;
+    
+    p0 = positions[0];
+    p1 = positions[ceil(mean/2)];
+    p2 = positions[ceil(n - (mean/2))];
+    p3 = positions[n - 1];
+    
+    bezier.setCubic(p0, p1, p2, p3, 1.0f);
+    
+    for (float i = 0.0; i < 1.0; i+=INCREMENT_RATE_INTERPOLATION) {
+        Vector3f pos = bezier.getCubicPosition(i);
+        newPos.X = pos.getX();
+        newPos.Y = pos.getY();
+        newPos.Z = pos.getZ();
+        positionsInterpolated.push_back(newPos);
+    }
+    
+    return positionsInterpolated;
+}
