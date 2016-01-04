@@ -18,9 +18,6 @@
 #include "../util/ConstantsUtil.h"
 #include "../logger/Logger.h"
 
-#define GESTURE "gesture"
-#define NAME_FILE_DATA "Samples.txt"
-
 /*
   Class created to read and write in files
 

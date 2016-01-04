@@ -55,9 +55,11 @@ using namespace std;
 /*
  Define the name of the file that will be saved
  */
-#define FILE_NAME_RECORD_DEPTH "StreamDepth.oni"
-#define FILE_NAME_RECORD_IMAGE "StreamImage.oni"
+#define FILE_NAME_RECORD_DEPTH "../StreamDepth.oni"
+#define FILE_NAME_RECORD_IMAGE "../StreamImage.oni"
 
+#define GESTURE "gesture"
+#define NAME_FILE_DATA "../Samples.txt"
 /*
  --------- TYPES Gestures ----------
  */
