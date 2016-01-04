@@ -43,5 +43,7 @@ public:
     
     void saveGesture(const type_gesture gesture, const std::string fileName);
     
+    static void printTrajectory(std::vector<XnPoint3D> trajectory);
+    
 };
 #endif /* defined(__GestureTracking__FileUtil__) */

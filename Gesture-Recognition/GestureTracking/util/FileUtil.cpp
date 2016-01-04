@@ -134,4 +134,10 @@ FileUtil::saveGesture(const type_gesture gesture, const std::string fileName){
         LOGGER->Log("The file can't be open::" + fileName + "\n");
     }
 }
-
+void
+FileUtil::printTrajectory(std::vector<XnPoint3D> trajectory){
+    for (int i = 0; i < trajectory.size(); i++) {
+        cout<<trajectory[i].X <<" "<<trajectory[i].Y<<" "<<trajectory[i].Z<<std::endl;
+    }
+    cout<<std::endl;
+}
