@@ -193,16 +193,20 @@ MathUtil::applyCubicBezier(std::vector<XnPoint3D> positions){
 }
 
 std::vector<XnPoint3D>
-MathUtil::smoothMeanNeighboring(std::vector<XnPoint3D> positions){
+MathUtil::smoothMeanNeighboring(std::vector<XnPoint3D> positions, int numTimes){
     std::vector<XnPoint3D> smoothed;
     XnPoint3D meanPoint;
     const int numPoints = 3;
     if(positions.size() >= MIN_CONTROL_POINTS){
-        for (int i = 1; i < positions.size() - 1; i++) {
-            meanPoint.X = (positions[i - 1].X + positions[i].X + positions[i + 1].X)/numPoints;
-            meanPoint.Y = (positions[i - 1].Y + positions[i].Y + positions[i + 1].Y)/numPoints;
-            meanPoint.Z = (positions[i - 1].Z + positions[i].Z + positions[i + 1].Z)/numPoints;
-            smoothed.push_back(meanPoint);
+        for (int k = 0; k < numTimes; k++){
+            smoothed.clear();
+            for (int i = 1; i < positions.size() - 1; i++) {
+                meanPoint.X = (positions[i - 1].X + positions[i].X + positions[i + 1].X)/numPoints;
+                meanPoint.Y = (positions[i - 1].Y + positions[i].Y + positions[i + 1].Y)/numPoints;
+                meanPoint.Z = (positions[i - 1].Z + positions[i].Z + positions[i + 1].Z)/numPoints;
+                smoothed.push_back(meanPoint);
+            }
+            positions = smoothed;
         }
     } else {
         //Is not possible smooth, return the original positions
