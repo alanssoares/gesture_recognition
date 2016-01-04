@@ -124,18 +124,20 @@ Gesture::recognizeDTW(){
     double distance = 0.0;
     double bestDistance = 999999999;
     type_gesture gestureRecognized;
-    
+    std::vector<XnPoint3D> original;
     for (it = m_Hands.begin(); it != m_Hands.end(); ++it){
         
         //Translate the hand trajectory to origin
         trajectoryHand = MathUtil::translateToOrigin(it->second.positions);
         trajectoryHand = MathUtil::normalizeTrajectory(trajectoryHand);
+        trajectoryHand = MathUtil::smoothMeanNeighboring(trajectoryHand);
         //trajectoryHand = MathUtil::applyCubicBezier(trajectoryHand);
         
         for (int i = 0; i < mGesturesFromFile.size(); i++) {
             
             trajectoryComp = MathUtil::translateToOrigin(mGesturesFromFile[i].positions);
             trajectoryComp = MathUtil::normalizeTrajectory(trajectoryComp);
+            trajectoryComp = MathUtil::smoothMeanNeighboring(trajectoryComp);
             //trajectoryComp = MathUtil::applyCubicBezier(trajectoryComp);
             
             //Initialize the dynamic time warping
@@ -155,15 +157,20 @@ Gesture::recognizeDTW(){
                 bestDistance = distance;
                 gestureRecognized.name = mGesturesFromFile[i].name;
                 gestureRecognized.positions = trajectoryComp;
+                original = it->second.positions;
             }
         }
     }
     
     if(bestDistance < MIN_DISTANCE_TRESHOLD){
         LOGGER->Log("Gesture recognized: " + gestureRecognized.name);
-        cout<< "Gesture: "<<gestureRecognized.name<<" Distance: "<<bestDistance<<endl;
+        //cout<< "Gesture "<<gestureRecognized.name<<" recognized with cost distance "<<bestDistance<<endl;
         //Save the gesture recognized
         //mFileUtil.saveGesture(gestureRecognized, NAME_FILE_DATA);
+        FileUtil::printTrajectory(gestureRecognized.positions);
+        original = MathUtil::translateToOrigin(original);
+        original = MathUtil::normalizeTrajectory(original);
+        FileUtil::printTrajectory(original);
     }
     
     LOGGER->Log("End DTW");
