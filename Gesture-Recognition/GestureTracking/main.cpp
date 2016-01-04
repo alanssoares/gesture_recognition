@@ -29,7 +29,7 @@
 //---------------------------------------------------------------------------
 // Defines
 //---------------------------------------------------------------------------
-#define SAMPLE_XML_PATH "SamplesConfig.xml"
+#define SAMPLE_XML_PATH "../SamplesConfig.xml"
 
 
 //---------------------------------------------------------------------------
@@ -39,7 +39,7 @@ xn::Context		g_context;
 xn::ScriptNode	g_scriptNode;
 
 /** Set this flag false if you want reproduce the video from file */
-int MODE_ONLINE = true;
+int MODE_ONLINE = false;
 
 int main(int argc, char* argv[])
 {
