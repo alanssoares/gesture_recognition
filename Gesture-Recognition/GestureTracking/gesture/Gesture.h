@@ -72,7 +72,7 @@ public:
     void    update(const int idHand, XnPoint3D position);
     
     /*
-     O método addPosition recebe como parametro o id da mão e a posição que será adicionada
+     O método que recebe como parametro o id da mão e a posição que será adicionada
      a sua trajetória. A trajetória será utilizada para reconhecer o movimento.
      */
     void    updatePosition(const int idHand, XnPoint3D position);
@@ -93,7 +93,7 @@ public:
     void    updateRecognition();
     
     /**
-     O método gesturePerformed() verifica se algum gesto foi realizado.
+     O método verifica se algum gesto foi realizado.
      A verificação consiste em saber se o estado anterior era DOING e se a quantidade
      de posições é maior que a mínima definida.
      @return status
