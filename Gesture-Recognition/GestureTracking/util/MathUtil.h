@@ -15,6 +15,7 @@
 #include <math.h>
 #include "../util/ConstantsUtil.h"
 #include "../geometry/Bezier.h"
+#include "../geometry/BSpline.h"
 
 using namespace std;
 
@@ -128,6 +129,13 @@ public:
      @return std::vector<XnPoint3D> da nova trajetória interpolada
      */
     static std::vector<XnPoint3D> applyCubicBezier(std::vector<XnPoint3D> positions);
+    
+    /*
+     Método responsável por aplicar uma interpolação cúbica usando B-Spline
+     @param positions of the trajectory
+     @return std::vector<XnPoint3D> da nova trajetória interpolada
+    */
+    static std::vector<XnPoint3D> applyCubicBSpline(std::vector<XnPoint3D> positions);
     
     /*
      Método responsável por normalizar a trajetória usando a média da primeira vizinhança, ou seja

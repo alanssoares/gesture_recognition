@@ -124,21 +124,16 @@ Gesture::recognizeDTW(){
     double distance = 0.0;
     double bestDistance = 999999999;
     type_gesture gestureRecognized;
-    std::vector<XnPoint3D> original;
+    //std::vector<XnPoint3D> original;
     for (it = m_Hands.begin(); it != m_Hands.end(); ++it){
         
-        //Translate the hand trajectory to origin
-        trajectoryHand = MathUtil::translateToOrigin(it->second.positions);
-        trajectoryHand = MathUtil::normalizeTrajectory(trajectoryHand);
-        trajectoryHand = MathUtil::smoothMeanNeighboring(trajectoryHand);
-        //trajectoryHand = MathUtil::applyCubicBezier(trajectoryHand);
-        
+        //Process the trajectory from user
+        trajectoryHand = processTrajectory(it->second.positions);
+
         for (int i = 0; i < mGesturesFromFile.size(); i++) {
-            
-            trajectoryComp = MathUtil::translateToOrigin(mGesturesFromFile[i].positions);
-            trajectoryComp = MathUtil::normalizeTrajectory(trajectoryComp);
-            trajectoryComp = MathUtil::smoothMeanNeighboring(trajectoryComp);
-            //trajectoryComp = MathUtil::applyCubicBezier(trajectoryComp);
+
+            //Process the trajectory from file
+            trajectoryComp = processTrajectory(mGesturesFromFile[i].positions);
             
             //Initialize the dynamic time warping
             dtw.init();
@@ -157,23 +152,47 @@ Gesture::recognizeDTW(){
                 bestDistance = distance;
                 gestureRecognized.name = mGesturesFromFile[i].name;
                 gestureRecognized.positions = trajectoryComp;
-                original = it->second.positions;
+                //original = it->second.positions;
             }
         }
     }
     
     if(bestDistance < MIN_DISTANCE_TRESHOLD){
         LOGGER->Log("Gesture recognized: " + gestureRecognized.name);
-        //cout<< "Gesture "<<gestureRecognized.name<<" recognized with cost distance "<<bestDistance<<endl;
+        cout<< "Gesture "<<gestureRecognized.name<<" recognized with cost distance "<<bestDistance<<endl;
         //Save the gesture recognized
         //mFileUtil.saveGesture(gestureRecognized, NAME_FILE_DATA);
-        FileUtil::printTrajectory(gestureRecognized.positions);
-        original = MathUtil::translateToOrigin(original);
-        original = MathUtil::normalizeTrajectory(original);
-        FileUtil::printTrajectory(original);
+        //FileUtil::printTrajectory(gestureRecognized.positions);
+        //original = MathUtil::translateToOrigin(original);
+        //original = MathUtil::normalizeTrajectory(original);
+        //FileUtil::printTrajectory(original);
     }
     
     LOGGER->Log("End DTW");
+}
+
+std::vector<XnPoint3D> 
+Gesture::processTrajectory(std::vector<XnPoint3D> trajectory){
+        //Translate the hand trajectory to origin
+        trajectory = MathUtil::translateToOrigin(trajectory);
+        //Normalize between the interval -1 to 1
+        trajectory = MathUtil::normalizeTrajectory(trajectory);
+        //Smooth the trajectory according the method choosed
+        switch(TYPE_SMOOTH){
+            case MEAN_NEIGHBORING:
+                trajectory = MathUtil::smoothMeanNeighboring(trajectory, 1);
+                break;
+            case CUBIC_B_SPLINE:
+                trajectory = MathUtil::applyCubicBSpline(trajectory);
+                break;
+            case CUBIC_BEZIER:
+                trajectory = MathUtil::applyCubicBezier(trajectory);
+                break;
+            default:
+                trajectory = MathUtil::smoothMeanNeighboring(trajectory, 1);
+                break;
+        }
+        return trajectory;
 }
 
 void

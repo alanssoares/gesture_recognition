@@ -193,6 +193,15 @@ MathUtil::applyCubicBezier(std::vector<XnPoint3D> positions){
 }
 
 std::vector<XnPoint3D>
+MathUtil::applyCubicBSpline(std::vector<XnPoint3D> positions){
+    BSpline spline;
+
+    positions = spline.curvePoints(positions, MIN_STEP_BSPLINE);
+
+    return positions;
+}
+
+std::vector<XnPoint3D>
 MathUtil::smoothMeanNeighboring(std::vector<XnPoint3D> positions, int numTimes){
     std::vector<XnPoint3D> smoothed;
     XnPoint3D meanPoint;

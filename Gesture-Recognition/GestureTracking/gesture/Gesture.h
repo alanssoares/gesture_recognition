@@ -114,6 +114,13 @@ public:
      */
     void    setGesturesFromFile(std::vector<type_gesture> gestures);
     
+    /*
+     Método responsável por aplicar os métodos de pré-processamento para centralizar na origem,
+     normalizar e suavizar a trajetória. A suavização depende do método escolhido.
+     @param trajectory do gesto
+    */
+    std::vector<XnPoint3D> processTrajectory(std::vector<XnPoint3D> trajectory);
+
     int     m_StateGesture;
     int     m_StateGesturePrev;
     float   m_Diff;

@@ -48,6 +48,16 @@ using namespace std;
 #define MIN_DISTANCE_TRESHOLD 0.3
 
 /*
+ Define a quantidade de steps para cada intervalo da curva bspline
+*/
+#define MIN_STEP_BSPLINE 7
+
+/*
+ Define o tipo de método que será usado para suavizar a trajetória
+*/
+#define TYPE_SMOOTH 2
+
+/*
  Define a taxa de incremento usada na interpolação das curvas
  */
 #define INCREMENT_RATE_INTERPOLATION 0.02
@@ -64,7 +74,6 @@ using namespace std;
  --------- TYPES Gestures ----------
  */
 enum{
-    
     BEM_VINDO = 1,
     CANCELAR = 2,
     CATEGORIA = 3,
@@ -74,10 +83,17 @@ enum{
 };
 
 /*
+------ Types methods for smooth
+*/
+enum {
+    MEAN_NEIGHBORING = 1,
+    CUBIC_B_SPLINE = 2,
+    CUBIC_BEZIER = 3
+};
+/*
  ---------- STATE Gesture -----------
  */
 enum{
-    
     GESTURE_DOING = 1,
     GESTURE_STOPED = 2
 };
