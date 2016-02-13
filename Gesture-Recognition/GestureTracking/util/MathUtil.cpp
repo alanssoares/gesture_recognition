@@ -224,3 +224,126 @@ MathUtil::smoothMeanNeighboring(std::vector<XnPoint3D> positions, int numTimes){
     
     return smoothed;
 }
+
+std::vector<XnPoint3D>
+MathUtil::simplify(std::vector<XnPoint3D> points, double tolerance, bool highestQuality){
+    double sqTolerance;
+
+    if(points.size() <= 2) {
+        return points;
+    }
+
+    sqTolerance = pow(tolerance, 2);
+
+    if(highestQuality){
+        points = MathUtil::simplifyRadialDist(points, sqTolerance);
+    }
+
+    points = MathUtil::simplifyDouglasPeucker(points, sqTolerance);
+
+    return points;
+}
+
+std::vector<XnPoint3D>
+MathUtil::simplifyRadialDist(std::vector<XnPoint3D> points, double sqTolerance){
+    XnPoint3D prevPoint, point;
+    std::vector<XnPoint3D> newPoints;
+    double sqDistance = 0.0;
+    prevPoint = points[0];
+    newPoints.push_back(prevPoint);
+
+    for (int i = 1; i < points.size(); i++) {
+        point = points[i];
+        sqDistance = MathUtil::getSqDist(point, prevPoint);
+        if (sqDistance > sqTolerance) {
+            newPoints.push_back(point);
+            prevPoint = point;
+        }
+    }
+
+    if (!MathUtil::pointsEqual(prevPoint, point)) {
+        newPoints.push_back(point);
+    }
+
+    return newPoints;
+}
+
+std::vector<XnPoint3D>
+MathUtil::simplifyDouglasPeucker(std::vector<XnPoint3D> points, double sqTolerance){
+    size_t last = points.size() - 1;
+    std::vector<XnPoint3D> simplified;
+    simplified.push_back(points[0]);
+    simplified = MathUtil::simplifyDPStep(points, 0, last, sqTolerance, simplified);
+    simplified.push_back(points[last]);
+    return simplified;
+}
+
+std::vector<XnPoint3D>
+MathUtil::simplifyDPStep(std::vector<XnPoint3D> points, int first, int last, double sqTolerance, std::vector<XnPoint3D> simplified){
+    double maxSqDist = sqTolerance;
+    int index;
+
+    for (int i = first + 1; i < last; i++) {
+        double sqDist = MathUtil::getSqSegDist(points[i], points[first], points[last]);
+        if (sqDist > maxSqDist) {
+            index = i;
+            maxSqDist = sqDist;
+        }
+    }
+    
+    if (maxSqDist > sqTolerance) {
+        if (index - first > 1) {
+            simplified = MathUtil::simplifyDPStep(points, first, index, sqTolerance, simplified);
+        }
+        
+        simplified.push_back(points[index]);
+        
+        if (last - index > 1) {
+            simplified = MathUtil::simplifyDPStep(points, index, last, sqTolerance, simplified);
+        }
+    }
+
+    return simplified;
+}
+
+// square distance between 2 points
+double
+MathUtil::getSqDist(XnPoint3D p1, XnPoint3D p2){
+    XnPoint3D newPoint = subtract(p1, p2);
+    return pow(newPoint.X,2) + pow(newPoint.Y,2) + pow(newPoint.Z,2);
+}
+
+//square distance from a point to a segment
+double
+MathUtil::getSqSegDist(XnPoint3D p, XnPoint3D p1, XnPoint3D p2){
+    double x = p1.X, 
+        y = p1.Y, 
+        z = p1.Z,
+        dx = p2.X - x,
+        dy = p2.Y - y,
+        dz = p2.Z - z;
+
+    if (dx != 0 || dy != 0 || dz != 0) {
+        double t = ((p.X - x) * dx + (p.Y - y) * dy + (p.Z - z) * dz) / (pow(dx,2) + pow(dy,2) + pow(dz,2));
+        if (t > 1) {
+            x = p2.X;
+            y = p2.Y;
+            z = p2.Z;
+        } else if (t > 0) {
+            x += dx * t;
+            y += dy * t;
+            z += dz * t;
+        }
+    }
+
+    dx = p.X - x;
+    dy = p.Y - y;
+    dz = p.Z - z;
+    
+    return pow(dx,2) + pow(dy,2) + pow(dz,2);
+}
+
+bool
+MathUtil::pointsEqual(XnPoint3D p1, XnPoint3D p2){
+    return p1.X == p2.X && p1.Y == p2.Y && p1.Z == p2.Z;
+}

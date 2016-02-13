@@ -35,6 +35,14 @@ public:
     static double length(XnPoint3D point);
     
     /**
+     Método responsável por calcular a distância entre dois pontos
+     @param p1 ponto
+     @param p2 ponto
+     @return double distância entre os pontos
+    **/
+    static double getSqDist(XnPoint3D p1, XnPoint3D p2);
+
+    /**
      Método responsável por efetuar a subtração de dois vetores a e b.
      @param a ponto da trajetória
      @param b ponto da trajetória
@@ -43,6 +51,14 @@ public:
     static XnPoint3D subtract(XnPoint3D a, XnPoint3D b);
     
     /**
+     Método responsável por verificar se os pontos p1 e p2 são iguais.
+     @param p1 ponto
+     @param p2 ponto
+     @retunr bool indicando se são iguais ou não
+    **/
+    static bool pointsEqual(XnPoint3D p1, XnPoint3D p2);
+
+    /**
      Método responsável por normalizar um ponto utilizando a magnitude deste.
      Normaliza um vetor dividindo cada componente pelo módulo do vetor.
      @param point da trajetória
@@ -50,6 +66,16 @@ public:
      */
     static XnPoint3D normalize(XnPoint3D point);
     
+    /**
+     Método responsável por calcular a distância de um ponto p a um
+     segmento formado pelos pontos p1 e p2.
+     @param p ponto usado para calcular a distância
+     @param p1 ponto do segmento
+     @param p2 ponto do segmento
+     @return double indicando a distância do ponto ao segmento
+    **/
+    static double getSqSegDist(XnPoint3D p, XnPoint3D p1, XnPoint3D p2);
+
     /**
      Método responsável por obter os valores mínimos de X, Y, Z 
      do array de posições.
@@ -145,6 +171,43 @@ public:
      @return std::vector<XnPoint3D> da nova trajetória filtrada usando a média da primeira vizinhança
      */
     static std::vector<XnPoint3D> smoothMeanNeighboring(std::vector<XnPoint3D> positions, int numTimes = 1);
+
+    /**
+     Método responsável por reduzir a quantidade de pontos da trajetória e
+     manter as características da curva
+     @ref http://mourner.github.io/simplify-js/
+     @param points da trajetória
+     @param tolerance da distância entre os pontos
+     @param highestQuality que indica se será aplicado um algoritmo de distância radial
+    */
+    static std::vector<XnPoint3D> simplify(std::vector<XnPoint3D> points, double tolerance, bool highestQuality);
+
+    /**
+     Método responsável por aplicar o método de Douglas Peucker para simplificar a trajetória
+     @param points a serem simplificados
+     @param sqTolerance da distância entre dois pontos
+     @return std::vector<XnPoint3D> com trajetória simplificada
+    **/
+    static std::vector<XnPoint3D> simplifyDouglasPeucker(std::vector<XnPoint3D> points, double sqTolerance);
+
+    /**
+     Método responsável por simplificar a trajetória usando a distância radial
+     @param points da trajetória
+     @param sqTolerance da distância entre dois pontos
+     @return std::vector<XnPoint3D> com trajetória simplificada
+    **/
+    static std::vector<XnPoint3D> simplifyRadialDist(std::vector<XnPoint3D> points, double sqTolerance);
+
+    /**
+     Método responsável por aplicar um passo da simplificação de Douglas Peucker
+     @param points da trajetória
+     @param first ponto da trajetória
+     @param last ponto da trajetória
+     @param sqTolerence entre dois pontos
+     @param simplified trajetória simplificada
+     @return std::vector<XnPoint3D> com trajetória simplificada
+    **/
+    static std::vector<XnPoint3D> simplifyDPStep(std::vector<XnPoint3D> points, int first, int last, double sqTolerance, std::vector<XnPoint3D> simplified);
 };
 
 #endif /* defined(__GestureTracking__MathUtil__) */

@@ -177,6 +177,8 @@ Gesture::processTrajectory(std::vector<XnPoint3D> trajectory){
         trajectory = MathUtil::translateToOrigin(trajectory);
         //Normalize between the interval -1 to 1
         trajectory = MathUtil::normalizeTrajectory(trajectory);
+        //Resample the trajectory
+        trajectory = MathUtil::simplify(trajectory, 0.01, false);
         //Smooth the trajectory according the method choosed
         switch(TYPE_SMOOTH){
             case MEAN_NEIGHBORING:
