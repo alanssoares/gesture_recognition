@@ -199,15 +199,18 @@ SimpleViewer::createRecorder()
 XnStatus
 SimpleViewer::InitOpenGL(int argc, char **argv)
 {
+	//Create windows 1
 	glutInit(&argc, argv);
+
+	GraphicTool::getInstance().InitOpenGL();
+   	GraphicTool::getInstance().InitOpenGLHooks();
+
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 	glutInitWindowSize(GL_WIN_SIZE_X, GL_WIN_SIZE_Y);
-	glutCreateWindow ("Project GRS");
-// 	glutFullScreen();
+	glutCreateWindow("Project GRS");
+ 	//glutFullScreen();
 	glutSetCursor(GLUT_CURSOR_NONE);
-
 	InitOpenGLHooks();
-
 	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
 
@@ -366,10 +369,8 @@ SimpleViewer::Display()
 
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
-
 	// Subclass draw hook
 	DisplayPostDraw();
-
 	// Swap the OpenGL display buffers
 	glutSwapBuffers();
 }

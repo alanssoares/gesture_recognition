@@ -40,7 +40,7 @@ public:
      @param p2 ponto
      @return double distância entre os pontos
     **/
-    static double getSqDist(XnPoint3D p1, XnPoint3D p2);
+    static double getDistancePointToPoint(XnPoint3D p1, XnPoint3D p2);
 
     /**
      Método responsável por efetuar a subtração de dois vetores a e b.
@@ -74,7 +74,7 @@ public:
      @param p2 ponto do segmento
      @return double indicando a distância do ponto ao segmento
     **/
-    static double getSqSegDist(XnPoint3D p, XnPoint3D p1, XnPoint3D p2);
+    static double getDistancePointToSegment(XnPoint3D p, XnPoint3D p1, XnPoint3D p2);
 
     /**
      Método responsável por obter os valores mínimos de X, Y, Z 

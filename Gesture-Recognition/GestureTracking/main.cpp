@@ -53,7 +53,7 @@ int main(int argc, char* argv[])
     
     // Setter the gestures from file
     Gesture::getInstance().setGesturesFromFile(fileUtil.getGestures());
-    
+
     if(MODE_ONLINE){
         
         // Create a context with default settings
@@ -89,7 +89,7 @@ int main(int argc, char* argv[])
     
 	rc = viewer.Init(argc, argv);
     CHECK_RC(rc, "Viewer init failed: %s\n");
-    
+
 	rc = viewer.Run();
     CHECK_RC(rc, "Viewer run failed: %s\n");
     

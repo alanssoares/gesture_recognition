@@ -18,6 +18,7 @@
 #include "../logger/Logger.h"
 #include "../geometry/DTW.h"
 #include "../util/MathUtil.h"
+#include "../util/GraphicTool.h"
 #include "../util/ConstantsUtil.h"
 #include "../util/FileUtil.h"
 
@@ -26,7 +27,6 @@ using namespace std;
 class Gesture{
     
 private:
-    
     /*
      O construtor inicializa as mãos com um valor negativo indicando que não existe nenhuma
      mão sendo rastreada.
@@ -132,7 +132,10 @@ public:
     FileUtil mFileUtil;
     
     std::vector<type_gesture> mGesturesFromFile;
-    
+
+    std::vector<XnPoint3D> m_pointsOriginal;
+    std::vector<XnPoint3D> m_pointsRecognized;
+
 public:
     static Gesture& getInstance();
     static Gesture*	m_Instance;

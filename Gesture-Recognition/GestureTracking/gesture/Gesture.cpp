@@ -29,7 +29,7 @@ Gesture::getInstance()
         LOGGER->Log("Instance Gesture Created");
         return *(m_Instance = new Gesture());
     }
-    
+
     return *m_Instance;
 }
 
@@ -124,7 +124,7 @@ Gesture::recognizeDTW(){
     double distance = 0.0;
     double bestDistance = 999999999;
     type_gesture gestureRecognized;
-    //std::vector<XnPoint3D> original;
+    std::vector<XnPoint3D> original;
     for (it = m_Hands.begin(); it != m_Hands.end(); ++it){
         
         //Process the trajectory from user
@@ -152,7 +152,7 @@ Gesture::recognizeDTW(){
                 bestDistance = distance;
                 gestureRecognized.name = mGesturesFromFile[i].name;
                 gestureRecognized.positions = trajectoryComp;
-                //original = it->second.positions;
+                original = it->second.positions;
             }
         }
     }
@@ -163,9 +163,11 @@ Gesture::recognizeDTW(){
         //Save the gesture recognized
         //mFileUtil.saveGesture(gestureRecognized, NAME_FILE_DATA);
         //FileUtil::printTrajectory(gestureRecognized.positions);
-        //original = MathUtil::translateToOrigin(original);
-        //original = MathUtil::normalizeTrajectory(original);
+        original = MathUtil::translateToOrigin(original);
+        original = MathUtil::normalizeTrajectory(original);
         //FileUtil::printTrajectory(original);
+        m_pointsOriginal = original;
+        m_pointsRecognized = gestureRecognized.positions;
     }
     
     LOGGER->Log("End DTW");
@@ -173,28 +175,28 @@ Gesture::recognizeDTW(){
 
 std::vector<XnPoint3D> 
 Gesture::processTrajectory(std::vector<XnPoint3D> trajectory){
-        //Translate the hand trajectory to origin
-        trajectory = MathUtil::translateToOrigin(trajectory);
-        //Normalize between the interval -1 to 1
-        trajectory = MathUtil::normalizeTrajectory(trajectory);
-        //Resample the trajectory
-        trajectory = MathUtil::simplify(trajectory, 0.01, false);
-        //Smooth the trajectory according the method choosed
-        switch(TYPE_SMOOTH){
-            case MEAN_NEIGHBORING:
-                trajectory = MathUtil::smoothMeanNeighboring(trajectory, 1);
-                break;
-            case CUBIC_B_SPLINE:
-                trajectory = MathUtil::applyCubicBSpline(trajectory);
-                break;
-            case CUBIC_BEZIER:
-                trajectory = MathUtil::applyCubicBezier(trajectory);
-                break;
-            default:
-                trajectory = MathUtil::smoothMeanNeighboring(trajectory, 1);
-                break;
-        }
-        return trajectory;
+    //Translate the hand trajectory to origin
+    trajectory = MathUtil::translateToOrigin(trajectory);
+    //Normalize between the interval -1 to 1
+    trajectory = MathUtil::normalizeTrajectory(trajectory);
+    //Resample the trajectory using the tolerance distance between points
+    trajectory = MathUtil::simplify(trajectory, 0.01, false);
+    //Smooth the trajectory according the method choosed
+    switch(TYPE_SMOOTH){
+        case MEAN_NEIGHBORING:
+            trajectory = MathUtil::smoothMeanNeighboring(trajectory, 1);
+            break;
+        case CUBIC_B_SPLINE:
+            trajectory = MathUtil::applyCubicBSpline(trajectory);
+            break;
+        case CUBIC_BEZIER:
+            trajectory = MathUtil::applyCubicBezier(trajectory);
+            break;
+        default:
+            trajectory = MathUtil::smoothMeanNeighboring(trajectory, 1);
+            break;
+    }
+    return trajectory;
 }
 
 void

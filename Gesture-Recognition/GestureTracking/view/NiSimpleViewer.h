@@ -23,6 +23,7 @@
 
 #include <XnCppWrapper.h>
 #include "../util/ConstantsUtil.h"
+#include "../util/GraphicTool.h"
 
 enum DisplayModes_e
 {

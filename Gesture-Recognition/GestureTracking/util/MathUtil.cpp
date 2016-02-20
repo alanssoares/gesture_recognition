@@ -53,10 +53,9 @@ double
 MathUtil::getMaxValue(vector<double> values)
 {
     double max = 0.0;
-    for (double value : values)
-    {
-        if (max < value) {
-            max = value;
+    for (int i = 0; i < values.size(); i++) {
+        if (max < values[i]) {
+            max = values[i];
         }
     }
     
@@ -73,11 +72,9 @@ MathUtil::getSumDiff(vector<XnPoint3D> positions)
     size_t n = positions.size();
     size_t len = n - MAX_HAND_CONTROL_POINTS;
     
-    XnPoint3D ant = positions[n-1];
-    XnPoint3D result;
+    XnPoint3D ant = positions[n - 1];
     for (size_t i = len; i < n; i++){
-        result = MathUtil::subtract(ant, positions[i]);
-        total += MathUtil::length(result);
+        total += getDistancePointToPoint(ant, positions[i]);
         ant = positions[i];
     }
     
@@ -125,14 +122,12 @@ MathUtil::normalizeTrajectory(vector<XnPoint3D> positions){
     XnPoint3D minPos = minValueXYZ(positions);
     XnPoint3D maxPos = maxValueXYZ(positions);
     
-    double originalRangeX = maxPos.X - minPos.X;
-    double originalRangeY = maxPos.Y - minPos.Y;
-    double originalRangeZ = maxPos.Z - minPos.Z;
+    XnPoint3D originalRange = subtract(maxPos, minPos);
     
     for(int i = 0; i < positions.size(); i++) {
-        positions[i].X = desiredRange * (positions[i].X - minPos.X)/ originalRangeX + desiredMin;
-        positions[i].Y = desiredRange * (positions[i].Y - minPos.Y)/ originalRangeY + desiredMin;
-        positions[i].Z = desiredRange * (positions[i].Z - minPos.Z)/ originalRangeZ + desiredMin;
+        positions[i].X = desiredRange * (positions[i].X - minPos.X)/ originalRange.X + desiredMin;
+        positions[i].Y = desiredRange * (positions[i].Y - minPos.Y)/ originalRange.Y + desiredMin;
+        positions[i].Z = desiredRange * (positions[i].Z - minPos.Z)/ originalRange.Z + desiredMin;
     }
     
     return positions;
@@ -144,10 +139,10 @@ MathUtil::minValueXYZ(vector<XnPoint3D> positions){
     minPos.X = 99999999;
     minPos.Y = 99999999;
     minPos.Z = 99999999;
-    for(XnPoint3D pos : positions) {
-        if(pos.X < minPos.X) minPos.X = pos.X;
-        if(pos.Y < minPos.Y) minPos.Y = pos.Y;
-        if(pos.Z < minPos.Z) minPos.Z = pos.Z;
+    for(int i = 0; i < positions.size(); i++) {
+        if(positions[i].X < minPos.X) minPos.X = positions[i].X;
+        if(positions[i].Y < minPos.Y) minPos.Y = positions[i].Y;
+        if(positions[i].Z < minPos.Z) minPos.Z = positions[i].Z;
     }
     return minPos;
 }
@@ -158,10 +153,10 @@ MathUtil::maxValueXYZ(vector<XnPoint3D> positions){
     maxPos.X = -99999999;
     maxPos.Y = -99999999;
     maxPos.Z = -99999999;
-    for(XnPoint3D pos : positions) {
-        if(pos.X > maxPos.X) maxPos.X = pos.X;
-        if(pos.Y > maxPos.Y) maxPos.Y = pos.Y;
-        if(pos.Z > maxPos.Z) maxPos.Z = pos.Z;
+    for(int i = 0; i < positions.size(); i++) {
+        if(positions[i].X > maxPos.X) maxPos.X = positions[i].X;
+        if(positions[i].Y > maxPos.Y) maxPos.Y = positions[i].Y;
+        if(positions[i].Z > maxPos.Z) maxPos.Z = positions[i].Z;
     }
     return maxPos;
 }
@@ -236,10 +231,10 @@ MathUtil::simplify(std::vector<XnPoint3D> points, double tolerance, bool highest
     sqTolerance = pow(tolerance, 2);
 
     if(highestQuality){
-        points = MathUtil::simplifyRadialDist(points, sqTolerance);
+        points = simplifyRadialDist(points, sqTolerance);
     }
 
-    points = MathUtil::simplifyDouglasPeucker(points, sqTolerance);
+    points = simplifyDouglasPeucker(points, sqTolerance);
 
     return points;
 }
@@ -254,14 +249,14 @@ MathUtil::simplifyRadialDist(std::vector<XnPoint3D> points, double sqTolerance){
 
     for (int i = 1; i < points.size(); i++) {
         point = points[i];
-        sqDistance = MathUtil::getSqDist(point, prevPoint);
+        sqDistance = getDistancePointToPoint(point, prevPoint);
         if (sqDistance > sqTolerance) {
             newPoints.push_back(point);
             prevPoint = point;
         }
     }
 
-    if (!MathUtil::pointsEqual(prevPoint, point)) {
+    if (!pointsEqual(prevPoint, point)) {
         newPoints.push_back(point);
     }
 
@@ -273,7 +268,7 @@ MathUtil::simplifyDouglasPeucker(std::vector<XnPoint3D> points, double sqToleran
     size_t last = points.size() - 1;
     std::vector<XnPoint3D> simplified;
     simplified.push_back(points[0]);
-    simplified = MathUtil::simplifyDPStep(points, 0, last, sqTolerance, simplified);
+    simplified = simplifyDPStep(points, 0, last, sqTolerance, simplified);
     simplified.push_back(points[last]);
     return simplified;
 }
@@ -284,7 +279,7 @@ MathUtil::simplifyDPStep(std::vector<XnPoint3D> points, int first, int last, dou
     int index;
 
     for (int i = first + 1; i < last; i++) {
-        double sqDist = MathUtil::getSqSegDist(points[i], points[first], points[last]);
+        double sqDist = getDistancePointToSegment(points[i], points[first], points[last]);
         if (sqDist > maxSqDist) {
             index = i;
             maxSqDist = sqDist;
@@ -293,29 +288,27 @@ MathUtil::simplifyDPStep(std::vector<XnPoint3D> points, int first, int last, dou
     
     if (maxSqDist > sqTolerance) {
         if (index - first > 1) {
-            simplified = MathUtil::simplifyDPStep(points, first, index, sqTolerance, simplified);
+            simplified = simplifyDPStep(points, first, index, sqTolerance, simplified);
         }
         
         simplified.push_back(points[index]);
         
         if (last - index > 1) {
-            simplified = MathUtil::simplifyDPStep(points, index, last, sqTolerance, simplified);
+            simplified = simplifyDPStep(points, index, last, sqTolerance, simplified);
         }
     }
 
     return simplified;
 }
 
-// square distance between 2 points
 double
-MathUtil::getSqDist(XnPoint3D p1, XnPoint3D p2){
+MathUtil::getDistancePointToPoint(XnPoint3D p1, XnPoint3D p2){
     XnPoint3D newPoint = subtract(p1, p2);
-    return pow(newPoint.X,2) + pow(newPoint.Y,2) + pow(newPoint.Z,2);
+    return length(newPoint);
 }
 
-//square distance from a point to a segment
 double
-MathUtil::getSqSegDist(XnPoint3D p, XnPoint3D p1, XnPoint3D p2){
+MathUtil::getDistancePointToSegment(XnPoint3D p, XnPoint3D p1, XnPoint3D p2){
     double x = p1.X, 
         y = p1.Y, 
         z = p1.Z,
