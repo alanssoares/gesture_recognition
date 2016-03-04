@@ -18,7 +18,6 @@
 #include "../logger/Logger.h"
 #include "../geometry/DTW.h"
 #include "../util/MathUtil.h"
-#include "../util/GraphicTool.h"
 #include "../util/ConstantsUtil.h"
 #include "../util/FileUtil.h"
 
@@ -133,15 +132,15 @@ public:
     
     std::vector<type_gesture> mGesturesFromFile;
 
-    std::vector<XnPoint3D> m_pointsOriginal;
-    std::vector<XnPoint3D> m_pointsRecognized;
+    std::vector<XnPoint3D> m_gesturePerformed;
+    std::vector<XnPoint3D> m_gestureTemplate;
+    std::vector<XnPoint3D> m_gesturePerformedProcessed;
 
 public:
     static Gesture& getInstance();
     static Gesture*	m_Instance;
     
     int     m_TimeGestureStop;
-
 };
 
 #endif /* defined(__GestureTracking__GestureRecognize__) */

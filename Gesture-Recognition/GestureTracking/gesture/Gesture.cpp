@@ -123,51 +123,39 @@ Gesture::recognizeDTW(){
     std::vector<XnPoint3D> trajectoryComp;
     double distance = 0.0;
     double bestDistance = 999999999;
-    type_gesture gestureRecognized;
-    std::vector<XnPoint3D> original;
+    type_gesture gestureTemplate;
+    type_gesture gesturePerformed;
+
     for (it = m_Hands.begin(); it != m_Hands.end(); ++it){
-        
         //Process the trajectory from user
         trajectoryHand = processTrajectory(it->second.positions);
-
         for (int i = 0; i < mGesturesFromFile.size(); i++) {
-
-            //Process the trajectory from file
+            //Process the trajectory template
             trajectoryComp = processTrajectory(mGesturesFromFile[i].positions);
-            
             //Initialize the dynamic time warping
             dtw.init();
-            
             //Set sequences that will be computed
             dtw.setSequences(trajectoryHand, trajectoryComp);
-            
             //Calc dtw distance between two trajectories
             dtw.compute();
-            
             //Get the best cost distance computed by dtw
             distance = dtw.getDistance();
-            
             //Verify if the computed distance is lower that previous best
             if(distance < bestDistance){
                 bestDistance = distance;
-                gestureRecognized.name = mGesturesFromFile[i].name;
-                gestureRecognized.positions = trajectoryComp;
-                original = it->second.positions;
+                gestureTemplate.name = mGesturesFromFile[i].name;
+                gestureTemplate.positions = mGesturesFromFile[i].positions;
+                gesturePerformed.positions = it->second.positions;
             }
         }
     }
-    
+
     if(bestDistance < MIN_DISTANCE_TRESHOLD){
-        LOGGER->Log("Gesture recognized: " + gestureRecognized.name);
-        cout<< "Gesture "<<gestureRecognized.name<<" recognized with cost distance "<<bestDistance<<endl;
-        //Save the gesture recognized
-        //mFileUtil.saveGesture(gestureRecognized, NAME_FILE_DATA);
-        //FileUtil::printTrajectory(gestureRecognized.positions);
-        original = MathUtil::translateToOrigin(original);
-        original = MathUtil::normalizeTrajectory(original);
-        //FileUtil::printTrajectory(original);
-        m_pointsOriginal = original;
-        m_pointsRecognized = gestureRecognized.positions;
+        cout<< "Gesture "<<gestureTemplate.name<<" recognized with cost distance "<<bestDistance<<endl;
+        m_gesturePerformed = gesturePerformed.positions;
+        m_gesturePerformedProcessed = MathUtil::simplify(m_gesturePerformed, 0.01, false);
+        m_gesturePerformedProcessed = MathUtil::smoothMeanNeighboring(m_gesturePerformedProcessed, 1);
+        m_gestureTemplate = gestureTemplate.positions;
     }
     
     LOGGER->Log("End DTW");

@@ -45,7 +45,7 @@ using namespace std;
 /*
  Define the minimum distance threshold to recognize gestures
  */
-#define MIN_DISTANCE_TRESHOLD 0.3
+#define MIN_DISTANCE_TRESHOLD 0.5
 
 /*
  Define a quantidade de steps para cada intervalo da curva bspline
@@ -55,7 +55,7 @@ using namespace std;
 /*
  Define o tipo de método que será usado para suavizar a trajetória
 */
-#define TYPE_SMOOTH 2
+#define TYPE_SMOOTH 1
 
 /*
  Define a taxa de incremento usada na interpolação das curvas
@@ -70,6 +70,13 @@ using namespace std;
 
 #define GESTURE "gesture"
 #define NAME_FILE_DATA "../Samples.txt"
+
+#define NAME_WINDOW_GR "Project GRS"
+#define GAP_WINDOW      25
+#define GL_WIN_SIZE_X   1024
+#define GL_WIN_SIZE_Y   512
+#define GL_WIN_SIZE_MAIN_X 512
+#define GL_WIN_SIZE_MAIN_Y 512
 /*
  --------- TYPES Gestures ----------
  */

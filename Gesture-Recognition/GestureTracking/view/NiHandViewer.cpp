@@ -79,70 +79,52 @@ void
 HandViewer::DisplayPostDraw()
 {
     Gesture& gesture = Gesture::getInstance();
-    
+
     map<int,type_hand>::iterator it;
     for (it = gesture.m_Hands.begin(); it != gesture.m_Hands.end(); ++it){
         if(!it->second.positions.empty()){
-            drawHand(it->second.id_hand, it->second.positions);
-            //drawCircle(it->second.positions.back(), MAX_RADIUS);
+            XnUInt32 nColor = it->second.id_hand % LENGTHOF(g_colours);
+            drawCurve(it->second.positions, nColor);
         }
     }
+
+    drawCurves();
 }
-/*
- Método drawHand recebe como parametros o id da mão e a trajetória e converte
- as coordenadas do mundo real em projetivas para renderiza-la no monitor.
- */
+
 void
-HandViewer::drawHand(int idHand, vector<XnPoint3D> positions)
+HandViewer::drawCurves()
 {
-    size_t len = positions.size();
+    Gesture& gesture = Gesture::getInstance();
+    //Configuring viewport
+    glViewport(512, 0, GL_WIN_SIZE_MAIN_X, GL_WIN_SIZE_MAIN_Y);
+    //Draw the curves
+    drawCurve(gesture.m_gesturePerformed, 1);
+    drawCurve(gesture.m_gesturePerformedProcessed, 2);
+    drawCurve(gesture.m_gestureTemplate, 3);
+}
+
+void
+HandViewer::drawCurve(vector<XnPoint3D> curve, XnUInt32 nColor)
+{
+    size_t len = curve.size();
     XnFloat coordinates[len * 3]; // Size * (X, Y, Z)
     vector<XnPoint3D> trajectory;
     int numPoints = 0;
     
-    for(int i = 0; i < len; i++){
-        
-        XnPoint3D point = positions[i];
-        m_depth.ConvertRealWorldToProjective(1, &point, &point);
-        ScalePoint(point);
-        trajectory.push_back(point);
-    }
+    trajectory = convertAndScale(curve);
     
     for (int i = 0; i < len; i+=2) {
         coordinates[numPoints * 3] = trajectory[i].X;
         coordinates[numPoints * 3 + 1] = trajectory[i].Y;
         coordinates[numPoints * 3 + 2] = 0;
-        
         numPoints++;
     }
-    
-    draw(idHand, numPoints, coordinates);
-}
 
-/*
- Método draw renderiza a trajetória da mão
- */
-void
-HandViewer::draw(int idHand, int numPoints, XnFloat coordinates[]){
-    
-    //printf("id %d n %d\n", idHand, numPoints);
-    
-    static const float colours[][3] =
-    {
-        { 0.5f, 0.5f, 0.5f},//Gray
-        { 0.0f, 1.0f, 0.0f},//Green
-        { 0.0f, 0.5f, 1.0f},//Blue
-        { 1.0f, 1.0f, 0.0f},//Yellow
-        { 1.0f, 0.5f, 0.0f},//Organge
-        { 1.0f, 0.0f, 1.0f}//Pink
-    };
-    
-    // Draw the hand trail history
-    XnUInt32 nColor = idHand % LENGTHOF(colours);
-    glColor4f(colours[nColor][0],
-              colours[nColor][1],
-              colours[nColor][2],
+    glColor4f(g_colours[nColor][0],
+              g_colours[nColor][1],
+              g_colours[nColor][2],
               1.0f);
+
     glPointSize(2);
     glVertexPointer(3, GL_FLOAT, 0, coordinates);
     glDrawArrays(GL_LINE_STRIP, 0, numPoints);
@@ -171,7 +153,7 @@ void
 HandViewer::drawCircle(XnPoint3D point, float radius)
 {
     m_depth.ConvertRealWorldToProjective(1, &point, &point);
-    ScalePoint(point);
+    ScalePoint(point, GL_WIN_SIZE_X, GL_WIN_SIZE_Y);
     
     glBegin(GL_TRIANGLE_FAN);
     
@@ -194,4 +176,16 @@ HandViewer::InitOpenGL( int argc, char **argv )
 	glDisableClientState(GL_COLOR_ARRAY);
 
 	return rc;
+}
+
+vector<XnPoint3D>
+HandViewer::convertAndScale(vector<XnPoint3D> points){
+    vector<XnPoint3D> newPoints;
+    for(int i = 0; i < points.size(); i++){
+        XnPoint3D point = points[i];
+        m_depth.ConvertRealWorldToProjective(1, &point, &point);
+        ScalePoint(point, GL_WIN_SIZE_X, GL_WIN_SIZE_Y);
+        newPoints.push_back(point);
+    }
+    return newPoints;
 }

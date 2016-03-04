@@ -23,11 +23,6 @@
 //---------------------------------------------------------------------------
 #include "NiSimpleViewer.h"
 #include <XnOS.h>
-#if (XN_PLATFORM == XN_PLATFORM_MACOSX)
-#include <GLUT/glut.h>
-#else
-#include <GL/glut.h>
-#endif
 #include <math.h>
 #include <cassert>
 
@@ -38,8 +33,6 @@ using namespace xn;
 //---------------------------------------------------------------------------
 // Defines
 //---------------------------------------------------------------------------
-#define GL_WIN_SIZE_X   640
-#define GL_WIN_SIZE_Y   480
 #define TEXTURE_SIZE	512
 
 #define DEFAULT_DISPLAY_MODE	DISPLAY_MODE_DEPTH
@@ -75,7 +68,6 @@ SimpleViewer::glutKeyboard (unsigned char key, int x, int y)
 {
 	Instance().OnKey(key, x, y);
 }
-
 
 //---------------------------------------------------------------------------
 // Method Definitions
@@ -199,18 +191,16 @@ SimpleViewer::createRecorder()
 XnStatus
 SimpleViewer::InitOpenGL(int argc, char **argv)
 {
-	//Create windows 1
 	glutInit(&argc, argv);
-
-	GraphicTool::getInstance().InitOpenGL();
-   	GraphicTool::getInstance().InitOpenGLHooks();
-
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 	glutInitWindowSize(GL_WIN_SIZE_X, GL_WIN_SIZE_Y);
-	glutCreateWindow("Project GRS");
- 	//glutFullScreen();
+
+	m_windowId = glutCreateWindow(NAME_WINDOW_GR);
+	
 	glutSetCursor(GLUT_CURSOR_NONE);
+	
 	InitOpenGLHooks();
+
 	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
 
@@ -220,8 +210,8 @@ SimpleViewer::InitOpenGL(int argc, char **argv)
 void
 SimpleViewer::InitOpenGLHooks()
 {
-	glutKeyboardFunc(glutKeyboard);
 	glutDisplayFunc(glutDisplay);
+	glutKeyboardFunc(glutKeyboard);
 	glutIdleFunc(glutIdle);
 }
 
@@ -254,6 +244,7 @@ SimpleViewer::Display()
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// Setup the OpenGL viewpoint
+	glViewport(0, 0, GL_WIN_SIZE_MAIN_X, GL_WIN_SIZE_MAIN_Y);
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
@@ -343,8 +334,7 @@ SimpleViewer::Display()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_nTexMapX, m_nTexMapY, 0, GL_RGB, GL_UNSIGNED_BYTE, m_pTexMap);
-
-
+	
 	// Display the OpenGL texture map
 	glColor4f(1,1,1,1);
 
@@ -403,15 +393,14 @@ SimpleViewer::OnKey(unsigned char key, int /*x*/, int /*y*/)
 }
 
 void
-SimpleViewer::ScalePoint(XnPoint3D& point)
+SimpleViewer::ScalePoint(XnPoint3D& point, int width, int height)
 {
-	point.X *= GL_WIN_SIZE_X;
+	point.X *= width;
 	point.X /= m_depthMD.XRes();
 
-	point.Y *= GL_WIN_SIZE_Y;
+	point.Y *= height;
 	point.Y /= m_depthMD.YRes();
 }
-
 
 void
 SimpleViewer::deleteRecorder(void)

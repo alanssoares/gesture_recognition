@@ -119,16 +119,12 @@ FileUtil::saveGesture(const type_gesture gesture, const std::string fileName){
     file.open(fileName, ios::in | ios::out | ios::ate);
     
     if(file.is_open()){
-        
         file << "gesture "<< gesture.name << std::endl;
-        
-        for(XnPoint3D position : gesture.positions){
-            file << position.X << " " << position.Y << " " << position.Z << std::endl;
+        for(int i = 0; i < gesture.positions.size(); i++){
+            file << gesture.positions[i].X << " " << gesture.positions[i].Y << " " << gesture.positions[i].Z << std::endl;
         }
-        
         file << std::endl;
         file.close();
-        
         LOGGER->Log("The gesture was successfully saved\n");
     }else{
         LOGGER->Log("The file can't be open::" + fileName + "\n");

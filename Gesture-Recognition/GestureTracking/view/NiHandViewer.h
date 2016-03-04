@@ -31,21 +31,20 @@ using namespace std;
 #define DEG2RAD 3.14159/180
 #define MAX_RADIUS 20
 
-class HandViewer: public SimpleViewer
-{
+class HandViewer: public SimpleViewer {
 public:
 	// Singleton
 	static SimpleViewer& CreateInstance(xn::Context& context);
 
 	virtual XnStatus Init(int argc, char **argv);
 	virtual XnStatus Run();	//Does not return if successful
-    
-    void drawHand(int idHand, vector<XnPoint3D> positions);
-    void draw(int idHand, int numPoints, XnFloat coordinates[]);
-    
+
+    void drawCurves();
+    void drawCurve(vector<XnPoint3D> curve, XnUInt32 nColor);
     void drawRectangle(float topLeftX, float topLeftY, float bottomRightX, float bottomRightY);
     void drawCircle(XnPoint3D point, float radius);
     
+    vector<XnPoint3D> convertAndScale(vector<XnPoint3D> points);
 protected:
 	HandViewer(xn::Context& context);
 

@@ -22,8 +22,15 @@
 #define NI_SIMPLE_VIEWER_H__
 
 #include <XnCppWrapper.h>
+#if (XN_PLATFORM == XN_PLATFORM_MACOSX)
+#include <GLUT/glut.h>
+#include <OpenGL/gl.h>
+#else
+#include <GL/glut.h>
+#include <GL/gl.h>
+#endif
 #include "../util/ConstantsUtil.h"
-#include "../util/GraphicTool.h"
+#include "../gesture/Gesture.h"
 
 enum DisplayModes_e
 {
@@ -32,6 +39,14 @@ enum DisplayModes_e
 	DISPLAY_MODE_IMAGE
 };
 
+static const float g_colours[6][3] = {
+    { 0.5f, 0.5f, 0.5f},//Gray 0
+    { 0.0f, 1.0f, 0.0f},//Green 1
+    { 0.0f, 0.5f, 1.0f},//Blue 2
+    { 1.0f, 1.0f, 0.0f},//Yellow 3
+    { 1.0f, 0.5f, 0.0f},//Organge 4
+    { 1.0f, 0.0f, 1.0f}//Pink 5
+};
 
 class SimpleViewer
 {
@@ -50,7 +65,7 @@ public:
     XnStatus createRecorder();
     void     deleteRecorder();
     void     activeModeOnline();
-    
+
 protected:
 	SimpleViewer(xn::Context& context);
 	virtual ~SimpleViewer();
@@ -75,13 +90,16 @@ protected:
     
     bool                m_ModeOnline;
 	
+	GLuint 				m_windowId;
+
     static SimpleViewer*	sm_pInstance;
 
-	void ScalePoint(XnPoint3D& point);
+	void ScalePoint(XnPoint3D& point, int width, int height);
 private:
+
 	// GLUT callbacks
-	static void glutIdle();
 	static void glutDisplay();
+	static void glutIdle();
 	static void glutKeyboard(unsigned char key, int x, int y);
 
 	float*				m_pDepthHist;
