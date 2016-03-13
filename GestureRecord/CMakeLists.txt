@@ -25,17 +25,16 @@ include_directories(${OPENNI_INCLUDE_DIRS} ${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUD
 include_directories ("${PROJECT_SOURCE_DIR}")
 include_directories ("${PROJECT_SOURCE_DIR}/tracker")
 include_directories ("${PROJECT_SOURCE_DIR}/geometry")
-include_directories ("${PROJECT_SOURCE_DIR}/gesture")
 include_directories ("${PROJECT_SOURCE_DIR}/libs")
 include_directories ("${PROJECT_SOURCE_DIR}/logger")
 include_directories ("${PROJECT_SOURCE_DIR}/util")
 include_directories ("${PROJECT_SOURCE_DIR}/view")
 
 # Inclui todas libraries nas pastas do projeto
-file(GLOB SOURCES "tracker/*.cpp" "tracker/*.cpp" "geometry/*.cpp" "gesture/*.cpp" "libs/*.cpp" "logger/*.cpp" "util/*.cpp" "view/*.cpp" "*.cpp")
+file(GLOB SOURCES "tracker/*.cpp" "tracker/*.cpp" "geometry/*.cpp" "libs/*.cpp" "logger/*.cpp" "util/*.cpp" "view/*.cpp" "*.cpp")
 
 # Cria executavel do programa
-add_executable(gesture_tracking ${SOURCES})
+add_executable(gesture_record ${SOURCES})
 
 # Linka as aplicações com as libs
-target_link_libraries(gesture_tracking ${OPENNI_LIBS} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} util)
+target_link_libraries(gesture_record ${OPENNI_LIBS} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} util)

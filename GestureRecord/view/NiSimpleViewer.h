@@ -30,7 +30,6 @@
 #include <GL/gl.h>
 #endif
 #include "../util/ConstantsUtil.h"
-#include "../gesture/Gesture.h"
 #include "../util/FileUtil.h"
 
 enum DisplayModes_e
@@ -59,14 +58,6 @@ public:
 	virtual XnStatus Init(int argc, char **argv);
 	virtual XnStatus Run();	//Does not return
 
-    /** 
-     Method created to record the input data
-     Link reference: http://kinectcar.ronsper.com/docs/openni/tut_recording.html
-     */
-    XnStatus createRecorder();
-    void     deleteRecorder();
-    void     activeModeOnline();
-
 protected:
 	SimpleViewer(xn::Context& context);
 	virtual ~SimpleViewer();
@@ -88,8 +79,6 @@ protected:
     //To recorder the input data
     xn::Recorder*       m_RecorderDepth;
     xn::Recorder*       m_RecorderImage;
-    
-    bool                m_ModeOnline;
 	
 	GLuint 				m_windowId;
 

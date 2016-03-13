@@ -49,9 +49,13 @@ public:
     void stopStorage();
     void saveStorage();
 
+    void removeHand(int idHand);
+    void addPosition(int idHand, XnPoint3D pos);
+    void addHand(int idHand, XnPoint3D pos);
+
     std::vector<type_gesture> getGesturesOneHand() { return mGesturesOneHand; };
     std::vector<type_gesture> getGesturesTwoHands() { return mGesturesTwoHands; };
-
+    type_gesture getNewGesture() { return m_NewGesture; };
     XnPoint3D getPointFile(std::string str);
 
 public:

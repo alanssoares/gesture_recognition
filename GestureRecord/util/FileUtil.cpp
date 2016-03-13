@@ -15,6 +15,8 @@ FileUtil* FileUtil::m_Instance = NULL;
 
 FileUtil::FileUtil() {
     m_StartingStorage = false;
+    m_NewGesture.handOne.id_hand = -1;
+    m_NewGesture.handTwo.id_hand = -1;
 }
 
 FileUtil::~FileUtil(){}
@@ -43,30 +45,78 @@ FileUtil::startStorage(){
 void
 FileUtil::stopStorage(){
     m_StartingStorage = false;
-    //add the gesture to vector
+    if(m_NewGesture.numHands == 1){
+        mGesturesOneHand.push_back(m_NewGesture);
+    } else if(m_NewGesture.numHands == 2){
+        mGesturesTwoHands.push_back(m_NewGesture);
+    }
+    m_NewGesture.handOne.positions.clear();
+    m_NewGesture.handTwo.positions.clear();
+}
+
+void
+FileUtil::addHand(int idHand, XnPoint3D pos){
+    if(m_NewGesture.handOne.id_hand == -1){
+        m_NewGesture.handOne.id_hand = idHand;
+    } else if(m_NewGesture.handTwo.id_hand == -1){
+        m_NewGesture.handTwo.id_hand = idHand;
+    }
+}
+
+void
+FileUtil::removeHand(int idHand){
+    if(m_NewGesture.handOne.id_hand == idHand){
+        m_NewGesture.handOne.id_hand = -1;
+        m_NewGesture.handOne.positions.clear();
+    } else if(m_NewGesture.handTwo.id_hand == idHand){
+        m_NewGesture.handTwo.id_hand = -1;
+        m_NewGesture.handTwo.positions.clear();
+    }
+}
+
+void
+FileUtil::addPosition(int idHand, XnPoint3D pos){
+    if(m_StartingStorage){
+        if(m_NewGesture.handOne.id_hand == idHand){
+            m_NewGesture.handOne.positions.push_back(pos);
+        } else if(m_NewGesture.handTwo.id_hand == idHand){
+            m_NewGesture.handTwo.positions.push_back(pos);
+        }
+    }
 }
 
 void
 FileUtil::saveStorage(){
-    std::fstream file;
     std::string nameFile = m_NewGesture.name + ".txt";
+    std::ofstream fileCreate(nameFile);
+    std::fstream file;
+    fileCreate.close();
     file.open(nameFile, ios::in | ios::out | ios::ate);
     if(file.is_open()){
-        file<<"gesture "<<m_NewGesture.name<<" hands "<<m_NewGesture.numHands<<std::endl;
         if(m_NewGesture.numHands == 1) {
-            for(int i = 0; i < m_NewGesture.handOne.positions.size(); i++){
-                file<<m_NewGesture.handOne.positions[i].X<<" "<<m_NewGesture.handOne.positions[i].Y<<" "<<m_NewGesture.handOne.positions[i].Z<<std::endl;
+            for (int i = 0; i < mGesturesOneHand.size(); i++){
+                type_gesture gesture = mGesturesOneHand[i];
+                file<<"gesture "<<m_NewGesture.name<<" hands "<<m_NewGesture.numHands<<std::endl;
+                for(int j = 0; j < gesture.handOne.positions.size(); j++){
+                    file<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<std::endl;
+                }
+                file<<"end"<<std::endl;
             }
         } else if(m_NewGesture.numHands == 2){
-            for(int i = 0; i < m_NewGesture.handOne.positions.size(); i++){
-                file<<m_NewGesture.handOne.positions[i].X<<" "<<m_NewGesture.handOne.positions[i].Y<<" "<<m_NewGesture.handOne.positions[i].Z<<std::endl;
-            }
-            file<<std::endl;
-            for(int i = 0; i < m_NewGesture.handTwo.positions.size(); i++){
-                file<<m_NewGesture.handTwo.positions[i].X<<" "<<m_NewGesture.handTwo.positions[i].Y<<" "<<m_NewGesture.handTwo.positions[i].Z<<std::endl;
+            for (int i = 0; i < mGesturesTwoHands.size(); i++){
+                type_gesture gesture = mGesturesTwoHands[i];
+                file<<"gesture "<<m_NewGesture.name<<" hands "<<m_NewGesture.numHands<<std::endl;
+                for(int j = 0; j < gesture.handOne.positions.size(); j++){
+                    file<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<std::endl;
+                }
+                file<<std::endl;
+                for(int j = 0; j < gesture.handTwo.positions.size(); j++){
+                    file<<gesture.handTwo.positions[j].X<<" "<<gesture.handTwo.positions[j].Y<<" "<<gesture.handTwo.positions[j].Z<<std::endl;
+                }
+                file<<"end"<<std::endl;
             }
         }
-        file<<"end"<<std::endl;
+        
     }
     file.close();
 }

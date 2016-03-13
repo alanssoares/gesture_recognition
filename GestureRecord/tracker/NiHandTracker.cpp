@@ -22,7 +22,7 @@
 // Includes
 //---------------------------------------------------------------------------
 #include "NiHandTracker.h"
-#include "Gesture.h"
+#include "FileUtil.h"
 #include <cassert>
 
 
@@ -59,7 +59,6 @@ static const char* const	cGestures[] =
 //---------------------------------------------------------------------------
 XnListT<HandTracker*>	HandTracker::sm_Instances;
 
-
 //---------------------------------------------------------------------------
 // Hooks
 //---------------------------------------------------------------------------
@@ -70,9 +69,7 @@ XN_CALLBACK_TYPE HandTracker::Gesture_Recognized(	xn::GestureGenerator&	/*genera
 														const XnPoint3D*		pEndPosition, 
 														void*					pCookie)
 {
-    
 	printf("Gesture recognized: %s\n", strGesture);
-
 	HandTracker*	pThis = static_cast<HandTracker*>(pCookie);
 	if(sm_Instances.Find(pThis) == sm_Instances.End())
 	{
@@ -90,9 +87,6 @@ XN_CALLBACK_TYPE HandTracker::Hand_Create(	xn::HandsGenerator& /*generator*/,
 												XnFloat				/*fTime*/, 
 												void*				pCookie)
 {
-    
-	//printf("New Hand: %d @ (%f,%f,%f)\n", nId, pPosition->X, pPosition->Y, pPosition->Z);
-
 	HandTracker*	pThis = static_cast<HandTracker*>(pCookie);
 	if(sm_Instances.Find(pThis) == sm_Instances.End())
 	{
@@ -100,8 +94,7 @@ XN_CALLBACK_TYPE HandTracker::Hand_Create(	xn::HandsGenerator& /*generator*/,
 		return;
 	}
     
-    //NewHand is add to recognize
-    Gesture::getInstance().addHand(nId, *pPosition);
+    FileUtil::getInstance().addHand(nId, *pPosition);
 }
 
 void
@@ -111,18 +104,14 @@ XN_CALLBACK_TYPE HandTracker::Hand_Update(	xn::HandsGenerator& /*generator*/,
 												XnFloat				/*fTime*/, 
 												void*				pCookie)
 {
-    
     HandTracker*	pThis = static_cast<HandTracker*>(pCookie);
 	if(sm_Instances.Find(pThis) == sm_Instances.End())
 	{
 		printf("Dead HandTracker: skipped!\n");
 		return;
 	}
-    
-    //printf("(%f,%f,%f)\n", pPosition->X, pPosition->Y, pPosition->Z);
 
-    //Update the Hand that is tracked
-    Gesture::getInstance().update(nId, *pPosition);
+    FileUtil::getInstance().addPosition(nId, *pPosition);
 }
 
 void
@@ -132,7 +121,7 @@ XN_CALLBACK_TYPE HandTracker::Hand_Destroy(	xn::HandsGenerator& /*generator*/,
 													void*				pCookie)
 {
 	printf("Lost Hand: %d\n", nId);
-    
+	cout<<"Destroy"<<endl;
 	HandTracker*	pThis = static_cast<HandTracker*>(pCookie);
 	if(sm_Instances.Find(pThis) == sm_Instances.End())
 	{
@@ -140,10 +129,8 @@ XN_CALLBACK_TYPE HandTracker::Hand_Destroy(	xn::HandsGenerator& /*generator*/,
 		return;
 	}
 
-    //Remove the Hand that lost the focus.
-    Gesture::getInstance().removeHand(nId);
+    FileUtil::getInstance().removeHand(nId);
 }
-
 
 //---------------------------------------------------------------------------
 // Method Definitions
@@ -169,7 +156,7 @@ HandTracker::~HandTracker()
 
 XnStatus
 HandTracker::Init()
-{            
+{   
 	XnStatus			rc;
 	XnCallbackHandle	chandle;
     

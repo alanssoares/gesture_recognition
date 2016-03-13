@@ -22,7 +22,6 @@
 // Includes
 //---------------------------------------------------------------------------
 #include "NiHandViewer.h"
-#include "Gesture.h"
 #if (XN_PLATFORM == XN_PLATFORM_MACOSX)
 #include <GLUT/glut.h>
 #else
@@ -78,29 +77,17 @@ HandViewer::Run()
 void
 HandViewer::DisplayPostDraw()
 {
-    Gesture& gesture = Gesture::getInstance();
-
-    map<int,type_hand>::iterator it;
-    for (it = gesture.m_Hands.begin(); it != gesture.m_Hands.end(); ++it){
-        if(!it->second.positions.empty()){
-            XnUInt32 nColor = it->second.id_hand % LENGTHOF(g_colours);
-            drawCurve(it->second.positions, nColor);
-        }
+    type_gesture gesture = FileUtil::getInstance().getNewGesture();
+    
+    if(!gesture.handOne.positions.empty()){
+        XnUInt32 nColor = gesture.handOne.id_hand % LENGTHOF(g_colours);
+        drawCurve(gesture.handOne.positions, nColor);
     }
 
-    drawCurves();
-}
-
-void
-HandViewer::drawCurves()
-{
-    Gesture& gesture = Gesture::getInstance();
-    //Configuring viewport
-    glViewport(512, 0, GL_WIN_SIZE_MAIN_X, GL_WIN_SIZE_MAIN_Y);
-    //Draw the curves
-    drawCurve(gesture.m_gesturePerformed, 1);
-    drawCurve(gesture.m_gesturePerformedProcessed, 2);
-    drawCurve(gesture.m_gestureTemplate, 3);
+    if(!gesture.handTwo.positions.empty()){
+        XnUInt32 nColor = gesture.handTwo.id_hand % LENGTHOF(g_colours);
+        drawCurve(gesture.handTwo.positions, nColor);
+    }
 }
 
 void

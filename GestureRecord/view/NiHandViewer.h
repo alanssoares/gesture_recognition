@@ -23,6 +23,7 @@
 
 #include "NiSimpleViewer.h"
 #include "NiHandTracker.h"
+#include <cmath>
 #include <iostream>
 #include <vector>
 
@@ -38,8 +39,7 @@ public:
 
 	virtual XnStatus Init(int argc, char **argv);
 	virtual XnStatus Run();	//Does not return if successful
-
-    void drawCurves();
+	
     void drawCurve(vector<XnPoint3D> curve, XnUInt32 nColor);
     void drawRectangle(float topLeftX, float topLeftY, float bottomRightX, float bottomRightY);
     void drawCircle(XnPoint3D point, float radius);

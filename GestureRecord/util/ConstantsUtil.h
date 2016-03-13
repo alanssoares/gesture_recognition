@@ -74,9 +74,9 @@ using namespace std;
 #define GESTURE "gesture"
 #define NAME_FILE_DATA "../Samples.txt"
 
-#define NAME_WINDOW_GR "Project GRS"
+#define NAME_WINDOW_GR "Project Gesture Record"
 #define GAP_WINDOW      25
-#define GL_WIN_SIZE_X   1024
+#define GL_WIN_SIZE_X   512
 #define GL_WIN_SIZE_Y   512
 #define GL_WIN_SIZE_MAIN_X 512
 #define GL_WIN_SIZE_MAIN_Y 512
