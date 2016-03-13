@@ -34,16 +34,9 @@ public:
     std::vector<std::string>& split(const std::string &s, char delim, std::vector<std::string> &elems);
     
     void loadGestures();
-    bool isNewGesture(std::string str);
-
+    void extractGesture(std::vector<std::string> rows);
+    XnPoint3D getPointFile(std::string str);
     std::vector<type_gesture> getGesturesOneHand() { return mGesturesOneHand; };
     std::vector<type_gesture> getGesturesTwoHands() { return mGesturesTwoHands; };
-
-    XnPoint3D getPointFile(std::string str);
-    
-    void saveGesture(const type_gesture gesture, const std::string fileName);
-    
-    static void printTrajectory(std::vector<XnPoint3D> trajectory);
-    
 };
 #endif /* defined(__GestureTracking__FileUtil__) */

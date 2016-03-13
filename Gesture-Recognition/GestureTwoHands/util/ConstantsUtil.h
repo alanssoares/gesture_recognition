@@ -117,9 +117,10 @@ typedef struct type_hand{
 } type_hand;
 
 typedef struct type_gesture {
-    int numHands = 0;
+    int numHands;
     std::string name;
-    vector<XnPoint3D> positions;
+    type_hand handOne;
+    type_hand handTwo;
 } type_gesture;
 
 #endif

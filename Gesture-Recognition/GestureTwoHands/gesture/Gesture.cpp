@@ -109,6 +109,7 @@ Gesture::isTwoHands() {
         return false;
     }
     double dist = MathUtil::getDistancePointToPoint(m_Hands.begin()->second.positions[0], m_Hands.end()->second.positions[0]);
+    cout<< "Threshold between two hands - "<<dist<<endl;
     if(dist < MIN_DISTANCE_TRESHOLD_TWO_HANDS){
         LOGGER->Log("Is Two Hands!");
         return true;
@@ -136,7 +137,7 @@ Gesture::recognizeOndeHand() {
         trajectoryHand = processTrajectory(it->second.positions);
         for (int i = 0; i < mGesturesFromFileOneHand.size(); i++) {
             //Process the trajectory template
-            trajectoryComp = processTrajectory(mGesturesFromFileOneHand[i].positions);
+            trajectoryComp = processTrajectory(mGesturesFromFileOneHand[i].handOne.positions);
             //Initialize the dynamic time warping
             dtw.init();
             //Set sequences that will be computed
@@ -149,24 +150,24 @@ Gesture::recognizeOndeHand() {
             if(distance < bestDistance){
                 bestDistance = distance;
                 gestureTemplate.name = mGesturesFromFileOneHand[i].name;
-                gestureTemplate.positions = mGesturesFromFileOneHand[i].positions;
-                gesturePerformed.positions = it->second.positions;
+                gestureTemplate.handOne.positions = mGesturesFromFileOneHand[i].handOne.positions;
+                gesturePerformed.handOne.positions = it->second.positions;
             }
         }
     }
     if(bestDistance < MIN_DISTANCE_TRESHOLD){
         cout<< "Gesture "<<gestureTemplate.name<<" recognized with cost distance "<<bestDistance<<endl;
-        m_gesturePerformed = gesturePerformed.positions;
+        m_gesturePerformed = gesturePerformed.handOne.positions;
         m_gesturePerformedProcessed = MathUtil::simplify(m_gesturePerformed, 0.01, false);
         m_gesturePerformedProcessed = MathUtil::smoothMeanNeighboring(m_gesturePerformedProcessed, 1);
-        m_gestureTemplate = gestureTemplate.positions;
+        m_gestureTemplate = gestureTemplate.handOne.positions;
     }
     LOGGER->Log("End DTW");    
 }
 
 void
 Gesture::recognizeTwoHands() {
-
+    cout<<"Not implemented yet"<<endl;
 }
 
 std::vector<XnPoint3D> 

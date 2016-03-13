@@ -23,23 +23,6 @@ FileUtil::split(const std::string &s, char delim, std::vector<std::string> &elem
 }
 
 /*
- Método responsáve por verificar se na
- string existe a palavra chave "gesture".
- Caso exista, um novo gesto foi encontrado.
- */
-bool
-FileUtil::isNewGesture(const std::string str){
-    size_t found;
-    found = str.find(GESTURE);
-    
-    if (found != std::string::npos) {
-        return true;
-    }
-    
-    return false;
-}
-
-/*
  Método responsável por obter um ponto x,y,z
  de uma string
  */
@@ -58,86 +41,67 @@ FileUtil::getPointFile(const std::string str){
  Método responsavél por carregar os
  gestos armazenados no arquivo de dados.
  O arquivo contém a seguinte estrutura:
- 
- gesture nomegesto
+ gesture nomegesto hands k
  X Y Z
- ...
- 
- gesture segundogesto
+ end
+ gesture segundogesto k
  X Y Z
- ...
- 
+ end
  */
 void
 FileUtil::loadGestures(){
     std::ifstream file;
-    std::string line;
-    XnPoint3D point;
-    std::vector<std::string> gestureTokens;
-    type_gesture newGesture;
-    unsigned long last = 0;
-    bool isOneHand = false;
+    std::string row;
+    std::vector<std::string> rows;
+    
     file.open(NAME_FILE_DATA);
     
     if(file.is_open()){
-        while (std::getline(file, line)){
-            if(line.empty()){
-                continue;
-            } else if(isNewGesture(line)){
-                LOGGER->Log("New gesture found\n");
-                //Split the line with gesture name
-                split(line,' ', gestureTokens);
-                //Setter gesture name
-                newGesture.name = gestureTokens[1];
-                point = getPointFile(line);
-                newGesture.positions.push_back(point);
-                //Verify if is one or two hands and add to the vector
-                isOneHand = gestureTokens[3].compare("1") == 0? true : false;
-                if(isOneHand) {
-                    mGesturesOneHand.push_back(newGesture);
-                    last = mGesturesOneHand.size() - 1;
-                } else {
-                    mGesturesTwoHands.push_back(newGesture);
-                    last = mGesturesTwoHands.size() - 1;
-                }
+        while (std::getline(file, row)){
+            if(row.compare("end") == 0){
+                extractGesture(rows);
+                rows.clear();
             } else {
-                point = getPointFile(line);
-                if(isOneHand){
-                    mGesturesOneHand[last].positions.push_back(point);
-                } else {
-
-                }
+                rows.push_back(row);
             }
         }
-        
-        LOGGER->Log("The file was successfully read:: " + std::string(NAME_FILE_DATA) + "\n");
-    }else{
-        LOGGER->Log("The file can't be open:: " + std::string(NAME_FILE_DATA) + "\n");
     }
+
+    cout<<" *** Gestures from file loadded *** "<<endl;
+    cout<<"NumGestOneHand - "<<mGesturesOneHand.size()<<endl;
+    cout<<"NumGestTwoHands - "<<mGesturesTwoHands.size()<<endl;
 }
 
 void
-FileUtil::saveGesture(const type_gesture gesture, const std::string fileName){
-    std::fstream file;
-    
-    file.open(fileName, ios::in | ios::out | ios::ate);
-    
-    if(file.is_open()){
-        file << "gesture "<< gesture.name << std::endl;
-        for(int i = 0; i < gesture.positions.size(); i++){
-            file << gesture.positions[i].X << " " << gesture.positions[i].Y << " " << gesture.positions[i].Z << std::endl;
+FileUtil::extractGesture(std::vector<std::string> rows){
+
+    if(rows.empty()) return;
+
+    bool isOneHand = false;
+    std::vector<std::string> tokens;
+    type_gesture newGesture;
+    size_t n = rows.size();
+    int i = 0;
+    split(rows[0],' ', tokens);
+    newGesture.name = tokens[1];
+    isOneHand = tokens[3].compare("1") == 0? true : false;
+
+    if(isOneHand){
+        for (i = 1; i < n; i++) {
+            newGesture.handOne.positions.push_back(getPointFile(rows[i]));
         }
-        file << std::endl;
-        file.close();
-        LOGGER->Log("The gesture was successfully saved\n");
-    }else{
-        LOGGER->Log("The file can't be open::" + fileName + "\n");
+        mGesturesOneHand.push_back(newGesture);
+    } else {
+        i = 1;
+        //Get points of the hand one
+        while(!rows[i].empty()){
+            newGesture.handOne.positions.push_back(getPointFile(rows[i++]));
+        }
+        i++;
+        //Get points of the hand two
+        while(i < n && !rows[i].empty()){
+            newGesture.handTwo.positions.push_back(getPointFile(rows[i++]));
+        }
+        mGesturesTwoHands.push_back(newGesture);
     }
-}
-void
-FileUtil::printTrajectory(std::vector<XnPoint3D> trajectory){
-    for (int i = 0; i < trajectory.size(); i++) {
-        cout<<trajectory[i].X <<" "<<trajectory[i].Y<<" "<<trajectory[i].Z<<std::endl;
-    }
-    cout<<std::endl;
 }
