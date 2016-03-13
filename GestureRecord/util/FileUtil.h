@@ -28,23 +28,35 @@
 class FileUtil {
     
 private:
+
+    FileUtil();
+    ~FileUtil();
+
+    bool m_StartingStorage;
+    type_gesture m_NewGesture;
     std::vector<type_gesture> mGesturesOneHand;
     std::vector<type_gesture> mGesturesTwoHands;
+
 public:
+
     std::vector<std::string>& split(const std::string &s, char delim, std::vector<std::string> &elems);
     
-    void loadGestures();
+    void setInfoGesture(char* name, int numHands);
     bool isNewGesture(std::string str);
     void extractGesture(std::vector<std::string> rows);
+
+    void startStorage();
+    void stopStorage();
+    void saveStorage();
 
     std::vector<type_gesture> getGesturesOneHand() { return mGesturesOneHand; };
     std::vector<type_gesture> getGesturesTwoHands() { return mGesturesTwoHands; };
 
     XnPoint3D getPointFile(std::string str);
-    
-    void saveGesture(const type_gesture gesture, const std::string fileName);
-    
-    static void printTrajectory(std::vector<XnPoint3D> trajectory);
+
+public:
+    static FileUtil& getInstance();
+    static FileUtil* m_Instance;
     
 };
 #endif /* defined(__GestureTracking__FileUtil__) */

@@ -16,7 +16,6 @@
 #include <map>
 #include <XnCppWrapper.h>
 #include "../logger/Logger.h"
-#include "../geometry/DTW.h"
 #include "../util/MathUtil.h"
 #include "../util/ConstantsUtil.h"
 #include "../util/FileUtil.h"
@@ -83,56 +82,6 @@ public:
      Se as duas mãos estão em movimento, então o estado é DOING.
      */
     void    updateState();
-    
-    /*
-     Método updateRecognition() é utilizado para reconhecimento do gesto.
-     Para isso no momento em que a mão pára, o método gesturePerformed verifica
-     se algum gesto foi realizado. Em caso positivo, o gesto será classificado.
-     */
-    void    updateRecognition();
-    
-    /**
-     O método verifica se algum gesto foi realizado.
-     A verificação consiste em saber se o estado anterior era DOING e se a quantidade
-     de posições é maior que a mínima definida.
-     @return status
-     **/
-    bool    isGesturePerformed();
-    
-    /**
-     O gesto foi realizado com as duas mãos quando a distância entre as duas mãos é menor
-     que um threshold ou quando é maior que o threshold e ambas possuem a quantidade de pontos
-     maior que o mínimo.
-    */
-    bool    isTwoHands();
-
-    /**
-     Reconhece gestos realizados com uma mão
-    */
-    void    recognizeOndeHand();
-
-    /**
-     Reconhece gestos realizados com duas mãos.
-     Obter a trajetória do gesto, normalizar utilizando
-     a centróide. Carregar todos os gestos, normalizá-los
-     e comparar o realizado com os n carregados.
-     */
-    void    recognizeTwoHands();
-    
-    /*
-     Método responsável por setar os gestos
-     carregados do arquivo de dados.
-     @param oneHandGestures carregados de arquivo
-     @param twoHandsGestures carregados de arquivo
-     */
-    void    setGesturesFromFile(std::vector<type_gesture> oneHandGestures, std::vector<type_gesture> twoHandsGestures);
-    
-    /*
-     Método responsável por aplicar os métodos de pré-processamento para centralizar na origem,
-     normalizar e suavizar a trajetória. A suavização depende do método escolhido.
-     @param trajectory do gesto
-    */
-    std::vector<XnPoint3D> processTrajectory(std::vector<XnPoint3D> trajectory);
 
     int     m_NumHands;
     int     m_StateGesture;
@@ -141,9 +90,6 @@ public:
     
     map<int, type_hand> m_Hands;
     map<int,type_hand>::iterator it;
-    
-    DTW*     mDTW;
-    FileUtil mFileUtil;
     
     std::vector<type_gesture> mGesturesFromFileOneHand;
     std::vector<type_gesture> mGesturesFromFileTwoHands;

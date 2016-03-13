@@ -31,6 +31,7 @@
 #endif
 #include "../util/ConstantsUtil.h"
 #include "../gesture/Gesture.h"
+#include "../util/FileUtil.h"
 
 enum DisplayModes_e
 {

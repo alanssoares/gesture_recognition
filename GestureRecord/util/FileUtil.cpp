@@ -8,6 +8,69 @@
 
 #include "FileUtil.h"
 
+//---------------------------------------------------------------------------
+// Statics
+//---------------------------------------------------------------------------
+FileUtil* FileUtil::m_Instance = NULL;
+
+FileUtil::FileUtil() {
+    m_StartingStorage = false;
+}
+
+FileUtil::~FileUtil(){}
+
+FileUtil&
+FileUtil::getInstance() {
+    if(m_Instance == NULL) {
+        return *(m_Instance = new FileUtil());
+    }
+    return *m_Instance;
+}
+
+void
+FileUtil::setInfoGesture(char* name, int numHands){
+    m_NewGesture.numHands = numHands;
+    m_NewGesture.name = std::string(name);
+}
+
+void
+FileUtil::startStorage(){
+    m_StartingStorage = true;
+    m_NewGesture.handOne.positions.clear();
+    m_NewGesture.handTwo.positions.clear();
+}
+
+void
+FileUtil::stopStorage(){
+    m_StartingStorage = false;
+    //add the gesture to vector
+}
+
+void
+FileUtil::saveStorage(){
+    std::fstream file;
+    std::string nameFile = m_NewGesture.name + ".txt";
+    file.open(nameFile, ios::in | ios::out | ios::ate);
+    if(file.is_open()){
+        file<<"gesture "<<m_NewGesture.name<<" hands "<<m_NewGesture.numHands<<std::endl;
+        if(m_NewGesture.numHands == 1) {
+            for(int i = 0; i < m_NewGesture.handOne.positions.size(); i++){
+                file<<m_NewGesture.handOne.positions[i].X<<" "<<m_NewGesture.handOne.positions[i].Y<<" "<<m_NewGesture.handOne.positions[i].Z<<std::endl;
+            }
+        } else if(m_NewGesture.numHands == 2){
+            for(int i = 0; i < m_NewGesture.handOne.positions.size(); i++){
+                file<<m_NewGesture.handOne.positions[i].X<<" "<<m_NewGesture.handOne.positions[i].Y<<" "<<m_NewGesture.handOne.positions[i].Z<<std::endl;
+            }
+            file<<std::endl;
+            for(int i = 0; i < m_NewGesture.handTwo.positions.size(); i++){
+                file<<m_NewGesture.handTwo.positions[i].X<<" "<<m_NewGesture.handTwo.positions[i].Y<<" "<<m_NewGesture.handTwo.positions[i].Z<<std::endl;
+            }
+        }
+        file<<"end"<<std::endl;
+    }
+    file.close();
+}
+
 /*
  Método responsável por quebrar uma string
  em substrings de acordo com um caracter delimitador
@@ -54,41 +117,6 @@ FileUtil::getPointFile(const std::string str){
     return newPoint;
 }
 
-/*
- Método responsavél por carregar os
- gestos armazenados no arquivo de dados.
- O arquivo contém a seguinte estrutura:
- gesture nomegesto hands k
- X Y Z
- end
- gesture segundogesto k
- X Y Z
- end
- */
-void
-FileUtil::loadGestures(){
-    std::ifstream file;
-    std::string row;
-    std::vector<std::string> rows;
-    
-    file.open(NAME_FILE_DATA);
-    
-    if(file.is_open()){
-        while (std::getline(file, row)){
-            if(row.compare("end") == 0){
-                extractGesture(rows);
-                rows.clear();
-            } else {
-                rows.push_back(row);
-            }
-        }
-    }
-
-    cout<<" *** Gestures from file loadded *** "<<endl;
-    cout<<"NumGestOneHand - "<<mGesturesOneHand.size()<<endl;
-    cout<<"NumGestTwoHands - "<<mGesturesTwoHands.size()<<endl;
-}
-
 void
 FileUtil::extractGesture(std::vector<std::string> rows){
 
@@ -121,31 +149,4 @@ FileUtil::extractGesture(std::vector<std::string> rows){
         }
         mGesturesTwoHands.push_back(newGesture);
     }
-}
-
-void
-FileUtil::saveGesture(const type_gesture gesture, const std::string fileName){
-    std::fstream file;
-    
-    file.open(fileName, ios::in | ios::out | ios::ate);
-    
-    if(file.is_open()){
-        file << "gesture "<< gesture.name << std::endl;
-        for(int i = 0; i < gesture.positions.size(); i++){
-            file << gesture.positions[i].X << " " << gesture.positions[i].Y << " " << gesture.positions[i].Z << std::endl;
-        }
-        file << std::endl;
-        file.close();
-        LOGGER->Log("The gesture was successfully saved\n");
-    }else{
-        LOGGER->Log("The file can't be open::" + fileName + "\n");
-    }
-}
-
-void
-FileUtil::printTrajectory(std::vector<XnPoint3D> trajectory){
-    for (int i = 0; i < trajectory.size(); i++) {
-        cout<<trajectory[i].X <<" "<<trajectory[i].Y<<" "<<trajectory[i].Z<<std::endl;
-    }
-    cout<<std::endl;
 }

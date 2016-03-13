@@ -389,6 +389,19 @@ SimpleViewer::OnKey(unsigned char key, int /*x*/, int /*y*/)
         case 'm':
             m_rContext.SetGlobalMirror(!m_rContext.GetGlobalMirror());
             break;
+        case 'i':
+        	//Used for begin the store of the gesture
+        	FileUtil::getInstance().startStorage();
+        	break;
+        case 'p':
+        	//Used for end the store of the gesture
+        	FileUtil::getInstance().stopStorage();
+        	Gesture::getInstance().clearHands();
+        	break;
+        case 's':
+        	//Used for save in the file all gestures stored
+        	FileUtil::getInstance().saveStorage();
+        	break;
 	}
 }
 

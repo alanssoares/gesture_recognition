@@ -22,8 +22,8 @@
 // Includes
 //---------------------------------------------------------------------------
 #include "view/NiHandViewer.h"
-#include "util/FileUtil.h"
 #include "gesture/Gesture.h"
+#include "util/FileUtil.h"
 #include "util/ConstantsUtil.h"
 
 //---------------------------------------------------------------------------
@@ -39,21 +39,25 @@ xn::Context		g_context;
 xn::ScriptNode	g_scriptNode;
 
 /** Set this flag false if you want reproduce the video from file */
-int MODE_ONLINE = false;
+int MODE_ONLINE = true;
 
 int main(int argc, char* argv[])
 {
 	XnStatus				rc;
 	xn::EnumerationErrors	errors;
     xn::Player              player;
-    FileUtil                fileUtil;
     
-    // Load the gestures data
-    fileUtil.loadGestures();
-    
-    // Setter the gestures from file
-    Gesture::getInstance().setGesturesFromFile(fileUtil.getGesturesOneHand(), fileUtil.getGesturesTwoHands());
-    
+    if(argc < 3) {
+        std::cout<<" ------ We expect 2 arguments ------ "<<endl;
+        std::cout<<"The gesture name and the number of hands."<<endl;
+        std::cout<<"The number of hands should be 1 or 2."<<endl;
+        std::cout<<"Example:"<<endl;
+        std::cout<<"./gesture_tracking paisagem 1"<<endl;
+        return 0;
+    }
+
+    FileUtil::getInstance().setInfoGesture(argv[1], atoi(argv[2]));
+
     if(MODE_ONLINE){
         
         // Create a context with default settings
