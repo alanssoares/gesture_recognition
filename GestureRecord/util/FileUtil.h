@@ -48,7 +48,8 @@ public:
     void startStorage();
     void stopStorage();
     void saveStorage();
-
+    void removeLast();
+    
     void removeHand(int idHand);
     void addPosition(int idHand, XnPoint3D pos);
     void addHand(int idHand, XnPoint3D pos);

@@ -355,6 +355,10 @@ SimpleViewer::OnKey(unsigned char key, int /*x*/, int /*y*/)
         	//Used for save in the file all gestures stored
         	FileUtil::getInstance().saveStorage();
         	break;
+        case 'd':
+        	//Use to delete the last gesture captured
+        	FileUtil::getInstance().removeLast();
+        	break;
 	}
 }
 

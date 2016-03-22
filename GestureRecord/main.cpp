@@ -37,22 +37,85 @@
 xn::Context		g_context;
 xn::ScriptNode	g_scriptNode;
 
+typedef struct params {
+    int numHands;
+    char* name;
+} params;
+
+//Define the global type params
+params g_params;
+
+/**
+ Show the help usage of the GestureRecord
+*/
+int helpUsage(){
+    std::cout<<" ------- Command line input -------- "<<endl;
+    std::cout<<"Usage: ./GestureRecord options"<<endl;
+    std::cout<<"options: "<<endl;
+    std::cout<<"-g gesture : the gesture name"<<endl;
+    std::cout<<"-n hands : the number of hands (1 or 2)"<<endl;
+    std::cout<<"Example: ./GestureRecord -g paisagem -n 2"<<endl;
+    std::cout<<" ------- Command controls ------- "<<endl;
+    std::cout<<"i : init the hand tracking"<<endl;
+    std::cout<<"p : stop the hand tracking"<<endl;
+    std::cout<<"s : save all gestures in the file"<<endl;
+    std::cout<<"d : delete the last gesture captured"<<endl;
+    std::cout<<"m : set the global mirror"<<endl;
+    std::cout<<"q : quit the application"<<endl;
+    return 1;
+}
+
+/**
+ Read the params of the command line
+*/
+int parse_command_line(int argc, char* argv[]){
+
+    //Default params
+    g_params.numHands = 1;
+    g_params.name = (char*) malloc(sizeof(char) * 7);
+    
+    strcpy(g_params.name, "default");
+
+    for(int i = 1; i < argc; i++) {
+        
+        if(argv[i][0] != '-') break;
+
+        i++;
+
+        switch(argv[i - 1][1]) {
+            case 'h':
+                return helpUsage();
+                break;
+            case 'n':
+                g_params.numHands = atoi(argv[i]);
+                break;
+            case 'g':
+                g_params.name = argv[i];
+                break;
+            default:
+                std::cout<<"Unknown option -"<< argv[i - 1][1]<<endl;
+                return 1;
+        }
+    }
+
+    //Verify if the number of hands is valid
+    if(g_params.numHands != 1 && g_params.numHands != 2) {
+        std::cout<<"Warning - The number of hands should be 1 or 2"<<endl;
+        return 1;
+    }
+
+    return 0;
+}
+
 int main(int argc, char* argv[])
 {
 	XnStatus				rc;
 	xn::EnumerationErrors	errors;
     xn::Player              player;
-    
-    if(argc < 3) {
-        std::cout<<" ------ We expect 2 arguments ------ "<<endl;
-        std::cout<<"The gesture name and the number of hands."<<endl;
-        std::cout<<"The number of hands should be 1 or 2."<<endl;
-        std::cout<<"Example:"<<endl;
-        std::cout<<"./gesture_tracking paisagem 1"<<endl;
-        return 0;
-    }
 
-    FileUtil::getInstance().setInfoGesture(argv[1], atoi(argv[2]));
+    if(parse_command_line(argc, argv)) return 0;
+
+    FileUtil::getInstance().setInfoGesture(g_params.name, g_params.numHands);
         
     // Create a context with default settings
     rc = g_context.InitFromXmlFile(SAMPLE_XML_PATH, g_scriptNode, &errors);

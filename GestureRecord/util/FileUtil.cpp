@@ -40,6 +40,7 @@ FileUtil::startStorage(){
     m_StartingStorage = true;
     m_NewGesture.handOne.positions.clear();
     m_NewGesture.handTwo.positions.clear();
+    cout<<"The gesture tracking began!"<<endl;
 }
 
 void
@@ -52,6 +53,7 @@ FileUtil::stopStorage(){
     }
     m_NewGesture.handOne.positions.clear();
     m_NewGesture.handTwo.positions.clear();
+    cout<<"The gesture tracking stopped!"<<endl;
 }
 
 void
@@ -118,6 +120,7 @@ FileUtil::saveStorage(){
         }
         
     }
+    cout<<"All gestures were saved in the file "<<nameFile<<endl;
     file.close();
 }
 
@@ -198,5 +201,16 @@ FileUtil::extractGesture(std::vector<std::string> rows){
             newGesture.handTwo.positions.push_back(getPointFile(rows[i++]));
         }
         mGesturesTwoHands.push_back(newGesture);
+    }
+}
+
+void
+FileUtil::removeLast(){
+     if(m_NewGesture.numHands == 1 && mGesturesOneHand.size() > 0){
+        mGesturesOneHand.pop_back();
+        cout<<"The last gesture captured by OneHand was removed"<<endl;
+    } else if(m_NewGesture.numHands == 2 && mGesturesTwoHands.size() > 0){
+        mGesturesTwoHands.pop_back();
+        cout<<"The last gesture captured by TwoHands was removed"<<endl;
     }
 }
