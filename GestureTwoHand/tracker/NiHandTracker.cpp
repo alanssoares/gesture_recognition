@@ -70,9 +70,6 @@ XN_CALLBACK_TYPE HandTracker::Gesture_Recognized(	xn::GestureGenerator&	/*genera
 														const XnPoint3D*		pEndPosition, 
 														void*					pCookie)
 {
-    
-	printf("Gesture recognized: %s\n", strGesture);
-
 	HandTracker*	pThis = static_cast<HandTracker*>(pCookie);
 	if(sm_Instances.Find(pThis) == sm_Instances.End())
 	{
@@ -90,9 +87,6 @@ XN_CALLBACK_TYPE HandTracker::Hand_Create(	xn::HandsGenerator& /*generator*/,
 												XnFloat				/*fTime*/, 
 												void*				pCookie)
 {
-    
-	//printf("New Hand: %d @ (%f,%f,%f)\n", nId, pPosition->X, pPosition->Y, pPosition->Z);
-
 	HandTracker*	pThis = static_cast<HandTracker*>(pCookie);
 	if(sm_Instances.Find(pThis) == sm_Instances.End())
 	{
@@ -118,8 +112,6 @@ XN_CALLBACK_TYPE HandTracker::Hand_Update(	xn::HandsGenerator& /*generator*/,
 		printf("Dead HandTracker: skipped!\n");
 		return;
 	}
-    
-    //printf("(%f,%f,%f)\n", pPosition->X, pPosition->Y, pPosition->Z);
 
     //Update the Hand that is tracked
     Gesture::getInstance().update(nId, *pPosition);

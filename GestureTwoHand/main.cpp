@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
         
         CHECK_RC(rc, "Open failed: %s\n");
         
-    }else{
+    } else {
         
         rc = g_context.Init();
         CHECK_RC(rc, "Init context: %s");

@@ -42,32 +42,22 @@ using namespace std;
 /* Is not an hand */
 #define NOT_HAND -1
 
-/*
- Define the minimum distance threshold to recognize gestures
- */
+/* Define the minimum distance threshold to recognize gestures */
 #define MIN_DISTANCE_TRESHOLD 0.5
 
 /* Define the min distance between two hands */
 #define MIN_DISTANCE_TRESHOLD_TWO_HANDS 2
 
-/*
- Define a quantidade de steps para cada intervalo da curva bspline
-*/
+/* Define a quantidade de steps para cada intervalo da curva bspline */
 #define MIN_STEP_BSPLINE 7
 
-/*
- Define o tipo de método que será usado para suavizar a trajetória
-*/
+/* Define o tipo de método que será usado para suavizar a trajetória */
 #define TYPE_SMOOTH 1
 
-/*
- Define a taxa de incremento usada na interpolação das curvas
- */
+/* Define a taxa de incremento usada na interpolação das curvas */
 #define INCREMENT_RATE_INTERPOLATION 0.02
 
-/*
- Define the name of the file that will be saved
- */
+/* Define the name of the file that will be saved */
 #define FILE_NAME_RECORD_DEPTH "../StreamDepth.oni"
 #define FILE_NAME_RECORD_IMAGE "../StreamImage.oni"
 
@@ -83,7 +73,7 @@ using namespace std;
 /*
  --------- TYPES Gestures ----------
  */
-enum{
+enum {
     BEM_VINDO = 1,
     CANCELAR = 2,
     CATEGORIA = 3,
@@ -103,7 +93,7 @@ enum {
 /*
  ---------- STATE Gesture -----------
  */
-enum{
+enum {
     GESTURE_DOING = 1,
     GESTURE_STOPED = 2
 };
@@ -111,7 +101,7 @@ enum{
 /*
  ---- Object Types created to define an hand and an type of gesture
  */
-typedef struct type_hand{
+typedef struct type_hand {
     int id_hand;
     vector<XnPoint3D> positions;
 } type_hand;

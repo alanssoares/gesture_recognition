@@ -143,11 +143,6 @@ SimpleViewer::Init(int argc, char **argv)
 	m_pTexMap = new XnRGB24Pixel[m_nTexMapX * m_nTexMapY];
 
 	m_pDepthHist = new float[m_depth.GetDeviceMaxDepth() + 1];
-
-    if(m_ModeOnline){
-        // Create the recorder object to save the stream buffer
-        createRecorder();
-    }
     
 	return InitOpenGL(argc, argv);
 }
@@ -159,33 +154,6 @@ SimpleViewer::Run()
 	glutMainLoop();	// Does not return!
 
 	return XN_STATUS_OK;
-}
-
-XnStatus
-SimpleViewer::createRecorder()
-{
-    XnStatus	rc;
-    
-    m_RecorderDepth = new Recorder();
-    m_RecorderImage = new Recorder();
-    
-    rc = m_RecorderDepth->Create(m_rContext);
-    CHECK_RC(rc, "Create recorder depth failed: %s\n");
-    
-    rc = m_RecorderDepth->SetDestination(XN_RECORD_MEDIUM_FILE, FILE_NAME_RECORD_DEPTH);
-    CHECK_RC(rc, "Set destination record depth %s\n");
-    rc = m_RecorderDepth->AddNodeToRecording(m_depth, XN_CODEC_16Z);
-    CHECK_RC(rc, "AddNode Depth to Recording failed: %s\n");
-
-    rc = m_RecorderImage->Create(m_rContext);
-    CHECK_RC(rc, "Create recorder image failed: %s\n");
-    
-    rc = m_RecorderImage->SetDestination(XN_RECORD_MEDIUM_FILE, FILE_NAME_RECORD_IMAGE);
-    CHECK_RC(rc, "Set destination record image %s\n");
-    rc = m_RecorderImage->AddNodeToRecording(m_image, XN_CODEC_JPEG);
-    CHECK_RC(rc, "AddNode Image to Recording failed: %s\n");
-    
-    return XN_STATUS_OK;
 }
 
 XnStatus
@@ -223,16 +191,6 @@ SimpleViewer::Display()
 	// Read a new frame
 	rc = m_rContext.WaitAnyUpdateAll();
     CHECK_RC_VOID(rc, "Read failed: %s\n");
-
-    if(m_ModeOnline){
-        // Record the input data
-        rc = m_RecorderDepth->Record();
-        CHECK_RC_VOID(rc, "Record the data depth failed: %s\n");
-        
-        // Record the input data
-        rc = m_RecorderImage->Record();
-        CHECK_RC_VOID(rc, "Record the data image failed: %s\n");
-    }
     
 	m_depth.GetMetaData(m_depthMD);
 	m_image.GetMetaData(m_imageMD);
@@ -369,10 +327,8 @@ void
 SimpleViewer::OnKey(unsigned char key, int /*x*/, int /*y*/)
 {
 	switch (key){
-        case 27:
-            if(m_ModeOnline){
-                deleteRecorder();
-            }
+        case 27: 
+        case 'q':
             exit (1);
         case '1':
             m_eViewState = DISPLAY_MODE_OVERLAY;
@@ -400,28 +356,6 @@ SimpleViewer::ScalePoint(XnPoint3D& point, int width, int height)
 
 	point.Y *= height;
 	point.Y /= m_depthMD.YRes();
-}
-
-void
-SimpleViewer::deleteRecorder(void)
-{
-    /** Wait a moment to continue */
-    Sleep(300);
-    
-    /** Finalize the depth recorder */
-    if (m_RecorderDepth != NULL){
-        m_RecorderDepth->RemoveNodeFromRecording(m_depth);
-        m_RecorderDepth->Release();
-        delete(m_RecorderDepth);
-        m_RecorderDepth = NULL;
-    }
-    /** Finalize the image recorder */
-    if (m_RecorderImage != NULL) {
-        m_RecorderImage->RemoveNodeFromRecording(m_image);
-        m_RecorderImage->Release();
-        delete(m_RecorderImage);
-        m_RecorderImage = NULL;
-    }
 }
 
 void

@@ -108,16 +108,24 @@ Gesture::isTwoHands() {
         LOGGER->Log("Is One Hand!");
         return false;
     }
-    double dist = MathUtil::getDistancePointToPoint(m_Hands.begin()->second.positions[0], m_Hands.end()->second.positions[0]);
-    cout<< "Threshold between two hands - "<<dist<<endl;
-    if(dist < MIN_DISTANCE_TRESHOLD_TWO_HANDS){
-        LOGGER->Log("Is Two Hands!");
-        return true;
-    } else if(m_Hands.begin()->second.positions.size() >= MIN_CONTROL_POINTS && 
-        m_Hands.end()->second.positions.size() >= MIN_CONTROL_POINTS){
-        LOGGER->Log("Is Two Hands!");
-        return true;
+
+    size_t n1, n2;
+
+    n1 = m_Hands.begin()->second.positions.size();
+    n2 = m_Hands.end()->second.positions.size();
+
+    if(n1 > 0 && n2 > 0){
+        double dist = MathUtil::getDistancePointToPoint(m_Hands.begin()->second.positions[0], m_Hands.end()->second.positions[0]);
+        cout<< "Threshold between two hands - "<<dist<<endl;
+        if(dist < MIN_DISTANCE_TRESHOLD_TWO_HANDS){
+            LOGGER->Log("Is Two Hands!");
+            return true;
+        } else if(n1 >= MIN_CONTROL_POINTS && n2 >= MIN_CONTROL_POINTS){
+            LOGGER->Log("Is Two Hands!");
+            return true;
+        }
     }
+
     LOGGER->Log("Is One Hand!");
     return false;
 }

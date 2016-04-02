@@ -58,12 +58,6 @@ public:
 	virtual XnStatus Init(int argc, char **argv);
 	virtual XnStatus Run();	//Does not return
 
-    /** 
-     Method created to record the input data
-     Link reference: http://kinectcar.ronsper.com/docs/openni/tut_recording.html
-     */
-    XnStatus createRecorder();
-    void     deleteRecorder();
     void     activeModeOnline();
 
 protected:
@@ -77,8 +71,7 @@ protected:
 
 	virtual XnStatus InitOpenGL(int argc, char **argv);
 	void InitOpenGLHooks();
-
-	static SimpleViewer& Instance();
+	void ScalePoint(XnPoint3D& point, int width, int height);
 
 	xn::Context&		m_rContext;
 	xn::DepthGenerator	m_depth;
@@ -92,9 +85,9 @@ protected:
 	
 	GLuint 				m_windowId;
 
+	static SimpleViewer& Instance();
     static SimpleViewer*	sm_pInstance;
 
-	void ScalePoint(XnPoint3D& point, int width, int height);
 private:
 
 	// GLUT callbacks
