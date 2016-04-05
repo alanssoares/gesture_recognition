@@ -107,7 +107,8 @@ public:
     bool    isTwoHands();
 
     /**
-     Reconhece gestos realizados com uma mão
+     Reconhece gestos realizados com uma mão.
+     Premissa: A mão direita sempre será detectada primeiro
     */
     void    recognizeOndeHand();
 
@@ -116,6 +117,7 @@ public:
      Obter a trajetória do gesto, normalizar utilizando
      a centróide. Carregar todos os gestos, normalizá-los
      e comparar o realizado com os n carregados.
+     Premissa: A mão direita sempre será detectada primeiro
      */
     void    recognizeTwoHands();
     

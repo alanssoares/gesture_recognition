@@ -39,6 +39,18 @@ Gesture::updatePosition(const int idHand, XnPoint3D position) {
 void
 Gesture::addHand(int idHand, XnPoint3D position) {
     type_hand newHand;
+    //Garantir que a primeira mão a ser detectada é a direita
+    //Para poder identificar as posteriores
+    if(m_Hands.size() == 0){
+        newHand.side_hand = RIGHT_HAND;
+    } else {
+        it = m_Hands.begin();
+        if(it->second.side_hand == LEFT_HAND){
+            newHand.side_hand = RIGHT_HAND;
+        } else {
+            newHand.side_hand = LEFT_HAND;
+        }
+    }
     newHand.id_hand = idHand;
     newHand.positions.push_back(position);
     m_Hands.insert(pair<int, type_hand>(idHand, newHand));
@@ -166,16 +178,17 @@ Gesture::recognizeOndeHand() {
     if(bestDistance < MIN_DISTANCE_TRESHOLD){
         cout<< "Gesture "<<gestureTemplate.name<<" recognized with cost distance "<<bestDistance<<endl;
         m_gesturePerformed = gesturePerformed.handOne.positions;
-        m_gesturePerformedProcessed = MathUtil::simplify(m_gesturePerformed, 0.01, false);
-        m_gesturePerformedProcessed = MathUtil::smoothMeanNeighboring(m_gesturePerformedProcessed, 1);
+        m_gesturePerformedProcessed = MathUtil::simplify(m_gesturePerformed, DPR_FACTOR_SIMPLIFY, DPR_HIGH_QUALITY);
+        m_gesturePerformedProcessed = MathUtil::smoothMeanNeighboring(m_gesturePerformedProcessed, NUMBER_SMOOTH_NB);
         m_gestureTemplate = gestureTemplate.handOne.positions;
     }
-    LOGGER->Log("End DTW");    
+    LOGGER->Log("End DTW");
 }
 
 void
 Gesture::recognizeTwoHands() {
     cout<<"Not implemented yet"<<endl;
+    //Como saber qual é a mão direita e qual é a esquerda?
 }
 
 std::vector<XnPoint3D> 
@@ -185,11 +198,11 @@ Gesture::processTrajectory(std::vector<XnPoint3D> trajectory) {
     //Normalize between the interval -1 to 1
     trajectory = MathUtil::normalizeTrajectory(trajectory);
     //Resample the trajectory using the tolerance distance between points
-    trajectory = MathUtil::simplify(trajectory, 0.01, false);
+    trajectory = MathUtil::simplify(trajectory, DPR_FACTOR_SIMPLIFY, DPR_HIGH_QUALITY);
     //Smooth the trajectory according the method choosed
     switch(TYPE_SMOOTH){
         case MEAN_NEIGHBORING:
-            trajectory = MathUtil::smoothMeanNeighboring(trajectory, 1);
+            trajectory = MathUtil::smoothMeanNeighboring(trajectory, NUMBER_SMOOTH_NB);
             break;
         case CUBIC_B_SPLINE:
             trajectory = MathUtil::applyCubicBSpline(trajectory);
@@ -198,7 +211,7 @@ Gesture::processTrajectory(std::vector<XnPoint3D> trajectory) {
             trajectory = MathUtil::applyCubicBezier(trajectory);
             break;
         default:
-            trajectory = MathUtil::smoothMeanNeighboring(trajectory, 1);
+            trajectory = MathUtil::smoothMeanNeighboring(trajectory, NUMBER_SMOOTH_NB);
             break;
     }
     return trajectory;

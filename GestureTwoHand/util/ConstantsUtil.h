@@ -57,6 +57,15 @@ using namespace std;
 /* Define a taxa de incremento usada na interpolação das curvas */
 #define INCREMENT_RATE_INTERPOLATION 0.02
 
+/* Number of times that the smooth will be applied */
+#define NUMBER_SMOOTH_NB 1
+
+/* Factor for simplify using the algorithm Douglas-Peucker Radial */
+#define DPR_FACTOR_SIMPLIFY 0.01
+
+/* Flag for high quality for simplify using the algorithm Douglas-Peucker Radial */
+#define DPR_HIGH_QUALITY false
+
 /* Define the name of the file that will be saved */
 #define FILE_NAME_RECORD_DEPTH "../StreamDepth.oni"
 #define FILE_NAME_RECORD_IMAGE "../StreamImage.oni"
@@ -98,11 +107,17 @@ enum {
     GESTURE_STOPED = 2
 };
 
+/* Define the left and right hands */
+enum {  
+    LEFT_HAND = 0,
+    RIGHT_HAND = 1
+};
 /*
  ---- Object Types created to define an hand and an type of gesture
  */
 typedef struct type_hand {
     int id_hand;
+    int side_hand;
     vector<XnPoint3D> positions;
 } type_hand;
 
