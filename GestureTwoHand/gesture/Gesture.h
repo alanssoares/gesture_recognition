@@ -136,6 +136,13 @@ public:
     */
     std::vector<XnPoint3D> processTrajectory(std::vector<XnPoint3D> trajectory);
 
+    /*
+     Método responsável por realizar o matching entre duas trajetórias 
+     usando o algoritmo Dynamic Time Warping
+     @return distance
+    */
+    double computeDistanceBetweenTwoTrajectories(std::vector<XnPoint3D> A, std::vector<XnPoint3D> B);
+
     int     m_NumHands;
     int     m_StateGesture;
     int     m_StateGesturePrev;
@@ -144,7 +151,7 @@ public:
     map<int, type_hand> m_Hands;
     map<int,type_hand>::iterator it;
     
-    DTW*     mDTW;
+    DTW2     m_Dtw;
     FileUtil mFileUtil;
     
     std::vector<type_gesture> mGesturesFromFileOneHand;

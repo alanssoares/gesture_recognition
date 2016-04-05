@@ -145,36 +145,30 @@ Gesture::isTwoHands() {
 void
 Gesture::recognizeOndeHand() {
     LOGGER->Log("Init DTW");
-    DTW2 dtw;
-    std::vector<XnPoint3D> trajectoryHand;
-    std::vector<XnPoint3D> trajectoryComp;
-    double distance = 0.0;
-    double bestDistance = 999999999;
-    type_gesture gestureTemplate;
-    type_gesture gesturePerformed;
-    for (it = m_Hands.begin(); it != m_Hands.end(); ++it){
-        //Process the trajectory from user
-        trajectoryHand = processTrajectory(it->second.positions);
-        for (int i = 0; i < mGesturesFromFileOneHand.size(); i++) {
-            //Process the trajectory template
-            trajectoryComp = processTrajectory(mGesturesFromFileOneHand[i].handOne.positions);
-            //Initialize the dynamic time warping
-            dtw.init();
-            //Set sequences that will be computed
-            dtw.setSequences(trajectoryHand, trajectoryComp);
-            //Calc dtw distance between two trajectories
-            dtw.compute();
-            //Get the best cost distance computed by dtw
-            distance = dtw.getDistance();
-            //Verify if the computed distance is lower that previous best
-            if(distance < bestDistance){
-                bestDistance = distance;
-                gestureTemplate.name = mGesturesFromFileOneHand[i].name;
-                gestureTemplate.handOne.positions = mGesturesFromFileOneHand[i].handOne.positions;
-                gesturePerformed.handOne.positions = it->second.positions;
-            }
+    std::vector<XnPoint3D> trajectoryHand, trajectoryComp;
+    double distance = 0.0, bestDistance = 999999999;
+    type_gesture gestureTemplate, gesturePerformed;
+    type_hand hand = m_Hands.begin()->second;
+
+    //Process the trajectory from user
+    trajectoryHand = processTrajectory(hand.positions);
+
+    //Find the best match trajectory using DTW
+    for (int i = 0; i < mGesturesFromFileOneHand.size(); i++) {
+        //Process the trajectory template
+        trajectoryComp = processTrajectory(mGesturesFromFileOneHand[i].handOne.positions);
+        //Compute the distance using dtw
+        distance = computeDistanceBetweenTwoTrajectories(trajectoryComp, trajectoryHand);
+        //Verify if the computed distance is lower that previous best
+        if(distance < bestDistance){
+            bestDistance = distance;
+            gestureTemplate.name = mGesturesFromFileOneHand[i].name;
+            gestureTemplate.handOne.positions = mGesturesFromFileOneHand[i].handOne.positions;
+            gesturePerformed.handOne.positions = hand.positions;
         }
     }
+    
+    //Verify if the best distance is lower then the treshold
     if(bestDistance < MIN_DISTANCE_TRESHOLD){
         cout<< "Gesture "<<gestureTemplate.name<<" recognized with cost distance "<<bestDistance<<endl;
         m_gesturePerformed = gesturePerformed.handOne.positions;
@@ -187,8 +181,64 @@ Gesture::recognizeOndeHand() {
 
 void
 Gesture::recognizeTwoHands() {
-    cout<<"Not implemented yet"<<endl;
-    //Como saber qual é a mão direita e qual é a esquerda?
+    LOGGER->Log("Init DTW");
+    type_hand leftHand, rightHand;
+    std::vector<XnPoint3D> leftHandPoints, rightHandPoints, trajCompLeft, trajCompRight;
+    type_gesture gestureTemplate, gesturePerformed;
+    double distanceA = 0.0, distanceB = 0.0;
+    double bestDistance = 999999999;
+
+    //Initialize the left and right hand according
+    if(m_Hands.begin()->second.side_hand == LEFT_HAND){
+        leftHand = m_Hands.begin()->second;
+        rightHand = m_Hands.end()->second;
+    } else {
+        rightHand = m_Hands.begin()->second;
+        leftHand = m_Hands.end()->second;
+    }
+
+    rightHandPoints = processTrajectory(rightHand.positions);
+    leftHandPoints = processTrajectory(leftHand.positions);
+
+    //Find the best match trajectory using DTW
+    for (int i = 0; i < mGesturesFromFileTwoHands.size(); i++) {
+        //Process the trajectory template
+        trajCompRight = processTrajectory(mGesturesFromFileTwoHands[i].handOne.positions);
+        trajCompLeft = processTrajectory(mGesturesFromFileTwoHands[i].handTwo.positions);
+         //Compute the distance using dtw
+        distanceA = computeDistanceBetweenTwoTrajectories(trajCompRight, rightHandPoints);
+        distanceB = computeDistanceBetweenTwoTrajectories(trajCompLeft, leftHandPoints);
+        //Sum the two distances
+        distanceC = distanceA + distanceB;
+        if(distanceC < bestDistance){
+            bestDistance = distanceC;
+            //gestureTemplate.name = mGesturesFromFileTwoHands[i].name;
+            //gestureTemplate.handOne.positions = mGesturesFromFileTwoHands[i].handOne.positions;
+            //gestureTemplate.handTwo.positions = mGesturesFromFileTwoHands[i].handTwo.positions;
+            //gesturePerformed.handOne.positions = rightHand.positions;
+            //gesturePerformed.handTwo.positions = leftHand.positions;
+        }
+    }
+
+    cout<<"Best distance: "<<bestDistance<<endl;
+    
+    //Verify if the best distance is lower then the treshold
+    if(bestDistance < MIN_DISTANCE_TRESHOLD){
+        cout<< "Gesture "<<gestureTemplate.name<<" recognized with cost distance "<<bestDistance<<endl;
+    }
+    LOGGER->Log("End DTW");
+}
+
+double
+Gesture::computeDistanceBetweenTwoTrajectories(std::vector<XnPoint3D> A, std::vector<XnPoint3D> B){
+    //Initialize the dynamic time warping
+    m_Dtw.init();
+    //Set sequences that will be computed
+    m_Dtw.setSequences(A, B);
+    //Calc dtw distance between two trajectories
+    m_Dtw.compute();
+    //Get the best cost distance computed by dtw
+    return m_Dtw.getDistance();
 }
 
 std::vector<XnPoint3D> 
