@@ -185,7 +185,7 @@ Gesture::recognizeTwoHands() {
     type_hand leftHand, rightHand;
     std::vector<XnPoint3D> leftHandPoints, rightHandPoints, trajCompLeft, trajCompRight;
     type_gesture gestureTemplate, gesturePerformed;
-    double distanceA = 0.0, distanceB = 0.0;
+    double distanceA = 0.0, distanceB = 0.0, distanceC = 0.0;
     double bestDistance = 999999999;
 
     //Initialize the left and right hand according

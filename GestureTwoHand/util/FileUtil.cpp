@@ -31,9 +31,9 @@ FileUtil::getPointFile(const std::string str){
     std::vector<std::string> coordinates;
     XnPoint3D newPoint;
     split(str, ' ', coordinates);
-    newPoint.X = std::stod(coordinates[0]);
-    newPoint.Y = std::stod(coordinates[1]);
-    newPoint.Z = std::stod(coordinates[2]);
+    newPoint.X = atof(coordinates[0].c_str());
+    newPoint.Y = atof(coordinates[1].c_str());
+    newPoint.Z = atof(coordinates[2].c_str());
     return newPoint;
 }
 
