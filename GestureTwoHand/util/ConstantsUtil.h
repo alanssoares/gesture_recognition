@@ -66,10 +66,6 @@ using namespace std;
 /* Flag for high quality for simplify using the algorithm Douglas-Peucker Radial */
 #define DPR_HIGH_QUALITY false
 
-/* Define the name of the file that will be saved */
-#define FILE_NAME_RECORD_DEPTH "../StreamDepth.oni"
-#define FILE_NAME_RECORD_IMAGE "../StreamImage.oni"
-
 #define GESTURE "gesture"
 #define NAME_FILE_DATA "../Samples.txt"
 
@@ -79,6 +75,16 @@ using namespace std;
 #define GL_WIN_SIZE_Y   512
 #define GL_WIN_SIZE_MAIN_X 512
 #define GL_WIN_SIZE_MAIN_Y 512
+
+ /*
+ Define the name of the file that will be saved
+ */
+typedef struct params {
+    int modeOnline;
+    std::string fileImage;
+    std::string fileDepth;
+} params;
+
 /*
  --------- TYPES Gestures ----------
  */

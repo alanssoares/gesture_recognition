@@ -38,8 +38,39 @@
 xn::Context		g_context;
 xn::ScriptNode	g_scriptNode;
 
-/** Set this flag false if you want reproduce the video from file */
-int MODE_ONLINE = false;
+//Define the params
+params g_params;
+
+//Read the params of the command line
+void parse_command_line(int argc, char* argv[]){
+
+    //Initialize default params
+    g_params.modeOnline = false;
+    g_params.fileImage = std::string("../StreamImage.oni");
+    g_params.fileDepth = std::string("../StreamDepth.oni");
+
+    for(int i = 1; i < argc; i++) {
+        
+        if(argv[i][0] != '-') break; // ./gesture_tracking -m online -f move
+
+        i++;
+
+        switch(argv[i - 1][1]) {
+            case 'm':
+                if (strcmp(argv[i], "online") == 0) {
+                    g_params.modeOnline = true;
+                }
+                break;
+            case 'f':
+                g_params.fileImage = std::string("../") + std::string(argv[i]) + std::string("Image.oni");
+                g_params.fileDepth = std::string("../") + std::string(argv[i]) + std::string("Depth.oni");
+                break;
+            default:
+                std::cout<<"Unknown option -"<< argv[i - 1][1]<<endl;
+                break;
+        }
+    }
+}
 
 int main(int argc, char* argv[])
 {
@@ -47,7 +78,9 @@ int main(int argc, char* argv[])
 	xn::EnumerationErrors	errors;
     xn::Player              player;
     FileUtil                fileUtil;
-    
+ 
+    parse_command_line(argc, argv);
+
     // Load the gestures data
     fileUtil.loadGestures();
     
@@ -73,17 +106,20 @@ int main(int argc, char* argv[])
         rc = g_context.Init();
         CHECK_RC(rc, "Init context: %s");
         
-        rc = g_context.OpenFileRecording(FILE_NAME_RECORD_IMAGE);
+        rc = g_context.OpenFileRecording(g_params.fileImage.c_str());
         CHECK_RC(rc, "Open image file recorgind %s");
         
-        rc = g_context.OpenFileRecording(FILE_NAME_RECORD_DEPTH);
+        rc = g_context.OpenFileRecording(g_params.fileDepth.c_str());
         CHECK_RC(rc, "Open depth file recorgind %s");
         
     }
     
+        //Copy the params to use in record
+    Gesture::getInstance().m_params = g_params;
+    
 	SimpleViewer& viewer = HandViewer::CreateInstance(g_context);
     
-    if(MODE_ONLINE){
+    if(g_params.modeOnline){
         viewer.activeModeOnline();
     }
     

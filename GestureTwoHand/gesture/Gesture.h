@@ -161,6 +161,9 @@ public:
     std::vector<XnPoint3D> m_gestureTemplate;
     std::vector<XnPoint3D> m_gesturePerformedProcessed;
 
+    //Define the global type params
+    params m_params;
+    
 public:
     static Gesture& getInstance();
     static Gesture*	m_Instance;
