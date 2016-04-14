@@ -102,44 +102,33 @@ Gesture::isGesturePerformed() {
 
 void
 Gesture::updateState() {
-    vector<double> diff;
-    for (it = m_Hands.begin(); it != m_Hands.end(); ++it){
-        if(!it->second.positions.empty()){
-            diff.push_back(MathUtil::getSumDiff(it->second.positions));
-        }
-    }
-    m_Diff = MathUtil::getMaxValue(diff);
+    std::vector<double> diffs = calcDiffsTracking();
+    m_Diff = MathUtil::getMaxValue(diffs);
+    //cout<<"A "<<m_Diff<<endl;
     m_StateGesturePrev = m_StateGesture;
-    m_StateGesture = m_Diff > MIN_DIFF_LENGTH ? GESTURE_DOING : GESTURE_STOPED;
+    m_StateGesture = m_Diff >= MIN_DIFF_LENGTH ? GESTURE_DOING : GESTURE_STOPED;
     LOGGER->Log("State updated");
 }
 
 bool
 Gesture::isTwoHands() {
-    if(m_NumHands == 1) {
-        LOGGER->Log("Is One Hand!");
-        return false;
-    }
+    if(m_NumHands == 1) return false;
+    std::vector<double> diffs = calcDiffsTracking();
+    //cout<<"A "<<diffs[0]<<" B "<<diffs[1]<<endl;
+    //TODO: adicionar constante e otimizar valores
+    if(diffs[0] >= 0.5 && diffs[1] >= 0.5) return true;
+    return false;
+}
 
-    size_t n1, n2;
-
-    n1 = m_Hands.begin()->second.positions.size();
-    n2 = m_Hands.end()->second.positions.size();
-
-    if(n1 > 0 && n2 > 0){
-        double dist = MathUtil::getDistancePointToPoint(m_Hands.begin()->second.positions[0], m_Hands.end()->second.positions[0]);
-        cout<< "Threshold between two hands - "<<dist<<endl;
-        if(dist < MIN_DISTANCE_TRESHOLD_TWO_HANDS){
-            LOGGER->Log("Is Two Hands!");
-            return true;
-        } else if(n1 >= MIN_CONTROL_POINTS && n2 >= MIN_CONTROL_POINTS){
-            LOGGER->Log("Is Two Hands!");
-            return true;
+vector<double>
+Gesture::calcDiffsTracking(){
+    std::vector<double> diffs;
+    for (it = m_Hands.begin(); it != m_Hands.end(); ++it){
+        if(!it->second.positions.empty()){
+            diffs.push_back(MathUtil::getSumDiff(MathUtil::normalizeTrajectory(MathUtil::translateToOrigin(it->second.positions))));
         }
     }
-
-    LOGGER->Log("Is One Hand!");
-    return false;
+    return diffs;
 }
 
 void
@@ -212,11 +201,11 @@ Gesture::recognizeTwoHands() {
         distanceC = distanceA + distanceB;
         if(distanceC < bestDistance){
             bestDistance = distanceC;
-            //gestureTemplate.name = mGesturesFromFileTwoHands[i].name;
-            //gestureTemplate.handOne.positions = mGesturesFromFileTwoHands[i].handOne.positions;
-            //gestureTemplate.handTwo.positions = mGesturesFromFileTwoHands[i].handTwo.positions;
-            //gesturePerformed.handOne.positions = rightHand.positions;
-            //gesturePerformed.handTwo.positions = leftHand.positions;
+            gestureTemplate.name = mGesturesFromFileTwoHands[i].name;
+            gestureTemplate.handOne.positions = mGesturesFromFileTwoHands[i].handOne.positions;
+            gestureTemplate.handTwo.positions = mGesturesFromFileTwoHands[i].handTwo.positions;
+            gesturePerformed.handOne.positions = rightHand.positions;
+            gesturePerformed.handTwo.positions = leftHand.positions;
         }
     }
 

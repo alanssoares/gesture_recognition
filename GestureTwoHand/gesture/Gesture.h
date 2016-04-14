@@ -143,6 +143,12 @@ public:
     */
     double computeDistanceBetweenTwoTrajectories(std::vector<XnPoint3D> A, std::vector<XnPoint3D> B);
 
+    /*
+     Método responsável por calcular a diferença das distâncias entre os pontos de cada trajetória
+     @return vector<double> vetor com as distâncias das duas mãos
+    */
+    vector<double> calcDiffsTracking();
+
     int     m_NumHands;
     int     m_StateGesture;
     int     m_StateGesturePrev;

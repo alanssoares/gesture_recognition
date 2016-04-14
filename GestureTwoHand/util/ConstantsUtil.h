@@ -34,7 +34,7 @@ using namespace std;
  Define the min diff length between the MAX_HAND_CONTROL_POINTS
  to verify if the hand is stopped or moving
  */
-#define MIN_DIFF_LENGTH 50 //Best aproximated
+#define MIN_DIFF_LENGTH 1 //Best aproximated
 
 /* The gesture is considered when have more then 3 points */
 #define MIN_CONTROL_POINTS 3 //Quadratic Bezier Curve
@@ -46,7 +46,7 @@ using namespace std;
 #define MIN_DISTANCE_TRESHOLD 0.5
 
 /* Define the min distance between two hands */
-#define MIN_DISTANCE_TRESHOLD_TWO_HANDS 2
+#define MIN_DISTANCE_TRESHOLD_TWO_HANDS 50
 
 /* Define a quantidade de steps para cada intervalo da curva bspline */
 #define MIN_STEP_BSPLINE 7

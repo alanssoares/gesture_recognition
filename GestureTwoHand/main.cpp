@@ -87,7 +87,7 @@ int main(int argc, char* argv[])
     // Setter the gestures from file
     Gesture::getInstance().setGesturesFromFile(fileUtil.getGesturesOneHand(), fileUtil.getGesturesTwoHands());
     
-    if(MODE_ONLINE){
+    if(g_params.modeOnline){
         
         // Create a context with default settings
         rc = g_context.InitFromXmlFile(SAMPLE_XML_PATH, g_scriptNode, &errors);
