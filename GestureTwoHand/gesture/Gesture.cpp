@@ -17,6 +17,7 @@ Gesture* Gesture::m_Instance = NULL;
 Gesture::Gesture() {
     m_StateGesture = GESTURE_STOPED;
     m_NumHands = 0;
+    m_NumDoings = 0;
 }
 
 Gesture::~Gesture(){}
@@ -24,23 +25,59 @@ Gesture::~Gesture(){}
 Gesture&
 Gesture::getInstance() {
     if(m_Instance == NULL) {
-        LOGGER->Log("Instance Gesture Created");
         return *(m_Instance = new Gesture());
     }
     return *m_Instance;
 }
 
 void
-Gesture::updatePosition(const int idHand, XnPoint3D position) {
-    m_Hands.at(idHand).positions.push_back(position);
-    LOGGER->Log("Position add");
+Gesture::update(const int idHand, XnPoint3D position) {
+    updatePosition(idHand, position);
+    updateState();
+    updateRecognition();
 }
 
 void
+Gesture::updatePosition(const int idHand, XnPoint3D position) {
+    m_Hands.at(idHand).positions.push_back(position);
+}
+
+void
+Gesture::updateState() {
+    m_NumDoings = 0;
+    m_StateGesturePrev = m_StateGesture;
+    
+    for (it = m_Hands.begin(); it != m_Hands.end(); ++it){
+        if(MathUtil::isGestureDoing(it->second.positions)){
+            m_NumDoings++;
+        }
+    }
+    
+    if(m_NumDoings > 0){
+        m_StateGesture = GESTURE_DOING;
+    } else {
+        m_StateGesture = GESTURE_STOPED;
+    }
+}
+
+void
+Gesture::updateRecognition() {
+    if(m_StateGesturePrev == GESTURE_DOING &&
+        m_StateGesture == GESTURE_STOPED){
+        if (m_NumDoings == 1) {
+            recognizeOndeHand();
+        } else {
+            recognizeTwoHands();
+        }
+        clearHands();
+    }
+}
+
+//Ensure that the first hand to be detected is the right 
+//to be able to identify later
+void
 Gesture::addHand(int idHand, XnPoint3D position) {
     type_hand newHand;
-    //Garantir que a primeira mão a ser detectada é a direita
-    //Para poder identificar as posteriores
     if(m_Hands.size() == 0){
         newHand.side_hand = RIGHT_HAND;
     } else {
@@ -55,85 +92,16 @@ Gesture::addHand(int idHand, XnPoint3D position) {
     newHand.positions.push_back(position);
     m_Hands.insert(pair<int, type_hand>(idHand, newHand));
     m_NumHands++;
-    LOGGER->Log("Hand add");
 }
 
 void
 Gesture::removeHand(int idHand) {
     m_Hands.erase(idHand);
     m_NumHands--;
-    LOGGER->Log("Hand removed");
-}
-
-void
-Gesture::update(const int idHand, XnPoint3D position) {
-    updatePosition(idHand, position);
-    updateState();
-    updateRecognition();
-    LOGGER->Log("Update");
-}
-
-void
-Gesture::updateRecognition() {
-    if (isGesturePerformed()) {
-        if(isTwoHands()){
-            recognizeTwoHands();
-        } else {
-            recognizeOndeHand();
-        }
-        clearHands();
-    }
-    LOGGER->Log("Update recognition ");
-}
-
-bool
-Gesture::isGesturePerformed() {
-    if (m_StateGesturePrev == GESTURE_DOING && m_StateGesture == GESTURE_STOPED) {
-        for (it = m_Hands.begin(); it != m_Hands.end(); ++it){
-            if(it->second.positions.size() >= MIN_CONTROL_POINTS){
-                LOGGER->Log("Gesture performed");
-                return true;
-            }
-        }
-    }
-    LOGGER->Log("Gesture not performed");
-    return false;
-}
-
-void
-Gesture::updateState() {
-    std::vector<double> diffs = calcDiffsTracking();
-    m_Diff = MathUtil::getMaxValue(diffs);
-    //cout<<"A "<<m_Diff<<endl;
-    m_StateGesturePrev = m_StateGesture;
-    m_StateGesture = m_Diff >= MIN_DIFF_LENGTH ? GESTURE_DOING : GESTURE_STOPED;
-    LOGGER->Log("State updated");
-}
-
-bool
-Gesture::isTwoHands() {
-    if(m_NumHands == 1) return false;
-    std::vector<double> diffs = calcDiffsTracking();
-    //cout<<"A "<<diffs[0]<<" B "<<diffs[1]<<endl;
-    //TODO: adicionar constante e otimizar valores
-    if(diffs[0] >= 0.5 && diffs[1] >= 0.5) return true;
-    return false;
-}
-
-vector<double>
-Gesture::calcDiffsTracking(){
-    std::vector<double> diffs;
-    for (it = m_Hands.begin(); it != m_Hands.end(); ++it){
-        if(!it->second.positions.empty()){
-            diffs.push_back(MathUtil::getSumDiff(MathUtil::normalizeTrajectory(MathUtil::translateToOrigin(it->second.positions))));
-        }
-    }
-    return diffs;
 }
 
 void
 Gesture::recognizeOndeHand() {
-    LOGGER->Log("Init DTW");
     std::vector<XnPoint3D> trajectoryHand, trajectoryComp;
     double distance = 0.0, bestDistance = 999999999;
     type_gesture gestureTemplate, gesturePerformed;
@@ -141,7 +109,6 @@ Gesture::recognizeOndeHand() {
 
     //Process the trajectory from user
     trajectoryHand = processTrajectory(hand.positions);
-
     //Find the best match trajectory using DTW
     for (int i = 0; i < mGesturesFromFileOneHand.size(); i++) {
         //Process the trajectory template
@@ -170,7 +137,6 @@ Gesture::recognizeOndeHand() {
 
 void
 Gesture::recognizeTwoHands() {
-    LOGGER->Log("Init DTW");
     type_hand leftHand, rightHand;
     std::vector<XnPoint3D> leftHandPoints, rightHandPoints, trajCompLeft, trajCompRight;
     type_gesture gestureTemplate, gesturePerformed;
@@ -215,7 +181,6 @@ Gesture::recognizeTwoHands() {
     if(bestDistance < MIN_DISTANCE_TRESHOLD){
         cout<< "Gesture "<<gestureTemplate.name<<" recognized with cost distance "<<bestDistance<<endl;
     }
-    LOGGER->Log("End DTW");
 }
 
 double
@@ -264,6 +229,7 @@ Gesture::setGesturesFromFile(std::vector<type_gesture> oneHandGestures, std::vec
 
 void
 Gesture::clearHands(){
+    XnPoint3D pos;
     for (it = m_Hands.begin(); it != m_Hands.end(); ++it) {
         it->second.positions.clear();
     }

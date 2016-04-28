@@ -122,7 +122,7 @@ public:
      @param positions da trajetória
      @return double soma das distâncias dos n pontos da trajetória
      */
-    static double getSumDiff(vector<XnPoint3D> positions);
+    static bool isGestureDoing(vector<XnPoint3D> positions);
     
     /**
      Método responsável por calcular o centro geométrico

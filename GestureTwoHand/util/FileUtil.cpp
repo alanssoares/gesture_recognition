@@ -66,10 +66,9 @@ FileUtil::loadGestures(){
             }
         }
     }
-
-    cout<<" *** Gestures from file loadded *** "<<endl;
-    cout<<"NumGestOneHand - "<<mGesturesOneHand.size()<<endl;
-    cout<<"NumGestTwoHands - "<<mGesturesTwoHands.size()<<endl;
+    
+    cout<<"SamplesOneHand - "<<mGesturesOneHand.size()<<endl;
+    cout<<"SamplesTwoHands - "<<mGesturesTwoHands.size()<<endl;
 }
 
 void

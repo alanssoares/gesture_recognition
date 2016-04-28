@@ -35,7 +35,7 @@ include_directories ("${PROJECT_SOURCE_DIR}/view")
 file(GLOB SOURCES "tracker/*.cpp" "tracker/*.cpp" "geometry/*.cpp" "gesture/*.cpp" "libs/*.cpp" "logger/*.cpp" "util/*.cpp" "view/*.cpp" "*.cpp")
 
 # Cria executavel do programa
-add_executable(app_gesture ${SOURCES})
+add_executable(startApp ${SOURCES})
 
 # Linka as aplicações com as libs
-target_link_libraries(app_gesture ${OPENNI_LIBS} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} util)
+target_link_libraries(startApp ${OPENNI_LIBS} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} util)

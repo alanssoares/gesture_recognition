@@ -62,23 +62,31 @@ MathUtil::getMaxValue(vector<double> values)
     return max;
 }
 
-/*
- Somatório das diferenças de distância euclidiana entre as n posições anteriores
- */
-double
-MathUtil::getSumDiff(vector<XnPoint3D> positions)
+bool
+MathUtil::isGestureDoing(vector<XnPoint3D> positions)
 {
-    float total = 0.0;
-    size_t n = positions.size();
-    size_t len = n - MAX_HAND_CONTROL_POINTS;
-    
-    XnPoint3D ant = positions[n - 1];
-    for (size_t i = len; i < n; i++){
-        total += getDistancePointToPoint(ant, positions[i]);
-        ant = positions[i];
+    float total = 0.0, dist = 0.0;
+    size_t lsup = positions.size();
+
+    positions = translateToOrigin(positions);
+    positions = normalizeTrajectory(positions);
+    positions = smoothMeanNeighboring(positions, NUMBER_SMOOTH_NB);
+
+    for (size_t i = lsup - MIN_LAST_POINTS; i < lsup - 1; i++){
+        //Calc the distance between two points a and b
+        dist = getDistancePointToPoint(positions[i], positions[i + 1]);
+        //Filter the distance noise
+        if(dist >= 0.0 && dist <= 1.0){
+            total += dist;
+        }
     }
-    
-    return total;
+    cout<<"Total =  "<< total<< " Min = " << MIN_DIFF_LENGTH<<endl;
+    //Verify if the total distance is greath then min diff
+    if(total > MIN_DIFF_LENGTH){
+        return true;
+    }
+
+    return false;
 }
 
 XnPoint3D

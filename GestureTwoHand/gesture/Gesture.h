@@ -90,21 +90,6 @@ public:
      se algum gesto foi realizado. Em caso positivo, o gesto será classificado.
      */
     void    updateRecognition();
-    
-    /**
-     O método verifica se algum gesto foi realizado.
-     A verificação consiste em saber se o estado anterior era DOING e se a quantidade
-     de posições é maior que a mínima definida.
-     @return status
-     **/
-    bool    isGesturePerformed();
-    
-    /**
-     O gesto foi realizado com as duas mãos quando a distância entre as duas mãos é menor
-     que um threshold ou quando é maior que o threshold e ambas possuem a quantidade de pontos
-     maior que o mínimo.
-    */
-    bool    isTwoHands();
 
     /**
      Reconhece gestos realizados com uma mão.
@@ -143,17 +128,11 @@ public:
     */
     double computeDistanceBetweenTwoTrajectories(std::vector<XnPoint3D> A, std::vector<XnPoint3D> B);
 
-    /*
-     Método responsável por calcular a diferença das distâncias entre os pontos de cada trajetória
-     @return vector<double> vetor com as distâncias das duas mãos
-    */
-    vector<double> calcDiffsTracking();
-
     int     m_NumHands;
     int     m_StateGesture;
     int     m_StateGesturePrev;
-    float   m_Diff;
-    
+    int     m_NumDoings;
+
     map<int, type_hand> m_Hands;
     map<int,type_hand>::iterator it;
     
