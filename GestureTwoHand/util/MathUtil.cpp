@@ -62,30 +62,32 @@ MathUtil::getMaxValue(vector<double> values)
     return max;
 }
 
+double
+MathUtil::getSumDistanceBetweenPoints(vector<XnPoint3D> positions)
+{
+    size_t n = positions.size();
+    if(n < MIN_LAST_POINTS) return 0.0;
+    double sum = 0.0, dist = 0.0;
+    const double min = 0.0;
+    const double max = 1.0;
+    for (size_t i = n - MIN_LAST_POINTS; i < n - 1; i++){
+        dist = getDistancePointToPoint(positions[i], positions[i + 1]);
+        if(dist >= min && dist <= max){
+            sum += dist;
+        }
+    }
+    return sum;
+}
+
 bool
 MathUtil::isGestureDoing(vector<XnPoint3D> positions)
 {
-    float total = 0.0, dist = 0.0;
-    size_t lsup = positions.size();
-
     positions = translateToOrigin(positions);
     positions = normalizeTrajectory(positions);
-    positions = smoothMeanNeighboring(positions, NUMBER_SMOOTH_NB);
-
-    for (size_t i = lsup - MIN_LAST_POINTS; i < lsup - 1; i++){
-        //Calc the distance between two points a and b
-        dist = getDistancePointToPoint(positions[i], positions[i + 1]);
-        //Filter the distance noise
-        if(dist >= 0.0 && dist <= 1.0){
-            total += dist;
-        }
-    }
-    cout<<"Total =  "<< total<< " Min = " << MIN_DIFF_LENGTH<<endl;
-    //Verify if the total distance is greath then min diff
-    if(total > MIN_DIFF_LENGTH){
+    double dist = getSumDistanceBetweenPoints(positions);
+    if(dist > MIN_DIFF_LENGTH){
         return true;
     }
-
     return false;
 }
 

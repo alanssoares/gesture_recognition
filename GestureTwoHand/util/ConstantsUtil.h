@@ -105,7 +105,7 @@ typedef struct type_gesture {
 #define MIN_STEP_BSPLINE 7
 
 /* Define the minimum number of points of the motion doing */
-#define MIN_LAST_POINTS 15
+#define MIN_LAST_POINTS 10
 
 /* Define o tipo de método que será usado para suavizar a trajetória */
 #define TYPE_SMOOTH MEAN_NEIGHBORING
@@ -114,7 +114,7 @@ typedef struct type_gesture {
 #define INCREMENT_RATE_INTERPOLATION 0.02
 
 /* Number of times that the smooth will be applied */
-#define NUMBER_SMOOTH_NB 1
+#define NUMBER_SMOOTH_NB 2
 
 /* Factor for simplify using the algorithm Douglas-Peucker Radial */
 #define DPR_FACTOR_SIMPLIFY 0.01

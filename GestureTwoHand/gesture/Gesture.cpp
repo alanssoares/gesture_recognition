@@ -15,9 +15,9 @@
 Gesture* Gesture::m_Instance = NULL;
 
 Gesture::Gesture() {
-    m_StateGesture = GESTURE_STOPED;
     m_NumHands = 0;
-    m_NumDoings = 0;
+    m_LeftHandMoved = m_RightHandMoved = false;
+    m_LeftHandStoped = m_RightHandStoped = true;
 }
 
 Gesture::~Gesture(){}
@@ -44,31 +44,32 @@ Gesture::updatePosition(const int idHand, XnPoint3D position) {
 
 void
 Gesture::updateState() {
-    m_NumDoings = 0;
-    m_StateGesturePrev = m_StateGesture;
-    
-    for (it = m_Hands.begin(); it != m_Hands.end(); ++it){
+    for (it = m_Hands.begin(); it != m_Hands.end(); ++it) {
         if(MathUtil::isGestureDoing(it->second.positions)){
-            m_NumDoings++;
+            if(it->second.side_hand == LEFT_HAND){
+                m_LeftHandMoved = true;
+                m_LeftHandStoped = false;
+            } else {
+                m_RightHandMoved = true;
+                m_RightHandStoped = false;
+            }
+        } else if(it->second.side_hand == LEFT_HAND){
+            m_LeftHandStoped = true;
+        } else {
+            m_RightHandStoped = true;
         }
-    }
-    
-    if(m_NumDoings > 0){
-        m_StateGesture = GESTURE_DOING;
-    } else {
-        m_StateGesture = GESTURE_STOPED;
     }
 }
 
 void
 Gesture::updateRecognition() {
-    if(m_StateGesturePrev == GESTURE_DOING &&
-        m_StateGesture == GESTURE_STOPED){
-        if (m_NumDoings == 1) {
-            recognizeOndeHand();
-        } else {
-            recognizeTwoHands();
-        }
+    //cout<<"LM "<<m_LeftHandMoved<<" LS "<<m_LeftHandStoped<<" RM "<<m_RightHandMoved<<" RS "<<m_RightHandStoped<<endl;
+    if(m_LeftHandStoped && m_RightHandStoped && m_LeftHandMoved && m_RightHandMoved){
+        recognizeTwoHands();
+        clearHands();
+    } if((m_LeftHandMoved && m_LeftHandStoped && !m_RightHandMoved && m_RightHandStoped) || 
+        (m_RightHandMoved && m_RightHandStoped && !m_LeftHandMoved && m_LeftHandStoped)){
+        recognizeOneHand();
         clearHands();
     }
 }
@@ -101,12 +102,13 @@ Gesture::removeHand(int idHand) {
 }
 
 void
-Gesture::recognizeOndeHand() {
+Gesture::recognizeOneHand() {
+    cout<<"OneHand"<<endl;
     std::vector<XnPoint3D> trajectoryHand, trajectoryComp;
     double distance = 0.0, bestDistance = 999999999;
     type_gesture gestureTemplate, gesturePerformed;
     type_hand hand = m_Hands.begin()->second;
-
+    
     //Process the trajectory from user
     trajectoryHand = processTrajectory(hand.positions);
     //Find the best match trajectory using DTW
@@ -132,17 +134,16 @@ Gesture::recognizeOndeHand() {
         m_gesturePerformedProcessed = MathUtil::smoothMeanNeighboring(m_gesturePerformedProcessed, NUMBER_SMOOTH_NB);
         m_gestureTemplate = gestureTemplate.handOne.positions;
     }
-    LOGGER->Log("End DTW");
 }
 
 void
 Gesture::recognizeTwoHands() {
+    cout<<"TwoHand"<<endl;
     type_hand leftHand, rightHand;
     std::vector<XnPoint3D> leftHandPoints, rightHandPoints, trajCompLeft, trajCompRight;
     type_gesture gestureTemplate, gesturePerformed;
-    double distanceA = 0.0, distanceB = 0.0, distanceC = 0.0;
-    double bestDistance = 999999999;
-
+    double distanceA = 0.0, distanceB = 0.0, distanceC = 0.0, bestDistance = 999999999;
+    
     //Initialize the left and right hand according
     if(m_Hands.begin()->second.side_hand == LEFT_HAND){
         leftHand = m_Hands.begin()->second;
@@ -175,8 +176,6 @@ Gesture::recognizeTwoHands() {
         }
     }
 
-    cout<<"Best distance: "<<bestDistance<<endl;
-    
     //Verify if the best distance is lower then the treshold
     if(bestDistance < MIN_DISTANCE_TRESHOLD){
         cout<< "Gesture "<<gestureTemplate.name<<" recognized with cost distance "<<bestDistance<<endl;
@@ -229,8 +228,9 @@ Gesture::setGesturesFromFile(std::vector<type_gesture> oneHandGestures, std::vec
 
 void
 Gesture::clearHands(){
-    XnPoint3D pos;
     for (it = m_Hands.begin(); it != m_Hands.end(); ++it) {
         it->second.positions.clear();
     }
+    m_LeftHandMoved = m_RightHandMoved = false;
+    m_LeftHandStoped = m_RightHandStoped = true;
 }

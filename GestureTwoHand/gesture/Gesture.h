@@ -95,7 +95,7 @@ public:
      Reconhece gestos realizados com uma mão.
      Premissa: A mão direita sempre será detectada primeiro
     */
-    void    recognizeOndeHand();
+    void    recognizeOneHand();
 
     /**
      Reconhece gestos realizados com duas mãos.
@@ -129,9 +129,8 @@ public:
     double computeDistanceBetweenTwoTrajectories(std::vector<XnPoint3D> A, std::vector<XnPoint3D> B);
 
     int     m_NumHands;
-    int     m_StateGesture;
-    int     m_StateGesturePrev;
-    int     m_NumDoings;
+    bool    m_LeftHandMoved, m_RightHandMoved;
+    bool    m_LeftHandStoped, m_RightHandStoped;
 
     map<int, type_hand> m_Hands;
     map<int,type_hand>::iterator it;
