@@ -66,13 +66,13 @@ int helpUsage(){
 }
 
 /**
- Read the params of the command line
+    Read the params of the command line
 */
 int parse_command_line(int argc, char* argv[]){
 
     //Default params
     g_params.numHands = 1;
-    g_params.name = (char*) malloc(sizeof(char) * 7);
+    g_params.name = (char*) malloc(sizeof(char) * 50);
     
     strcpy(g_params.name, "default");
 
@@ -107,16 +107,31 @@ int parse_command_line(int argc, char* argv[]){
     return 0;
 }
 
+/**
+    Create the corresponding gesture directories
+*/
+void createDirs(){
+    std::string root_dir = "../samples/gesto_" + std::string(g_params.name);
+    system(("mkdir -p " + root_dir + "/track").c_str());
+    system(("mkdir " + root_dir + "/image").c_str());
+    system(("mkdir " + root_dir + "/depth").c_str());
+}
+
 int main(int argc, char* argv[])
 {
 	XnStatus				rc;
 	xn::EnumerationErrors	errors;
     xn::Player              player;
 
+    //Validate input parameters
     if(parse_command_line(argc, argv)) return 0;
-
+    
+    //Create dirs to save samples
+    createDirs();
+    
+    //Set parameters
     FileUtil::getInstance().setInfoGesture(g_params.name, g_params.numHands);
-        
+    
     // Create a context with default settings
     rc = g_context.InitFromXmlFile(SAMPLE_XML_PATH, g_scriptNode, &errors);
     if (rc == XN_STATUS_NO_NODE_PRESENT)
@@ -130,11 +145,11 @@ int main(int argc, char* argv[])
     CHECK_RC(rc, "Open failed: %s\n");
     
 	SimpleViewer& viewer = HandViewer::CreateInstance(g_context);
-    
+
 	rc = viewer.Init(argc, argv);
     CHECK_RC(rc, "Viewer init failed: %s\n");
-
-	rc = viewer.Run();
+	
+    rc = viewer.Run();
     CHECK_RC(rc, "Viewer run failed: %s\n");
     
 	return 0;

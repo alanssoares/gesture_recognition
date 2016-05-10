@@ -7,7 +7,7 @@
 //
 
 #include "FileUtil.h"
-
+#include "MathUtil.h"
 //---------------------------------------------------------------------------
 // Statics
 //---------------------------------------------------------------------------
@@ -87,26 +87,42 @@ FileUtil::addPosition(int idHand, XnPoint3D pos){
     }
 }
 
-void
-FileUtil::saveStorage(){
-    std::string nameFile = m_NewGesture.name + ".txt";
+std::string
+FileUtil::createFileTrack(int i){
+    std::string root_dir = "../samples/gesto_" + m_NewGesture.name + "/track/gesture_";
+    std::string nameFile = root_dir + m_NewGesture.name + "_track_" + std::to_string(i + 1) + ".txt";
     std::ofstream fileCreate(nameFile);
-    std::fstream file;
     fileCreate.close();
-    file.open(nameFile, ios::in | ios::out | ios::ate);
-    if(file.is_open()){
-        if(m_NewGesture.numHands == 1) {
-            for (int i = 0; i < mGesturesOneHand.size(); i++){
-                type_gesture gesture = mGesturesOneHand[i];
+    return nameFile;
+}
+
+void
+FileUtil::saveTrack(){
+    type_gesture gesture;
+    std::string nameFile;
+    std::fstream file;
+    if(m_NewGesture.numHands == 1) {
+        for (int i = 0; i < mGesturesOneHand.size(); i++){
+            gesture = mGesturesOneHand[i];
+            //TODO: trocar o i passado na função createFileTrack pelo número do último arquivo salvo 
+            //para evitar que os arquivos atuais sejam apagados.
+            file.open(createFileTrack(i), ios::in | ios::out | ios::ate);
+            if(file.is_open()){
                 file<<"gesture "<<m_NewGesture.name<<" hands "<<m_NewGesture.numHands<<std::endl;
                 for(int j = 0; j < gesture.handOne.positions.size(); j++){
                     file<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<std::endl;
                 }
                 file<<"end"<<std::endl;
+                file.close();
             }
-        } else if(m_NewGesture.numHands == 2){
-            for (int i = 0; i < mGesturesTwoHands.size(); i++){
-                type_gesture gesture = mGesturesTwoHands[i];
+        }
+    } else if(m_NewGesture.numHands == 2){
+        for (int i = 0; i < mGesturesTwoHands.size(); i++){
+            gesture = mGesturesTwoHands[i];
+            //TODO: trocar o i passado na função createFileTrack pelo número do último arquivo salvo 
+            //para evitar que os arquivos atuais sejam apagados.
+            file.open(createFileTrack(i), ios::in | ios::out | ios::ate);
+            if(file.is_open()){
                 file<<"gesture "<<m_NewGesture.name<<" hands "<<m_NewGesture.numHands<<std::endl;
                 for(int j = 0; j < gesture.handOne.positions.size(); j++){
                     file<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<std::endl;
@@ -116,12 +132,11 @@ FileUtil::saveStorage(){
                     file<<gesture.handTwo.positions[j].X<<" "<<gesture.handTwo.positions[j].Y<<" "<<gesture.handTwo.positions[j].Z<<std::endl;
                 }
                 file<<"end"<<std::endl;
+                file.close();
             }
         }
-        
     }
-    cout<<"All gestures were saved in the file "<<nameFile<<endl;
-    file.close();
+    cout<<"All gestures were saved in folder track"<<endl;
 }
 
 /*
@@ -164,9 +179,9 @@ FileUtil::getPointFile(const std::string str){
     std::vector<std::string> coordinates;
     XnPoint3D newPoint;
     split(str, ' ', coordinates);
-    newPoint.X = std::stod(coordinates[0]);
-    newPoint.Y = std::stod(coordinates[1]);
-    newPoint.Z = std::stod(coordinates[2]);
+    newPoint.X = atof(coordinates[0].c_str());
+    newPoint.Y = atof(coordinates[1].c_str());
+    newPoint.Z = atof(coordinates[2].c_str());
     return newPoint;
 }
 

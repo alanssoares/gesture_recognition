@@ -47,13 +47,16 @@ public:
 
     void startStorage();
     void stopStorage();
-    void saveStorage();
+    
     void removeLast();
     
     void removeHand(int idHand);
     void addPosition(int idHand, XnPoint3D pos);
     void addHand(int idHand, XnPoint3D pos);
 
+    void saveTrack();
+    std::string createFileTrack(int i);
+    
     std::vector<type_gesture> getGesturesOneHand() { return mGesturesOneHand; };
     std::vector<type_gesture> getGesturesTwoHands() { return mGesturesTwoHands; };
     type_gesture getNewGesture() { return m_NewGesture; };
