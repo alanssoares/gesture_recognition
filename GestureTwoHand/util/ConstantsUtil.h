@@ -87,7 +87,7 @@ typedef struct type_gesture {
 #define MAX_HANDS 2
 
 /* Define the min diff to verify if the hand is stopped or moving */
-#define MIN_DIFF_LENGTH 1.0
+#define MIN_DIFF_LENGTH 3.0
 
 /* The gesture is considered when have more then 3 points */
 #define MIN_CONTROL_POINTS 3
@@ -105,7 +105,7 @@ typedef struct type_gesture {
 #define MIN_STEP_BSPLINE 7
 
 /* Define the minimum number of points of the motion doing */
-#define MIN_LAST_POINTS 10
+#define MIN_LAST_POINTS 3.0
 
 /* Define o tipo de método que será usado para suavizar a trajetória */
 #define TYPE_SMOOTH MEAN_NEIGHBORING

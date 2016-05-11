@@ -62,33 +62,21 @@ MathUtil::getMaxValue(vector<double> values)
     return max;
 }
 
-double
-MathUtil::getSumDistanceBetweenPoints(vector<XnPoint3D> positions)
-{
-    size_t n = positions.size();
-    if(n < MIN_LAST_POINTS) return 0.0;
-    double sum = 0.0, dist = 0.0;
-    const double min = 0.0;
-    const double max = 1.0;
-    for (size_t i = n - MIN_LAST_POINTS; i < n - 1; i++){
-        dist = getDistancePointToPoint(positions[i], positions[i + 1]);
-        if(dist >= min && dist <= max){
-            sum += dist;
-        }
-    }
-    return sum;
-}
-
 bool
 MathUtil::isGestureDoing(vector<XnPoint3D> positions)
 {
-    positions = translateToOrigin(positions);
-    positions = normalizeTrajectory(positions);
-    double dist = getSumDistanceBetweenPoints(positions);
-    if(dist > MIN_DIFF_LENGTH){
-        return true;
+    int n = positions.size();
+    int i = n - MIN_LAST_POINTS;
+    if(i < 0) return false;
+    double sum = 0.0;
+    for (; i < n - 1; i++){
+        sum += getDistancePointToPoint(positions[i + 1], positions[i]);
     }
-    return false;
+    sum = sum / MIN_LAST_POINTS;
+    if(sum < MIN_DIFF_LENGTH){
+        return false;
+    }
+    return true;
 }
 
 XnPoint3D
@@ -313,8 +301,7 @@ MathUtil::simplifyDPStep(std::vector<XnPoint3D> points, int first, int last, dou
 
 double
 MathUtil::getDistancePointToPoint(XnPoint3D p1, XnPoint3D p2){
-    XnPoint3D newPoint = subtract(p1, p2);
-    return length(newPoint);
+    return length(subtract(p1, p2));
 }
 
 double

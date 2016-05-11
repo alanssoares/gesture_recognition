@@ -128,6 +128,18 @@ public:
     */
     double computeDistanceBetweenTwoTrajectories(std::vector<XnPoint3D> A, std::vector<XnPoint3D> B);
 
+    /**
+     Verify if the left hand was moved and stoped
+     @return bool
+    */
+    bool    isLeftHandMoved();
+
+    /**
+     Verify if the left hand was moved and stoped
+     @return bool
+    */
+    bool    isRightHandMoved();
+
     int     m_NumHands;
     bool    m_LeftHandMoved, m_RightHandMoved;
     bool    m_LeftHandStoped, m_RightHandStoped;

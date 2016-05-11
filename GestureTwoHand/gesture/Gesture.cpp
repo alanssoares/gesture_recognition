@@ -63,12 +63,11 @@ Gesture::updateState() {
 
 void
 Gesture::updateRecognition() {
-    //cout<<"LM "<<m_LeftHandMoved<<" LS "<<m_LeftHandStoped<<" RM "<<m_RightHandMoved<<" RS "<<m_RightHandStoped<<endl;
-    if(m_LeftHandStoped && m_RightHandStoped && m_LeftHandMoved && m_RightHandMoved){
+    if(isLeftHandMoved() && isRightHandMoved()){
         recognizeTwoHands();
         clearHands();
-    } if((m_LeftHandMoved && m_LeftHandStoped && !m_RightHandMoved && m_RightHandStoped) || 
-        (m_RightHandMoved && m_RightHandStoped && !m_LeftHandMoved && m_LeftHandStoped)){
+    } if((isLeftHandMoved() && !m_RightHandMoved) || 
+        (isRightHandMoved() && !m_LeftHandMoved)){
         recognizeOneHand();
         clearHands();
     }
@@ -97,6 +96,13 @@ Gesture::addHand(int idHand, XnPoint3D position) {
 
 void
 Gesture::removeHand(int idHand) {
+    if(m_Hands.at(idHand).side_hand == LEFT_HAND){
+        m_LeftHandMoved = false;
+        m_LeftHandStoped = true;
+    } else {
+        m_RightHandMoved = false;
+        m_RightHandStoped = true;
+    }
     m_Hands.erase(idHand);
     m_NumHands--;
 }
@@ -233,4 +239,14 @@ Gesture::clearHands(){
     }
     m_LeftHandMoved = m_RightHandMoved = false;
     m_LeftHandStoped = m_RightHandStoped = true;
+}
+
+bool
+Gesture::isLeftHandMoved(){
+    return m_LeftHandMoved && m_LeftHandStoped;
+}
+
+bool
+Gesture::isRightHandMoved(){
+    return m_RightHandMoved && m_RightHandStoped;
 }

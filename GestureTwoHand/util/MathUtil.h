@@ -75,14 +75,7 @@ public:
      @return double indicando a distância do ponto ao segmento
     **/
     static double getDistancePointToSegment(XnPoint3D p, XnPoint3D p1, XnPoint3D p2);
-
-    /**
-     Método responsável por obter a soma das distâncias entre dois pontos
-     @param positions da trajetória
-     @return double com soma
-    */
-    static double getSumDistanceBetweenPoints(vector<XnPoint3D> positions);
-
+    
     /**
      Método responsável por obter os valores mínimos de X, Y, Z 
      do array de posições.
