@@ -136,7 +136,7 @@ Gesture::recognizeOneHand() {
         m_NameGestureRecognized = gestureTemplate.name;
         m_GesturePerformedA = hand.positions;
         m_GestureTemplateA = gestureTemplate.handOne.positions;
-        m_GesturePerformedProcessedA = MathUtil::smoothMeanNeighboring(m_GesturePerformedA, NUMBER_SMOOTH_NB);
+        m_GesturePerformedProcessedA = smooth(m_GesturePerformedA);
         m_TwoHandsRecognized = false;
     }
 }
@@ -179,10 +179,10 @@ Gesture::recognizeTwoHands() {
         m_NameGestureRecognized = gestureTemplate.name;
         m_GestureTemplateA = gestureTemplate.handOne.positions;
         m_GesturePerformedA = rightHand.positions;
-        m_GesturePerformedProcessedA = MathUtil::smoothMeanNeighboring(rightHand.positions, NUMBER_SMOOTH_NB);
+        m_GesturePerformedProcessedA = smooth(rightHand.positions);
         m_GestureTemplateB = gestureTemplate.handTwo.positions;
         m_GesturePerformedB = leftHand.positions;
-        m_GesturePerformedProcessedB = MathUtil::smoothMeanNeighboring(leftHand.positions, NUMBER_SMOOTH_NB);
+        m_GesturePerformedProcessedB = smooth(leftHand.positions);
         m_TwoHandsRecognized = true;
     }
 }
@@ -205,7 +205,12 @@ Gesture::processTrajectory(std::vector<XnPoint3D> trajectory) {
     trajectory = MathUtil::translateToOrigin(trajectory);
     //Normalize between the interval -1 to 1
     trajectory = MathUtil::normalizeTrajectory(trajectory);
-    //Smooth the trajectory according the method choosed
+    //Smooth the trajectory
+    return smooth(trajectory);
+}
+
+std::vector<XnPoint3D>
+Gesture::smooth(std::vector<XnPoint3D> trajectory){
     switch(TYPE_SMOOTH){
         case MEAN_NEIGHBORING:
             trajectory = MathUtil::smoothMeanNeighboring(trajectory, NUMBER_SMOOTH_NB);
@@ -241,7 +246,7 @@ Gesture::clearHands(){
 type_hand
 Gesture::getHand(const int side_hand){
     type_hand hand;
-    hand.id_hand = -1;
+    hand.id_hand = NOT_HAND;
     for (it = m_Hands.begin(); it != m_Hands.end(); ++it) {
         if(it->second.side_hand == side_hand){
             hand = it->second;

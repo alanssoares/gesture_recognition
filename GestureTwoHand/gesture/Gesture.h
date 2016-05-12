@@ -121,6 +121,13 @@ public:
     */
     std::vector<XnPoint3D> processTrajectory(std::vector<XnPoint3D> trajectory);
 
+    /**
+     Smooth the trajectory according with the method choosed
+     @param trajectory
+     @return std::vector<XnPoint3D>
+    */
+    std::vector<XnPoint3D> smooth(std::vector<XnPoint3D> trajectory);
+
     /*
      Método responsável por realizar o matching entre duas trajetórias 
      usando o algoritmo Dynamic Time Warping

@@ -94,19 +94,18 @@ typedef struct type_gesture {
 #define MIN_DISTANCE_TRESHOLD 0.5
 /* Define the min distance between two hands */
 #define MIN_DISTANCE_TRESHOLD_TWO_HANDS 50
-/* Define the quantity of steps for each bspline curve interval */
-#define NUM_STEP_BSPLINE 7
 /* Define the minimum number of points of the motion doing */
 #define NUM_LAST_POINTS 6.0
 /* Define the type of method that will be used to smooth the path */
-#define TYPE_SMOOTH MEAN_NEIGHBORING
+#define TYPE_SMOOTH CUBIC_B_SPLINE//MEAN_NEIGHBORING
 
 /* ========= Mean Neighboring ======== */
 #define NUMBER_SMOOTH_NB 2
 /* ========= Mean Neighboring ======== */
 
 /* ========= Cubic Spline ======== */
-#define INCREMENT_RATE_INTERPOLATION 0.02
+#define INCREMENT_RATE_INTERPOLATION 0.5
+#define NUM_STEP_BSPLINE 3 //the quantity of steps for each bspline curve interval
 /* ========= Cubic Spline ======== */
 
 /* ========= Douglas-Peucker Radial ========= */
