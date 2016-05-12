@@ -87,8 +87,18 @@ HandViewer::DisplayPostDraw()
             drawCurve(it->second.positions, nColor);
         }
     }
+    
+    std::string labelGesture  = "Gesture Recognized - " + gesture.m_NameGestureRecognized;
+    std::string labelTwoHands = "Number of Hands - ";
+    if(gesture.m_TwoHandsRecognized){
+        labelTwoHands += "two";
+    } else {
+        labelTwoHands += "one";
+    }
 
     drawCurves();
+    drawText(labelGesture.data(), labelGesture.size(), 10, 30);
+    drawText(labelTwoHands.data(), labelTwoHands.size(), 10, 10);
 }
 
 void
@@ -99,8 +109,6 @@ HandViewer::drawCurves()
     glViewport(512, 0, GL_WIN_SIZE_MAIN_X, GL_WIN_SIZE_MAIN_Y);
     //Draw the curves
     if(gesture.m_TwoHandsRecognized){
-        std::string text = "Gesture recognized - " + gesture.m_NameGestureRecognized;
-        drawText(text.data(), text.size(), 10, 10);
         drawCurve(gesture.m_GesturePerformedA, 1);
         drawCurve(gesture.m_GesturePerformedProcessedA, 2);
         drawCurve(gesture.m_GestureTemplateA, 3);
@@ -108,8 +116,6 @@ HandViewer::drawCurves()
         drawCurve(gesture.m_GesturePerformedProcessedB, 2);
         drawCurve(gesture.m_GestureTemplateB, 3);
     } else {
-        std::string text = "Gesture recognized - " + gesture.m_NameGestureRecognized;
-        drawText(text.data(), text.size(), 10, 10);
         drawCurve(gesture.m_GesturePerformedA, 1);
         drawCurve(gesture.m_GesturePerformedProcessedA, 2);
         drawCurve(gesture.m_GestureTemplateA, 3);
