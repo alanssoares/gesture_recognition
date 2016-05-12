@@ -53,7 +53,7 @@ public:
      no momento da detecção. A partir desse momento, a mão será rastreada para capturar a
      trajetória do movimento.
      */
-    void    addHand(const int idHand, XnPoint3D position);
+    void    addHand(const int idHand, const XnPoint3D position);
     
     /*
      O método update() é chamado todos os ciclos para atualizar todas as informações relacionadas
@@ -68,13 +68,13 @@ public:
      de posições que foram armazenadas. Caso um gesto tenha sido realizado, é necessário
      verificar qual o gesto foi realizado e classifica-lo.
      */
-    void    update(const int idHand, XnPoint3D position);
+    void    update(const int idHand, const XnPoint3D position);
     
     /*
      O método que recebe como parametro o id da mão e a posição que será adicionada
      a sua trajetória. A trajetória será utilizada para reconhecer o movimento.
      */
-    void    updatePosition(const int idHand, XnPoint3D position);
+    void    updatePosition(const int idHand, const XnPoint3D position);
     
     /*
      Método utilizado para verificar se o usuário está realizando um gesto ou se está parado.
@@ -112,11 +112,11 @@ public:
      @param oneHandGestures carregados de arquivo
      @param twoHandsGestures carregados de arquivo
      */
-    void    setGesturesFromFile(std::vector<type_gesture> oneHandGestures, std::vector<type_gesture> twoHandsGestures);
+    void    setGesturesFromFile(const std::vector<type_gesture> oneHandGestures, const std::vector<type_gesture> twoHandsGestures);
     
     /*
      Método responsável por aplicar os métodos de pré-processamento para centralizar na origem,
-     normalizar e suavizar a trajetória. A suavização depende do método escolhido.
+     normalizar no intervalo entre [-1...1] e suavizar a trajetória. A suavização depende do método escolhido.
      @param trajectory do gesto
     */
     std::vector<XnPoint3D> processTrajectory(std::vector<XnPoint3D> trajectory);
@@ -132,34 +132,50 @@ public:
      Verify if the left hand was moved and stoped
      @return bool
     */
-    bool    isLeftHandMoved();
+    bool    isLeftHandMoved(){ return m_LeftHandMoved && m_LeftHandStoped; };
 
     /**
      Verify if the left hand was moved and stoped
      @return bool
     */
-    bool    isRightHandMoved();
+    bool    isRightHandMoved(){ return m_RightHandMoved && m_RightHandStoped; };
+
+    /**
+     Method return the hand according with the side param
+     @param side_hand
+     @return type_hand
+    */
+    type_hand getHand(const int side_hand);
+
+    /**
+     Setter the parameters from console
+     @param parameters
+    */
+    void    setParams(const params parameters) { m_Params = parameters; };
 
     int     m_NumHands;
     bool    m_LeftHandMoved, m_RightHandMoved;
     bool    m_LeftHandStoped, m_RightHandStoped;
+    bool    m_TwoHandsRecognized;
 
     map<int, type_hand> m_Hands;
     map<int,type_hand>::iterator it;
     
     DTW2     m_Dtw;
-    FileUtil mFileUtil;
+    FileUtil m_FileUtil;
     
-    std::vector<type_gesture> mGesturesFromFileOneHand;
-    std::vector<type_gesture> mGesturesFromFileTwoHands;
+    std::string m_NameGestureRecognized;
 
-    std::vector<XnPoint3D> m_gesturePerformed;
-    std::vector<XnPoint3D> m_gestureTemplate;
-    std::vector<XnPoint3D> m_gesturePerformedProcessed;
+    std::vector<type_gesture> m_GesturesFromFileOneHand;
+    std::vector<type_gesture> m_GesturesFromFileTwoHands;
 
+    std::vector<XnPoint3D> m_GesturePerformedA, m_GesturePerformedB;
+    std::vector<XnPoint3D> m_GestureTemplateA, m_GestureTemplateB;
+    std::vector<XnPoint3D> m_GesturePerformedProcessedA, m_GesturePerformedProcessedB;
+    
     //Define the global type params
-    params m_params;
-    
+    params m_Params;
+
 public:
     static Gesture& getInstance();
     static Gesture*	m_Instance;

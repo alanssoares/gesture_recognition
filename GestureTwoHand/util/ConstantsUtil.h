@@ -82,45 +82,37 @@ typedef struct type_gesture {
 
 /* Receive a time to sleep */
 #define Sleep(t) usleep((t)*1000)
-
 /* Max number of hands to recognize */
 #define MAX_HANDS 2
-
 /* Define the min diff to verify if the hand is stopped or moving */
 #define MIN_DIFF_LENGTH 3.0
-
 /* The gesture is considered when have more then 3 points */
 #define MIN_CONTROL_POINTS 3
-
 /* Is not an hand */
 #define NOT_HAND -1
-
 /* Define the minimum distance threshold to recognize gestures */
 #define MIN_DISTANCE_TRESHOLD 0.5
-
 /* Define the min distance between two hands */
 #define MIN_DISTANCE_TRESHOLD_TWO_HANDS 50
-
-/* Define a quantidade de steps para cada intervalo da curva bspline */
-#define MIN_STEP_BSPLINE 7
-
+/* Define the quantity of steps for each bspline curve interval */
+#define NUM_STEP_BSPLINE 7
 /* Define the minimum number of points of the motion doing */
-#define MIN_LAST_POINTS 3.0
-
-/* Define o tipo de método que será usado para suavizar a trajetória */
+#define NUM_LAST_POINTS 6.0
+/* Define the type of method that will be used to smooth the path */
 #define TYPE_SMOOTH MEAN_NEIGHBORING
 
-/* Define a taxa de incremento usada na interpolação das curvas */
-#define INCREMENT_RATE_INTERPOLATION 0.02
-
-/* Number of times that the smooth will be applied */
+/* ========= Mean Neighboring ======== */
 #define NUMBER_SMOOTH_NB 2
+/* ========= Mean Neighboring ======== */
 
-/* Factor for simplify using the algorithm Douglas-Peucker Radial */
-#define DPR_FACTOR_SIMPLIFY 0.01
+/* ========= Cubic Spline ======== */
+#define INCREMENT_RATE_INTERPOLATION 0.02
+/* ========= Cubic Spline ======== */
 
-/* Flag for high quality for simplify using the algorithm Douglas-Peucker Radial */
-#define DPR_HIGH_QUALITY false
+/* ========= Douglas-Peucker Radial ========= */
+#define DPR_FACTOR_SIMPLIFY 0.01 //Factor for simplify
+#define DPR_HIGH_QUALITY false //Flag for high quality for simplify
+/* ========= End Douglas-Peucker Radial ========= */
 
 #define GESTURE "gesture"
 #define NAME_FILE_DATA "../Samples.txt"

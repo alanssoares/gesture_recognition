@@ -18,6 +18,7 @@ Gesture::Gesture() {
     m_NumHands = 0;
     m_LeftHandMoved = m_RightHandMoved = false;
     m_LeftHandStoped = m_RightHandStoped = true;
+    m_TwoHandsRecognized = false;
 }
 
 Gesture::~Gesture(){}
@@ -31,14 +32,14 @@ Gesture::getInstance() {
 }
 
 void
-Gesture::update(const int idHand, XnPoint3D position) {
+Gesture::update(const int idHand, const XnPoint3D position) {
     updatePosition(idHand, position);
     updateState();
     updateRecognition();
 }
 
 void
-Gesture::updatePosition(const int idHand, XnPoint3D position) {
+Gesture::updatePosition(const int idHand, const XnPoint3D position) {
     m_Hands.at(idHand).positions.push_back(position);
 }
 
@@ -76,17 +77,14 @@ Gesture::updateRecognition() {
 //Ensure that the first hand to be detected is the right 
 //to be able to identify later
 void
-Gesture::addHand(int idHand, XnPoint3D position) {
+Gesture::addHand(const int idHand, const XnPoint3D position) {
     type_hand newHand;
     if(m_Hands.size() == 0){
         newHand.side_hand = RIGHT_HAND;
+    } else if(getHand(LEFT_HAND).id_hand == NOT_HAND){
+        newHand.side_hand = LEFT_HAND;
     } else {
-        it = m_Hands.begin();
-        if(it->second.side_hand == LEFT_HAND){
-            newHand.side_hand = RIGHT_HAND;
-        } else {
-            newHand.side_hand = LEFT_HAND;
-        }
+        newHand.side_hand = RIGHT_HAND;
     }
     newHand.id_hand = idHand;
     newHand.positions.push_back(position);
@@ -95,7 +93,7 @@ Gesture::addHand(int idHand, XnPoint3D position) {
 }
 
 void
-Gesture::removeHand(int idHand) {
+Gesture::removeHand(const int idHand) {
     if(m_Hands.at(idHand).side_hand == LEFT_HAND){
         m_LeftHandMoved = false;
         m_LeftHandStoped = true;
@@ -109,91 +107,92 @@ Gesture::removeHand(int idHand) {
 
 void
 Gesture::recognizeOneHand() {
-    cout<<"OneHand"<<endl;
     std::vector<XnPoint3D> trajectoryHand, trajectoryComp;
     double distance = 0.0, bestDistance = 999999999;
-    type_gesture gestureTemplate, gesturePerformed;
-    type_hand hand = m_Hands.begin()->second;
+    type_gesture gestureTemplate;
     
+    type_hand hand = getHand(RIGHT_HAND);
+    if(hand.id_hand == NOT_HAND){
+        hand = getHand(LEFT_HAND);
+    }
+
     //Process the trajectory from user
     trajectoryHand = processTrajectory(hand.positions);
     //Find the best match trajectory using DTW
-    for (int i = 0; i < mGesturesFromFileOneHand.size(); i++) {
+    for (int i = 0; i < m_GesturesFromFileOneHand.size(); i++) {
         //Process the trajectory template
-        trajectoryComp = processTrajectory(mGesturesFromFileOneHand[i].handOne.positions);
+        trajectoryComp = processTrajectory(m_GesturesFromFileOneHand[i].handOne.positions);
         //Compute the distance using dtw
         distance = computeDistanceBetweenTwoTrajectories(trajectoryComp, trajectoryHand);
         //Verify if the computed distance is lower that previous best
         if(distance < bestDistance){
             bestDistance = distance;
-            gestureTemplate.name = mGesturesFromFileOneHand[i].name;
-            gestureTemplate.handOne.positions = mGesturesFromFileOneHand[i].handOne.positions;
-            gesturePerformed.handOne.positions = hand.positions;
+            gestureTemplate.name = m_GesturesFromFileOneHand[i].name;
+            gestureTemplate.handOne.positions = m_GesturesFromFileOneHand[i].handOne.positions;
         }
     }
-    
     //Verify if the best distance is lower then the treshold
     if(bestDistance < MIN_DISTANCE_TRESHOLD){
-        cout<< "Gesture "<<gestureTemplate.name<<" recognized with cost distance "<<bestDistance<<endl;
-        m_gesturePerformed = gesturePerformed.handOne.positions;
-        m_gesturePerformedProcessed = MathUtil::simplify(m_gesturePerformed, DPR_FACTOR_SIMPLIFY, DPR_HIGH_QUALITY);
-        m_gesturePerformedProcessed = MathUtil::smoothMeanNeighboring(m_gesturePerformedProcessed, NUMBER_SMOOTH_NB);
-        m_gestureTemplate = gestureTemplate.handOne.positions;
+        m_NameGestureRecognized = gestureTemplate.name;
+        m_GesturePerformedA = hand.positions;
+        m_GestureTemplateA = gestureTemplate.handOne.positions;
+        m_GesturePerformedProcessedA = MathUtil::smoothMeanNeighboring(m_GesturePerformedA, NUMBER_SMOOTH_NB);
+        m_TwoHandsRecognized = false;
     }
 }
 
 void
 Gesture::recognizeTwoHands() {
-    cout<<"TwoHand"<<endl;
     type_hand leftHand, rightHand;
     std::vector<XnPoint3D> leftHandPoints, rightHandPoints, trajCompLeft, trajCompRight;
-    type_gesture gestureTemplate, gesturePerformed;
-    double distanceA = 0.0, distanceB = 0.0, distanceC = 0.0, bestDistance = 999999999;
+    type_gesture gestureTemplate;
+    double distanceA = 0.0, distanceB = 0.0, bestDistanceB = 999999999, bestDistanceA = 999999999;
     
     //Initialize the left and right hand according
-    if(m_Hands.begin()->second.side_hand == LEFT_HAND){
-        leftHand = m_Hands.begin()->second;
-        rightHand = m_Hands.end()->second;
-    } else {
-        rightHand = m_Hands.begin()->second;
-        leftHand = m_Hands.end()->second;
-    }
+    leftHand = getHand(LEFT_HAND);
+    rightHand = getHand(RIGHT_HAND);
 
+    //Process the trajectories
     rightHandPoints = processTrajectory(rightHand.positions);
     leftHandPoints = processTrajectory(leftHand.positions);
-
+    
     //Find the best match trajectory using DTW
-    for (int i = 0; i < mGesturesFromFileTwoHands.size(); i++) {
-        //Process the trajectory template
-        trajCompRight = processTrajectory(mGesturesFromFileTwoHands[i].handOne.positions);
-        trajCompLeft = processTrajectory(mGesturesFromFileTwoHands[i].handTwo.positions);
-         //Compute the distance using dtw
+    for (int i = 0; i < m_GesturesFromFileTwoHands.size(); i++) {
+        trajCompRight = processTrajectory(m_GesturesFromFileTwoHands[i].handOne.positions);
         distanceA = computeDistanceBetweenTwoTrajectories(trajCompRight, rightHandPoints);
+        if (distanceA < bestDistanceA){
+            bestDistanceA = distanceA;
+            gestureTemplate.name = m_GesturesFromFileTwoHands[i].name;
+            gestureTemplate.handOne.positions = m_GesturesFromFileTwoHands[i].handOne.positions;
+        }
+        trajCompLeft = processTrajectory(m_GesturesFromFileTwoHands[i].handTwo.positions);
         distanceB = computeDistanceBetweenTwoTrajectories(trajCompLeft, leftHandPoints);
-        //Sum the two distances
-        distanceC = distanceA + distanceB;
-        if(distanceC < bestDistance){
-            bestDistance = distanceC;
-            gestureTemplate.name = mGesturesFromFileTwoHands[i].name;
-            gestureTemplate.handOne.positions = mGesturesFromFileTwoHands[i].handOne.positions;
-            gestureTemplate.handTwo.positions = mGesturesFromFileTwoHands[i].handTwo.positions;
-            gesturePerformed.handOne.positions = rightHand.positions;
-            gesturePerformed.handTwo.positions = leftHand.positions;
+        if (distanceB < bestDistanceB){
+            bestDistanceB = distanceB;
+            gestureTemplate.handTwo.positions = m_GesturesFromFileTwoHands[i].handTwo.positions;
         }
     }
 
     //Verify if the best distance is lower then the treshold
-    if(bestDistance < MIN_DISTANCE_TRESHOLD){
-        cout<< "Gesture "<<gestureTemplate.name<<" recognized with cost distance "<<bestDistance<<endl;
+    if(bestDistanceA < MIN_DISTANCE_TRESHOLD &&
+       bestDistanceB < MIN_DISTANCE_TRESHOLD){
+        m_NameGestureRecognized = gestureTemplate.name;
+        m_GestureTemplateA = gestureTemplate.handOne.positions;
+        m_GesturePerformedA = rightHand.positions;
+        m_GesturePerformedProcessedA = MathUtil::smoothMeanNeighboring(rightHand.positions, NUMBER_SMOOTH_NB);
+        m_GestureTemplateB = gestureTemplate.handTwo.positions;
+        m_GesturePerformedB = leftHand.positions;
+        m_GesturePerformedProcessedB = MathUtil::smoothMeanNeighboring(leftHand.positions, NUMBER_SMOOTH_NB);
+        m_TwoHandsRecognized = true;
     }
 }
 
 double
-Gesture::computeDistanceBetweenTwoTrajectories(std::vector<XnPoint3D> A, std::vector<XnPoint3D> B){
+Gesture::computeDistanceBetweenTwoTrajectories(std::vector<XnPoint3D> trajectoryA, std::vector<XnPoint3D> trajectoryB){
     //Initialize the dynamic time warping
     m_Dtw.init();
     //Set sequences that will be computed
-    m_Dtw.setSequences(A, B);
+    m_Dtw.setSequences(trajectoryA, trajectoryB);
     //Calc dtw distance between two trajectories
     m_Dtw.compute();
     //Get the best cost distance computed by dtw
@@ -206,8 +205,6 @@ Gesture::processTrajectory(std::vector<XnPoint3D> trajectory) {
     trajectory = MathUtil::translateToOrigin(trajectory);
     //Normalize between the interval -1 to 1
     trajectory = MathUtil::normalizeTrajectory(trajectory);
-    //Resample the trajectory using the tolerance distance between points
-    trajectory = MathUtil::simplify(trajectory, DPR_FACTOR_SIMPLIFY, DPR_HIGH_QUALITY);
     //Smooth the trajectory according the method choosed
     switch(TYPE_SMOOTH){
         case MEAN_NEIGHBORING:
@@ -227,9 +224,9 @@ Gesture::processTrajectory(std::vector<XnPoint3D> trajectory) {
 }
 
 void
-Gesture::setGesturesFromFile(std::vector<type_gesture> oneHandGestures, std::vector<type_gesture> twoHandsGestures) {
-    mGesturesFromFileOneHand = oneHandGestures;
-    mGesturesFromFileTwoHands = twoHandsGestures;
+Gesture::setGesturesFromFile(const std::vector<type_gesture> oneHandGestures, const std::vector<type_gesture> twoHandsGestures) {
+    m_GesturesFromFileOneHand = oneHandGestures;
+    m_GesturesFromFileTwoHands = twoHandsGestures;
 }
 
 void
@@ -241,12 +238,14 @@ Gesture::clearHands(){
     m_LeftHandStoped = m_RightHandStoped = true;
 }
 
-bool
-Gesture::isLeftHandMoved(){
-    return m_LeftHandMoved && m_LeftHandStoped;
-}
-
-bool
-Gesture::isRightHandMoved(){
-    return m_RightHandMoved && m_RightHandStoped;
+type_hand
+Gesture::getHand(const int side_hand){
+    type_hand hand;
+    hand.id_hand = -1;
+    for (it = m_Hands.begin(); it != m_Hands.end(); ++it) {
+        if(it->second.side_hand == side_hand){
+            hand = it->second;
+        }
+    }
+    return hand;
 }

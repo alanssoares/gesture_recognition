@@ -66,13 +66,13 @@ bool
 MathUtil::isGestureDoing(vector<XnPoint3D> positions)
 {
     int n = positions.size();
-    int i = n - MIN_LAST_POINTS;
+    int i = n - NUM_LAST_POINTS;
     if(i < 0) return false;
     double sum = 0.0;
     for (; i < n - 1; i++){
         sum += getDistancePointToPoint(positions[i + 1], positions[i]);
     }
-    sum = sum / MIN_LAST_POINTS;
+    sum = sum / NUM_LAST_POINTS;
     if(sum < MIN_DIFF_LENGTH){
         return false;
     }
@@ -189,7 +189,7 @@ std::vector<XnPoint3D>
 MathUtil::applyCubicBSpline(std::vector<XnPoint3D> positions){
     BSpline spline;
 
-    positions = spline.curvePoints(positions, MIN_STEP_BSPLINE);
+    positions = spline.curvePoints(positions, NUM_STEP_BSPLINE);
 
     return positions;
 }

@@ -114,8 +114,8 @@ int main(int argc, char* argv[])
         
     }
     
-        //Copy the params to use in record
-    Gesture::getInstance().m_params = g_params;
+    //Copy the params to use in record
+    Gesture::getInstance().setParams(g_params);
     
 	SimpleViewer& viewer = HandViewer::CreateInstance(g_context);
     

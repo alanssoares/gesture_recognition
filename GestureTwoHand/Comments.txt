@@ -1,0 +1,15 @@
+Observações:
+
+- Teoricamente a quantidade de posições de ambas as mãos serão as mesmas, pois o update
+de cada mão é realizado de forma sincronizada.
+
+- É necessário posteriormente efetuar validação cruzada para encontrar os melhores
+parâmetros para as constantes usadas nos métodos.
+
+- É necessário garantir que sempre a mão direita vai ser detectada primeiro. Essa
+é uma limitação que foi aplicada para sempre saber qual é a esquerda ou direita 
+considerando sempre a primeira detecção.
+
+- Considerações em relação ao método smoothMeanNeighboring
+  * Deve-se tomar cuidado com a quantidade de pontos, pois a quantidade sempre será
+  * reduzida em virtude da média.

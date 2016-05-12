@@ -98,9 +98,18 @@ HandViewer::drawCurves()
     //Configuring viewport
     glViewport(512, 0, GL_WIN_SIZE_MAIN_X, GL_WIN_SIZE_MAIN_Y);
     //Draw the curves
-    drawCurve(gesture.m_gesturePerformed, 1);
-    drawCurve(gesture.m_gesturePerformedProcessed, 2);
-    drawCurve(gesture.m_gestureTemplate, 3);
+    if(gesture.m_TwoHandsRecognized){
+        drawCurve(gesture.m_GesturePerformedA, 1);
+        drawCurve(gesture.m_GesturePerformedProcessedA, 2);
+        drawCurve(gesture.m_GestureTemplateA, 3);
+        drawCurve(gesture.m_GesturePerformedB, 1);
+        drawCurve(gesture.m_GesturePerformedProcessedB, 2);
+        drawCurve(gesture.m_GestureTemplateB, 3);
+    } else {
+        drawCurve(gesture.m_GesturePerformedA, 1);
+        drawCurve(gesture.m_GesturePerformedProcessedA, 2);
+        drawCurve(gesture.m_GestureTemplateA, 3);
+    }
 }
 
 void
