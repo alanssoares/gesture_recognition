@@ -32,11 +32,6 @@ private:
     FileUtil();
     ~FileUtil();
 
-    bool m_StartingStorage;
-    type_gesture m_NewGesture;
-    std::vector<type_gesture> mGesturesOneHand;
-    std::vector<type_gesture> mGesturesTwoHands;
-
 public:
 
     std::vector<std::string>& split(const std::string &s, char delim, std::vector<std::string> &elems);
@@ -66,5 +61,9 @@ public:
     static FileUtil& getInstance();
     static FileUtil* m_Instance;
     
+    bool                        m_StartingStorage;
+    type_gesture                m_NewGesture;
+    std::vector<type_gesture>   mGesturesOneHand;
+    std::vector<type_gesture>   mGesturesTwoHands;
 };
 #endif /* defined(__GestureTracking__FileUtil__) */

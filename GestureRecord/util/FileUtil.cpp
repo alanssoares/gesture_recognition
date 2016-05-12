@@ -89,7 +89,7 @@ FileUtil::addPosition(int idHand, XnPoint3D pos){
 
 std::string
 FileUtil::createFileTrack(int i){
-    std::string root_dir = "../samples/gesto_" + m_NewGesture.name + "/track/gesture_";
+    std::string root_dir = "../samples/gesture_" + m_NewGesture.name + "/track/gesture_";
     std::string nameFile = root_dir + m_NewGesture.name + "_track_" + std::to_string(i + 1) + ".txt";
     std::ofstream fileCreate(nameFile);
     fileCreate.close();
@@ -101,8 +101,11 @@ FileUtil::saveTrack(){
     type_gesture gesture;
     std::string nameFile;
     std::fstream file;
+
+    stopStorage();
+
     if(m_NewGesture.numHands == 1) {
-        for (int i = 0; i < mGesturesOneHand.size(); i++){
+        for (int i = mGesturesOneHand.size() - 1; i < mGesturesOneHand.size(); i++){
             gesture = mGesturesOneHand[i];
             //TODO: trocar o i passado na função createFileTrack pelo número do último arquivo salvo 
             //para evitar que os arquivos atuais sejam apagados.
@@ -117,7 +120,7 @@ FileUtil::saveTrack(){
             }
         }
     } else if(m_NewGesture.numHands == 2){
-        for (int i = 0; i < mGesturesTwoHands.size(); i++){
+        for (int i = mGesturesTwoHands.size() - 1; i < mGesturesTwoHands.size(); i++){
             gesture = mGesturesTwoHands[i];
             //TODO: trocar o i passado na função createFileTrack pelo número do último arquivo salvo 
             //para evitar que os arquivos atuais sejam apagados.

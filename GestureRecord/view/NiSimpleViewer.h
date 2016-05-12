@@ -68,8 +68,13 @@ protected:
 	virtual void OnKey(unsigned char key, int x, int y);
 
 	virtual XnStatus InitOpenGL(int argc, char **argv);
+	
 	void InitOpenGLHooks();
 
+	XnStatus InitStreamRecorder();
+	void 	 StopStreamRecorder();
+	void	 CreateStreamFilesRecorder();
+	
 	static SimpleViewer& Instance();
 
 	xn::Context&		m_rContext;
@@ -99,6 +104,10 @@ private:
 	DisplayModes_e		m_eViewState;
 	xn::DepthMetaData	m_depthMD;
 	xn::ImageMetaData	m_imageMD;
+
+	bool				m_IsRecording;
+	std::string 		m_NameFileDepth;
+	std::string 		m_NameFileImage;
 };
 
 #endif //NI_SIMPLE_VIEWER_H__

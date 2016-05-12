@@ -142,6 +142,9 @@ SimpleViewer::Init(int argc, char **argv)
 
 	m_pDepthHist = new float[m_depth.GetDeviceMaxDepth() + 1];
 
+	//Initialize the recording flag
+	m_IsRecording = false;
+
 	return InitOpenGL(argc, argv);
 }
 
@@ -190,6 +193,16 @@ SimpleViewer::Display()
 	rc = m_rContext.WaitAnyUpdateAll();
     CHECK_RC_VOID(rc, "Read failed: %s\n");
     
+    if(m_IsRecording){
+	    // Record the input data
+	    rc = m_RecorderDepth->Record();
+	    CHECK_RC_VOID(rc, "Record the data depth failed: %s\n");
+	    
+	    // Record the input data
+	    rc = m_RecorderImage->Record();
+	    CHECK_RC_VOID(rc, "Record the data image failed: %s\n");
+	}
+
 	m_depth.GetMetaData(m_depthMD);
 	m_image.GetMetaData(m_imageMD);
 
@@ -344,17 +357,21 @@ SimpleViewer::OnKey(unsigned char key, int /*x*/, int /*y*/)
             m_rContext.SetGlobalMirror(!m_rContext.GetGlobalMirror());
             break;
         case 'i':
+        	//Init the recorder to save stream
+        	InitStreamRecorder();
         	//Used for begin the store of the gesture
         	FileUtil::getInstance().startStorage();
         	break;
         case 'p':
-        	//Used for end the store of the gesture
-        	FileUtil::getInstance().stopStorage();
-        	break;
-        case 's':
-        	//Used for save in the file all gestures stored
+        	//Save the track in the file
         	FileUtil::getInstance().saveTrack();
+        	//Stop record the stream
+        	StopStreamRecorder();
         	break;
+        //case 's':
+        	//Used for save in the file all gestures stored
+        	//FileUtil::getInstance().saveTrack();
+        //	break;
         case 'd':
         	//Use to delete the last gesture captured
         	FileUtil::getInstance().removeLast();
@@ -370,4 +387,76 @@ SimpleViewer::ScalePoint(XnPoint3D& point, int width, int height)
 
 	point.Y *= height;
 	point.Y /= m_depthMD.YRes();
+}
+
+void
+SimpleViewer::CreateStreamFilesRecorder()
+{
+	FileUtil& fileUtil = FileUtil::getInstance();
+	std::string baseName = "gesture_" + fileUtil.m_NewGesture.name;
+
+	int numGesture = 0;
+	if(fileUtil.m_NewGesture.numHands == 1){
+		numGesture = fileUtil.mGesturesOneHand.size() + 1;
+	} else {
+		numGesture = fileUtil.mGesturesTwoHands.size() + 1;
+	}
+
+	m_NameFileDepth = "../samples/" + baseName + "/depth/" + baseName + "_depth_" + std::to_string(numGesture) + ".oni";
+	m_NameFileImage = "../samples/" + baseName + "/image/" + baseName + "_image_" + std::to_string(numGesture) + ".oni";
+}
+
+XnStatus
+SimpleViewer::InitStreamRecorder()
+{
+    XnStatus	rc;
+
+    m_RecorderDepth = new Recorder();
+    m_RecorderImage = new Recorder();
+    
+    CreateStreamFilesRecorder();
+
+    rc = m_RecorderDepth->Create(m_rContext);
+    CHECK_RC(rc, "Create recorder depth failed: %s\n");
+    
+    rc = m_RecorderDepth->SetDestination(XN_RECORD_MEDIUM_FILE, m_NameFileDepth.c_str());
+    CHECK_RC(rc, "Set destination record depth %s\n");
+    rc = m_RecorderDepth->AddNodeToRecording(m_depth, XN_CODEC_16Z);
+    CHECK_RC(rc, "AddNode Depth to Recording failed: %s\n");
+
+    rc = m_RecorderImage->Create(m_rContext);
+    CHECK_RC(rc, "Create recorder image failed: %s\n");
+    
+    rc = m_RecorderImage->SetDestination(XN_RECORD_MEDIUM_FILE, m_NameFileImage.c_str());
+    CHECK_RC(rc, "Set destination record image %s\n");
+    rc = m_RecorderImage->AddNodeToRecording(m_image, XN_CODEC_JPEG);
+    CHECK_RC(rc, "AddNode Image to Recording failed: %s\n");
+    
+    m_IsRecording = true;
+
+    return XN_STATUS_OK;
+}
+
+void
+SimpleViewer::StopStreamRecorder()
+{
+    /** Wait a moment to continue */
+    Sleep(300);
+    
+    /** Finalize the depth recorder */
+    if (m_RecorderDepth != NULL){
+        m_RecorderDepth->RemoveNodeFromRecording(m_depth);
+        m_RecorderDepth->Release();
+        delete(m_RecorderDepth);
+        m_RecorderDepth = NULL;
+    }
+    /** Finalize the image recorder */
+    if (m_RecorderImage != NULL) {
+        m_RecorderImage->RemoveNodeFromRecording(m_image);
+        m_RecorderImage->Release();
+        delete(m_RecorderImage);
+        m_RecorderImage = NULL;
+    }
+
+    m_IsRecording = false;
 }

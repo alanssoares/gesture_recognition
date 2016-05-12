@@ -111,7 +111,7 @@ int parse_command_line(int argc, char* argv[]){
     Create the corresponding gesture directories
 */
 void createDirs(){
-    std::string root_dir = "../samples/gesto_" + std::string(g_params.name);
+    std::string root_dir = "../samples/gesture_" + std::string(g_params.name);
     system(("mkdir -p " + root_dir + "/track").c_str());
     system(("mkdir " + root_dir + "/image").c_str());
     system(("mkdir " + root_dir + "/depth").c_str());
