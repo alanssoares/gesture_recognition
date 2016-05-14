@@ -360,7 +360,7 @@ SimpleViewer::OnKey(unsigned char key, int /*x*/, int /*y*/)
         	//Init the recorder to save stream
         	InitStreamRecorder();
         	//Used for begin the store of the gesture
-        	FileUtil::getInstance().startStorage();
+        	FileUtil::getInstance().startTrack();
         	break;
         case 'p':
         	//Save the track in the file
@@ -368,13 +368,7 @@ SimpleViewer::OnKey(unsigned char key, int /*x*/, int /*y*/)
         	//Stop record the stream
         	StopStreamRecorder();
         	break;
-        //case 's':
-        	//Used for save in the file all gestures stored
-        	//FileUtil::getInstance().saveTrack();
-        //	break;
-        case 'd':
-        	//Use to delete the last gesture captured
-        	FileUtil::getInstance().removeLast();
+        default:
         	break;
 	}
 }
@@ -394,14 +388,12 @@ SimpleViewer::CreateStreamFilesRecorder()
 {
 	FileUtil& fileUtil = FileUtil::getInstance();
 	std::string baseName = "gesture_" + fileUtil.m_NewGesture.name;
-
 	int numGesture = 0;
 	if(fileUtil.m_NewGesture.numHands == 1){
 		numGesture = fileUtil.mGesturesOneHand.size() + 1;
 	} else {
 		numGesture = fileUtil.mGesturesTwoHands.size() + 1;
 	}
-
 	m_NameFileDepth = "../samples/" + baseName + "/depth/" + baseName + "_depth_" + std::to_string(numGesture) + ".oni";
 	m_NameFileImage = "../samples/" + baseName + "/image/" + baseName + "_image_" + std::to_string(numGesture) + ".oni";
 }
@@ -438,11 +430,9 @@ SimpleViewer::InitStreamRecorder()
 }
 
 void
-SimpleViewer::StopStreamRecorder()
-{
+SimpleViewer::StopStreamRecorder(){
     /** Wait a moment to continue */
     Sleep(300);
-    
     /** Finalize the depth recorder */
     if (m_RecorderDepth != NULL){
         m_RecorderDepth->RemoveNodeFromRecording(m_depth);
@@ -457,6 +447,5 @@ SimpleViewer::StopStreamRecorder()
         delete(m_RecorderImage);
         m_RecorderImage = NULL;
     }
-
     m_IsRecording = false;
 }

@@ -36,19 +36,18 @@ public:
 
     std::vector<std::string>& split(const std::string &s, char delim, std::vector<std::string> &elems);
     
+    void clear();
+    void createDirs();
     void setInfoGesture(char* name, int numHands);
     bool isNewGesture(std::string str);
     void extractGesture(std::vector<std::string> rows);
-
-    void startStorage();
-    void stopStorage();
-    
-    void removeLast();
     
     void removeHand(int idHand);
     void addPosition(int idHand, XnPoint3D pos);
     void addHand(int idHand, XnPoint3D pos);
-
+    
+    void startTrack();
+    void stopTrack();
     void saveTrack();
     std::string createFileTrack(int i);
     

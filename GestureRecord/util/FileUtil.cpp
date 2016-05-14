@@ -30,33 +30,6 @@ FileUtil::getInstance() {
 }
 
 void
-FileUtil::setInfoGesture(char* name, int numHands){
-    m_NewGesture.numHands = numHands;
-    m_NewGesture.name = std::string(name);
-}
-
-void
-FileUtil::startStorage(){
-    m_StartingStorage = true;
-    m_NewGesture.handOne.positions.clear();
-    m_NewGesture.handTwo.positions.clear();
-    cout<<"The gesture tracking began!"<<endl;
-}
-
-void
-FileUtil::stopStorage(){
-    m_StartingStorage = false;
-    if(m_NewGesture.numHands == 1){
-        mGesturesOneHand.push_back(m_NewGesture);
-    } else if(m_NewGesture.numHands == 2){
-        mGesturesTwoHands.push_back(m_NewGesture);
-    }
-    m_NewGesture.handOne.positions.clear();
-    m_NewGesture.handTwo.positions.clear();
-    cout<<"The gesture tracking stopped!"<<endl;
-}
-
-void
 FileUtil::addHand(int idHand, XnPoint3D pos){
     if(m_NewGesture.handOne.id_hand == -1){
         m_NewGesture.handOne.id_hand = idHand;
@@ -87,6 +60,32 @@ FileUtil::addPosition(int idHand, XnPoint3D pos){
     }
 }
 
+void
+FileUtil::setInfoGesture(char* name, int numHands){
+    m_NewGesture.numHands = numHands;
+    m_NewGesture.name = std::string(name);
+    createDirs();
+}
+
+void
+FileUtil::startTrack(){
+    m_StartingStorage = true;
+    clear();
+    PRINT("Tracking");
+}
+
+void
+FileUtil::stopTrack(){
+    m_StartingStorage = false;
+    if(m_NewGesture.numHands == 1){
+        mGesturesOneHand.push_back(m_NewGesture);
+    } else if(m_NewGesture.numHands == 2){
+        mGesturesTwoHands.push_back(m_NewGesture);
+    }
+    clear();
+    PRINT("Finished");
+}
+
 std::string
 FileUtil::createFileTrack(int i){
     std::string root_dir = "../samples/gesture_" + m_NewGesture.name + "/track/gesture_";
@@ -102,7 +101,7 @@ FileUtil::saveTrack(){
     std::string nameFile;
     std::fstream file;
 
-    stopStorage();
+    stopTrack();
 
     if(m_NewGesture.numHands == 1) {
         for (int i = mGesturesOneHand.size() - 1; i < mGesturesOneHand.size(); i++){
@@ -139,7 +138,7 @@ FileUtil::saveTrack(){
             }
         }
     }
-    cout<<"All gestures were saved in folder track"<<endl;
+    PRINT("Saved");
 }
 
 /*
@@ -165,11 +164,7 @@ bool
 FileUtil::isNewGesture(const std::string str){
     size_t found;
     found = str.find(GESTURE);
-    
-    if (found != std::string::npos) {
-        return true;
-    }
-    
+    if (found != std::string::npos) return true;
     return false;
 }
 
@@ -223,12 +218,15 @@ FileUtil::extractGesture(std::vector<std::string> rows){
 }
 
 void
-FileUtil::removeLast(){
-     if(m_NewGesture.numHands == 1 && mGesturesOneHand.size() > 0){
-        mGesturesOneHand.pop_back();
-        cout<<"The last gesture captured by OneHand was removed"<<endl;
-    } else if(m_NewGesture.numHands == 2 && mGesturesTwoHands.size() > 0){
-        mGesturesTwoHands.pop_back();
-        cout<<"The last gesture captured by TwoHands was removed"<<endl;
-    }
+FileUtil::createDirs(){
+    std::string root_dir = "../samples/gesture_" + std::string(m_NewGesture.name);
+    system(("mkdir -p " + root_dir + "/track").c_str());
+    system(("mkdir " + root_dir + "/image").c_str());
+    system(("mkdir " + root_dir + "/depth").c_str());
+}
+
+void
+FileUtil::clear(){
+    m_NewGesture.handOne.positions.clear();
+    m_NewGesture.handTwo.positions.clear();
 }

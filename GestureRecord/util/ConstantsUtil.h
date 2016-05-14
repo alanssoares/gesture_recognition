@@ -16,11 +16,19 @@
 
 using namespace std;
 
+typedef struct params {
+    int numHands;
+    char* name;
+} Params;
+
 /* Check the result and return 1 if XN_STATUS is not ok */
 #define CHECK_RC(rc, message){ if(rc != XN_STATUS_OK){ printf(message, xnGetStatusString(rc)); return 1; }}
 
 /* Check the result and return if XN_STATUS is not ok */
 #define CHECK_RC_VOID(rc, message){ if(rc != XN_STATUS_OK){ printf(message, xnGetStatusString(rc)); return; }}
+
+/* Print the message in console */
+#define PRINT(message) { cout<<message<<endl; }
 
 /* Receive a time to sleep */
 #define Sleep(t) usleep((t)*1000)

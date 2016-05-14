@@ -37,40 +37,9 @@
 //---------------------------------------------------------------------------
 xn::Context		g_context;
 xn::ScriptNode	g_scriptNode;
+Params g_params;
 
-//Define the params
-params g_params;
-
-//Read the params of the command line
-void parse_command_line(int argc, char* argv[]){
-
-    //Initialize default params
-    g_params.modeOnline = false;
-    g_params.fileImage = std::string("../StreamImage.oni");
-    g_params.fileDepth = std::string("../StreamDepth.oni");
-
-    for(int i = 1; i < argc; i++) {
-        
-        if(argv[i][0] != '-') break; // ./gesture_tracking -m online -f move
-
-        i++;
-
-        switch(argv[i - 1][1]) {
-            case 'm':
-                if (strcmp(argv[i], "online") == 0) {
-                    g_params.modeOnline = true;
-                }
-                break;
-            case 'f':
-                g_params.fileImage = std::string("../") + std::string(argv[i]) + std::string("Image.oni");
-                g_params.fileDepth = std::string("../") + std::string(argv[i]) + std::string("Depth.oni");
-                break;
-            default:
-                std::cout<<"Unknown option -"<< argv[i - 1][1]<<endl;
-                break;
-        }
-    }
-}
+void parse_command_line(int argc, char* argv[]);
 
 int main(int argc, char* argv[])
 {
@@ -79,11 +48,10 @@ int main(int argc, char* argv[])
     xn::Player              player;
     FileUtil                fileUtil;
  
+    //Read the params from args
     parse_command_line(argc, argv);
-
     // Load the gestures data
     fileUtil.loadGestures();
-    
     // Setter the gestures from file
     Gesture::getInstance().setGesturesFromFile(fileUtil.getGesturesOneHand(), fileUtil.getGesturesTwoHands());
     
@@ -130,4 +98,31 @@ int main(int argc, char* argv[])
     CHECK_RC(rc, "Viewer run failed: %s\n");
     
 	return 0;
+}
+
+void parse_command_line(int argc, char* argv[]){
+
+    //Initialize default params
+    g_params.modeOnline = false;
+    g_params.fileImage = std::string("../StreamImage.oni");
+    g_params.fileDepth = std::string("../StreamDepth.oni");
+
+    for(int i = 1; i < argc; i++) {
+        if(argv[i][0] != '-') break;
+        i++;
+        switch(argv[i - 1][1]) {
+            case 'm':
+                if (strcmp(argv[i], "online") == 0) {
+                    g_params.modeOnline = true;
+                }
+                break;
+            case 'f':
+                g_params.fileImage = std::string("../") + std::string(argv[i]) + std::string("Image.oni");
+                g_params.fileDepth = std::string("../") + std::string(argv[i]) + std::string("Depth.oni");
+                break;
+            default:
+                std::cout<<"Unknown option -"<< argv[i - 1][1]<<endl;
+                break;
+        }
+    }
 }

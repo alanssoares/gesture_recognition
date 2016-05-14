@@ -180,8 +180,7 @@ public:
     std::vector<XnPoint3D> m_GestureTemplateA, m_GestureTemplateB;
     std::vector<XnPoint3D> m_GesturePerformedProcessedA, m_GesturePerformedProcessedB;
     
-    //Define the global type params
-    params m_Params;
+    Params m_Params;
 
 public:
     static Gesture& getInstance();

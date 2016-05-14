@@ -23,7 +23,7 @@ typedef struct params {
     int modeOnline;
     std::string fileImage;
     std::string fileDepth;
-} params;
+} Params;
 
 /*
  --------- TYPES Gestures ----------
