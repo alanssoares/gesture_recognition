@@ -15,8 +15,8 @@ FileUtil* FileUtil::m_Instance = NULL;
 
 FileUtil::FileUtil() {
     m_StartingStorage = false;
-    m_NewGesture.handOne.id_hand = -1;
-    m_NewGesture.handTwo.id_hand = -1;
+    m_NewGesture.handOne.id_hand = NOT_HAND;
+    m_NewGesture.handTwo.id_hand = NOT_HAND;
 }
 
 FileUtil::~FileUtil(){}
@@ -31,9 +31,9 @@ FileUtil::getInstance() {
 
 void
 FileUtil::addHand(int idHand, XnPoint3D pos){
-    if(m_NewGesture.handOne.id_hand == -1){
+    if(m_NewGesture.handOne.id_hand == NOT_HAND){
         m_NewGesture.handOne.id_hand = idHand;
-    } else if(m_NewGesture.handTwo.id_hand == -1){
+    } else if(m_NewGesture.handTwo.id_hand == NOT_HAND){
         m_NewGesture.handTwo.id_hand = idHand;
     }
 }
@@ -41,10 +41,10 @@ FileUtil::addHand(int idHand, XnPoint3D pos){
 void
 FileUtil::removeHand(int idHand){
     if(m_NewGesture.handOne.id_hand == idHand){
-        m_NewGesture.handOne.id_hand = -1;
+        m_NewGesture.handOne.id_hand = NOT_HAND;
         m_NewGesture.handOne.positions.clear();
     } else if(m_NewGesture.handTwo.id_hand == idHand){
-        m_NewGesture.handTwo.id_hand = -1;
+        m_NewGesture.handTwo.id_hand = NOT_HAND;
         m_NewGesture.handTwo.positions.clear();
     }
 }
@@ -61,9 +61,9 @@ FileUtil::addPosition(int idHand, XnPoint3D pos){
 }
 
 void
-FileUtil::setInfoGesture(char* name, int numHands){
+FileUtil::setInfoGesture(std::string name, int numHands){
     m_NewGesture.numHands = numHands;
-    m_NewGesture.name = std::string(name);
+    m_NewGesture.name = name;
     createDirs();
 }
 

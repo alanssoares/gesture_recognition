@@ -81,32 +81,42 @@ int main(int argc, char* argv[])
 /**
  Show the help usage of the GestureRecord
 */
-int helpUsage(){
+int helpUsage()
+{
     PRINT(" ------- Command line input -------- ");
     PRINT("Usage: ./GestureRecord options");
     PRINT("options: ");
-    PRINT("-g gesture : the gesture name");
-    PRINT("-n hands : the number of hands (1 or 2)");
-    PRINT("Example: ./GestureRecord -g paisagem -n 2");
+    PRINT("-g gesture : Gesture name");
+    PRINT("-n hands : Number of hands (1 or 2)");
+    PRINT("");
     PRINT(" ------- Command controls ------- ");
-    PRINT("i : init the hand tracking");
-    PRINT("p : stop the hand tracking and save all files (depth, image and track)");
-    PRINT("m : set the global mirror");
-    PRINT("q : quit the application");
+    PRINT("i : Init the hand tracking");
+    PRINT("p : Stop the hand tracking and save all files (depth, image and track)");
+    PRINT("m : Set the global mirror");
+    PRINT("q : Quit the application");
+    PRINT("1 : Display mode overlay");
+    PRINT("2 : Display mode depth");
+    PRINT("3 : Display mode image");
+    PRINT("");
+    PRINT("Example: ./GestureRecord -g paisagem -n 2");
     return 1;
 }
 
 /**
  Read the params of the command line
 */
-int parse_command_line(int argc, char* argv[]){
-    g_params.numHands = 1;
-    g_params.name = (char*) malloc(sizeof(char) * 50);
-    strcpy(g_params.name, "default");
+int parse_command_line(int argc, char* argv[])
+{
+    if(argc == 2 && argv[1][0] == '-' && argv[1][1] == 'h'){
+        return helpUsage();
+    } else if(argc < 3){
+        PRINT("Warning - The parameters -g and -n are required"); 
+        return 1;
+    }
+
     for(int i = 1; i < argc; i++) {
         if(argv[i][0] != '-') break;
-        i++;
-        switch(argv[i - 1][1]) {
+        switch(argv[++i - 1][1]) {
             case 'h':
                 return helpUsage();
                 break;
@@ -121,7 +131,7 @@ int parse_command_line(int argc, char* argv[]){
                 g_params.name = argv[i];
                 break;
             default:
-                PRINT("Unknown option -"<< argv[i - 1][1]);
+                PRINT("unknown option -"<< argv[i - 1][1]);
                 return 1;
         }
     }

@@ -55,10 +55,10 @@ public:
 
     /*
      Set the gesture info like name and num of hands
-     @param char*
+     @param std::string
      @param int
     */
-    void setInfoGesture(char* name, int numHands);
+    void setInfoGesture(std::string name, int numHands);
 
     /*
      Verify if there is a new gesture from a key "gesture" word inside a string
