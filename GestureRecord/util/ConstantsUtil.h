@@ -116,6 +116,12 @@ enum{
     GESTURE_STOPED = 2
 };
 
+// Types of files
+enum {
+    FILE_TRACK = 1,
+    FILE_DEPTH = 2,
+    FILE_IMAGE = 3
+};
 /*
  ---- Object Types created to define an hand and an type of gesture
  */

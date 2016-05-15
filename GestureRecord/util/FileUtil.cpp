@@ -7,7 +7,7 @@
 //
 
 #include "FileUtil.h"
-#include "MathUtil.h"
+
 //---------------------------------------------------------------------------
 // Statics
 //---------------------------------------------------------------------------
@@ -87,7 +87,8 @@ FileUtil::stopTrack(){
 }
 
 std::string
-FileUtil::createFileTrack(int i){
+FileUtil::createFileTrack(){
+    int i = readNumLastFile(FILE_TRACK);
     std::string root_dir = "../samples/gesture_" + m_NewGesture.name + "/track/gesture_";
     std::string nameFile = root_dir + m_NewGesture.name + "_track_" + std::to_string(i + 1) + ".txt";
     std::ofstream fileCreate(nameFile);
@@ -99,52 +100,42 @@ void
 FileUtil::saveTrack(){
     type_gesture gesture;
     std::string nameFile;
-    std::fstream file;
+    std::fstream fileOut;
 
     stopTrack();
 
     if(m_NewGesture.numHands == 1) {
-        for (int i = mGesturesOneHand.size() - 1; i < mGesturesOneHand.size(); i++){
-            gesture = mGesturesOneHand[i];
-            //TODO: trocar o i passado na função createFileTrack pelo número do último arquivo salvo 
-            //para evitar que os arquivos atuais sejam apagados.
-            file.open(createFileTrack(i), ios::in | ios::out | ios::ate);
-            if(file.is_open()){
-                file<<"gesture "<<m_NewGesture.name<<" hands "<<m_NewGesture.numHands<<std::endl;
-                for(int j = 0; j < gesture.handOne.positions.size(); j++){
-                    file<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<std::endl;
-                }
-                file<<"end"<<std::endl;
-                file.close();
+        gesture = mGesturesOneHand.back();
+        nameFile = createFileTrack();
+        fileOut.open(nameFile, ios::in | ios::out | ios::ate);
+        if(fileOut.is_open()){
+            fileOut<<"gesture "<<m_NewGesture.name<<" hands "<<m_NewGesture.numHands<<std::endl;
+            for(int j = 0; j < gesture.handOne.positions.size(); j++){
+                fileOut<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<std::endl;
             }
         }
     } else if(m_NewGesture.numHands == 2){
-        for (int i = mGesturesTwoHands.size() - 1; i < mGesturesTwoHands.size(); i++){
-            gesture = mGesturesTwoHands[i];
-            //TODO: trocar o i passado na função createFileTrack pelo número do último arquivo salvo 
-            //para evitar que os arquivos atuais sejam apagados.
-            file.open(createFileTrack(i), ios::in | ios::out | ios::ate);
-            if(file.is_open()){
-                file<<"gesture "<<m_NewGesture.name<<" hands "<<m_NewGesture.numHands<<std::endl;
-                for(int j = 0; j < gesture.handOne.positions.size(); j++){
-                    file<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<std::endl;
-                }
-                file<<std::endl;
-                for(int j = 0; j < gesture.handTwo.positions.size(); j++){
-                    file<<gesture.handTwo.positions[j].X<<" "<<gesture.handTwo.positions[j].Y<<" "<<gesture.handTwo.positions[j].Z<<std::endl;
-                }
-                file<<"end"<<std::endl;
-                file.close();
+        gesture = mGesturesTwoHands.back();
+        nameFile = createFileTrack();
+        fileOut.open(nameFile, ios::in | ios::out | ios::ate);
+        if(fileOut.is_open()){
+            fileOut<<"gesture "<<m_NewGesture.name<<" hands "<<m_NewGesture.numHands<<std::endl;
+            for(int j = 0; j < gesture.handOne.positions.size(); j++){
+                fileOut<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<std::endl;
+            }
+            fileOut<<std::endl;
+            for(int j = 0; j < gesture.handTwo.positions.size(); j++){
+                fileOut<<gesture.handTwo.positions[j].X<<" "<<gesture.handTwo.positions[j].Y<<" "<<gesture.handTwo.positions[j].Z<<std::endl;
             }
         }
     }
+    
+    fileOut<<"end"<<std::endl;
+    fileOut.close();
+
     PRINT("Saved");
 }
 
-/*
- Método responsável por quebrar uma string
- em substrings de acordo com um caracter delimitador
- */
 std::vector<std::string>&
 FileUtil::split(const std::string &s, char delim, std::vector<std::string> &elems) {
     std::stringstream ss(s);
@@ -155,11 +146,6 @@ FileUtil::split(const std::string &s, char delim, std::vector<std::string> &elem
     return elems;
 }
 
-/*
- Método responsáve por verificar se na
- string existe a palavra chave "gesture".
- Caso exista, um novo gesto foi encontrado.
- */
 bool
 FileUtil::isNewGesture(const std::string str){
     size_t found;
@@ -168,10 +154,6 @@ FileUtil::isNewGesture(const std::string str){
     return false;
 }
 
-/*
- Método responsável por obter um ponto x,y,z
- de uma string
- */
 XnPoint3D
 FileUtil::getPointFile(const std::string str){
     std::vector<std::string> coordinates;
@@ -219,14 +201,48 @@ FileUtil::extractGesture(std::vector<std::string> rows){
 
 void
 FileUtil::createDirs(){
-    std::string root_dir = "../samples/gesture_" + std::string(m_NewGesture.name);
-    system(("mkdir -p " + root_dir + "/track").c_str());
-    system(("mkdir " + root_dir + "/image").c_str());
-    system(("mkdir " + root_dir + "/depth").c_str());
+    m_Root_dir = "../samples/gesture_" + std::string(m_NewGesture.name);
+    system(("mkdir -p " + m_Root_dir + "/track").c_str());
+    system(("mkdir " + m_Root_dir + "/image").c_str());
+    system(("mkdir " + m_Root_dir + "/depth").c_str());
 }
 
 void
 FileUtil::clear(){
     m_NewGesture.handOne.positions.clear();
     m_NewGesture.handTwo.positions.clear();
+}
+
+int
+FileUtil::readNumLastFile(int typeFile){
+    int numReg = 0, aux;
+    struct dirent *lsdir;
+    std::vector<std::string> tokens;
+    std::string nameFile, ext = ".oni";
+    std::size_t found;
+    DIR *dir = NULL;
+    
+    if(FILE_TRACK == typeFile){
+        ext = ".txt";
+        dir = opendir((m_Root_dir + "/track").c_str());
+    } else if(FILE_DEPTH == typeFile){
+        dir = opendir((m_Root_dir + "/depth").c_str());
+    } else if(FILE_IMAGE == typeFile){
+        dir = opendir((m_Root_dir + "/image").c_str());
+    }
+
+    while((lsdir = readdir(dir)) != NULL ){
+        split(lsdir->d_name, '_', tokens);
+        nameFile = tokens.back();
+        found = nameFile.find(ext);
+        if(found != std::string::npos){
+            tokens.clear();
+            split(nameFile, '.', tokens);
+            aux = atoi(tokens[0].c_str());
+            numReg = aux > numReg ? aux : numReg;
+        }
+    }
+
+    closedir(dir);
+    return numReg;
 }

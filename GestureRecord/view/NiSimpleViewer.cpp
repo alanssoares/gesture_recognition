@@ -388,14 +388,10 @@ SimpleViewer::CreateStreamFilesRecorder()
 {
 	FileUtil& fileUtil = FileUtil::getInstance();
 	std::string baseName = "gesture_" + fileUtil.m_NewGesture.name;
-	int numGesture = 0;
-	if(fileUtil.m_NewGesture.numHands == 1){
-		numGesture = fileUtil.mGesturesOneHand.size() + 1;
-	} else {
-		numGesture = fileUtil.mGesturesTwoHands.size() + 1;
-	}
-	m_NameFileDepth = "../samples/" + baseName + "/depth/" + baseName + "_depth_" + std::to_string(numGesture) + ".oni";
-	m_NameFileImage = "../samples/" + baseName + "/image/" + baseName + "_image_" + std::to_string(numGesture) + ".oni";
+	int numDepth = fileUtil.readNumLastFile(FILE_DEPTH) + 1;
+	int numImage = fileUtil.readNumLastFile(FILE_IMAGE) + 1;
+	m_NameFileDepth = "../samples/" + baseName + "/depth/" + baseName + "_depth_" + std::to_string(numDepth) + ".oni";
+	m_NameFileImage = "../samples/" + baseName + "/image/" + baseName + "_image_" + std::to_string(numImage) + ".oni";
 }
 
 XnStatus
