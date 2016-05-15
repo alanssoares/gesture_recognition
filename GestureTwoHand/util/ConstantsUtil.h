@@ -25,10 +25,20 @@ typedef struct params {
     std::string fileDepth;
 } Params;
 
+// Enum colors opengl
+enum COLOR {
+    GRAY = 0,
+    BLUE = 1,
+    GREEN = 2,
+    YELLOW = 3,
+    ORANGE = 4,
+    PINK = 5,
+    WHITE = 10
+};
 /*
  --------- TYPES Gestures ----------
  */
-enum {
+enum GESTURE {
     BEM_VINDO = 1,
     CANCELAR = 2,
     CATEGORIA = 3,
@@ -40,7 +50,7 @@ enum {
 /*
 ------ Types methods for smooth
 */
-enum {
+enum METHOD_SMOOTH {
     MEAN_NEIGHBORING = 1,
     CUBIC_B_SPLINE = 2,
     CUBIC_BEZIER = 3
@@ -48,13 +58,13 @@ enum {
 /*
  ---------- STATE Gesture -----------
  */
-enum {
+enum STATE_GESTURE {
     GESTURE_DOING = 1,
     GESTURE_STOPED = 2
 };
 
 /* Define the left and right hands */
-enum {  
+enum SIDE_HAND {  
     LEFT_HAND = 0,
     RIGHT_HAND = 1
 };
@@ -76,9 +86,10 @@ typedef struct type_gesture {
 
 /* Check the result and return 1 if XN_STATUS is not ok */
 #define CHECK_RC(rc, message){ if(rc != XN_STATUS_OK){ printf(message, xnGetStatusString(rc)); return 1; }}
-
 /* Check the result and return if XN_STATUS is not ok */
 #define CHECK_RC_VOID(rc, message){ if(rc != XN_STATUS_OK){ printf(message, xnGetStatusString(rc)); return; }}
+/* Print the message in console */
+#define PRINT(message) { cout<<message<<endl; }
 
 /* Receive a time to sleep */
 #define Sleep(t) usleep((t)*1000)

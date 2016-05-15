@@ -8,10 +8,6 @@
 
 #include "FileUtil.h"
 
-/*
- Método responsável por quebrar uma string
- em substrings de acordo com um caracter delimitador
- */
 std::vector<std::string>&
 FileUtil::split(const std::string &s, char delim, std::vector<std::string> &elems) {
     std::stringstream ss(s);
@@ -22,10 +18,6 @@ FileUtil::split(const std::string &s, char delim, std::vector<std::string> &elem
     return elems;
 }
 
-/*
- Método responsável por obter um ponto x,y,z
- de uma string
- */
 XnPoint3D
 FileUtil::getPointFile(const std::string str){
     std::vector<std::string> coordinates;
@@ -37,17 +29,6 @@ FileUtil::getPointFile(const std::string str){
     return newPoint;
 }
 
-/*
- Método responsavél por carregar os
- gestos armazenados no arquivo de dados.
- O arquivo contém a seguinte estrutura:
- gesture nomegesto hands k
- X Y Z
- end
- gesture segundogesto k
- X Y Z
- end
- */
 void
 FileUtil::loadGestures(){
     std::ifstream file;
@@ -67,8 +48,8 @@ FileUtil::loadGestures(){
         }
     }
     
-    cout<<"SamplesOneHand - "<<mGesturesOneHand.size()<<endl;
-    cout<<"SamplesTwoHands - "<<mGesturesTwoHands.size()<<endl;
+    PRINT("SamplesOneHand - "<<mGesturesOneHand.size());
+    PRINT("SamplesTwoHands - "<<mGesturesTwoHands.size());
 }
 
 void

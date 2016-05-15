@@ -79,6 +79,8 @@ void
 HandViewer::DisplayPostDraw()
 {
     Gesture& gesture = Gesture::getInstance();
+    std::string labelGesture  = "Gesture Recognized - " + gesture.m_NameGestureRecognized;
+    std::string labelTwoHands = "Number of Hands - ";
 
     map<int,type_hand>::iterator it;
     for (it = gesture.m_Hands.begin(); it != gesture.m_Hands.end(); ++it){
@@ -87,39 +89,50 @@ HandViewer::DisplayPostDraw()
             drawCurve(it->second.positions, nColor);
         }
     }
-    
-    std::string labelGesture  = "Gesture Recognized - " + gesture.m_NameGestureRecognized;
-    std::string labelTwoHands = "Number of Hands - ";
-    if(gesture.m_TwoHandsRecognized){
-        labelTwoHands += "two";
-    } else {
-        labelTwoHands += "one";
+
+    if(!gesture.m_NameGestureRecognized.empty()){
+        if(gesture.m_TwoHandsRecognized){
+            labelTwoHands += "two";
+        } else {
+            labelTwoHands += "one";
+        }
     }
 
     drawCurves();
-    drawText(labelGesture.data(), labelGesture.size(), 10, 30);
-    drawText(labelTwoHands.data(), labelTwoHands.size(), 10, 10);
+    drawText(labelGesture.data(), labelGesture.size(), WHITE, 10, 30);
+    drawText(labelTwoHands.data(), labelTwoHands.size(), WHITE, 10, 10);
 }
 
 void
 HandViewer::drawCurves()
 {
     Gesture& gesture = Gesture::getInstance();
+
+    std::string labelPerformed = "Performed";
+    std::string labelProcessed = "Processed";
+    std::string labelTemplate = "Template";
+
     //Configuring viewport
     glViewport(512, 0, GL_WIN_SIZE_MAIN_X, GL_WIN_SIZE_MAIN_Y);
     //Draw the curves
+
     if(gesture.m_TwoHandsRecognized){
-        drawCurve(gesture.m_GesturePerformedA, 1);
-        drawCurve(gesture.m_GesturePerformedProcessedA, 2);
-        drawCurve(gesture.m_GestureTemplateA, 3);
-        drawCurve(gesture.m_GesturePerformedB, 1);
-        drawCurve(gesture.m_GesturePerformedProcessedB, 2);
-        drawCurve(gesture.m_GestureTemplateB, 3);
+        drawCurve(gesture.m_GesturePerformedA, BLUE);
+        drawCurve(gesture.m_GesturePerformedProcessedA, GREEN);
+        drawCurve(gesture.m_GestureTemplateA, YELLOW);
+        drawCurve(gesture.m_GesturePerformedB, BLUE);
+        drawCurve(gesture.m_GesturePerformedProcessedB, GREEN);
+        drawCurve(gesture.m_GestureTemplateB, YELLOW);
     } else {
-        drawCurve(gesture.m_GesturePerformedA, 1);
-        drawCurve(gesture.m_GesturePerformedProcessedA, 2);
-        drawCurve(gesture.m_GestureTemplateA, 3);
+        drawCurve(gesture.m_GesturePerformedA, BLUE);
+        drawCurve(gesture.m_GesturePerformedProcessedA, GREEN);
+        drawCurve(gesture.m_GestureTemplateA, YELLOW);
     }
+
+    //Draw the the legend labels of the curves
+    drawText(labelPerformed.c_str(), labelPerformed.size(), BLUE, 10, GL_WIN_SIZE_Y + 60);
+    drawText(labelProcessed.c_str(), labelProcessed.size(), GREEN, 10, GL_WIN_SIZE_Y + 40);
+    drawText(labelTemplate.c_str(), labelTemplate.size(), YELLOW, 10, GL_WIN_SIZE_Y + 20);
 }
 
 void
@@ -187,8 +200,12 @@ HandViewer::drawCircle(XnPoint3D point, float radius)
 }
 
 void
-HandViewer::drawText(const char* text, int length, int x, int y)
+HandViewer::drawText(const char* text, int length, XnUInt32 nColor, int x, int y)
 {
+    glColor4f(g_colours[nColor][0],
+              g_colours[nColor][1],
+              g_colours[nColor][2],
+              1.0f);
     glMatrixMode(GL_PROJECTION);
     double * matrix = new double[16];
     glGetDoublev(GL_PROJECTION_MATRIX, matrix);

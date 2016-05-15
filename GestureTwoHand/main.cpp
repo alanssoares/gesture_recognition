@@ -39,7 +39,8 @@ xn::Context		g_context;
 xn::ScriptNode	g_scriptNode;
 Params g_params;
 
-void parse_command_line(int argc, char* argv[]);
+int helpUsage();
+int parse_command_line(int argc, char* argv[]);
 
 int main(int argc, char* argv[])
 {
@@ -49,7 +50,7 @@ int main(int argc, char* argv[])
     FileUtil                fileUtil;
  
     //Read the params from args
-    parse_command_line(argc, argv);
+    if(parse_command_line(argc, argv)) return 0;
     // Load the gestures data
     fileUtil.loadGestures();
     // Setter the gestures from file
@@ -100,7 +101,32 @@ int main(int argc, char* argv[])
 	return 0;
 }
 
-void parse_command_line(int argc, char* argv[]){
+/**
+ Show the help usage of the GestureRecord
+*/
+int helpUsage()
+{
+    PRINT(" ------- Command line input -------- ");
+    PRINT("Usage: ./startApp options");
+    PRINT("options: ");
+    PRINT("-m mode : Mode of the execution (offline or online). Default is 'offline'");
+    PRINT("-f file : File name of the gesture. Default is 'Stream'");
+    PRINT("");
+    PRINT(" ------- Command controls ------- ");
+    PRINT("q : Quit the application");
+    PRINT("m : Set global mirror");
+    PRINT("1 : Display mode overlay");
+    PRINT("2 : Display mode depth");
+    PRINT("3 : Display mode image");
+    PRINT("");
+    PRINT("Example: ./startApp -m offline -f cancelar");
+    return 1;
+}
+
+/**
+ Read the params of the command line
+*/
+int parse_command_line(int argc, char* argv[]){
 
     //Initialize default params
     g_params.modeOnline = false;
@@ -111,6 +137,9 @@ void parse_command_line(int argc, char* argv[]){
         if(argv[i][0] != '-') break;
         i++;
         switch(argv[i - 1][1]) {
+            case 'h':
+                return helpUsage();
+                break;
             case 'm':
                 if (strcmp(argv[i], "online") == 0) {
                     g_params.modeOnline = true;
@@ -121,8 +150,10 @@ void parse_command_line(int argc, char* argv[]){
                 g_params.fileDepth = std::string("../") + std::string(argv[i]) + std::string("Depth.oni");
                 break;
             default:
-                std::cout<<"Unknown option -"<< argv[i - 1][1]<<endl;
+                PRINT("unknown option - "<< argv[i - 1][1]);
+                return 1;
                 break;
         }
     }
+    return 0;
 }
