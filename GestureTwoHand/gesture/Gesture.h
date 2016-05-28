@@ -182,6 +182,7 @@ public:
     
     Params m_Params;
 
+    XnPoint3D m_PosCamera;
 public:
     static Gesture& getInstance();
     static Gesture*	m_Instance;

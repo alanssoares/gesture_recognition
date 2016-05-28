@@ -326,6 +326,10 @@ SimpleViewer::Display()
 void
 SimpleViewer::OnKey(unsigned char key, int /*x*/, int /*y*/)
 {
+	Gesture& gesture = Gesture::getInstance();
+
+	float f = 0.1;
+
 	switch (key){
         case 27: 
         case 'q':
@@ -345,6 +349,18 @@ SimpleViewer::OnKey(unsigned char key, int /*x*/, int /*y*/)
         case 'm':
             m_rContext.SetGlobalMirror(!m_rContext.GetGlobalMirror());
             break;
+        case 'a':
+        	gesture.m_PosCamera.X -= f;
+        	break;
+       	case 'd':
+       		gesture.m_PosCamera.X += f;
+       		break;
+       	case 'w':
+       		gesture.m_PosCamera.Y -= f;
+       		break;
+       	case 's':
+       		gesture.m_PosCamera.Y += f;
+       		break;
 	}
 }
 

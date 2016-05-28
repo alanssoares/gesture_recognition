@@ -79,16 +79,36 @@ void
 HandViewer::DisplayPostDraw()
 {
     Gesture& gesture = Gesture::getInstance();
-    std::string labelGesture  = "Gesture Recognized - " + gesture.m_NameGestureRecognized;
-    std::string labelTwoHands = "Number of Hands - ";
 
     map<int,type_hand>::iterator it;
     for (it = gesture.m_Hands.begin(); it != gesture.m_Hands.end(); ++it){
         if(!it->second.positions.empty()){
             XnUInt32 nColor = it->second.id_hand % LENGTHOF(g_colours);
-            drawCurve(it->second.positions, nColor);
+            drawCurve2D(convertAndScale(it->second.positions), nColor);
         }
     }
+
+    //Configure the right view to draw in perspective mode
+    configureView();
+    //Draw the axis x,y,z
+    //drawAxis();
+    //Draw all curves
+    drawCurves();
+    //Draw all labels
+    drawLabels();
+
+}
+
+void
+HandViewer::drawLabels()
+{
+    Gesture& gesture = Gesture::getInstance();
+
+    std::string labelGesture  = "Gesture Recognized - " + gesture.m_NameGestureRecognized;
+    std::string labelTwoHands = "Number of Hands - ";
+    std::string labelPerformed = "Performed";
+    std::string labelProcessed = "Processed";
+    std::string labelTemplate = "Template";
 
     if(!gesture.m_NameGestureRecognized.empty()){
         if(gesture.m_TwoHandsRecognized){
@@ -98,7 +118,12 @@ HandViewer::DisplayPostDraw()
         }
     }
 
-    drawCurves();
+    glViewport(GL_WIN_SIZE_X/2, 0, GL_WIN_SIZE_MAIN_X, GL_WIN_SIZE_MAIN_Y);
+    //Draw the the legend labels of the curves
+    drawText(labelPerformed.c_str(), labelPerformed.size(), BLUE, 10, GL_WIN_SIZE_Y + 60);
+    drawText(labelProcessed.c_str(), labelProcessed.size(), GREEN, 10, GL_WIN_SIZE_Y + 40);
+    drawText(labelTemplate.c_str(), labelTemplate.size(), YELLOW, 10, GL_WIN_SIZE_Y + 20);
+    //Draw the labels of the gesture name and number of hands
     drawText(labelGesture.data(), labelGesture.size(), WHITE, 10, 30);
     drawText(labelTwoHands.data(), labelTwoHands.size(), WHITE, 10, 10);
 }
@@ -107,14 +132,6 @@ void
 HandViewer::drawCurves()
 {
     Gesture& gesture = Gesture::getInstance();
-
-    std::string labelPerformed = "Performed";
-    std::string labelProcessed = "Processed";
-    std::string labelTemplate = "Template";
-
-    //Configuring viewport
-    glViewport(512, 0, GL_WIN_SIZE_MAIN_X, GL_WIN_SIZE_MAIN_Y);
-    //Draw the curves
 
     if(gesture.m_TwoHandsRecognized){
         drawCurve(gesture.m_GesturePerformedA, BLUE);
@@ -128,35 +145,68 @@ HandViewer::drawCurves()
         drawCurve(gesture.m_GesturePerformedProcessedA, GREEN);
         drawCurve(gesture.m_GestureTemplateA, YELLOW);
     }
+}
 
-    //Draw the the legend labels of the curves
-    drawText(labelPerformed.c_str(), labelPerformed.size(), BLUE, 10, GL_WIN_SIZE_Y + 60);
-    drawText(labelProcessed.c_str(), labelProcessed.size(), GREEN, 10, GL_WIN_SIZE_Y + 40);
-    drawText(labelTemplate.c_str(), labelTemplate.size(), YELLOW, 10, GL_WIN_SIZE_Y + 20);
+void
+HandViewer::drawAxis(){
+    float min = 1.0f;
+
+    glBegin(GL_LINES);
+    glColor3f(1, 0, 0);
+    glVertex3f(-min, 0.0f, 0.0f);
+    glVertex3f(min, 0.0f, 0.0f);
+
+    glColor3f(0, 1, 0);
+    glVertex3f(0.0f, -min, 0.0);
+    glVertex3f(0.0f, min, 0.0);
+
+    glColor3f(0, 0, 1);
+    glVertex3f(0.0f, 0.0f, -min);
+    glVertex3f(0.0f, 0.0f, min);
+    glEnd();
 }
 
 void
 HandViewer::drawCurve(vector<XnPoint3D> curve, XnUInt32 nColor)
 {
     size_t len = curve.size();
-    XnFloat coordinates[len * 3]; // Size * (X, Y, Z)
-    vector<XnPoint3D> trajectory;
-    int numPoints = 0;
-    
-    trajectory = convertAndScale(curve);
-    
+    XnFloat coordinates[len * 3];
+    int numPoints = 0, x = 0;
+
     for (int i = 0; i < len; i+=2) {
-        coordinates[numPoints * 3] = trajectory[i].X;
-        coordinates[numPoints * 3 + 1] = trajectory[i].Y;
-        coordinates[numPoints * 3 + 2] = 0;
+        x = numPoints * 3;
+        coordinates[x] = curve[i].X;
+        coordinates[x + 1] = curve[i].Y;
+        coordinates[x + 2] = curve[i].Z;
         numPoints++;
     }
 
-    glColor4f(g_colours[nColor][0],
-              g_colours[nColor][1],
-              g_colours[nColor][2],
-              1.0f);
+    glColor3f(g_colours[nColor][0], g_colours[nColor][1], g_colours[nColor][2]);
+    glPointSize(2);
+    glVertexPointer(3, GL_FLOAT, 0, coordinates);
+    glDrawArrays(GL_LINE_STRIP, 0, numPoints);
+    // Current point as a larger dot
+    glPointSize(8);
+    glDrawArrays(GL_POINTS, 0, 1);
+    glFlush();
+}
 
+void
+HandViewer::drawCurve2D(vector<XnPoint3D> curve, XnUInt32 nColor)
+{
+    size_t len = curve.size();
+    XnFloat coordinates[len * 3];
+    int numPoints = 0, x = 0;
+
+    for (int i = 0; i < len; i+=2) {
+        x = numPoints * 3;
+        coordinates[x] = curve[i].X;
+        coordinates[x + 1] = curve[i].Y;
+        coordinates[x + 2] = 0;
+        numPoints++;
+    }
+
+    glColor3f(g_colours[nColor][0], g_colours[nColor][1], g_colours[nColor][2]);
     glPointSize(2);
     glVertexPointer(3, GL_FLOAT, 0, coordinates);
     glDrawArrays(GL_LINE_STRIP, 0, numPoints);
@@ -246,4 +296,31 @@ HandViewer::convertAndScale(vector<XnPoint3D> points){
         newPoints.push_back(point);
     }
     return newPoints;
+}
+
+void
+HandViewer::configureView()
+{
+    Gesture& gesture = Gesture::getInstance();
+    GLfloat aspect = (float)GL_WIN_SIZE_MAIN_X / (float)GL_WIN_SIZE_MAIN_Y;
+    //To operate on model-view matrix
+    glMatrixMode(GL_MODELVIEW);
+    //Reset the model-view matrix
+    glLoadIdentity();
+    //Set the viewport to cover the new window
+    glViewport(GL_WIN_SIZE_MAIN_X + GL_WIN_SIZE_MAIN_X/4, GL_WIN_SIZE_MAIN_Y/4, GL_WIN_SIZE_MAIN_X/2, GL_WIN_SIZE_MAIN_Y/2);
+    //To operate on the Projection matrix
+    glMatrixMode(GL_PROJECTION);
+    //Reset
+    glLoadIdentity();
+    //Enable perspective projection with fovy, aspect, zNear and zFar
+    gluPerspective(45.0f, aspect, 0.1f, 100.0f);
+    //Set the lookat point
+    gluLookAt(
+        //gesture.m_PosCamera.X, gesture.m_PosCamera.Y, 0.0f,
+        3.6f, 0.0f, 0.0f,
+        0.0f, 0.0f, 0.0f,//Look the origin
+        0.0f, 1.0f, 0.0f//Up vector
+    );
+    cout<<"X "<<gesture.m_PosCamera.X <<" Y "<< gesture.m_PosCamera.Y<<endl;
 }

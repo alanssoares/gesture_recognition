@@ -41,10 +41,15 @@ public:
 
     void drawCurves();
     void drawCurve(vector<XnPoint3D> curve, XnUInt32 nColor);
+    void drawCurve2D(vector<XnPoint3D> curve, XnUInt32 nColor);
     void drawRectangle(float topLeftX, float topLeftY, float bottomRightX, float bottomRightY);
     void drawCircle(XnPoint3D point, float radius);
     void drawText(const char* text, int length, XnUInt32 nColor, int x, int y);
+    void drawAxis();
+    void drawLabels();
 
+    void configureView();
+    
     vector<XnPoint3D> convertAndScale(vector<XnPoint3D> points);
 protected:
 	HandViewer(xn::Context& context);

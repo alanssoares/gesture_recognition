@@ -19,6 +19,7 @@ Gesture::Gesture() {
     m_LeftHandMoved = m_RightHandMoved = false;
     m_LeftHandStoped = m_RightHandStoped = true;
     m_TwoHandsRecognized = false;
+    m_PosCamera.X = m_PosCamera.Y = m_PosCamera.Z = 0.0;
 }
 
 Gesture::~Gesture(){}
@@ -134,9 +135,9 @@ Gesture::recognizeOneHand() {
     //Verify if the best distance is lower then the treshold
     if(bestDistance < MIN_DISTANCE_TRESHOLD){
         m_NameGestureRecognized = gestureTemplate.name;
-        m_GesturePerformedA = hand.positions;
-        m_GestureTemplateA = gestureTemplate.handOne.positions;
-        m_GesturePerformedProcessedA = smooth(m_GesturePerformedA);
+        m_GesturePerformedA = processTrajectory(hand.positions);
+        m_GestureTemplateA = processTrajectory(gestureTemplate.handOne.positions);
+        m_GesturePerformedProcessedA = processTrajectory(smooth(m_GesturePerformedA));
         m_TwoHandsRecognized = false;
     }
 }
