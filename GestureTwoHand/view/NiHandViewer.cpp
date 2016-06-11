@@ -91,7 +91,7 @@ HandViewer::DisplayPostDraw()
     //Configure the right view to draw in perspective mode
     configureView();
     //Draw the axis x,y,z
-    //drawAxis();
+    drawAxis();
     //Draw all curves
     drawCurves();
     //Draw all labels
@@ -317,10 +317,8 @@ HandViewer::configureView()
     gluPerspective(45.0f, aspect, 0.1f, 100.0f);
     //Set the lookat point
     gluLookAt(
-        //gesture.m_PosCamera.X, gesture.m_PosCamera.Y, 0.0f,
-        3.6f, 0.0f, 0.0f,
+        gesture.m_PosCamera.X, gesture.m_PosCamera.Y, gesture.m_PosCamera.Z,
         0.0f, 0.0f, 0.0f,//Look the origin
         0.0f, 1.0f, 0.0f//Up vector
     );
-    cout<<"X "<<gesture.m_PosCamera.X <<" Y "<< gesture.m_PosCamera.Y<<endl;
 }

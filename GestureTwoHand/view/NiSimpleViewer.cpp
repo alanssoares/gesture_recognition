@@ -361,6 +361,12 @@ SimpleViewer::OnKey(unsigned char key, int /*x*/, int /*y*/)
        	case 's':
        		gesture.m_PosCamera.Y += f;
        		break;
+       	case 'e':
+       		gesture.m_PosCamera.Z -= f;
+       		break;
+       	case 'r':
+       		gesture.m_PosCamera.Z += f;
+       		break;
 	}
 }
 
