@@ -21,6 +21,7 @@ Gesture::Gesture() {
     m_TwoHandsRecognized = false;
     m_PosCamera.X = 3.6;
     m_PosCamera.Y = m_PosCamera.Z = 0.0;
+    m_RotateLeft = m_RotateRight = m_RotateUp = m_RotateDown = false;
 }
 
 Gesture::~Gesture(){}
@@ -243,6 +244,11 @@ Gesture::clearHands(){
     }
     m_LeftHandMoved = m_RightHandMoved = false;
     m_LeftHandStoped = m_RightHandStoped = true;
+}
+
+void
+Gesture::clearRotation(){
+    m_RotateLeft = m_RotateRight = m_RotateUp = m_RotateDown = false;
 }
 
 type_hand

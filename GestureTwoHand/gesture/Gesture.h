@@ -160,6 +160,11 @@ public:
     */
     void    setParams(const params parameters) { m_Params = parameters; };
 
+    /**
+     Clear all flags of the rotation
+    */
+    void    clearRotation();
+
     int     m_NumHands;
     bool    m_LeftHandMoved, m_RightHandMoved;
     bool    m_LeftHandStoped, m_RightHandStoped;
@@ -183,6 +188,8 @@ public:
     Params m_Params;
 
     XnPoint3D m_PosCamera;
+
+    bool m_RotateLeft, m_RotateRight, m_RotateUp, m_RotateDown;
 public:
     static Gesture& getInstance();
     static Gesture*	m_Instance;
