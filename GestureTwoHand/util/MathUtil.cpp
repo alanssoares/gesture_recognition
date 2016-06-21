@@ -199,15 +199,18 @@ MathUtil::smoothMeanNeighboring(std::vector<XnPoint3D> positions, int numTimes){
     std::vector<XnPoint3D> smoothed;
     XnPoint3D meanPoint;
     const int numPoints = 3;
-    if(positions.size() >= MIN_CONTROL_POINTS){
+    size_t n  = positions.size();
+    if(n >= MIN_CONTROL_POINTS){
         for (int k = 0; k < numTimes; k++){
             smoothed.clear();
-            for (int i = 1; i < positions.size() - 1; i++) {
+            smoothed.push_back(positions[0]);
+            for (int i = 1; i < n - 1; i++) {
                 meanPoint.X = (positions[i - 1].X + positions[i].X + positions[i + 1].X)/numPoints;
                 meanPoint.Y = (positions[i - 1].Y + positions[i].Y + positions[i + 1].Y)/numPoints;
                 meanPoint.Z = (positions[i - 1].Z + positions[i].Z + positions[i + 1].Z)/numPoints;
                 smoothed.push_back(meanPoint);
             }
+            smoothed.push_back(positions[n - 1]);
             positions = smoothed;
         }
     } else {
@@ -220,21 +223,17 @@ MathUtil::smoothMeanNeighboring(std::vector<XnPoint3D> positions, int numTimes){
 
 std::vector<XnPoint3D>
 MathUtil::simplify(std::vector<XnPoint3D> points, double tolerance, bool highestQuality){
-    double sqTolerance;
+    double sqTolerance = pow(tolerance, 2);
 
     if(points.size() <= 2) {
         return points;
     }
 
-    sqTolerance = pow(tolerance, 2);
-
     if(highestQuality){
         points = simplifyRadialDist(points, sqTolerance);
     }
 
-    points = simplifyDouglasPeucker(points, sqTolerance);
-
-    return points;
+    return simplifyDouglasPeucker(points, sqTolerance);
 }
 
 std::vector<XnPoint3D>
@@ -299,6 +298,25 @@ MathUtil::simplifyDPStep(std::vector<XnPoint3D> points, int first, int last, dou
     return simplified;
 }
 
+std::vector<XnPoint3D>
+MathUtil::reduceByCurvature(std::vector<XnPoint3D> points){
+    std::vector<XnPoint3D> newPoints;
+    XnPoint3D l1, l2;
+    size_t n = points.size();
+    float curvature = 0.0;
+    newPoints.push_back(points[0]);
+    for (int i = 1; i < n - 1; i++){
+        l1 = subtract(points[i - 1], points[i]);
+        l2 = subtract(points[i], points[i + 1]);
+        curvature = length(subtract(l1, l2));
+        if(curvature > THRESHOLD_CURVATURE){
+            newPoints.push_back(points[i]);
+        }
+    }
+    newPoints.push_back(points[n - 1]);
+    return newPoints;
+}
+
 double
 MathUtil::getDistancePointToPoint(XnPoint3D p1, XnPoint3D p2){
     return length(subtract(p1, p2));
@@ -331,6 +349,38 @@ MathUtil::getDistancePointToSegment(XnPoint3D p, XnPoint3D p1, XnPoint3D p2){
     dz = p.Z - z;
     
     return pow(dx,2) + pow(dy,2) + pow(dz,2);
+}
+
+std::vector<XnPoint3D>
+MathUtil::smooth(std::vector<XnPoint3D> trajectory){
+    switch(TYPE_SMOOTH){
+        case MEAN_NEIGHBORING:
+            trajectory = MathUtil::smoothMeanNeighboring(trajectory, NUMBER_SMOOTH_NB);
+            break;
+        case CUBIC_B_SPLINE:
+            trajectory = MathUtil::applyCubicBSpline(trajectory);
+            break;
+        case CUBIC_BEZIER:
+            trajectory = MathUtil::applyCubicBezier(trajectory);
+            break;
+        default:
+            trajectory = MathUtil::smoothMeanNeighboring(trajectory, NUMBER_SMOOTH_NB);
+            break;
+    }
+    return trajectory;
+}
+
+double
+MathUtil::computeDistanceBetweenTwoTrajectories(std::vector<XnPoint3D> trajectoryA, std::vector<XnPoint3D> trajectoryB){
+    DTW2 dtw;
+    //Initialize the dynamic time warping
+    dtw.init();
+    //Set sequences that will be computed
+    dtw.setSequences(trajectoryA, trajectoryB);
+    //Calc dtw distance between two trajectories
+    dtw.compute();
+    //Get the best cost distance computed by dtw
+    return dtw.getDistance();
 }
 
 bool

@@ -328,7 +328,7 @@ SimpleViewer::OnKey(unsigned char key, int /*x*/, int /*y*/)
 {
 	Gesture& gesture = Gesture::getInstance();
 
-	float f = 0.1;
+	float f = 5.0;
 
 	switch (key){
         case 27: 
@@ -349,27 +349,19 @@ SimpleViewer::OnKey(unsigned char key, int /*x*/, int /*y*/)
         case 'm':
             m_rContext.SetGlobalMirror(!m_rContext.GetGlobalMirror());
             break;
-        case 'a':
-        	gesture.m_PosCamera.X -= f;
-        	gesture.m_RotateLeft = true;
+        case 'w':
+        	gesture.m_PosCamera.X += f;
         	break;
-       	case 'd':
-       		gesture.m_PosCamera.X += f;
-       		gesture.m_RotateRight = true;
-       		break;
-       	case 'w':
-       		gesture.m_PosCamera.Y -= f;
-       		gesture.m_RotateUp = true;
-       		break;
        	case 's':
+       		gesture.m_PosCamera.X -= f;
+       		break;
+       	case 'd':
        		gesture.m_PosCamera.Y += f;
-       		gesture.m_RotateDown = true;
        		break;
-       	case 'e':
-       		gesture.m_PosCamera.Z -= f;
+       	case 'a':
+       		gesture.m_PosCamera.Y -= f;
        		break;
-       	case 'r':
-       		gesture.m_PosCamera.Z += f;
+       	default:
        		break;
 	}
 }

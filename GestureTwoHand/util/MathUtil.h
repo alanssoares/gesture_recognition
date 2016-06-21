@@ -16,6 +16,7 @@
 #include "../util/ConstantsUtil.h"
 #include "../geometry/Bezier.h"
 #include "../geometry/BSpline.h"
+#include "../geometry/DTW.h"
 
 using namespace std;
 
@@ -208,6 +209,33 @@ public:
      @return std::vector<XnPoint3D> com trajetória simplificada
     **/
     static std::vector<XnPoint3D> simplifyDPStep(std::vector<XnPoint3D> points, int first, int last, double sqTolerance, std::vector<XnPoint3D> simplified);
+
+    /**
+    //P1, P2, P3
+    //L1 = P2 - P1, L2 = P3 - P2
+    //C = |L2 - L1|
+    Método responsável por remover os pontos que possuem curvature menor que um threshold
+    O objetivo é reduzir a quantidade de pontos a serem comparados e aumentar o desempenho
+    sem perder qualidade na taxa de reconhecimento dos gestos.
+    @param points a serem processados
+    @return std::vector<XnPoint3D> com trajetória simplificada
+    */
+    static std::vector<XnPoint3D> reduceByCurvature(std::vector<XnPoint3D> points);
+
+    /**
+     Smooth the trajectory according with the method choosed
+     @param trajectory
+     @return std::vector<XnPoint3D>
+    */
+    static std::vector<XnPoint3D> smooth(std::vector<XnPoint3D> trajectory);
+
+
+    /*
+     Método responsável por realizar o matching entre duas trajetórias 
+     usando o algoritmo Dynamic Time Warping
+     @return distance
+    */
+    static double computeDistanceBetweenTwoTrajectories(std::vector<XnPoint3D> A, std::vector<XnPoint3D> B);
 };
 
 #endif /* defined(__GestureTracking__MathUtil__) */

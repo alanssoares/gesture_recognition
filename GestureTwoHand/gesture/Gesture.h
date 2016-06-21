@@ -16,7 +16,6 @@
 #include <map>
 #include <XnCppWrapper.h>
 #include "../logger/Logger.h"
-#include "../geometry/DTW.h"
 #include "../util/MathUtil.h"
 #include "../util/ConstantsUtil.h"
 #include "../util/FileUtil.h"
@@ -115,25 +114,18 @@ public:
     void    setGesturesFromFile(const std::vector<type_gesture> oneHandGestures, const std::vector<type_gesture> twoHandsGestures);
     
     /*
+     Método responsável por aplicar os métodos de pré-processamento para suavizar a trajetória
+     e reduzir a quantidade de pontos usando a curvatura
+     @param trajectory do gesto
+    */
+    std::vector<XnPoint3D> smoothAndReduce(std::vector<XnPoint3D> trajectory);
+
+    /*
      Método responsável por aplicar os métodos de pré-processamento para centralizar na origem,
      normalizar no intervalo entre [-1...1] e suavizar a trajetória. A suavização depende do método escolhido.
      @param trajectory do gesto
     */
-    std::vector<XnPoint3D> processTrajectory(std::vector<XnPoint3D> trajectory);
-
-    /**
-     Smooth the trajectory according with the method choosed
-     @param trajectory
-     @return std::vector<XnPoint3D>
-    */
-    std::vector<XnPoint3D> smooth(std::vector<XnPoint3D> trajectory);
-
-    /*
-     Método responsável por realizar o matching entre duas trajetórias 
-     usando o algoritmo Dynamic Time Warping
-     @return distance
-    */
-    double computeDistanceBetweenTwoTrajectories(std::vector<XnPoint3D> A, std::vector<XnPoint3D> B);
+    std::vector<XnPoint3D> normCenterOrigin(std::vector<XnPoint3D> trajectory);
 
     /**
      Verify if the left hand was moved and stoped
@@ -160,11 +152,6 @@ public:
     */
     void    setParams(const params parameters) { m_Params = parameters; };
 
-    /**
-     Clear all flags of the rotation
-    */
-    void    clearRotation();
-
     int     m_NumHands;
     bool    m_LeftHandMoved, m_RightHandMoved;
     bool    m_LeftHandStoped, m_RightHandStoped;
@@ -173,7 +160,6 @@ public:
     map<int, type_hand> m_Hands;
     map<int,type_hand>::iterator it;
     
-    DTW2     m_Dtw;
     FileUtil m_FileUtil;
     
     std::string m_NameGestureRecognized;
@@ -188,8 +174,7 @@ public:
     Params m_Params;
 
     XnPoint3D m_PosCamera;
-
-    bool m_RotateLeft, m_RotateRight, m_RotateUp, m_RotateDown;
+    
 public:
     static Gesture& getInstance();
     static Gesture*	m_Instance;

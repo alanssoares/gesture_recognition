@@ -108,7 +108,9 @@ typedef struct type_gesture {
 /* Define the minimum number of points of the motion doing */
 #define NUM_LAST_POINTS 6.0
 /* Define the type of method that will be used to smooth the path */
-#define TYPE_SMOOTH CUBIC_B_SPLINE//MEAN_NEIGHBORING
+#define TYPE_SMOOTH MEAN_NEIGHBORING
+/* Define the threshold to remove points that there isn't large curvature */
+#define THRESHOLD_CURVATURE 0.02
 
 /* ========= Mean Neighboring ======== */
 #define NUMBER_SMOOTH_NB 2

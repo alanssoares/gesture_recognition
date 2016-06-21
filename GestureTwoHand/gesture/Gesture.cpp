@@ -21,7 +21,6 @@ Gesture::Gesture() {
     m_TwoHandsRecognized = false;
     m_PosCamera.X = 3.6;
     m_PosCamera.Y = m_PosCamera.Z = 0.0;
-    m_RotateLeft = m_RotateRight = m_RotateUp = m_RotateDown = false;
 }
 
 Gesture::~Gesture(){}
@@ -120,13 +119,13 @@ Gesture::recognizeOneHand() {
     }
 
     //Process the trajectory from user
-    trajectoryHand = processTrajectory(hand.positions);
+    trajectoryHand = smoothAndReduce(normCenterOrigin(hand.positions));
     //Find the best match trajectory using DTW
     for (int i = 0; i < m_GesturesFromFileOneHand.size(); i++) {
         //Process the trajectory template
-        trajectoryComp = processTrajectory(m_GesturesFromFileOneHand[i].handOne.positions);
+        trajectoryComp = smoothAndReduce(normCenterOrigin(m_GesturesFromFileOneHand[i].handOne.positions));
         //Compute the distance using dtw
-        distance = computeDistanceBetweenTwoTrajectories(trajectoryComp, trajectoryHand);
+        distance = MathUtil::computeDistanceBetweenTwoTrajectories(trajectoryComp, trajectoryHand);
         //Verify if the computed distance is lower that previous best
         if(distance < bestDistance){
             bestDistance = distance;
@@ -137,9 +136,9 @@ Gesture::recognizeOneHand() {
     //Verify if the best distance is lower then the treshold
     if(bestDistance < MIN_DISTANCE_TRESHOLD){
         m_NameGestureRecognized = gestureTemplate.name;
-        m_GesturePerformedA = processTrajectory(hand.positions);
-        m_GestureTemplateA = processTrajectory(gestureTemplate.handOne.positions);
-        m_GesturePerformedProcessedA = processTrajectory(smooth(m_GesturePerformedA));
+        m_GesturePerformedA = normCenterOrigin(hand.positions);
+        m_GestureTemplateA = normCenterOrigin(gestureTemplate.handOne.positions);
+        m_GesturePerformedProcessedA = smoothAndReduce(normCenterOrigin(m_GesturePerformedA));
         m_TwoHandsRecognized = false;
     }
 }
@@ -156,20 +155,20 @@ Gesture::recognizeTwoHands() {
     rightHand = getHand(RIGHT_HAND);
 
     //Process the trajectories
-    rightHandPoints = processTrajectory(rightHand.positions);
-    leftHandPoints = processTrajectory(leftHand.positions);
+    rightHandPoints = smoothAndReduce(normCenterOrigin(rightHand.positions));
+    leftHandPoints = smoothAndReduce(normCenterOrigin(leftHand.positions));
     
     //Find the best match trajectory using DTW
     for (int i = 0; i < m_GesturesFromFileTwoHands.size(); i++) {
-        trajCompRight = processTrajectory(m_GesturesFromFileTwoHands[i].handOne.positions);
-        distanceA = computeDistanceBetweenTwoTrajectories(trajCompRight, rightHandPoints);
+        trajCompRight = smoothAndReduce(normCenterOrigin(m_GesturesFromFileTwoHands[i].handOne.positions));
+        distanceA = MathUtil::computeDistanceBetweenTwoTrajectories(trajCompRight, rightHandPoints);
         if (distanceA < bestDistanceA){
             bestDistanceA = distanceA;
             gestureTemplate.name = m_GesturesFromFileTwoHands[i].name;
             gestureTemplate.handOne.positions = m_GesturesFromFileTwoHands[i].handOne.positions;
         }
-        trajCompLeft = processTrajectory(m_GesturesFromFileTwoHands[i].handTwo.positions);
-        distanceB = computeDistanceBetweenTwoTrajectories(trajCompLeft, leftHandPoints);
+        trajCompLeft = smoothAndReduce(normCenterOrigin(m_GesturesFromFileTwoHands[i].handTwo.positions));
+        distanceB = MathUtil::computeDistanceBetweenTwoTrajectories(trajCompLeft, leftHandPoints);
         if (distanceB < bestDistanceB){
             bestDistanceB = distanceB;
             gestureTemplate.handTwo.positions = m_GesturesFromFileTwoHands[i].handTwo.positions;
@@ -180,55 +179,30 @@ Gesture::recognizeTwoHands() {
     if(bestDistanceA < MIN_DISTANCE_TRESHOLD &&
        bestDistanceB < MIN_DISTANCE_TRESHOLD){
         m_NameGestureRecognized = gestureTemplate.name;
-        m_GestureTemplateA = gestureTemplate.handOne.positions;
-        m_GesturePerformedA = rightHand.positions;
-        m_GesturePerformedProcessedA = smooth(rightHand.positions);
-        m_GestureTemplateB = gestureTemplate.handTwo.positions;
-        m_GesturePerformedB = leftHand.positions;
-        m_GesturePerformedProcessedB = smooth(leftHand.positions);
+        m_GestureTemplateA = normCenterOrigin(gestureTemplate.handOne.positions);
+        m_GesturePerformedA = normCenterOrigin(rightHand.positions);
+        m_GesturePerformedProcessedA = smoothAndReduce(normCenterOrigin(rightHand.positions));
+        m_GestureTemplateB = normCenterOrigin(gestureTemplate.handTwo.positions);
+        m_GesturePerformedB = normCenterOrigin(leftHand.positions);
+        m_GesturePerformedProcessedB = smoothAndReduce(normCenterOrigin(leftHand.positions));
         m_TwoHandsRecognized = true;
     }
 }
 
-double
-Gesture::computeDistanceBetweenTwoTrajectories(std::vector<XnPoint3D> trajectoryA, std::vector<XnPoint3D> trajectoryB){
-    //Initialize the dynamic time warping
-    m_Dtw.init();
-    //Set sequences that will be computed
-    m_Dtw.setSequences(trajectoryA, trajectoryB);
-    //Calc dtw distance between two trajectories
-    m_Dtw.compute();
-    //Get the best cost distance computed by dtw
-    return m_Dtw.getDistance();
-}
-
 std::vector<XnPoint3D> 
-Gesture::processTrajectory(std::vector<XnPoint3D> trajectory) {
+Gesture::normCenterOrigin(std::vector<XnPoint3D> trajectory) {
     //Translate the hand trajectory to origin
     trajectory = MathUtil::translateToOrigin(trajectory);
     //Normalize between the interval -1 to 1
-    trajectory = MathUtil::normalizeTrajectory(trajectory);
-    //Smooth the trajectory
-    return smooth(trajectory);
+    return MathUtil::normalizeTrajectory(trajectory);
 }
 
-std::vector<XnPoint3D>
-Gesture::smooth(std::vector<XnPoint3D> trajectory){
-    switch(TYPE_SMOOTH){
-        case MEAN_NEIGHBORING:
-            trajectory = MathUtil::smoothMeanNeighboring(trajectory, NUMBER_SMOOTH_NB);
-            break;
-        case CUBIC_B_SPLINE:
-            trajectory = MathUtil::applyCubicBSpline(trajectory);
-            break;
-        case CUBIC_BEZIER:
-            trajectory = MathUtil::applyCubicBezier(trajectory);
-            break;
-        default:
-            trajectory = MathUtil::smoothMeanNeighboring(trajectory, NUMBER_SMOOTH_NB);
-            break;
-    }
-    return trajectory;
+std::vector<XnPoint3D> 
+Gesture::smoothAndReduce(std::vector<XnPoint3D> trajectory) {
+    //Smooth the trajectory
+    trajectory = MathUtil::smooth(trajectory);
+    //Remove points according with curvature
+    return MathUtil::reduceByCurvature(trajectory);
 }
 
 void
@@ -244,11 +218,6 @@ Gesture::clearHands(){
     }
     m_LeftHandMoved = m_RightHandMoved = false;
     m_LeftHandStoped = m_RightHandStoped = true;
-}
-
-void
-Gesture::clearRotation(){
-    m_RotateLeft = m_RotateRight = m_RotateUp = m_RotateDown = false;
 }
 
 type_hand

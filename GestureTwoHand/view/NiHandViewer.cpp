@@ -96,7 +96,6 @@ HandViewer::DisplayPostDraw()
     drawCurves();
     //Draw all labels
     drawLabels();
-
 }
 
 void
@@ -303,22 +302,22 @@ HandViewer::configureView()
 {
     Gesture& gesture = Gesture::getInstance();
     GLfloat aspect = (float)GL_WIN_SIZE_MAIN_X / (float)GL_WIN_SIZE_MAIN_Y;
-    //To operate on model-view matrix
-    glMatrixMode(GL_MODELVIEW);
-    //Reset the model-view matrix
-    glLoadIdentity();
+
+    glMatrixMode(GL_MODELVIEW); glLoadIdentity();
     //Set the viewport to cover the new window
     glViewport(GL_WIN_SIZE_MAIN_X + GL_WIN_SIZE_MAIN_X/4, GL_WIN_SIZE_MAIN_Y/4, GL_WIN_SIZE_MAIN_X/2, GL_WIN_SIZE_MAIN_Y/2);
     //To operate on the Projection matrix
-    glMatrixMode(GL_PROJECTION);
-    //Reset
-    glLoadIdentity();
+    glMatrixMode(GL_PROJECTION); glLoadIdentity();
     //Enable perspective projection with fovy, aspect, zNear and zFar
     gluPerspective(45.0f, aspect, 0.1f, 100.0f);
     //Set the lookat point
     gluLookAt(
-        gesture.m_PosCamera.X, gesture.m_PosCamera.Y, gesture.m_PosCamera.Z,
+        4.0, 0.0f, 0.0f,//Object position
         0.0f, 0.0f, 0.0f,//Look the origin
         0.0f, 1.0f, 0.0f//Up vector
     );
+    //Rotate object
+    glMatrixMode(GL_MODELVIEW); glLoadIdentity();
+    glRotatef(gesture.m_PosCamera.X, 1.0f, 0.0f, 0.0f);
+    glRotatef(gesture.m_PosCamera.Y, 0.0f, 1.0f, 0.0f);
 }
