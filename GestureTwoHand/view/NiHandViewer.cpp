@@ -288,7 +288,8 @@ HandViewer::InitOpenGL( int argc, char **argv )
 vector<XnPoint3D>
 HandViewer::convertAndScale(vector<XnPoint3D> points){
     vector<XnPoint3D> newPoints;
-    for(int i = 0; i < points.size(); i++){
+    size_t n = points.size();
+    for(int i = 0; i < n; i++){
         XnPoint3D point = points[i];
         m_depth.ConvertRealWorldToProjective(1, &point, &point);
         ScalePoint(point, GL_WIN_SIZE_X, GL_WIN_SIZE_Y);

@@ -112,7 +112,8 @@ Gesture::recognizeOneHand() {
     std::vector<XnPoint3D> trajectoryHand, trajectoryComp;
     double distance = 0.0, bestDistance = 999999999;
     type_gesture gestureTemplate;
-    
+    size_t n = m_GesturesFromFileOneHand.size();
+
     type_hand hand = getHand(RIGHT_HAND);
     if(hand.id_hand == NOT_HAND){
         hand = getHand(LEFT_HAND);
@@ -121,7 +122,7 @@ Gesture::recognizeOneHand() {
     //Process the trajectory from user
     trajectoryHand = smoothAndReduce(normCenterOrigin(hand.positions));
     //Find the best match trajectory using DTW
-    for (int i = 0; i < m_GesturesFromFileOneHand.size(); i++) {
+    for (int i = 0; i < n; i++) {
         //Process the trajectory template
         trajectoryComp = smoothAndReduce(normCenterOrigin(m_GesturesFromFileOneHand[i].handOne.positions));
         //Compute the distance using dtw
@@ -149,7 +150,8 @@ Gesture::recognizeTwoHands() {
     std::vector<XnPoint3D> leftHandPoints, rightHandPoints, trajCompLeft, trajCompRight;
     type_gesture gestureTemplate;
     double distanceA = 0.0, distanceB = 0.0, bestDistanceB = 999999999, bestDistanceA = 999999999;
-    
+    size_t n = m_GesturesFromFileTwoHands.size();
+
     //Initialize the left and right hand according
     leftHand = getHand(LEFT_HAND);
     rightHand = getHand(RIGHT_HAND);
@@ -159,7 +161,7 @@ Gesture::recognizeTwoHands() {
     leftHandPoints = smoothAndReduce(normCenterOrigin(leftHand.positions));
     
     //Find the best match trajectory using DTW
-    for (int i = 0; i < m_GesturesFromFileTwoHands.size(); i++) {
+    for (int i = 0; i < n; i++) {
         trajCompRight = smoothAndReduce(normCenterOrigin(m_GesturesFromFileTwoHands[i].handOne.positions));
         distanceA = MathUtil::computeDistanceBetweenTwoTrajectories(trajCompRight, rightHandPoints);
         if (distanceA < bestDistanceA){

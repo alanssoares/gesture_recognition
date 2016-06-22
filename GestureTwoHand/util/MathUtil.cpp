@@ -50,10 +50,10 @@ MathUtil::getAngleBetween2Points(XnPoint3D a, XnPoint3D b){
 }
 
 double
-MathUtil::getMaxValue(vector<double> values)
-{
+MathUtil::getMaxValue(vector<double> values){
+    size_t n = values.size();
     double max = 0.0;
-    for (int i = 0; i < values.size(); i++) {
+    for (int i = 0; i < n; i++) {
         if (max < values[i]) {
             max = values[i];
         }
@@ -63,9 +63,8 @@ MathUtil::getMaxValue(vector<double> values)
 }
 
 bool
-MathUtil::isGestureDoing(vector<XnPoint3D> positions)
-{
-    int n = positions.size();
+MathUtil::isGestureDoing(vector<XnPoint3D> positions){
+    size_t n = positions.size();
     int i = n - NUM_LAST_POINTS;
     if(i < 0) return false;
     double sum = 0.0;
@@ -80,29 +79,29 @@ MathUtil::isGestureDoing(vector<XnPoint3D> positions)
 }
 
 XnPoint3D
-MathUtil::calcCentroid(vector<XnPoint3D> positions)
-{
+MathUtil::calcCentroid(vector<XnPoint3D> positions){
+    size_t n = positions.size();
     XnPoint3D centroid;
     centroid.X = centroid.Y = centroid.Z = 0;
-    for(int i = 0; i < positions.size(); i++) {
+    for(int i = 0; i < n; i++) {
         centroid.X += positions[i].X;
         centroid.Y += positions[i].Y;
         centroid.Z += positions[i].Z;
     }
     //Sum 1 to prevent division by zero
-    centroid.X = (centroid.X + 1)/(positions.size() + 1) - 1;
-    centroid.Y = (centroid.Y + 1)/(positions.size() + 1) - 1;
-    centroid.Z = (centroid.Z + 1)/(positions.size() + 1) - 1;
+    centroid.X = (centroid.X + 1)/(n + 1) - 1;
+    centroid.Y = (centroid.Y + 1)/(n + 1) - 1;
+    centroid.Z = (centroid.Z + 1)/(n + 1) - 1;
     
     return centroid;
 }
 
 vector<XnPoint3D>
 MathUtil::translateToOrigin(vector<XnPoint3D> positions){
-    
+    size_t n = positions.size();
     XnPoint3D centroid = calcCentroid(positions);
     
-    for(int i = 0; i < positions.size(); i++) {
+    for(int i = 0; i < n; i++) {
         positions[i].X -= centroid.X;
         positions[i].Y -= centroid.Y;
         positions[i].Z -= centroid.Z;
@@ -116,13 +115,14 @@ MathUtil::normalizeTrajectory(vector<XnPoint3D> positions){
     double desiredMin = -1.0;
     double desiredMax = 1.0;
     double desiredRange = desiredMax - desiredMin;
-    
+    size_t n = positions.size();
+
     XnPoint3D minPos = minValueXYZ(positions);
     XnPoint3D maxPos = maxValueXYZ(positions);
     
     XnPoint3D originalRange = subtract(maxPos, minPos);
     
-    for(int i = 0; i < positions.size(); i++) {
+    for(int i = 0; i < n; i++) {
         positions[i].X = desiredRange * (positions[i].X - minPos.X)/ originalRange.X + desiredMin;
         positions[i].Y = desiredRange * (positions[i].Y - minPos.Y)/ originalRange.Y + desiredMin;
         positions[i].Z = desiredRange * (positions[i].Z - minPos.Z)/ originalRange.Z + desiredMin;
@@ -133,11 +133,13 @@ MathUtil::normalizeTrajectory(vector<XnPoint3D> positions){
 
 XnPoint3D
 MathUtil::minValueXYZ(vector<XnPoint3D> positions){
+    size_t n = positions.size();
     XnPoint3D minPos;
     minPos.X = 99999999;
     minPos.Y = 99999999;
     minPos.Z = 99999999;
-    for(int i = 0; i < positions.size(); i++) {
+    
+    for(int i = 0; i < n; i++) {
         if(positions[i].X < minPos.X) minPos.X = positions[i].X;
         if(positions[i].Y < minPos.Y) minPos.Y = positions[i].Y;
         if(positions[i].Z < minPos.Z) minPos.Z = positions[i].Z;
@@ -147,11 +149,12 @@ MathUtil::minValueXYZ(vector<XnPoint3D> positions){
 
 XnPoint3D
 MathUtil::maxValueXYZ(vector<XnPoint3D> positions){
+    size_t n = positions.size();
     XnPoint3D maxPos;
     maxPos.X = -99999999;
     maxPos.Y = -99999999;
     maxPos.Z = -99999999;
-    for(int i = 0; i < positions.size(); i++) {
+    for(int i = 0; i < n; i++) {
         if(positions[i].X > maxPos.X) maxPos.X = positions[i].X;
         if(positions[i].Y > maxPos.Y) maxPos.Y = positions[i].Y;
         if(positions[i].Z > maxPos.Z) maxPos.Z = positions[i].Z;
@@ -241,10 +244,11 @@ MathUtil::simplifyRadialDist(std::vector<XnPoint3D> points, double sqTolerance){
     XnPoint3D prevPoint, point;
     std::vector<XnPoint3D> newPoints;
     double sqDistance = 0.0;
+    size_t n = points.size();
     prevPoint = points[0];
     newPoints.push_back(prevPoint);
 
-    for (int i = 1; i < points.size(); i++) {
+    for (int i = 1; i < n; i++) {
         point = points[i];
         sqDistance = getDistancePointToPoint(point, prevPoint);
         if (sqDistance > sqTolerance) {
