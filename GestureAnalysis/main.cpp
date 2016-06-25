@@ -17,60 +17,45 @@
     4 - Aplicar o método de curvatura para reduzir a quantidade de pontos
     5 - Salvar em um novo arquivo os gestos processados
 */
-void                   saveAll();
-void                   improveGestures();
+void saveAll();
+void improveGestures();
 std::vector<XnPoint3D> normCenterOrigin(std::vector<XnPoint3D> trajectory);
 std::vector<XnPoint3D> smoothAndReduce(std::vector<XnPoint3D> trajectory);
 
 int main(int argc, char* argv[])
 {
-    // Load the gestures data
     g_FileUtil.loadGestures();
     
     improveGestures();
     
+    g_FileUtil.saveAll();
+
 	return 0;
 }
 
-std::vector<XnPoint3D> normCenterOrigin(std::vector<XnPoint3D> trajectory) {
-    //Translate the hand trajectory to origin
-    trajectory = MathUtil::translateToOrigin(trajectory);
-    //Normalize between the interval -1 to 1
-    return MathUtil::normalizeTrajectory(trajectory);
-}
-
-std::vector<XnPoint3D> smoothAndReduce(std::vector<XnPoint3D> trajectory) {
-    //Smooth the trajectory
-    trajectory = MathUtil::smooth(trajectory);
-    //Remove points according with curvature
-    return MathUtil::reduceByCurvature(trajectory);
-}
-
-void saveAll(){
-
-}
-
-void improveGestures(){
-    std::vector<type_gesture> templates1 = g_FileUtil.getGesturesOneHand();
-    std::vector<type_gesture> templates2 = g_FileUtil.getGesturesTwoHands();    
+/**
+    Improve all the gestures applying the methods of smooth, center and reduce
+*/
+void improveGestures(){  
     
-    size_t n1 = templates1.size();
-    size_t n2 = templates2.size();
+    size_t n1 = g_FileUtil.mGesturesOneHand.size();
+    size_t n2 = g_FileUtil.mGesturesTwoHands.size();
     
     for (int i = 0; i < n1; i++){
-        PRINT("A[" << i << "] - Before : " << templates1[i].handOne.positions.size());
-        templates1[i].handOne.positions = smoothAndReduce(normCenterOrigin(templates1[i].handOne.positions));
-        PRINT("A[" << i << "] - After : " << templates1[i].handOne.positions.size());
+        //PRINT("A[" << i << "] - Before : " << g_FileUtil.mGesturesOneHand[i].handOne.positions.size());
+        g_FileUtil.mGesturesOneHand[i].handOne.positions = MathUtil::normCenterOrigin(g_FileUtil.mGesturesOneHand[i].handOne.positions);
+        g_FileUtil.mGesturesOneHand[i].handOne.positions = MathUtil::smoothAndReduce(g_FileUtil.mGesturesOneHand[i].handOne.positions);
+        //PRINT("A[" << i << "] - After : " << g_FileUtil.mGesturesOneHand[i].handOne.positions.size());
     }
     
     for (int i = 0; i < n2; i++){
-        PRINT("B_1[" << i << "] - Before : " << templates2[i].handOne.positions.size());
-        templates2[i].handOne.positions = smoothAndReduce(normCenterOrigin(templates2[i].handOne.positions));
-        PRINT("B_1[" << i << "] - After : " << templates2[i].handOne.positions.size());
-        PRINT("B_2[" << i << "] - Before : " << templates2[i].handTwo.positions.size());
-        templates2[i].handTwo.positions = smoothAndReduce(normCenterOrigin(templates2[i].handTwo.positions));
-        PRINT("B_2[" << i << "] - After : " << templates2[i].handTwo.positions.size());
+        //PRINT("B_1[" << i << "] - Before : " << g_FileUtil.mGesturesTwoHands[i].handOne.positions.size());
+        g_FileUtil.mGesturesTwoHands[i].handOne.positions = MathUtil::normCenterOrigin(g_FileUtil.mGesturesTwoHands[i].handOne.positions);
+        g_FileUtil.mGesturesTwoHands[i].handOne.positions = MathUtil::smoothAndReduce(g_FileUtil.mGesturesTwoHands[i].handOne.positions);
+        //PRINT("B_1[" << i << "] - After : " << g_FileUtil.mGesturesTwoHands[i].handOne.positions.size());
+        //PRINT("B_2[" << i << "] - Before : " << g_FileUtil.mGesturesTwoHands[i].handTwo.positions.size());
+        g_FileUtil.mGesturesTwoHands[i].handTwo.positions = MathUtil::normCenterOrigin(g_FileUtil.mGesturesTwoHands[i].handTwo.positions);
+        g_FileUtil.mGesturesTwoHands[i].handTwo.positions = MathUtil::smoothAndReduce(g_FileUtil.mGesturesTwoHands[i].handTwo.positions);
+        //PRINT("B_2[" << i << "] - After : " << g_FileUtil.mGesturesTwoHands[i].handTwo.positions.size());
     }
-
-    saveAll();
 }

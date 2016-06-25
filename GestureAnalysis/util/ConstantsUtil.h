@@ -90,7 +90,6 @@ typedef struct type_gesture {
 #define CHECK_RC_VOID(rc, message){ if(rc != XN_STATUS_OK){ printf(message, xnGetStatusString(rc)); return; }}
 /* Print the message in console */
 #define PRINT(message) { cout<<message<<endl; }
-
 /* Receive a time to sleep */
 #define Sleep(t) usleep((t)*1000)
 /* Max number of hands to recognize */
@@ -111,16 +110,13 @@ typedef struct type_gesture {
 #define TYPE_SMOOTH MEAN_NEIGHBORING
 /* Define the threshold to remove points that there isn't large curvature */
 #define THRESHOLD_CURVATURE 0.02
-
 /* ========= Mean Neighboring ======== */
 #define NUMBER_SMOOTH_NB 2
 /* ========= Mean Neighboring ======== */
-
 /* ========= Cubic Spline ======== */
 #define INCREMENT_RATE_INTERPOLATION 0.5
 #define NUM_STEP_BSPLINE 3 //the quantity of steps for each bspline curve interval
 /* ========= Cubic Spline ======== */
-
 /* ========= Douglas-Peucker Radial ========= */
 #define DPR_FACTOR_SIMPLIFY 0.01 //Factor for simplify
 #define DPR_HIGH_QUALITY false //Flag for high quality for simplify

@@ -387,6 +387,22 @@ MathUtil::computeDistanceBetweenTwoTrajectories(std::vector<XnPoint3D> trajector
     return dtw.getDistance();
 }
 
+std::vector<XnPoint3D> 
+MathUtil::normCenterOrigin(std::vector<XnPoint3D> trajectory) {
+    //Translate the hand trajectory to origin
+    trajectory = MathUtil::translateToOrigin(trajectory);
+    //Normalize between the interval -1 to 1
+    return MathUtil::normalizeTrajectory(trajectory);
+}
+
+std::vector<XnPoint3D> 
+MathUtil::smoothAndReduce(std::vector<XnPoint3D> trajectory) {
+    //Smooth the trajectory
+    trajectory = MathUtil::smooth(trajectory);
+    //Remove points according with curvature
+    return MathUtil::reduceByCurvature(trajectory);
+}
+
 bool
 MathUtil::pointsEqual(XnPoint3D p1, XnPoint3D p2){
     return p1.X == p2.X && p1.Y == p2.Y && p1.Z == p2.Z;

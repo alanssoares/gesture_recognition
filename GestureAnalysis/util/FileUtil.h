@@ -27,11 +27,11 @@
  */
 class FileUtil {
     
-private:
-    std::vector<type_gesture> mGesturesOneHand;
-    std::vector<type_gesture> mGesturesTwoHands;
 public:
 
+    std::vector<type_gesture> mGesturesOneHand;
+    std::vector<type_gesture> mGesturesTwoHands;
+    
     /**
      Break a string in substrings accordir with delimiter character
      @param std::string
@@ -45,6 +45,11 @@ public:
      Load the gestures from file
     */
     void loadGestures();
+
+    /**
+     Save all gestures in an file
+    */
+    void saveAll();
 
     /**
      Extrac the gestures that was readed from the file and that was stored in a vector
