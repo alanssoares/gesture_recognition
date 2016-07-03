@@ -15,10 +15,7 @@
 #include <cmath>
 #include <map>
 #include <XnCppWrapper.h>
-#include "../logger/Logger.h"
-#include "../util/MathUtil.h"
-#include "../util/ConstantsUtil.h"
-#include "../util/FileUtil.h"
+#include "../../Commons/commons.hpp"
 
 using namespace std;
 
@@ -159,8 +156,6 @@ public:
 
     map<int, type_hand> m_Hands;
     map<int,type_hand>::iterator it;
-    
-    FileUtil m_FileUtil;
     
     std::string m_NameGestureRecognized;
 

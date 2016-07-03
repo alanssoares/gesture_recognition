@@ -22,9 +22,8 @@
 // Includes
 //---------------------------------------------------------------------------
 #include "view/NiHandViewer.h"
-#include "util/FileUtil.h"
 #include "gesture/Gesture.h"
-#include "util/ConstantsUtil.h"
+#include "../Commons/commons.hpp"
 
 //---------------------------------------------------------------------------
 // Defines
@@ -47,14 +46,13 @@ int main(int argc, char* argv[])
 	XnStatus				rc;
 	xn::EnumerationErrors	errors;
     xn::Player              player;
-    FileUtil                fileUtil;
- 
+    
     //Read the params from args
     if(parse_command_line(argc, argv)) return 0;
     // Load the gestures data
-    fileUtil.loadGestures();
+    FileUtil::getInstance().loadGestures();
     // Setter the gestures from file
-    Gesture::getInstance().setGesturesFromFile(fileUtil.getGesturesOneHand(), fileUtil.getGesturesTwoHands());
+    Gesture::getInstance().setGesturesFromFile(FileUtil::getInstance().getGesturesOneHand(), FileUtil::getInstance().getGesturesTwoHands());
     
     if(g_params.modeOnline){
         

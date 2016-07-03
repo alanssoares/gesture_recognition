@@ -1,14 +1,7 @@
 //---------------------------------------------------------------------------
 // Includes
 //---------------------------------------------------------------------------
-#include "util/FileUtil.h"
-#include "util/ConstantsUtil.h"
-#include "util/MathUtil.h"
-
-/*
- Definition of Global variables
-*/
- FileUtil g_FileUtil;
+#include "../Commons/commons.hpp"
 
 /*
     1 - Carregar os gestos
@@ -17,18 +10,15 @@
     4 - Aplicar o método de curvatura para reduzir a quantidade de pontos
     5 - Salvar em um novo arquivo os gestos processados
 */
-void saveAll();
 void improveGestures();
-std::vector<XnPoint3D> normCenterOrigin(std::vector<XnPoint3D> trajectory);
-std::vector<XnPoint3D> smoothAndReduce(std::vector<XnPoint3D> trajectory);
 
 int main(int argc, char* argv[])
 {
-    g_FileUtil.loadGestures();
+    FileUtil::getInstance().loadGestures();
     
     improveGestures();
     
-    g_FileUtil.saveAll();
+    FileUtil::getInstance().saveAll();
 
 	return 0;
 }
@@ -37,25 +27,25 @@ int main(int argc, char* argv[])
     Improve all the gestures applying the methods of smooth, center and reduce
 */
 void improveGestures(){  
-    
-    size_t n1 = g_FileUtil.mGesturesOneHand.size();
-    size_t n2 = g_FileUtil.mGesturesTwoHands.size();
+    FileUtil& fileUtil = FileUtil::getInstance();
+    size_t n1 = fileUtil.mGesturesOneHand.size();
+    size_t n2 = fileUtil.mGesturesTwoHands.size();
     
     for (int i = 0; i < n1; i++){
-        //PRINT("A[" << i << "] - Before : " << g_FileUtil.mGesturesOneHand[i].handOne.positions.size());
-        g_FileUtil.mGesturesOneHand[i].handOne.positions = MathUtil::normCenterOrigin(g_FileUtil.mGesturesOneHand[i].handOne.positions);
-        g_FileUtil.mGesturesOneHand[i].handOne.positions = MathUtil::smoothAndReduce(g_FileUtil.mGesturesOneHand[i].handOne.positions);
-        //PRINT("A[" << i << "] - After : " << g_FileUtil.mGesturesOneHand[i].handOne.positions.size());
+        //PRINT("A[" << i << "] - Before : " << fileUtil.mGesturesOneHand[i].handOne.positions.size());
+        fileUtil.mGesturesOneHand[i].handOne.positions = MathUtil::normCenterOrigin(fileUtil.mGesturesOneHand[i].handOne.positions);
+        fileUtil.mGesturesOneHand[i].handOne.positions = MathUtil::smoothAndReduce(fileUtil.mGesturesOneHand[i].handOne.positions);
+        //PRINT("A[" << i << "] - After : " << fileUtil.mGesturesOneHand[i].handOne.positions.size());
     }
     
     for (int i = 0; i < n2; i++){
-        //PRINT("B_1[" << i << "] - Before : " << g_FileUtil.mGesturesTwoHands[i].handOne.positions.size());
-        g_FileUtil.mGesturesTwoHands[i].handOne.positions = MathUtil::normCenterOrigin(g_FileUtil.mGesturesTwoHands[i].handOne.positions);
-        g_FileUtil.mGesturesTwoHands[i].handOne.positions = MathUtil::smoothAndReduce(g_FileUtil.mGesturesTwoHands[i].handOne.positions);
-        //PRINT("B_1[" << i << "] - After : " << g_FileUtil.mGesturesTwoHands[i].handOne.positions.size());
-        //PRINT("B_2[" << i << "] - Before : " << g_FileUtil.mGesturesTwoHands[i].handTwo.positions.size());
-        g_FileUtil.mGesturesTwoHands[i].handTwo.positions = MathUtil::normCenterOrigin(g_FileUtil.mGesturesTwoHands[i].handTwo.positions);
-        g_FileUtil.mGesturesTwoHands[i].handTwo.positions = MathUtil::smoothAndReduce(g_FileUtil.mGesturesTwoHands[i].handTwo.positions);
-        //PRINT("B_2[" << i << "] - After : " << g_FileUtil.mGesturesTwoHands[i].handTwo.positions.size());
+        //PRINT("B_1[" << i << "] - Before : " << fileUtil.mGesturesTwoHands[i].handOne.positions.size());
+        fileUtil.mGesturesTwoHands[i].handOne.positions = MathUtil::normCenterOrigin(fileUtil.mGesturesTwoHands[i].handOne.positions);
+        fileUtil.mGesturesTwoHands[i].handOne.positions = MathUtil::smoothAndReduce(fileUtil.mGesturesTwoHands[i].handOne.positions);
+        //PRINT("B_1[" << i << "] - After : " << fileUtil.mGesturesTwoHands[i].handOne.positions.size());
+        //PRINT("B_2[" << i << "] - Before : " << fileUtil.mGesturesTwoHands[i].handTwo.positions.size());
+        fileUtil.mGesturesTwoHands[i].handTwo.positions = MathUtil::normCenterOrigin(fileUtil.mGesturesTwoHands[i].handTwo.positions);
+        fileUtil.mGesturesTwoHands[i].handTwo.positions = MathUtil::smoothAndReduce(fileUtil.mGesturesTwoHands[i].handTwo.positions);
+        //PRINT("B_2[" << i << "] - After : " << fileUtil.mGesturesTwoHands[i].handTwo.positions.size());
     }
 }

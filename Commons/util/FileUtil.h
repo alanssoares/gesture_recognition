@@ -14,6 +14,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <dirent.h>
 #include <XnCppWrapper.h>
 #include "../util/ConstantsUtil.h"
 #include "../logger/Logger.h"
@@ -31,9 +32,6 @@ private:
 
     FileUtil();
     ~FileUtil();
-
-    std::vector<type_gesture> mGesturesOneHand;
-    std::vector<type_gesture> mGesturesTwoHands;
 
 public:
 
@@ -154,6 +152,10 @@ public:
     */
     int readNumLastFile(int typeFile);
 
+    /**
+     Save all gestures in an file the was processed in the analysis
+    */
+    void saveAll();
 public:
 
     static FileUtil& getInstance();

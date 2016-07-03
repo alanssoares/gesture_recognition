@@ -258,3 +258,41 @@ FileUtil::readNumLastFile(int typeFile){
     closedir(dir);
     return numReg;
 }
+
+void
+FileUtil::saveAll(){
+    type_gesture gesture;
+    std::string nameFile = "../NewSamples.txt";
+    std::fstream fileOut;
+    size_t n = 0;
+
+    fileOut.open(nameFile.c_str(), ios::out | ios::ate);
+    if(fileOut.is_open()){
+        
+        n = mGesturesOneHand.size();
+        for (int i = 0; i < n; i++){
+            gesture = mGesturesOneHand[i];
+            fileOut<<"gesture "<<gesture.name<<" hands "<<gesture.numHands<<std::endl;
+            for(int j = 0; j < gesture.handOne.positions.size(); j++){
+                fileOut<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<std::endl;
+            }
+            fileOut<<"end"<<std::endl;
+        }
+
+        n = mGesturesTwoHands.size();
+        for (int i = 0; i < n; i++){
+            gesture = mGesturesTwoHands[i];
+            fileOut<<"gesture "<<gesture.name<<" hands "<<gesture.numHands<<std::endl;
+            for(int j = 0; j < gesture.handOne.positions.size(); j++){
+                fileOut<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<std::endl;
+            }
+            fileOut<<std::endl;
+            for(int j = 0; j < gesture.handTwo.positions.size(); j++){
+                fileOut<<gesture.handTwo.positions[j].X<<" "<<gesture.handTwo.positions[j].Y<<" "<<gesture.handTwo.positions[j].Z<<std::endl;
+            }
+            fileOut<<"end"<<std::endl;
+        }
+    }
+
+    fileOut.close();
+}

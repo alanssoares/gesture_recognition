@@ -162,7 +162,7 @@ SimpleViewer::InitOpenGL(int argc, char **argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
-	glutInitWindowSize(GL_WIN_SIZE_X, GL_WIN_SIZE_Y);
+	glutInitWindowSize(GL_WIN_SIZE_Y, GL_WIN_SIZE_Y);
 
 	m_windowId = glutCreateWindow(NAME_WINDOW_GR);
 	
@@ -213,11 +213,11 @@ SimpleViewer::Display()
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// Setup the OpenGL viewpoint
-	glViewport(0, 0, GL_WIN_SIZE_X, GL_WIN_SIZE_Y);
+	glViewport(0, 0, GL_WIN_SIZE_Y, GL_WIN_SIZE_Y);
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
-	glOrtho(0, GL_WIN_SIZE_X, GL_WIN_SIZE_Y, 0, -1.0, 1.0);
+	glOrtho(0, GL_WIN_SIZE_Y, GL_WIN_SIZE_Y, 0, -1.0, 1.0);
 
 	// Calculate the accumulative histogram (the yellow display...)
 	xnOSMemSet(m_pDepthHist, 0, m_depthMD.ZRes()*sizeof(float));
@@ -318,10 +318,10 @@ SimpleViewer::Display()
 	glVertex2f(0, 0);
 	// upper right
 	glTexCoord2f((float)nXRes/(float)m_nTexMapX, 0);
-	glVertex2f(GL_WIN_SIZE_X, 0);
+	glVertex2f(GL_WIN_SIZE_Y, 0);
 	// bottom right
 	glTexCoord2f((float)nXRes/(float)m_nTexMapX, (float)nYRes/(float)m_nTexMapY);
-	glVertex2f(GL_WIN_SIZE_X, GL_WIN_SIZE_Y);
+	glVertex2f(GL_WIN_SIZE_Y, GL_WIN_SIZE_Y);
 	// bottom left
 	glTexCoord2f(0, (float)nYRes/(float)m_nTexMapY);
 	glVertex2f(0, GL_WIN_SIZE_Y);

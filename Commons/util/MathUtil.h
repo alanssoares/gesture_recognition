@@ -229,7 +229,20 @@ public:
     */
     static std::vector<XnPoint3D> smooth(std::vector<XnPoint3D> trajectory);
 
+    /**
+     Normalize (-1, 1) and center in the origin (0,0,0)
+     @param trajectory
+     @return std::vector<XnPoint3D>
+    */
+    static std::vector<XnPoint3D> normCenterOrigin(std::vector<XnPoint3D> trajectory);
 
+    /**
+     Smooth and reduce the points using the curvature
+     @param trajectory
+     @return std::vector<XnPoint3D>
+    */
+    static std::vector<XnPoint3D> smoothAndReduce(std::vector<XnPoint3D> trajectory);
+    
     /*
      Método responsável por realizar o matching entre duas trajetórias 
      usando o algoritmo Dynamic Time Warping

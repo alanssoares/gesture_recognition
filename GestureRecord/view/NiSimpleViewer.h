@@ -21,6 +21,7 @@
 #ifndef NI_SIMPLE_VIEWER_H__
 #define NI_SIMPLE_VIEWER_H__
 
+#include "../../Commons/commons.hpp"
 #include <XnCppWrapper.h>
 #if (XN_PLATFORM == XN_PLATFORM_MACOSX)
 #include <GLUT/glut.h>
@@ -29,8 +30,6 @@
 #include <GL/glut.h>
 #include <GL/gl.h>
 #endif
-#include "../util/ConstantsUtil.h"
-#include "../util/FileUtil.h"
 
 enum DisplayModes_e
 {

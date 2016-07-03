@@ -21,6 +21,7 @@
 #ifndef NI_HAND_VIEWER_H__
 #define NI_HAND_VIEWER_H__
 
+#include "../../Commons/commons.hpp"
 #include "NiSimpleViewer.h"
 #include "NiHandTracker.h"
 #include <cmath>

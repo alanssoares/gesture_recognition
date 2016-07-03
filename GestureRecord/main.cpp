@@ -22,8 +22,7 @@
 // Includes
 //---------------------------------------------------------------------------
 #include "view/NiHandViewer.h"
-#include "util/FileUtil.h"
-#include "util/ConstantsUtil.h"
+#include "../Commons/commons.hpp"
 
 //---------------------------------------------------------------------------
 // Defines

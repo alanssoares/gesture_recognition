@@ -22,9 +22,7 @@
 // Includes
 //---------------------------------------------------------------------------
 #include "NiHandTracker.h"
-#include "FileUtil.h"
 #include <cassert>
-
 
 using namespace xn;
 

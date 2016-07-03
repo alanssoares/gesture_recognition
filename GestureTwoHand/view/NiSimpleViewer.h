@@ -29,7 +29,6 @@
 #include <GL/glut.h>
 #include <GL/gl.h>
 #endif
-#include "../util/ConstantsUtil.h"
 #include "../gesture/Gesture.h"
 
 enum DisplayModes_e

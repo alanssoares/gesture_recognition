@@ -140,7 +140,7 @@ void
 HandViewer::drawCircle(XnPoint3D point, float radius)
 {
     m_depth.ConvertRealWorldToProjective(1, &point, &point);
-    ScalePoint(point, GL_WIN_SIZE_X, GL_WIN_SIZE_Y);
+    ScalePoint(point, GL_WIN_SIZE_Y, GL_WIN_SIZE_Y);
     
     glBegin(GL_TRIANGLE_FAN);
     
@@ -171,7 +171,7 @@ HandViewer::convertAndScale(vector<XnPoint3D> points){
     for(int i = 0; i < points.size(); i++){
         XnPoint3D point = points[i];
         m_depth.ConvertRealWorldToProjective(1, &point, &point);
-        ScalePoint(point, GL_WIN_SIZE_X, GL_WIN_SIZE_Y);
+        ScalePoint(point, GL_WIN_SIZE_Y, GL_WIN_SIZE_Y);
         newPoints.push_back(point);
     }
     return newPoints;

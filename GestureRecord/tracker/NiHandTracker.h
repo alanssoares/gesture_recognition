@@ -21,6 +21,7 @@
 #ifndef NI_HAND_TRACKER_H__
 #define NI_HAND_TRACKER_H__
 
+#include "../../Commons/commons.hpp"
 #include <XnCppWrapper.h>
 #include <XnHashT.h>
 
