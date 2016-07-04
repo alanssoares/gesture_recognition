@@ -13,3 +13,6 @@ considerando sempre a primeira detecção.
 - Considerações em relação ao método smoothMeanNeighboring
   * Deve-se tomar cuidado com a quantidade de pontos, pois a quantidade sempre será
   * reduzida em virtude da média.
+
+
+- O dataset da Microsoft contém arquivos em cada arquivo csv uma sequência ininterrupta de execuções de um gesto, sem a definição de quando uma execução inicia e termina. Tive que fazer um processo manual para separar as sequências. Para realizar tal tarefa foi necessário verificar a partir do Matlab (plotando um gráfico 2d) a frequência contínua das posições para identificar quando ele iniciava e terminava. Assim, com uma posição aproximada, foi possível separar as execuções do arquivo.
