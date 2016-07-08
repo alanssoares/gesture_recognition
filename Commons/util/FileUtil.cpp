@@ -111,7 +111,7 @@ FileUtil::saveTrack(){
         if(fileOut.is_open()){
             fileOut<<"gesture "<<m_NewGesture.name<<" hands "<<m_NewGesture.numHands<<std::endl;
             for(int j = 0; j < gesture.handOne.positions.size(); j++){
-                fileOut<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<std::endl;
+                fileOut<<"0.0 0.0 0.0 "<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<std::endl;
             }
         }
     } else if(m_NewGesture.numHands == 2){
@@ -121,11 +121,8 @@ FileUtil::saveTrack(){
         if(fileOut.is_open()){
             fileOut<<"gesture "<<m_NewGesture.name<<" hands "<<m_NewGesture.numHands<<std::endl;
             for(int j = 0; j < gesture.handOne.positions.size(); j++){
+                fileOut<<gesture.handTwo.positions[j].X<<" "<<gesture.handTwo.positions[j].Y<<" "<<gesture.handTwo.positions[j].Z<<" ";
                 fileOut<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<std::endl;
-            }
-            fileOut<<std::endl;
-            for(int j = 0; j < gesture.handTwo.positions.size(); j++){
-                fileOut<<gesture.handTwo.positions[j].X<<" "<<gesture.handTwo.positions[j].Y<<" "<<gesture.handTwo.positions[j].Z<<std::endl;
             }
         }
     }
@@ -157,6 +154,17 @@ FileUtil::getPointFile(const std::string str){
     return newPoint;
 }
 
+XnPoint3D
+FileUtil::getPointFile(const std::string str, const int i){
+    std::vector<std::string> coordinates;
+    XnPoint3D newPoint;
+    split(str, ' ', coordinates);
+    newPoint.X = atof(coordinates[i].c_str());
+    newPoint.Y = atof(coordinates[i + 1].c_str());
+    newPoint.Z = atof(coordinates[i + 2].c_str());
+    return newPoint;
+}
+
 void
 FileUtil::loadGestures(){
     std::ifstream file;
@@ -175,6 +183,8 @@ FileUtil::loadGestures(){
             }
         }
     }
+
+    PRINT("Total Templates - " << mGesturesTwoHands.size() + mGesturesOneHand.size());
 }
 
 void
@@ -182,31 +192,20 @@ FileUtil::extractGesture(std::vector<std::string> rows){
 
     if(rows.empty()) return;
 
-    bool isOneHand = false;
     std::vector<std::string> tokens;
     type_gesture newGesture;
-    size_t n = rows.size();
-    int i = 0;
     split(rows[0],' ', tokens);
     newGesture.name = tokens[1];
-    isOneHand = tokens[3].compare("1") == 0? true : false;
-
-    if(isOneHand){
-        for (i = 1; i < n; i++) {
-            newGesture.handOne.positions.push_back(getPointFile(rows[i]));
-        }
+    newGesture.numHands = atoi(tokens[3].c_str());
+    
+    for (int i = 1; i < rows.size(); i++) {
+        newGesture.handOne.positions.push_back(getPointFile(rows[i]));
+        newGesture.handTwo.positions.push_back(getPointFile(rows[i], 3));
+    }
+    
+    if(newGesture.numHands == 1){
         mGesturesOneHand.push_back(newGesture);
     } else {
-        i = 1;
-        //Get points of the hand one
-        while(!rows[i].empty()){
-            newGesture.handOne.positions.push_back(getPointFile(rows[i++]));
-        }
-        i++;
-        //Get points of the hand two
-        while(i < n && !rows[i].empty()){
-            newGesture.handTwo.positions.push_back(getPointFile(rows[i++]));
-        }
         mGesturesTwoHands.push_back(newGesture);
     }
 }

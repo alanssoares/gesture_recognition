@@ -129,6 +129,14 @@ public:
     XnPoint3D getPointFile(std::string str);
 
     /**
+     Return the XnPoint3D from a std::string with the x,y,z positions
+     @param std::string
+     @param int column initial
+     @return XnPoint3D
+    */
+    XnPoint3D getPointFile(const std::string str, const int i);
+
+    /**
      Return the template gestures of one hand
      @return std::vector<type_gesture>
     */
