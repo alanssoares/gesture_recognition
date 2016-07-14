@@ -276,7 +276,8 @@ FileUtil::saveAll(){
             gesture = mGesturesOneHand[i];
             fileOut<<"gesture "<<gesture.name<<" hands "<<gesture.numHands<<std::endl;
             for(int j = 0; j < gesture.handOne.positions.size(); j++){
-                fileOut<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<std::endl;
+                fileOut<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<" ";
+                fileOut<<gesture.handTwo.positions[j].X<<" "<<gesture.handTwo.positions[j].Y<<" "<<gesture.handTwo.positions[j].Z<<std::endl;
             }
             fileOut<<"end"<<std::endl;
         }
@@ -286,10 +287,7 @@ FileUtil::saveAll(){
             gesture = mGesturesTwoHands[i];
             fileOut<<"gesture "<<gesture.name<<" hands "<<gesture.numHands<<std::endl;
             for(int j = 0; j < gesture.handOne.positions.size(); j++){
-                fileOut<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<std::endl;
-            }
-            fileOut<<std::endl;
-            for(int j = 0; j < gesture.handTwo.positions.size(); j++){
+                fileOut<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<" ";
                 fileOut<<gesture.handTwo.positions[j].X<<" "<<gesture.handTwo.positions[j].Y<<" "<<gesture.handTwo.positions[j].Z<<std::endl;
             }
             fileOut<<"end"<<std::endl;

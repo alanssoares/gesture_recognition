@@ -126,22 +126,23 @@ Gesture::recognizeOneHand() {
     //Find the best match trajectory using DTW
     for (int i = 0; i < n; i++) {
         //Process the trajectory template
-        trajectoryComp = MathUtil::smoothAndReduce(MathUtil::normCenterOrigin(m_GesturesFromFileOneHand[i].handOne.positions));
+        trajectoryComp = MathUtil::smoothAndReduce(m_GesturesFromFileOneHand[i].handTwo.positions);
         //Compute the distance using dtw
         distance = MathUtil::computeDistanceBetweenTwoTrajectories(trajectoryComp, trajectoryHand);
         //Verify if the computed distance is lower that previous best
         if(distance < bestDistance){
             bestDistance = distance;
             gestureTemplate.name = m_GesturesFromFileOneHand[i].name;
-            gestureTemplate.handOne.positions = m_GesturesFromFileOneHand[i].handOne.positions;
+            gestureTemplate.handTwo.positions = m_GesturesFromFileOneHand[i].handTwo.positions;
         }
     }
+    PRINT("BD " << bestDistance);
     //Verify if the best distance is lower then the treshold
     if(bestDistance < MIN_DISTANCE_TRESHOLD){
         m_NameGestureRecognized = gestureTemplate.name;
         m_GesturePerformedA = MathUtil::normCenterOrigin(hand.positions);
-        m_GestureTemplateA = MathUtil::normCenterOrigin(gestureTemplate.handOne.positions);
-        m_GesturePerformedProcessedA = MathUtil::smoothAndReduce(MathUtil::normCenterOrigin(m_GesturePerformedA));
+        m_GestureTemplateA = gestureTemplate.handTwo.positions;
+        m_GesturePerformedProcessedA = MathUtil::smoothAndReduce(m_GesturePerformedA);
         m_TwoHandsRecognized = false;
     }
 
@@ -168,18 +169,18 @@ Gesture::recognizeTwoHands() {
     
     //Find the best match trajectory using DTW
     for (int i = 0; i < n; i++) {
-        trajCompRight = MathUtil::smoothAndReduce(MathUtil::normCenterOrigin(m_GesturesFromFileTwoHands[i].handOne.positions));
+        trajCompRight = MathUtil::smoothAndReduce(m_GesturesFromFileTwoHands[i].handTwo.positions);
         distanceA = MathUtil::computeDistanceBetweenTwoTrajectories(trajCompRight, rightHandPoints);
         if (distanceA < bestDistanceA){
             bestDistanceA = distanceA;
             gestureTemplate.name = m_GesturesFromFileTwoHands[i].name;
-            gestureTemplate.handOne.positions = m_GesturesFromFileTwoHands[i].handOne.positions;
+            gestureTemplate.handTwo.positions = m_GesturesFromFileTwoHands[i].handTwo.positions;
         }
-        trajCompLeft = MathUtil::smoothAndReduce(MathUtil::normCenterOrigin(m_GesturesFromFileTwoHands[i].handTwo.positions));
+        trajCompLeft = MathUtil::smoothAndReduce(m_GesturesFromFileTwoHands[i].handOne.positions);
         distanceB = MathUtil::computeDistanceBetweenTwoTrajectories(trajCompLeft, leftHandPoints);
         if (distanceB < bestDistanceB){
             bestDistanceB = distanceB;
-            gestureTemplate.handTwo.positions = m_GesturesFromFileTwoHands[i].handTwo.positions;
+            gestureTemplate.handOne.positions = m_GesturesFromFileTwoHands[i].handOne.positions;
         }
     }
 
@@ -187,12 +188,12 @@ Gesture::recognizeTwoHands() {
     if(bestDistanceA < MIN_DISTANCE_TRESHOLD &&
        bestDistanceB < MIN_DISTANCE_TRESHOLD){
         m_NameGestureRecognized = gestureTemplate.name;
-        m_GestureTemplateA = MathUtil::normCenterOrigin(gestureTemplate.handOne.positions);
+        m_GestureTemplateA = gestureTemplate.handTwo.positions;
         m_GesturePerformedA = MathUtil::normCenterOrigin(rightHand.positions);
-        m_GesturePerformedProcessedA = MathUtil::smoothAndReduce(MathUtil::normCenterOrigin(rightHand.positions));
-        m_GestureTemplateB = MathUtil::normCenterOrigin(gestureTemplate.handTwo.positions);
+        m_GesturePerformedProcessedA = MathUtil::smoothAndReduce(m_GesturePerformedA);
+        m_GestureTemplateB = gestureTemplate.handOne.positions;
         m_GesturePerformedB = MathUtil::normCenterOrigin(leftHand.positions);
-        m_GesturePerformedProcessedB = MathUtil::smoothAndReduce(MathUtil::normCenterOrigin(leftHand.positions));
+        m_GesturePerformedProcessedB = MathUtil::smoothAndReduce(m_GesturePerformedB);
         m_TwoHandsRecognized = true;
     }
     
