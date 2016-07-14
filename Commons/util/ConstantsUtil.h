@@ -99,7 +99,8 @@ typedef struct type_gesture {
 #define CHECK_RC_VOID(rc, message){ if(rc != XN_STATUS_OK){ printf(message, xnGetStatusString(rc)); return; }}
 /* Print the message in console */
 #define PRINT(message) { cout<<message<<endl; }
-
+/* Print the time needed to execute the method */
+#define TIME_METHOD_EXEC(method, start, stop) {PRINT("Method: "<<method<<", Time Execution: " << (stop-start)/double(CLOCKS_PER_SEC)*1000);}
 /* Receive a time to sleep */
 #define Sleep(t) usleep((t)*1000)
 /* Max number of hands to recognize */

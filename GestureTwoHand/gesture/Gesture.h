@@ -109,20 +109,6 @@ public:
      @param twoHandsGestures carregados de arquivo
      */
     void    setGesturesFromFile(const std::vector<type_gesture> oneHandGestures, const std::vector<type_gesture> twoHandsGestures);
-    
-    /*
-     Método responsável por aplicar os métodos de pré-processamento para suavizar a trajetória
-     e reduzir a quantidade de pontos usando a curvatura
-     @param trajectory do gesto
-    */
-    std::vector<XnPoint3D> smoothAndReduce(std::vector<XnPoint3D> trajectory);
-
-    /*
-     Método responsável por aplicar os métodos de pré-processamento para centralizar na origem,
-     normalizar no intervalo entre [-1...1] e suavizar a trajetória. A suavização depende do método escolhido.
-     @param trajectory do gesto
-    */
-    std::vector<XnPoint3D> normCenterOrigin(std::vector<XnPoint3D> trajectory);
 
     /**
      Verify if the left hand was moved and stoped

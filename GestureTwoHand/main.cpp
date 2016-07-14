@@ -46,13 +46,15 @@ int main(int argc, char* argv[])
 	XnStatus				rc;
 	xn::EnumerationErrors	errors;
     xn::Player              player;
+    FileUtil& futil = FileUtil::getInstance();
+    Gesture& gesture = Gesture::getInstance();
     
     //Read the params from args
     if(parse_command_line(argc, argv)) return 0;
     // Load the gestures data
-    FileUtil::getInstance().loadGestures();
+    futil.loadGestures();
     // Setter the gestures from file
-    Gesture::getInstance().setGesturesFromFile(FileUtil::getInstance().getGesturesOneHand(), FileUtil::getInstance().getGesturesTwoHands());
+    gesture.setGesturesFromFile(futil.getGesturesOneHand(), futil.getGesturesTwoHands());
     
     if(g_params.modeOnline){
         
@@ -82,7 +84,7 @@ int main(int argc, char* argv[])
     }
     
     //Copy the params to use in record
-    Gesture::getInstance().setParams(g_params);
+    gesture.setParams(g_params);
     
 	SimpleViewer& viewer = HandViewer::CreateInstance(g_context);
     

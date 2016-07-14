@@ -167,6 +167,8 @@ FileUtil::getPointFile(const std::string str, const int i){
 
 void
 FileUtil::loadGestures(){
+    int start_s = clock();
+
     std::ifstream file;
     std::string row;
     std::vector<std::string> rows;
@@ -183,7 +185,8 @@ FileUtil::loadGestures(){
             }
         }
     }
-
+    
+    TIME_METHOD_EXEC("loadGestures", start_s, clock());
     PRINT("Total Templates - " << mGesturesTwoHands.size() + mGesturesOneHand.size());
 }
 
