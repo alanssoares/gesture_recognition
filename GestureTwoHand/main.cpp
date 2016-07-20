@@ -51,6 +51,8 @@ int main(int argc, char* argv[])
     
     //Read the params from args
     if(parse_command_line(argc, argv)) return 0;
+    //Set file name samples
+    futil.m_FileNameSamples = g_params.fileSamples;
     // Load the gestures data
     futil.loadGestures();
     // Setter the gestures from file
@@ -111,6 +113,7 @@ int helpUsage()
     PRINT("options: ");
     PRINT("-m mode : Mode of the execution (offline or online). Default is 'offline'");
     PRINT("-f file : File name of the gesture. Default is 'Stream'");
+    PRINT("-s file : File name of samples");
     PRINT("");
     PRINT(" ------- Command controls ------- ");
     PRINT("q : Quit the application");
@@ -132,6 +135,7 @@ int parse_command_line(int argc, char* argv[]){
     g_params.modeOnline = false;
     g_params.fileImage = std::string("../StreamImage.oni");
     g_params.fileDepth = std::string("../StreamDepth.oni");
+    g_params.fileSamples = std::string("../Samples.txt");
 
     for(int i = 1; i < argc; i++) {
         if(argv[i][0] != '-') break;
@@ -148,6 +152,9 @@ int parse_command_line(int argc, char* argv[]){
             case 'f':
                 g_params.fileImage = std::string("../") + std::string(argv[i]) + std::string("Image.oni");
                 g_params.fileDepth = std::string("../") + std::string(argv[i]) + std::string("Depth.oni");
+                break;
+            case 's':
+                g_params.fileSamples = std::string("../") + std::string(argv[i]);
                 break;
             default:
                 PRINT("unknown option - "<< argv[i - 1][1]);

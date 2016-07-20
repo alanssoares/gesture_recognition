@@ -174,5 +174,6 @@ public:
     std::vector<type_gesture>   mGesturesOneHand;
     std::vector<type_gesture>   mGesturesTwoHands;
     std::string                 m_Root_dir;
+    std::string                 m_FileNameSamples;
 };
 #endif /* defined(__GestureTracking__FileUtil__) */

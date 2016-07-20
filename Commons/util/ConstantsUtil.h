@@ -24,6 +24,7 @@ typedef struct params {
     int modeOnline;
     std::string fileImage;
     std::string fileDepth;
+    std::string fileSamples;
     std::string name;
 } Params;
 

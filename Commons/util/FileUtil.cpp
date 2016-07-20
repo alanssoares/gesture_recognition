@@ -173,7 +173,7 @@ FileUtil::loadGestures(){
     std::string row;
     std::vector<std::string> rows;
     
-    file.open(NAME_FILE_DATA);
+    file.open(m_FileNameSamples);
     
     if(file.is_open()){
         while (std::getline(file, row)){
