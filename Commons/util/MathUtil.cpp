@@ -112,22 +112,18 @@ MathUtil::translateToOrigin(vector<XnPoint3D> positions){
 
 vector<XnPoint3D>
 MathUtil::normalizeTrajectory(vector<XnPoint3D> positions){
-    double desiredMin = -1.0;
-    double desiredMax = 1.0;
-    double desiredRange = desiredMax - desiredMin;
-    size_t n = positions.size();
-
     XnPoint3D minPos = minValueXYZ(positions);
     XnPoint3D maxPos = maxValueXYZ(positions);
-    
     XnPoint3D originalRange = subtract(maxPos, minPos);
-    
+    const double desiredMin = -1.0;
+    const double desiredMax = 1.0;
+    double desiredRange = desiredMax - desiredMin;
+    size_t n = positions.size();
     for(int i = 0; i < n; i++) {
         positions[i].X = desiredRange * (positions[i].X - minPos.X)/ originalRange.X + desiredMin;
         positions[i].Y = desiredRange * (positions[i].Y - minPos.Y)/ originalRange.Y + desiredMin;
         positions[i].Z = desiredRange * (positions[i].Z - minPos.Z)/ originalRange.Z + desiredMin;
     }
-    
     return positions;
 }
 
@@ -138,7 +134,6 @@ MathUtil::minValueXYZ(vector<XnPoint3D> positions){
     minPos.X = 99999999;
     minPos.Y = 99999999;
     minPos.Z = 99999999;
-    
     for(int i = 0; i < n; i++) {
         if(positions[i].X < minPos.X) minPos.X = positions[i].X;
         if(positions[i].Y < minPos.Y) minPos.Y = positions[i].Y;

@@ -136,7 +136,7 @@ Gesture::recognizeOneHand() {
             gestureTemplate.handTwo.positions = m_GesturesFromFileOneHand[i].handTwo.positions;
         }
     }
-    PRINT("BD " << bestDistance);
+    
     //Verify if the best distance is lower then the treshold
     if(bestDistance < MIN_DISTANCE_TRESHOLD){
         m_NameGestureRecognized = gestureTemplate.name;

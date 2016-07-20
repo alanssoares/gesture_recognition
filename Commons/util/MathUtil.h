@@ -94,7 +94,10 @@ public:
     static XnPoint3D maxValueXYZ(vector<XnPoint3D> positions);
     
     /**
-     Método responsável por normalizar a trajetória no intervalo de -1 a 1.
+     Método responsável por normalizar a trajetória no intervalo de -1 a 1
+        newvalue= (max'-min')/(max-min)*(value-max)+max'
+        or 
+        newvalue= (max'-min')/(max-min)*(value-min)+min'.
      @param positions da trajetória
      @return vector<XnPoint3D> normalizado
      */
