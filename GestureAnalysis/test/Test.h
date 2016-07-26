@@ -2,19 +2,25 @@
 #define TEST_H__
 
 #include "../../Commons/commons.hpp"
+#include "gesture/gesture.h"
 
 class Test {
 
 public:
-	Test(){};
-	~Test(){};
+	Test();
+	~Test();
+
+	void loadAll();
+	void clearAll();
+	void splitDataset();
+	void initializeGestureTemplates();
 
 	void init();
 	void execute();
 	void saveResults();
 
 	// Sort Container by name function
-	bool sortByName(const type_gesture g1, const type_gesture g2) { return g1.name < g2.name; }
+	static bool sortByName(const type_gesture g1, const type_gesture g2) { return g1.name < g2.name; }
 
 	/**
 		Pré-requisitos:
@@ -41,11 +47,14 @@ public:
 	*/
 	void experiment2();
 
+	void improveGestures();
+
 private:
 	std::vector<type_gesture> m_GesturesTemplate;
 	std::vector<type_gesture> m_GesturesTest;
 	std::vector<type_gesture> m_AllGestures;
-	
+
+	float m_PercentTest;
 };
 
 #endif //TEST_H__

@@ -17,6 +17,7 @@ FileUtil::FileUtil() {
     m_StartingStorage = false;
     m_NewGesture.handOne.id_hand = NOT_HAND;
     m_NewGesture.handTwo.id_hand = NOT_HAND;
+    m_FileNameSamples = "../Samples.txt";
 }
 
 FileUtil::~FileUtil(){}
