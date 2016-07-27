@@ -205,21 +205,31 @@ Test::generateMedianGestures(){
 	while(i < n){
 		j = i + 1;
 		while(m_AllGestures[i].name.compare(m_AllGestures[j].name) == 0) j++;
-		int numPts = m_AllGestures[i].handOne.positions.size();
-		for(int k = i; k < j; k++){
-			m_MedianGestures.push_back(resampleGesture(m_AllGestures[k], numPts));
-		}
+		m_MedianGestures.push_back(resampleGesture(i, j));
+		i = j;
 	}
 }
 
 type_gesture
-Test::resampleGesture(type_gesture gesture, const int numPts){
-	size_t n = gesture.handOne.positions.size();
-	int diff = abs(numPts - n);
-	if(n < numPts){
-		
-	} else if(n > numPts) {
-		
+Test::resampleGesture(const int initGesture, const int endGesture){
+	type_gesture medianGesture = m_AllGestures[initGesture];
+	int n = medianGesture.handOne.positions.size();
+	int diff = 0;
+	
+	for(int i = initGesture + 1; i < endGesture; i++){
+		diff = n - m_AllGestures[i].handOne.positions.size();
+		if(diff > 0){
+			m_AllGestures[i].handOne.positions = inserePositions(m_AllGestures[i].handOne.positions, diff);
+			m_AllGestures[i].handTwo.positions = inserePositions(m_AllGestures[i].handTwo.positions, diff);
+		} else if(diff < 0) {
+			m_AllGestures[i].handOne.positions = removePositions(m_AllGestures[i].handOne.positions, diff);
+			m_AllGestures[i].handTwo.positions = removePositions(m_AllGestures[i].handTwo.positions, diff);
+		}
+		for(int j = 0; j < n; j++){
+			medianGesture.handOne.positions[j] = MathUtil::sum(medianGesture.handOne.positions[j], m_AllGestures[j].handOne.positions);
+			medianGesture.handTwo.positions[j] = MathUtil::sum(medianGesture.handTwo.positions[j], m_AllGestures[i].handTwo.positions);
+		}
 	}
-	return gesture;
+	
+	return medianGesture;
 }
