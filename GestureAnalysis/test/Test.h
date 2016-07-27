@@ -25,6 +25,7 @@ public:
 	void recognizeTwoHands(const type_gesture gesture);
 
 	void generateMedianGestures();
+	type_gesture resampleGesture(type_gesture gesture, const int numPts);
 	
 	/**
 		Pré-requisitos:
@@ -54,6 +55,7 @@ public:
 	void improveGestures();
 
 private:
+	std::vector<type_gesture> m_MedianGestures;
 	std::vector<type_gesture> m_GesturesTemplate;
 	std::vector<type_gesture> m_GesturesTest;
 	std::vector<type_gesture> m_AllGestures;
