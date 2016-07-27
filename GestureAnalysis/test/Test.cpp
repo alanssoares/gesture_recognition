@@ -197,3 +197,29 @@ Test::improveGestures(){
 
     fileUtil.saveAll();
 }
+
+void
+Test::generateMedianGestures(){
+	size_t n = m_AllGestures.size();
+	int j = 0, i = 0, numTests = 0;
+	while(i < n){
+		j = i + 1;
+		while(m_AllGestures[i].name.compare(m_AllGestures[j].name) == 0) j++;
+		int numPts = m_AllGestures[i].handOne.positions.size();
+		for(int k = i; k < j; k++){
+			m_MedianGestures.push_back(resampleGesture(m_AllGestures[k], numPts));
+		}
+	}
+}
+
+type_gesture
+Test::resampleGesture(type_gesture gesture, const int numPts){
+	size_t n = gesture.handOne.positions.size();
+	int diff = abs(numPts - n);
+	if(n < numPts){
+		
+	} else if(n > numPts) {
+		
+	}
+	return gesture;
+}
