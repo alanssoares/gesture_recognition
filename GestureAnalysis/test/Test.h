@@ -2,13 +2,15 @@
 #define TEST_H__
 
 #include "../../Commons/commons.hpp"
-#include "gesture/gesture.h"
 
 class Test {
 
 public:
 	Test();
 	~Test();
+
+	// Sort Container by name function
+	static bool sortByName(const type_gesture g1, const type_gesture g2) { return g1.name < g2.name; }
 
 	void loadAll();
 	void clearAll();
@@ -19,8 +21,8 @@ public:
 	void execute();
 	void saveResults();
 
-	// Sort Container by name function
-	static bool sortByName(const type_gesture g1, const type_gesture g2) { return g1.name < g2.name; }
+    void recognizeOneHand(const type_gesture gesture);
+    void recognizeTwoHands(const type_gesture gesture);
 
 	/**
 		Pré-requisitos:
@@ -53,7 +55,12 @@ private:
 	std::vector<type_gesture> m_GesturesTemplate;
 	std::vector<type_gesture> m_GesturesTest;
 	std::vector<type_gesture> m_AllGestures;
-
+    
+    std::string m_NameGestureRecognized;
+    
+    std::vector<type_gesture> m_GesturesFromFileOneHand;
+    std::vector<type_gesture> m_GesturesFromFileTwoHands;
+	
 	float m_PercentTest;
 };
 

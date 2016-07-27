@@ -64,6 +64,7 @@ void
 Test::initializeGestureTemplates(){
 	std::vector<type_gesture> oneHand, twoHands;
 	size_t n = m_GesturesTemplate.size();
+	
 	for (int i = 0; i < n; i++){
 		if(m_GesturesTemplate[i].numHands == 1){
 			oneHand.push_back(m_GesturesTemplate[i]);
@@ -71,12 +72,14 @@ Test::initializeGestureTemplates(){
 			twoHands.push_back(m_GesturesTemplate[i]);
 		}
 	}
-	Gesture::getInstance().setGesturesFromFile(oneHand, twoHands);
+	
+	m_GesturesFromFileOneHand = oneHand;
+    m_GesturesFromFileTwoHands = twoHands;
 }
 
 void 
 Test::execute(){
-
+	experiment1();
 }
 
 void
@@ -86,12 +89,96 @@ Test::saveResults(){
 
 void 
 Test::experiment1(){
-
+	size_t n = m_GesturesTest.size();
+	for (int i = 0; i < n; i++){
+		if(m_GesturesTest[i].numHands == 1){
+			recognizeOneHand(m_GesturesTest[i]);
+		} else {
+			recognizeTwoHands(m_GesturesTest[i]);
+		}
+	}
 }
 
 void 
 Test::experiment2(){
 
+}
+
+void
+Test::recognizeOneHand(const type_gesture gesture) {
+    int start_s = clock();
+
+    std::vector<XnPoint3D> trajectoryHand, trajectoryComp;
+    double distance = 0.0, bestDistance = 999999999;
+    type_gesture gestureTemplate;
+    size_t n = m_GesturesFromFileOneHand.size();
+
+    //Process the trajectory from user
+    trajectoryHand = MathUtil::smoothAndReduce(MathUtil::normCenterOrigin(gesture.handTwo.positions));
+    //Find the best match trajectory using DTW
+    for (int i = 0; i < n; i++) {
+        //Process the trajectory template
+        trajectoryComp = MathUtil::smoothAndReduce(m_GesturesFromFileOneHand[i].handTwo.positions);
+        //Compute the distance using dtw
+        distance = MathUtil::computeDistanceBetweenTwoTrajectories(trajectoryComp, trajectoryHand);
+        //Verify if the computed distance is lower that previous best
+        if(distance < bestDistance){
+            bestDistance = distance;
+            gestureTemplate.name = m_GesturesFromFileOneHand[i].name;
+            gestureTemplate.handTwo.positions = m_GesturesFromFileOneHand[i].handTwo.positions;
+        }
+    }
+    
+    //Verify if the best distance is lower then the treshold
+    if(bestDistance < MIN_DISTANCE_TRESHOLD){
+        m_NameGestureRecognized = gestureTemplate.name;
+    }
+
+    TIME_METHOD_EXEC("recognizeOneHand", start_s, clock());
+}
+
+void
+Test::recognizeTwoHands(const type_gesture gesture) {
+    int start_s = clock();
+
+    type_hand leftHand, rightHand;
+    std::vector<XnPoint3D> leftHandPoints, rightHandPoints, trajCompLeft, trajCompRight;
+    type_gesture gestureTemplate;
+    double distanceA = 0.0, distanceB = 0.0, bestDistanceB = 999999999, bestDistanceA = 999999999;
+    size_t n = m_GesturesFromFileTwoHands.size();
+
+    //Initialize the left and right hand according
+    leftHand = gesture.handOne;
+    rightHand = gesture.handTwo;
+
+    //Process the trajectories
+    rightHandPoints = MathUtil::smoothAndReduce(MathUtil::normCenterOrigin(rightHand.positions));
+    leftHandPoints = MathUtil::smoothAndReduce(MathUtil::normCenterOrigin(leftHand.positions));
+    
+    //Find the best match trajectory using DTW
+    for (int i = 0; i < n; i++) {
+        trajCompRight = MathUtil::smoothAndReduce(m_GesturesFromFileTwoHands[i].handTwo.positions);
+        distanceA = MathUtil::computeDistanceBetweenTwoTrajectories(trajCompRight, rightHandPoints);
+        if (distanceA < bestDistanceA){
+            bestDistanceA = distanceA;
+            gestureTemplate.name = m_GesturesFromFileTwoHands[i].name;
+            gestureTemplate.handTwo.positions = m_GesturesFromFileTwoHands[i].handTwo.positions;
+        }
+        trajCompLeft = MathUtil::smoothAndReduce(m_GesturesFromFileTwoHands[i].handOne.positions);
+        distanceB = MathUtil::computeDistanceBetweenTwoTrajectories(trajCompLeft, leftHandPoints);
+        if (distanceB < bestDistanceB){
+            bestDistanceB = distanceB;
+            gestureTemplate.handOne.positions = m_GesturesFromFileTwoHands[i].handOne.positions;
+        }
+    }
+
+    //Verify if the best distance is lower then the treshold
+    if(bestDistanceA < MIN_DISTANCE_TRESHOLD &&
+       bestDistanceB < MIN_DISTANCE_TRESHOLD){
+        m_NameGestureRecognized = gestureTemplate.name;
+    }
+    
+    TIME_METHOD_EXEC("recognizeTwoHands", start_s, clock());
 }
 
 void
