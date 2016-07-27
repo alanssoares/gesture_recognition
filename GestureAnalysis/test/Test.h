@@ -21,9 +21,11 @@ public:
 	void execute();
 	void saveResults();
 
-    void recognizeOneHand(const type_gesture gesture);
-    void recognizeTwoHands(const type_gesture gesture);
+	void recognizeOneHand(const type_gesture gesture);
+	void recognizeTwoHands(const type_gesture gesture);
 
+	void generateMedianGestures();
+	
 	/**
 		Pré-requisitos:
 		- Normalizado
@@ -56,10 +58,9 @@ private:
 	std::vector<type_gesture> m_GesturesTest;
 	std::vector<type_gesture> m_AllGestures;
     
-    std::string m_NameGestureRecognized;
-    
-    std::vector<type_gesture> m_GesturesFromFileOneHand;
-    std::vector<type_gesture> m_GesturesFromFileTwoHands;
+	std::string m_NameGestureRecognized;
+	std::vector<type_gesture> m_GesturesFromFileOneHand;
+	std::vector<type_gesture> m_GesturesFromFileTwoHands;
 	
 	float m_PercentTest;
 };
