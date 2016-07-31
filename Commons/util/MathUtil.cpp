@@ -30,6 +30,15 @@ MathUtil::normalize(XnPoint3D point) {
     return point;
 }
 
+XnPoint3D
+MathUtil::sum(XnPoint3D a, XnPoint3D b) {
+    XnPoint3D c;
+    c.X = a.X + b.X;
+    c.Y = a.Y + b.Y;
+    c.Z = a.Z + b.Z;
+    return c;
+}
+
 double
 MathUtil::getAngleBetween2Points(XnPoint3D a, XnPoint3D b){
     double mU, mV, mUV, uv, angle;

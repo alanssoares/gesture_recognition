@@ -207,10 +207,13 @@ FileUtil::extractGesture(std::vector<std::string> rows){
         newGesture.handTwo.positions.push_back(getPointFile(rows[i], 3));
     }
     
-    if(newGesture.numHands == 1){
-        mGesturesOneHand.push_back(newGesture);
-    } else {
-        mGesturesTwoHands.push_back(newGesture);
+    if(newGesture.handOne.positions.size() > 0 &&
+        newGesture.handTwo.positions.size() > 0) {
+        if(newGesture.numHands == 1){
+            mGesturesOneHand.push_back(newGesture);
+        } else {
+            mGesturesTwoHands.push_back(newGesture);
+        }
     }
 }
 

@@ -252,6 +252,14 @@ public:
      @return distance
     */
     static double computeDistanceBetweenTwoTrajectories(std::vector<XnPoint3D> A, std::vector<XnPoint3D> B);
+
+    /*
+     Method that sum two vector3f
+     @param a as XnPoint3D
+     @param b as XnPoint3D
+     @return XnPoint3D
+    */
+    static XnPoint3D sum(XnPoint3D a, XnPoint3D b);
 };
 
 #endif /* defined(__GestureTracking__MathUtil__) */

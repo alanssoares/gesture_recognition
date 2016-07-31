@@ -25,8 +25,10 @@ public:
 	void recognizeTwoHands(const type_gesture gesture);
 
 	void generateMedianGestures();
-	type_gesture resampleGesture(type_gesture gesture, const int numPts);
-	
+	int getMeanPoints(vector<type_gesture> gestures, int i, int j);
+	type_gesture resampleGesture(int k, int p);
+	std::vector<XnPoint3D> inserePositions(std::vector<XnPoint3D> points, int diff);
+	std::vector<XnPoint3D> removePositions(std::vector<XnPoint3D> points, int diff);
 	/**
 		Pré-requisitos:
 		- Normalizado
