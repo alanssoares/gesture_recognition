@@ -39,6 +39,15 @@ MathUtil::sum(XnPoint3D a, XnPoint3D b) {
     return c;
 }
 
+XnPoint3D
+MathUtil::interpolate(XnPoint3D a, XnPoint3D b, float t){
+    XnPoint3D c;
+    c.X = a.X * (1 - t) + b.X * t;
+    c.Y = a.Y * (1 - t) + b.Y * t;
+    c.Z = a.Z * (1 - t) + b.Z * t;
+    return c;
+}
+
 double
 MathUtil::getAngleBetween2Points(XnPoint3D a, XnPoint3D b){
     double mU, mV, mUV, uv, angle;

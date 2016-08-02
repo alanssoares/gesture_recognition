@@ -173,13 +173,13 @@ Test::generateMedianGestures(){
 		while(m_AllGestures[i].name.compare(m_AllGestures[j].name) == 0) j++;
 		m_MedianGestures.push_back(resampleGesture(i, j));
 	}
-/*
-	PRINT(m_MedianGestures[0].name);
-	for (int i = 0; i < m_MedianGestures[0].handOne.positions.size(); i++){
-		PRINT(m_MedianGestures[0].handOne.positions[i].X << " " << m_MedianGestures[0].handOne.positions[i].Y <<" "<<m_MedianGestures[0].handOne.positions[i].Z
-			<<" "<<m_MedianGestures[0].handTwo.positions[i].X << " " << m_MedianGestures[0].handTwo.positions[i].Y <<" "<<m_MedianGestures[0].handTwo.positions[i].Z);
+
+	int x = 3;
+	PRINT(m_MedianGestures[x].name);
+	for (int i = 0; i < m_MedianGestures[x].handOne.positions.size(); i++){
+		PRINT(m_MedianGestures[x].handOne.positions[i].X << " " << m_MedianGestures[x].handOne.positions[i].Y <<" "<<m_MedianGestures[x].handOne.positions[i].Z <<" "<<
+		m_MedianGestures[x].handTwo.positions[i].X << " " << m_MedianGestures[x].handTwo.positions[i].Y <<" "<<m_MedianGestures[x].handTwo.positions[i].Z);
 	}
-*/	
 }
 
 type_gesture
@@ -187,10 +187,8 @@ Test::resampleGesture(int k, int p){
 	const int n = getMeanPoints(m_AllGestures, k, p);
 	const int m = (p - k) > 0? (p - k) : 1;
 	type_gesture medianGesture = m_AllGestures[k];
-
-	//PRINT(" Name " << medianGesture.name<< " M " << m << " N " << n << " K " << k << " P " << p);
-
 	int diff = 0;
+
 	for(int i = k; i < p; i++){
 		
 		diff = n - m_AllGestures[i].handOne.positions.size();
@@ -204,7 +202,7 @@ Test::resampleGesture(int k, int p){
 
 		if(i == k){
 			medianGesture.handOne.positions = m_AllGestures[i].handOne.positions;
-			medianGesture.handTwo.positions = m_AllGestures[i].handOne.positions;
+			medianGesture.handTwo.positions = m_AllGestures[i].handTwo.positions;
 		} else {
 			for(int j = 0; j < n; j++){
 				medianGesture.handOne.positions[j] = MathUtil::sum(medianGesture.handOne.positions[j], m_AllGestures[i].handOne.positions[j]);
@@ -228,8 +226,22 @@ Test::resampleGesture(int k, int p){
 
 std::vector<XnPoint3D> 
 Test::inserePositions(std::vector<XnPoint3D> points, int diff){
+	int i, n, index = -1;
+	double dist = 0.0, max = 0.0;
+	XnPoint3D newPoint;
 	while(diff > 0){
-		points.push_back(points[points.size() - 1]);
+		n = points.size();
+		for (i = 1; i < n; i++){
+			dist = MathUtil::getDistancePointToPoint(points[i], points[i - 1]);
+			if(dist > max){
+				max = dist;
+				index = i;
+			}
+		}
+		newPoint = MathUtil::interpolate(points[index], points[index + 1], 0.5);
+		points.insert(points.begin() + index, newPoint);
+		max = 0.0;
+		index = -1;
 		diff--;
 	}
 	return points;
@@ -237,8 +249,20 @@ Test::inserePositions(std::vector<XnPoint3D> points, int diff){
 
 std::vector<XnPoint3D> 
 Test::removePositions(std::vector<XnPoint3D> points, int diff){
+	int i, n, index = -1;
+	double dist = 0.0, min = 99999999;
 	while(diff < 0){
-		points.erase(points.begin());
+		n = points.size();
+		for (i = 1; i < n; i++){
+			dist = MathUtil::getDistancePointToPoint(points[i], points[i - 1]);
+			if(dist < min){
+				min = dist;
+				index = i;
+			}
+		}
+		points.erase(points.begin() + index);
+		min = 99999999;
+		index = -1;
 		diff++;
 	}
 	return points;
@@ -246,7 +270,7 @@ Test::removePositions(std::vector<XnPoint3D> points, int diff){
 
 int
 Test::getMeanPoints(vector<type_gesture> gestures, int i, int j){
-    size_t max = 0, min = 99999999, n;
+    int max = 0, min = 99999999, n;
     for( ; i < j; i++){
     	n = gestures[i].handOne.positions.size();
         if(max < n){

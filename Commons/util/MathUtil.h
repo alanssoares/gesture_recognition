@@ -93,6 +93,15 @@ public:
      */
     static XnPoint3D maxValueXYZ(vector<XnPoint3D> positions);
     
+    /*
+     Método que calcula a interpolação linear entre dois pontos
+     @param a ponto
+     @param b ponto
+     @param t instante
+     @return XnPoint3D resultado da interpolação
+    */
+    static XnPoint3D interpolate(XnPoint3D a, XnPoint3D b, float t = 0.5);
+
     /**
      Método responsável por normalizar a trajetória no intervalo de -1 a 1
         newvalue= (max'-min')/(max-min)*(value-max)+max'
