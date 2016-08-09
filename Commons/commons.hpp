@@ -14,4 +14,5 @@
 #include "util/FileUtil.h"
 #include "util/MathUtil.h"
 
+#include <algorithm>
 #include <ctime>
