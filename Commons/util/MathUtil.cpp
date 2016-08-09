@@ -40,11 +40,16 @@ MathUtil::sum(XnPoint3D a, XnPoint3D b) {
 }
 
 XnPoint3D
-MathUtil::interpolate(XnPoint3D a, XnPoint3D b, float t){
+MathUtil::interpolate(XnPoint3D p0, XnPoint3D p1, float t){
     XnPoint3D c;
-    c.X = a.X * (1 - t) + b.X * t;
-    c.Y = a.Y * (1 - t) + b.Y * t;
-    c.Z = a.Z * (1 - t) + b.Z * t;
+    
+    if(t > 1.f) t = 1.f;
+    if(t < 0.f) t = 0.f;
+
+    c.X = (1 - t) * p0.X + t * p1.X;
+    c.Y = (1 - t) * p0.Y + t * p1.Y;
+    c.Z = (1 - t) * p0.Z + t * p1.Z;
+
     return c;
 }
 
@@ -419,4 +424,50 @@ MathUtil::computeDistanceBetweenTwoTrajectories(std::vector<XnPoint3D> trajector
 bool
 MathUtil::pointsEqual(XnPoint3D p1, XnPoint3D p2){
     return p1.X == p2.X && p1.Y == p2.Y && p1.Z == p2.Z;
+}
+
+void
+MathUtil::insertPoints(std::vector<XnPoint3D> *points, int diff){
+    int i, n, index = -1;
+    float dist = 0.0, max = 0.0;
+    XnPoint3D newPoint;
+    while(diff > 0){
+        n = points->size();
+        for (i = 1; i < n; i++){
+            dist = MathUtil::getDistancePointToPoint(points->at(i - 1), points->at(i));
+            if(dist > max){
+                max = dist;
+                index = i;
+            }
+        }
+        if(index >= 0 && index + 1 < n){
+            newPoint = MathUtil::interpolate(points->at(index), points->at(index + 1), 0.5);
+            points->insert(points->begin(), newPoint);
+        }
+        max = 0.0;
+        index = -1;
+        diff--;
+    }
+}
+
+void
+MathUtil::removePoints(std::vector<XnPoint3D> *points, int diff){
+    int i, n, index = -1;
+    float dist = 0.0, min = 99999999;
+    while(diff < 0){
+        n = points->size();
+        for (i = 1; i < n; i++){
+            dist = MathUtil::getDistancePointToPoint(points->at(i - 1), points->at(i));
+            if(dist < min){
+                min = dist;
+                index = i;
+            }
+        }
+        if(index >= 0 && index + 1 < n){
+            points->erase(points->begin() + index);
+        }
+        min = 99999999;
+        index = -1;
+        diff++;
+    }
 }

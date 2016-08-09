@@ -9,8 +9,10 @@ int main(int argc, char* argv[])
     Test test;
     
     test.init();
-    test.execute();
-    test.saveResults();
-
+    //test.execute();
+    //test.saveResults();
+    test.generateMedianGesture();
+    //test.improveGestures();
+    
 	return 0;
 }

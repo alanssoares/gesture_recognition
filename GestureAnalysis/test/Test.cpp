@@ -29,7 +29,6 @@ Test::loadAll(){
 	for (int i = 0; i < futil.mGesturesTwoHands.size(); i++){
 		m_AllGestures.push_back(futil.mGesturesTwoHands[i]);
 	}
-	//Sort by gesture name
 	std::sort(m_AllGestures.begin(), m_AllGestures.end(), sortByName);
 }
 
@@ -166,106 +165,65 @@ Test::recognizeTwoHands(const type_gesture gesture) {
 }
 
 void
-Test::generateMedianGestures(){
-	size_t n = m_AllGestures.size();
-	for(int i = 0, j = 0; i < n; i = j){
+Test::generateMedianGesture(){
+	size_t n = m_AllGestures.size(), i = 0, j = 0;
+	generateGestureEqualSize();
+	while(j < n){
 		j = i + 1;
 		while(m_AllGestures[i].name.compare(m_AllGestures[j].name) == 0) j++;
-		m_MedianGestures.push_back(resampleGesture(i, j));
+		m_MedianGestures.push_back(getMeanGesture(i, j - 1));
+		i = j;
 	}
+	printGesture(m_MedianGestures[1]);
+}
 
-	int x = 3;
-	PRINT(m_MedianGestures[x].name);
-	for (int i = 0; i < m_MedianGestures[x].handOne.positions.size(); i++){
-		PRINT(m_MedianGestures[x].handOne.positions[i].X << " " << m_MedianGestures[x].handOne.positions[i].Y <<" "<<m_MedianGestures[x].handOne.positions[i].Z <<" "<<
-		m_MedianGestures[x].handTwo.positions[i].X << " " << m_MedianGestures[x].handTwo.positions[i].Y <<" "<<m_MedianGestures[x].handTwo.positions[i].Z);
+void
+Test::generateGestureEqualSize(){
+	int n = m_AllGestures.size(), i = 0, j = 0, mean = 0, diff = 0;
+	while(j < n){
+		j = i + 1;
+		while(m_AllGestures[i].name.compare(m_AllGestures[j].name) == 0) j++;
+		mean = getMeanPoints(m_AllGestures, i, j - 1);
+		for(int k = i; k < j - 1; k++){
+			diff = mean - m_AllGestures[k].handOne.positions.size();
+			if(diff > 0){
+				MathUtil::insertPoints(&m_AllGestures[k].handOne.positions, diff);
+				MathUtil::insertPoints(&m_AllGestures[k].handTwo.positions, diff);
+			} else if(diff < 0) {
+				MathUtil::removePoints(&m_AllGestures[k].handOne.positions, diff);
+				MathUtil::removePoints(&m_AllGestures[k].handTwo.positions, diff);
+			}
+		}
+		i = j;
 	}
 }
 
 type_gesture
-Test::resampleGesture(int k, int p){
-	const int n = getMeanPoints(m_AllGestures, k, p);
-	const int m = (p - k) > 0? (p - k) : 1;
+Test::getMeanGesture(const int k, const int p){
+	const size_t n = m_AllGestures[k].handOne.positions.size();
 	type_gesture medianGesture = m_AllGestures[k];
-	int diff = 0;
 
-	for(int i = k; i < p; i++){
-		
-		diff = n - m_AllGestures[i].handOne.positions.size();
-		if(diff > 0){
-			m_AllGestures[i].handOne.positions = inserePositions(m_AllGestures[i].handOne.positions, diff);
-			m_AllGestures[i].handTwo.positions = inserePositions(m_AllGestures[i].handTwo.positions, diff);
-		} else if(diff < 0) {
-			m_AllGestures[i].handOne.positions = removePositions(m_AllGestures[i].handOne.positions, diff);
-			m_AllGestures[i].handTwo.positions = removePositions(m_AllGestures[i].handTwo.positions, diff);
-		}
+	for(int i = k + 1; i < p; i++){
+		for(int j = 0; j < n; j++){
+			XnPoint3D c = MathUtil::sum(medianGesture.handOne.positions[j], m_AllGestures[i].handOne.positions[j]);
+			//PRINT("x1 " << medianGesture.handOne.positions[j].X <<" x2 " << m_AllGestures[i].handOne.positions[j].X << " sum " << c.X);
+			medianGesture.handOne.positions[j] = MathUtil::sum(medianGesture.handOne.positions[j], m_AllGestures[i].handOne.positions[j]);
+			medianGesture.handTwo.positions[j] = MathUtil::sum(medianGesture.handTwo.positions[j], m_AllGestures[i].handTwo.positions[j]);
 
-		if(i == k){
-			medianGesture.handOne.positions = m_AllGestures[i].handOne.positions;
-			medianGesture.handTwo.positions = m_AllGestures[i].handTwo.positions;
-		} else {
-			for(int j = 0; j < n; j++){
-				medianGesture.handOne.positions[j] = MathUtil::sum(medianGesture.handOne.positions[j], m_AllGestures[i].handOne.positions[j]);
-				medianGesture.handTwo.positions[j] = MathUtil::sum(medianGesture.handTwo.positions[j], m_AllGestures[i].handTwo.positions[j]);
-			}
 		}
 	}
-
+/*
 	for(int i = 0; i < n; i++){
-		medianGesture.handOne.positions[i].X = medianGesture.handOne.positions[i].X / n;
-		medianGesture.handOne.positions[i].Y = medianGesture.handOne.positions[i].Y / n;
-		medianGesture.handOne.positions[i].Z = medianGesture.handOne.positions[i].Z / n;
-
-		medianGesture.handTwo.positions[i].X = medianGesture.handTwo.positions[i].X / n;
-		medianGesture.handTwo.positions[i].Y = medianGesture.handTwo.positions[i].Y / n;
-		medianGesture.handTwo.positions[i].Z = medianGesture.handTwo.positions[i].Z / n;
+		medianGesture.handOne.positions[i].X = (float)medianGesture.handOne.positions[i].X / (float)n;
+		medianGesture.handOne.positions[i].Y = (float)medianGesture.handOne.positions[i].Y / (float)n;
+		medianGesture.handOne.positions[i].Z = (float)medianGesture.handOne.positions[i].Z / (float)n;
+		
+		medianGesture.handTwo.positions[i].X = (float)medianGesture.handTwo.positions[i].X / (float)n;
+		medianGesture.handTwo.positions[i].Y = (float)medianGesture.handTwo.positions[i].Y / (float)n;
+		medianGesture.handTwo.positions[i].Z = (float)medianGesture.handTwo.positions[i].Z / (float)n;
 	}
-
+*/
 	return medianGesture;
-}
-
-std::vector<XnPoint3D> 
-Test::inserePositions(std::vector<XnPoint3D> points, int diff){
-	int i, n, index = -1;
-	double dist = 0.0, max = 0.0;
-	XnPoint3D newPoint;
-	while(diff > 0){
-		n = points.size();
-		for (i = 1; i < n; i++){
-			dist = MathUtil::getDistancePointToPoint(points[i], points[i - 1]);
-			if(dist > max){
-				max = dist;
-				index = i;
-			}
-		}
-		newPoint = MathUtil::interpolate(points[index], points[index + 1], 0.5);
-		points.insert(points.begin() + index, newPoint);
-		max = 0.0;
-		index = -1;
-		diff--;
-	}
-	return points;
-}
-
-std::vector<XnPoint3D> 
-Test::removePositions(std::vector<XnPoint3D> points, int diff){
-	int i, n, index = -1;
-	double dist = 0.0, min = 99999999;
-	while(diff < 0){
-		n = points.size();
-		for (i = 1; i < n; i++){
-			dist = MathUtil::getDistancePointToPoint(points[i], points[i - 1]);
-			if(dist < min){
-				min = dist;
-				index = i;
-			}
-		}
-		points.erase(points.begin() + index);
-		min = 99999999;
-		index = -1;
-		diff++;
-	}
-	return points;
 }
 
 int
@@ -295,23 +253,32 @@ Test::improveGestures(){
     for (int i = 0; i < n1; i++){
         //PRINT("A[" << i << "] - Before : " << fileUtil.mGesturesOneHand[i].handOne.positions.size());
         fileUtil.mGesturesOneHand[i].handOne.positions = MathUtil::normCenterOrigin(fileUtil.mGesturesOneHand[i].handOne.positions);
-        fileUtil.mGesturesOneHand[i].handOne.positions = MathUtil::smoothAndReduce(fileUtil.mGesturesOneHand[i].handOne.positions);
+        //fileUtil.mGesturesOneHand[i].handOne.positions = MathUtil::smoothAndReduce(fileUtil.mGesturesOneHand[i].handOne.positions);
         //PRINT("A[" << i << "] - After : " << fileUtil.mGesturesOneHand[i].handOne.positions.size());
         fileUtil.mGesturesOneHand[i].handTwo.positions = MathUtil::normCenterOrigin(fileUtil.mGesturesOneHand[i].handTwo.positions);
-        fileUtil.mGesturesOneHand[i].handTwo.positions = MathUtil::smoothAndReduce(fileUtil.mGesturesOneHand[i].handTwo.positions);
+        //fileUtil.mGesturesOneHand[i].handTwo.positions = MathUtil::smoothAndReduce(fileUtil.mGesturesOneHand[i].handTwo.positions);
         //PRINT("B_2[" << i << "] - After : " << fileUtil.mGesturesOneHand[i].handTwo.positions.size());
     }
     
     for (int i = 0; i < n2; i++){
         //PRINT("B_1[" << i << "] - Before : " << fileUtil.mGesturesTwoHands[i].handOne.positions.size());
         fileUtil.mGesturesTwoHands[i].handOne.positions = MathUtil::normCenterOrigin(fileUtil.mGesturesTwoHands[i].handOne.positions);
-        fileUtil.mGesturesTwoHands[i].handOne.positions = MathUtil::smoothAndReduce(fileUtil.mGesturesTwoHands[i].handOne.positions);
+        //fileUtil.mGesturesTwoHands[i].handOne.positions = MathUtil::smoothAndReduce(fileUtil.mGesturesTwoHands[i].handOne.positions);
         //PRINT("B_1[" << i << "] - After : " << fileUtil.mGesturesTwoHands[i].handOne.positions.size());
         //PRINT("B_2[" << i << "] - Before : " << fileUtil.mGesturesTwoHands[i].handTwo.positions.size());
         fileUtil.mGesturesTwoHands[i].handTwo.positions = MathUtil::normCenterOrigin(fileUtil.mGesturesTwoHands[i].handTwo.positions);
-        fileUtil.mGesturesTwoHands[i].handTwo.positions = MathUtil::smoothAndReduce(fileUtil.mGesturesTwoHands[i].handTwo.positions);
+        //fileUtil.mGesturesTwoHands[i].handTwo.positions = MathUtil::smoothAndReduce(fileUtil.mGesturesTwoHands[i].handTwo.positions);
         //PRINT("B_2[" << i << "] - After : " << fileUtil.mGesturesTwoHands[i].handTwo.positions.size());
     }
 
     fileUtil.saveAll();
+}
+
+void
+Test::printGesture(const type_gesture gesture){
+	PRINT(gesture.name);
+	for (int i = 0; i < gesture.handOne.positions.size(); i++){
+		PRINT(gesture.handOne.positions[i].X << " " << gesture.handOne.positions[i].Y <<" "<<gesture.handOne.positions[i].Z <<" "<<
+		gesture.handTwo.positions[i].X << " " << gesture.handTwo.positions[i].Y <<" "<<gesture.handTwo.positions[i].Z);
+	}
 }

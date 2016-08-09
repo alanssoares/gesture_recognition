@@ -12,6 +12,8 @@ public:
 	// Sort Container by name function
 	static bool sortByName(const type_gesture g1, const type_gesture g2) { return g1.name < g2.name; }
 
+	void printGesture(const type_gesture gesture);
+	
 	void loadAll();
 	void clearAll();
 	void splitDataset();
@@ -24,11 +26,11 @@ public:
 	void recognizeOneHand(const type_gesture gesture);
 	void recognizeTwoHands(const type_gesture gesture);
 
-	void generateMedianGestures();
-	int getMeanPoints(vector<type_gesture> gestures, int i, int j);
-	type_gesture resampleGesture(int k, int p);
-	std::vector<XnPoint3D> inserePositions(std::vector<XnPoint3D> points, int diff);
-	std::vector<XnPoint3D> removePositions(std::vector<XnPoint3D> points, int diff);
+	void generateMedianGesture();
+	void generateGestureEqualSize();
+	int  getMeanPoints(vector<type_gesture> gestures, int i, int j);
+	type_gesture getMeanGesture(const int k, const int p);
+	
 	/**
 		Pré-requisitos:
 		- Normalizado

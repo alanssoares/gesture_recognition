@@ -95,12 +95,12 @@ public:
     
     /*
      Método que calcula a interpolação linear entre dois pontos
-     @param a ponto
-     @param b ponto
+     @param p0 ponto
+     @param p1 ponto
      @param t instante
      @return XnPoint3D resultado da interpolação
     */
-    static XnPoint3D interpolate(XnPoint3D a, XnPoint3D b, float t = 0.5);
+    static XnPoint3D interpolate(XnPoint3D p0, XnPoint3D p1, float t = 0.5);
 
     /**
      Método responsável por normalizar a trajetória no intervalo de -1 a 1
@@ -269,6 +269,20 @@ public:
      @return XnPoint3D
     */
     static XnPoint3D sum(XnPoint3D a, XnPoint3D b);
+
+    /*
+     Method that insert points according
+     @param points original
+     @param diff num of points that will be inserted
+    */
+    static void insertPoints(std::vector<XnPoint3D> *points, int diff);
+
+    /*
+     Method that remove points according
+     @param points original
+     @param diff num of points that will be removed
+    */
+    static void removePoints(std::vector<XnPoint3D> *points, int diff);
 };
 
 #endif /* defined(__GestureTracking__MathUtil__) */
