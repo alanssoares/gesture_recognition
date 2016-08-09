@@ -205,14 +205,12 @@ Test::getMeanGesture(const int k, const int p){
 
 	for(int i = k + 1; i < p; i++){
 		for(int j = 0; j < n; j++){
-			XnPoint3D c = MathUtil::sum(medianGesture.handOne.positions[j], m_AllGestures[i].handOne.positions[j]);
-			//PRINT("x1 " << medianGesture.handOne.positions[j].X <<" x2 " << m_AllGestures[i].handOne.positions[j].X << " sum " << c.X);
 			medianGesture.handOne.positions[j] = MathUtil::sum(medianGesture.handOne.positions[j], m_AllGestures[i].handOne.positions[j]);
 			medianGesture.handTwo.positions[j] = MathUtil::sum(medianGesture.handTwo.positions[j], m_AllGestures[i].handTwo.positions[j]);
 
 		}
 	}
-/*
+
 	for(int i = 0; i < n; i++){
 		medianGesture.handOne.positions[i].X = (float)medianGesture.handOne.positions[i].X / (float)n;
 		medianGesture.handOne.positions[i].Y = (float)medianGesture.handOne.positions[i].Y / (float)n;
@@ -222,7 +220,7 @@ Test::getMeanGesture(const int k, const int p){
 		medianGesture.handTwo.positions[i].Y = (float)medianGesture.handTwo.positions[i].Y / (float)n;
 		medianGesture.handTwo.positions[i].Z = (float)medianGesture.handTwo.positions[i].Z / (float)n;
 	}
-*/
+
 	return medianGesture;
 }
 
