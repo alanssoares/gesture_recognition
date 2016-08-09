@@ -22,7 +22,8 @@ public:
 	void init();
 	void execute();
 	void saveResults();
-
+	void saveMedianGestures();
+	
 	void recognizeOneHand(const type_gesture gesture);
 	void recognizeTwoHands(const type_gesture gesture);
 
