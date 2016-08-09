@@ -174,7 +174,28 @@ Test::generateMedianGesture(){
 		m_MedianGestures.push_back(getMeanGesture(i, j - 1));
 		i = j;
 	}
-	printGesture(m_MedianGestures[1]);
+	saveMedianGestures();
+}
+
+void
+Test::saveMedianGestures(){
+	FileUtil& futil = FileUtil::getInstance();
+	size_t n = m_MedianGestures.size();
+
+	futil.mGesturesOneHand.clear();
+	futil.mGesturesTwoHands.clear();
+
+	for (int i = 0; i < n; i++){
+		m_MedianGestures[i].handOne.positions = MathUtil::normCenterOrigin(m_MedianGestures[i].handOne.positions);
+        m_MedianGestures[i].handTwo.positions = MathUtil::normCenterOrigin(m_MedianGestures[i].handTwo.positions);
+		if(m_MedianGestures[i].numHands == 1){
+			futil.mGesturesOneHand.push_back(m_MedianGestures[i]);
+		} else {
+			futil.mGesturesTwoHands.push_back(m_MedianGestures[i]);
+		}
+	}
+
+	futil.saveAll();
 }
 
 void
@@ -207,7 +228,6 @@ Test::getMeanGesture(const int k, const int p){
 		for(int j = 0; j < n; j++){
 			medianGesture.handOne.positions[j] = MathUtil::sum(medianGesture.handOne.positions[j], m_AllGestures[i].handOne.positions[j]);
 			medianGesture.handTwo.positions[j] = MathUtil::sum(medianGesture.handTwo.positions[j], m_AllGestures[i].handTwo.positions[j]);
-
 		}
 	}
 
@@ -220,7 +240,7 @@ Test::getMeanGesture(const int k, const int p){
 		medianGesture.handTwo.positions[i].Y = (float)medianGesture.handTwo.positions[i].Y / (float)n;
 		medianGesture.handTwo.positions[i].Z = (float)medianGesture.handTwo.positions[i].Z / (float)n;
 	}
-
+	
 	return medianGesture;
 }
 
