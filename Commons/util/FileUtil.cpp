@@ -90,9 +90,11 @@ FileUtil::stopTrack(){
 std::string
 FileUtil::createFileTrack(){
     int i = readNumLastFile(FILE_TRACK);
+    std::ostringstream converter;
+    converter << i + 1;
     std::string root_dir = "../samples/gesture_" + m_NewGesture.name + "/track/gesture_";
-    std::string nameFile = root_dir + m_NewGesture.name + "_track_" + std::to_string(i + 1) + ".txt";
-    std::ofstream fileCreate(nameFile);
+    std::string nameFile = root_dir + m_NewGesture.name + "_track_" + converter.str() + ".txt";
+    std::ofstream fileCreate(nameFile.c_str());
     fileCreate.close();
     return nameFile;
 }
@@ -108,7 +110,7 @@ FileUtil::saveTrack(){
     if(m_NewGesture.numHands == 1) {
         gesture = mGesturesOneHand.back();
         nameFile = createFileTrack();
-        fileOut.open(nameFile, ios::in | ios::out | ios::ate);
+        fileOut.open(nameFile.c_str(), ios::in | ios::out | ios::ate);
         if(fileOut.is_open()){
             fileOut<<"gesture "<<m_NewGesture.name<<" hands "<<m_NewGesture.numHands<<std::endl;
             for(int j = 0; j < gesture.handOne.positions.size(); j++){
@@ -118,7 +120,7 @@ FileUtil::saveTrack(){
     } else if(m_NewGesture.numHands == 2){
         gesture = mGesturesTwoHands.back();
         nameFile = createFileTrack();
-        fileOut.open(nameFile, ios::in | ios::out | ios::ate);
+        fileOut.open(nameFile.c_str(), ios::in | ios::out | ios::ate);
         if(fileOut.is_open()){
             fileOut<<"gesture "<<m_NewGesture.name<<" hands "<<m_NewGesture.numHands<<std::endl;
             for(int j = 0; j < gesture.handOne.positions.size(); j++){
@@ -174,7 +176,7 @@ FileUtil::loadGestures(){
     std::string row;
     std::vector<std::string> rows;
     
-    file.open(m_FileNameSamples);
+    file.open(m_FileNameSamples.c_str());
     
     if(file.is_open()){
         while (std::getline(file, row)){
