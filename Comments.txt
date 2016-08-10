@@ -1,26 +1,31 @@
 Observações:
+<ul>
+  <li>É necessário garantir que a mão direita sempre vai ser detectada primeiro. Essa é uma limitação que foi aplicada para sempre saber qual é a esquerda ou direita considerando sempre a primeira detecção.
+  </li>
+  <li>O dataset da Microsoft contém arquivos em cada arquivo csv uma sequência ininterrupta de execuções de um gesto, sem a definição de quando uma execução inicia e termina. Tive que fazer um processo manual para separar as sequências. Para realizar tal tarefa foi necessário verificar a partir do Matlab (plotando um gráfico 2d) a frequência contínua das posições para identificar quando ele iniciava e terminava. Assim, com uma posição aproximada, foi possível separar as execuções do arquivo.
+  </li>
+</ul>
 
-- É necessário garantir que a mão direita sempre vai ser detectada primeiro. Essa
-é uma limitação que foi aplicada para sempre saber qual é a esquerda ou direita 
-considerando sempre a primeira detecção.
+<b>Notas:</b>
+<ul>
+  <li>Verificar o motivo dos gestos conterem valores nan no arquivo de samples</li>
+</ul>
 
-- O dataset da Microsoft contém arquivos em cada arquivo csv uma sequência ininterrupta de execuções de um gesto, sem a definição de quando uma execução inicia e termina. Tive que fazer um processo manual para separar as sequências. Para realizar tal tarefa foi necessário verificar a partir do Matlab (plotando um gráfico 2d) a frequência contínua das posições para identificar quando ele iniciava e terminava. Assim, com uma posição aproximada, foi possível separar as execuções do arquivo.
-
-Anotações sobre Experimentação:
+<b>Anotações sobre Experimentação:</b>
 
 1 - Templates
 1.1 - Pré-Requisitos
-1.1.1 - Gesto normalizado (-1, 1)
-1.1.2 - Gesto centralizado na origem
+1.1.1 - Gesto normalizado (-1, 1) - OK
+1.1.2 - Gesto centralizado na origem - OK
 1.1.3 - Gesto suavizado
-1.1.3.1 - Filtro laplaciano (média entre os pontos i - 1, i, i + 1)
-1.1.3.2 - Simplificação e aplicação de B-Spline
-1.2 - Criar gesto médio
+1.1.3.1 - Filtro laplaciano (média entre os pontos i - 1, i, i + 1) - OK
+1.1.3.2 - Simplificação e aplicação de B-Spline - OK
+1.2 - Criar gesto médio - OK
 
 2 - Simplificação
-2.1 - Curvatura (threshold entre os pontos i - 1, i, i + 1)
-2.2 - Douglas-Peuker (tolerance - distância entre os pontos)
-2.3 - Mesma quantidade de pontos
+2.1 - Curvatura (threshold entre os pontos i - 1, i, i + 1) - OK
+2.2 - Douglas-Peuker (tolerance - distância entre os pontos) - OK
+2.3 - Mesma quantidade de pontos - OK
 
 3 - Descritor
 3.1 - Características
