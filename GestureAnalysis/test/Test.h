@@ -21,7 +21,7 @@ public:
 
 	void init();
 	void execute();
-	void saveResults();
+	void saveResults(type_gesture gestureExecuted, type_gesture gesturePredicted, double timeExecution, double bestDistance, int isRecognized);
 	void saveMedianGestures();
 	
 	void recognizeOneHand(const type_gesture gesture);
@@ -70,6 +70,7 @@ private:
 	std::vector<type_gesture> m_GesturesFromFileTwoHands;
 	
 	float m_PercentTest;
+	std::string m_NameFileResults;
 };
 
 #endif //TEST_H__
