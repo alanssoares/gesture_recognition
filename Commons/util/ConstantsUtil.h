@@ -88,8 +88,8 @@ typedef struct type_hand {
 } type_hand;
 
 typedef struct type_gesture {
-    int numHands;
-    std::string name;
+    int numHands = 0;
+    std::string name = "none";
     type_hand handOne;
     type_hand handTwo;
 } type_gesture;
@@ -115,7 +115,7 @@ typedef struct type_gesture {
 /* Is not an hand */
 #define NOT_HAND -1
 /* Define the minimum distance threshold to recognize gestures */
-#define MIN_DISTANCE_TRESHOLD 0.5
+#define MIN_DISTANCE_TRESHOLD 0.09
 /* Define the min distance between two hands */
 #define MIN_DISTANCE_TRESHOLD_TWO_HANDS 50
 /* Define the minimum number of points of the motion doing */
