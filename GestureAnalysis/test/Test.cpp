@@ -7,6 +7,11 @@ Test::Test(){
 
 Test::~Test(){}
 
+float
+Test::getFinalTime(std::clock_t start_s){
+	return (std::clock() - start_s)/double(CLOCKS_PER_SEC);
+}
+
 void 
 Test::init(){
 	//Load all samples
@@ -45,7 +50,7 @@ Test::splitDataset(){
 	int j = 0, i = 0, numTests = 0;
 	while(i < n){
 		j = i + 1;
-		while(m_AllGestures[i].name.compare(m_AllGestures[j].name) == 0) j++;
+		while((j < n) && (m_AllGestures[i].name.compare(m_AllGestures[j].name) == 0)) j++;
 		numTests = (j - i) * m_PercentTest;
 		while(numTests > 0) {
 			m_GesturesTest.push_back(m_AllGestures[i++]);
@@ -73,16 +78,18 @@ void
 Test::execute(){
 	std::ofstream fileCreate(m_NameFileResults.c_str());
 	fileCreate.close();
-
+	
 	experiment1();
 }
 
 void
-Test::saveResults(type_gesture gestureExecuted, type_gesture gesturePredicted, double timeExecution, double bestDistance, int isRecognized){
+Test::saveResults(type_gesture gestureExecuted, type_gesture gesturePredicted, float timeExecution, float bestDistance, int isRecognized){
 	std::fstream fileOut;
 	fileOut.open(m_NameFileResults.c_str(), ios::in | ios::out | ios::ate);
 	if(fileOut.is_open()){
-		fileOut<<gestureExecuted.name<<" "<<gestureExecuted.numHands<<" "<<gestureExecuted.handOne.positions.size()<<" "<<bestDistance<<" "<<isRecognized<<" "<<gesturePredicted.name<<" "<<gesturePredicted.handOne.positions.size()<<std::endl;
+		fileOut<<gestureExecuted.name<<" "<<gestureExecuted.numHands<<" "<<gestureExecuted.handOne.positions.size()<<" ";
+		fileOut<<gesturePredicted.name<<" "<<gesturePredicted.numHands<<" "<<gesturePredicted.handOne.positions.size()<<" ";
+		fileOut<<timeExecution<<" "<<bestDistance<<" "<<isRecognized<<std::endl;
 	}
 	fileOut.close();
 }
@@ -106,9 +113,8 @@ Test::experiment2(){
 
 void
 Test::recognizeOneHand(const type_gesture gesture) {
-    int start_s = clock();
-    int isRecognized = 0;
-    double distance = 0.0, bestDistance = 999999999;
+    clock_t start_s = clock(), isRecognized = 0;
+    float distance = 0.0, bestDistance = 999999999;
     size_t n = m_GesturesFromFileOneHand.size();
     type_gesture gestureTemplate;
     std::vector<XnPoint3D> trajectoryHand, trajectoryComp;
@@ -133,17 +139,13 @@ Test::recognizeOneHand(const type_gesture gesture) {
         isRecognized = 1;
     }
 
-	float timeExecution = (clock()-start_s)/double(CLOCKS_PER_SEC)*1000;
-	saveResults(gesture, gestureTemplate, timeExecution, bestDistance, isRecognized);
-
-    //TIME_METHOD_EXEC("recognizeOneHand", start_s, clock());
+	saveResults(gesture, gestureTemplate, getFinalTime(start_s), bestDistance, isRecognized);
 }
 
 void
 Test::recognizeTwoHands(const type_gesture gesture) {
-    int start_s = clock();
-    int isRecognized = 0;
-    double distanceA = 0.0, distanceB = 0.0, bestDistanceB = 999999999, bestDistanceA = 999999999;
+    float start_s = clock(), isRecognized = 0;
+    float distanceA = 0.0, distanceB = 0.0, bestDistanceB = 999999999, bestDistanceA = 999999999;
     size_t n = m_GesturesFromFileTwoHands.size();
 	type_gesture gestureTemplate;
 	std::vector<XnPoint3D> leftHandPoints, rightHandPoints, trajCompLeft, trajCompRight;
@@ -167,17 +169,18 @@ Test::recognizeTwoHands(const type_gesture gesture) {
             bestDistanceB = distanceB;
         }
 
-		//Verify if the best distance is lower then the treshold
-		if(bestDistanceA < MIN_DISTANCE_TRESHOLD && bestDistanceB < MIN_DISTANCE_TRESHOLD){
-			isRecognized = 1;
-			gestureTemplate = m_GesturesFromFileTwoHands[i];
-		}
+        if(bestDistanceA < MIN_DISTANCE_TRESHOLD && bestDistanceB < MIN_DISTANCE_TRESHOLD){
+        	gestureTemplate = m_GesturesFromFileTwoHands[i];
+        }
     }
 
-    float timeExecution = (clock()-start_s)/double(CLOCKS_PER_SEC)*1000;
-	saveResults(gesture, gestureTemplate, timeExecution, (bestDistanceA + bestDistanceB) / 2, isRecognized);
-    
-    //TIME_METHOD_EXEC("recognizeTwoHands", start_s, clock());
+	//Verify if the best distance is lower then the treshold
+	if(bestDistanceA < MIN_DISTANCE_TRESHOLD && bestDistanceB < MIN_DISTANCE_TRESHOLD){
+		isRecognized = 1;
+	}
+
+	//TODO: verificar qual bestdistance usar para salvar
+	saveResults(gesture, gestureTemplate, getFinalTime(start_s), (bestDistanceB + bestDistanceB)/2 , isRecognized);
 }
 
 void
@@ -186,7 +189,7 @@ Test::generateMedianGesture(){
 	generateGestureEqualSize();
 	while(j < n){
 		j = i + 1;
-		while(m_AllGestures[i].name.compare(m_AllGestures[j].name) == 0) j++;
+		while((j < n) && (m_AllGestures[i].name.compare(m_AllGestures[j].name) == 0)) j++;
 		m_MedianGestures.push_back(getMeanGesture(i, j - 1));
 		i = j;
 	}
@@ -248,13 +251,13 @@ Test::getMeanGesture(const int k, const int p){
 	}
 
 	for(int i = 0; i < n; i++){
-		medianGesture.handOne.positions[i].X = (float)medianGesture.handOne.positions[i].X / (float)n;
-		medianGesture.handOne.positions[i].Y = (float)medianGesture.handOne.positions[i].Y / (float)n;
-		medianGesture.handOne.positions[i].Z = (float)medianGesture.handOne.positions[i].Z / (float)n;
+		medianGesture.handOne.positions[i].X = medianGesture.handOne.positions[i].X / n;
+		medianGesture.handOne.positions[i].Y = medianGesture.handOne.positions[i].Y / n;
+		medianGesture.handOne.positions[i].Z = medianGesture.handOne.positions[i].Z / n;
 		
-		medianGesture.handTwo.positions[i].X = (float)medianGesture.handTwo.positions[i].X / (float)n;
-		medianGesture.handTwo.positions[i].Y = (float)medianGesture.handTwo.positions[i].Y / (float)n;
-		medianGesture.handTwo.positions[i].Z = (float)medianGesture.handTwo.positions[i].Z / (float)n;
+		medianGesture.handTwo.positions[i].X = medianGesture.handTwo.positions[i].X / n;
+		medianGesture.handTwo.positions[i].Y = medianGesture.handTwo.positions[i].Y / n;
+		medianGesture.handTwo.positions[i].Z = medianGesture.handTwo.positions[i].Z / n;
 	}
 	
 	return medianGesture;
