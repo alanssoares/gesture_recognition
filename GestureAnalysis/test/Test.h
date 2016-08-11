@@ -11,6 +11,7 @@ public:
 
 	// Sort Container by name function
 	static bool sortByName(const type_gesture g1, const type_gesture g2) { return g1.name < g2.name; }
+	static float getFinalTime(std::clock_t start_s);
 
 	void printGesture(const type_gesture gesture);
 	
@@ -21,7 +22,7 @@ public:
 
 	void init();
 	void execute();
-	void saveResults(type_gesture gestureExecuted, type_gesture gesturePredicted, double timeExecution, double bestDistance, int isRecognized);
+	void saveResults(type_gesture gestureExecuted, type_gesture gesturePredicted, float timeExecution, float bestDistance, int isRecognized);
 	void saveMedianGestures();
 	
 	void recognizeOneHand(const type_gesture gesture);
