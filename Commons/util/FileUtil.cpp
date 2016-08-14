@@ -17,7 +17,6 @@ FileUtil::FileUtil() {
     m_StartingStorage = false;
     m_NewGesture.handOne.id_hand = NOT_HAND;
     m_NewGesture.handTwo.id_hand = NOT_HAND;
-    m_FileNameSamples = "../Samples.txt";
 }
 
 FileUtil::~FileUtil(){}
@@ -169,14 +168,14 @@ FileUtil::getPointFile(const std::string str, const int i){
 }
 
 void
-FileUtil::loadGestures(){
+FileUtil::loadGestures(std::string nameFile){
     int start_s = clock();
 
     std::ifstream file;
     std::string row;
     std::vector<std::string> rows;
     
-    file.open(m_FileNameSamples.c_str());
+    file.open(nameFile.c_str());
     
     if(file.is_open()){
         while (std::getline(file, row)){
@@ -269,17 +268,15 @@ FileUtil::readNumLastFile(int typeFile){
 
 void
 FileUtil::saveAll(){
-    type_gesture gesture;
     std::string nameFile = "../NewSamples.txt";
     std::fstream fileOut;
-    size_t n = 0;
 
     fileOut.open(nameFile.c_str(), ios::out | ios::ate);
     if(fileOut.is_open()){
         
-        n = mGesturesOneHand.size();
-        for (int i = 0; i < n; i++){
-            gesture = mGesturesOneHand[i];
+        size_t n1 = mGesturesOneHand.size();
+        for (int i = 0; i < n1; i++){
+            type_gesture gesture = mGesturesOneHand[i];
             fileOut<<"gesture "<<gesture.name<<" hands 1"<<std::endl;
             for(int j = 0; j < gesture.handOne.positions.size(); j++){
                 fileOut<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<" ";
@@ -288,9 +285,9 @@ FileUtil::saveAll(){
             fileOut<<"end"<<std::endl;
         }
 
-        n = mGesturesTwoHands.size();
-        for (int i = 0; i < n; i++){
-            gesture = mGesturesTwoHands[i];
+        size_t n2 = mGesturesTwoHands.size();
+        for (int i = 0; i < n2; i++){
+            type_gesture gesture = mGesturesTwoHands[i];
             fileOut<<"gesture "<<gesture.name<<" hands 2"<<std::endl;
             for(int j = 0; j < gesture.handOne.positions.size(); j++){
                 fileOut<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<" ";
@@ -301,4 +298,10 @@ FileUtil::saveAll(){
     }
 
     fileOut.close();
+}
+
+void
+FileUtil::createFile(std::string nameFile){
+    std::ofstream fileCreate(nameFile.c_str());
+    fileCreate.close();
 }

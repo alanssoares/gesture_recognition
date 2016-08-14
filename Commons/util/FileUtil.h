@@ -54,6 +54,12 @@ public:
     */
     void createDirs();
 
+    /**
+        Create a file accorgind with the file name
+        @param nameFile
+    */
+    void createFile(std::string nameFile);
+    
     /*
      Set the gesture info like name and num of hands
      @param std::string
@@ -70,8 +76,9 @@ public:
 
     /**
      Load the gestures from file
+     @param std::string name file
     */
-    void loadGestures();
+    void loadGestures(std::string nameFile);
 
     /*
      Start the hand tracking
@@ -174,6 +181,5 @@ public:
     std::vector<type_gesture>   mGesturesOneHand;
     std::vector<type_gesture>   mGesturesTwoHands;
     std::string                 m_Root_dir;
-    std::string                 m_FileNameSamples;
 };
 #endif /* defined(__GestureTracking__FileUtil__) */

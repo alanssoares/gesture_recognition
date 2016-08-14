@@ -51,10 +51,8 @@ int main(int argc, char* argv[])
     
     //Read the params from args
     if(parse_command_line(argc, argv)) return 0;
-    //Set file name samples
-    futil.m_FileNameSamples = g_params.fileSamples;
     // Load the gestures data
-    futil.loadGestures();
+    futil.loadGestures(NAME_FILE_DATA_NORMALIZED);
     // Setter the gestures from file
     gesture.setGesturesFromFile(futil.getGesturesOneHand(), futil.getGesturesTwoHands());
     

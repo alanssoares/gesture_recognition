@@ -115,7 +115,7 @@ typedef struct type_gesture {
 /* Is not an hand */
 #define NOT_HAND -1
 /* Define the minimum distance threshold to recognize gestures */
-#define MIN_DISTANCE_TRESHOLD 0.09
+#define MIN_DISTANCE_TRESHOLD 0.5
 /* Define the min distance between two hands */
 #define MIN_DISTANCE_TRESHOLD_TWO_HANDS 50
 /* Define the minimum number of points of the motion doing */
@@ -140,8 +140,8 @@ typedef struct type_gesture {
 /* ========= End Douglas-Peucker Radial ========= */
 
 #define GESTURE "gesture"
-#define NAME_FILE_DATA "../Samples.txt"
-
+#define NAME_FILE_DATA "../../Commons/Samples.txt"
+#define NAME_FILE_DATA_NORMALIZED "../../Commons/SamplesNormalized.txt"
 #define NAME_WINDOW_GR "Project GRS"
 #define GAP_WINDOW      25
 #define GL_WIN_SIZE_X   1024 // 512 to gesture record
