@@ -40,11 +40,13 @@ public:
 	void recognizeOneHand(const type_gesture gesture, const std::string nameFile);
 	void recognizeTwoHands(const type_gesture gesture, const std::string nameFile);
 
-	void generateMedianGesture();
-	void generateGestureEqualSize();
+	void generateMedianGesture(std::vector<type_gesture> gestures);
 	int  getMeanPoints(vector<type_gesture> gestures, int i, int j);
-	type_gesture getMeanGesture(const int k, const int p);
 	
+	std::vector<type_gesture> generateGestureEqualSize(std::vector<type_gesture> gestures);
+	type_gesture getMeanGesture(const int k, const int p, std::vector<type_gesture> gestures);
+	type_gesture normCenterOriginGesture(type_gesture gesture);
+
 	/**
 		- Normalizado
 		- Centralizado na origem
@@ -153,7 +155,13 @@ public:
 	*/
 	void process12();
 
+	void applyLaplacian();
+	void applyBSpline();
+	void applyMedian();
+	void applyCurvature();
+	void applyDouglasPeucker();
 	void applyProcess(int env);
+
 	void experiment(int env, std::string nameFile);
 
 	void improveGestures();
