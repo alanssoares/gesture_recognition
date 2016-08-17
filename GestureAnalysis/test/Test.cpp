@@ -390,7 +390,7 @@ Test::generateGestureEqualSize(std::vector<type_gesture> gestures){
 	int n = gestures.size(), i = 0, j = 0, mean = 0, diff = 0;
 	while(j < n){
 		j = i + 1;
-		while(gestures[i].name.compare(gestures[j].name) == 0) j++;
+		while((j < n) && (gestures[i].name.compare(gestures[j].name) == 0)) j++;
 		mean = getMeanPoints(gestures, i, j - 1);
 		for(int k = i; k < j - 1; k++){
 			diff = mean - gestures[k].handOne.positions.size();
