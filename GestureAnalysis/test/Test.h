@@ -9,31 +9,19 @@ public:
 	Test();
 	~Test();
 
-	// Sort Container by name function
 	static bool sortByName(const type_gesture &g1, const type_gesture &g2) { return g1.name < g2.name; }
 	static float getFinalTime(std::clock_t start_s);
 
-	/**
-		Print all positions of the gesture
-		@param gesture
-	*/
 	void printGesture(const type_gesture gesture);
-	/**
-		Load all gestures
-	*/
+	
 	void loadAll();
-
-	/**
-		Split the samples in templates and test
-	*/
+	
 	void splitDataset();
-	/**
-		Initialize the gestures template	
-	*/
+	
 	void initGestureTemplates();
 	void initAllSamples();
-
 	void init();
+
 	void saveResults(std::string nameFile, type_gesture gestureExecuted, type_gesture gesturePredicted, float timeExecution, float bestDistance, int isRecognized);
 	void saveMedianGestures();
 	
@@ -42,10 +30,9 @@ public:
 
 	void generateMedianGesture(std::vector<type_gesture> gestures);
 	int  getMeanPoints(vector<type_gesture> gestures, int i, int j);
+	void generateGestureEqualSize(std::vector<type_gesture>* gestures);
 	
-	std::vector<type_gesture> generateGestureEqualSize(std::vector<type_gesture> gestures);
-	type_gesture getMeanGesture(const int k, const int p, std::vector<type_gesture> gestures);
-	type_gesture normCenterOriginGesture(type_gesture gesture);
+	void normCenterOriginGesture(type_gesture *gesture);
 
 	/**
 		- Normalizado
