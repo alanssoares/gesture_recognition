@@ -163,7 +163,7 @@ public:
 	std::vector<type_gesture> m_GesturesOneHand;
 	std::vector<type_gesture> m_GesturesTwoHands;
 	
-	float m_PercentTest;
+	float m_PercentTest, m_Param;
 };
 
 #endif //TEST_H__
