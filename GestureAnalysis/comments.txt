@@ -1,0 +1,6 @@
+- Carregar os gestos.
+- Criar duas janelas para visualizar o gesto normal (esquerdo) e após o processamento (direito).
+- Colocar funções para escolha do método e as parametrizações de cada um, fazendo com que a curva possa
+ser vista em tempo real com as variações dos parâmetros.
+- Colocar cores intensas (vermelho) onde a curvatura é maior ou onde possui mais pontos e azul onde a curva é suave.
+-

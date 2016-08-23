@@ -1,27 +1,152 @@
 //---------------------------------------------------------------------------
 // Includes
 //---------------------------------------------------------------------------
+#include <iostream>
+
+#include <boost/thread/thread.hpp>
+#include <pcl/common/common_headers.h>
+#include <pcl/io/pcd_io.h>
+#include <pcl/visualization/pcl_visualizer.h>
+#include <pcl/console/parse.h>
+
 #include "../Commons/commons.hpp"
 #include "test/Test.h"
 
+// ---- Global variables ----
+unsigned int text_id = 0;
+int g_IdView1(0), g_IdView2(0);
+Test g_Test;
+
+std::string intToString(int n){
+    std::ostringstream converter;
+    converter << n;
+    return converter.str();
+}
+
+std::vector<pcl::PointXYZ> converterToPointXYZ(std::vector<XnPoint3D> points){
+  std::vector<pcl::PointXYZ> pointsConverted;
+  pcl::PointXYZ newPoint;
+  size_t n = points.size();
+  for (int i = n; i >= 0; i--){
+    newPoint.x = points[i].X;
+    newPoint.y = points[i].Y;
+    newPoint.z = points[i].Z;
+    pointsConverted.push_back(newPoint);
+  }
+  return pointsConverted;
+}
+
+void executeAll(){
+    std::string nameFile = "../result_experiment";
+    for (int i = 1; i < 8; i++){
+        g_Test.experiment(i, nameFile + intToString(i) + ".txt");
+    }
+}
+
+void reshape(pcl::visualization::PCLVisualizer *viewer, int np){
+  std::ostringstream os1, os2;
+
+  std::vector<pcl::PointXYZ> pointsNormalA = converterToPointXYZ(g_Test.m_GesturesTemplate[0].handOne.positions);
+  std::vector<pcl::PointXYZ> pointsNormalB = converterToPointXYZ(g_Test.m_GesturesTemplate[0].handTwo.positions);
+  
+  g_Test.applyProcess(np);
+  
+  std::vector<pcl::PointXYZ> pointsProcessedA = converterToPointXYZ(g_Test.m_GesturesTemplate[0].handOne.positions);
+  std::vector<pcl::PointXYZ> pointsProcessedB = converterToPointXYZ(g_Test.m_GesturesTemplate[0].handTwo.positions);
+
+  for (int i = 0; i < pointsNormalA.size() - 1; i++){
+    os1 << "lineA" << i;
+    viewer->addLine<pcl::PointXYZ, pcl::PointXYZ> (pointsNormalA[i], pointsNormalA[i + 1], 0.0, 1.0, 0.0, os1.str(), g_IdView1);
+    os2 << "lineB" << i;
+    viewer->addLine<pcl::PointXYZ, pcl::PointXYZ> (pointsNormalB[i], pointsNormalB[i + 1], 1.0, 1.0, 0.0, os2.str(), g_IdView1);
+  }
+  
+  os1.clear();
+  os2.clear();
+
+  for (int i = 0; i < pointsProcessedA.size() - 1; i++){
+    os1 << "lineA" << i;
+    viewer->addLine<pcl::PointXYZ, pcl::PointXYZ> (pointsProcessedA[i], pointsProcessedA[i + 1], 0.0, 1.0, 0.0, os1.str(), g_IdView2);
+    os2 << "lineB" << i;
+    viewer->addLine<pcl::PointXYZ, pcl::PointXYZ> (pointsProcessedB[i], pointsProcessedB[i + 1], 1.0, 1.0, 0.0, os2.str(), g_IdView2);
+  }
+}
+
+void keyboardEventOccurred (const pcl::visualization::KeyboardEvent &event, void* viewer_void)
+{
+  pcl::visualization::PCLVisualizer *viewer = static_cast<pcl::visualization::PCLVisualizer *> (viewer_void);
+  if (event.getKeySym () == "r" && event.keyDown ())
+  {
+    std::cout << "r was pressed => removing all text" << std::endl;
+
+    char str[512];
+    for (unsigned int i = 0; i < text_id; ++i)
+    {
+      sprintf (str, "text#%03d", i);
+      viewer->removeShape (str);
+    }
+    text_id = 0;
+  }
+}
+
+void mouseEventOccurred (const pcl::visualization::MouseEvent &event, void* viewer_void)
+{
+  pcl::visualization::PCLVisualizer *viewer = static_cast<pcl::visualization::PCLVisualizer *> (viewer_void);
+  if (event.getButton () == pcl::visualization::MouseEvent::LeftButton &&
+      event.getType () == pcl::visualization::MouseEvent::MouseButtonRelease)
+  {
+    std::cout << "Left mouse button released at position (" << event.getX () << ", " << event.getY () << ")" << std::endl;
+
+    char str[512];
+    sprintf (str, "text#%03d", text_id ++);
+    viewer->addText ("clicked here", event.getX (), event.getY (), str);
+  }
+}
+
+boost::shared_ptr<pcl::visualization::PCLVisualizer> viewCurvesVis(int np)
+{
+  std::ostringstream os1, os2;
+  boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Curve Viewer"));
+  
+  viewer->initCameraParameters ();
+
+  viewer->createViewPort(0.0, 0.0, 0.5, 1.0, g_IdView1);
+  viewer->createViewPort(0.5, 0.0, 1.0, 1.0, g_IdView2);
+
+  reshape(viewer.get(), np);
+
+  viewer->setBackgroundColor (0, 0, 0, g_IdView1);
+  viewer->setBackgroundColor (0, 0, 0, g_IdView2);
+
+  viewer->addCoordinateSystem (1.0);
+  viewer->registerKeyboardCallback (keyboardEventOccurred, (void*)viewer.get ());
+  //viewer->registerMouseCallback (mouseEventOccurred, (void*)viewer.get ());
+
+  return (viewer);
+}
+
 int main(int argc, char* argv[])
 {
-    Test test;
+    int np = 1;
+    if (pcl::console::find_argument (argc, argv, "-p") >= 0){
+      np = atoi(argv[2]);
+      std::cout<<" Visualization with process "<< argv[2] <<endl;
+    } else {
+      std::cout<<" Default visualization with process 1" <<endl;
+    }
 
-    test.init();
-    
-    test.experiment(1, "../result_experiment1.txt");
-    test.experiment(2, "../result_experiment2.txt");
-    test.experiment(3, "../result_experiment3.txt");
-    test.experiment(4, "../result_experiment4.txt");
-    test.experiment(5, "../result_experiment5.txt");
-    test.experiment(6, "../result_experiment6.txt");
-    test.experiment(7, "../result_experiment7.txt");
-    test.experiment(8, "../result_experiment8.txt");
-    test.experiment(9, "../result_experiment9.txt");
-    test.experiment(10, "../result_experiment10.txt");
-    test.experiment(11, "../result_experiment11.txt");
-    test.experiment(12, "../result_experiment12.txt");
+    // ---- Init Test -----
+    g_Test.init();
 
-	return 0;
+    // ---- Initialize visualization ------
+    boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer = viewCurvesVis(np);
+
+    // -----Main loop-----
+    while (!viewer->wasStopped ())
+    {
+        viewer->spinOnce (100);
+        boost::this_thread::sleep (boost::posix_time::microseconds (100000));
+    }
+
+    return 0;
 }

@@ -153,7 +153,7 @@ public:
 
 	void improveGestures();
 
-private:
+public:
 	std::vector<type_gesture> m_MedianGestures;
 	std::vector<type_gesture> m_GesturesTemplate;
 	std::vector<type_gesture> m_GesturesTest;
