@@ -17,6 +17,7 @@ unsigned int text_id = 0;
 int g_IdView1(0), g_IdView2(0);
 Test g_Test;
 int g_np = 1;
+std::vector<std::string> idLines;
 
 std::string intToString(int n){
     std::ostringstream converter;
@@ -37,6 +38,13 @@ std::vector<pcl::PointXYZ> converterToPointXYZ(std::vector<XnPoint3D> points){
   return pointsConverted;
 }
 
+void removeAllLines(pcl::visualization::PCLVisualizer *viewer){
+  for (int i = 0; i < idLines.size(); i++){
+    cout<<" id "<<idLines[i].c_str()<<endl;
+    viewer->removeShape(idLines[i].c_str());
+  }
+}
+
 void executeAll(){
     std::string nameFile = "../result_experiment";
     for (int i = 1; i < 8; i++){
@@ -47,9 +55,11 @@ void executeAll(){
 void reshape(pcl::visualization::PCLVisualizer *viewer){
   std::ostringstream os1, os2;
 
+  removeAllLines(viewer);
+
   viewer->resetCamera();
 
-  initAllSamples();
+  g_Test.initAllSamples();
 
   std::vector<pcl::PointXYZ> pointsNormalA = converterToPointXYZ(g_Test.m_GesturesTemplate[0].handOne.positions);
   std::vector<pcl::PointXYZ> pointsNormalB = converterToPointXYZ(g_Test.m_GesturesTemplate[0].handTwo.positions);
@@ -60,19 +70,27 @@ void reshape(pcl::visualization::PCLVisualizer *viewer){
   std::vector<pcl::PointXYZ> pointsProcessedB = converterToPointXYZ(g_Test.m_GesturesTemplate[0].handTwo.positions);
 
   for (int i = 0; i < pointsNormalA.size() - 1; i++){
-    os1 << "lineA" << i;
+    os1 << "lineNormalA" << i;
+    os2 << "lineNormalB" << i;
+
+    idLines.push_back(os1.str());
+    idLines.push_back(os2.str());
+
     viewer->addLine<pcl::PointXYZ, pcl::PointXYZ> (pointsNormalA[i], pointsNormalA[i + 1], 0.0, 1.0, 0.0, os1.str(), g_IdView1);
-    os2 << "lineB" << i;
     viewer->addLine<pcl::PointXYZ, pcl::PointXYZ> (pointsNormalB[i], pointsNormalB[i + 1], 1.0, 1.0, 0.0, os2.str(), g_IdView1);
   }
-  
+
   os1.clear();
   os2.clear();
 
   for (int i = 0; i < pointsProcessedA.size() - 1; i++){
-    os1 << "lineA" << i;
+    os1 << "lineProcessedA" << i;
+    os2 << "lineProcessedB" << i;
+    
+    idLines.push_back(os1.str());
+    idLines.push_back(os2.str());
+
     viewer->addLine<pcl::PointXYZ, pcl::PointXYZ> (pointsProcessedA[i], pointsProcessedA[i + 1], 0.0, 1.0, 0.0, os1.str(), g_IdView2);
-    os2 << "lineB" << i;
     viewer->addLine<pcl::PointXYZ, pcl::PointXYZ> (pointsProcessedB[i], pointsProcessedB[i + 1], 1.0, 1.0, 0.0, os2.str(), g_IdView2);
   }
 }
@@ -82,18 +100,17 @@ void keyboardEventOccurred (const pcl::visualization::KeyboardEvent &event, void
   pcl::visualization::PCLVisualizer *viewer = static_cast<pcl::visualization::PCLVisualizer *> (viewer_void);
 
   if(event.keyDown()){
-    switch(event.getKeySym()){
-      case "p":
+    if(event.getKeySym() == "p"){
         cout<<"The curves were reploted: "<<endl;
         reshape(viewer);
-        break;
-      case "c":
-        cout<<"New value: ";
-        cin>>g_Test.m_Param;
+    } else if(event.getKeySym() == "i"){
+        g_Test.m_Param += 0.01;
+        cout<<"New value: " << g_Test.m_Param<<endl;
         reshape(viewer);
-        break;
-      default:
-        break;
+    } else if(event.getKeySym() == "d"){
+        g_Test.m_Param -= 0.01;
+        cout<<"New value: " << g_Test.m_Param<<endl;
+        reshape(viewer);
     }
   }
 }
