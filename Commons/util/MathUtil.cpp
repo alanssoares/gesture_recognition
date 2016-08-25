@@ -321,17 +321,18 @@ MathUtil::simplifyDPStep(std::vector<XnPoint3D> points, int first, int last, dou
 }
 
 std::vector<XnPoint3D>
-MathUtil::reduceByCurvature(std::vector<XnPoint3D> points){
+MathUtil::reduceByCurvature(std::vector<XnPoint3D> points, float threshold){
     std::vector<XnPoint3D> newPoints;
-    XnPoint3D l1, l2;
     size_t n = points.size();
+    if(n == 0) return newPoints;
+    XnPoint3D l1, l2;
     float curvature = 0.0;
     newPoints.push_back(points[0]);
     for (int i = 1; i < n - 1; i++){
         l1 = subtract(points[i - 1], points[i]);
         l2 = subtract(points[i], points[i + 1]);
         curvature = length(subtract(l1, l2));
-        if(curvature > THRESHOLD_CURVATURE){
+        if(curvature > threshold){
             newPoints.push_back(points[i]);
         }
     }
@@ -405,7 +406,7 @@ MathUtil::smoothAndReduce(std::vector<XnPoint3D> trajectory) {
     //Smooth the trajectory
     trajectory = MathUtil::smooth(trajectory);
     //Remove points according with curvature
-    return MathUtil::reduceByCurvature(trajectory);
+    return MathUtil::reduceByCurvature(trajectory, THRESHOLD_CURVATURE);
 }
 
 double

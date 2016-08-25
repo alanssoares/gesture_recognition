@@ -230,9 +230,10 @@ public:
     O objetivo é reduzir a quantidade de pontos a serem comparados e aumentar o desempenho
     sem perder qualidade na taxa de reconhecimento dos gestos.
     @param points a serem processados
+    @param threshold
     @return std::vector<XnPoint3D> com trajetória simplificada
     */
-    static std::vector<XnPoint3D> reduceByCurvature(std::vector<XnPoint3D> points);
+    static std::vector<XnPoint3D> reduceByCurvature(std::vector<XnPoint3D> points, float threshold);
 
     /**
      Smooth the trajectory according with the method choosed
