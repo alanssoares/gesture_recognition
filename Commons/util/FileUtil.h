@@ -18,6 +18,7 @@
 #include <XnCppWrapper.h>
 #include "../util/ConstantsUtil.h"
 #include "../logger/Logger.h"
+#include "MathUtil.h"
 
 /*
   Class created to read and write in files
@@ -47,7 +48,12 @@ public:
     /*
      Clear the hands tracking
     */
-    void clear();
+    void clearPositionsGesture();
+
+    /**
+     Clear gestures one and two hands
+    */
+    void clearHandGestures();
 
     /*
      Create the dirs that will be used to save the all files

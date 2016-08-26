@@ -2,7 +2,7 @@
 
 Test::Test(){
 	m_PercentTest = 0.3;
-	m_Param = 0.09;
+	m_Param = 0.002;
 }
 
 Test::~Test(){}
@@ -13,156 +13,30 @@ Test::getFinalTime(std::clock_t start_s){
 }
 
 void
+Test::clearSamples(){
+	m_GesturesTemplate.clear();
+	m_GesturesTest.clear();
+}
+
+void
 Test::loadAll(){
 	FileUtil& futil = FileUtil::getInstance();
-	for (int i = 0; i < futil.mGesturesOneHand.size(); i++){
-		m_AllGestures.push_back(futil.mGesturesOneHand[i]);
-	}
-	for (int i = 0; i < futil.mGesturesTwoHands.size(); i++){
-		m_AllGestures.push_back(futil.mGesturesTwoHands[i]);
-	}
+	m_AllGestures.reserve(futil.mGesturesOneHand.size() + futil.mGesturesTwoHands.size());
+	m_AllGestures.insert( m_AllGestures.end(), futil.mGesturesOneHand.begin(), futil.mGesturesOneHand.end() );
+	m_AllGestures.insert( m_AllGestures.end(), futil.mGesturesTwoHands.begin(), futil.mGesturesTwoHands.end() );
 	std::sort(m_AllGestures.begin(), m_AllGestures.end(), sortByName);
 }
 
 void 
 Test::init(){
-	//Load all samples
 	FileUtil::getInstance().loadGestures(NAME_FILE_DATA_NORMALIZED);
-	//Merge all gestures
 	loadAll();
-	//Split the samples in templates and test, after Initialize the gestures template
 	initAllSamples();
-}
-
-void
-Test::splitDataset(){
-	size_t n = m_AllGestures.size();
-	int j = 0, i = 0, numTests = 0;
-
-	m_GesturesTemplate.clear();
-	m_GesturesTest.clear();
-
-	while(i < n){
-		j = i + 1;
-		while((j < n) && (m_AllGestures[i].name.compare(m_AllGestures[j].name) == 0)) j++;
-		numTests = (j - i) * m_PercentTest;
-		while(numTests > 0) {
-			m_GesturesTest.push_back(m_AllGestures[i++]);
-			numTests--;
-		}
-		while(i < j) {
-			m_GesturesTemplate.push_back(m_AllGestures[i++]);
-		}
-	}
-
-	PRINT("-------------------------------------------")
-	PRINT("Nº Test - " << m_GesturesTest.size());
-	PRINT("Nº Samples - " << m_GesturesTemplate.size());
-	PRINT("-------------------------------------------")
 }
 
 void
 Test::initAllSamples(){
 	splitDataset();
-	initGestureTemplates();
-}
-
-void
-Test::initGestureTemplates(){
-	size_t n = m_GesturesTemplate.size();
-	
-	m_GesturesOneHand.clear();
-	m_GesturesTwoHands.clear();
-	
-	for (int i = 0; i < n; i++){
-		if(m_GesturesTemplate[i].numHands == 1){
-			m_GesturesOneHand.push_back(m_GesturesTemplate[i]);
-		} else {
-			m_GesturesTwoHands.push_back(m_GesturesTemplate[i]);
-		}
-	}
-
-	PRINT("-------------------------------------------")
-	PRINT("Nº One Hand - " << m_GesturesOneHand.size());
-	PRINT("Nº Two Hand - " << m_GesturesTwoHands.size());
-	PRINT("-------------------------------------------")
-}
-
-void
-Test::saveResults(std::string nameFile, type_gesture gestureExecuted, type_gesture gesturePredicted, float timeExecution, float bestDistance, int isRecognized){
-	std::fstream fileOut;
-	fileOut.open(nameFile.c_str(), ios::in | ios::out | ios::ate);
-	if(fileOut.is_open()){
-		fileOut<<gestureExecuted.name<<" "<<gestureExecuted.numHands<<" "<<gestureExecuted.handOne.positions.size()<<" ";
-		fileOut<<gesturePredicted.name<<" "<<gesturePredicted.numHands<<" "<<gesturePredicted.handOne.positions.size()<<" ";
-		fileOut<<timeExecution<<" "<<bestDistance<<" "<<isRecognized<<std::endl;
-	}
-	fileOut.close();
-}
-
-void
-Test::applyLaplacian(){
-	size_t n1 = m_GesturesTest.size();
-	for (int i = 0; i < n1; i++) {
-		m_GesturesTest[i].handOne.positions = MathUtil::smoothMeanNeighboring(m_GesturesTest[i].handOne.positions, NUMBER_SMOOTH_NB);
-		m_GesturesTest[i].handTwo.positions = MathUtil::smoothMeanNeighboring(m_GesturesTest[i].handTwo.positions, NUMBER_SMOOTH_NB);
-	}
-
-	size_t n2 = m_GesturesTemplate.size();
-	for (int i = 0; i < n2; i++) {
-		m_GesturesTemplate[i].handOne.positions =  MathUtil::smoothMeanNeighboring(m_GesturesTemplate[i].handOne.positions, NUMBER_SMOOTH_NB);
-		m_GesturesTemplate[i].handTwo.positions =  MathUtil::smoothMeanNeighboring(m_GesturesTemplate[i].handTwo.positions, NUMBER_SMOOTH_NB);
-	}
-}
-
-void
-Test::applyBSpline(){
-	size_t n1 = m_GesturesTest.size();
-	for (int i = 0; i < n1; i++) {
-		m_GesturesTest[i].handOne.positions = MathUtil::applyCubicBSpline(m_GesturesTest[i].handOne.positions);
-		m_GesturesTest[i].handTwo.positions = MathUtil::applyCubicBSpline(m_GesturesTest[i].handTwo.positions);
-	}
-
-	size_t n2 = m_GesturesTemplate.size();
-	for (int i = 0; i < n2; i++) {
-		m_GesturesTemplate[i].handOne.positions =  MathUtil::applyCubicBSpline(m_GesturesTemplate[i].handOne.positions);
-		m_GesturesTemplate[i].handTwo.positions =  MathUtil::applyCubicBSpline(m_GesturesTemplate[i].handTwo.positions);
-	}
-}
-
-void
-Test::applyCurvature(){
-	size_t n1 = m_GesturesTest.size();
-	for (int i = 0; i < n1; i++) {
-		m_GesturesTest[i].handOne.positions = MathUtil::reduceByCurvature(m_GesturesTest[i].handOne.positions, m_Param);
-		m_GesturesTest[i].handTwo.positions = MathUtil::reduceByCurvature(m_GesturesTest[i].handTwo.positions, m_Param);
-	}
-
-	size_t n2 = m_GesturesTemplate.size();
-	for (int i = 0; i < n2; i++) {
-		m_GesturesTemplate[i].handOne.positions =  MathUtil::reduceByCurvature(m_GesturesTemplate[i].handOne.positions, m_Param);
-		m_GesturesTemplate[i].handTwo.positions =  MathUtil::reduceByCurvature(m_GesturesTemplate[i].handTwo.positions, m_Param);
-	}
-}
-
-void
-Test::applyDouglasPeucker(){
-	size_t n1 = m_GesturesTest.size();
-	for (int i = 0; i < n1; i++) {
-		m_GesturesTest[i].handOne.positions = MathUtil::simplify(m_GesturesTest[i].handOne.positions, m_Param, false);
-		m_GesturesTest[i].handTwo.positions = MathUtil::simplify(m_GesturesTest[i].handTwo.positions, m_Param, false);
-	}
-
-	size_t n2 = m_GesturesTemplate.size();
-	for (int i = 0; i < n2; i++) {
-		m_GesturesTemplate[i].handOne.positions =  MathUtil::simplify(m_GesturesTemplate[i].handOne.positions, m_Param, false);
-		m_GesturesTemplate[i].handTwo.positions =  MathUtil::simplify(m_GesturesTemplate[i].handTwo.positions, m_Param, false);
-	}
-}
-void
-Test::applyMedian(){
-	generateMedianGesture(m_GesturesTemplate);
-	m_GesturesTemplate = m_MedianGestures;
 	initGestureTemplates();
 }
 
@@ -241,65 +115,124 @@ Test::process12(){
 }
 
 void
-Test::applyProcess(int env){
-	switch(env){
-		case 1:
-			process1();
-			break;
-		case 2:
-			process2();
-			break;
-		case 3:
-			process3();
-			break;
-		case 4:
-			process4();
-			break;
-		case 5:
-			process5();
-			break;
-		case 6:
-			process6();
-			break;
-		case 7:
-			process7();
-			break;
-		case 8:
-			process8();
-			break;
-		case 9:
-			process9();
-			break;
-		case 10:
-			process10();
-			break;
-		case 11:
-			process11();
-			break;
-		case 12:
-			process12();
-			break;
-		default:
-			break;
+Test::applyMedian(){
+	generateMedianGesture(m_GesturesTemplate);
+	m_GesturesTemplate = m_MedianGestures;
+	initGestureTemplates();
+}
+
+void
+Test::splitDataset(){
+	size_t n = m_AllGestures.size();
+	int j = 0, i = 0, numTests = 0;
+	clearSamples();
+	while(i < n){
+		j = i + 1;
+		while((j < n) && (m_AllGestures[i].name.compare(m_AllGestures[j].name) == 0)) j++;
+		numTests = (j - i) * m_PercentTest;
+		while(numTests > 0) {
+			m_GesturesTest.push_back(m_AllGestures[i++]);
+			numTests--;
+		}
+		while(i < j) {
+			m_GesturesTemplate.push_back(m_AllGestures[i++]);
+		}
+	}
+}
+
+void
+Test::initGestureTemplates(){
+	size_t n = m_GesturesTemplate.size();
+	m_GesturesOneHand.clear();
+	m_GesturesTwoHands.clear();
+	for (int i = 0; i < n; i++){
+		if(m_GesturesTemplate[i].numHands == 1){
+			m_GesturesOneHand.push_back(m_GesturesTemplate[i]);
+		} else {
+			m_GesturesTwoHands.push_back(m_GesturesTemplate[i]);
+		}
+	}
+}
+
+void
+Test::saveResults(std::string nameFile, type_gesture gestureExecuted, type_gesture gesturePredicted, float timeExecution, float bestDistance, int isRecognized){
+	std::fstream fileOut;
+	fileOut.open(nameFile.c_str(), ios::in | ios::out | ios::ate);
+	if(fileOut.is_open()){
+		fileOut<<gestureExecuted.name<<" "<<gestureExecuted.numHands<<" "<<gestureExecuted.handOne.positions.size()<<" ";
+		fileOut<<gesturePredicted.name<<" "<<gesturePredicted.numHands<<" "<<gesturePredicted.handOne.positions.size()<<" ";
+		fileOut<<timeExecution<<" "<<bestDistance<<" "<<isRecognized<<std::endl;
+	}
+	fileOut.close();
+}
+
+void
+Test::applyLaplacian(){
+	size_t n1 = m_GesturesTest.size();
+	for (int i = 0; i < n1; i++) {
+		m_GesturesTest[i].handOne.positions = MathUtil::smoothMeanNeighboring(m_GesturesTest[i].handOne.positions, NUMBER_SMOOTH_NB);
+		m_GesturesTest[i].handTwo.positions = MathUtil::smoothMeanNeighboring(m_GesturesTest[i].handTwo.positions, NUMBER_SMOOTH_NB);
+	}
+	size_t n2 = m_GesturesTemplate.size();
+	for (int i = 0; i < n2; i++) {
+		m_GesturesTemplate[i].handOne.positions =  MathUtil::smoothMeanNeighboring(m_GesturesTemplate[i].handOne.positions, NUMBER_SMOOTH_NB);
+		m_GesturesTemplate[i].handTwo.positions =  MathUtil::smoothMeanNeighboring(m_GesturesTemplate[i].handTwo.positions, NUMBER_SMOOTH_NB);
+	}
+}
+
+void
+Test::applyBSpline(){
+	size_t n1 = m_GesturesTest.size();
+	for (int i = 0; i < n1; i++) {
+		m_GesturesTest[i].handOne.positions = MathUtil::applyCubicBSpline(m_GesturesTest[i].handOne.positions);
+		m_GesturesTest[i].handTwo.positions = MathUtil::applyCubicBSpline(m_GesturesTest[i].handTwo.positions);
+	}
+	size_t n2 = m_GesturesTemplate.size();
+	for (int i = 0; i < n2; i++) {
+		m_GesturesTemplate[i].handOne.positions =  MathUtil::applyCubicBSpline(m_GesturesTemplate[i].handOne.positions);
+		m_GesturesTemplate[i].handTwo.positions =  MathUtil::applyCubicBSpline(m_GesturesTemplate[i].handTwo.positions);
+	}
+}
+
+void
+Test::applyCurvature(){
+	size_t n1 = m_GesturesTest.size();
+	for (int i = 0; i < n1; i++) {
+		m_GesturesTest[i].handOne.positions = MathUtil::reduceByCurvature(m_GesturesTest[i].handOne.positions, m_Param);
+		m_GesturesTest[i].handTwo.positions = MathUtil::reduceByCurvature(m_GesturesTest[i].handTwo.positions, m_Param);
+	}
+	size_t n2 = m_GesturesTemplate.size();
+	for (int i = 0; i < n2; i++) {
+		m_GesturesTemplate[i].handOne.positions =  MathUtil::reduceByCurvature(m_GesturesTemplate[i].handOne.positions, m_Param);
+		m_GesturesTemplate[i].handTwo.positions =  MathUtil::reduceByCurvature(m_GesturesTemplate[i].handTwo.positions, m_Param);
+	}
+}
+
+void
+Test::applyDouglasPeucker(){
+	size_t n1 = m_GesturesTest.size();
+	for (int i = 0; i < n1; i++) {
+		m_GesturesTest[i].handOne.positions = MathUtil::simplify(m_GesturesTest[i].handOne.positions, m_Param, false);
+		m_GesturesTest[i].handTwo.positions = MathUtil::simplify(m_GesturesTest[i].handTwo.positions, m_Param, false);
+	}
+	size_t n2 = m_GesturesTemplate.size();
+	for (int i = 0; i < n2; i++) {
+		m_GesturesTemplate[i].handOne.positions =  MathUtil::simplify(m_GesturesTemplate[i].handOne.positions, m_Param, false);
+		m_GesturesTemplate[i].handTwo.positions =  MathUtil::simplify(m_GesturesTemplate[i].handTwo.positions, m_Param, false);
 	}
 }
 
 void 
 Test::experiment(int env, std::string nameFile){
-	size_t n = m_GesturesTest.size();
-	
 	FileUtil::getInstance().createFile(nameFile);
-
 	applyProcess(env);
-
-	for (int i = 0; i < n; i++){
+	for (int i = 0; i < m_GesturesTest.size(); i++){
 		if(m_GesturesTest[i].numHands == 1){
 			recognizeOneHand(m_GesturesTest[i], nameFile);
 		} else {
 			recognizeTwoHands(m_GesturesTest[i], nameFile);
 		}
 	}
-
 	initAllSamples();
 }
 
@@ -356,9 +289,7 @@ Test::recognizeTwoHands(const type_gesture gesture, const std::string nameFile) 
 void
 Test::generateMedianGesture(std::vector<type_gesture> gestures){
 	size_t n = gestures.size(), i = 0, j = 0, m;
-
 	generateGestureEqualSize(&gestures);
-	
 	while(j < n){
 		j = i + 1;
 		while((j < n) && (gestures[i].name.compare(gestures[j].name) == 0)) j++;
@@ -387,19 +318,14 @@ Test::generateMedianGesture(std::vector<type_gesture> gestures){
 void
 Test::saveMedianGestures(){
 	FileUtil& futil = FileUtil::getInstance();
-	size_t n = m_MedianGestures.size();
-
-	futil.mGesturesOneHand.clear();
-	futil.mGesturesTwoHands.clear();
-
-	for (int i = 0; i < n; i++){
+	futil.clearHandGestures();
+	for (int i = 0; i < m_MedianGestures.size(); i++){
 		if(m_MedianGestures[i].numHands == 1){
 			futil.mGesturesOneHand.push_back(m_MedianGestures[i]);
 		} else {
 			futil.mGesturesTwoHands.push_back(m_MedianGestures[i]);
 		}
 	}
-
 	futil.saveAll();
 }
 
@@ -442,26 +368,18 @@ Test::getMeanPoints(vector<type_gesture> gestures, int i, int j){
 void
 Test::improveGestures(){  
     FileUtil& fileUtil = FileUtil::getInstance();
-    
     fileUtil.loadGestures(NAME_FILE_DATA);
-
-    size_t n1 = fileUtil.mGesturesOneHand.size();
-    size_t n2 = fileUtil.mGesturesTwoHands.size();
-    
-    for (int i = 0; i < n1; i++){
+    for (int i = 0; i < fileUtil.mGesturesOneHand.size(); i++){
     	normCenterOriginGesture(&fileUtil.mGesturesOneHand[i]);
     }
-    
-    for (int i = 0; i < n2; i++){
+    for (int i = 0; i < fileUtil.mGesturesTwoHands.size(); i++){
     	normCenterOriginGesture(&fileUtil.mGesturesTwoHands[i]);
     }
-
     fileUtil.saveAll();
 }
 
 void
 Test::printGesture(const type_gesture gesture){
-	PRINT(gesture.name);
 	for (int i = 0; i < gesture.handOne.positions.size(); i++){
 		PRINT(gesture.handOne.positions[i].X << " " << gesture.handOne.positions[i].Y <<" "<<gesture.handOne.positions[i].Z <<" "<<
 		gesture.handTwo.positions[i].X << " " << gesture.handTwo.positions[i].Y <<" "<<gesture.handTwo.positions[i].Z);
@@ -472,4 +390,48 @@ void
 Test::normCenterOriginGesture(type_gesture *gesture){
 	gesture->handOne.positions = MathUtil::normCenterOrigin(gesture->handOne.positions);
 	gesture->handTwo.positions = MathUtil::normCenterOrigin(gesture->handTwo.positions);
+}
+
+void
+Test::applyProcess(int env){
+	switch(env){
+		case 1:
+			process1();
+			break;
+		case 2:
+			process2();
+			break;
+		case 3:
+			process3();
+			break;
+		case 4:
+			process4();
+			break;
+		case 5:
+			process5();
+			break;
+		case 6:
+			process6();
+			break;
+		case 7:
+			process7();
+			break;
+		case 8:
+			process8();
+			break;
+		case 9:
+			process9();
+			break;
+		case 10:
+			process10();
+			break;
+		case 11:
+			process11();
+			break;
+		case 12:
+			process12();
+			break;
+		default:
+			break;
+	}
 }

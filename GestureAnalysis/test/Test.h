@@ -14,6 +14,7 @@ public:
 
 	void printGesture(const type_gesture gesture);
 	
+	void clearSamples();
 	void loadAll();
 	
 	void splitDataset();

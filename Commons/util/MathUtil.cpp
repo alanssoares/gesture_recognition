@@ -8,6 +8,13 @@
 
 #include "MathUtil.h"
 
+std::string 
+MathUtil::intToString(int n){
+    std::ostringstream converter;
+    converter << n;
+    return converter.str();
+}
+
 double
 MathUtil::length(XnPoint3D point){
     return sqrt(pow(point.X, 2) + pow(point.Y, 2) + pow(point.Z, 2));

@@ -70,7 +70,7 @@ FileUtil::setInfoGesture(std::string name, int numHands){
 void
 FileUtil::startTrack(){
     m_StartingStorage = true;
-    clear();
+    clearPositionsGesture();
     PRINT("Tracking");
 }
 
@@ -82,17 +82,15 @@ FileUtil::stopTrack(){
     } else if(m_NewGesture.numHands == 2){
         mGesturesTwoHands.push_back(m_NewGesture);
     }
-    clear();
+    clearPositionsGesture();
     PRINT("Finished");
 }
 
 std::string
 FileUtil::createFileTrack(){
     int i = readNumLastFile(FILE_TRACK);
-    std::ostringstream converter;
-    converter << i + 1;
     std::string root_dir = "../samples/gesture_" + m_NewGesture.name + "/track/gesture_";
-    std::string nameFile = root_dir + m_NewGesture.name + "_track_" + converter.str() + ".txt";
+    std::string nameFile = root_dir + m_NewGesture.name + "_track_" + MathUtil::intToString(i + 1) + ".txt";
     std::ofstream fileCreate(nameFile.c_str());
     fileCreate.close();
     return nameFile;
@@ -227,9 +225,15 @@ FileUtil::createDirs(){
 }
 
 void
-FileUtil::clear(){
+FileUtil::clearPositionsGesture(){
     m_NewGesture.handOne.positions.clear();
     m_NewGesture.handTwo.positions.clear();
+}
+
+void
+FileUtil::clearHandGestures(){
+    mGesturesOneHand.clear();
+    mGesturesTwoHands.clear();
 }
 
 int
