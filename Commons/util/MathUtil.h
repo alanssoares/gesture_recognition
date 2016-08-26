@@ -236,6 +236,15 @@ public:
     static std::vector<XnPoint3D> reduceByCurvature(std::vector<XnPoint3D> points, float threshold);
 
     /**
+     Método responsável por calcular a curvatura utilizando 3 pontos
+     @param a ponto i - 1
+     @param b ponto i
+     @param c ponto i + 1
+     @return float com curvatura
+    */
+    static float calcCurvature(XnPoint3D a, XnPoint3D b, XnPoint3D c);
+
+    /**
      Smooth the trajectory according with the method choosed
      @param trajectory
      @return std::vector<XnPoint3D>

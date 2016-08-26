@@ -50,8 +50,18 @@ void executeAll(){
     }
 }
 
+XnPoint3D converterToXnPoint3D(pcl::PointXYZ point){
+    XnPoint3D newPoint;
+    newPoint.X = point.x;
+    newPoint.Y = point.y;
+    newPoint.Z = point.z;
+    return newPoint;
+}
+
 void reshape(pcl::visualization::PCLVisualizer *viewer){
   std::ostringstream os1, os2;
+  XnPoint3D a, b, c;
+  float curvature;
 
   clearAllVectores();
 
@@ -72,9 +82,26 @@ void reshape(pcl::visualization::PCLVisualizer *viewer){
   for (int i = 1; i < n1 - 1; i++){
     os1 << "lineNormalA" << i;
     os2 << "lineNormalB" << i;
+    
+    a = converterToXnPoint3D(g_PointsNormalA[i - 1]);
+    b = converterToXnPoint3D(g_PointsNormalA[i]);
+    c = converterToXnPoint3D(g_PointsNormalA[i + 1]);
+    curvature = MathUtil::calcCurvature(a, b, c);
+    if(curvature > g_Test.m_Param){
+      viewer->addLine<pcl::PointXYZ, pcl::PointXYZ> (g_PointsNormalA[i], g_PointsNormalA[i + 1], 1.0, 0.0, 0.0, os1.str(), g_IdView1);
+    } else {
+      viewer->addLine<pcl::PointXYZ, pcl::PointXYZ> (g_PointsNormalA[i], g_PointsNormalA[i + 1], 0.0, 0.0, 1.0, os1.str(), g_IdView1);
+    }
 
-    viewer->addLine<pcl::PointXYZ, pcl::PointXYZ> (g_PointsNormalA[i], g_PointsNormalA[i + 1], 0.0, 1.0, 0.0, os1.str(), g_IdView1);
-    viewer->addLine<pcl::PointXYZ, pcl::PointXYZ> (g_PointsNormalB[i], g_PointsNormalB[i + 1], 1.0, 1.0, 0.0, os2.str(), g_IdView1);
+    a = converterToXnPoint3D(g_PointsNormalB[i - 1]);
+    b = converterToXnPoint3D(g_PointsNormalB[i]);
+    c = converterToXnPoint3D(g_PointsNormalB[i + 1]);
+    curvature = MathUtil::calcCurvature(a, b, c);
+    if(curvature > g_Test.m_Param){
+      viewer->addLine<pcl::PointXYZ, pcl::PointXYZ> (g_PointsNormalB[i], g_PointsNormalB[i + 1], 1.0, 0.0, 0.0, os2.str(), g_IdView1);
+    } else {
+      viewer->addLine<pcl::PointXYZ, pcl::PointXYZ> (g_PointsNormalB[i], g_PointsNormalB[i + 1], 0.0, 0.0, 1.0, os2.str(), g_IdView1);
+    }
   }
 
   os1.clear();
@@ -84,9 +111,8 @@ void reshape(pcl::visualization::PCLVisualizer *viewer){
   for (int i = 1; i < n2 - 1; i++){
     os1 << "lineProcessedA" << i;
     os2 << "lineProcessedB" << i;
-
-    viewer->addLine<pcl::PointXYZ, pcl::PointXYZ> (g_PointsProcessedA[i], g_PointsProcessedA[i + 1], 0.0, 1.0, 0.0, os1.str(), g_IdView2);
-    viewer->addLine<pcl::PointXYZ, pcl::PointXYZ> (g_PointsProcessedB[i], g_PointsProcessedB[i + 1], 1.0, 1.0, 0.0, os2.str(), g_IdView2);
+    viewer->addLine<pcl::PointXYZ, pcl::PointXYZ> (g_PointsProcessedA[i], g_PointsProcessedA[i + 1], 0.0, 0.0, 1.0, os1.str(), g_IdView2);
+    viewer->addLine<pcl::PointXYZ, pcl::PointXYZ> (g_PointsProcessedB[i], g_PointsProcessedB[i + 1], 0.0, 0.0, 1.0, os2.str(), g_IdView2);
   }
 
   viewer->addText("Nº Points: " + intToString(n1), 10, 10, "v1 text", g_IdView1);

@@ -123,7 +123,7 @@ typedef struct type_gesture {
 /* Define the type of method that will be used to smooth the path */
 #define TYPE_SMOOTH MEAN_NEIGHBORING
 /* Define the threshold to remove points that there isn't large curvature */
-#define THRESHOLD_CURVATURE 0.02
+#define THRESHOLD_CURVATURE 0.09
 
 /* ========= Mean Neighboring ======== */
 #define NUMBER_SMOOTH_NB 2

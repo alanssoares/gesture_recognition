@@ -2,7 +2,7 @@
 
 Test::Test(){
 	m_PercentTest = 0.3;
-	m_Param = 0.001;
+	m_Param = 0.09;
 }
 
 Test::~Test(){}

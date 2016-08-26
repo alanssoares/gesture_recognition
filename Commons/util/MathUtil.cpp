@@ -325,19 +325,24 @@ MathUtil::reduceByCurvature(std::vector<XnPoint3D> points, float threshold){
     std::vector<XnPoint3D> newPoints;
     size_t n = points.size();
     if(n == 0) return newPoints;
-    XnPoint3D l1, l2;
     float curvature = 0.0;
     newPoints.push_back(points[0]);
     for (int i = 1; i < n - 1; i++){
-        l1 = subtract(points[i - 1], points[i]);
-        l2 = subtract(points[i], points[i + 1]);
-        curvature = length(subtract(l1, l2));
+        curvature = calcCurvature(points[i - 1], points[i], points[i + 1]);
         if(curvature > threshold){
             newPoints.push_back(points[i]);
         }
     }
     newPoints.push_back(points[n - 1]);
     return newPoints;
+}
+
+float
+MathUtil::calcCurvature(XnPoint3D a, XnPoint3D b, XnPoint3D c){
+    XnPoint3D l1, l2;
+    l1 = subtract(a, b);
+    l2 = subtract(b, c);
+    return length(subtract(l1, l2));
 }
 
 double
