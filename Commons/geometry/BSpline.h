@@ -20,14 +20,14 @@ public:
      @param i
      @param t
     */
-    double baseFunction(int i, double t);
+    static double baseFunction(int i, double t);
 
     /*
     Create the cubic bspline using the points and step
     @param points of control
     @param steps
     */
-    std::vector<XnPoint3D> curvePoints(std::vector<XnPoint3D> points, int steps);
+    static std::vector<XnPoint3D> curvePoints(std::vector<XnPoint3D> points, int steps);
 
     /*
     Evaluate an ith point on the B spline
@@ -35,7 +35,7 @@ public:
     @param t
     @param points
     */
-    XnPoint3D predictPoint(int i, double t, std::vector<XnPoint3D> points);
+    static XnPoint3D predictPoint(int i, double t, std::vector<XnPoint3D> points);
 
 };
 

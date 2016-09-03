@@ -199,8 +199,8 @@ void
 Test::applyBSpline(std::vector<type_gesture>* gestures){
 	size_t n = gestures->size();
 	for (int i = 0; i < n; i++) {
-		gestures->at(i).handOne.positions = MathUtil::applyCubicBSpline(gestures->at(i).handOne.positions);
-		gestures->at(i).handTwo.positions = MathUtil::applyCubicBSpline(gestures->at(i).handTwo.positions);
+		gestures->at(i).handOne.positions = BSpline::curvePoints(gestures->at(i).handOne.positions, NUM_STEP_BSPLINE);
+		gestures->at(i).handTwo.positions = BSpline::curvePoints(gestures->at(i).handTwo.positions, NUM_STEP_BSPLINE);
 	}
 }
 

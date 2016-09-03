@@ -175,13 +175,6 @@ public:
     static std::vector<XnPoint3D> applyCubicBezier(std::vector<XnPoint3D> positions);
     
     /*
-     Método responsável por aplicar uma interpolação cúbica usando B-Spline
-     @param positions of the trajectory
-     @return std::vector<XnPoint3D> da nova trajetória interpolada
-    */
-    static std::vector<XnPoint3D> applyCubicBSpline(std::vector<XnPoint3D> positions);
-    
-    /*
      Método responsável por normalizar a trajetória usando a média da primeira vizinhança, ou seja
      P(n - 1), P(n), P(n + 1).
      @param positions of the trajectory

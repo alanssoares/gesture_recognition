@@ -7,8 +7,9 @@ To Do
 - realizar os testes novamente para verificar a taxa de reconhecimento após as correções
 
 Doing
-- corrigir a suavização usando b-spline para evitar o aumento significativo de pontos do gesto
+- verificar método da curvatura, pois está removendo primeiro os pontos iniciais
 
 Done
 - implementar e remover os gestos inválidos do dataset
 - plotar pontos ao invés de polígonos
+- corrigir a suavização usando b-spline para evitar o aumento significativo de pontos do gesto

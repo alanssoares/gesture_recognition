@@ -131,7 +131,7 @@ typedef struct type_gesture {
 
 /* ========= Cubic Spline ======== */
 #define INCREMENT_RATE_INTERPOLATION 0.5
-#define NUM_STEP_BSPLINE 3 //the quantity of steps for each bspline curve interval
+#define NUM_STEP_BSPLINE 1 //the quantity of points for each two interval points
 /* ========= Cubic Spline ======== */
 
 /* ========= Douglas-Peucker Radial ========= */

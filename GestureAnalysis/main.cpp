@@ -16,6 +16,7 @@ Test g_Test;
 std::vector<type_gesture> g_Gestures;
 std::vector<pcl::PointXYZ> g_PointsNormalA, g_PointsNormalB, g_PointsProcessedA, g_PointsProcessedB;
 int g_IdView1(0), g_IdView2(0), g_np = 1, id_Gesture = 0;
+std::string g_IdCloudA = "cloudA", g_IdCloudB = "cloudB";
 
 std::vector<pcl::PointXYZ> converterToPointXYZ(std::vector<XnPoint3D> points){
   std::vector<pcl::PointXYZ> pointsConverted;
@@ -38,6 +39,13 @@ void clearAllVectores(){
   g_Gestures.clear();
 }
 
+void removeAll(pcl::visualization::PCLVisualizer *viewer){
+  viewer->removeAllShapes(g_IdView1);
+  viewer->removeAllShapes(g_IdView2);
+  viewer->removePointCloud(g_IdCloudA, g_IdView1);
+  viewer->removePointCloud(g_IdCloudB, g_IdView2);
+}
+
 XnPoint3D converterToXnPoint3D(pcl::PointXYZ point){
     XnPoint3D newPoint;
     newPoint.X = point.x;
@@ -50,51 +58,41 @@ float calcCurvature(pcl::PointXYZ a, pcl::PointXYZ b, pcl::PointXYZ c){
     return MathUtil::calcCurvature(converterToXnPoint3D(a), converterToXnPoint3D(b), converterToXnPoint3D(c));
 }
 
-void viewLabels(pcl::visualization::PCLVisualizer *viewer, int n1, int n2){
-  viewer->addText("Nº Points: " + MathUtil::intToString(n1), 10, 10, "v1 text", g_IdView1);
-  viewer->addText("Nº Points: " + MathUtil::intToString(n2), 10, 10, "v2 text", g_IdView2);
-  viewer->addText("Nº Total: " + MathUtil::intToString(g_Gestures.size()), 10, 20, "v3 text", g_IdView1);
-  viewer->addText("Name : " + g_Gestures[id_Gesture].name, 10, 30, "v4 text", g_IdView1);
-  viewer->addText("Id : " + MathUtil::intToString(id_Gesture), 10, 40, "v5 text", g_IdView1);
-  viewer->addText("Param: " + MathUtil::intToString(g_Test.m_Param), 10, 0, "v6 text", g_IdView1);
-}
-
-void viewShapes(pcl::visualization::PCLVisualizer *viewer){
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloudA(new pcl::PointCloud<pcl::PointXYZ>);
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloudB(new pcl::PointCloud<pcl::PointXYZ>);
-  std::ostringstream os1, os2;
-  std::string idCloudA = "cloudA", idCloudB = "cloudB";
-  float curvature;
-
-  clearAllVectores();
-
-  g_Gestures = g_Test.m_AllGestures;
-
-  viewer->removeAllShapes(g_IdView1);
-  viewer->removeAllShapes(g_IdView2);
-  viewer->removePointCloud(idCloudA, g_IdView1);
-  viewer->removePointCloud(idCloudB, g_IdView2);
+void improveCurrentGesture(){
 
   g_PointsNormalA = converterToPointXYZ(g_Gestures[id_Gesture].handOne.positions);
   g_PointsNormalB = converterToPointXYZ(g_Gestures[id_Gesture].handTwo.positions);
-  
-  //g_Test.applyDouglasPeucker(&g_Gestures);
-  g_Test.applyCurvature(&g_Gestures);
-  //g_Test.applyLaplacian(&g_Gestures);
-  g_Test.applyBSpline(&g_Gestures);
-  
-  g_PointsProcessedA = converterToPointXYZ(g_Gestures[id_Gesture].handOne.positions);
-  g_PointsProcessedB = converterToPointXYZ(g_Gestures[id_Gesture].handTwo.positions);
 
-  size_t n1 = g_PointsNormalA.size(), n2 = g_PointsProcessedA.size();
-  
-  viewLabels(viewer, n1, n2);
+  // g_PointsProcessedA = converterToPointXYZ(MathUtil::simplify(g_Gestures[id_Gesture].handOne.positions, g_Test.m_Param, false));
+  // g_PointsProcessedB = converterToPointXYZ(MathUtil::simplify(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_Param, false));
 
-  for (int i = 1; i < n1 - 1; i++){
-    
+  g_PointsProcessedA = converterToPointXYZ(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handOne.positions, g_Test.m_Param));
+  g_PointsProcessedB = converterToPointXYZ(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_Param));
+
+  // g_PointsProcessedA = converterToPointXYZ(BSpline::curvePoints(g_Gestures[id_Gesture].handOne.positions, NUM_STEP_BSPLINE));
+  // g_PointsProcessedB = converterToPointXYZ(BSpline::curvePoints(g_Gestures[id_Gesture].handTwo.positions, NUM_STEP_BSPLINE));
+
+  g_PointsProcessedA = converterToPointXYZ(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handOne.positions));
+  g_PointsProcessedB = converterToPointXYZ(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handTwo.positions));
+}
+
+void viewLabels(pcl::visualization::PCLVisualizer *viewer){
+  viewer->addText("Nº Points: " + MathUtil::intToString(g_PointsNormalA.size()), 10, 10, "v1 text", g_IdView1);
+  viewer->addText("Nº Points: " + MathUtil::intToString(g_PointsProcessedA.size()), 10, 10, "v2 text", g_IdView2);
+  viewer->addText("Nº Total: " + MathUtil::intToString(g_Gestures.size()), 10, 20, "v3 text", g_IdView1);
+  viewer->addText("Name : " + g_Gestures[id_Gesture].name, 10, 30, "v4 text", g_IdView1);
+  viewer->addText("Id : " + MathUtil::intToString(id_Gesture), 10, 40, "v5 text", g_IdView1);
+  viewer->addText("Threshold: " + MathUtil::intToString(g_Test.m_Param), 10, 0, "v6 text", g_IdView1);
+}
+
+void viewNormalGesture(pcl::visualization::PCLVisualizer *viewer){
+  pcl::PointCloud<pcl::PointXYZ>::Ptr cloudA(new pcl::PointCloud<pcl::PointXYZ>);
+  size_t n = g_PointsNormalA.size();
+  std::ostringstream os1, os2;
+  float curvature = 0.0;
+  for (int i = 1; i < n - 1; i++){
     os1 << "LNA" << i;
     os2 << "LNB" << i;
-
     if(g_Gestures[id_Gesture].numHands == 2){
         curvature = calcCurvature(g_PointsNormalA[i - 1], g_PointsNormalA[i], g_PointsNormalA[i + 1]);
         if(curvature > g_Test.m_Param){
@@ -103,7 +101,6 @@ void viewShapes(pcl::visualization::PCLVisualizer *viewer){
           cloudA->points.push_back(g_PointsNormalA[i]);
         }
     }
-
     curvature = calcCurvature(g_PointsNormalB[i - 1], g_PointsNormalB[i], g_PointsNormalB[i + 1]);
     if(curvature > g_Test.m_Param){
       cloudA->points.push_back(g_PointsNormalB[i]);
@@ -111,25 +108,41 @@ void viewShapes(pcl::visualization::PCLVisualizer *viewer){
       cloudA->points.push_back(g_PointsNormalB[i]);
     }
   }
+  viewer->addPointCloud<pcl::PointXYZ> (cloudA, g_IdCloudA, g_IdView1);
+  viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 2, g_IdCloudA);
+}
 
-  os1.clear();
-  os2.clear();
-
-  for (int i = 0; i < n2; i++){
-    
+void viewProcessedGesture(pcl::visualization::PCLVisualizer *viewer){
+  pcl::PointCloud<pcl::PointXYZ>::Ptr cloudB(new pcl::PointCloud<pcl::PointXYZ>);
+  size_t n = g_PointsProcessedA.size();
+  std::ostringstream os1, os2;
+  for (int i = 0; i < n; i++){
     os1 << "LPA" << i;
     os2 << "LPB" << i;
-    
     cloudB->points.push_back(g_PointsProcessedB[i]);
     if(g_Gestures[id_Gesture].numHands == 2){
       cloudB->points.push_back(g_PointsProcessedA[i]);
     }
   }
+  viewer->addPointCloud<pcl::PointXYZ> (cloudB, g_IdCloudB, g_IdView2);
+  viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 2, g_IdCloudB);
+}
 
-  viewer->addPointCloud<pcl::PointXYZ> (cloudA, idCloudA, g_IdView1);
-  viewer->addPointCloud<pcl::PointXYZ> (cloudB, idCloudB, g_IdView2);
-  viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 2, idCloudA);
-  viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 2, idCloudB);
+void viewShapes(pcl::visualization::PCLVisualizer *viewer){
+  //Clear all global declared vectores
+  clearAllVectores();
+  //Remove all shapes, lines, etc from the view
+  removeAll(viewer);
+  //Reload all gestures
+  g_Gestures = g_Test.m_AllGestures;
+  //Transform and process the gestures of the viewport 1 and 2
+  improveCurrentGesture();
+  //Plot all labels in the screen
+  viewLabels(viewer);
+  //Plot the normal gesture
+  viewNormalGesture(viewer);
+  //Plot the processed gesture
+  viewProcessedGesture(viewer);
 }
 
 void keyboardEventOccurred (const pcl::visualization::KeyboardEvent &event, void* viewer_void)
