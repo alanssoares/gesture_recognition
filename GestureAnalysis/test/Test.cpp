@@ -2,7 +2,7 @@
 
 Test::Test(){
 	m_PercentTest = 0.3;
-	m_Param = 0.002;
+	m_Param = 0.0005;
 }
 
 Test::~Test(){}
@@ -21,16 +21,16 @@ Test::clearSamples(){
 void
 Test::loadAll(){
 	FileUtil& futil = FileUtil::getInstance();
+	futil.loadGestures(NAME_FILE_DATA_NORMALIZED);
 	m_AllGestures.reserve(futil.mGesturesOneHand.size() + futil.mGesturesTwoHands.size());
 	m_AllGestures.insert( m_AllGestures.end(), futil.mGesturesOneHand.begin(), futil.mGesturesOneHand.end() );
 	m_AllGestures.insert( m_AllGestures.end(), futil.mGesturesTwoHands.begin(), futil.mGesturesTwoHands.end() );
-	std::sort(m_AllGestures.begin(), m_AllGestures.end(), sortByName);
 }
 
 void 
 Test::init(){
-	FileUtil::getInstance().loadGestures(NAME_FILE_DATA_NORMALIZED);
 	loadAll();
+	std::sort(m_AllGestures.begin(), m_AllGestures.end(), sortByName);
 	initAllSamples();
 }
 
@@ -42,75 +42,95 @@ Test::initAllSamples(){
 
 void
 Test::process1(){
-	applyLaplacian();
+	applyLaplacian(&m_GesturesTest);
+	applyLaplacian(&m_GesturesTemplate);
 }
 
 void
 Test::process2(){
-	applyBSpline();
+	applyBSpline(&m_GesturesTest);
+	applyBSpline(&m_GesturesTemplate);
 }
 
 void
 Test::process3(){
-	applyLaplacian();
+	applyLaplacian(&m_GesturesTest);
+	applyLaplacian(&m_GesturesTemplate);
 	applyMedian();
 }
 
 void
 Test::process4(){
-	applyBSpline();
+	applyBSpline(&m_GesturesTest);
+	applyBSpline(&m_GesturesTemplate);
 	applyMedian();
 }
 
 void
 Test::process5(){
-	applyCurvature();
-	applyLaplacian();
+	applyCurvature(&m_GesturesTest);
+	applyCurvature(&m_GesturesTemplate);
+	applyLaplacian(&m_GesturesTest);
+	applyLaplacian(&m_GesturesTemplate);
 }
 
 void
 Test::process6(){
-	applyCurvature();
-	applyBSpline();
+	applyCurvature(&m_GesturesTest);
+	applyCurvature(&m_GesturesTemplate);
+	applyBSpline(&m_GesturesTest);
+	applyBSpline(&m_GesturesTemplate);
 }
 
 void
 Test::process7(){
-	applyCurvature();
-	applyLaplacian();
+	applyCurvature(&m_GesturesTest);
+	applyCurvature(&m_GesturesTemplate);
+	applyLaplacian(&m_GesturesTest);
+	applyLaplacian(&m_GesturesTemplate);
 	applyMedian();
 }
 
 void
 Test::process8(){
-	applyCurvature();
-	applyBSpline();
+	applyCurvature(&m_GesturesTest);
+	applyCurvature(&m_GesturesTemplate);
+	applyBSpline(&m_GesturesTest);
+	applyBSpline(&m_GesturesTemplate);
 	applyMedian();
 }
 
 void
 Test::process9(){
-	applyDouglasPeucker();
-	applyLaplacian();
+	applyDouglasPeucker(&m_GesturesTest);
+	applyDouglasPeucker(&m_GesturesTemplate);
+	applyLaplacian(&m_GesturesTest);
+	applyLaplacian(&m_GesturesTemplate);
 }
 
 void
 Test::process10(){
-	applyDouglasPeucker();
-	applyBSpline();
+	applyDouglasPeucker(&m_GesturesTest);
+	applyDouglasPeucker(&m_GesturesTemplate);
+	applyBSpline(&m_GesturesTest);
+	applyBSpline(&m_GesturesTemplate);
 }
 
 void
 Test::process11(){
-	applyDouglasPeucker();
-	applyLaplacian();
+	applyDouglasPeucker(&m_GesturesTest);
+	applyDouglasPeucker(&m_GesturesTemplate);
+	applyLaplacian(&m_GesturesTest);
+	applyLaplacian(&m_GesturesTemplate);
 	applyMedian();
 }
 
 void
 Test::process12(){
-	applyDouglasPeucker();
-	applyBSpline();
+	applyDouglasPeucker(&m_GesturesTest);
+	applyDouglasPeucker(&m_GesturesTemplate);
+	applyBSpline(&m_GesturesTest);
+	applyBSpline(&m_GesturesTemplate);
 	applyMedian();
 }
 
@@ -167,58 +187,38 @@ Test::saveResults(std::string nameFile, type_gesture gestureExecuted, type_gestu
 }
 
 void
-Test::applyLaplacian(){
-	size_t n1 = m_GesturesTest.size();
-	for (int i = 0; i < n1; i++) {
-		m_GesturesTest[i].handOne.positions = MathUtil::smoothMeanNeighboring(m_GesturesTest[i].handOne.positions, NUMBER_SMOOTH_NB);
-		m_GesturesTest[i].handTwo.positions = MathUtil::smoothMeanNeighboring(m_GesturesTest[i].handTwo.positions, NUMBER_SMOOTH_NB);
-	}
-	size_t n2 = m_GesturesTemplate.size();
-	for (int i = 0; i < n2; i++) {
-		m_GesturesTemplate[i].handOne.positions =  MathUtil::smoothMeanNeighboring(m_GesturesTemplate[i].handOne.positions, NUMBER_SMOOTH_NB);
-		m_GesturesTemplate[i].handTwo.positions =  MathUtil::smoothMeanNeighboring(m_GesturesTemplate[i].handTwo.positions, NUMBER_SMOOTH_NB);
+Test::applyLaplacian(std::vector<type_gesture>* gestures){
+	size_t n = gestures->size();
+	for (int i = 0; i < n; i++) {
+		gestures->at(i).handOne.positions = MathUtil::smoothMeanNeighboring(gestures->at(i).handOne.positions, NUMBER_SMOOTH_NB);
+		gestures->at(i).handTwo.positions = MathUtil::smoothMeanNeighboring(gestures->at(i).handTwo.positions, NUMBER_SMOOTH_NB);
 	}
 }
 
 void
-Test::applyBSpline(){
-	size_t n1 = m_GesturesTest.size();
-	for (int i = 0; i < n1; i++) {
-		m_GesturesTest[i].handOne.positions = MathUtil::applyCubicBSpline(m_GesturesTest[i].handOne.positions);
-		m_GesturesTest[i].handTwo.positions = MathUtil::applyCubicBSpline(m_GesturesTest[i].handTwo.positions);
-	}
-	size_t n2 = m_GesturesTemplate.size();
-	for (int i = 0; i < n2; i++) {
-		m_GesturesTemplate[i].handOne.positions =  MathUtil::applyCubicBSpline(m_GesturesTemplate[i].handOne.positions);
-		m_GesturesTemplate[i].handTwo.positions =  MathUtil::applyCubicBSpline(m_GesturesTemplate[i].handTwo.positions);
+Test::applyBSpline(std::vector<type_gesture>* gestures){
+	size_t n = gestures->size();
+	for (int i = 0; i < n; i++) {
+		gestures->at(i).handOne.positions = MathUtil::applyCubicBSpline(gestures->at(i).handOne.positions);
+		gestures->at(i).handTwo.positions = MathUtil::applyCubicBSpline(gestures->at(i).handTwo.positions);
 	}
 }
 
 void
-Test::applyCurvature(){
-	size_t n1 = m_GesturesTest.size();
-	for (int i = 0; i < n1; i++) {
-		m_GesturesTest[i].handOne.positions = MathUtil::reduceByCurvature(m_GesturesTest[i].handOne.positions, m_Param);
-		m_GesturesTest[i].handTwo.positions = MathUtil::reduceByCurvature(m_GesturesTest[i].handTwo.positions, m_Param);
-	}
-	size_t n2 = m_GesturesTemplate.size();
-	for (int i = 0; i < n2; i++) {
-		m_GesturesTemplate[i].handOne.positions =  MathUtil::reduceByCurvature(m_GesturesTemplate[i].handOne.positions, m_Param);
-		m_GesturesTemplate[i].handTwo.positions =  MathUtil::reduceByCurvature(m_GesturesTemplate[i].handTwo.positions, m_Param);
+Test::applyCurvature(std::vector<type_gesture>* gestures){
+	size_t n = gestures->size();
+	for (int i = 0; i < n; i++) {
+		gestures->at(i).handOne.positions = MathUtil::reduceByCurvature(gestures->at(i).handOne.positions, m_Param);
+		gestures->at(i).handTwo.positions = MathUtil::reduceByCurvature(gestures->at(i).handTwo.positions, m_Param);
 	}
 }
 
 void
-Test::applyDouglasPeucker(){
-	size_t n1 = m_GesturesTest.size();
-	for (int i = 0; i < n1; i++) {
-		m_GesturesTest[i].handOne.positions = MathUtil::simplify(m_GesturesTest[i].handOne.positions, m_Param, false);
-		m_GesturesTest[i].handTwo.positions = MathUtil::simplify(m_GesturesTest[i].handTwo.positions, m_Param, false);
-	}
-	size_t n2 = m_GesturesTemplate.size();
-	for (int i = 0; i < n2; i++) {
-		m_GesturesTemplate[i].handOne.positions =  MathUtil::simplify(m_GesturesTemplate[i].handOne.positions, m_Param, false);
-		m_GesturesTemplate[i].handTwo.positions =  MathUtil::simplify(m_GesturesTemplate[i].handTwo.positions, m_Param, false);
+Test::applyDouglasPeucker(std::vector<type_gesture>* gestures){
+	size_t n = gestures->size();
+	for (int i = 0; i < n; i++) {
+		gestures->at(i).handOne.positions = MathUtil::simplify(gestures->at(i).handOne.positions, m_Param, false);
+		gestures->at(i).handTwo.positions = MathUtil::simplify(gestures->at(i).handTwo.positions, m_Param, false);
 	}
 }
 
@@ -390,6 +390,14 @@ void
 Test::normCenterOriginGesture(type_gesture *gesture){
 	gesture->handOne.positions = MathUtil::normCenterOrigin(gesture->handOne.positions);
 	gesture->handTwo.positions = MathUtil::normCenterOrigin(gesture->handTwo.positions);
+}
+
+void
+Test::executeAll(){
+    loadAll();
+    for (int i = 1; i < 8; i++){
+        experiment(i, "../result_experiment" + MathUtil::intToString(i) + ".txt");
+    }
 }
 
 void

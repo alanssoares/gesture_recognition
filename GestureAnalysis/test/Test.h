@@ -22,7 +22,8 @@ public:
 	void initGestureTemplates();
 	void initAllSamples();
 	void init();
-
+	void executeAll();
+	
 	void saveResults(std::string nameFile, type_gesture gestureExecuted, type_gesture gesturePredicted, float timeExecution, float bestDistance, int isRecognized);
 	void saveMedianGestures();
 	
@@ -143,13 +144,13 @@ public:
 	*/
 	void process12();
 
-	void applyLaplacian();
-	void applyBSpline();
-	void applyMedian();
-	void applyCurvature();
-	void applyDouglasPeucker();
+	void applyLaplacian(std::vector<type_gesture>* gestures);
+	void applyBSpline(std::vector<type_gesture>* gestures);
+	void applyCurvature(std::vector<type_gesture>* gestures);
+	void applyDouglasPeucker(std::vector<type_gesture>* gestures);
 	void applyProcess(int env);
-
+	void applyMedian();
+	
 	void experiment(int env, std::string nameFile);
 
 	void improveGestures();

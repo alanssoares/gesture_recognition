@@ -173,6 +173,9 @@ FileUtil::loadGestures(std::string nameFile){
     std::string row;
     std::vector<std::string> rows;
     
+    mGesturesOneHand.clear();
+    mGesturesTwoHands.clear();
+    
     file.open(nameFile.c_str());
     
     if(file.is_open()){
