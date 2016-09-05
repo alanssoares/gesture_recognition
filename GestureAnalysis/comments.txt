@@ -3,10 +3,10 @@ To Do
 - verificar possibilidade de rotacionamento por eixo
 - melhorar as cores que estão sendo colocadas nos pontos
 - verificar o motivo do método douglas-peucker demorar tanto para ser executado
-- realizar os testes novamente para verificar a taxa de reconhecimento após as correções
 
 Doing
 - verificar método da curvatura, pois está removendo primeiro os pontos iniciais
+- realizar os testes novamente para verificar a taxa de reconhecimento após as correções
 
 Done
 - implementar e remover os gestos inválidos do dataset

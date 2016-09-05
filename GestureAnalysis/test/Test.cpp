@@ -276,7 +276,7 @@ Test::recognizeTwoHands(const type_gesture gesture, const std::string nameFile) 
         if (distanceB < bestDistanceB){
             bestDistanceB = distanceB;
         }
-
+        
         if(bestDistanceA < MIN_DISTANCE_TRESHOLD && bestDistanceB < MIN_DISTANCE_TRESHOLD){
         	isRecognized = 1;
         	gestureTemplate = m_GesturesTwoHands[i];
@@ -407,7 +407,7 @@ Test::normCenterOriginGesture(type_gesture *gesture){
 
 void
 Test::executeAll(){
-    loadAll();
+    init();
     for (int i = 1; i < 8; i++){
         experiment(i, "../result_experiment" + MathUtil::intToString(i) + ".txt");
     }

@@ -204,6 +204,11 @@ void generateMedians(){
 int main(int argc, char* argv[])
 {
   
+  if(pcl::console::find_argument (argc, argv, "-t") >= 0){
+    g_Test.executeAll();
+    return 0;
+  }
+
   if(pcl::console::find_argument (argc, argv, "-g") >= 0){
     generateMedians();
     return 0;
