@@ -123,7 +123,7 @@ typedef struct type_gesture {
 /* Define the type of method that will be used to smooth the path */
 #define TYPE_SMOOTH MEAN_NEIGHBORING
 /* Define the threshold to remove points that there isn't large curvature */
-#define THRESHOLD_CURVATURE 0.002
+#define THRESHOLD_CURVATURE 0.0005
 
 /* ========= Mean Neighboring ======== */
 #define NUMBER_SMOOTH_NB 2
@@ -142,6 +142,7 @@ typedef struct type_gesture {
 #define GESTURE "gesture"
 #define NAME_FILE_DATA "../../Commons/Samples.txt"
 #define NAME_FILE_DATA_NORMALIZED "../../Commons/SamplesNormalized.txt"
+#define NAME_FILE_DATA_MEDIAN "../../Commons/SamplesMedian.txt"
 #define NAME_WINDOW_GR "Project GRS"
 #define GAP_WINDOW      25
 #define GL_WIN_SIZE_X   1024 // 512 to gesture record

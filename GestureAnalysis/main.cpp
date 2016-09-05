@@ -15,7 +15,7 @@
 Test g_Test;
 std::vector<type_gesture> g_Gestures;
 std::vector<pcl::PointXYZ> g_PointsNormalA, g_PointsNormalB, g_PointsProcessedA, g_PointsProcessedB;
-int g_IdView1(0), g_IdView2(0), g_np = 1, id_Gesture = 0;
+int g_IdView1(0), g_IdView2(0), g_np = 1, id_Gesture = 0, g_Methods = 1;
 std::string g_IdCloudA = "cloudA", g_IdCloudB = "cloudB";
 
 std::vector<pcl::PointXYZ> converterToPointXYZ(std::vector<XnPoint3D> points){
@@ -63,18 +63,27 @@ void improveCurrentGesture(){
   g_PointsNormalA = converterToPointXYZ(g_Gestures[id_Gesture].handOne.positions);
   g_PointsNormalB = converterToPointXYZ(g_Gestures[id_Gesture].handTwo.positions);
 
-  // g_PointsProcessedA = converterToPointXYZ(MathUtil::simplify(g_Gestures[id_Gesture].handOne.positions, g_Test.m_Param, false));
-  // g_PointsProcessedB = converterToPointXYZ(MathUtil::simplify(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_Param, false));
+  if(g_Methods == 1){
+    g_PointsProcessedA = converterToPointXYZ(MathUtil::smoothMeanNeighboring(MathUtil::simplify(g_Gestures[id_Gesture].handOne.positions, g_Test.m_Param, false)));
+    g_PointsProcessedB = converterToPointXYZ(MathUtil::smoothMeanNeighboring(MathUtil::simplify(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_Param, false)));    
+  } else if(g_Methods == 2) {
+    g_PointsProcessedA = converterToPointXYZ(BSpline::curvePoints(MathUtil::simplify(g_Gestures[id_Gesture].handOne.positions, g_Test.m_Param, false), NUM_STEP_BSPLINE));
+    g_PointsProcessedB = converterToPointXYZ(BSpline::curvePoints(MathUtil::simplify(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_Param, false), NUM_STEP_BSPLINE));
+  } else if(g_Methods == 3) {
+    g_PointsProcessedA = converterToPointXYZ(MathUtil::smoothMeanNeighboring(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handOne.positions, g_Test.m_Param)));
+    g_PointsProcessedB = converterToPointXYZ(MathUtil::smoothMeanNeighboring(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_Param)));
+  } else if(g_Methods == 4) {
+    g_PointsProcessedA = converterToPointXYZ(BSpline::curvePoints(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handOne.positions, g_Test.m_Param), NUM_STEP_BSPLINE));
+    g_PointsProcessedB = converterToPointXYZ(BSpline::curvePoints(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_Param), NUM_STEP_BSPLINE));
+  } else if(g_Methods == 5) {
+    g_PointsProcessedA = converterToPointXYZ(MathUtil::simplify(g_Gestures[id_Gesture].handOne.positions, g_Test.m_Param, false));
+    g_PointsProcessedB = converterToPointXYZ(MathUtil::simplify(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_Param, false));
+  } else if(g_Methods == 6) {
+    g_PointsProcessedA = converterToPointXYZ(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handOne.positions, g_Test.m_Param));
+    g_PointsProcessedB = converterToPointXYZ(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_Param));
+  }
 
-  g_PointsProcessedA = converterToPointXYZ(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handOne.positions, g_Test.m_Param));
-  g_PointsProcessedB = converterToPointXYZ(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_Param));
-
-  // g_PointsProcessedA = converterToPointXYZ(BSpline::curvePoints(g_Gestures[id_Gesture].handOne.positions, NUM_STEP_BSPLINE));
-  // g_PointsProcessedB = converterToPointXYZ(BSpline::curvePoints(g_Gestures[id_Gesture].handTwo.positions, NUM_STEP_BSPLINE));
-
-  g_PointsProcessedA = converterToPointXYZ(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handOne.positions));
-  g_PointsProcessedB = converterToPointXYZ(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handTwo.positions));
-}
+ }
 
 void viewLabels(pcl::visualization::PCLVisualizer *viewer){
   viewer->addText("Nº Points: " + MathUtil::intToString(g_PointsNormalA.size()), 10, 10, "v1 text", g_IdView1);
@@ -82,7 +91,7 @@ void viewLabels(pcl::visualization::PCLVisualizer *viewer){
   viewer->addText("Nº Total: " + MathUtil::intToString(g_Gestures.size()), 10, 20, "v3 text", g_IdView1);
   viewer->addText("Name : " + g_Gestures[id_Gesture].name, 10, 30, "v4 text", g_IdView1);
   viewer->addText("Id : " + MathUtil::intToString(id_Gesture), 10, 40, "v5 text", g_IdView1);
-  viewer->addText("Threshold: " + MathUtil::intToString(g_Test.m_Param), 10, 0, "v6 text", g_IdView1);
+  viewer->addText("Threshold: " + MathUtil::floatToString(g_Test.m_Param), 10, 0, "v6 text", g_IdView1);
 }
 
 void viewNormalGesture(pcl::visualization::PCLVisualizer *viewer){
@@ -182,15 +191,32 @@ boost::shared_ptr<pcl::visualization::PCLVisualizer> viewCurvesVis()
 
   viewer->addCoordinateSystem (1.0);
   viewer->registerKeyboardCallback (keyboardEventOccurred, (void*)viewer.get ());
-
+  
   return (viewer);
+}
+
+void generateMedians(){
+  g_Test.init();
+  g_Test.generateMedianGesture(g_Test.m_AllGestures);
+  g_Test.saveMedianGestures();
 }
 
 int main(int argc, char* argv[])
 {
+  
+  if(pcl::console::find_argument (argc, argv, "-g") >= 0){
+    generateMedians();
+    return 0;
+  }
+
+  if(pcl::console::find_argument (argc, argv, "-m") >= 0){
+    g_Methods = atoi(argv[2]);
+  }
+
   boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer = viewCurvesVis();
   while (!viewer->wasStopped ()){
     viewer->spinOnce (100);
   }
+
   return 0;
 }

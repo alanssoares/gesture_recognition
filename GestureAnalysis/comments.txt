@@ -1,7 +1,6 @@
 To Do
 - verificar possibilidade de alteração do tipo de visualização de perspectiva para ortogonal
 - verificar possibilidade de rotacionamento por eixo
-- verificar o motivo do gesto médio está sendo gerado com valores diferentes no macbook
 - melhorar as cores que estão sendo colocadas nos pontos
 - verificar o motivo do método douglas-peucker demorar tanto para ser executado
 - realizar os testes novamente para verificar a taxa de reconhecimento após as correções
@@ -13,3 +12,4 @@ Done
 - implementar e remover os gestos inválidos do dataset
 - plotar pontos ao invés de polígonos
 - corrigir a suavização usando b-spline para evitar o aumento significativo de pontos do gesto
+- verificar o motivo do gesto médio está sendo gerado com valores diferentes no macbook

@@ -288,28 +288,41 @@ Test::recognizeTwoHands(const type_gesture gesture, const std::string nameFile) 
 
 void
 Test::generateMedianGesture(std::vector<type_gesture> gestures){
-	size_t n = gestures.size(), i = 0, j = 0, m;
+	size_t n = gestures.size(), i = 0, j = 0, m, count;
+	
 	generateGestureEqualSize(&gestures);
+	
 	while(j < n){
+		
 		j = i + 1;
-		while((j < n) && (gestures[i].name.compare(gestures[j].name) == 0)) j++;
+		count = 0;
 		m = gestures[i].handOne.positions.size();
+		
+		while((j < n) && (gestures[i].name.compare(gestures[j].name) == 0)) j++;
+		
 		for(int k = i + 1; k < j - 1; k++){
 			for(int t = 0; t < m; t++){
-				gestures[i].handOne.positions[t] = MathUtil::sum(gestures[i].handOne.positions[t], gestures[k].handOne.positions[t]);
-				gestures[i].handTwo.positions[t] = MathUtil::sum(gestures[i].handTwo.positions[t], gestures[k].handTwo.positions[t]);
+				gestures[i].handOne.positions[t].X += gestures[k].handOne.positions[t].X;
+				gestures[i].handOne.positions[t].Y += gestures[k].handOne.positions[t].Y;
+				gestures[i].handOne.positions[t].Z += gestures[k].handOne.positions[t].Z;
+
+				gestures[i].handTwo.positions[t].X += gestures[k].handTwo.positions[t].X;
+				gestures[i].handTwo.positions[t].Y += gestures[k].handTwo.positions[t].Y;
+				gestures[i].handTwo.positions[t].Z += gestures[k].handTwo.positions[t].Z;
 			}
+			count++;
 		}
+		
 		for(int k = 0; k < m; k++){
-			gestures[i].handOne.positions[k].X = gestures[i].handOne.positions[k].X / n;
-			gestures[i].handOne.positions[k].Y = gestures[i].handOne.positions[k].Y / n;
-			gestures[i].handOne.positions[k].Z = gestures[i].handOne.positions[k].Z / n;
+			gestures[i].handOne.positions[k].X = gestures[i].handOne.positions[k].X / count;
+			gestures[i].handOne.positions[k].Y = gestures[i].handOne.positions[k].Y / count;
+			gestures[i].handOne.positions[k].Z = gestures[i].handOne.positions[k].Z / count;
 			
-			gestures[i].handTwo.positions[k].X = gestures[i].handTwo.positions[k].X / n;
-			gestures[i].handTwo.positions[k].Y = gestures[i].handTwo.positions[k].Y / n;
-			gestures[i].handTwo.positions[k].Z = gestures[i].handTwo.positions[k].Z / n;
+			gestures[i].handTwo.positions[k].X = gestures[i].handTwo.positions[k].X / count;
+			gestures[i].handTwo.positions[k].Y = gestures[i].handTwo.positions[k].Y / count;
+			gestures[i].handTwo.positions[k].Z = gestures[i].handTwo.positions[k].Z / count;
 		}
-		normCenterOriginGesture(&gestures[i]);
+		
 		m_MedianGestures.push_back(gestures[i]);
 		i = j;
 	}

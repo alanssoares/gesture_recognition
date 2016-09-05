@@ -15,6 +15,13 @@ MathUtil::intToString(int n){
     return converter.str();
 }
 
+std::string 
+MathUtil::floatToString(float n){
+    std::ostringstream converter;
+    converter << n;
+    return converter.str();
+}
+
 double
 MathUtil::length(XnPoint3D point){
     return sqrt(pow(point.X, 2) + pow(point.Y, 2) + pow(point.Z, 2));
@@ -406,10 +413,10 @@ MathUtil::normCenterOrigin(std::vector<XnPoint3D> trajectory) {
 
 std::vector<XnPoint3D> 
 MathUtil::smoothAndReduce(std::vector<XnPoint3D> trajectory) {
-    //Smooth the trajectory
-    trajectory = MathUtil::smooth(trajectory);
     //Remove points according with curvature
-    return MathUtil::reduceByCurvature(trajectory, THRESHOLD_CURVATURE);
+    trajectory = MathUtil::reduceByCurvature(trajectory, THRESHOLD_CURVATURE);
+    //Smooth the trajectory
+    return MathUtil::smooth(trajectory);
 }
 
 double

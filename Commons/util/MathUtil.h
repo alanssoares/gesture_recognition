@@ -32,6 +32,11 @@ public:
      Método responsável por converter um int em string
     */
     static std::string intToString(int n);
+    
+    /**
+     Método responsável por converter um float em string
+    */
+    static std::string floatToString(float n);
 
     /**
      Método responsável por calcular a amplitude/módulo escalar de um vetor.
