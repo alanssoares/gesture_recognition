@@ -94,6 +94,14 @@ typedef struct type_gesture {
     type_hand handTwo;
 } type_gesture;
 
+typedef struct Descriptor {
+    int qtdPts;
+    int qtdPtsInflection;
+    int qtdMax;
+    int qtdMin;
+    int length;
+} Descriptor;
+
 /* Check the result and return 1 if XN_STATUS is not ok */
 #define CHECK_RC(rc, message){ if(rc != XN_STATUS_OK){ printf(message, xnGetStatusString(rc)); return 1; }}
 /* Check the result and return if XN_STATUS is not ok */

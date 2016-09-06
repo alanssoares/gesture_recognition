@@ -350,6 +350,58 @@ MathUtil::calcCurvature(XnPoint3D a, XnPoint3D b, XnPoint3D c){
     return length(subtract(l1, l2));
 }
 
+int
+MathUtil::checkMinMax(XnPoint3D p1, XnPoint3D p2, XnPoint3D p3) {
+    double slope1 = calcSlope(p1, p2);
+    double slope2 = calcSlope(p2, p3);
+    if (slope1 * slope2 <= 0.0) { // Local min / max
+        return (slope2 > slope1) ? -1 : 1;
+    }
+    return 0;
+}
+
+double 
+MathUtil::calcSlope(XnPoint3D p1, XnPoint3D p2) {
+    return length(subtract(p2, p1));
+}
+
+int 
+MathUtil::checkInflectionPoint(XnPoint3D p1, XnPoint3D p2,
+            XnPoint3D p3, XnPoint3D p4, XnPoint3D p5) {
+    double slope1 = calcSlope(p1, p2);
+    double slope2 = calcSlope(p2, p3);
+    double slope3 = calcSlope(p3, p4);
+    double slope4 = calcSlope(p4, p5);
+    bool functionDecreasing = (slope1 < 0.0 && slope2 < 0.0
+            && slope3 < 0.0 && slope4 < 0.0);
+    bool functionIncreasing = (slope1 > 0.0 && slope2 > 0.0
+            && slope3 > 0.0 && slope4 > 0.0);
+
+    // It cannot be an inflection point. The function must
+    // always be increasing or decreasing through all five
+    // points.
+    if (!functionDecreasing && !functionIncreasing){
+        return 0;
+    }
+
+    // For the next test, the absolute value of the slope is decreasing
+    // for slopes 1 and 2 while increasing for slopes 3 and 4, there is an
+    // inflection point.
+    if (abs(slope2) < abs(slope1) && abs(slope4) > abs(slope3)){
+        return 1;
+    }
+
+    // For the next test, the absolute value of the slope is increasing
+    // for slopes 1 and 2 while decreasing for slopes 3 and 4, there is an
+    // inflection point.
+    if (abs(slope2) > abs(slope1) && abs(slope4) < abs(slope3)){
+        return 1;
+    }
+
+    // We have not determined that there is an inflection point.
+    return 0;
+}
+
 double
 MathUtil::getDistancePointToPoint(XnPoint3D p1, XnPoint3D p2){
     return length(subtract(p1, p2));

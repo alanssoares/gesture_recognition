@@ -39,6 +39,27 @@ public:
     static std::string floatToString(float n);
 
     /**
+     http://www.shodor.org/~jmorrell/interactivate/org/shodor/util11/DataSetUtils.java
+     Check if the point p2 is min, max or none using three points p1, p2 and p3
+     @return int where -1 = min, 1 = max, 0 = none
+    */
+    static int checkMinMax(XnPoint3D p1, XnPoint3D p2, XnPoint3D p3);
+    
+    /*
+     http://www.shodor.org/~jmorrell/interactivate/org/shodor/util11/DataSetUtils.java
+     Calc the slop using the points p1 and p2
+     @return double slop
+    */
+    static double calcSlope(XnPoint3D p1, XnPoint3D p2);
+
+    /**
+     http://www.shodor.org/~jmorrell/interactivate/org/shodor/util11/DataSetUtils.java
+     Check if the p3 is an inflection point
+     @return int where 1 = true and 0 = false
+    */
+    static int checkInflectionPoint(XnPoint3D p1, XnPoint3D p2, XnPoint3D p3, XnPoint3D p4, XnPoint3D p5);
+
+    /**
      Método responsável por calcular a amplitude/módulo escalar de um vetor.
      @param point da trajetória
      @return double
