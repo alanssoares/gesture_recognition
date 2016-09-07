@@ -31,13 +31,7 @@ void
 Test::init(){
 	loadAll();
 	std::sort(m_AllGestures.begin(), m_AllGestures.end(), sortByName);
-	initAllSamples();
-}
-
-void
-Test::initAllSamples(){
 	splitDataset();
-	initGestureTemplates();
 }
 
 void
@@ -138,7 +132,6 @@ void
 Test::applyMedian(){
 	generateMedianGesture(m_GesturesTemplate);
 	m_GesturesTemplate = m_MedianGestures;
-	initGestureTemplates();
 }
 
 void
@@ -156,20 +149,6 @@ Test::splitDataset(){
 		}
 		while(i < j) {
 			m_GesturesTemplate.push_back(m_AllGestures[i++]);
-		}
-	}
-}
-
-void
-Test::initGestureTemplates(){
-	size_t n = m_GesturesTemplate.size();
-	m_GesturesOneHand.clear();
-	m_GesturesTwoHands.clear();
-	for (int i = 0; i < n; i++){
-		if(m_GesturesTemplate[i].numHands == 1){
-			m_GesturesOneHand.push_back(m_GesturesTemplate[i]);
-		} else {
-			m_GesturesTwoHands.push_back(m_GesturesTemplate[i]);
 		}
 	}
 }
@@ -227,60 +206,30 @@ Test::experiment(int env, std::string nameFile){
 	FileUtil::getInstance().createFile(nameFile);
 	applyProcess(env);
 	for (int i = 0; i < m_GesturesTest.size(); i++){
-		if(m_GesturesTest[i].numHands == 1){
-			recognizeOneHand(m_GesturesTest[i], nameFile);
-		} else {
-			recognizeTwoHands(m_GesturesTest[i], nameFile);
-		}
+		recognize(m_GesturesTest[i], nameFile);
 	}
-	initAllSamples();
+	splitDataset();
 }
 
 void
-Test::recognizeOneHand(const type_gesture gesture, const std::string nameFile) {
-    clock_t start_s = clock(), isRecognized = 0;
-    float distance = 0.0, bestDistance = 1.0;
-    size_t n = m_GesturesOneHand.size();
-    type_gesture gestureTemplate;
-
-    for (int i = 0; i < n; i++) {
-        distance = MathUtil::computeDistanceBetweenTwoTrajectories(m_GesturesOneHand[i].handTwo.positions, gesture.handTwo.positions);
-        if(distance < bestDistance){
-            bestDistance = distance;
-            gestureTemplate = m_GesturesOneHand[i];
-        }
-    }
-    
-    if(bestDistance < MIN_DISTANCE_TRESHOLD){
-        isRecognized = 1;
-    }
-
-	saveResults(nameFile, gesture, gestureTemplate, getFinalTime(start_s), bestDistance, isRecognized);
-}
-
-void
-Test::recognizeTwoHands(const type_gesture gesture, const std::string nameFile) {
+Test::recognize(type_gesture gesture, const std::string nameFile) {
     float start_s = clock(), isRecognized = 0;
-    float distanceA, distanceB, bestDistanceB = 1.0, bestDistanceA = 1.0;
-    size_t n = m_GesturesTwoHands.size();
+    double distanceA, distanceB, bestDistanceB = 999999999, bestDistanceA = 999999999;
+    size_t n = m_GesturesTemplate.size();
     type_gesture gestureTemplate;
     
     for (int i = 0; i < n; i++) {
-
-        distanceA = MathUtil::computeDistanceBetweenTwoTrajectories(m_GesturesTwoHands[i].handOne.positions, gesture.handOne.positions);
-        if (distanceA < bestDistanceA){
+        distanceA = MathUtil::computeDistanceBetweenTwoTrajectories(m_GesturesTemplate[i].handOne.positions, gesture.handOne.positions);
+        distanceB = MathUtil::computeDistanceBetweenTwoTrajectories(m_GesturesTemplate[i].handTwo.positions, gesture.handTwo.positions);
+        if (distanceA < bestDistanceA && distanceB < bestDistanceB){
             bestDistanceA = distanceA;
-        }
-        
-        distanceB = MathUtil::computeDistanceBetweenTwoTrajectories(m_GesturesTwoHands[i].handTwo.positions, gesture.handTwo.positions);
-        if (distanceB < bestDistanceB){
             bestDistanceB = distanceB;
+            gestureTemplate = m_GesturesTemplate[i];
         }
-        
-        if(bestDistanceA < MIN_DISTANCE_TRESHOLD && bestDistanceB < MIN_DISTANCE_TRESHOLD){
-        	isRecognized = 1;
-        	gestureTemplate = m_GesturesTwoHands[i];
-        }
+    }
+    
+    if(bestDistanceA < MIN_DISTANCE_TRESHOLD && bestDistanceB < MIN_DISTANCE_TRESHOLD){
+    	isRecognized = 1;
     }
 
     saveResults(nameFile, gesture, gestureTemplate, getFinalTime(start_s), bestDistanceA, isRecognized);

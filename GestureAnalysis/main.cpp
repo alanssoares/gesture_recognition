@@ -82,7 +82,7 @@ void improveCurrentGesture(){
     g_PointsProcessedA = converterToPointXYZ(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handOne.positions, g_Test.m_Param));
     g_PointsProcessedB = converterToPointXYZ(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_Param));
   }
-
+  
  }
 
 void viewLabels(pcl::visualization::PCLVisualizer *viewer){
@@ -98,23 +98,12 @@ void viewNormalGesture(pcl::visualization::PCLVisualizer *viewer){
   pcl::PointCloud<pcl::PointXYZ>::Ptr cloudA(new pcl::PointCloud<pcl::PointXYZ>);
   size_t n = g_PointsNormalA.size();
   std::ostringstream os1, os2;
-  float curvature = 0.0;
-  for (int i = 1; i < n - 1; i++){
+  for (int i = 0; i < n; i++){
     os1 << "LNA" << i;
     os2 << "LNB" << i;
+    cloudA->points.push_back(g_PointsNormalB[i]);
     if(g_Gestures[id_Gesture].numHands == 2){
-        curvature = calcCurvature(g_PointsNormalA[i - 1], g_PointsNormalA[i], g_PointsNormalA[i + 1]);
-        if(curvature > g_Test.m_Param){
-          cloudA->points.push_back(g_PointsNormalA[i]);
-        } else {
-          cloudA->points.push_back(g_PointsNormalA[i]);
-        }
-    }
-    curvature = calcCurvature(g_PointsNormalB[i - 1], g_PointsNormalB[i], g_PointsNormalB[i + 1]);
-    if(curvature > g_Test.m_Param){
-      cloudA->points.push_back(g_PointsNormalB[i]);
-    } else {
-      cloudA->points.push_back(g_PointsNormalB[i]);
+      cloudA->points.push_back(g_PointsNormalA[i]);
     }
   }
   viewer->addPointCloud<pcl::PointXYZ> (cloudA, g_IdCloudA, g_IdView1);

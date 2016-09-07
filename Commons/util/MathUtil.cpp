@@ -29,9 +29,9 @@ MathUtil::length(XnPoint3D point){
 
 XnPoint3D
 MathUtil::subtract(XnPoint3D a, XnPoint3D b){
-    a.X = a.X - b.X;
-    a.Y = a.Y - b.Y;
-    a.Z = a.Z - b.Z;
+    a.X = b.X - a.X;
+    a.Y = b.Y - a.Y;
+    a.Z = b.Z - a.Z;
     return a;
 }
 
@@ -151,7 +151,7 @@ vector<XnPoint3D>
 MathUtil::normalizeTrajectory(vector<XnPoint3D> positions){
     XnPoint3D minPos = minValueXYZ(positions);
     XnPoint3D maxPos = maxValueXYZ(positions);
-    XnPoint3D originalRange = subtract(maxPos, minPos);
+    XnPoint3D originalRange = subtract(minPos, maxPos);
     const double desiredMin = -1.0;
     const double desiredMax = 1.0;
     double desiredRange = desiredMax - desiredMin;
@@ -362,7 +362,7 @@ MathUtil::checkMinMax(XnPoint3D p1, XnPoint3D p2, XnPoint3D p3) {
 
 double 
 MathUtil::calcSlope(XnPoint3D p1, XnPoint3D p2) {
-    return length(subtract(p2, p1));
+    return length(subtract(p1, p2));
 }
 
 int 
@@ -400,6 +400,40 @@ MathUtil::checkInflectionPoint(XnPoint3D p1, XnPoint3D p2,
 
     // We have not determined that there is an inflection point.
     return 0;
+}
+
+Descriptor
+MathUtil::extractDescriptor(std::vector<XnPoint3D> points){
+    Descriptor descriptor;
+    descriptor.qtdPts = points.size();
+    descriptor.qtdPtsInflection = 0;
+    descriptor.qtdMax = 0;
+    descriptor.qtdMin = 0;
+    descriptor.length = 0;
+    int c = 0;
+
+    for(int i = 1; i < descriptor.qtdPts - 1; i++){
+        c = checkMinMax(points[i - 1], points[i], points[i + 1]);
+        if(c == -1) {
+            descriptor.qtdMin++;
+        } else if(c == 1) {
+            descriptor.qtdMax++;
+        }
+    }
+
+    for(int i = 1; i < descriptor.qtdPts - 3; i++){
+        c = checkInflectionPoint(points[i - 1], points[i], points[i + 1], points[i + 2], points[i + 3]);
+        if(c == 1){
+            descriptor.qtdPtsInflection++;
+        }
+    }
+    
+    // PRINT("QtdPts : " << descriptor.qtdPts);
+    // PRINT("QtdPtsInflection : " << descriptor.qtdPtsInflection);
+    // PRINT("QtdMax : " << descriptor.qtdMax);
+    // PRINT("QtdMin : " << descriptor.qtdMin);
+
+    return descriptor;
 }
 
 double

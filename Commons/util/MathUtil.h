@@ -60,6 +60,13 @@ public:
     static int checkInflectionPoint(XnPoint3D p1, XnPoint3D p2, XnPoint3D p3, XnPoint3D p4, XnPoint3D p5);
 
     /**
+     Extract the descriptor from a set of points
+     @param points
+     @return Descriptor
+    */
+    static Descriptor extractDescriptor(std::vector<XnPoint3D> points);
+
+    /**
      Método responsável por calcular a amplitude/módulo escalar de um vetor.
      @param point da trajetória
      @return double

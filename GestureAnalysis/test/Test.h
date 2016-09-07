@@ -13,27 +13,17 @@ public:
 	static float getFinalTime(std::clock_t start_s);
 
 	void printGesture(const type_gesture gesture);
-	
 	void clearSamples();
 	void loadAll();
-	
 	void splitDataset();
-	
-	void initGestureTemplates();
-	void initAllSamples();
 	void init();
 	void executeAll();
-	
 	void saveResults(std::string nameFile, type_gesture gestureExecuted, type_gesture gesturePredicted, float timeExecution, float bestDistance, int isRecognized);
 	void saveMedianGestures();
-	
-	void recognizeOneHand(const type_gesture gesture, const std::string nameFile);
-	void recognizeTwoHands(const type_gesture gesture, const std::string nameFile);
-
+	void recognize(const type_gesture gesture, const std::string nameFile);
 	void generateMedianGesture(std::vector<type_gesture> gestures);
 	int  getMeanPoints(vector<type_gesture> gestures, int i, int j);
 	void generateGestureEqualSize(std::vector<type_gesture>* gestures);
-	
 	void normCenterOriginGesture(type_gesture *gesture);
 
 	/**
