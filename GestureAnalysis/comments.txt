@@ -6,10 +6,15 @@ To Do
 
 Doing
 - verificar método da curvatura, pois está removendo primeiro os pontos iniciais
-- realizar os testes novamente para verificar a taxa de reconhecimento após as correções
 
 Done
 - implementar e remover os gestos inválidos do dataset
 - plotar pontos ao invés de polígonos
 - corrigir a suavização usando b-spline para evitar o aumento significativo de pontos do gesto
 - verificar o motivo do gesto médio está sendo gerado com valores diferentes no macbook
+- realizar os testes novamente para verificar a taxa de reconhecimento após as correções
+
+Parâmetros Teste
+- Threshold reconhecimento: MIN_DISTANCE_TRESHOLD -> T = {0.05 .. 1.0} tal que T(i) = T(i) + 0.05
+- Threshold curvatura: THRESHOLD_CURVATURE -> T = {0.0005 .. 0.001} tal que T(i) = T(i) + 0.0005
+- Threshold douglas: DPR_FACTOR_SIMPLIFY -> T = {0.05 .. 1.0} tal que T(i) = T(i) + 0.05

@@ -12,12 +12,15 @@ public:
 	static bool sortByName(const type_gesture &g1, const type_gesture &g2) { return g1.name < g2.name; }
 	static float getFinalTime(std::clock_t start_s);
 
+	void executeAll();
+
 	void printGesture(const type_gesture gesture);
 	void clearSamples();
 	void loadAll();
+	void loadMedian();
 	void splitDataset();
 	void init();
-	void executeAll();
+	
 	void saveResults(std::string nameFile, type_gesture gestureExecuted, type_gesture gesturePredicted, float timeExecution, float bestDistance, int isRecognized);
 	void saveMedianGestures();
 	void recognize(const type_gesture gesture, const std::string nameFile);
@@ -44,28 +47,28 @@ public:
 	*/
 	void process2();
 
-	/**
+		/**
 		- Normalizado
 		- Centralizado na origem
-		- Sem simplificação
+		- Simplificação Curvatura
 		- Laplaciano
-		- Gesto Médio
+		- Todos Gestos
 	*/
 	void process3();
-
+	
 	/**
 		- Normalizado
 		- Centralizado na origem
-		- Sem simplificação
+		- Simplificação Curvatura
 		- B-Spline
-		- Gesto Médio
+		- Todos Gestos
 	*/
 	void process4();
 
 		/**
 		- Normalizado
 		- Centralizado na origem
-		- Simplificação Curvatura
+		- Simplificação Douglas-Peuker
 		- Laplaciano
 		- Todos Gestos
 	*/
@@ -74,72 +77,17 @@ public:
 	/**
 		- Normalizado
 		- Centralizado na origem
-		- Simplificação Curvatura
+		- Simplificação Douglas-Peuker
 		- B-Spline
 		- Todos Gestos
 	*/
 	void process6();
-
-	/**
-		- Normalizado
-		- Centralizado na origem
-		- Simplificação Curvatura
-		- Laplaciano
-		- Gesto Médio
-	*/
-	void process7();
-
-	/**
-		- Normalizado
-		- Centralizado na origem
-		- Simplificação Curvatura
-		- B-Spline
-		- Gesto Médio
-	*/
-	void process8();
-
-		/**
-		- Normalizado
-		- Centralizado na origem
-		- Simplificação Douglas-Peuker
-		- Laplaciano
-		- Todos Gestos
-	*/
-	void process9();
-	
-	/**
-		- Normalizado
-		- Centralizado na origem
-		- Simplificação Douglas-Peuker
-		- B-Spline
-		- Todos Gestos
-	*/
-	void process10();
-
-	/**
-		- Normalizado
-		- Centralizado na origem
-		- Simplificação Douglas-Peuker
-		- Laplaciano
-		- Gesto Médio
-	*/
-	void process11();
-
-	/**
-		- Normalizado
-		- Centralizado na origem
-		- Simplificação Douglas-Peuker
-		- B-Spline
-		- Gesto Médio
-	*/
-	void process12();
 
 	void applyLaplacian(std::vector<type_gesture>* gestures);
 	void applyBSpline(std::vector<type_gesture>* gestures);
 	void applyCurvature(std::vector<type_gesture>* gestures);
 	void applyDouglasPeucker(std::vector<type_gesture>* gestures);
 	void applyProcess(int env);
-	void applyMedian();
 	
 	void experiment(int env, std::string nameFile);
 
@@ -155,7 +103,7 @@ public:
 	std::vector<type_gesture> m_GesturesOneHand;
 	std::vector<type_gesture> m_GesturesTwoHands;
 	
-	float m_PercentTest, m_Param;
+	float m_PercentTest, m_RecThreshold, m_CurvThreshold, m_DougThreshold;
 };
 
 #endif //TEST_H__

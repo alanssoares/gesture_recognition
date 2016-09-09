@@ -2,7 +2,9 @@
 
 Test::Test(){
 	m_PercentTest = 0.3;
-	m_Param = 0.0005;
+	m_RecThreshold = 0.5;
+	m_CurvThreshold = 0.0005;
+	m_DougThreshold = 0.0005;
 }
 
 Test::~Test(){}
@@ -27,9 +29,19 @@ Test::loadAll(){
 	m_AllGestures.insert( m_AllGestures.end(), futil.mGesturesTwoHands.begin(), futil.mGesturesTwoHands.end() );
 }
 
+void
+Test::loadMedian(){
+	FileUtil& futil = FileUtil::getInstance();
+	futil.loadGestures(NAME_FILE_DATA_MEDIAN);
+	m_MedianGestures.reserve(futil.mGesturesOneHand.size() + futil.mGesturesTwoHands.size());
+	m_MedianGestures.insert( m_MedianGestures.end(), futil.mGesturesOneHand.begin(), futil.mGesturesOneHand.end() );
+	m_MedianGestures.insert( m_MedianGestures.end(), futil.mGesturesTwoHands.begin(), futil.mGesturesTwoHands.end() );
+}
+
 void 
 Test::init(){
 	loadAll();
+	loadMedian();
 	std::sort(m_AllGestures.begin(), m_AllGestures.end(), sortByName);
 	splitDataset();
 }
@@ -48,90 +60,30 @@ Test::process2(){
 
 void
 Test::process3(){
-	applyLaplacian(&m_GesturesTest);
-	applyLaplacian(&m_GesturesTemplate);
-	applyMedian();
+	applyCurvature(&m_GesturesTest);
+	applyCurvature(&m_GesturesTemplate);
+	process1();
 }
 
 void
 Test::process4(){
-	applyBSpline(&m_GesturesTest);
-	applyBSpline(&m_GesturesTemplate);
-	applyMedian();
+	applyCurvature(&m_GesturesTest);
+	applyCurvature(&m_GesturesTemplate);
+	process2();
 }
 
 void
 Test::process5(){
-	applyCurvature(&m_GesturesTest);
-	applyCurvature(&m_GesturesTemplate);
-	applyLaplacian(&m_GesturesTest);
-	applyLaplacian(&m_GesturesTemplate);
+	applyDouglasPeucker(&m_GesturesTest);
+	applyDouglasPeucker(&m_GesturesTemplate);
+	process1();
 }
 
 void
 Test::process6(){
-	applyCurvature(&m_GesturesTest);
-	applyCurvature(&m_GesturesTemplate);
-	applyBSpline(&m_GesturesTest);
-	applyBSpline(&m_GesturesTemplate);
-}
-
-void
-Test::process7(){
-	applyCurvature(&m_GesturesTest);
-	applyCurvature(&m_GesturesTemplate);
-	applyLaplacian(&m_GesturesTest);
-	applyLaplacian(&m_GesturesTemplate);
-	applyMedian();
-}
-
-void
-Test::process8(){
-	applyCurvature(&m_GesturesTest);
-	applyCurvature(&m_GesturesTemplate);
-	applyBSpline(&m_GesturesTest);
-	applyBSpline(&m_GesturesTemplate);
-	applyMedian();
-}
-
-void
-Test::process9(){
 	applyDouglasPeucker(&m_GesturesTest);
 	applyDouglasPeucker(&m_GesturesTemplate);
-	applyLaplacian(&m_GesturesTest);
-	applyLaplacian(&m_GesturesTemplate);
-}
-
-void
-Test::process10(){
-	applyDouglasPeucker(&m_GesturesTest);
-	applyDouglasPeucker(&m_GesturesTemplate);
-	applyBSpline(&m_GesturesTest);
-	applyBSpline(&m_GesturesTemplate);
-}
-
-void
-Test::process11(){
-	applyDouglasPeucker(&m_GesturesTest);
-	applyDouglasPeucker(&m_GesturesTemplate);
-	applyLaplacian(&m_GesturesTest);
-	applyLaplacian(&m_GesturesTemplate);
-	applyMedian();
-}
-
-void
-Test::process12(){
-	applyDouglasPeucker(&m_GesturesTest);
-	applyDouglasPeucker(&m_GesturesTemplate);
-	applyBSpline(&m_GesturesTest);
-	applyBSpline(&m_GesturesTemplate);
-	applyMedian();
-}
-
-void
-Test::applyMedian(){
-	generateMedianGesture(m_GesturesTemplate);
-	m_GesturesTemplate = m_MedianGestures;
+	process2();
 }
 
 void
@@ -187,8 +139,8 @@ void
 Test::applyCurvature(std::vector<type_gesture>* gestures){
 	size_t n = gestures->size();
 	for (int i = 0; i < n; i++) {
-		gestures->at(i).handOne.positions = MathUtil::reduceByCurvature(gestures->at(i).handOne.positions, m_Param);
-		gestures->at(i).handTwo.positions = MathUtil::reduceByCurvature(gestures->at(i).handTwo.positions, m_Param);
+		gestures->at(i).handOne.positions = MathUtil::reduceByCurvature(gestures->at(i).handOne.positions, m_CurvThreshold);
+		gestures->at(i).handTwo.positions = MathUtil::reduceByCurvature(gestures->at(i).handTwo.positions, m_CurvThreshold);
 	}
 }
 
@@ -196,8 +148,8 @@ void
 Test::applyDouglasPeucker(std::vector<type_gesture>* gestures){
 	size_t n = gestures->size();
 	for (int i = 0; i < n; i++) {
-		gestures->at(i).handOne.positions = MathUtil::simplify(gestures->at(i).handOne.positions, m_Param, false);
-		gestures->at(i).handTwo.positions = MathUtil::simplify(gestures->at(i).handTwo.positions, m_Param, false);
+		gestures->at(i).handOne.positions = MathUtil::simplify(gestures->at(i).handOne.positions, m_DougThreshold, false);
+		gestures->at(i).handTwo.positions = MathUtil::simplify(gestures->at(i).handTwo.positions, m_DougThreshold, false);
 	}
 }
 
@@ -228,7 +180,7 @@ Test::recognize(type_gesture gesture, const std::string nameFile) {
         }
     }
     
-    if(bestDistanceA < MIN_DISTANCE_TRESHOLD && bestDistanceB < MIN_DISTANCE_TRESHOLD){
+    if(bestDistanceA < m_RecThreshold && bestDistanceB < m_RecThreshold){
     	isRecognized = 1;
     }
 
@@ -356,10 +308,23 @@ Test::normCenterOriginGesture(type_gesture *gesture){
 
 void
 Test::executeAll(){
+	std::string folder = "../results/result_experiment_";
+    //Load samples
     init();
-    for (int i = 1; i < 8; i++){
-        experiment(i, "../result_experiment" + MathUtil::intToString(i) + ".txt");
-    }
+    //Execute experiments using different parameters
+    for (float i = 0.05; i <= 1.0; i+=0.05){
+    	m_RecThreshold = i;
+		experiment(1, folder + MathUtil::intToString(1) + "_" + MathUtil::floatToString(i) + ".txt");
+		experiment(2, folder + MathUtil::intToString(2) + "_" + MathUtil::floatToString(i) + ".txt");
+    	for (float j = 0.0005; j <= 1.0; j+=0.0005){
+    		m_CurvThreshold = j;
+    		m_DougThreshold = j;
+    		experiment(3, folder + MathUtil::intToString(3) + "_" + MathUtil::floatToString(i) + "_" + MathUtil::floatToString(j) + ".txt");
+    		experiment(4, folder + MathUtil::intToString(4) + "_" + MathUtil::floatToString(i) + "_" + MathUtil::floatToString(j) + ".txt");
+			experiment(5, folder + MathUtil::intToString(5) + "_" + MathUtil::floatToString(i) + "_" + MathUtil::floatToString(j) + ".txt");
+    		experiment(6, folder + MathUtil::intToString(6) + "_" + MathUtil::floatToString(i) + "_" + MathUtil::floatToString(j) + ".txt");
+		}
+	}
 }
 
 void
@@ -382,24 +347,6 @@ Test::applyProcess(int env){
 			break;
 		case 6:
 			process6();
-			break;
-		case 7:
-			process7();
-			break;
-		case 8:
-			process8();
-			break;
-		case 9:
-			process9();
-			break;
-		case 10:
-			process10();
-			break;
-		case 11:
-			process11();
-			break;
-		case 12:
-			process12();
 			break;
 		default:
 			break;
