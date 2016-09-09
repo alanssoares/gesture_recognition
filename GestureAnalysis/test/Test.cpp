@@ -3,8 +3,8 @@
 Test::Test(){
 	m_PercentTest = 0.3;
 	m_RecThreshold = 0.5;
-	m_CurvThreshold = 0.0005;
-	m_DougThreshold = 0.0005;
+	m_CurvThreshold = 0.0001;
+	m_DougThreshold = 0.0001;
 }
 
 Test::~Test(){}
@@ -121,8 +121,8 @@ void
 Test::applyLaplacian(std::vector<type_gesture>* gestures){
 	size_t n = gestures->size();
 	for (int i = 0; i < n; i++) {
-		gestures->at(i).handOne.positions = MathUtil::smoothMeanNeighboring(gestures->at(i).handOne.positions, NUMBER_SMOOTH_NB);
-		gestures->at(i).handTwo.positions = MathUtil::smoothMeanNeighboring(gestures->at(i).handTwo.positions, NUMBER_SMOOTH_NB);
+		gestures->at(i).handOne.positions = MathUtil::smoothMeanNeighboring(gestures->at(i).handOne.positions);
+		gestures->at(i).handTwo.positions = MathUtil::smoothMeanNeighboring(gestures->at(i).handTwo.positions);
 	}
 }
 
@@ -316,7 +316,7 @@ Test::executeAll(){
     	m_RecThreshold = i;
 		experiment(1, folder + MathUtil::intToString(1) + "_" + MathUtil::floatToString(i) + ".txt");
 		experiment(2, folder + MathUtil::intToString(2) + "_" + MathUtil::floatToString(i) + ".txt");
-    	for (float j = 0.0005; j <= 1.0; j+=0.0005){
+    	for (float j = 0.0001; j <= 1.0; j+=0.0001){
     		m_CurvThreshold = j;
     		m_DougThreshold = j;
     		experiment(3, folder + MathUtil::intToString(3) + "_" + MathUtil::floatToString(i) + "_" + MathUtil::floatToString(j) + ".txt");

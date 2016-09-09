@@ -211,10 +211,9 @@ public:
      Método responsável por normalizar a trajetória usando a média da primeira vizinhança, ou seja
      P(n - 1), P(n), P(n + 1).
      @param positions of the trajectory
-     @param numTimes of the smooth will be apllied
      @return std::vector<XnPoint3D> da nova trajetória filtrada usando a média da primeira vizinhança
      */
-    static std::vector<XnPoint3D> smoothMeanNeighboring(std::vector<XnPoint3D> positions, int numTimes = 1);
+    static std::vector<XnPoint3D> smoothMeanNeighboring(std::vector<XnPoint3D> positions);
 
     /**
      Método responsável por reduzir a quantidade de pontos da trajetória e

@@ -149,11 +149,11 @@ void keyboardEventOccurred (const pcl::visualization::KeyboardEvent &event, void
   if(event.keyDown()){
     size_t n = g_Gestures.size() - 1;
     if(event.getKeySym() == "i"){
-        g_Test.m_CurvThreshold += 0.0005;
-        g_Test.m_DougThreshold += 0.0005;
+        g_Test.m_CurvThreshold += 0.0001;
+        g_Test.m_DougThreshold += 0.0001;
     } else if(event.getKeySym() == "u"){
-        g_Test.m_CurvThreshold -= 0.0005;
-        g_Test.m_DougThreshold -= 0.0005;
+        if(g_Test.m_CurvThreshold > 0.0001) g_Test.m_CurvThreshold -= 0.0001;
+        if(g_Test.m_DougThreshold > 0.0001) g_Test.m_DougThreshold -= 0.0001;
     } else if(event.getKeySym() == "k" && id_Gesture > 0){
         id_Gesture -= 1;
     } else if(event.getKeySym() == "l" && id_Gesture < n){

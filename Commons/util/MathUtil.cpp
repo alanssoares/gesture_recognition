@@ -221,29 +221,24 @@ MathUtil::applyCubicBezier(std::vector<XnPoint3D> positions){
 }
 
 std::vector<XnPoint3D>
-MathUtil::smoothMeanNeighboring(std::vector<XnPoint3D> positions, int numTimes){
+MathUtil::smoothMeanNeighboring(std::vector<XnPoint3D> positions){
     std::vector<XnPoint3D> smoothed;
     XnPoint3D meanPoint;
     const int numPoints = 3;
     size_t n  = positions.size();
     if(n >= MIN_CONTROL_POINTS){
-        for (int k = 0; k < numTimes; k++){
-            smoothed.clear();
-            smoothed.push_back(positions[0]);
-            for (int i = 1; i < n - 1; i++) {
-                meanPoint.X = (positions[i - 1].X + positions[i].X + positions[i + 1].X)/numPoints;
-                meanPoint.Y = (positions[i - 1].Y + positions[i].Y + positions[i + 1].Y)/numPoints;
-                meanPoint.Z = (positions[i - 1].Z + positions[i].Z + positions[i + 1].Z)/numPoints;
-                smoothed.push_back(meanPoint);
-            }
-            smoothed.push_back(positions[n - 1]);
-            positions = smoothed;
+        smoothed.push_back(positions.front());
+        for (int i = 0; i < n - 2; i++) {
+            meanPoint.X = (positions[i].X + positions[i + 1].X + positions[i + 2].X)/numPoints;
+            meanPoint.Y = (positions[i].Y + positions[i + 1].Y + positions[i + 2].Y)/numPoints;
+            meanPoint.Z = (positions[i].Z + positions[i + 1].Z + positions[i + 2].Z)/numPoints;
+            smoothed.push_back(meanPoint);
         }
+        smoothed.push_back(positions.back());
     } else {
         //Is not possible smooth, return the original positions
         smoothed = positions;
     }
-    
     return smoothed;
 }
 
@@ -331,14 +326,25 @@ MathUtil::reduceByCurvature(std::vector<XnPoint3D> points, float threshold){
     size_t n = points.size();
     if(n == 0) return newPoints;
     float curvature = 0.0;
-    newPoints.push_back(points[0]);
-    for (int i = 1; i < n - 1; i++){
-        curvature = calcCurvature(points[i - 1], points[i], points[i + 1]);
+    bool removed = false;
+    newPoints.push_back(points.front());
+    
+    for (int i = 0; i < n - 2; i+=2){
+        if(removed){
+            curvature = calcCurvature(points.back(), points[i + 1], points[i + 2]);
+        } else {
+            curvature = calcCurvature(points[i], points[i + 1], points[i + 2]);
+        }
         if(curvature > threshold){
-            newPoints.push_back(points[i]);
+            removed = false;
+            newPoints.push_back(points[i + 1]);
+        } else {
+            removed = true;
         }
     }
-    newPoints.push_back(points[n - 1]);
+    
+    newPoints.push_back(points.back());
+    
     return newPoints;
 }
 
@@ -474,7 +480,7 @@ std::vector<XnPoint3D>
 MathUtil::smooth(std::vector<XnPoint3D> trajectory){
     switch(TYPE_SMOOTH){
         case MEAN_NEIGHBORING:
-            trajectory = MathUtil::smoothMeanNeighboring(trajectory, NUMBER_SMOOTH_NB);
+            trajectory = MathUtil::smoothMeanNeighboring(trajectory);
             break;
         case CUBIC_B_SPLINE:
             trajectory = BSpline::curvePoints(trajectory, NUM_STEP_BSPLINE);
@@ -483,7 +489,7 @@ MathUtil::smooth(std::vector<XnPoint3D> trajectory){
             trajectory = MathUtil::applyCubicBezier(trajectory);
             break;
         default:
-            trajectory = MathUtil::smoothMeanNeighboring(trajectory, NUMBER_SMOOTH_NB);
+            trajectory = MathUtil::smoothMeanNeighboring(trajectory);
             break;
     }
     return trajectory;
