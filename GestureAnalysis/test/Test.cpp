@@ -3,8 +3,8 @@
 Test::Test(){
 	m_PercentTest = 0.3;
 	m_RecThreshold = 0.5;
-	m_CurvThreshold = 0.0001;
-	m_DougThreshold = 0.0001;
+	m_CurvThreshold = 0.005;
+	m_DougThreshold = 0.005;
 }
 
 Test::~Test(){}

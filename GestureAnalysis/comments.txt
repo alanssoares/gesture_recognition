@@ -1,18 +1,19 @@
 To Do
 - verificar possibilidade de alteração do tipo de visualização de perspectiva para ortogonal
 - verificar possibilidade de rotacionamento por eixo
-- melhorar as cores que estão sendo colocadas nos pontos
-- verificar o motivo do método douglas-peucker demorar tanto para ser executado
+
 
 Doing
-- verificar método da curvatura, pois está removendo primeiro os pontos iniciais
+- verificar o motivo do método douglas-peucker demorar tanto para ser executado
 
 Done
+- verificar método da curvatura, pois está removendo primeiro os pontos iniciais
 - implementar e remover os gestos inválidos do dataset
 - plotar pontos ao invés de polígonos
 - corrigir a suavização usando b-spline para evitar o aumento significativo de pontos do gesto
 - verificar o motivo do gesto médio está sendo gerado com valores diferentes no macbook
 - realizar os testes novamente para verificar a taxa de reconhecimento após as correções
+- melhorar as cores que estão sendo colocadas nos pontos
 
 Parâmetros Teste
 - Threshold reconhecimento: MIN_DISTANCE_TRESHOLD -> T = {0.05 .. 1.0} tal que T(i) = T(i) + 0.05

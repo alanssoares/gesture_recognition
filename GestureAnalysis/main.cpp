@@ -14,13 +14,13 @@
 
 Test g_Test;
 std::vector<type_gesture> g_Gestures;
-std::vector<pcl::PointXYZ> g_PointsNormalA, g_PointsNormalB, g_PointsProcessedA, g_PointsProcessedB;
+std::vector<pcl::PointXYZRGB> g_PointsNormalA, g_PointsNormalB, g_PointsProcessedA, g_PointsProcessedB;
 int g_IdView1(0), g_IdView2(0), g_np = 1, id_Gesture = 0, g_Methods = 1;
 std::string g_IdCloudA = "cloudA", g_IdCloudB = "cloudB";
 
-std::vector<pcl::PointXYZ> converterToPointXYZ(std::vector<XnPoint3D> points){
-  std::vector<pcl::PointXYZ> pointsConverted;
-  pcl::PointXYZ newPoint;
+std::vector<pcl::PointXYZRGB> converterToPointXYZ(std::vector<XnPoint3D> points){
+  std::vector<pcl::PointXYZRGB> pointsConverted;
+  pcl::PointXYZRGB newPoint;
   size_t n = points.size();
   for (int i = 0; i < n; i++){
     newPoint.x = points[i].X;
@@ -46,7 +46,7 @@ void removeAll(pcl::visualization::PCLVisualizer *viewer){
   viewer->removePointCloud(g_IdCloudB, g_IdView2);
 }
 
-XnPoint3D converterToXnPoint3D(pcl::PointXYZ point){
+XnPoint3D converterToXnPoint3D(pcl::PointXYZRGB point){
     XnPoint3D newPoint;
     newPoint.X = point.x;
     newPoint.Y = point.y;
@@ -54,7 +54,7 @@ XnPoint3D converterToXnPoint3D(pcl::PointXYZ point){
     return newPoint;
 }
 
-float calcCurvature(pcl::PointXYZ a, pcl::PointXYZ b, pcl::PointXYZ c){
+float calcCurvature(pcl::PointXYZRGB a, pcl::PointXYZRGB b, pcl::PointXYZRGB c){
     return MathUtil::calcCurvature(converterToXnPoint3D(a), converterToXnPoint3D(b), converterToXnPoint3D(c));
 }
 
@@ -81,6 +81,12 @@ void improveCurrentGesture(){
   } else if(g_Methods == 6) {
     g_PointsProcessedA = converterToPointXYZ(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handOne.positions, g_Test.m_CurvThreshold));
     g_PointsProcessedB = converterToPointXYZ(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_CurvThreshold));
+  } else if(g_Methods == 7) {
+    g_PointsProcessedA = converterToPointXYZ(BSpline::curvePoints(g_Gestures[id_Gesture].handOne.positions, NUM_STEP_BSPLINE));
+    g_PointsProcessedB = converterToPointXYZ(BSpline::curvePoints(g_Gestures[id_Gesture].handTwo.positions, NUM_STEP_BSPLINE));
+  } else if(g_Methods == 8) {
+    g_PointsProcessedA = converterToPointXYZ(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handOne.positions));
+    g_PointsProcessedB = converterToPointXYZ(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handTwo.positions));
   }
   
  }
@@ -94,7 +100,7 @@ void viewLabels(pcl::visualization::PCLVisualizer *viewer){
 }
 
 void viewNormalGesture(pcl::visualization::PCLVisualizer *viewer){
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloudA(new pcl::PointCloud<pcl::PointXYZ>);
+  pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloudA(new pcl::PointCloud<pcl::PointXYZRGB>);
   size_t n = g_PointsNormalA.size();
   std::ostringstream os1, os2;
   for (int i = 0; i < n; i++){
@@ -105,12 +111,13 @@ void viewNormalGesture(pcl::visualization::PCLVisualizer *viewer){
       cloudA->points.push_back(g_PointsNormalA[i]);
     }
   }
-  viewer->addPointCloud<pcl::PointXYZ> (cloudA, g_IdCloudA, g_IdView1);
+  viewer->addPointCloud<pcl::PointXYZRGB> (cloudA, g_IdCloudA, g_IdView1);
   viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 2, g_IdCloudA);
+  viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_COLOR, 0.0f, 0.0f, 1.0f, g_IdCloudA);
 }
 
 void viewProcessedGesture(pcl::visualization::PCLVisualizer *viewer){
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloudB(new pcl::PointCloud<pcl::PointXYZ>);
+  pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloudB(new pcl::PointCloud<pcl::PointXYZRGB>);
   size_t n = g_PointsProcessedA.size();
   std::ostringstream os1, os2;
   for (int i = 0; i < n; i++){
@@ -121,8 +128,9 @@ void viewProcessedGesture(pcl::visualization::PCLVisualizer *viewer){
       cloudB->points.push_back(g_PointsProcessedA[i]);
     }
   }
-  viewer->addPointCloud<pcl::PointXYZ> (cloudB, g_IdCloudB, g_IdView2);
+  viewer->addPointCloud<pcl::PointXYZRGB> (cloudB, g_IdCloudB, g_IdView2);
   viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 2, g_IdCloudB);
+  viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_COLOR, 1.0f, 0.0f, 0.0f, g_IdCloudB);
 }
 
 void viewShapes(pcl::visualization::PCLVisualizer *viewer){
