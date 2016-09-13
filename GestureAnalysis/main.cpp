@@ -65,7 +65,7 @@ void improveCurrentGesture(){
 
   if(g_Methods == 1){
     g_PointsProcessedA = converterToPointXYZ(MathUtil::smoothMeanNeighboring(MathUtil::simplify(g_Gestures[id_Gesture].handOne.positions, g_Test.m_DougThreshold, false)));
-    g_PointsProcessedB = converterToPointXYZ(MathUtil::smoothMeanNeighboring(MathUtil::simplify(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_DougThreshold, false)));    
+    g_PointsProcessedB = converterToPointXYZ(MathUtil::smoothMeanNeighboring(MathUtil::simplify(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_DougThreshold, false)));
   } else if(g_Methods == 2) {
     g_PointsProcessedA = converterToPointXYZ(BSpline::curvePoints(MathUtil::simplify(g_Gestures[id_Gesture].handOne.positions, g_Test.m_DougThreshold, false), NUM_STEP_BSPLINE));
     g_PointsProcessedB = converterToPointXYZ(BSpline::curvePoints(MathUtil::simplify(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_DougThreshold, false), NUM_STEP_BSPLINE));
@@ -88,7 +88,7 @@ void improveCurrentGesture(){
     g_PointsProcessedA = converterToPointXYZ(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handOne.positions));
     g_PointsProcessedB = converterToPointXYZ(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handTwo.positions));
   }
-  
+
  }
 
 void viewLabels(pcl::visualization::PCLVisualizer *viewer){
@@ -177,6 +177,8 @@ boost::shared_ptr<pcl::visualization::PCLVisualizer> viewCurvesVis()
 
   g_Test.loadAll();
 
+  //g_Test.transformAllToEqualSize();
+
   viewer->initCameraParameters ();
 
   viewer->createViewPort(0.0, 0.0, 0.5, 1.0, g_IdView1);
@@ -189,7 +191,7 @@ boost::shared_ptr<pcl::visualization::PCLVisualizer> viewCurvesVis()
 
   viewer->addCoordinateSystem (1.0);
   viewer->registerKeyboardCallback (keyboardEventOccurred, (void*)viewer.get ());
-  
+
   return (viewer);
 }
 
@@ -201,8 +203,9 @@ void generateMedians(){
 
 int main(int argc, char* argv[])
 {
-  
+
   if(pcl::console::find_argument (argc, argv, "-t") >= 0){
+    //g_Test.transformAllToEqualSize();
     g_Test.executeAll();
     return 0;
   }
@@ -219,6 +222,7 @@ int main(int argc, char* argv[])
   boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer = viewCurvesVis();
   while (!viewer->wasStopped ()){
     viewer->spinOnce (100);
+    boost::this_thread::sleep (boost::posix_time::microseconds (100000));
   }
 
   return 0;

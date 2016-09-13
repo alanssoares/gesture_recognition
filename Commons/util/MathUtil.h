@@ -27,12 +27,12 @@ using namespace std;
 class MathUtil {
 
 public:
-    
+
     /**
      Método responsável por converter um int em string
     */
     static std::string intToString(int n);
-    
+
     /**
      Método responsável por converter um float em string
     */
@@ -44,7 +44,7 @@ public:
      @return int where -1 = min, 1 = max, 0 = none
     */
     static int checkMinMax(XnPoint3D p1, XnPoint3D p2, XnPoint3D p3);
-    
+
     /*
      http://www.shodor.org/~jmorrell/interactivate/org/shodor/util11/DataSetUtils.java
      Calc the slop using the points p1 and p2
@@ -72,7 +72,7 @@ public:
      @return double
      */
     static double length(XnPoint3D point);
-    
+
     /**
      Método responsável por calcular a distância entre dois pontos
      @param p1 ponto
@@ -88,7 +88,7 @@ public:
      @return XnPoint3D resultado da subtração
      */
     static XnPoint3D subtract(XnPoint3D a, XnPoint3D b);
-    
+
     /**
      Método responsável por verificar se os pontos p1 e p2 são iguais.
      @param p1 ponto
@@ -104,7 +104,7 @@ public:
      @return XnPoint3D normalizado
      */
     static XnPoint3D normalize(XnPoint3D point);
-    
+
     /**
      Método responsável por calcular a distância de um ponto p a um
      segmento formado pelos pontos p1 e p2.
@@ -114,15 +114,15 @@ public:
      @return double indicando a distância do ponto ao segmento
     **/
     static double getDistancePointToSegment(XnPoint3D p, XnPoint3D p1, XnPoint3D p2);
-    
+
     /**
-     Método responsável por obter os valores mínimos de X, Y, Z 
+     Método responsável por obter os valores mínimos de X, Y, Z
      do array de posições.
      @param positions da trajetória
      @return XnPoint3D valores mínimos de X, Y, Z
      */
     static XnPoint3D minValueXYZ(vector<XnPoint3D> positions);
-    
+
     /**
      Método responsável por obter os valores máximos de X, Y, Z
      do array de posições da trajetória.
@@ -130,7 +130,7 @@ public:
      @return XnPoint3D valores máximos de X, Y, Z
      */
     static XnPoint3D maxValueXYZ(vector<XnPoint3D> positions);
-    
+
     /*
      Método que calcula a interpolação linear entre dois pontos
      @param p0 ponto
@@ -143,7 +143,7 @@ public:
     /**
      Método responsável por normalizar a trajetória no intervalo de -1 a 1
         newvalue= (max'-min')/(max-min)*(value-max)+max'
-        or 
+        or
         newvalue= (max'-min')/(max-min)*(value-min)+min'.
      @param positions da trajetória
      @return vector<XnPoint3D> normalizado
@@ -159,14 +159,14 @@ public:
      @return double representando o ângulo
      */
     static double getAngleBetween2Points(XnPoint3D a, XnPoint3D b);
-    
+
     /**
      Método responsável por obter o valor máximo de um vetor
      @param values com valores
      @return double valor máximo encontrado
      */
     static double getMaxValue(std::vector<double> values);
-    
+
     /**
      Método responsável por obter a soma das diferenças das distâncias
      da trajetória.
@@ -174,7 +174,7 @@ public:
      @return double soma das distâncias dos n pontos da trajetória
      */
     static bool isGestureDoing(vector<XnPoint3D> positions);
-    
+
     /**
      Método responsável por calcular o centro geométrico
      da trajetória, designado como centróide. O calculo
@@ -186,7 +186,7 @@ public:
      @return XnPoint3D centróide encontrada a partir da trajetória
      */
     static XnPoint3D calcCentroid(vector<XnPoint3D> positions);
-    
+
     /**
      Método responsável por realizar o deslocamento da trajetória para a
      origem utilizando a centróide da trajetória.
@@ -198,7 +198,7 @@ public:
      @return vector<XnPoint3D> deslocada para a origem
      */
     static vector<XnPoint3D> translateToOrigin(vector<XnPoint3D> positions);
-    
+
     /*
      Método responsável por aplicar interpolação cúbica de Bézier sobre
      n pontos da trajetória
@@ -206,7 +206,7 @@ public:
      @return std::vector<XnPoint3D> da nova trajetória interpolada
      */
     static std::vector<XnPoint3D> applyCubicBezier(std::vector<XnPoint3D> positions);
-    
+
     /*
      Método responsável por normalizar a trajetória usando a média da primeira vizinhança, ou seja
      P(n - 1), P(n), P(n + 1).
@@ -263,7 +263,7 @@ public:
     @param threshold
     @return std::vector<XnPoint3D> com trajetória simplificada
     */
-    static std::vector<XnPoint3D> reduceByCurvature(std::vector<XnPoint3D> points, float threshold);
+    static std::vector<XnPoint3D> reduceByCurvature(std::vector<XnPoint3D> points, double threshold);
 
     /**
      Método responsável por calcular a curvatura utilizando 3 pontos
@@ -294,9 +294,9 @@ public:
      @return std::vector<XnPoint3D>
     */
     static std::vector<XnPoint3D> smoothAndReduce(std::vector<XnPoint3D> trajectory);
-    
+
     /*
-     Método responsável por realizar o matching entre duas trajetórias 
+     Método responsável por realizar o matching entre duas trajetórias
      usando o algoritmo Dynamic Time Warping
      @return distance
     */

@@ -8,14 +8,14 @@
 
 #include "MathUtil.h"
 
-std::string 
+std::string
 MathUtil::intToString(int n){
     std::ostringstream converter;
     converter << n;
     return converter.str();
 }
 
-std::string 
+std::string
 MathUtil::floatToString(float n){
     std::ostringstream converter;
     converter << n;
@@ -56,7 +56,7 @@ MathUtil::sum(XnPoint3D a, XnPoint3D b) {
 XnPoint3D
 MathUtil::interpolate(XnPoint3D p0, XnPoint3D p1, float t){
     XnPoint3D c;
-    
+
     if(t > 1.f) t = 1.f;
     if(t < 0.f) t = 0.f;
 
@@ -70,19 +70,19 @@ MathUtil::interpolate(XnPoint3D p0, XnPoint3D p1, float t){
 double
 MathUtil::getAngleBetween2Points(XnPoint3D a, XnPoint3D b){
     double mU, mV, mUV, uv, angle;
-    
+
     //Produto vetorial
     uv = a.X * b.X + a.Y * b.Y + a.Z * b.Z;
-    
+
     //Módulo dos vetores
     mU = sqrt(pow(a.X, 2) + pow(a.Y, 2) + pow(a.Z, 2));
     mV = sqrt(pow(b.X, 2) + pow(b.Y, 2)) + pow(b.Z, 2);
-    
+
     //Produto vetorial dos módulos
     mUV = mU * mV;
-    
+
     angle = acos(cos(uv/mUV));
-    
+
     return angle;
 }
 
@@ -95,7 +95,7 @@ MathUtil::getMaxValue(vector<double> values){
             max = values[i];
         }
     }
-    
+
     return max;
 }
 
@@ -129,7 +129,7 @@ MathUtil::calcCentroid(vector<XnPoint3D> positions){
     centroid.X = (centroid.X + 1)/(n + 1) - 1;
     centroid.Y = (centroid.Y + 1)/(n + 1) - 1;
     centroid.Z = (centroid.Z + 1)/(n + 1) - 1;
-    
+
     return centroid;
 }
 
@@ -137,13 +137,13 @@ vector<XnPoint3D>
 MathUtil::translateToOrigin(vector<XnPoint3D> positions){
     size_t n = positions.size();
     XnPoint3D centroid = calcCentroid(positions);
-    
+
     for(int i = 0; i < n; i++) {
         positions[i].X -= centroid.X;
         positions[i].Y -= centroid.Y;
         positions[i].Z -= centroid.Z;
     }
-    
+
     return positions;
 }
 
@@ -201,14 +201,14 @@ MathUtil::applyCubicBezier(std::vector<XnPoint3D> positions){
     size_t mean = ceil(n/2);
     XnPoint3D p0, p1, p2, p3, newPos;
     std::vector<XnPoint3D> positionsInterpolated;
-    
+
     p0 = positions[0];
     p1 = positions[ceil(mean/2)];
     p2 = positions[ceil(n - (mean/2))];
     p3 = positions[n - 1];
-    
+
     bezier.setCubic(p0, p1, p2, p3, 1.0f);
-    
+
     for (float i = 0.0; i < 1.0; i+=INCREMENT_RATE_INTERPOLATION) {
         Vector3f pos = bezier.getCubicPosition(i);
         newPos.X = pos.getX();
@@ -216,7 +216,7 @@ MathUtil::applyCubicBezier(std::vector<XnPoint3D> positions){
         newPos.Z = pos.getZ();
         positionsInterpolated.push_back(newPos);
     }
-    
+
     return positionsInterpolated;
 }
 
@@ -284,11 +284,10 @@ MathUtil::simplifyRadialDist(std::vector<XnPoint3D> points, double sqTolerance){
 
 std::vector<XnPoint3D>
 MathUtil::simplifyDouglasPeucker(std::vector<XnPoint3D> points, double sqTolerance){
-    size_t last = points.size() - 1;
     std::vector<XnPoint3D> simplified;
-    simplified.push_back(points[0]);
-    simplified = simplifyDPStep(points, 0, last, sqTolerance, simplified);
-    simplified.push_back(points[last]);
+    simplified.push_back(points.front());
+    simplified = simplifyDPStep(points, 1, points.size(), sqTolerance, simplified);
+    simplified.push_back(points.back());
     return simplified;
 }
 
@@ -304,14 +303,14 @@ MathUtil::simplifyDPStep(std::vector<XnPoint3D> points, int first, int last, dou
             maxSqDist = sqDist;
         }
     }
-    
+
     if (maxSqDist > sqTolerance) {
         if (index - first > 1) {
             simplified = simplifyDPStep(points, first, index, sqTolerance, simplified);
         }
-        
+
         simplified.push_back(points[index]);
-        
+
         if (last - index > 1) {
             simplified = simplifyDPStep(points, index, last, sqTolerance, simplified);
         }
@@ -321,30 +320,23 @@ MathUtil::simplifyDPStep(std::vector<XnPoint3D> points, int first, int last, dou
 }
 
 std::vector<XnPoint3D>
-MathUtil::reduceByCurvature(std::vector<XnPoint3D> points, float threshold){
+MathUtil::reduceByCurvature(std::vector<XnPoint3D> points, double threshold){
     std::vector<XnPoint3D> newPoints;
     size_t n = points.size();
     if(n == 0) return newPoints;
-    float curvature = 0.0;
-    bool removed = false;
+    double curvature = 0.0;
+
     newPoints.push_back(points.front());
-    
+
     for (int i = 0; i < n - 2; i+=2){
-        if(removed){
-            curvature = calcCurvature(points.back(), points[i + 1], points[i + 2]);
-        } else {
-            curvature = calcCurvature(points[i], points[i + 1], points[i + 2]);
-        }
+        curvature = calcCurvature(points[i], points[i + 1], points[i + 2]);
         if(curvature > threshold){
-            removed = false;
             newPoints.push_back(points[i + 1]);
-        } else {
-            removed = true;
         }
     }
-    
+
     newPoints.push_back(points.back());
-    
+
     return newPoints;
 }
 
@@ -366,12 +358,12 @@ MathUtil::checkMinMax(XnPoint3D p1, XnPoint3D p2, XnPoint3D p3) {
     return 0;
 }
 
-double 
+double
 MathUtil::calcSlope(XnPoint3D p1, XnPoint3D p2) {
     return length(subtract(p1, p2));
 }
 
-int 
+int
 MathUtil::checkInflectionPoint(XnPoint3D p1, XnPoint3D p2,
             XnPoint3D p3, XnPoint3D p4, XnPoint3D p5) {
     double slope1 = calcSlope(p1, p2);
@@ -433,7 +425,7 @@ MathUtil::extractDescriptor(std::vector<XnPoint3D> points){
             descriptor.qtdPtsInflection++;
         }
     }
-    
+
     // PRINT("QtdPts : " << descriptor.qtdPts);
     // PRINT("QtdPtsInflection : " << descriptor.qtdPtsInflection);
     // PRINT("QtdMax : " << descriptor.qtdMax);
@@ -449,8 +441,8 @@ MathUtil::getDistancePointToPoint(XnPoint3D p1, XnPoint3D p2){
 
 double
 MathUtil::getDistancePointToSegment(XnPoint3D p, XnPoint3D p1, XnPoint3D p2){
-    double x = p1.X, 
-        y = p1.Y, 
+    double x = p1.X,
+        y = p1.Y,
         z = p1.Z,
         dx = p2.X - x,
         dy = p2.Y - y,
@@ -472,7 +464,7 @@ MathUtil::getDistancePointToSegment(XnPoint3D p, XnPoint3D p1, XnPoint3D p2){
     dx = p.X - x;
     dy = p.Y - y;
     dz = p.Z - z;
-    
+
     return pow(dx,2) + pow(dy,2) + pow(dz,2);
 }
 
@@ -495,7 +487,7 @@ MathUtil::smooth(std::vector<XnPoint3D> trajectory){
     return trajectory;
 }
 
-std::vector<XnPoint3D> 
+std::vector<XnPoint3D>
 MathUtil::normCenterOrigin(std::vector<XnPoint3D> trajectory) {
     //Translate the hand trajectory to origin
     trajectory = MathUtil::translateToOrigin(trajectory);
@@ -503,7 +495,7 @@ MathUtil::normCenterOrigin(std::vector<XnPoint3D> trajectory) {
     return MathUtil::normalizeTrajectory(trajectory);
 }
 
-std::vector<XnPoint3D> 
+std::vector<XnPoint3D>
 MathUtil::smoothAndReduce(std::vector<XnPoint3D> trajectory) {
     //Remove points according with curvature
     trajectory = MathUtil::reduceByCurvature(trajectory, THRESHOLD_CURVATURE);
@@ -532,22 +524,22 @@ MathUtil::pointsEqual(XnPoint3D p1, XnPoint3D p2){
 void
 MathUtil::insertPoints(std::vector<XnPoint3D> *points, int diff){
     int i, n, index = -1;
-    float dist = 0.0, max = 0.0;
+    double curv = 0.0, minCurv = 9999999;
     XnPoint3D newPoint;
     while(diff > 0){
         n = points->size();
-        for (i = 1; i < n; i++){
-            dist = MathUtil::getDistancePointToPoint(points->at(i - 1), points->at(i));
-            if(dist > max){
-                max = dist;
-                index = i;
+        for (i = 0; i < n - 2; i+=2){
+            curv = calcCurvature(points->at(i), points->at(i + 1), points->at(i + 2));
+            if(curv < minCurv){
+                minCurv = curv;
+                index = i + 1;
             }
         }
         if(index >= 0 && index + 1 < n){
-            newPoint = MathUtil::interpolate(points->at(index), points->at(index + 1), 0.5);
-            points->insert(points->begin(), newPoint);
+            newPoint = interpolate(points->at(index), points->at(index + 1), 0.5);
+            points->insert(points->begin() + index, newPoint);
         }
-        max = 0.0;
+        minCurv = 99999999;
         index = -1;
         diff--;
     }
@@ -556,20 +548,20 @@ MathUtil::insertPoints(std::vector<XnPoint3D> *points, int diff){
 void
 MathUtil::removePoints(std::vector<XnPoint3D> *points, int diff){
     int i, n, index = -1;
-    float dist = 0.0, min = 99999999;
+    double curv = 0.0, minCurv = 9999999;
     while(diff < 0){
         n = points->size();
-        for (i = 1; i < n; i++){
-            dist = MathUtil::getDistancePointToPoint(points->at(i - 1), points->at(i));
-            if(dist < min){
-                min = dist;
-                index = i;
+        for (i = 0; i < n - 2; i+=2){
+            curv = calcCurvature(points->at(i), points->at(i + 1), points->at(i + 2));
+            if(curv < minCurv){
+                minCurv = curv;
+                index = i + 1;
             }
         }
         if(index >= 0 && index + 1 < n){
             points->erase(points->begin() + index);
         }
-        min = 99999999;
+        minCurv = 99999999;
         index = -1;
         diff++;
     }

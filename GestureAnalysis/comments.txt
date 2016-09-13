@@ -2,9 +2,7 @@ To Do
 - verificar possibilidade de alteração do tipo de visualização de perspectiva para ortogonal
 - verificar possibilidade de rotacionamento por eixo
 
-
 Doing
-- verificar o motivo do método douglas-peucker demorar tanto para ser executado
 
 Done
 - verificar método da curvatura, pois está removendo primeiro os pontos iniciais
@@ -15,7 +13,16 @@ Done
 - realizar os testes novamente para verificar a taxa de reconhecimento após as correções
 - melhorar as cores que estão sendo colocadas nos pontos
 
-Parâmetros Teste
-- Threshold reconhecimento: MIN_DISTANCE_TRESHOLD -> T = {0.05 .. 1.0} tal que T(i) = T(i) + 0.05
-- Threshold curvatura: THRESHOLD_CURVATURE -> T = {0.0005 .. 0.001} tal que T(i) = T(i) + 0.0005
-- Threshold douglas: DPR_FACTOR_SIMPLIFY -> T = {0.05 .. 1.0} tal que T(i) = T(i) + 0.05
+Parameters
+- Threshold recognizer: MIN_DISTANCE_TRESHOLD -> T = {0.05 .. 1.0} such that T(i) = T(i) + 0.05
+- Threshold curvature: THRESHOLD_CURVATURE -> T = {0.0005 .. 0.001} such that T(i) = T(i) + 0.0005
+- Threshold Douglas: DPR_FACTOR_SIMPLIFY -> T = {0.05 .. 1.0} such that T(i) = T(i) + 0.05
+
+Environment
+- Testar sem aplicar nenhum tipo de processamento.
+- Testar aplicando a B-Spline.
+- Testar aplicando a Laplacian.
+- Testar aplicando a Curvatura.
+- Testar aplicando a Curvatura + B-Spline.
+- Testar aplicando a Curvatura + Laplacian.
+- Testar todos os cenários anteriores novamente com os gestos possuindo a mesma quantidade de pontos.

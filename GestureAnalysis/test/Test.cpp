@@ -3,7 +3,7 @@
 Test::Test(){
 	m_PercentTest = 0.3;
 	m_RecThreshold = 0.5;
-	m_CurvThreshold = 0.005;
+	m_CurvThreshold = 0.0001;
 	m_DougThreshold = 0.005;
 }
 
@@ -38,7 +38,7 @@ Test::loadMedian(){
 	m_MedianGestures.insert( m_MedianGestures.end(), futil.mGesturesTwoHands.begin(), futil.mGesturesTwoHands.end() );
 }
 
-void 
+void
 Test::init(){
 	loadAll();
 	loadMedian();
@@ -62,27 +62,19 @@ void
 Test::process3(){
 	applyCurvature(&m_GesturesTest);
 	applyCurvature(&m_GesturesTemplate);
-	process1();
 }
 
 void
 Test::process4(){
 	applyCurvature(&m_GesturesTest);
 	applyCurvature(&m_GesturesTemplate);
-	process2();
-}
-
-void
-Test::process5(){
-	applyDouglasPeucker(&m_GesturesTest);
-	applyDouglasPeucker(&m_GesturesTemplate);
 	process1();
 }
 
 void
-Test::process6(){
-	applyDouglasPeucker(&m_GesturesTest);
-	applyDouglasPeucker(&m_GesturesTemplate);
+Test::process5(){
+	applyCurvature(&m_GesturesTest);
+	applyCurvature(&m_GesturesTemplate);
 	process2();
 }
 
@@ -103,6 +95,8 @@ Test::splitDataset(){
 			m_GesturesTemplate.push_back(m_AllGestures[i++]);
 		}
 	}
+	std::sort(m_GesturesTest.begin(), m_GesturesTest.end(), sortByName);
+	std::sort(m_GesturesTemplate.begin(), m_GesturesTemplate.end(), sortByName);
 }
 
 void
@@ -153,7 +147,7 @@ Test::applyDouglasPeucker(std::vector<type_gesture>* gestures){
 	}
 }
 
-void 
+void
 Test::experiment(int env, std::string nameFile){
 	FileUtil::getInstance().createFile(nameFile);
 	applyProcess(env);
@@ -169,7 +163,7 @@ Test::recognize(type_gesture gesture, const std::string nameFile) {
     double distanceA, distanceB, bestDistanceB = 999999999, bestDistanceA = 999999999;
     size_t n = m_GesturesTemplate.size();
     type_gesture gestureTemplate;
-    
+
     for (int i = 0; i < n; i++) {
         distanceA = MathUtil::computeDistanceBetweenTwoTrajectories(m_GesturesTemplate[i].handOne.positions, gesture.handOne.positions);
         distanceB = MathUtil::computeDistanceBetweenTwoTrajectories(m_GesturesTemplate[i].handTwo.positions, gesture.handTwo.positions);
@@ -179,28 +173,28 @@ Test::recognize(type_gesture gesture, const std::string nameFile) {
             gestureTemplate = m_GesturesTemplate[i];
         }
     }
-    
+
     if(bestDistanceA < m_RecThreshold && bestDistanceB < m_RecThreshold){
     	isRecognized = 1;
     }
 
-    saveResults(nameFile, gesture, gestureTemplate, getFinalTime(start_s), bestDistanceA, isRecognized);
+    saveResults(nameFile, gesture, gestureTemplate, getFinalTime(start_s), (bestDistanceA + bestDistanceB)/2, isRecognized);
 }
 
 void
 Test::generateMedianGesture(std::vector<type_gesture> gestures){
 	size_t n = gestures.size(), i = 0, j = 0, m, count;
-	
+
 	generateGestureEqualSize(&gestures);
-	
+
 	while(j < n){
-		
+
 		j = i + 1;
 		count = 0;
 		m = gestures[i].handOne.positions.size();
-		
+
 		while((j < n) && (gestures[i].name.compare(gestures[j].name) == 0)) j++;
-		
+
 		for(int k = i + 1; k < j - 1; k++){
 			for(int t = 0; t < m; t++){
 				gestures[i].handOne.positions[t].X += gestures[k].handOne.positions[t].X;
@@ -213,17 +207,17 @@ Test::generateMedianGesture(std::vector<type_gesture> gestures){
 			}
 			count++;
 		}
-		
+
 		for(int k = 0; k < m; k++){
 			gestures[i].handOne.positions[k].X = gestures[i].handOne.positions[k].X / count;
 			gestures[i].handOne.positions[k].Y = gestures[i].handOne.positions[k].Y / count;
 			gestures[i].handOne.positions[k].Z = gestures[i].handOne.positions[k].Z / count;
-			
+
 			gestures[i].handTwo.positions[k].X = gestures[i].handTwo.positions[k].X / count;
 			gestures[i].handTwo.positions[k].Y = gestures[i].handTwo.positions[k].Y / count;
 			gestures[i].handTwo.positions[k].Z = gestures[i].handTwo.positions[k].Z / count;
 		}
-		
+
 		m_MedianGestures.push_back(gestures[i]);
 		i = j;
 	}
@@ -249,7 +243,7 @@ Test::generateGestureEqualSize(std::vector<type_gesture> *gestures){
 	while(j < n){
 		j = i + 1;
 		while((j < n) && (gestures->at(i).name.compare(gestures->at(j).name) == 0)) j++;
-		mean = getMeanPoints(*gestures, i, j - 1);
+		mean = getMeanPoints(*gestures, i, j);
 		for(int k = i; k < j - 1; k++){
 			diff = mean - gestures->at(k).handOne.positions.size();
 			if(diff > 0){
@@ -280,7 +274,7 @@ Test::getMeanPoints(vector<type_gesture> gestures, int i, int j){
 }
 
 void
-Test::improveGestures(){  
+Test::improveGestures(){
     FileUtil& fileUtil = FileUtil::getInstance();
     fileUtil.loadGestures(NAME_FILE_DATA);
     for (int i = 0; i < fileUtil.mGesturesOneHand.size(); i++){
@@ -309,22 +303,25 @@ Test::normCenterOriginGesture(type_gesture *gesture){
 void
 Test::executeAll(){
 	std::string folder = "../results/result_experiment_";
-    //Load samples
-    init();
-    //Execute experiments using different parameters
-    for (float i = 0.05; i <= 1.0; i+=0.05){
-    	m_RecThreshold = i;
+  //Load samples
+  init();
+  //Execute experiments using different parameters
+  for (float i = 0.05; i <= 1.0; i+=0.05){
+		experiment(0, folder + MathUtil::intToString(0) + "_" + MathUtil::floatToString(i) + ".txt");
 		experiment(1, folder + MathUtil::intToString(1) + "_" + MathUtil::floatToString(i) + ".txt");
 		experiment(2, folder + MathUtil::intToString(2) + "_" + MathUtil::floatToString(i) + ".txt");
-    	for (float j = 0.0001; j <= 1.0; j+=0.0001){
-    		m_CurvThreshold = j;
-    		m_DougThreshold = j;
-    		experiment(3, folder + MathUtil::intToString(3) + "_" + MathUtil::floatToString(i) + "_" + MathUtil::floatToString(j) + ".txt");
-    		experiment(4, folder + MathUtil::intToString(4) + "_" + MathUtil::floatToString(i) + "_" + MathUtil::floatToString(j) + ".txt");
-			experiment(5, folder + MathUtil::intToString(5) + "_" + MathUtil::floatToString(i) + "_" + MathUtil::floatToString(j) + ".txt");
-    		experiment(6, folder + MathUtil::intToString(6) + "_" + MathUtil::floatToString(i) + "_" + MathUtil::floatToString(j) + ".txt");
-		}
+		experiment(3, folder + MathUtil::intToString(3) + "_" + MathUtil::floatToString(i) + ".txt");
+		experiment(4, folder + MathUtil::intToString(4) + "_" + MathUtil::floatToString(i) + ".txt");
+		experiment(5, folder + MathUtil::intToString(5) + "_" + MathUtil::floatToString(i) + ".txt");
 	}
+}
+
+void
+Test::transformAllToEqualSize() {
+	//Resample all templates to equal size according with the type
+	generateGestureEqualSize(&m_AllGestures);
+	//Splie again, now with equal size
+	splitDataset();
 }
 
 void
@@ -344,9 +341,6 @@ Test::applyProcess(int env){
 			break;
 		case 5:
 			process5();
-			break;
-		case 6:
-			process6();
 			break;
 		default:
 			break;
