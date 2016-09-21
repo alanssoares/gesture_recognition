@@ -43,6 +43,7 @@ Test::init(){
 	loadAll();
 	loadMedian();
 	std::sort(m_AllGestures.begin(), m_AllGestures.end(), sortByName);
+	//generateGestureEqualSize(&m_AllGestures);
 	splitDataset();
 }
 
@@ -307,6 +308,7 @@ Test::executeAll(){
   init();
   //Execute experiments using different parameters
   for (float i = 0.05; i <= 1.0; i+=0.05){
+		m_RecThreshold = i;
 		experiment(0, folder + MathUtil::intToString(0) + "_" + MathUtil::floatToString(i) + ".txt");
 		experiment(1, folder + MathUtil::intToString(1) + "_" + MathUtil::floatToString(i) + ".txt");
 		experiment(2, folder + MathUtil::intToString(2) + "_" + MathUtil::floatToString(i) + ".txt");
