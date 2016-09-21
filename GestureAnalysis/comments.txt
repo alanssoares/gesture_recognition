@@ -26,3 +26,24 @@ Environment
 - Testar aplicando a Curvatura + B-Spline.
 - Testar aplicando a Curvatura + Laplacian.
 - Testar todos os cenários anteriores novamente com os gestos possuindo a mesma quantidade de pontos.
+
+Resultados
+********** Taxa de Reconhecimento Por Método *********
+Gesto                g1 g2 g3 g4 g5 g6 g7
+Quantidade VP        x  x  x  x  x  x  x
+Quantidade VN        x  x  x  x  x  x  x
+Quantidade FP        x  x  x  x  x  x  x
+Quantidade FN        x  x  x  x  x  x  x
+
+********** Taxa de Reconhecimento Por Método - Mesma Quantidade de Pontos *********
+Gesto                g1 g2 g3 g4 g5 g6 g7
+Quantidade VP        x  x  x  x  x  x  x
+Quantidade VN        x  x  x  x  x  x  x
+Quantidade FP        x  x  x  x  x  x  x
+Quantidade FN        x  x  x  x  x  x  x
+
+********* Tempo Execução Aplicando Curvatura *********
+X - Tempo Médio (Sem Curvatura / Com Curvatura)
+Y - Total de Testes por Gesto
+
+******** Por Treshold utilizando diferentes Métodos *******

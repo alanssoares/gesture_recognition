@@ -205,7 +205,6 @@ int main(int argc, char* argv[])
 {
 
   if(pcl::console::find_argument (argc, argv, "-t") >= 0){
-    //g_Test.transformAllToEqualSize();
     g_Test.executeAll();
     return 0;
   }
