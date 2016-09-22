@@ -286,15 +286,15 @@ std::vector<XnPoint3D>
 MathUtil::simplifyDouglasPeucker(std::vector<XnPoint3D> points, double sqTolerance){
     std::vector<XnPoint3D> simplified;
     simplified.push_back(points.front());
-    simplified = simplifyDPStep(points, 1, points.size(), sqTolerance, simplified);
+    simplifyDPStep(points, 0, points.size() - 1, sqTolerance, &simplified);
     simplified.push_back(points.back());
     return simplified;
 }
 
-std::vector<XnPoint3D>
-MathUtil::simplifyDPStep(std::vector<XnPoint3D> points, int first, int last, double sqTolerance, std::vector<XnPoint3D> simplified){
+void
+MathUtil::simplifyDPStep(std::vector<XnPoint3D> points, int first, int last, double sqTolerance, std::vector<XnPoint3D> *simplified){
     double maxSqDist = sqTolerance;
-    int index;
+    int index = -1;
 
     for (int i = first + 1; i < last; i++) {
         double sqDist = getDistancePointToSegment(points[i], points[first], points[last]);
@@ -306,17 +306,15 @@ MathUtil::simplifyDPStep(std::vector<XnPoint3D> points, int first, int last, dou
 
     if (maxSqDist > sqTolerance) {
         if (index - first > 1) {
-            simplified = simplifyDPStep(points, first, index, sqTolerance, simplified);
+            simplifyDPStep(points, first, index, sqTolerance, simplified);
         }
 
-        simplified.push_back(points[index]);
+        simplified->push_back(points[index]);
 
         if (last - index > 1) {
-            simplified = simplifyDPStep(points, index, last, sqTolerance, simplified);
+            simplifyDPStep(points, index, last, sqTolerance, simplified);
         }
     }
-
-    return simplified;
 }
 
 std::vector<XnPoint3D>
@@ -450,11 +448,11 @@ MathUtil::getDistancePointToSegment(XnPoint3D p, XnPoint3D p1, XnPoint3D p2){
 
     if (dx != 0 || dy != 0 || dz != 0) {
         double t = ((p.X - x) * dx + (p.Y - y) * dy + (p.Z - z) * dz) / (pow(dx,2) + pow(dy,2) + pow(dz,2));
-        if (t > 1) {
+        if (t > 1.0) {
             x = p2.X;
             y = p2.Y;
             z = p2.Z;
-        } else if (t > 0) {
+        } else if (t > 0.0) {
             x += dx * t;
             y += dy * t;
             z += dz * t;

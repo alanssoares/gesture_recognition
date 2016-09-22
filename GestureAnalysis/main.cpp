@@ -101,16 +101,17 @@ void viewLabels(pcl::visualization::PCLVisualizer *viewer){
 
 void viewNormalGesture(pcl::visualization::PCLVisualizer *viewer){
   pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloudA(new pcl::PointCloud<pcl::PointXYZRGB>);
-  size_t n = g_PointsNormalA.size();
-  std::ostringstream os1, os2;
-  for (int i = 0; i < n; i++){
-    os1 << "LNA" << i;
-    os2 << "LNB" << i;
-    cloudA->points.push_back(g_PointsNormalB[i]);
-    if(g_Gestures[id_Gesture].numHands == 2){
-      cloudA->points.push_back(g_PointsNormalA[i]);
-    }
+
+  size_t nA = g_PointsNormalA.size();
+  for (int i = 0; i < nA; i++){
+    cloudA->points.push_back(g_PointsNormalA[i]);
   }
+
+  size_t nB = g_PointsNormalB.size();
+  for (int i = 0; i < nB; i++){
+    cloudA->points.push_back(g_PointsNormalB[i]);
+  }
+
   viewer->addPointCloud<pcl::PointXYZRGB> (cloudA, g_IdCloudA, g_IdView1);
   viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 2, g_IdCloudA);
   viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_COLOR, 0.0f, 0.0f, 1.0f, g_IdCloudA);
@@ -118,16 +119,17 @@ void viewNormalGesture(pcl::visualization::PCLVisualizer *viewer){
 
 void viewProcessedGesture(pcl::visualization::PCLVisualizer *viewer){
   pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloudB(new pcl::PointCloud<pcl::PointXYZRGB>);
-  size_t n = g_PointsProcessedA.size();
-  std::ostringstream os1, os2;
-  for (int i = 0; i < n; i++){
-    os1 << "LPA" << i;
-    os2 << "LPB" << i;
-    cloudB->points.push_back(g_PointsProcessedB[i]);
-    if(g_Gestures[id_Gesture].numHands == 2){
-      cloudB->points.push_back(g_PointsProcessedA[i]);
-    }
+
+  size_t nA = g_PointsProcessedA.size();
+  for (int i = 0; i < nA; i++){
+    cloudB->points.push_back(g_PointsProcessedA[i]);
   }
+
+  size_t nB = g_PointsProcessedB.size();
+  for (int i = 0; i < nB; i++){
+    cloudB->points.push_back(g_PointsProcessedB[i]);
+  }
+
   viewer->addPointCloud<pcl::PointXYZRGB> (cloudB, g_IdCloudB, g_IdView2);
   viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 2, g_IdCloudB);
   viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_COLOR, 1.0f, 0.0f, 0.0f, g_IdCloudB);
@@ -156,15 +158,15 @@ void keyboardEventOccurred (const pcl::visualization::KeyboardEvent &event, void
 
   if(event.keyDown()){
     size_t n = g_Gestures.size() - 1;
-    if(event.getKeySym() == "i"){
+    if(event.getKeySym() == "t"){
         g_Test.m_CurvThreshold += 0.0001;
         g_Test.m_DougThreshold += 0.0001;
-    } else if(event.getKeySym() == "u"){
+    } else if(event.getKeySym() == "y"){
         if(g_Test.m_CurvThreshold > 0.0001) g_Test.m_CurvThreshold -= 0.0001;
         if(g_Test.m_DougThreshold > 0.0001) g_Test.m_DougThreshold -= 0.0001;
-    } else if(event.getKeySym() == "k" && id_Gesture > 0){
+    } else if(event.getKeySym() == "n" && id_Gesture > 0){
         id_Gesture -= 1;
-    } else if(event.getKeySym() == "l" && id_Gesture < n){
+    } else if(event.getKeySym() == "m" && id_Gesture < n){
         id_Gesture += 1;
     }
     viewShapes(viewer);
@@ -221,7 +223,7 @@ int main(int argc, char* argv[])
   boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer = viewCurvesVis();
   while (!viewer->wasStopped ()){
     viewer->spinOnce (100);
-    boost::this_thread::sleep (boost::posix_time::microseconds (100000));
+    //boost::this_thread::sleep (boost::posix_time::microseconds (100000));
   }
 
   return 0;

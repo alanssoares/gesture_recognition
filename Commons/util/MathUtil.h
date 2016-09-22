@@ -248,9 +248,8 @@ public:
      @param last ponto da trajetória
      @param sqTolerence entre dois pontos
      @param simplified trajetória simplificada
-     @return std::vector<XnPoint3D> com trajetória simplificada
     **/
-    static std::vector<XnPoint3D> simplifyDPStep(std::vector<XnPoint3D> points, int first, int last, double sqTolerance, std::vector<XnPoint3D> simplified);
+    static void simplifyDPStep(std::vector<XnPoint3D> points, int first, int last, double sqTolerance, std::vector<XnPoint3D>* simplified);
 
     /**
     //P1, P2, P3
