@@ -2,11 +2,11 @@ Observações:
 - Todos os gestos foram normalizados e centralizados na origem.
 
 Template da Tabela:
-  Gesto                g1 g2 g3 g4 g5 g6 g7
-  Quantidade VP        x  x  x  x  x  x  x
-  Quantidade VN        x  x  x  x  x  x  x
-  Quantidade FP        x  x  x  x  x  x  x
-  Quantidade FN        x  x  x  x  x  x  x
+  Gesto     g1 g2 g3 g4 g5 g6 g7
+  VP        x  x  x  x  x  x  x
+  VN        x  x  x  x  x  x  x
+  FP        x  x  x  x  x  x  x
+  FN        x  x  x  x  x  x  x
 
 =================== Quantidade de Pontos Diferentes =====================
 -------- Sem Processamento ---------
