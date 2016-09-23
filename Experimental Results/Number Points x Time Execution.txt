@@ -46,36 +46,36 @@ DouglasPeuker + B-Spline  |   14.5000    |    0.0229   |
 =========================== G5 ===========================
                           | Média Pontos | Média Tempo |
 Sem Processamento         |   79.6666    |    0.3759   |
-Laplacian                 |   79.6666    |	  0.3760   |
-B-Spline                  |   77.6666    |	  0.3602   |
-Curvatura                 |   41.0666    | 	  0.1168   |
-Curvatura + Laplacian     |   41.0666    |	  0.1164   |
-Curvatura + B-Spline      |   39.0666    |	  0.1065   |
-DouglasPeuker             |   14.8666    |	  0.0258   |
-DouglasPeuker + Laplacian |   14.8666    |	  0.0262   |
-DouglasPeuker + B-Spline  |   12.8666    |	  0.0206   |
+Laplacian                 |   79.6666    |    0.3760   |
+B-Spline                  |   77.6666    |    0.3602   |
+Curvatura                 |   41.0666    |    0.1168   |
+Curvatura + Laplacian     |   41.0666    |    0.1164   |
+Curvatura + B-Spline      |   39.0666    |    0.1065   |
+DouglasPeuker             |   14.8666    |    0.0258   |
+DouglasPeuker + Laplacian |   14.8666    |    0.0262   |
+DouglasPeuker + B-Spline  |   12.8666    |    0.0206   |
 =========================== G6 ===========================
                           | Média Pontos | Média Tempo |
-Sem Processamento         |   72.6341    |	  0.3422   |
-Laplacian                 |   72.6341    |	  0.3423   |
-B-Spline                  |   70.6341    |	  0.3258   |
-Curvatura                 |   37.4878    |	  0.1064   |
-Curvatura + Laplacian     |   37.4878    |	  0.1068   |
-Curvatura + B-Spline      |   35.4878    |	  0.1002   |
-DouglasPeuker             |   13.6097    |	  0.0249   |
-DouglasPeuker + Laplacian |   13.6097    |	  0.0239   |
-DouglasPeuker + B-Spline  |   11.6097    |	  0.0198   |
+Sem Processamento         |   72.6341    |    0.3422   |
+Laplacian                 |   72.6341    |    0.3423   |
+B-Spline                  |   70.6341    |    0.3258   |
+Curvatura                 |   37.4878    |    0.1064   |
+Curvatura + Laplacian     |   37.4878    |    0.1068   |
+Curvatura + B-Spline      |   35.4878    |    0.1002   |
+DouglasPeuker             |   13.6097    |    0.0249   |
+DouglasPeuker + Laplacian |   13.6097    |    0.0239   |
+DouglasPeuker + B-Spline  |   11.6097    |    0.0198   |
 =========================== G7 ===========================
                           | Média Pontos | Média Tempo |
-Sem Processamento         |   76.5397    |	  0.3609   |
-Laplacian                 |   76.5397    |	  0.3608   |
-B-Spline                  |   74.5397    |	  0.3473   |
-Curvatura                 |   38.8730    |	  0.1106   |
-Curvatura + Laplacian     |   38.8730    |	  0.1107   |
-Curvatura + B-Spline      |   36.8730    |	  0.1129   |
-DouglasPeuker             |   11.2540    |	  0.0243   |
-DouglasPeuker + Laplacian |   11.2540    |	  0.0243   |
-DouglasPeuker + B-Spline  |   9.2540     |	  0.0181   |
+Sem Processamento         |   76.5397    |    0.3609   |
+Laplacian                 |   76.5397    |    0.3608   |
+B-Spline                  |   74.5397    |    0.3473   |
+Curvatura                 |   38.8730    |    0.1106   |
+Curvatura + Laplacian     |   38.8730    |    0.1107   |
+Curvatura + B-Spline      |   36.8730    |    0.1129   |
+DouglasPeuker             |   11.2540    |    0.0243   |
+DouglasPeuker + Laplacian |   11.2540    |    0.0243   |
+DouglasPeuker + B-Spline  |   9.2540     |    0.0181   |
 
 =================== Quantidade de Pontos Iguais =====================
 =========================== G1 ===========================
@@ -83,75 +83,75 @@ DouglasPeuker + B-Spline  |   9.2540     |	  0.0181   |
 Sem Processamento         |   67	       |    0.3829   |
 Laplacian                 |   67	       |    0.3714   |
 B-Spline                  |   65	       |    0.3514   |
-Curvatura                 |   34.9508 	 |    0.1156   |
-Curvatura + Laplacian     |   34.9508 	 |	  0.1159   |
-Curvatura + B-Spline      |   32.9508 	 |	  0.1057   |
-DouglasPeuker             |   13.0164 	 |	  0.0252   |
-DouglasPeuker + Laplacian |   13.0164 	 |	  0.0251   |
-DouglasPeuker + B-Spline  |   11.0164 	 |	  0.0207   |
+Curvatura                 |   34.9508    |    0.1156   |
+Curvatura + Laplacian     |   34.9508    |    0.1159   |
+Curvatura + B-Spline      |   32.9508    |    0.1057   |
+DouglasPeuker             |   13.0164    |    0.0252   |
+DouglasPeuker + Laplacian |   13.0164    |    0.0251   |
+DouglasPeuker + B-Spline  |   11.0164    |    0.0207   |
 =========================== G2 ===========================
                           | Média Pontos | Média Tempo |
-Sem Processamento         |   55	0.316604590909091
-Laplacian                 |   55	0.312805893939394
-B-Spline                  |   53	0.295719696969697
-Curvatura                 |   28.9242424242424	0.0986720454545454
-Curvatura + Laplacian     |   28.9242424242424	0.0986383939393940
-Curvatura + B-Spline      |   26.9242424242424	0.0889778787878788
-DouglasPeuker             |   9.78787878787879	0.0216643787878788
-DouglasPeuker + Laplacian |   9.78787878787879	0.0216109545454545
-DouglasPeuker + B-Spline  |   7.78787878787879	0.0175289696969697
+Sem Processamento         |   55	       |    0.3166   |
+Laplacian                 |   55	       |    0.3128   |
+B-Spline                  |   53	       |    0.2957   |
+Curvatura                 |   28.9242    |    0.0987   |
+Curvatura + Laplacian     |   28.9242	   |    0.0986   |
+Curvatura + B-Spline      |   26.9242	   |    0.0890   |
+DouglasPeuker             |   9.7879	   |    0.0217   |
+DouglasPeuker + Laplacian |   9.7879	   |    0.0216   |
+DouglasPeuker + B-Spline  |   7.7879	   |    0.0175   |
 =========================== G3 ===========================
                           | Média Pontos | Média Tempo |
-Sem Processamento         |   100	0.536331980392157
-Laplacian                 |   100	0.534838823529412
-B-Spline                  |   98	0.515721313725490
-Curvatura                 |   51	0.160467568627451
-Curvatura + Laplacian     |   51	0.160237862745098
-Curvatura + B-Spline      |   49	0.148391705882353
-DouglasPeuker             |   13.7254901960784	0.0299425490196078
-DouglasPeuker + Laplacian |   13.7254901960784	0.0298766078431373
-DouglasPeuker + B-Spline  |   11.7254901960784	0.0248628627450980
+Sem Processamento         |   100	       |    0.5363   |
+Laplacian                 |   100        |    0.5348   |
+B-Spline                  |   98	       |    0.5157   |
+Curvatura                 |   51	       |    0.1605   |
+Curvatura + Laplacian     |   51	       |    0.1602   |
+Curvatura + B-Spline      |   49	       |    0.1484   |
+DouglasPeuker             |   13.7255	   |    0.0299   |
+DouglasPeuker + Laplacian |   13.7255	   |    0.0299   |
+DouglasPeuker + B-Spline  |   11.7255	   |    0.0249   |
 =========================== G4 ===========================
                           | Média Pontos | Média Tempo |
-Sem Processamento         |   76	0.414423000000000
-Laplacian                 |   76	0.413157047619048
-B-Spline                  |   74	0.394552071428571
-Curvatura                 |   39	0.126449952380952
-Curvatura + Laplacian     |   39	0.126301047619048
-Curvatura + B-Spline      |   37	0.116132500000000
-DouglasPeuker             |   17.0238095238095	0.0296433095238095
-DouglasPeuker + Laplacian |   17.0238095238095	0.0296152380952381
-DouglasPeuker + B-Spline  |   15.0238095238095	0.0248792619047619
+Sem Processamento         |   76	       |    0.4144   |
+Laplacian                 |   76	       |    0.4131   |
+B-Spline                  |   74	       |    0.3945   |
+Curvatura                 |   39	       |    0.1264   |
+Curvatura + Laplacian     |   39	       |    0.1263   |
+Curvatura + B-Spline      |   37	       |    0.1161   |
+DouglasPeuker             |   17.0238	   |    0.0296   |
+DouglasPeuker + Laplacian |   17.0238	   |    0.0296   |
+DouglasPeuker + B-Spline  |   15.0238	   |    0.0249   |
 =========================== G5 ===========================
                           | Média Pontos | Média Tempo |
-Sem Processamento         |   98	0.526890288888889
-Laplacian                 |   98	0.526002844444444
-B-Spline                  |   96	0.506858022222222
-Curvatura                 |   50	0.156938088888889
-Curvatura + Laplacian     |   50	0.157143533333333
-Curvatura + B-Spline      |   48	0.145252577777778
-DouglasPeuker             |   17.8000000000000	0.0307271333333333
-DouglasPeuker + Laplacian |   17.8000000000000	0.0307214888888889
-DouglasPeuker + B-Spline  |   15.8000000000000	0.0258867555555556
+Sem Processamento         |   98         |    0.5269   |
+Laplacian                 |   98	       |    0.5260   |
+B-Spline                  |   96	       |    0.5068   |
+Curvatura                 |   50	       |    0.1569   |
+Curvatura + Laplacian     |   50	       |    0.1571   |
+Curvatura + B-Spline      |   48	       |    0.1452   |
+DouglasPeuker             |   17.8000	   |    0.0307   |
+DouglasPeuker + Laplacian |   17.8000	   |    0.0307   |
+DouglasPeuker + B-Spline  |   15.8000	   |    0.0259   |
 =========================== G6 ===========================
                           | Média Pontos | Média Tempo |
-Sem Processamento         |   114	0.606152878048781
-Laplacian                 |   114	0.601884341463415
-B-Spline                  |   112	0.580323878048781
-Curvatura                 |   57.9512195121951	0.178252024390244
-Curvatura + Laplacian     |   57.9512195121951	0.178104268292683
-Curvatura + B-Spline      |   55.9512195121951	0.165700292682927
-DouglasPeuker             |   20.6585365853659	0.0346607317073171
-DouglasPeuker + Laplacian |   20.6585365853659	0.0344369268292683
-DouglasPeuker + B-Spline  |   18.6585365853659	0.0292250243902439
+Sem Processamento         |   114	       |    0.6061   |
+Laplacian                 |   114	       |    0.6019   |
+B-Spline                  |   112	       |    0.5803   |
+Curvatura                 |   57.9512	   |    0.1782   |
+Curvatura + Laplacian     |   57.9512	   |    0.1781   |
+Curvatura + B-Spline      |   55.9512	   |    0.1657   |
+DouglasPeuker             |   20.6585	   |    0.0347   |
+DouglasPeuker + Laplacian |   20.6585	   |    0.0344   |
+DouglasPeuker + B-Spline  |   18.6585	   |    0.0292   |
 =========================== G7 ===========================
                           | Média Pontos | Média Tempo |
-Sem Processamento         |   87	0.470893253968254
-Laplacian                 |   87	0.469614714285714
-B-Spline                  |   85	0.448780857142857
-Curvatura                 |   44.8412698412698	0.142423222222222
-Curvatura + Laplacian     |   44.8412698412698	0.142269047619048
-Curvatura + B-Spline      |   42.8412698412698	0.131490444444445
-DouglasPeuker             |   11.9206349206349	0.0255489841269841
-DouglasPeuker + Laplacian |   11.9206349206349	0.0253697619047619
-DouglasPeuker + B-Spline  |   9.92063492063492	0.0208955873015873
+Sem Processamento         |   87	       |    0.4708   |
+Laplacian                 |   87	       |    0.4696   |
+B-Spline                  |   85	       |    0.4487   |
+Curvatura                 |   44.8412	   |    0.1424   |
+Curvatura + Laplacian     |   44.8412	   |    0.1422   |
+Curvatura + B-Spline      |   42.8412	   |    0.1314   |
+DouglasPeuker             |   11.9206	   |    0.0255   |
+DouglasPeuker + Laplacian |   11.9206	   |    0.0253   |
+DouglasPeuker + B-Spline  |   9.9206	   |    0.0208   |
