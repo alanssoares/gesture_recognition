@@ -35,6 +35,9 @@ public:
 	void process3();
 	void process4();
 	void process5();
+	void process6();
+	void process7();
+	void process8();
 
 	void applyLaplacian(std::vector<type_gesture>* gestures);
 	void applyBSpline(std::vector<type_gesture>* gestures);

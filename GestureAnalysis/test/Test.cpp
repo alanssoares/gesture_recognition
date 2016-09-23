@@ -4,7 +4,7 @@ Test::Test(){
 	m_PercentTest = 0.3;
 	m_RecThreshold = 0.5;
 	m_CurvThreshold = 0.0001;
-	m_DougThreshold = 0.005;
+	m_DougThreshold = 0.01;
 }
 
 Test::~Test(){}
@@ -43,7 +43,7 @@ Test::init(){
 	loadAll();
 	loadMedian();
 	std::sort(m_AllGestures.begin(), m_AllGestures.end(), sortByName);
-	//generateGestureEqualSize(&m_AllGestures);
+	generateGestureEqualSize(&m_AllGestures);
 	splitDataset();
 }
 
@@ -67,15 +67,31 @@ Test::process3(){
 
 void
 Test::process4(){
-	applyCurvature(&m_GesturesTest);
-	applyCurvature(&m_GesturesTemplate);
+	process3();
 	process1();
 }
 
 void
 Test::process5(){
-	applyCurvature(&m_GesturesTest);
-	applyCurvature(&m_GesturesTemplate);
+	process3();
+	process2();
+}
+
+void
+Test::process6(){
+	applyDouglasPeucker(&m_GesturesTest);
+	applyDouglasPeucker(&m_GesturesTemplate);
+}
+
+void
+Test::process7(){
+	process6();
+	process1();
+}
+
+void
+Test::process8(){
+	process6();
 	process2();
 }
 
@@ -307,15 +323,15 @@ Test::executeAll(){
   //Load samples
   init();
   //Execute experiments using different parameters
-  for (float i = 0.05; i <= 1.0; i+=0.05){
-		m_RecThreshold = i;
-		experiment(0, folder + MathUtil::intToString(0) + "_" + MathUtil::floatToString(i) + ".txt");
-		experiment(1, folder + MathUtil::intToString(1) + "_" + MathUtil::floatToString(i) + ".txt");
-		experiment(2, folder + MathUtil::intToString(2) + "_" + MathUtil::floatToString(i) + ".txt");
-		experiment(3, folder + MathUtil::intToString(3) + "_" + MathUtil::floatToString(i) + ".txt");
-		experiment(4, folder + MathUtil::intToString(4) + "_" + MathUtil::floatToString(i) + ".txt");
-		experiment(5, folder + MathUtil::intToString(5) + "_" + MathUtil::floatToString(i) + ".txt");
-	}
+	experiment(0, folder + MathUtil::intToString(0) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+	experiment(1, folder + MathUtil::intToString(1) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+	experiment(2, folder + MathUtil::intToString(2) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+	experiment(3, folder + MathUtil::intToString(3) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+	experiment(4, folder + MathUtil::intToString(4) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+	experiment(5, folder + MathUtil::intToString(5) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+	experiment(6, folder + MathUtil::intToString(6) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+	experiment(7, folder + MathUtil::intToString(7) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+	experiment(8, folder + MathUtil::intToString(8) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
 }
 
 void
@@ -344,6 +360,14 @@ Test::applyProcess(int env){
 		case 5:
 			process5();
 			break;
+		case 6:
+			process6();
+			break;
+		case 7:
+			process7();
+			break;
+		case 8:
+			process8();
 		default:
 			break;
 	}
