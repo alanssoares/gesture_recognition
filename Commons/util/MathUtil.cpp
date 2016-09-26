@@ -560,11 +560,8 @@ MathUtil::checkMinMax(XnPoint3D p1, XnPoint3D p2, XnPoint3D p3) {
 double
 MathUtil::calcSlope(XnPoint3D p1, XnPoint3D p2) {
     XnPoint3D p3 = subtract(p1, p2);
-    double s = length(p3);
-    p3.X /= s;
-    p3.Y /= s;
-    p3.Z /= s;
-    return length(p3);
+    double run = sqrt(pow(p3.X,2) + pow(p3.Y,2));
+    return p3.Z / run;
 }
 
 int

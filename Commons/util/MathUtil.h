@@ -85,6 +85,7 @@ public:
     /*
      http://www.shodor.org/~jmorrell/interactivate/org/shodor/util11/DataSetUtils.java
      http://math.stackexchange.com/questions/799783/slope-of-a-line-in-3d-coordinate-system
+     http://www.ce.utexas.edu/prof/maidment/giswr2011/docs/Slope.pdf
      Calc the slop using the points p1 and p2
      @return double slop
     */
