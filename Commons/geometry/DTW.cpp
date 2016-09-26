@@ -10,7 +10,7 @@
 
 double
 DTW::euclidDistance(const XnPoint3D &p, const XnPoint3D &q){
-    return sqrt((p.X - q.X) * (p.X - q.X) + (p.Y - q.Y) * (p.Y - q.Y) + (p.Z - q.Z) * (p.Z - q.Z));
+    return sqrt(pow((p.X - q.X), 2) + pow((p.Y - q.Y),2) + pow((p.Z - q.Z),2));
 }
 
 double
@@ -20,7 +20,7 @@ DTW::l1Distance(const XnPoint3D &p, const XnPoint3D &q){
 
 double
 DTW::fastDynamic(vector<XnPoint3D> &v, vector<XnPoint3D> &w){
-    
+
     assert(static_cast<int>(v.size()) == mN);
     assert(static_cast<int>(w.size()) == mN);
     assert(static_cast<int>(mGamma.size()) == mN);
@@ -43,9 +43,9 @@ DTW::fastDynamic(vector<XnPoint3D> &v, vector<XnPoint3D> &w){
                 mGamma[i][j] = Best + euclidDistance(v[i], w[j]);
         }
     }
-    
+
     return mGamma[mN-1][mN-1];
-    
+
 }
 
 DTW2::DTW2(){
@@ -64,7 +64,7 @@ DTW2::DTW2(vector<XnPoint3D> &v, vector<XnPoint3D> &w){
 
 double
 DTW2::euclidDistance(const XnPoint3D &p, const XnPoint3D &q){
-    return sqrt((p.X - q.X) * (p.X - q.X) + (p.Y - q.Y) * (p.Y - q.Y) + (p.Z - q.Z) * (p.Z - q.Z));
+    return sqrt(pow((p.X - q.X), 2) + pow((p.Y - q.Y),2) + pow((p.Z - q.Z),2));
 }
 
 double
@@ -78,22 +78,22 @@ DTW2::compute(){
     double d[mN][mM];// local distances
     double D[mN][mM];// global distances
     int warpingPath [mN + mM][2];
-    
+
     for (int i = 0; i < mN; i++) {
         for (int j = 0; j < mM; j++) {
             d[i][j] = euclidDistance(mSequence1[i], mSequence2[j]);
         }
     }
-    
+
     D[0][0] = d[0][0];
     for (int i = 1; i < mN; i++) {
         D[i][0] = d[i][0] + D[i - 1][0];
     }
-    
+
     for (int j = 1; j < mM; j++) {
         D[0][j] = d[0][j] + D[0][j - 1];
     }
-    
+
     for (int i = 1; i < mN; i++) {
         for (int j = 1; j < mM; j++) {
             accumulatedDistance = min(min(D[i-1][j], D[i-1][j-1]), D[i][j-1]);
@@ -101,16 +101,16 @@ DTW2::compute(){
             D[i][j] = accumulatedDistance;
         }
     }
-    
+
     accumulatedDistance = D[mN - 1][mM - 1];
     int i = mN - 1;
     int j = mM - 1;
     int minIndex = 1;
-    
+
     // max(n, m) <= K < n + m
     warpingPath[mK - 1][0] = i;
     warpingPath[mK - 1][1] = j;
-    
+
     std::vector<double> array;
     while ((i + j) != 0) {
         if (i == 0) {
@@ -122,7 +122,7 @@ DTW2::compute(){
             array.push_back(D[i - 1][j]);
             array.push_back(D[i][j - 1]);
             array.push_back(D[i - 1][j - 1]);
-            
+
             minIndex = getIndexOfMinimum(array);
             if (minIndex == 0) {
                 i -= 1;
@@ -132,15 +132,17 @@ DTW2::compute(){
                 i -= 1;
                 j -= 1;
             }
-            
+
             array.clear();
         }
-        
+
         mK++;
         warpingPath[mK - 1][0] = i;
         warpingPath[mK - 1][1] = j;
     }
-    
+
+    if(isinf(accumulatedDistance)) accumulatedDistance = INF;
+
     mWarpingDistance = accumulatedDistance / mK;
 }
 
@@ -148,7 +150,8 @@ int
 DTW2::getIndexOfMinimum(std::vector<double> array) {
     int index = 0;
     double val = array[0];
-    for (int i = 1; i < array.size(); i++) {
+    size_t n = array.size();
+    for (int i = 1; i < n; i++) {
         if (array[i] < val) {
             val = array[i];
             index = i;

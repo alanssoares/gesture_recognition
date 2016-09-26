@@ -346,19 +346,225 @@ MathUtil::calcCurvature(XnPoint3D a, XnPoint3D b, XnPoint3D c){
     return length(subtract(l1, l2));
 }
 
+Descriptor
+MathUtil::generateDescritpor(std::vector<XnPoint3D> dataSet) {
+  PointData data;
+  Descriptor descriptor;
+  descriptor.qtdPts = 0;
+  descriptor.qtdPtsInflection = 0;
+  descriptor.qtdMax = 0;
+  descriptor.qtdMin = 0;
+  descriptor.positions.push_back(dataSet.front());
+
+  int curIndex = 0;
+  while (curIndex < dataSet.size() - 1) {
+    data = findNextInflectionOrLocalMinMax(dataSet, curIndex, SEARCH_RIGHT, ANY);
+    descriptor.positions.push_back(data.point);
+    // Verify the type of the point (min, max, inflection or none)
+    if(data.type == LOCAL_MIN){
+      descriptor.qtdMin++;
+    } else if(data.type == LOCAL_MAX){
+      descriptor.qtdMax++;
+    } else if(data.type == INFLECTION_POINT){
+      descriptor.qtdPtsInflection++;
+    }
+    // What index of the data set corresponds to the next control point?
+    int oldIndex = curIndex;
+    for (int i = curIndex; i < dataSet.size(); i++) {
+      if (abs(dataSet[i].X - data.point.X) < 1E-4
+          && abs(dataSet[i].Y - data.point.Y) < 1E-4
+          && abs(dataSet[i].Z - data.point.Z) < 1E-4) {
+        curIndex = i;
+        break;
+      }
+    }
+    if (curIndex == oldIndex) {
+      std::cout << "Then Could not locate next min/max/inflection/edge after point" << std::endl;
+      break;
+    }
+  }
+
+  // Make sure that the last point is included in the data set.
+  XnPoint3D lastControlPoint = descriptor.positions.back();
+  XnPoint3D lastPoint = dataSet.back();
+  if ((abs(lastPoint.X - lastControlPoint.X) > 1E-6) ||
+      (abs(lastPoint.Y - lastControlPoint.Y) > 1E-6) ||
+      (abs(lastPoint.Z - lastControlPoint.Z) > 1E-6)) {
+    descriptor.positions.push_back(lastPoint);
+  }
+
+  descriptor.qtdPts = descriptor.positions.size();
+
+  PRINT("QtdPts : " << descriptor.qtdPts);
+  PRINT("QtdPtsInflection : " << descriptor.qtdPtsInflection);
+  PRINT("QtdMax : " << descriptor.qtdMax);
+  PRINT("QtdMin : " << descriptor.qtdMin);
+
+  return descriptor;
+}
+
+PointData
+MathUtil::findNextInflectionOrLocalMinMax(std::vector<XnPoint3D> dataSet, int startingIndex, int direction, int pointType){
+  if (direction != SEARCH_LEFT && direction != SEARCH_RIGHT) {
+    std::cout<<"Direction must be DataSetUtils.SEARCH_LEFT or DataSetUtils.SEARCH_RIGHT"<<std::endl;
+    exit(1);
+  }
+  if (pointType != LOCAL_MIN && pointType != LOCAL_MAX
+      && pointType != INFLECTION_POINT && pointType != ANY) {
+    std::cout<<"DataSetUtils.findNextInflectionOrLocalMinMax() improper usage.  pointType must be DataSetUtils.LOCAL_MIN, DataSetUtils.LOCAL_MAX, DataSetUtils.INFLECTION_POINT, or DataSetUtils.ANY."<<std::endl;
+    exit(1);
+  }
+  if (startingIndex < 0 || startingIndex >= dataSet.size()) {
+    std::cout<<"DataSetUtils.findNextInflectionOrLocalMinMax() improper usage. "<<std::endl;
+    std::cout<<"Your starting index must be an index of the data set.  startingIndex = "<<startingIndex<< ", dataSetsize() = "<< dataSet.size()<<std::endl;
+    exit(1);
+  }
+
+  std::vector<XnPoint3D> subset;
+  if (direction == SEARCH_LEFT) {
+    if (startingIndex <= 1) {
+      // They are searching left from the left most point or next to left most
+      // point. Return the left end point.
+      PointData data;
+      data.point = dataSet.front();
+      data.type = END_POINT;
+      return data;
+    }
+    /*
+     * If starting index is 2, then we want a 2-element array and fill
+     * with points 0 and 1.
+     */
+    subset.push_back(dataSet[0]);
+    subset.push_back(dataSet[1]);
+  }
+  if (direction == SEARCH_RIGHT) {
+    if (startingIndex >= dataSet.size() - 2) {
+      // They are searching right from the right most point or next to
+      // right most point. Return the right end point.
+      PointData data;
+      data.point = dataSet.back();
+      data.type = END_POINT;
+      return data;
+    }
+    /*
+     * If starting index is 2 and the size() of the global data set is
+     * 5, then we want a 2-element array and fill with points 3 and 4.
+     * So the size of the search array is 5 - 2 - 1 = 2.
+     * Using above scenario, we want to fill subset with dataSet
+     * elements 3, and 4. Subset has indicies 0 and 1 so we add an
+     * offset of to map the data set to the subset.
+     */
+     subset.push_back(dataSet[0 + startingIndex + 1]);
+     subset.push_back(dataSet[1 + startingIndex + 1]);
+     subset.push_back(dataSet[2 + startingIndex + 1]);
+  }
+  return search(subset, direction, pointType);
+}
+
+PointData
+MathUtil::search(std::vector<XnPoint3D> subset, int direction, int pointType) {
+  PointData data;
+  size_t nSubset = subset.size();
+  // To check for local min, max, inflection, three points are needed.
+  int curIndex = (direction == SEARCH_LEFT) ? nSubset - 1 : 0;
+  int nextIndex = (direction == SEARCH_LEFT) ? nSubset - 2 : 1;
+  int followingIndex = (direction == SEARCH_LEFT) ? nSubset - 3 : 2;
+
+  if (direction == SEARCH_LEFT && followingIndex <= 0) {
+    data.point = subset.front();
+    data.type = END_POINT;
+    return data;
+  }
+  if (direction == SEARCH_RIGHT && followingIndex >= subset.size() - 1) {
+    data.point = subset.back();
+    data.type = END_POINT;
+    return data;
+  }
+
+  int indexStep = (direction == SEARCH_RIGHT) ? 1 : -1;
+  while (followingIndex >= 0 && followingIndex <= subset.size() - 1) {
+    // Search for the min, max, or inflection.
+    int nextType = (direction == SEARCH_LEFT) ? checkMinMax(
+        subset[followingIndex], subset[nextIndex], subset[curIndex])
+        : checkMinMax(subset[curIndex], subset[nextIndex],
+            subset[followingIndex]);
+    if (nextType == LOCAL_MIN && (pointType == LOCAL_MIN || pointType == ANY)) {
+      //Return the "middle" of the three points which should be on
+      //average closest to the true min, max, or inflection point.
+      data.point = subset[nextIndex];
+      data.type = LOCAL_MIN;
+      return data;
+    } else if (nextType == LOCAL_MAX && (pointType == LOCAL_MAX || pointType == ANY)) {
+      //Return the "middle" of the three points which should be on
+      //average closest to the true min, max, or inflection point.
+      data.point = subset[nextIndex];
+      data.type = LOCAL_MAX;
+      return data;
+    }
+
+    nextType = -1;
+
+    if (pointType == INFLECTION_POINT || pointType == ANY) {
+      // We need 5 data points to test for an inflection point.
+      if (direction == SEARCH_RIGHT
+          && ((followingIndex + 1) < subset.size())
+          && ((curIndex - 1) >= 0)) {
+        nextType = checkInflectionPoint(subset[curIndex - 1],
+            subset[curIndex], subset[nextIndex],
+            subset[followingIndex], subset[followingIndex + 1]);
+      } else if (direction == SEARCH_LEFT && ((followingIndex - 1) >= 0)
+          && ((curIndex + 1) < subset.size())) {
+        nextType = checkInflectionPoint(subset[followingIndex - 1],
+            subset[followingIndex], subset[nextIndex],
+            subset[curIndex], subset[curIndex + 1]);
+      }
+    }
+
+    if (nextType == INFLECTION_POINT && (pointType == INFLECTION_POINT || pointType == ANY)) {
+      //Return the "middle" of the three points which should be on
+      //average closest to the true min, max, or inflection point.
+      PointData data;
+      data.point = subset[nextIndex];
+      data.type = INFLECTION_POINT;
+      return data;
+    }
+
+    curIndex += indexStep;
+    nextIndex += indexStep;
+    followingIndex += indexStep;
+  }
+
+  // If we get here, we did not find a local min, max, or inflection point
+  // before reaching the edge of the graph.
+  if (direction == SEARCH_LEFT && followingIndex < 0) {
+    data.point = subset.front();
+    data.type = END_POINT;
+    return data;
+  }
+
+  data.point = subset.back();
+  data.type = END_POINT;
+  return data;
+}
+
 int
 MathUtil::checkMinMax(XnPoint3D p1, XnPoint3D p2, XnPoint3D p3) {
     double slope1 = calcSlope(p1, p2);
     double slope2 = calcSlope(p2, p3);
-    if (slope1 * slope2 <= 0.0) { // Local min / max
-        return (slope2 > slope1) ? -1 : 1;
+    if (slope1 * slope2 <= 0.0) {
+        return (slope2 > slope1) ? LOCAL_MIN : LOCAL_MAX;
     }
-    return 0;
+    return -1;
 }
 
 double
 MathUtil::calcSlope(XnPoint3D p1, XnPoint3D p2) {
-    return length(subtract(p1, p2));
+    XnPoint3D p3 = subtract(p1, p2);
+    double s = length(p3);
+    p3.X /= s;
+    p3.Y /= s;
+    p3.Z /= s;
+    return length(p3);
 }
 
 int
@@ -377,25 +583,25 @@ MathUtil::checkInflectionPoint(XnPoint3D p1, XnPoint3D p2,
     // always be increasing or decreasing through all five
     // points.
     if (!functionDecreasing && !functionIncreasing){
-        return 0;
+        return -1;
     }
 
     // For the next test, the absolute value of the slope is decreasing
     // for slopes 1 and 2 while increasing for slopes 3 and 4, there is an
     // inflection point.
     if (abs(slope2) < abs(slope1) && abs(slope4) > abs(slope3)){
-        return 1;
+        return INFLECTION_POINT;
     }
 
     // For the next test, the absolute value of the slope is increasing
     // for slopes 1 and 2 while decreasing for slopes 3 and 4, there is an
     // inflection point.
     if (abs(slope2) > abs(slope1) && abs(slope4) < abs(slope3)){
-        return 1;
+        return INFLECTION_POINT;
     }
 
     // We have not determined that there is an inflection point.
-    return 0;
+    return -1;
 }
 
 Descriptor

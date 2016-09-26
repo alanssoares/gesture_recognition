@@ -40,19 +40,21 @@ using namespace std;
  *
  * Time series are represented using STL vectors.
  */
+
+//some big number
+enum {  INF = 100000000 };
+
 class DTW {
-    
+
 private:
     std::vector<vector<double> > mGamma;
     unsigned long mN, mConstraint;
-    
+
 public:
-    //some big number
-    enum {  INF = 100000000 };
-    
+
     ~DTW() {};
     DTW(){};
-    
+
     /**
      * n is the length of the time series
      *
@@ -62,28 +64,28 @@ public:
      *
      */
     DTW(unsigned long n, uint constraint) : mGamma(n, std::vector<double>(n, INF)), mN(n), mConstraint(constraint) { };
-    
+
     /**
      * This currently uses euclidean distance.
      * You can change it to whatever is needed for your application
      */
     double fastDynamic(vector<XnPoint3D> &v, vector<XnPoint3D> &w);
-    
+
     /**
      Calc the Euclidian Distance of p to q
      */
     double euclidDistance(const XnPoint3D &p, const XnPoint3D &q);
-    
+
     /**
      computes the l1 distance with another point
      */
     double l1Distance(const XnPoint3D &p, const XnPoint3D &q);
-    
+
     /*
      Calc the minimum value between two values
      */
     static inline double min (double x, double y ) { return x < y ? x : y; }
-    
+
     static inline double max (double x, double y ) { return x > y ? x : y; }
 };
 
@@ -95,7 +97,7 @@ public:
     X = x1, x2,..., xi,..., xn
     Y = y1, y2,..., yj,..., ym
    </pre>
- 
+
   @author   Cheol-Woo Jung (cjung@gatech.edu)
   @version  1.0
   @link http://trac.research.cc.gatech.edu/GART/browser/GART/weka/edu/gatech/gart/ml/weka/DTW.java?rev=9
@@ -107,13 +109,13 @@ private:
     vector<XnPoint3D> mSequence1;
     vector<XnPoint3D> mSequence2;
 public:
-    
+
     DTW2();
     DTW2(std::vector<XnPoint3D> &v, std::vector<XnPoint3D> &w);
     ~DTW2(){};
-    
+
     void compute();
-    
+
     /**
     This method was created to init the parameters used in this class
     **/
@@ -139,7 +141,7 @@ public:
      Calc the Euclidian Distance of p to q
      */
     double euclidDistance(const XnPoint3D &p, const XnPoint3D &q);
-    
+
     /**
      computes the l1 distance with another point
      */

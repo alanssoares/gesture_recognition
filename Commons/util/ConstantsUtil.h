@@ -74,7 +74,7 @@ enum TYPE_FILE {
 };
 
 /* Define the left and right hands */
-enum SIDE_HAND {  
+enum SIDE_HAND {
     LEFT_HAND = 0,
     RIGHT_HAND = 1
 };
@@ -100,6 +100,7 @@ typedef struct Descriptor {
     int qtdMax;
     int qtdMin;
     int length;
+    vector<XnPoint3D> positions;
 } Descriptor;
 
 /* Check the result and return 1 if XN_STATUS is not ok */

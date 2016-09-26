@@ -20,6 +20,11 @@
 
 using namespace std;
 
+typedef struct PointData {
+  XnPoint3D point;
+  int type;
+} PointData;
+
 /*
  This class was created to support the development
  of Gesture Recognition Project based in methods that compare trajectories.
@@ -27,6 +32,15 @@ using namespace std;
 class MathUtil {
 
 public:
+
+    // Directions to search
+  	static const int SEARCH_LEFT = 0;
+	  static const int SEARCH_RIGHT = 1;
+    static const int LOCAL_MIN = 0;
+    static const int LOCAL_MAX = 1;
+    static const int INFLECTION_POINT = 2;
+    static const int END_POINT = 3;
+    static const int ANY = 4;
 
     /**
      Método responsável por converter um int em string
@@ -39,6 +53,29 @@ public:
     static std::string floatToString(float n);
 
     /**
+     Método responsável por gerar um descritor do movimento recebido por parâmetro
+     @para dataSet
+    */
+    static Descriptor generateDescritpor(std::vector<XnPoint3D> dataSet);
+
+    /**
+     Método responsável por buscar o próximo local mínimo, local máximo ou ponto de inflexão
+     @param dataSet
+     @param startingIndex
+     @param direction
+     @param pointType
+    */
+    static PointData findNextInflectionOrLocalMinMax(std::vector<XnPoint3D> dataSet, int startingIndex, int direction, int pointType);
+
+    /**
+     Método responsável por buscar um local mínimo, local máximo ou ponto de inflexão
+     @param subset
+     @param direction
+     @param pointType
+    */
+    static PointData search(std::vector<XnPoint3D> subset, int direction, int pointType);
+
+    /**
      http://www.shodor.org/~jmorrell/interactivate/org/shodor/util11/DataSetUtils.java
      Check if the point p2 is min, max or none using three points p1, p2 and p3
      @return int where -1 = min, 1 = max, 0 = none
@@ -47,6 +84,7 @@ public:
 
     /*
      http://www.shodor.org/~jmorrell/interactivate/org/shodor/util11/DataSetUtils.java
+     http://math.stackexchange.com/questions/799783/slope-of-a-line-in-3d-coordinate-system
      Calc the slop using the points p1 and p2
      @return double slop
     */
