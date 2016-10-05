@@ -16,7 +16,7 @@ Test g_Test;
 std::vector<type_gesture> g_Gestures;
 std::vector<pcl::PointXYZRGB> g_PointsNormalA, g_PointsNormalB, g_PointsProcessedA, g_PointsProcessedB;
 int g_IdView1(0), g_IdView2(0), g_np = 1, id_Gesture = 0, g_Methods = 1;
-std::string g_IdCloudA = "cloudA", g_IdCloudB = "cloudB";
+std::string g_IdCloudA = "cloudA", g_IdCloudB = "cloudB", g_NameMethodCombination;
 
 std::vector<pcl::PointXYZRGB> converterToPointXYZ(std::vector<XnPoint3D> points){
   std::vector<pcl::PointXYZRGB> pointsConverted;
@@ -64,39 +64,51 @@ void improveCurrentGesture(){
   g_PointsNormalB = converterToPointXYZ(g_Gestures[id_Gesture].handTwo.positions);
 
   if(g_Methods == 1){
-    g_PointsProcessedA = converterToPointXYZ(MathUtil::smoothMeanNeighboring(MathUtil::simplify(g_Gestures[id_Gesture].handOne.positions, g_Test.m_DougThreshold, false)));
-    g_PointsProcessedB = converterToPointXYZ(MathUtil::smoothMeanNeighboring(MathUtil::simplify(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_DougThreshold, false)));
+    g_NameMethodCombination = "Laplacian + DouglasPeucker";
+    g_PointsProcessedA = converterToPointXYZ(MathUtil::simplify(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handOne.positions), g_Test.m_DougThreshold, false));
+    g_PointsProcessedB = converterToPointXYZ(MathUtil::simplify(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handTwo.positions), g_Test.m_DougThreshold, false));
   } else if(g_Methods == 2) {
-    g_PointsProcessedA = converterToPointXYZ(BSpline::curvePoints(MathUtil::simplify(g_Gestures[id_Gesture].handOne.positions, g_Test.m_DougThreshold, false), NUM_STEP_BSPLINE));
-    g_PointsProcessedB = converterToPointXYZ(BSpline::curvePoints(MathUtil::simplify(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_DougThreshold, false), NUM_STEP_BSPLINE));
+    g_NameMethodCombination = "B-Spline + DouglasPeucker";
+    g_PointsProcessedA = converterToPointXYZ(MathUtil::simplify(BSpline::curvePoints(g_Gestures[id_Gesture].handOne.positions, NUM_STEP_BSPLINE), g_Test.m_DougThreshold, false));
+    g_PointsProcessedB = converterToPointXYZ(MathUtil::simplify(BSpline::curvePoints(g_Gestures[id_Gesture].handTwo.positions, NUM_STEP_BSPLINE), g_Test.m_DougThreshold, false));
   } else if(g_Methods == 3) {
-    g_PointsProcessedA = converterToPointXYZ(MathUtil::smoothMeanNeighboring(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handOne.positions, g_Test.m_CurvThreshold)));
-    g_PointsProcessedB = converterToPointXYZ(MathUtil::smoothMeanNeighboring(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_CurvThreshold)));
+    g_NameMethodCombination = "Laplacian + Curvature";
+    g_PointsProcessedA = converterToPointXYZ(MathUtil::reduceByCurvature(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handOne.positions), g_Test.m_CurvThreshold));
+    g_PointsProcessedB = converterToPointXYZ(MathUtil::reduceByCurvature(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handTwo.positions), g_Test.m_CurvThreshold));
   } else if(g_Methods == 4) {
-    g_PointsProcessedA = converterToPointXYZ(BSpline::curvePoints(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handOne.positions, g_Test.m_CurvThreshold), NUM_STEP_BSPLINE));
-    g_PointsProcessedB = converterToPointXYZ(BSpline::curvePoints(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_CurvThreshold), NUM_STEP_BSPLINE));
+    g_NameMethodCombination = "B-Spline + Curvature";
+    g_PointsProcessedA = converterToPointXYZ(MathUtil::reduceByCurvature(BSpline::curvePoints(g_Gestures[id_Gesture].handOne.positions, NUM_STEP_BSPLINE), g_Test.m_CurvThreshold));
+    g_PointsProcessedB = converterToPointXYZ(MathUtil::reduceByCurvature(BSpline::curvePoints(g_Gestures[id_Gesture].handTwo.positions, NUM_STEP_BSPLINE), g_Test.m_CurvThreshold));
   } else if(g_Methods == 5) {
+    g_NameMethodCombination = "DouglasPeucker";
     g_PointsProcessedA = converterToPointXYZ(MathUtil::simplify(g_Gestures[id_Gesture].handOne.positions, g_Test.m_DougThreshold, false));
     g_PointsProcessedB = converterToPointXYZ(MathUtil::simplify(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_DougThreshold, false));
   } else if(g_Methods == 6) {
+    g_NameMethodCombination = "Curvature";
     g_PointsProcessedA = converterToPointXYZ(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handOne.positions, g_Test.m_CurvThreshold));
     g_PointsProcessedB = converterToPointXYZ(MathUtil::reduceByCurvature(g_Gestures[id_Gesture].handTwo.positions, g_Test.m_CurvThreshold));
   } else if(g_Methods == 7) {
+    g_NameMethodCombination = "B-Spline";
     g_PointsProcessedA = converterToPointXYZ(BSpline::curvePoints(g_Gestures[id_Gesture].handOne.positions, NUM_STEP_BSPLINE));
     g_PointsProcessedB = converterToPointXYZ(BSpline::curvePoints(g_Gestures[id_Gesture].handTwo.positions, NUM_STEP_BSPLINE));
   } else if(g_Methods == 8) {
+    g_NameMethodCombination = "Laplacian";
     g_PointsProcessedA = converterToPointXYZ(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handOne.positions));
     g_PointsProcessedB = converterToPointXYZ(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handTwo.positions));
   }
-
+  
  }
 
 void viewLabels(pcl::visualization::PCLVisualizer *viewer){
   viewer->addText("Nº Points: " + MathUtil::intToString(g_PointsNormalA.size()), 10, 10, "v1 text", g_IdView1);
-  viewer->addText("Nº Points: " + MathUtil::intToString(g_PointsProcessedA.size()), 10, 10, "v2 text", g_IdView2);
-  viewer->addText("Nº Total: " + MathUtil::intToString(g_Gestures.size()), 10, 20, "v3 text", g_IdView1);
-  viewer->addText("Name : " + g_Gestures[id_Gesture].name, 10, 30, "v4 text", g_IdView1);
-  viewer->addText("Id : " + MathUtil::intToString(id_Gesture), 10, 40, "v5 text", g_IdView1);
+  viewer->addText("Nº Total: " + MathUtil::intToString(g_Gestures.size()), 10, 20, "v2 text", g_IdView1);
+  viewer->addText("Name : " + g_Gestures[id_Gesture].name, 10, 30, "v3 text", g_IdView1);
+  viewer->addText("Id : " + MathUtil::intToString(id_Gesture), 10, 40, "v4 text", g_IdView1);
+
+  viewer->addText("Nº Points: " + MathUtil::intToString(g_PointsProcessedA.size()), 10, 10, "v5 text", g_IdView2);
+  viewer->addText("Threshold Curvature: " + MathUtil::floatToString(g_Test.m_CurvThreshold), 10, 20, "v6 text", g_IdView2);
+  viewer->addText("Threshold DouglasPeucker: " + MathUtil::floatToString(g_Test.m_DougThreshold), 10, 30, "v7 text", g_IdView2);
+  viewer->addText("Method: " + g_NameMethodCombination, 10, 40, "v8 text", g_IdView2);
 }
 
 void viewNormalGesture(pcl::visualization::PCLVisualizer *viewer){
@@ -160,10 +172,10 @@ void keyboardEventOccurred (const pcl::visualization::KeyboardEvent &event, void
     size_t n = g_Gestures.size() - 1;
     if(event.getKeySym() == "t"){
         g_Test.m_CurvThreshold += 0.0001;
-        g_Test.m_DougThreshold += 0.0001;
+        g_Test.m_DougThreshold += 0.01;
     } else if(event.getKeySym() == "y"){
         if(g_Test.m_CurvThreshold > 0.0001) g_Test.m_CurvThreshold -= 0.0001;
-        if(g_Test.m_DougThreshold > 0.0001) g_Test.m_DougThreshold -= 0.0001;
+        if(g_Test.m_DougThreshold > 0.01) g_Test.m_DougThreshold -= 0.01;
     } else if(event.getKeySym() == "n" && id_Gesture > 0){
         id_Gesture -= 1;
     } else if(event.getKeySym() == "m" && id_Gesture < n){
@@ -203,8 +215,46 @@ void generateMedians(){
   g_Test.saveMedianGestures();
 }
 
+int helpUsage()
+{
+    PRINT(" ------- Command line input -------- ");
+    PRINT("Usage: ./start options");
+    PRINT("options: ");
+    PRINT("");
+    PRINT("-m : ");
+    PRINT(" 1 - Laplacian + DouglasPeucker");
+    PRINT(" 2 - B-Spline + DouglasPeucker");
+    PRINT(" 3 - Laplacian + Curvature");
+    PRINT(" 4 - B-Spline + Curvature");
+    PRINT(" 5 - DouglasPeucker");
+    PRINT(" 6 - Curvature");
+    PRINT(" 7 - B-Spline");
+    PRINT(" 8 - Laplacian");
+    PRINT("");
+    PRINT("-t : Execute all experiments that will be saved in results folder");
+    PRINT("");
+    PRINT("-g : Generate a file with median gestures");
+    PRINT("");
+    PRINT(" ------- KeyboardEvent controls ------- ");
+    PRINT("t : Increment Threshold (Curvature and DouglasPeucker)");
+    PRINT("y : Decrement Threshold (Curvature and DouglasPeucker)");
+    PRINT("n : Previuos Gesture");
+    PRINT("m : Next Gesture");
+    PRINT("");
+    PRINT("Example (1): ./start -m 1");
+    PRINT("Example (2): ./start -t");
+    PRINT("Example (3): ./start -g");
+
+    return 1;
+}
+
 int main(int argc, char* argv[])
 {
+
+  if(pcl::console::find_argument (argc, argv, "-h") >= 0){
+    helpUsage();
+    return 0;
+  }
 
   if(pcl::console::find_argument (argc, argv, "-t") >= 0){
     g_Test.executeAll();
@@ -223,7 +273,6 @@ int main(int argc, char* argv[])
   boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer = viewCurvesVis();
   while (!viewer->wasStopped ()){
     viewer->spinOnce (100);
-    //boost::this_thread::sleep (boost::posix_time::microseconds (100000));
   }
 
   return 0;

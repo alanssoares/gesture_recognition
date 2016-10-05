@@ -67,14 +67,14 @@ Test::process3(){
 
 void
 Test::process4(){
-	process3();
 	process1();
+	process3();
 }
 
 void
 Test::process5(){
-	process3();
 	process2();
+	process3();
 }
 
 void
@@ -85,14 +85,14 @@ Test::process6(){
 
 void
 Test::process7(){
-	process6();
 	process1();
+	process6();
 }
 
 void
 Test::process8(){
-	process6();
 	process2();
+	process6();
 }
 
 void
