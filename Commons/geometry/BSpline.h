@@ -7,12 +7,12 @@
 
 #include "Vector3f.h"
 
-
+#define DELTA_T     1.0  /* time step factor for drawing each curve */
 
 class BSpline {
-    
+
 public:
-	BSpline(){};
+  	 BSpline(){};
     ~BSpline(){};
 
     /*
@@ -36,6 +36,16 @@ public:
     @param points
     */
     static XnPoint3D predictPoint(int i, double t, std::vector<XnPoint3D> points);
+
+    /*
+      This function evaluates the uniform cubic B-spline.
+    */
+    static double baseFunctionUniform(double t);
+
+    /* This function approximates the data with spline curves.
+      https://www.it.uu.se/edu/course/homepage/grafik1/ht07/examples/curves.cpp
+    */
+    static std::vector<XnPoint3D> uniformFitting(std::vector<XnPoint3D> points);
 
 };
 
