@@ -17,6 +17,7 @@ std::vector<type_gesture> g_Gestures;
 std::vector<pcl::PointXYZRGB> g_PointsNormalA, g_PointsNormalB, g_PointsProcessedA, g_PointsProcessedB;
 int g_IdView1(0), g_IdView2(0), g_np = 1, id_Gesture = 0, g_Methods = 1;
 std::string g_IdCloudA = "cloudA", g_IdCloudB = "cloudB", g_NameMethodCombination;
+bool isEqualSize = false;
 
 std::vector<pcl::PointXYZRGB> converterToPointXYZ(std::vector<XnPoint3D> points){
   std::vector<pcl::PointXYZRGB> pointsConverted;
@@ -96,7 +97,7 @@ void improveCurrentGesture(){
     g_PointsProcessedA = converterToPointXYZ(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handOne.positions));
     g_PointsProcessedB = converterToPointXYZ(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handTwo.positions));
   }
-  
+
  }
 
 void viewLabels(pcl::visualization::PCLVisualizer *viewer){
@@ -191,7 +192,9 @@ boost::shared_ptr<pcl::visualization::PCLVisualizer> viewCurvesVis()
 
   g_Test.loadAll();
 
-  //g_Test.transformAllToEqualSize();
+  if(isEqualSize){
+    g_Test.transformAllToEqualSize();
+  }
 
   viewer->initCameraParameters ();
 
@@ -207,12 +210,6 @@ boost::shared_ptr<pcl::visualization::PCLVisualizer> viewCurvesVis()
   viewer->registerKeyboardCallback (keyboardEventOccurred, (void*)viewer.get ());
 
   return (viewer);
-}
-
-void generateMedians(){
-  g_Test.init();
-  g_Test.generateMedianGesture(g_Test.m_AllGestures);
-  g_Test.saveMedianGestures();
 }
 
 int helpUsage()
@@ -231,9 +228,13 @@ int helpUsage()
     PRINT(" 7 - B-Spline");
     PRINT(" 8 - Laplacian");
     PRINT("");
+    PRINT("-e : Transform all gestures to equal length");
+    PRINT("");
     PRINT("-t : Execute all experiments that will be saved in results folder");
     PRINT("");
-    PRINT("-g : Generate a file with median gestures");
+    PRINT("-median : Generate a file with median gestures");
+    PRINT("");
+    PRINT("-origin : Generate a file with all gestures translated to origin");
     PRINT("");
     PRINT(" ------- KeyboardEvent controls ------- ");
     PRINT("t : Increment Threshold (Curvature and DouglasPeucker)");
@@ -256,13 +257,22 @@ int main(int argc, char* argv[])
     return 0;
   }
 
+  if(pcl::console::find_argument (argc, argv, "-e") >= 0){
+    isEqualSize = true;
+  }
+
   if(pcl::console::find_argument (argc, argv, "-t") >= 0){
     g_Test.executeAll();
     return 0;
   }
 
-  if(pcl::console::find_argument (argc, argv, "-g") >= 0){
-    generateMedians();
+  if(pcl::console::find_argument (argc, argv, "-median") >= 0){
+    g_Test.generateMedians();
+    return 0;
+  }
+
+  if(pcl::console::find_argument (argc, argv, "-origin") >= 0){
+    g_Test.improveGestures();
     return 0;
   }
 

@@ -23,10 +23,11 @@ Test::clearSamples(){
 void
 Test::loadAll(){
 	FileUtil& futil = FileUtil::getInstance();
-	futil.loadGestures(NAME_FILE_DATA_NORMALIZED);
+	futil.loadGestures(NAME_FILE_DATA);
 	m_AllGestures.reserve(futil.mGesturesOneHand.size() + futil.mGesturesTwoHands.size());
 	m_AllGestures.insert( m_AllGestures.end(), futil.mGesturesOneHand.begin(), futil.mGesturesOneHand.end() );
 	m_AllGestures.insert( m_AllGestures.end(), futil.mGesturesTwoHands.begin(), futil.mGesturesTwoHands.end() );
+	std::sort(m_AllGestures.begin(), m_AllGestures.end(), sortByName);
 }
 
 void
@@ -36,15 +37,13 @@ Test::loadMedian(){
 	m_MedianGestures.reserve(futil.mGesturesOneHand.size() + futil.mGesturesTwoHands.size());
 	m_MedianGestures.insert( m_MedianGestures.end(), futil.mGesturesOneHand.begin(), futil.mGesturesOneHand.end() );
 	m_MedianGestures.insert( m_MedianGestures.end(), futil.mGesturesTwoHands.begin(), futil.mGesturesTwoHands.end() );
+	std::sort(m_MedianGestures.begin(), m_MedianGestures.end(), sortByName);
 }
 
 void
 Test::init(){
 	loadAll();
 	loadMedian();
-	std::sort(m_AllGestures.begin(), m_AllGestures.end(), sortByName);
-	generateGestureEqualSize(&m_AllGestures);
-	splitDataset();
 }
 
 void
@@ -147,6 +146,15 @@ Test::applyBSpline(std::vector<type_gesture>* gestures){
 }
 
 void
+Test::applyUniformBSpline(std::vector<type_gesture>* gestures){
+	size_t n = gestures->size();
+	for (int i = 0; i < n; i++) {
+		gestures->at(i).handOne.positions = BSpline::uniformFitting(gestures->at(i).handOne.positions);
+		gestures->at(i).handTwo.positions = BSpline::uniformFitting(gestures->at(i).handTwo.positions);
+	}
+}
+
+void
 Test::applyCurvature(std::vector<type_gesture>* gestures){
 	size_t n = gestures->size();
 	for (int i = 0; i < n; i++) {
@@ -201,8 +209,13 @@ Test::recognize(type_gesture gesture, const std::string nameFile) {
 void
 Test::generateMedianGesture(std::vector<type_gesture> gestures){
 	size_t n = gestures.size(), i = 0, j = 0, m, count;
+	FileUtil& futil = FileUtil::getInstance();
+	futil.clearHandGestures();
 
+	/* Generate all gestures with equal length */
 	generateGestureEqualSize(&gestures);
+	/* Apply a Uniform B-Spline to generate uniform probability distribution */
+	applyUniformBSpline(&gestures);
 
 	while(j < n){
 
@@ -238,12 +251,7 @@ Test::generateMedianGesture(std::vector<type_gesture> gestures){
 		m_MedianGestures.push_back(gestures[i]);
 		i = j;
 	}
-}
 
-void
-Test::saveMedianGestures(){
-	FileUtil& futil = FileUtil::getInstance();
-	futil.clearHandGestures();
 	for (int i = 0; i < m_MedianGestures.size(); i++){
 		if(m_MedianGestures[i].numHands == 1){
 			futil.mGesturesOneHand.push_back(m_MedianGestures[i]);
@@ -251,7 +259,16 @@ Test::saveMedianGestures(){
 			futil.mGesturesTwoHands.push_back(m_MedianGestures[i]);
 		}
 	}
+
 	futil.saveAll();
+}
+
+void
+Test::generateMedians(){
+	//Load all gestures and store in the vector m_AllGestures
+	loadAll();
+	//Generate a new file with median gestures
+  generateMedianGesture(m_AllGestures);
 }
 
 void
@@ -295,10 +312,12 @@ Test::improveGestures(){
     FileUtil& fileUtil = FileUtil::getInstance();
     fileUtil.loadGestures(NAME_FILE_DATA);
     for (int i = 0; i < fileUtil.mGesturesOneHand.size(); i++){
-    	normCenterOriginGesture(&fileUtil.mGesturesOneHand[i]);
+    	fileUtil.mGesturesOneHand[i].handOne.positions = MathUtil::translateToOrigin(fileUtil.mGesturesOneHand[i].handOne.positions);
+			fileUtil.mGesturesOneHand[i].handTwo.positions = MathUtil::translateToOrigin(fileUtil.mGesturesOneHand[i].handTwo.positions);
     }
     for (int i = 0; i < fileUtil.mGesturesTwoHands.size(); i++){
-    	normCenterOriginGesture(&fileUtil.mGesturesTwoHands[i]);
+    	fileUtil.mGesturesTwoHands[i].handOne.positions = MathUtil::translateToOrigin(fileUtil.mGesturesTwoHands[i].handOne.positions);
+			fileUtil.mGesturesTwoHands[i].handTwo.positions = MathUtil::translateToOrigin(fileUtil.mGesturesTwoHands[i].handTwo.positions);
     }
     fileUtil.saveAll();
 }
@@ -322,6 +341,8 @@ Test::executeAll(){
 	std::string folder = "../results/result_experiment_";
   //Load samples
   init();
+	//Split Dataset in test and templates
+	splitDataset();
   //Execute experiments using different parameters
 	experiment(0, folder + MathUtil::intToString(0) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
 	experiment(1, folder + MathUtil::intToString(1) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");

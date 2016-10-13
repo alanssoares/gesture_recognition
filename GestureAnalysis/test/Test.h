@@ -23,10 +23,10 @@ public:
 	void init();
 
 	void saveResults(std::string nameFile, type_gesture gestureExecuted, type_gesture gesturePredicted, float timeExecution, float bestDistance, int isRecognized);
-	void saveMedianGestures();
 	void recognize(const type_gesture gesture, const std::string nameFile);
 	void generateMedianGesture(std::vector<type_gesture> gestures);
 	int  getMeanPoints(vector<type_gesture> gestures, int i, int j);
+	void generateMedians();
 	void generateGestureEqualSize(std::vector<type_gesture>* gestures);
 	void normCenterOriginGesture(type_gesture *gesture);
 
@@ -40,6 +40,7 @@ public:
 	void process8();
 
 	void applyLaplacian(std::vector<type_gesture>* gestures);
+	void applyUniformBSpline(std::vector<type_gesture>* gestures);
 	void applyBSpline(std::vector<type_gesture>* gestures);
 	void applyCurvature(std::vector<type_gesture>* gestures);
 	void applyDouglasPeucker(std::vector<type_gesture>* gestures);
