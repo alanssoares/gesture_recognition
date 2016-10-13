@@ -215,7 +215,7 @@ Test::generateMedianGesture(std::vector<type_gesture> gestures){
 	/* Generate all gestures with equal length */
 	generateGestureEqualSize(&gestures);
 	/* Apply a Uniform B-Spline to generate uniform probability distribution */
-	applyUniformBSpline(&gestures);
+	//applyUniformBSpline(&gestures);
 
 	while(j < n){
 

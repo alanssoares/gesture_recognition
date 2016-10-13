@@ -17,7 +17,7 @@ std::vector<type_gesture> g_Gestures;
 std::vector<pcl::PointXYZRGB> g_PointsNormalA, g_PointsNormalB, g_PointsProcessedA, g_PointsProcessedB;
 int g_IdView1(0), g_IdView2(0), g_np = 1, id_Gesture = 0, g_Methods = 1;
 std::string g_IdCloudA = "cloudA", g_IdCloudB = "cloudB", g_NameMethodCombination;
-bool isEqualSize = false;
+bool isEqualSize = false, isEditSamples = false, isViewMedian = false;
 
 std::vector<pcl::PointXYZRGB> converterToPointXYZ(std::vector<XnPoint3D> points){
   std::vector<pcl::PointXYZRGB> pointsConverted;
@@ -37,7 +37,9 @@ void clearAllVectores(){
   g_PointsNormalB.clear();
   g_PointsProcessedA.clear();
   g_PointsProcessedB.clear();
-  g_Gestures.clear();
+  if(!isEditSamples){
+    g_Gestures.clear();
+  }
 }
 
 void removeAll(pcl::visualization::PCLVisualizer *viewer){
@@ -154,7 +156,7 @@ void viewShapes(pcl::visualization::PCLVisualizer *viewer){
   //Remove all shapes, lines, etc from the view
   removeAll(viewer);
   //Reload all gestures
-  g_Gestures = g_Test.m_AllGestures;
+  g_Gestures = isViewMedian? g_Test.m_MedianGestures :  g_Test.m_AllGestures;
   //Transform and process the gestures of the viewport 1 and 2
   improveCurrentGesture();
   //Plot all labels in the screen
@@ -181,6 +183,22 @@ void keyboardEventOccurred (const pcl::visualization::KeyboardEvent &event, void
         id_Gesture -= 1;
     } else if(event.getKeySym() == "m" && id_Gesture < n){
         id_Gesture += 1;
+    } else if(event.getKeySym() == "d" && isEditSamples){
+        g_Gestures.erase(g_Gestures.begin() + id_Gesture);
+        g_Test.m_AllGestures.clear();
+        g_Test.m_AllGestures.insert(g_Test.m_AllGestures.end(), g_Gestures.begin(), g_Gestures.end());
+    } else if(event.getKeySym() == "s" && isEditSamples){
+      FileUtil& futil = FileUtil::getInstance();
+      futil.clearHandGestures();
+      for (int i = 0; i < g_Test.m_AllGestures.size(); i++){
+        if(g_Test.m_AllGestures[i].numHands == 1){
+          futil.mGesturesOneHand.push_back(g_Test.m_AllGestures[i]);
+        } else {
+          futil.mGesturesTwoHands.push_back(g_Test.m_AllGestures[i]);
+        }
+      }
+      futil.saveAll();
+      exit(1);
     }
     viewShapes(viewer);
   }
@@ -190,7 +208,7 @@ boost::shared_ptr<pcl::visualization::PCLVisualizer> viewCurvesVis()
 {
   boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Curve Viewer"));
 
-  g_Test.loadAll();
+  g_Test.init();
 
   if(isEqualSize){
     g_Test.transformAllToEqualSize();
@@ -228,6 +246,8 @@ int helpUsage()
     PRINT(" 7 - B-Spline");
     PRINT(" 8 - Laplacian");
     PRINT("");
+    PRINT("-v : 'all' or 'median' - gestures");
+    PRINT("");
     PRINT("-e : Transform all gestures to equal length");
     PRINT("");
     PRINT("-t : Execute all experiments that will be saved in results folder");
@@ -236,11 +256,15 @@ int helpUsage()
     PRINT("");
     PRINT("-origin : Generate a file with all gestures translated to origin");
     PRINT("");
+    PRINT("-edit : Used to edit samples using the key command 'd' to delete the gesture and 's' to save all");
+    PRINT("");
     PRINT(" ------- KeyboardEvent controls ------- ");
     PRINT("t : Increment Threshold (Curvature and DouglasPeucker)");
     PRINT("y : Decrement Threshold (Curvature and DouglasPeucker)");
     PRINT("n : Previuos Gesture");
     PRINT("m : Next Gesture");
+    PRINT("d : Delete Gesture - Used only when -edit is provide");
+    PRINT("s : Save all gestures - Used only when -edit is provide");
     PRINT("");
     PRINT("Example (1): ./start -m 1");
     PRINT("Example (2): ./start -t");
@@ -259,6 +283,15 @@ int main(int argc, char* argv[])
 
   if(pcl::console::find_argument (argc, argv, "-e") >= 0){
     isEqualSize = true;
+  }
+
+  if(pcl::console::find_argument (argc, argv, "-edit") >= 0){
+    isEditSamples = true;
+  }
+
+  if(pcl::console::find_argument (argc, argv, "-v") >= 0){
+    if(pcl::console::find_argument (argc, argv, "median") >= 0) isViewMedian = true;
+    else isViewMedian = false;
   }
 
   if(pcl::console::find_argument (argc, argv, "-t") >= 0){
