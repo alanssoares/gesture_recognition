@@ -308,6 +308,26 @@ Test::getMeanPoints(vector<type_gesture> gestures, int i, int j){
 }
 
 void
+Test::scaleGestures(){
+	FileUtil& fileUtil = FileUtil::getInstance();
+	XnPoint3D max, min;
+	fileUtil.loadGestures(NAME_FILE_DATA);
+	for (int i = 0; i < fileUtil.mGesturesOneHand.size(); i++){
+		max = MathUtil::findMaxFromTwo(fileUtil.mGesturesOneHand[i].handOne.positions, fileUtil.mGesturesOneHand[i].handTwo.positions);
+		min = MathUtil::findMinFromTwo(fileUtil.mGesturesOneHand[i].handOne.positions, fileUtil.mGesturesOneHand[i].handTwo.positions);
+		fileUtil.mGesturesOneHand[i].handOne.positions = MathUtil::normalizeTrajectory(fileUtil.mGesturesOneHand[i].handOne.positions, min, max);
+		fileUtil.mGesturesOneHand[i].handTwo.positions = MathUtil::normalizeTrajectory(fileUtil.mGesturesOneHand[i].handTwo.positions, min, max);
+	}
+	for (int i = 0; i < fileUtil.mGesturesTwoHands.size(); i++){
+		max = MathUtil::findMaxFromTwo(fileUtil.mGesturesTwoHands[i].handOne.positions, fileUtil.mGesturesTwoHands[i].handTwo.positions);
+		min = MathUtil::findMinFromTwo(fileUtil.mGesturesTwoHands[i].handOne.positions, fileUtil.mGesturesTwoHands[i].handTwo.positions);
+		fileUtil.mGesturesTwoHands[i].handOne.positions = MathUtil::normalizeTrajectory(fileUtil.mGesturesTwoHands[i].handOne.positions, min, max);
+		fileUtil.mGesturesTwoHands[i].handTwo.positions = MathUtil::normalizeTrajectory(fileUtil.mGesturesTwoHands[i].handTwo.positions, min, max);
+	}
+	fileUtil.saveAll();
+}
+
+void
 Test::improveGestures(){
     FileUtil& fileUtil = FileUtil::getInstance();
     fileUtil.loadGestures(NAME_FILE_DATA);

@@ -49,7 +49,7 @@ public:
 	void experiment(int env, std::string nameFile);
 
 	void improveGestures();
-
+	void scaleGestures();
 public:
 	std::vector<type_gesture> m_MedianGestures;
 	std::vector<type_gesture> m_GesturesTemplate;

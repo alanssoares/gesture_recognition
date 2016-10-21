@@ -262,6 +262,8 @@ int helpUsage()
     PRINT("");
     PRINT("-origin : Generate a file with all gestures translated to origin");
     PRINT("");
+    PRINT("-scale : Generate a file with all gestures scaled between interval -1 and 1");
+    PRINT("");
     PRINT("-edit : Used to edit samples using the key command 'd' to delete the gesture and 's' to save all");
     PRINT("");
     PRINT(" ------- KeyboardEvent controls ------- ");
@@ -312,6 +314,11 @@ int main(int argc, char* argv[])
 
   if(pcl::console::find_argument (argc, argv, "-origin") >= 0){
     g_Test.improveGestures();
+    return 0;
+  }
+
+  if(pcl::console::find_argument (argc, argv, "-scale") >= 0){
+    g_Test.scaleGestures();
     return 0;
   }
 
