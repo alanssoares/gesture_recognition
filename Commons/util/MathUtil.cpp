@@ -148,20 +148,34 @@ MathUtil::translateToOrigin(vector<XnPoint3D> positions){
 }
 
 vector<XnPoint3D>
-MathUtil::normalizeTrajectory(vector<XnPoint3D> positions){
-    XnPoint3D minPos = minValueXYZ(positions);
-    XnPoint3D maxPos = maxValueXYZ(positions);
-    XnPoint3D originalRange = subtract(minPos, maxPos);
-    const double desiredMin = -1.0;
-    const double desiredMax = 1.0;
-    double desiredRange = desiredMax - desiredMin;
+MathUtil::normalizeTrajectory(vector<XnPoint3D> positions, XnPoint3D min, XnPoint3D max){
     size_t n = positions.size();
     for(int i = 0; i < n; i++) {
-        positions[i].X = desiredRange * (positions[i].X - minPos.X)/ originalRange.X + desiredMin;
-        positions[i].Y = desiredRange * (positions[i].Y - minPos.Y)/ originalRange.Y + desiredMin;
-        positions[i].Z = desiredRange * (positions[i].Z - minPos.Z)/ originalRange.Z + desiredMin;
+        positions[i].X = ((positions[i].X - min.X) / (max.X - min.X));
+        positions[i].Y = ((positions[i].Y - min.Y) / (max.Y - min.Y));
+        positions[i].Z = ((positions[i].Z - min.Z) / (max.Z - min.Z));
     }
     return positions;
+}
+
+XnPoint3D
+MathUtil::findMinFromTwo(vector<XnPoint3D> a, vector<XnPoint3D> b){
+  XnPoint3D min1 = MathUtil::minValueXYZ(a);
+  XnPoint3D min2 = MathUtil::minValueXYZ(b);
+  if(min1.X > min2.X) min1.X = min2.X;
+  if(min1.Y > min2.Y) min1.Y = min2.Y;
+  if(min1.Z > min2.Z) min1.Z = min2.Z;
+  return min1;
+}
+
+XnPoint3D
+MathUtil::findMaxFromTwo(vector<XnPoint3D> a, vector<XnPoint3D> b){
+  XnPoint3D max1 = MathUtil::maxValueXYZ(a);
+  XnPoint3D max2 = MathUtil::maxValueXYZ(b);
+  if(max1.X < max2.X) max1.X = max2.X;
+  if(max1.Y < max2.Y) max1.Y = max2.Y;
+  if(max1.Z < max2.Z) max1.Z = max2.Z;
+  return max1;
 }
 
 XnPoint3D
@@ -673,16 +687,16 @@ std::vector<XnPoint3D>
 MathUtil::smooth(std::vector<XnPoint3D> trajectory){
     switch(TYPE_SMOOTH){
         case MEAN_NEIGHBORING:
-            trajectory = MathUtil::smoothMeanNeighboring(trajectory);
+            trajectory = smoothMeanNeighboring(trajectory);
             break;
         case CUBIC_B_SPLINE:
             trajectory = BSpline::curvePoints(trajectory, NUM_STEP_BSPLINE);
             break;
         case CUBIC_BEZIER:
-            trajectory = MathUtil::applyCubicBezier(trajectory);
+            trajectory = applyCubicBezier(trajectory);
             break;
         default:
-            trajectory = MathUtil::smoothMeanNeighboring(trajectory);
+            trajectory = smoothMeanNeighboring(trajectory);
             break;
     }
     return trajectory;
@@ -691,17 +705,17 @@ MathUtil::smooth(std::vector<XnPoint3D> trajectory){
 std::vector<XnPoint3D>
 MathUtil::normCenterOrigin(std::vector<XnPoint3D> trajectory) {
     //Translate the hand trajectory to origin
-    trajectory = MathUtil::translateToOrigin(trajectory);
+    trajectory = translateToOrigin(trajectory);
     //Normalize between the interval -1 to 1
-    return MathUtil::normalizeTrajectory(trajectory);
+    return normalizeTrajectory(trajectory, minValueXYZ(trajectory), maxValueXYZ(trajectory));
 }
 
 std::vector<XnPoint3D>
 MathUtil::smoothAndReduce(std::vector<XnPoint3D> trajectory) {
     //Remove points according with curvature
-    trajectory = MathUtil::reduceByCurvature(trajectory, THRESHOLD_CURVATURE);
+    trajectory = reduceByCurvature(trajectory, THRESHOLD_CURVATURE);
     //Smooth the trajectory
-    return MathUtil::smooth(trajectory);
+    return smooth(trajectory);
 }
 
 double

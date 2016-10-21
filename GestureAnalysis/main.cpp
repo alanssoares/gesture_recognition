@@ -98,8 +98,13 @@ void improveCurrentGesture(){
     g_NameMethodCombination = "Laplacian";
     g_PointsProcessedA = converterToPointXYZ(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handOne.positions));
     g_PointsProcessedB = converterToPointXYZ(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handTwo.positions));
+  } else {
+    g_NameMethodCombination = "Normalized between -1 and 1";
+    XnPoint3D max = MathUtil::findMaxFromTwo(g_Gestures[id_Gesture].handOne.positions, g_Gestures[id_Gesture].handTwo.positions);
+    XnPoint3D min = MathUtil::findMinFromTwo(g_Gestures[id_Gesture].handOne.positions, g_Gestures[id_Gesture].handTwo.positions);
+    g_PointsProcessedA = converterToPointXYZ(MathUtil::normalizeTrajectory(g_Gestures[id_Gesture].handOne.positions, min, max));
+    g_PointsProcessedB = converterToPointXYZ(MathUtil::normalizeTrajectory(g_Gestures[id_Gesture].handTwo.positions, min, max));
   }
-
  }
 
 void viewLabels(pcl::visualization::PCLVisualizer *viewer){
@@ -245,6 +250,7 @@ int helpUsage()
     PRINT(" 6 - Curvature");
     PRINT(" 7 - B-Spline");
     PRINT(" 8 - Laplacian");
+    PRINT(" 9 - Normalized between -1 and 1");
     PRINT("");
     PRINT("-v : 'all' or 'median' - gestures");
     PRINT("");

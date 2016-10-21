@@ -155,6 +155,22 @@ public:
     static double getDistancePointToSegment(XnPoint3D p, XnPoint3D p1, XnPoint3D p2);
 
     /**
+     Método responsável por obter os valores mínimos de X, Y, Z de dois vetores
+     @param a vector 1
+     @param b vector 2
+     @return XnPoint3D com mínimos X,Y,Z
+    */
+    static XnPoint3D findMinFromTwo(vector<XnPoint3D> a, vector<XnPoint3D> b);
+
+    /**
+     Método responsável por obter os valores máximos de X, Y, Z de dois vetores
+     @param a vector 1
+     @param b vector 2
+     @return XnPoint3D com máximos X,Y,Z
+    */
+    static XnPoint3D findMaxFromTwo(vector<XnPoint3D> a, vector<XnPoint3D> b);
+
+    /**
      Método responsável por obter os valores mínimos de X, Y, Z
      do array de posições.
      @param positions da trajetória
@@ -185,9 +201,11 @@ public:
         or
         newvalue= (max'-min')/(max-min)*(value-min)+min'.
      @param positions da trajetória
+     @param min values of X, Y, Z
+     @param max values of X, Y, Z
      @return vector<XnPoint3D> normalizado
      */
-    static vector<XnPoint3D> normalizeTrajectory(vector<XnPoint3D> positions);
+    static vector<XnPoint3D> normalizeTrajectory(vector<XnPoint3D> positions, XnPoint3D min, XnPoint3D max);
 
     /**
      Método responsável por obter o ângulo entre dois pontos a e b.
