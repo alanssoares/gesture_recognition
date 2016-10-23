@@ -72,7 +72,7 @@ BSpline::uniformFitting(std::vector<XnPoint3D> points){
   points.push_back(points.back());
   points.push_back(points.back());
 
-  for (int i = 0; i <= n; i++){
+  for (int i = 0; i < n; i++){
       for (double t = DELTA_T; t < 1.0 + DELTA_T / 2.0; t += DELTA_T){
         bt1 = baseFunctionUniform(t - 2.0);
         bt2 = baseFunctionUniform(t - 1.0);
@@ -84,6 +84,7 @@ BSpline::uniformFitting(std::vector<XnPoint3D> points){
         curve.push_back(newPoint);
       }
    }
+   
    return curve;
 }
 

@@ -2,6 +2,7 @@
 #define TEST_H__
 
 #include "../../Commons/commons.hpp"
+#include "../util/Util.h"
 
 class Test {
 
@@ -9,47 +10,49 @@ public:
 	Test();
 	~Test();
 
-	static bool sortByName(const type_gesture &g1, const type_gesture &g2) { return g1.name < g2.name; }
 	static float getFinalTime(std::clock_t start_s);
 
+	//Main method that initialize the execution of the tests
 	void executeAll();
-
+	//Execute the tests using the normal Samples.txt
+	void executeNormal(std::string folder);
+	//Execute the tests using Samples.txt with all gestures with same length
+	void executeWithEqualSize(std::string folder);
+	//Execute the tests using the median gestures as templates
+	void executeWithMedian(std::string folder);
+	//Execute the especific test according with the methods above
+	void execute(std::string folder);
+	//Transform all gestures to equal number of points
 	void transformAllToEqualSize();
-	void printGesture(const type_gesture gesture);
+	//Clear all vectores of samples
 	void clearSamples();
+	//Loal all gestures of the file Samples.txt
 	void loadAll();
+	//Loal all median gestures of the file SamplesMedian.txt
 	void loadMedian();
+	//Split all gestures in X percent for test and Y percent for template
 	void splitDataset();
+	//Init loading both Samples.txt and SamplesMedian.txt
 	void init();
-
+	//Save the result after the execution of the recognize method
 	void saveResults(std::string nameFile, type_gesture gestureExecuted, type_gesture gesturePredicted, float timeExecution, float bestDistance, int isRecognized);
+	//Execute the recognize of the gesture test and save the result
 	void recognize(const type_gesture gesture, const std::string nameFile);
-	void generateMedianGesture(std::vector<type_gesture> gestures);
-	int  getMeanPoints(vector<type_gesture> gestures, int i, int j);
-	void generateMedians();
-	void generateGestureEqualSize(std::vector<type_gesture>* gestures);
-	void normCenterOriginGesture(type_gesture *gesture);
-
-	void process1();
-	void process2();
-	void process3();
-	void process4();
-	void process5();
-	void process6();
-	void process7();
-	void process8();
-
-	void applyLaplacian(std::vector<type_gesture>* gestures);
-	void applyUniformBSpline(std::vector<type_gesture>* gestures);
-	void applyBSpline(std::vector<type_gesture>* gestures);
-	void applyCurvature(std::vector<type_gesture>* gestures);
-	void applyDouglasPeucker(std::vector<type_gesture>* gestures);
+	//Apply an process according with the environment
 	void applyProcess(int env);
-
+	//Apply the method Laplacian
+	void process1();
+	//Apply the method Curvature
+	void process2();
+	//Apply both Laplacian and Curvature
+	void process3();
+	//Apply the method DouglasPeucker
+	void process4();
+	//Apply both Laplacian and DouglasPeucker
+	void process5();
+	//Create the specific result file, apply procees and execute all tests
 	void experiment(int env, std::string nameFile);
 
-	void improveGestures();
-	void scaleGestures();
 public:
 	std::vector<type_gesture> m_MedianGestures;
 	std::vector<type_gesture> m_GesturesTemplate;
@@ -60,7 +63,10 @@ public:
 	std::vector<type_gesture> m_GesturesOneHand;
 	std::vector<type_gesture> m_GesturesTwoHands;
 
-	float m_PercentTest, m_RecThreshold, m_CurvThreshold, m_DougThreshold;
+	float m_PercentTest, m_RecThreshold;
+	bool 	m_isMedian;
+
+	Util m_Util;
 };
 
 #endif //TEST_H__

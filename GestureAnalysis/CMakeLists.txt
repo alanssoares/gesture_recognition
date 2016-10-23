@@ -33,11 +33,12 @@ include_directories ("${PROJECT_SOURCE_DIR}/util")
 include_directories ("${PROJECT_SOURCE_DIR}/test")
 
 # Inclui todas libraries nas pastas do projeto
-file(GLOB SOURCES 
-	"../Commons/geometry/*.cpp" 
+file(GLOB SOURCES
+	"../Commons/geometry/*.cpp"
 	"../Commons/logger/*.cpp"
-	"../Commons/util/*.cpp" 
+	"../Commons/util/*.cpp"
 	"test/*.cpp"
+	"util/*.cpp"
 	"*.cpp")
 
 # Cria executavel do programa

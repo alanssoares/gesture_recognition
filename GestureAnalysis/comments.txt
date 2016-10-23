@@ -26,6 +26,7 @@ Environment
 - Testar aplicando a Curvatura + B-Spline.
 - Testar aplicando a Curvatura + Laplacian.
 - Testar todos os cenários anteriores novamente com os gestos possuindo a mesma quantidade de pontos.
+- Testar todos os cenários anteriores comparando com os gestos médios.
 
 Resultados
 ********** Taxa de Reconhecimento Por Método *********
