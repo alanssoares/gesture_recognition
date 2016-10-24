@@ -109,21 +109,6 @@ Test::saveResults(std::string nameFile, type_gesture gestureExecuted, type_gestu
 }
 
 void
-Test::experiment(int env, std::string nameFile){
-	FileUtil::getInstance().createFile(nameFile);
-	//Aplica o processamento de acordo com o cenário
-	applyProcess(env);
-	//Executa o teste de reconhecimento de cada gesto
-	for (int i = 0; i < m_GesturesTest.size(); i++){
-		recognize(m_GesturesTest[i], nameFile);
-	}
-	//Evitar sobrescrever os gestos médios
-	if(!m_isMedian){
-		splitDataset();
-	}
-}
-
-void
 Test::recognize(type_gesture gesture, const std::string nameFile) {
     float start_s = clock(), isRecognized = 0;
     double distanceA, distanceB, bestDistanceB = 999999999, bestDistanceA = 999999999;
@@ -152,11 +137,8 @@ Test::executeAll(){
 	std::string baseFolder = "../results/result_experiment_";
   //Load samples
   init();
-	//Split Dataset in test and templates
-	splitDataset();
 	//Normalize all gestures
-	m_Util.applyNormalization(&m_GesturesTemplate);
-	m_Util.applyNormalization(&m_GesturesTest);
+	m_Util.applyNormalization(&m_AllGestures);
 	m_Util.applyNormalization(&m_MedianGestures);
   //Execute experiments using normal gestures
 	executeNormal(baseFolder + "normal_");
@@ -168,12 +150,15 @@ Test::executeAll(){
 
 void
 Test::executeNormal(std::string folder){
+	//Execute all experiments
 	execute(folder);
 }
 
 void
 Test::executeWithEqualSize(std::string folder){
-	transformAllToEqualSize();
+	//Resample all templates to equal size according with the type
+	m_Util.generateGestureEqualSize(&m_AllGestures);
+	//Execute all experiments
 	execute(folder);
 }
 
@@ -184,6 +169,7 @@ Test::executeWithMedian(std::string folder){
 	m_GesturesTemplate.reserve(m_MedianGestures.size());
 	m_GesturesTemplate.insert(m_GesturesTemplate.begin(), m_MedianGestures.begin(), m_MedianGestures.end());
 	m_isMedian = true;
+	//Execute all experiments
 	execute(folder);
 }
 
@@ -198,11 +184,19 @@ Test::execute(std::string folder){
 }
 
 void
-Test::transformAllToEqualSize() {
-	//Resample all templates to equal size according with the type
-	m_Util.generateGestureEqualSize(&m_AllGestures);
-	//Splie again, now with equal size
-	splitDataset();
+Test::experiment(int env, std::string nameFile){
+	FileUtil::getInstance().createFile(nameFile);
+	//Evitar sobrescrever os gestos médios
+	if(!m_isMedian){
+		//Split Dataset in test and templates
+		splitDataset();
+	}
+	//Aplica o processamento de acordo com o cenário
+	applyProcess(env);
+	//Executa o teste de reconhecimento de cada gesto
+	for (int i = 0; i < m_GesturesTest.size(); i++){
+		recognize(m_GesturesTest[i], nameFile);
+	}
 }
 
 void

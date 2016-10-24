@@ -218,7 +218,7 @@ boost::shared_ptr<pcl::visualization::PCLVisualizer> viewCurvesVis()
   g_Test.init();
 
   if(isEqualSize){
-    g_Test.transformAllToEqualSize();
+    g_Util.generateGestureEqualSize(&g_Test.m_AllGestures);
   }
 
   viewer->initCameraParameters ();

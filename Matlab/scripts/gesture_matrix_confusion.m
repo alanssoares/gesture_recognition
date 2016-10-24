@@ -7,24 +7,24 @@ i = 1;
 files = dir('*.txt');
 
 for cntfiles=1:length(files)
-    
+
     fin = fopen(files(cntfiles).name);
-    
+
     tokens_name_file = strsplit(files(cntfiles).name,'_');
-    
-    if(strcmp(tokens_name_file(3), method) && ...
-      strcmp(tokens_name_file(4), threshold))
+
+    if(strcmp(tokens_name_file(4), method) && ...
+      strcmp(tokens_name_file(5), threshold))
       while ~feof(fin)
-        
+
         line = fgetl(fin);
-        
+
         tokens_line = strsplit(line,' ');
-        
+
         if(strcmp(tokens_line(1), before) == 0)
             before = tokens_line(1);
             i = i + 1;
         end
-        
+
         if(strcmp(tokens_line(4), 'g1'))
             mR(i,1) = mR(i,1) + 1;
         end
@@ -56,7 +56,7 @@ end
 function result = is_vp(line)
     result = 0;
     tokens = strsplit(line,' ');
-    if(strcmp(tokens(1), tokens(4)) == 1 && ... 
+    if(strcmp(tokens(1), tokens(4)) == 1 && ...
         strcmp(tokens(9), '1'))
         result = 1;
     end
@@ -66,7 +66,7 @@ end
 function result = is_vn(line)
     result = 0;
     tokens = strsplit(line,' ');
-    if(strcmp(tokens(1), tokens(4)) == 0 && ... 
+    if(strcmp(tokens(1), tokens(4)) == 0 && ...
         strcmp(tokens(9), '1'))
         result = 1;
     end
@@ -76,7 +76,7 @@ end
 function result = is_fp(line)
     result = 0;
     tokens = strsplit(line,' ');
-    if(strcmp(tokens(1), tokens(4)) == 0 && ... 
+    if(strcmp(tokens(1), tokens(4)) == 0 && ...
         strcmp(tokens(9), '0'))
         result = 1;
     end
@@ -86,7 +86,7 @@ end
 function result = is_fn(line)
 	result = 0;
     tokens = strsplit(line,' ');
-    if(strcmp(tokens(1), tokens(4)) == 1 && ... 
+    if(strcmp(tokens(1), tokens(4)) == 1 && ...
         strcmp(tokens(9), '0'))
         result = 1;
     end

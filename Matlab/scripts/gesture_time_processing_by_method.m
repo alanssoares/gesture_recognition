@@ -1,15 +1,15 @@
 function mR = gesture_time_processing_by_method(gesture)
 
-mR = zeros(9,2);
+mR = zeros(6,2);
 i = 1;
 j = 0;
 
 files = dir('*.txt');
 
 for cntfiles=1:length(files)
-    
+
     fin = fopen(files(cntfiles).name);
-    
+
     while ~feof(fin)
         line = fgetl(fin);
         tokens_line = strsplit(line,' ');
@@ -19,7 +19,7 @@ for cntfiles=1:length(files)
             j = j + 1;
         end
     end
-    
+
     mR(i,1) = mR(i,1) / j;
     mR(i,2) = mR(i,2) / j;
     i = i + 1;

@@ -22,8 +22,6 @@ public:
 	void executeWithMedian(std::string folder);
 	//Execute the especific test according with the methods above
 	void execute(std::string folder);
-	//Transform all gestures to equal number of points
-	void transformAllToEqualSize();
 	//Clear all vectores of samples
 	void clearSamples();
 	//Loal all gestures of the file Samples.txt
