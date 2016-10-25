@@ -20,6 +20,7 @@ std::vector<pcl::PointXYZRGB> g_PointsNormalA, g_PointsNormalB, g_PointsProcesse
 int g_IdView1(0), g_IdView2(0), g_np = 1, id_Gesture = 0, g_Methods = 1;
 std::string g_IdCloudA = "cloudA", g_IdCloudB = "cloudB", g_NameMethodCombination;
 bool isEqualSize = false, isEditSamples = false, isViewMedian = false;
+std::vector<pcl::visualization::Camera> g_Cam;
 
 std::vector<pcl::PointXYZRGB> converterToPointXYZ(std::vector<XnPoint3D> points){
   std::vector<pcl::PointXYZRGB> pointsConverted;
@@ -214,6 +215,7 @@ void keyboardEventOccurred (const pcl::visualization::KeyboardEvent &event, void
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewCurvesVis()
 {
   boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new pcl::visualization::PCLVisualizer ("3D Curve Viewer"));
+  pcl::PointXYZ cameraPos, cameraView, cameraFocal;
 
   g_Test.init();
 
@@ -234,6 +236,12 @@ boost::shared_ptr<pcl::visualization::PCLVisualizer> viewCurvesVis()
   viewer->addCoordinateSystem (1.0);
   viewer->registerKeyboardCallback (keyboardEventOccurred, (void*)viewer.get ());
 
+  cameraPos.x = 2.14879; cameraPos.y = -3.04503; cameraPos.z = -2.24064;
+  cameraView.x = 0.431872; cameraView.y = -0.250526; cameraView.z = 0.866443;
+  cameraFocal.x = 0.0; cameraFocal.y = 0.0; cameraFocal.z = 1.0;
+  viewer->setCameraPosition(cameraPos.x, cameraPos.y, cameraPos.z,
+                            cameraView.x, cameraView.y, cameraView.z,
+                            cameraFocal.x, cameraFocal.y, cameraFocal.z);
   return (viewer);
 }
 
@@ -281,6 +289,13 @@ int helpUsage()
     PRINT("Example (3): ./start -g");
 
     return 1;
+}
+
+void PrintCamera(){
+  cout << "Cam: " << endl
+               << " - pos: (" << g_Cam[0].pos[0] << ", "    << g_Cam[0].pos[1] << ", "    << g_Cam[0].pos[2] << ")" << endl
+               << " - view: ("    << g_Cam[0].view[0] << ", "   << g_Cam[0].view[1] << ", "   << g_Cam[0].view[2] << ")"    << endl
+               << " - focal: ("   << g_Cam[0].focal[0] << ", "  << g_Cam[0].focal[1] << ", "  << g_Cam[0].focal[2] << ")"   << endl;
 }
 
 int main(int argc, char* argv[])
@@ -331,6 +346,7 @@ int main(int argc, char* argv[])
   boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer = viewCurvesVis();
   while (!viewer->wasStopped ()){
     viewer->spinOnce (100);
+    viewer->getCameras(g_Cam);
   }
 
   return 0;
