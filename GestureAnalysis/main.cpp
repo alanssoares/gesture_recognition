@@ -236,9 +236,9 @@ boost::shared_ptr<pcl::visualization::PCLVisualizer> viewCurvesVis()
   viewer->addCoordinateSystem (1.0);
   viewer->registerKeyboardCallback (keyboardEventOccurred, (void*)viewer.get ());
 
-  cameraPos.x = 2.14879; cameraPos.y = -3.04503; cameraPos.z = -2.24064;
-  cameraView.x = 0.431872; cameraView.y = -0.250526; cameraView.z = 0.866443;
-  cameraFocal.x = 0.0; cameraFocal.y = 0.0; cameraFocal.z = 1.0;
+  cameraPos.x = 2.32234; cameraPos.y = 4.85785; cameraPos.z = 1.32948;
+  cameraView.x = -0.0467694; cameraView.y = -0.0729935; cameraView.z = 0.996235;
+  cameraFocal.x = 0.431872; cameraFocal.y = -0.250526; cameraFocal.z = 0.866443;
   viewer->setCameraPosition(cameraPos.x, cameraPos.y, cameraPos.z,
                             cameraView.x, cameraView.y, cameraView.z,
                             cameraFocal.x, cameraFocal.y, cameraFocal.z);
