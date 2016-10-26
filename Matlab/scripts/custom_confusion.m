@@ -1,8 +1,8 @@
-function mR = custom_confusion(method, threshold)
+function mR = custom_confusion(method, threshold, partfile)
 
 mR = zeros(4,7);
 
-files = dir('*.txt');
+files = dir(partfile);
 
 for cntfiles=1:length(files)
 
@@ -29,7 +29,7 @@ for cntfiles=1:length(files)
         end
         if(is_fn(line))
       		c = findPosition(tokens_line(1), gestures);
-      		mR(3,c) = mR(3,c) + 1;
+      		mR(4,c) = mR(4,c) + 1;
         end
       end
     end
@@ -63,7 +63,7 @@ function result = is_vn(line)
 	result = 0;
 	tokens = strsplit(line,' ');
 	if(strcmp(tokens(1), tokens(4)) == 0 && ...
-		strcmp(tokens(9), '1'))
+		strcmp(tokens(9), '0'))
 		result = 1;
 	end
 end
@@ -73,7 +73,7 @@ function result = is_fp(line)
 	result = 0;
 	tokens = strsplit(line,' ');
 	if(strcmp(tokens(1), tokens(4)) == 0 && ...
-		strcmp(tokens(9), '0'))
+		strcmp(tokens(9), '1'))
 		result = 1;
 	end
 end

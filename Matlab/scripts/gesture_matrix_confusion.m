@@ -1,10 +1,10 @@
-function mR = gesture_matrix_confusion(method, threshold)
+function mR = gesture_matrix_confusion(method, threshold, partfile)
 
 mR = zeros(7,7);
 before = 'g1';
 i = 1;
 
-files = dir('*.txt');
+files = dir(partfile);
 
 for cntfiles=1:length(files)
 
@@ -50,44 +50,4 @@ for cntfiles=1:length(files)
     end
   fclose(fin);
 end
-end
-
-% Vefifica se eh um verdadeiro positivo
-function result = is_vp(line)
-    result = 0;
-    tokens = strsplit(line,' ');
-    if(strcmp(tokens(1), tokens(4)) == 1 && ...
-        strcmp(tokens(9), '1'))
-        result = 1;
-    end
-end
-
-% Vefifica se eh um verdadeiro negativo
-function result = is_vn(line)
-    result = 0;
-    tokens = strsplit(line,' ');
-    if(strcmp(tokens(1), tokens(4)) == 0 && ...
-        strcmp(tokens(9), '1'))
-        result = 1;
-    end
-end
-
-% Vefifica se eh um falso positivo
-function result = is_fp(line)
-    result = 0;
-    tokens = strsplit(line,' ');
-    if(strcmp(tokens(1), tokens(4)) == 0 && ...
-        strcmp(tokens(9), '0'))
-        result = 1;
-    end
-end
-
-% Vefifica se eh um falso negativo
-function result = is_fn(line)
-	result = 0;
-    tokens = strsplit(line,' ');
-    if(strcmp(tokens(1), tokens(4)) == 1 && ...
-        strcmp(tokens(9), '0'))
-        result = 1;
-    end
 end

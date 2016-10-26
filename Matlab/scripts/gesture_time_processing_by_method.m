@@ -1,10 +1,10 @@
-function mR = gesture_time_processing_by_method(gesture)
+function mR = gesture_time_processing_by_method(gesture, partfile)
 
 mR = zeros(6,2);
 i = 1;
 j = 0;
 
-files = dir('*.txt');
+files = dir(partfile);
 
 for cntfiles=1:length(files)
 
