@@ -74,11 +74,11 @@ function v = true_positive_rate(m)
 end
 
 function v = false_positive_rate(m)
-  v = sum_fp(m) / (sum_vp(m) + sum_fp(m));
+  v = sum_fp(m) / (sum_vn(m) + sum_fp(m));
 end
 
 function v = specificity(m)
-  v = sum_vn(m) / (sum_vp(m) + sum_fp(m));
+  v = sum_vn(m) / (sum_vn(m) + sum_fp(m));
 end
 
 function v = precision(m)
