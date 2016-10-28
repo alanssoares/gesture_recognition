@@ -46,33 +46,30 @@ Test::init(){
 }
 
 void
-Test::process1(){
-	m_Util.applyLaplacian(&m_GesturesTest);
-	m_Util.applyLaplacian(&m_GesturesTemplate);
+Test::process1(type_gesture* gesture){
+	m_Util.applyLaplacian(gesture);
 }
 
 void
-Test::process2(){
-	m_Util.applyCurvature(&m_GesturesTest);
-	m_Util.applyCurvature(&m_GesturesTemplate);
+Test::process2(type_gesture* gesture){
+	m_Util.applyCurvature(gesture);
 }
 
 void
-Test::process3(){
-	m_Util.applyDouglasPeucker(&m_GesturesTest);
-	m_Util.applyDouglasPeucker(&m_GesturesTemplate);
+Test::process3(type_gesture* gesture){
+	m_Util.applyDouglasPeucker(gesture);
 }
 
 void
-Test::process4(){
-	process1();
-	process2();
+Test::process4(type_gesture* gesture){
+	process1(gesture);
+	process2(gesture);
 }
 
 void
-Test::process5(){
-	process1();
-	process3();
+Test::process5(type_gesture* gesture){
+	process1(gesture);
+	process3(gesture);
 }
 
 void
@@ -109,15 +106,17 @@ Test::saveResults(std::string nameFile, type_gesture gestureExecuted, type_gestu
 }
 
 void
-Test::recognize(type_gesture gesture, const std::string nameFile) {
-    float start_s = clock(), isRecognized = 0;
+Test::recognize(const int env, const type_gesture gesture, const std::string nameFile) {
+    float isRecognized = 0;
     double distanceA, distanceB, bestDistanceB = 999999999, bestDistanceA = 999999999;
     size_t n = m_GesturesTemplate.size();
-    type_gesture gestureTemplate;
+    type_gesture gestureTemplate, gcompare;
 
     for (int i = 0; i < n; i++) {
-        distanceA = MathUtil::computeDistanceBetweenTwoTrajectories(m_GesturesTemplate[i].handOne.positions, gesture.handOne.positions);
-        distanceB = MathUtil::computeDistanceBetweenTwoTrajectories(m_GesturesTemplate[i].handTwo.positions, gesture.handTwo.positions);
+				gcompare = m_GesturesTemplate[i];
+				applyProcess(env, &gcompare);
+        distanceA = MathUtil::computeDistanceBetweenTwoTrajectories(gcompare.handOne.positions, gesture.handOne.positions);
+        distanceB = MathUtil::computeDistanceBetweenTwoTrajectories(gcompare.handTwo.positions, gesture.handTwo.positions);
         if (distanceA < bestDistanceA && distanceB < bestDistanceB){
             bestDistanceA = distanceA;
             bestDistanceB = distanceB;
@@ -129,7 +128,7 @@ Test::recognize(type_gesture gesture, const std::string nameFile) {
     	isRecognized = 1;
     }
 
-    saveResults(nameFile, gesture, gestureTemplate, getFinalTime(start_s), (bestDistanceA + bestDistanceB)/2, isRecognized);
+    saveResults(nameFile, gesture, gestureTemplate, getFinalTime(m_Start_s), (bestDistanceA + bestDistanceB)/2, isRecognized);
 }
 
 void
@@ -186,36 +185,41 @@ Test::execute(std::string folder){
 void
 Test::experiment(int env, std::string nameFile){
 	FileUtil::getInstance().createFile(nameFile);
+	type_gesture gesture;
 	//Evitar sobrescrever os gestos médios
 	if(!m_isMedian){
 		//Split Dataset in test and templates
 		splitDataset();
 	}
-	//Aplica o processamento de acordo com o cenário
-	applyProcess(env);
 	//Executa o teste de reconhecimento de cada gesto
 	for (int i = 0; i < m_GesturesTest.size(); i++){
-		recognize(m_GesturesTest[i], nameFile);
+		gesture = m_GesturesTest[i];
+		//Inicializa a contagem do tempo para realizar o pré-proc e classificação
+		m_Start_s = clock();
+		//Aplica o processamento de acordo com o cenário
+		applyProcess(env, &gesture);
+		//Classifica o gesto
+		recognize(env, gesture, nameFile);
 	}
 }
 
 void
-Test::applyProcess(int env){
+Test::applyProcess(int env, type_gesture* gesture){
 	switch(env){
 		case 1:
-			process1();
+			process1(gesture);
 			break;
 		case 2:
-			process2();
+			process2(gesture);
 			break;
 		case 3:
-			process3();
+			process3(gesture);
 			break;
 		case 4:
-			process4();
+			process4(gesture);
 			break;
 		case 5:
-			process5();
+			process5(gesture);
 			break;
 		default:
 			break;

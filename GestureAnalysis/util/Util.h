@@ -18,21 +18,27 @@ public:
 	//Generate a file with median gestures
 	void generateMedianGestures();
 	//Generate gestures with equal number of points
-	void generateGestureEqualSize(std::vector<type_gesture>* gestures);
+	void generateGestureEqualSize(std::vector<type_gesture> *gestures);
 	//Generate a file with gestures centered in the origin using centroid
 	void normCenterOriginGesture(type_gesture *gesture);
 	//Apply normalization in the interval [-1,1] in the gestures
+	void applyNormalization(type_gesture *gesture);
 	void applyNormalization(std::vector<type_gesture>* gestures);
 	//Apply the method Laplacian in the gestures
-	void applyLaplacian(std::vector<type_gesture>* gestures);
+	void applyLaplacian(type_gesture *gesture);
+	void applyLaplacian(std::vector<type_gesture> *gestures);
 	//Apply the method uniform B-Spline in the gestures
-	void applyUniformBSpline(std::vector<type_gesture>* gestures);
+	void applyUniformBSpline(type_gesture *gesture);
+	void applyUniformBSpline(std::vector<type_gesture> *gestures);
 	//Apply the method B-Spline in the gestures
-	void applyBSpline(std::vector<type_gesture>* gestures);
+	void applyBSpline(type_gesture *gesture);
+	void applyBSpline(std::vector<type_gesture> *gestures);
 	//Apply the method Curvature for simplification in the gestures
-	void applyCurvature(std::vector<type_gesture>* gestures);
+	void applyCurvature(type_gesture *gesture);
+	void applyCurvature(std::vector<type_gesture> *gestures);
 	//Apply the method DouglasPeucker for simplification in the gestures
-	void applyDouglasPeucker(std::vector<type_gesture>* gestures);
+	void applyDouglasPeucker(type_gesture *gesture);
+	void applyDouglasPeucker(std::vector<type_gesture> *gestures);
 	//Generate a new file with gestures centered in the origin
 	void centerOriginGestures();
 	//Generate a new file scaled in the interval [-1,1]

@@ -9,59 +9,89 @@ Util::Util(){
 Util::~Util(){}
 
 void
+Util::applyNormalization(type_gesture* gesture){
+	XnPoint3D min, max;
+	max = MathUtil::findMaxFromTwo(gesture->handOne.positions, gesture->handTwo.positions);
+	min = MathUtil::findMinFromTwo(gesture->handOne.positions, gesture->handTwo.positions);
+	gesture->handOne.positions = MathUtil::normalizeTrajectory(gesture->handOne.positions, min, max);
+	gesture->handTwo.positions = MathUtil::normalizeTrajectory(gesture->handTwo.positions, min, max);
+}
+
+void
 Util::applyNormalization(std::vector<type_gesture>* gestures){
 	size_t n = gestures->size();
-	XnPoint3D min, max;
 	for (int i = 0; i < n; i++){
-		max = MathUtil::findMaxFromTwo(gestures->at(i).handOne.positions, gestures->at(i).handTwo.positions);
-		min = MathUtil::findMinFromTwo(gestures->at(i).handOne.positions, gestures->at(i).handTwo.positions);
-		gestures->at(i).handOne.positions = MathUtil::normalizeTrajectory(gestures->at(i).handOne.positions, min, max);
-		gestures->at(i).handTwo.positions = MathUtil::normalizeTrajectory(gestures->at(i).handTwo.positions, min, max);
+		applyNormalization(&gestures->at(i));
 	}
+}
+
+void
+Util::applyLaplacian(type_gesture* gesture){
+	gesture->handOne.positions = MathUtil::smoothMeanNeighboring(gesture->handOne.positions);
+	gesture->handTwo.positions = MathUtil::smoothMeanNeighboring(gesture->handTwo.positions);
 }
 
 void
 Util::applyLaplacian(std::vector<type_gesture>* gestures){
 	size_t n = gestures->size();
 	for (int i = 0; i < n; i++) {
-		gestures->at(i).handOne.positions = MathUtil::smoothMeanNeighboring(gestures->at(i).handOne.positions);
-		gestures->at(i).handTwo.positions = MathUtil::smoothMeanNeighboring(gestures->at(i).handTwo.positions);
+		applyLaplacian(&gestures->at(i));
 	}
+}
+
+void
+Util::applyBSpline(type_gesture* gesture){
+	gesture->handOne.positions = BSpline::curvePoints(gesture->handOne.positions, NUM_STEP_BSPLINE);
+	gesture->handTwo.positions = BSpline::curvePoints(gesture->handTwo.positions, NUM_STEP_BSPLINE);
 }
 
 void
 Util::applyBSpline(std::vector<type_gesture>* gestures){
 	size_t n = gestures->size();
 	for (int i = 0; i < n; i++) {
-		gestures->at(i).handOne.positions = BSpline::curvePoints(gestures->at(i).handOne.positions, NUM_STEP_BSPLINE);
-		gestures->at(i).handTwo.positions = BSpline::curvePoints(gestures->at(i).handTwo.positions, NUM_STEP_BSPLINE);
+		applyBSpline(&gestures->at(i));
 	}
+}
+
+void
+Util::applyUniformBSpline(type_gesture* gesture){
+	gesture->handOne.positions = BSpline::uniformFitting(gesture->handOne.positions);
+	gesture->handTwo.positions = BSpline::uniformFitting(gesture->handTwo.positions);
 }
 
 void
 Util::applyUniformBSpline(std::vector<type_gesture>* gestures){
 	size_t n = gestures->size();
 	for (int i = 0; i < n; i++) {
-		gestures->at(i).handOne.positions = BSpline::uniformFitting(gestures->at(i).handOne.positions);
-		gestures->at(i).handTwo.positions = BSpline::uniformFitting(gestures->at(i).handTwo.positions);
+		applyUniformBSpline(&gestures->at(i));
 	}
+}
+
+void
+Util::applyCurvature(type_gesture* gesture){
+	gesture->handOne.positions = MathUtil::reduceByCurvature(gesture->handOne.positions, m_CurvThreshold);
+	gesture->handTwo.positions = MathUtil::reduceByCurvature(gesture->handTwo.positions, m_CurvThreshold);
 }
 
 void
 Util::applyCurvature(std::vector<type_gesture>* gestures){
 	size_t n = gestures->size();
 	for (int i = 0; i < n; i++) {
-		gestures->at(i).handOne.positions = MathUtil::reduceByCurvature(gestures->at(i).handOne.positions, m_CurvThreshold);
-		gestures->at(i).handTwo.positions = MathUtil::reduceByCurvature(gestures->at(i).handTwo.positions, m_CurvThreshold);
+		applyCurvature(&gestures->at(i));
 	}
+}
+
+void
+Util::applyDouglasPeucker(type_gesture* gesture){
+	gesture->handOne.positions = MathUtil::simplify(gesture->handOne.positions, m_DougThreshold, false);
+	gesture->handTwo.positions = MathUtil::simplify(gesture->handTwo.positions, m_DougThreshold, false);
 }
 
 void
 Util::applyDouglasPeucker(std::vector<type_gesture>* gestures){
 	size_t n = gestures->size();
 	for (int i = 0; i < n; i++) {
-		gestures->at(i).handOne.positions = MathUtil::simplify(gestures->at(i).handOne.positions, m_DougThreshold, false);
-		gestures->at(i).handTwo.positions = MathUtil::simplify(gestures->at(i).handTwo.positions, m_DougThreshold, false);
+		applyDouglasPeucker(&gestures->at(i));
 	}
 }
 

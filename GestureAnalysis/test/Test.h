@@ -35,19 +35,19 @@ public:
 	//Save the result after the execution of the recognize method
 	void saveResults(std::string nameFile, type_gesture gestureExecuted, type_gesture gesturePredicted, float timeExecution, float bestDistance, int isRecognized);
 	//Execute the recognize of the gesture test and save the result
-	void recognize(const type_gesture gesture, const std::string nameFile);
+	void recognize(const int env, const type_gesture gesture, const std::string nameFile);
 	//Apply an process according with the environment
-	void applyProcess(int env);
+	void applyProcess(int env, type_gesture* gesture);
 	//Apply the method Laplacian
-	void process1();
+	void process1(type_gesture* gesture);
 	//Apply the method Curvature
-	void process2();
+	void process2(type_gesture* gesture);
 	//Apply both Laplacian and Curvature
-	void process3();
+	void process3(type_gesture* gesture);
 	//Apply the method DouglasPeucker
-	void process4();
+	void process4(type_gesture* gesture);
 	//Apply both Laplacian and DouglasPeucker
-	void process5();
+	void process5(type_gesture* gesture);
 	//Create the specific result file, apply procees and execute all tests
 	void experiment(int env, std::string nameFile);
 
@@ -61,7 +61,7 @@ public:
 	std::vector<type_gesture> m_GesturesOneHand;
 	std::vector<type_gesture> m_GesturesTwoHands;
 
-	float m_PercentTest, m_RecThreshold;
+	float m_PercentTest, m_RecThreshold, m_Start_s;
 	bool 	m_isMedian;
 
 	Util m_Util;
