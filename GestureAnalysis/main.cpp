@@ -101,6 +101,13 @@ void improveCurrentGesture(){
     g_NameMethodCombination = "Laplacian";
     g_PointsProcessedA = converterToPointXYZ(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handOne.positions));
     g_PointsProcessedB = converterToPointXYZ(MathUtil::smoothMeanNeighboring(g_Gestures[id_Gesture].handTwo.positions));
+  } else if(g_Methods == 9) {
+    g_NameMethodCombination = "Equidistant using ArcLength";
+    type_gesture temp = g_Gestures[id_Gesture];
+    MathUtil::uniformCurveByArcLength(&temp.handOne.positions, 0.1);
+    MathUtil::uniformCurveByArcLength(&temp.handTwo.positions, 0.1);
+    g_PointsProcessedA = converterToPointXYZ(temp.handOne.positions);
+    g_PointsProcessedB = converterToPointXYZ(temp.handTwo.positions);
   } else {
     g_NameMethodCombination = "Normalized between -1 and 1";
     XnPoint3D max = MathUtil::findMaxFromTwo(g_Gestures[id_Gesture].handOne.positions, g_Gestures[id_Gesture].handTwo.positions);
@@ -260,7 +267,8 @@ int helpUsage()
     PRINT(" 6 - Curvature");
     PRINT(" 7 - B-Spline");
     PRINT(" 8 - Laplacian");
-    PRINT(" 9 - Normalized between -1 and 1");
+    PRINT(" 9 - Equidistant using ArcLength"):
+    PRINT(" default - Normalized between -1 and 1");
     PRINT("");
     PRINT("-v : 'all' or 'median' - gestures");
     PRINT("");

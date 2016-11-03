@@ -40,7 +40,7 @@ public:
      @param p2 ponto
      @return double distância entre os pontos
     **/
-    static double getDistancePointToPoint(XnPoint3D p1, XnPoint3D p2);
+    static double getArcLength(XnPoint3D p1, XnPoint3D p2);
 
     /**
      Método responsável por efetuar a subtração de dois vetores a e b.

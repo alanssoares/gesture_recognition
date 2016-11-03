@@ -74,7 +74,7 @@ MathUtil::getSumDiff(vector<XnPoint3D> positions)
     
     XnPoint3D ant = positions[n - 1];
     for (size_t i = len; i < n; i++){
-        total += getDistancePointToPoint(ant, positions[i]);
+        total += getArcLength(ant, positions[i]);
         ant = positions[i];
     }
     
@@ -249,7 +249,7 @@ MathUtil::simplifyRadialDist(std::vector<XnPoint3D> points, double sqTolerance){
 
     for (int i = 1; i < points.size(); i++) {
         point = points[i];
-        sqDistance = getDistancePointToPoint(point, prevPoint);
+        sqDistance = getArcLength(point, prevPoint);
         if (sqDistance > sqTolerance) {
             newPoints.push_back(point);
             prevPoint = point;
@@ -302,7 +302,7 @@ MathUtil::simplifyDPStep(std::vector<XnPoint3D> points, int first, int last, dou
 }
 
 double
-MathUtil::getDistancePointToPoint(XnPoint3D p1, XnPoint3D p2){
+MathUtil::getArcLength(XnPoint3D p1, XnPoint3D p2){
     XnPoint3D newPoint = subtract(p1, p2);
     return length(newPoint);
 }

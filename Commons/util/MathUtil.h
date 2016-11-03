@@ -118,7 +118,7 @@ public:
      @param p2 ponto
      @return double distância entre os pontos
     **/
-    static double getDistancePointToPoint(XnPoint3D p1, XnPoint3D p2);
+    static double getArcLength(XnPoint3D p1, XnPoint3D p2);
 
     /**
      Método responsável por efetuar a subtração de dois vetores a e b.
@@ -379,6 +379,13 @@ public:
      @param diff num of points that will be removed
     */
     static void removePoints(std::vector<XnPoint3D> *points, int diff);
+
+    /**
+     Method that transform the curve in equidistant points using the arc length
+     @param points original
+     @param dL desired distance between points
+    */
+    static void uniformCurveByArcLength(std::vector<XnPoint3D> *points, double dL);
 };
 
 #endif /* defined(__GestureTracking__MathUtil__) */

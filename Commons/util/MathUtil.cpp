@@ -106,7 +106,7 @@ MathUtil::isGestureDoing(vector<XnPoint3D> positions){
     if(i < 0) return false;
     double sum = 0.0;
     for (; i < n - 1; i++){
-        sum += getDistancePointToPoint(positions[i + 1], positions[i]);
+        sum += getArcLength(positions[i + 1], positions[i]);
     }
     sum = sum / NUM_LAST_POINTS;
     if(sum < MIN_DIFF_LENGTH){
@@ -282,7 +282,7 @@ MathUtil::simplifyRadialDist(std::vector<XnPoint3D> points, double sqTolerance){
 
     for (int i = 1; i < n; i++) {
         point = points[i];
-        sqDistance = getDistancePointToPoint(point, prevPoint);
+        sqDistance = getArcLength(point, prevPoint);
         if (sqDistance > sqTolerance) {
             newPoints.push_back(point);
             prevPoint = point;
@@ -650,7 +650,7 @@ MathUtil::extractDescriptor(std::vector<XnPoint3D> points){
 }
 
 double
-MathUtil::getDistancePointToPoint(XnPoint3D p1, XnPoint3D p2){
+MathUtil::getArcLength(XnPoint3D p1, XnPoint3D p2){
     return length(subtract(p1, p2));
 }
 
@@ -780,4 +780,28 @@ MathUtil::removePoints(std::vector<XnPoint3D> *points, int diff){
         index = -1;
         diff++;
     }
+}
+
+void
+MathUtil::uniformCurveByArcLength(std::vector<XnPoint3D> *points, double dL){
+  size_t n = points->size();
+  double aL, t = 1.0;
+  int i = 0;
+  XnPoint3D prev;
+  while(i < n - 1) {
+    aL = getArcLength(points->at(i), points->at(i + 1));
+    if(aL < dL){
+      points->erase(points->begin() + i + 1);
+      n--;
+      continue;
+    }
+    while(aL > dL){
+      prev = interpolate(points->at(i), points->at(i + 1), t);
+      aL = getArcLength(points->at(i), prev);
+      t -= 0.01;
+    }
+    points->at(i + 1) = prev;
+    i++;
+    t = 1.0;
+  }
 }
