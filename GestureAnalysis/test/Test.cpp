@@ -22,7 +22,7 @@ Test::clearSamples(){
 void
 Test::loadAll(){
 	FileUtil& futil = FileUtil::getInstance();
-	futil.loadGestures(NAME_FILE_DATA);
+	futil.loadGestures(NAME_FILE_DATA_NORMALIZED);
 	m_AllGestures.reserve(futil.mGesturesOneHand.size() + futil.mGesturesTwoHands.size());
 	m_AllGestures.insert( m_AllGestures.end(), futil.mGesturesOneHand.begin(), futil.mGesturesOneHand.end() );
 	m_AllGestures.insert( m_AllGestures.end(), futil.mGesturesTwoHands.begin(), futil.mGesturesTwoHands.end() );
