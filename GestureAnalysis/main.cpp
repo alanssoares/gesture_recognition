@@ -267,7 +267,7 @@ int helpUsage()
     PRINT(" 6 - Curvature");
     PRINT(" 7 - B-Spline");
     PRINT(" 8 - Laplacian");
-    PRINT(" 9 - Equidistant using ArcLength"):
+    PRINT(" 9 - Equidistant using ArcLength");
     PRINT(" default - Normalized between -1 and 1");
     PRINT("");
     PRINT("-v : 'all' or 'median' - gestures");
