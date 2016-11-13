@@ -9,6 +9,20 @@ Util::Util(){
 Util::~Util(){}
 
 void
+Util::applyUniformByArcLength(type_gesture *gesture){
+	MathUtil::uniformCurveByArcLength(&gesture->handOne.positions, 0.1);
+	MathUtil::uniformCurveByArcLength(&gesture->handTwo.positions, 0.1);
+}
+
+void
+Util::applyUniformByArcLength(std::vector<type_gesture> *gestures){
+	size_t n = gestures->size();
+	for (int i = 0; i < n; i++){
+		applyUniformByArcLength(&gestures->at(i));
+	}
+}
+
+void
 Util::applyNormalization(type_gesture* gesture){
 	XnPoint3D min, max;
 	max = MathUtil::findMaxFromTwo(gesture->handOne.positions, gesture->handTwo.positions);
@@ -170,33 +184,36 @@ void
 Util::generateMedianGestures(){
 	std::vector<type_gesture> gestures, median;
 	FileUtil& futil = FileUtil::getInstance();
-	futil.loadGestures(NAME_FILE_DATA);
+	futil.loadGestures(NAME_FILE_DATA_NORMALIZED);
 
 	gestures.reserve(futil.mGesturesOneHand.size() + futil.mGesturesTwoHands.size());
 	gestures.insert( gestures.end(), futil.mGesturesOneHand.begin(), futil.mGesturesOneHand.end() );
 	gestures.insert( gestures.end(), futil.mGesturesTwoHands.begin(), futil.mGesturesTwoHands.end() );
 	std::sort(gestures.begin(), gestures.end(), sortByName);
 
-	size_t n = gestures.size(), i = 0, j = 0, m, count;
+	size_t n = gestures.size(), i = 0, j = 0, m1, m2, count;
 	futil.clearHandGestures();
 
 	/* Generate all gestures with equal length */
+	applyUniformByArcLength(&gestures);
 	generateGestureEqualSize(&gestures);
 
 	while(j < n){
 
 		j = i + 1;
 		count = 0;
-		m = gestures[i].handOne.positions.size();
+		m1 = gestures[i].handOne.positions.size();
+		m2 = gestures[i].handTwo.positions.size();
 
 		while((j < n) && (gestures[i].name.compare(gestures[j].name) == 0)) j++;
 
 		for(int k = i + 1; k < j - 1; k++){
-			for(int t = 0; t < m; t++){
+			for(int t = 0; t < m1; t++){
 				gestures[i].handOne.positions[t].X += gestures[k].handOne.positions[t].X;
 				gestures[i].handOne.positions[t].Y += gestures[k].handOne.positions[t].Y;
 				gestures[i].handOne.positions[t].Z += gestures[k].handOne.positions[t].Z;
-
+			}
+			for(int t = 0; t < m2; t++){
 				gestures[i].handTwo.positions[t].X += gestures[k].handTwo.positions[t].X;
 				gestures[i].handTwo.positions[t].Y += gestures[k].handTwo.positions[t].Y;
 				gestures[i].handTwo.positions[t].Z += gestures[k].handTwo.positions[t].Z;
@@ -204,11 +221,12 @@ Util::generateMedianGestures(){
 			count++;
 		}
 
-		for(int k = 0; k < m; k++){
+		for(int k = 0; k < m1; k++){
 			gestures[i].handOne.positions[k].X = gestures[i].handOne.positions[k].X / count;
 			gestures[i].handOne.positions[k].Y = gestures[i].handOne.positions[k].Y / count;
 			gestures[i].handOne.positions[k].Z = gestures[i].handOne.positions[k].Z / count;
-
+		}
+		for(int k = 0; k < m2; k++){
 			gestures[i].handTwo.positions[k].X = gestures[i].handTwo.positions[k].X / count;
 			gestures[i].handTwo.positions[k].Y = gestures[i].handTwo.positions[k].Y / count;
 			gestures[i].handTwo.positions[k].Z = gestures[i].handTwo.positions[k].Z / count;

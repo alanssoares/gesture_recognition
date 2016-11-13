@@ -227,6 +227,7 @@ boost::shared_ptr<pcl::visualization::PCLVisualizer> viewCurvesVis()
   g_Test.init();
 
   if(isEqualSize){
+    g_Util.applyUniformByArcLength(&g_Test.m_AllGestures);
     g_Util.generateGestureEqualSize(&g_Test.m_AllGestures);
   }
 

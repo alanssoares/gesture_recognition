@@ -21,6 +21,9 @@ public:
 	void generateGestureEqualSize(std::vector<type_gesture> *gestures);
 	//Generate a file with gestures centered in the origin using centroid
 	void normCenterOriginGesture(type_gesture *gesture);
+	//Apply uniform distance by arc length
+	void applyUniformByArcLength(type_gesture *gesture);
+	void applyUniformByArcLength(std::vector<type_gesture> *gestures);
 	//Apply normalization in the interval [-1,1] in the gestures
 	void applyNormalization(type_gesture *gesture);
 	void applyNormalization(std::vector<type_gesture>* gestures);

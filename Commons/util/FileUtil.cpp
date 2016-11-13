@@ -126,7 +126,7 @@ FileUtil::saveTrack(){
             }
         }
     }
-    
+
     fileOut<<"end"<<std::endl;
     fileOut.close();
 
@@ -172,12 +172,12 @@ FileUtil::loadGestures(std::string nameFile){
     std::ifstream file;
     std::string row;
     std::vector<std::string> rows;
-    
+
     mGesturesOneHand.clear();
     mGesturesTwoHands.clear();
-    
+
     file.open(nameFile.c_str());
-    
+
     if(file.is_open()){
         while (std::getline(file, row)){
             if(row.compare("end") == 0){
@@ -188,7 +188,7 @@ FileUtil::loadGestures(std::string nameFile){
             }
         }
     }
-    
+
     TIME_METHOD_EXEC("loadGestures", start_s, clock());
     PRINT("Total Templates - " << mGesturesTwoHands.size() + mGesturesOneHand.size());
 }
@@ -203,12 +203,12 @@ FileUtil::extractGesture(std::vector<std::string> rows){
     split(rows[0],' ', tokens);
     newGesture.name = tokens[1];
     newGesture.numHands = atoi(tokens[3].c_str());
-    
+
     for (int i = 1; i < rows.size(); i++) {
         newGesture.handOne.positions.push_back(getPointFile(rows[i]));
         newGesture.handTwo.positions.push_back(getPointFile(rows[i], 3));
     }
-    
+
     if(newGesture.handOne.positions.size() > 0 &&
         newGesture.handTwo.positions.size() > 0) {
         if(newGesture.numHands == 1){
@@ -247,7 +247,7 @@ FileUtil::readNumLastFile(int typeFile){
     std::string nameFile, ext = ".oni";
     std::size_t found;
     DIR *dir = NULL;
-    
+
     if(FILE_TRACK == typeFile){
         ext = ".txt";
         dir = opendir((m_Root_dir + "/track").c_str());
@@ -277,28 +277,49 @@ void
 FileUtil::saveAll(){
     std::string nameFile = "../NewSamples.txt";
     std::fstream fileOut;
+    size_t n1 = mGesturesOneHand.size(), n2 = mGesturesTwoHands.size(), np1, np2, t;
 
     fileOut.open(nameFile.c_str(), ios::out | ios::ate);
     if(fileOut.is_open()){
-        
-        size_t n1 = mGesturesOneHand.size();
+
         for (int i = 0; i < n1; i++){
             type_gesture gesture = mGesturesOneHand[i];
+            np1 = gesture.handOne.positions.size();
+            np2 = gesture.handTwo.positions.size();
+            t = np1 > np2? np1 : np2;
             fileOut<<"gesture "<<gesture.name<<" hands 1"<<std::endl;
-            for(int j = 0; j < gesture.handOne.positions.size(); j++){
+            for(int j = 0; j < t; j++){
+              if(np1 > j){
                 fileOut<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<" ";
+              } else {
+                fileOut<<"0.0 0.0 0.0 ";
+              }
+              if(np2 > j){
                 fileOut<<gesture.handTwo.positions[j].X<<" "<<gesture.handTwo.positions[j].Y<<" "<<gesture.handTwo.positions[j].Z<<std::endl;
+              } else {
+                fileOut<<"0.0 0.0 0.0"<<std::endl;
+              }
             }
             fileOut<<"end"<<std::endl;
         }
 
-        size_t n2 = mGesturesTwoHands.size();
         for (int i = 0; i < n2; i++){
             type_gesture gesture = mGesturesTwoHands[i];
+            np1 = gesture.handOne.positions.size();
+            np2 = gesture.handTwo.positions.size();
+            t = np1 > np2? np1 : np2;
             fileOut<<"gesture "<<gesture.name<<" hands 2"<<std::endl;
-            for(int j = 0; j < gesture.handOne.positions.size(); j++){
+            for(int j = 0; j < t; j++){
+              if(np1 > j){
                 fileOut<<gesture.handOne.positions[j].X<<" "<<gesture.handOne.positions[j].Y<<" "<<gesture.handOne.positions[j].Z<<" ";
+              } else {
+                fileOut<<"0.0 0.0 0.0 ";
+              }
+              if(np2 > j){
                 fileOut<<gesture.handTwo.positions[j].X<<" "<<gesture.handTwo.positions[j].Y<<" "<<gesture.handTwo.positions[j].Z<<std::endl;
+              } else {
+                fileOut<<"0.0 0.0 0.0"<<std::endl;
+              }
             }
             fileOut<<"end"<<std::endl;
         }
