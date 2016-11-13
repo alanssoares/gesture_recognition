@@ -137,8 +137,8 @@ Test::executeAll(){
   //Load samples
   init();
 	//Normalize all gestures
-	m_Util.applyNormalization(&m_AllGestures);
-	m_Util.applyNormalization(&m_MedianGestures);
+	//m_Util.applyNormalization(&m_AllGestures);
+	//m_Util.applyNormalization(&m_MedianGestures);
   //Execute experiments using normal gestures
 	executeNormal(baseFolder + "normal_");
 	//Execute experiments using gestures with equal number of points
@@ -156,6 +156,7 @@ Test::executeNormal(std::string folder){
 void
 Test::executeWithEqualSize(std::string folder){
 	//Resample all templates to equal size according with the type
+	m_Util.applyUniformByArcLength(&m_AllGestures);
 	m_Util.generateGestureEqualSize(&m_AllGestures);
 	//Execute all experiments
 	execute(folder);
