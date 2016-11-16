@@ -335,7 +335,7 @@ std::vector<XnPoint3D>
 MathUtil::reduceByCurvature(std::vector<XnPoint3D> points, double threshold){
     std::vector<XnPoint3D> newPoints;
     size_t n = points.size();
-    if(n == 0) return newPoints;
+    if(n < 3) return points;
     double curvature = 0.0;
 
     newPoints.push_back(points.front());
