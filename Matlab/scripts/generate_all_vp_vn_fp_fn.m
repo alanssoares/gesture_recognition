@@ -62,31 +62,31 @@ G(7,6) = prevalence(Laplacian_DouglasPeucker);
 end
 
 function v = accuracy(m)
-  v = (sum_vp(m) + sum_vn(m)) / sum_all(m);
+  v = (sum_vp(m) + sum_vn(m) + 1) / (sum_all(m) + 1) - 1;
 end
 
 function v = missclassification_rate(m)
-  v = (sum_fp(m) + sum_fn(m)) / sum_all(m);
+  v = (sum_fp(m) + sum_fn(m) + 1) / (sum_all(m) + 1) - 1;
 end
 
 function v = true_positive_rate(m)
-  v = sum_vp(m) / (sum_vp(m) + sum_fn(m));
+  v = (sum_vp(m) + 1) / (sum_vp(m) + sum_fn(m) + 1) - 1;
 end
 
 function v = false_positive_rate(m)
-  v = sum_fp(m) / (sum_vn(m) + sum_fp(m));
+  v = (sum_fp(m) + 1) / (sum_vn(m) + sum_fp(m) + 1) - 1;
 end
 
 function v = specificity(m)
-  v = sum_vn(m) / (sum_vn(m) + sum_fp(m));
+  v = (sum_vn(m) + 1) / (sum_vn(m) + sum_fp(m) + 1) - 1;
 end
 
 function v = precision(m)
-  v = sum_vp(m) / (sum_vp(m) + sum_fp(m));
+  v = (sum_vp(m) + 1) / (sum_vp(m) + sum_fp(m) + 1) - 1;
 end
 
 function v = prevalence(m)
-  v = (sum_vp(m) + sum_fn(m)) / sum_all(m);
+  v = (sum_vp(m) + sum_fn(m) + 1) / (sum_all(m) + 1) - 1;
 end
 
 function tot = sum_vp(m)
