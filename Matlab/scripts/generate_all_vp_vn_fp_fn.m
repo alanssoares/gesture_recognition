@@ -1,14 +1,16 @@
 %http://www.dataschool.io/simple-guide-to-confusion-matrix-terminology/
 function G = generate_all_vp_vn_fp_fn(partfile)
 
+sufix = '0.5.txt';
+
 G = zeros(7,6);
 
-Normal = custom_confusion('0', '0.5.txt', partfile);
-Laplacian = custom_confusion('1', '0.5.txt', partfile);
-Curvature = custom_confusion('2', '0.5.txt', partfile);
-DouglasPeucker = custom_confusion('3', '0.5.txt', partfile);
-Laplacian_Curvature = custom_confusion('4', '0.5.txt', partfile);
-Laplacian_DouglasPeucker = custom_confusion('5', '0.5.txt', partfile);
+Normal = custom_confusion('0', sufix, partfile);
+Laplacian = custom_confusion('1', sufix, partfile);
+Curvature = custom_confusion('2', sufix, partfile);
+DouglasPeucker = custom_confusion('3', sufix, partfile);
+Laplacian_Curvature = custom_confusion('4', sufix, partfile);
+Laplacian_DouglasPeucker = custom_confusion('5', sufix, partfile);
 
 G(1,1) = accuracy(Normal);
 G(1,2) = accuracy(Laplacian);

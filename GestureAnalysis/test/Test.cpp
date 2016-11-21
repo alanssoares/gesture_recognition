@@ -98,8 +98,8 @@ Test::saveResults(std::string nameFile, type_gesture gestureExecuted, type_gestu
 	std::fstream fileOut;
 	fileOut.open(nameFile.c_str(), ios::in | ios::out | ios::ate);
 	if(fileOut.is_open()){
-		fileOut<<gestureExecuted.name<<" "<<gestureExecuted.numHands<<" "<<gestureExecuted.handOne.positions.size()<<" ";
-		fileOut<<gesturePredicted.name<<" "<<gesturePredicted.numHands<<" "<<gesturePredicted.handOne.positions.size()<<" ";
+		fileOut<<gestureExecuted.name<<" "<<gestureExecuted.numHands<<" "<<gestureExecuted.handTwo.positions.size()<<" ";
+		fileOut<<gesturePredicted.name<<" "<<gesturePredicted.numHands<<" "<<gesturePredicted.handTwo.positions.size()<<" ";
 		fileOut<<timeExecution<<" "<<bestDistance<<" "<<isRecognized<<std::endl;
 	}
 	fileOut.close();
