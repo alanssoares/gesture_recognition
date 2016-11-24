@@ -124,7 +124,9 @@ Test::recognize(const int env, const type_gesture gesture, const std::string nam
         }
     }
 
-    if(bestDistanceA < m_RecThreshold && bestDistanceB < m_RecThreshold){
+    if(bestDistanceA < m_RecThreshold
+			&& bestDistanceB < m_RecThreshold
+			&& gesture.name == gestureTemplate.name){
     	isRecognized = 1;
     }
 
