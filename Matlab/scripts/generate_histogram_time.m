@@ -24,8 +24,7 @@ glt_doug = zeros(2);
 glt_lapl_curv = zeros(2);
 glt_lapl_doug = zeros(2);
 
-%0-40, 40-80, 80-120
-group = 40;
+ts = 20;
 
 % 0 - Normal
 % 1 - Laplacian
@@ -40,89 +39,121 @@ for cntfiles=1:length(files)
     while ~feof(fin)
         line = fgetl(fin);
         tokens = strsplit(line,' ');
+
+				if(strcmp(tokens_name_file(3), 'normal'))
+					group = 40; %0-40, 40-80, 80-120 Normal
+				end
+				if(strcmp(tokens_name_file(3), 'equal'))
+					group = 25; %0-25, 25-50, 50-75 Equal
+				end
+				if(strcmp(tokens_name_file(3), 'median'))
+					group = 23; %0-23, 23-46, 46-69 Median
+				end
+
         if(g_short(tokens, group))
             %Gesto curto
-            if(strcmp(tokens_name_file(4), '0'))
+            if(strcmp(tokens_name_file(4), '0') && gst_norm(2) < ts)
                 gst_norm(1) = str2double(tokens(7));
                 gst_norm(2) = gst_norm(2) + 1;
             end
-            if(strcmp(tokens_name_file(4), '1'))
+            if(strcmp(tokens_name_file(4), '1') && gst_lapl(2) < ts)
                 gst_lapl(1) = str2double(tokens(7));
                 gst_lapl(2) = gst_lapl(2) + 1;
             end
-            if(strcmp(tokens_name_file(4), '2'))
+            if(strcmp(tokens_name_file(4), '2') && gst_curv(2) < ts)
                 gst_curv(1) = str2double(tokens(7));
                 gst_curv(2) = gst_curv(2) + 1;
             end
-            if(strcmp(tokens_name_file(4), '3'))
+            if(strcmp(tokens_name_file(4), '3') && gst_doug(2) < ts)
                 gst_doug(1) = str2double(tokens(7));
                 gst_doug(2) = gst_doug(2) + 1;
             end
-            if(strcmp(tokens_name_file(4), '4'))
+            if(strcmp(tokens_name_file(4), '4') && gst_lapl_curv(2) < ts)
                 gst_lapl_curv(1) = str2double(tokens(7));
                 gst_lapl_curv(2) = gst_lapl_curv(2) + 1;
             end
-            if(strcmp(tokens_name_file(4), '5'))
+            if(strcmp(tokens_name_file(4), '5') && gst_lapl_doug(2) < ts)
                 gst_lapl_doug(1) = str2double(tokens(7));
                 gst_lapl_doug(2) = gst_lapl_doug(2) + 1;
             end
         end
         if(g_median(tokens, group))
             %Gesto m?dio
-            if(strcmp(tokens_name_file(4), '0'))
+            if(strcmp(tokens_name_file(4), '0') && gmt_norm(2) < ts)
                 gmt_norm(1) = str2double(tokens(7));
                 gmt_norm(2) = gmt_norm(2) + 1;
             end
-            if(strcmp(tokens_name_file(4), '1'))
+            if(strcmp(tokens_name_file(4), '1') && gmt_lapl(2) < ts)
                 gmt_lapl(1) = str2double(tokens(7));
                 gmt_lapl(2) = gmt_lapl(2) + 1;
             end
-            if(strcmp(tokens_name_file(4), '2'))
+            if(strcmp(tokens_name_file(4), '2') && gmt_curv(2) < ts)
                 gmt_curv(1) = str2double(tokens(7));
                 gmt_curv(2) = gmt_curv(2) + 1;
             end
-            if(strcmp(tokens_name_file(4), '3'))
+            if(strcmp(tokens_name_file(4), '3') && gmt_doug(2) < ts)
                 gmt_doug(1) = str2double(tokens(7));
                 gmt_doug(2) = gmt_doug(2) + 1;
             end
-            if(strcmp(tokens_name_file(4), '4'))
+            if(strcmp(tokens_name_file(4), '4') && gmt_lapl_curv(2) < ts)
                 gmt_lapl_curv(1) = str2double(tokens(7));
                 gmt_lapl_curv(2) = gmt_lapl_curv(2) + 1;
             end
-            if(strcmp(tokens_name_file(4), '5'))
+            if(strcmp(tokens_name_file(4), '5') && gmt_lapl_doug(2) < ts)
                 gmt_lapl_doug(1) = str2double(tokens(7));
                 gmt_lapl_doug(2) = gmt_lapl_doug(2) + 1;
             end
         end
         if(g_long(tokens, group))
             %Gesto longo
-            if(strcmp(tokens_name_file(4), '0'))
+            if(strcmp(tokens_name_file(4), '0') && glt_norm(2) < ts)
                 glt_norm(1) = str2double(tokens(7));
                 glt_norm(2) = glt_norm(2) + 1;
             end
-            if(strcmp(tokens_name_file(4), '1'))
+            if(strcmp(tokens_name_file(4), '1') && glt_lapl(2) < ts)
                 glt_lapl(1) = str2double(tokens(7));
                 glt_lapl(2) = glt_lapl(2) + 1;
             end
-            if(strcmp(tokens_name_file(4), '2'))
+            if(strcmp(tokens_name_file(4), '2') && glt_curv(2) < ts)
                 glt_curv(1) = str2double(tokens(7));
                 glt_curv(2) = glt_curv(2) + 1;
             end
-            if(strcmp(tokens_name_file(4), '3'))
+            if(strcmp(tokens_name_file(4), '3') && glt_doug(2) < ts)
                 glt_doug(1) = str2double(tokens(7));
                 glt_doug(2) = glt_doug(2) + 1;
             end
-            if(strcmp(tokens_name_file(4), '4'))
+            if(strcmp(tokens_name_file(4), '4') && glt_lapl_curv(2) < ts)
                 glt_lapl_curv(1) = str2double(tokens(7));
                 glt_lapl_curv(2) = glt_lapl_curv(2) + 1;
             end
-            if(strcmp(tokens_name_file(4), '5'))
+            if(strcmp(tokens_name_file(4), '5') && glt_lapl_doug(2) < ts)
                 glt_lapl_doug(1) = str2double(tokens(7));
                 glt_lapl_doug(2) = glt_lapl_doug(2) + 1;
             end
         end
     end
 end
+
+gst_norm(2)
+gst_lapl(2)
+gst_curv(2)
+gst_doug(2)
+gst_lapl_curv(2)
+gst_lapl_doug(2)
+
+gmt_norm(2)
+gmt_lapl(2)
+gmt_curv(2)
+gmt_doug(2)
+gmt_lapl_curv(2)
+gmt_lapl_doug(2)
+
+glt_norm(2)
+glt_lapl(2)
+glt_curv(2)
+glt_doug(2)
+glt_lapl_curv(2)
+glt_lapl_doug(2)
 
 gst_norm(1) = gst_norm(1) / gst_norm(2);
 gst_lapl(1) = gst_lapl(1) / gst_lapl(2);
