@@ -1,7 +1,7 @@
 %http://www.dataschool.io/simple-guide-to-confusion-matrix-terminology/
 function G = generate_all_vp_vn_fp_fn(partfile)
 
-sufix = '0.5.txt';
+sufix = '0.2.txt';
 
 G = zeros(7,6);
 

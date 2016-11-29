@@ -2,7 +2,7 @@
 
 Test::Test(){
 	m_PercentTest = 0.7;
-	m_RecThreshold = 0.5;
+	m_RecThreshold = 0.2;
 	m_isMedian = false;
 }
 
@@ -125,8 +125,7 @@ Test::recognize(const int env, const type_gesture gesture, const std::string nam
     }
 
     if(bestDistanceA < m_RecThreshold
-			&& bestDistanceB < m_RecThreshold
-			&& gesture.name == gestureTemplate.name){
+			&& bestDistanceB < m_RecThreshold){
     	isRecognized = 1;
     }
 
