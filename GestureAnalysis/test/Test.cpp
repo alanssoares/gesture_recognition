@@ -143,9 +143,9 @@ Test::executeAll(){
   //Execute experiments using normal gestures
 	executeNormal(baseFolder + "normal_");
 	//Execute experiments using gestures with equal number of points
-	executeWithEqualSize(baseFolder + "equal_");
+	// executeWithEqualSize(baseFolder + "equal_");
 	//Execute experiments using median gestures as template
-	executeWithMedian(baseFolder + "median_");
+	// executeWithMedian(baseFolder + "median_");
 }
 
 void
@@ -176,12 +176,24 @@ Test::executeWithMedian(std::string folder){
 
 void
 Test::execute(std::string folder){
-	experiment(0, folder + MathUtil::intToString(0) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
-	experiment(1, folder + MathUtil::intToString(1) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
-	experiment(2, folder + MathUtil::intToString(2) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
-	experiment(3, folder + MathUtil::intToString(3) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
-	experiment(4, folder + MathUtil::intToString(4) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
-	experiment(5, folder + MathUtil::intToString(5) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+	//Cross validation using 5 parameters
+	for (float i = 0.1; i <= 0.5; i+= 0.1) {
+		m_RecThreshold = i;
+		experiment(0, folder + MathUtil::intToString(0) + "_" + MathUtil::floatToString(i) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+		experiment(1, folder + MathUtil::intToString(1) + "_" + MathUtil::floatToString(i) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+		//Param of the curvature using 10 folds
+		for (float j = 0.0001; j <= 0.001; j+= 0.0001) {
+			m_Util.m_CurvThreshold = j;
+			experiment(2, folder + MathUtil::intToString(2) + "_" + MathUtil::floatToString(m_Util.m_CurvThreshold) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+			experiment(4, folder + MathUtil::intToString(4) + "_" + MathUtil::floatToString(m_Util.m_CurvThreshold) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+		}
+		//Param of the douglas peucker using 10 folds
+		for (float j = 0.01; j <= 0.1; j+= 0.01) {
+			m_Util.m_DougThreshold = j;
+			experiment(3, folder + MathUtil::intToString(3) + "_" + MathUtil::floatToString(m_Util.m_DougThreshold) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+			experiment(5, folder + MathUtil::intToString(5) + "_" + MathUtil::floatToString(m_Util.m_DougThreshold) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+		}
+	}
 }
 
 void
