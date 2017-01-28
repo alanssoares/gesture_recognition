@@ -12,8 +12,8 @@ for cntfiles=1:length(files)
 
     tokens_name_file = strsplit(files(cntfiles).name,'_');
 
-    if(strcmp(tokens_name_file(4), method) && ...
-      strcmp(tokens_name_file(5), threshold))
+    if(strcmp(tokens_name_file(4), method))''
+        %&& strcmp(tokens_name_file(6), threshold) ...
       while ~feof(fin)
 
         line = fgetl(fin);
@@ -47,7 +47,16 @@ for cntfiles=1:length(files)
             mR(i,7) = mR(i,7) + 1;
         end
       end
+      plotLineRate(mR, tokens_name_file(6), tokens_name_file(5));
     end
+  mR = zeros(7,7);
+  i = 1;
   fclose(fin);
 end
+end
+
+function plotLineRate(m, thresholdRecognition, thresholdMethod)
+  strcat(num2str(m(1,1)),{' '}, num2str(m(2,2)), {' '}, num2str(m(3,3)), {' '}, ...
+  num2str(m(4,4)), {' '}, num2str(m(5,5)), {' '}, num2str(m(6,6)), {' '}, ...
+  num2str(m(7,7)), {' '}, strrep(thresholdRecognition, '.txt', ''), {' '}, thresholdMethod)
 end

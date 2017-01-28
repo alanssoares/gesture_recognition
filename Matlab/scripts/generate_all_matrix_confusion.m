@@ -1,6 +1,4 @@
-function generate_all_matrix_confusion(partfile)
-
-sufix = '0.2.txt';
+function generate_all_matrix_confusion(sufix, partfile)
 
 Normal = gesture_matrix_confusion('0', sufix, partfile)
 Laplacian = gesture_matrix_confusion('1', sufix, partfile)

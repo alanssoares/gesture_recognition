@@ -15,11 +15,11 @@ if(isC2)
   disp('Collection 2: Confusion Matrix');
   disp('----------- INIT STEP 2 ------------ ');
   disp('Data - Normal');
-  generate_all_matrix_confusion('result_experiment_normal_*')
+  generate_all_matrix_confusion('0.2.txt', 'result_experiment_normal_*')
   disp('Data - Median');
-  generate_all_matrix_confusion('result_experiment_median_*')
+  generate_all_matrix_confusion('0.2.txt', 'result_experiment_median_*')
   disp('Data - Equal Size of Points');
-  generate_all_matrix_confusion('result_experiment_equal_*')
+  generate_all_matrix_confusion('0.2.txt', 'result_experiment_equal_*')
   disp('----------- END STEP 2 ------------ ');
 end
 

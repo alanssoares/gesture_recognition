@@ -184,7 +184,7 @@ bar(res);
 
 xlabel('Grouping by Number of Points');
 ylabel('Average Time Processing - Milliseconds');
-legend('Normal', 'Laplacian', 'Curvature', 'DouglasPeucker', 'Laplacian + Curvature', 'Laplacian + DouglasPeucker');
+legend('Raw', 'Laplacian', 'Curvature', 'DouglasPeucker', 'Laplacian + Curvature', 'Laplacian + DouglasPeucker');
 
 end
 
