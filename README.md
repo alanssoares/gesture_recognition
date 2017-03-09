@@ -1,6 +1,6 @@
 # README #
 
-Author - Alan Santos
+Author - Alan Soares
 
 Federal University of Bahia - Institute of Mathematics
 
@@ -15,3 +15,5 @@ Dependencies
 - Nite v1.5.2.21
 
 - OpenNI v1.5.7.10
+
+- PCL 1.8
