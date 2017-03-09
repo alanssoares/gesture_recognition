@@ -1,9 +1,9 @@
 #include "Test.h"
 
 Test::Test(){
-	m_PercentTest = 0.7;
-	m_RecThreshold = 0.2;
-	m_isMedian = false;
+	m_PercentTest = 1.0;
+	m_RecThreshold = 0.5;
+	m_isMedianTest = false;
 }
 
 Test::~Test(){}
@@ -91,6 +91,10 @@ Test::splitDataset(){
 	}
 	std::sort(m_GesturesTest.begin(), m_GesturesTest.end(), Util::sortByName);
 	std::sort(m_GesturesTemplate.begin(), m_GesturesTemplate.end(), Util::sortByName);
+	//Verifica e preenche o vetor com os gestos médios
+	if(m_isMedianTest){
+		addMedianTemplates();
+	}
 }
 
 void
@@ -123,7 +127,6 @@ Test::recognize(const int env, const type_gesture gesture, const std::string nam
             gestureTemplate = m_GesturesTemplate[i];
         }
     }
-
     if(bestDistanceA < m_RecThreshold
 			&& bestDistanceB < m_RecThreshold){
     	isRecognized = 1;
@@ -135,22 +138,26 @@ Test::recognize(const int env, const type_gesture gesture, const std::string nam
 void
 Test::executeAll(){
 	std::string baseFolder = "../results/result_experiment_";
-  //Load samples
+
+	//Load samples
   init();
+
 	//Normalize all gestures
 	//m_Util.applyNormalization(&m_AllGestures);
 	//m_Util.applyNormalization(&m_MedianGestures);
+
   //Execute experiments using normal gestures
-	executeNormal(baseFolder + "normal_");
+	// executeNormal(baseFolder + "normal_");
+
 	//Execute experiments using gestures with equal number of points
 	// executeWithEqualSize(baseFolder + "equal_");
+
 	//Execute experiments using median gestures as template
-	// executeWithMedian(baseFolder + "median_");
+	executeWithMedian(baseFolder + "median_");
 }
 
 void
 Test::executeNormal(std::string folder){
-	//Execute all experiments
 	execute(folder);
 }
 
@@ -164,18 +171,32 @@ Test::executeWithEqualSize(std::string folder){
 }
 
 void
+Test::execute(std::string folder){
+	experiment(0, folder + MathUtil::intToString(0) + "_" + MathUtil::floatToString(m_RecThreshold) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+	experiment(1, folder + MathUtil::intToString(1) + "_" + MathUtil::floatToString(m_RecThreshold) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+	experiment(3, folder + MathUtil::intToString(3) + "_" + MathUtil::floatToString(m_Util.m_DougThreshold) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+	experiment(2, folder + MathUtil::intToString(2) + "_" + MathUtil::floatToString(m_Util.m_CurvThreshold) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+	experiment(4, folder + MathUtil::intToString(4) + "_" + MathUtil::floatToString(m_Util.m_CurvThreshold) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+	experiment(5, folder + MathUtil::intToString(5) + "_" + MathUtil::floatToString(m_Util.m_DougThreshold) + "_" + MathUtil::floatToString(m_RecThreshold) + ".txt");
+}
+
+void
 Test::executeWithMedian(std::string folder){
-	//Preenche o vetor com os gestos médios
-	m_GesturesTemplate.clear();
-	m_GesturesTemplate.reserve(m_MedianGestures.size());
-	m_GesturesTemplate.insert(m_GesturesTemplate.begin(), m_MedianGestures.begin(), m_MedianGestures.end());
-	m_isMedian = true;
+	//Enable the load of median gestures in template vector
+	m_isMedianTest = true;
 	//Execute all experiments
 	execute(folder);
 }
 
 void
-Test::execute(std::string folder){
+Test::addMedianTemplates(){
+	m_GesturesTemplate.clear();
+	m_GesturesTemplate.reserve(m_MedianGestures.size());
+	m_GesturesTemplate.insert(m_GesturesTemplate.begin(), m_MedianGestures.begin(), m_MedianGestures.end());
+}
+
+void
+Test::executeCrossValidation(std::string folder){
 	//Cross validation using 5 parameters
 	for (float i = 0.1; i <= 0.5; i+= 0.1) {
 		m_RecThreshold = i;
@@ -200,11 +221,8 @@ void
 Test::experiment(int env, std::string nameFile){
 	FileUtil::getInstance().createFile(nameFile);
 	type_gesture gesture;
-	//Evitar sobrescrever os gestos médios
-	if(!m_isMedian){
-		//Split Dataset in test and templates
-		splitDataset();
-	}
+	//Split Dataset in test and templates
+	splitDataset();
 	//Executa o teste de reconhecimento de cada gesto
 	for (int i = 0; i < m_GesturesTest.size(); i++){
 		gesture = m_GesturesTest[i];

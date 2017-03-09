@@ -12,6 +12,8 @@ public:
 
 	static float getFinalTime(std::clock_t start_s);
 
+	//Add the median gestures to template vector
+	void addMedianTemplates();
 	//Main method that initialize the execution of the tests
 	void executeAll();
 	//Execute the tests using the normal Samples.txt
@@ -22,6 +24,8 @@ public:
 	void executeWithMedian(std::string folder);
 	//Execute the especific test according with the methods above
 	void execute(std::string folder);
+	//Execute cross validation to find best parameters
+	void executeCrossValidation(std::string folder);
 	//Clear all vectores of samples
 	void clearSamples();
 	//Loal all gestures of the file Samples.txt
@@ -62,8 +66,7 @@ public:
 	std::vector<type_gesture> m_GesturesTwoHands;
 
 	float m_PercentTest, m_RecThreshold, m_Start_s;
-	bool 	m_isMedian;
-
+	bool 	m_isMedianTest;
 	Util m_Util;
 };
 

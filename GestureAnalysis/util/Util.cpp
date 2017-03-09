@@ -1,7 +1,7 @@
 #include "Util.h"
 
 Util::Util(){
-	m_CurvThreshold = 0.0001;
+	m_CurvThreshold = 0.001;
 	m_DougThreshold = 0.01;
 	m_isMedian = false;
 }
