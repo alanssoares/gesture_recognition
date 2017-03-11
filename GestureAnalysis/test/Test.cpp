@@ -112,27 +112,43 @@ Test::saveResults(std::string nameFile, type_gesture gestureExecuted, type_gestu
 void
 Test::recognize(const int env, const type_gesture gesture, const std::string nameFile) {
     float isRecognized = 0;
-    double distanceA, distanceB, bestDistanceB = 999999999, bestDistanceA = 999999999;
+    double distanceA, distanceB, bestDistanceB = 999999999, bestDistanceA = 999999999, bestDistance = 0;
     size_t n = m_GesturesTemplate.size();
     type_gesture gestureTemplate, gcompare;
 
     for (int i = 0; i < n; i++) {
 				gcompare = m_GesturesTemplate[i];
 				applyProcess(env, &gcompare);
-        distanceA = MathUtil::computeDistanceBetweenTwoTrajectories(gcompare.handOne.positions, gesture.handOne.positions);
-        distanceB = MathUtil::computeDistanceBetweenTwoTrajectories(gcompare.handTwo.positions, gesture.handTwo.positions);
-        if (distanceA < bestDistanceA && distanceB < bestDistanceB){
-            bestDistanceA = distanceA;
-            bestDistanceB = distanceB;
-            gestureTemplate = m_GesturesTemplate[i];
-        }
-    }
-    if(bestDistanceA < m_RecThreshold
-			&& bestDistanceB < m_RecThreshold){
-    	isRecognized = 1;
+				if(gesture.numHands == 1){
+					distanceB = MathUtil::computeDistanceBetweenTwoTrajectories(gcompare.handTwo.positions, gesture.handTwo.positions);
+					if (distanceB < bestDistanceB){
+							bestDistanceB = distanceB;
+							gestureTemplate = m_GesturesTemplate[i];
+					}
+				} else if(gesture.numHands == 2){
+					distanceA = MathUtil::computeDistanceBetweenTwoTrajectories(gcompare.handOne.positions, gesture.handOne.positions);
+					distanceB = MathUtil::computeDistanceBetweenTwoTrajectories(gcompare.handTwo.positions, gesture.handTwo.positions);
+					if (distanceA < bestDistanceA && distanceB < bestDistanceB){
+							bestDistanceA = distanceA;
+							bestDistanceB = distanceB;
+							gestureTemplate = m_GesturesTemplate[i];
+					}
+				}
     }
 
-    saveResults(nameFile, gesture, gestureTemplate, getFinalTime(m_Start_s), (bestDistanceA + bestDistanceB)/2, isRecognized);
+		if(gesture.numHands == 1){
+			bestDistance = bestDistanceB;
+			if(bestDistanceB < m_RecThreshold){
+				isRecognized = 1;
+			}
+		} else if(gesture.numHands == 2){
+			bestDistance = (bestDistanceA + bestDistanceB) / 2;
+			if(bestDistanceA < m_RecThreshold && bestDistanceB < m_RecThreshold){
+					isRecognized = 1;
+			}
+    }
+
+    saveResults(nameFile, gesture, gestureTemplate, getFinalTime(m_Start_s), bestDistance, isRecognized);
 }
 
 void
