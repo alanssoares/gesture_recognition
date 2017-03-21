@@ -1,7 +1,7 @@
 #include "Test.h"
 
 Test::Test(){
-	m_PercentTest = 1.0;
+	m_PercentTest = 0.7;
 	m_RecThreshold = 0.5;
 	m_isMedianTest = false;
 }
@@ -163,13 +163,13 @@ Test::executeAll(){
 	//m_Util.applyNormalization(&m_MedianGestures);
 
   //Execute experiments using normal gestures
-	// executeNormal(baseFolder + "normal_");
+	executeNormal(baseFolder + "normal_");
 
 	//Execute experiments using gestures with equal number of points
 	// executeWithEqualSize(baseFolder + "equal_");
 
 	//Execute experiments using median gestures as template
-	executeWithMedian(baseFolder + "median_");
+	// executeWithMedian(baseFolder + "median_");
 }
 
 void
