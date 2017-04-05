@@ -34,7 +34,7 @@ KMeans::cluster(std::vector<XnPoint3D> points, int K){
       for (size_t j = 0; j < n; j++) {
         XnPoint3D point = clusters[i].mCollection[j];
         size_t k = findNearestCluster(centroids, point);
-        if(clusters[i].mCollection.size() > 1){
+        if(k != i && clusters[i].mCollection.size() > 1){
           clusters[i].mCollection.erase(clusters[i].mCollection.begin() + j);
           clusters[k].mCollection.push_back(point);
           clustering++; n--;
@@ -70,7 +70,7 @@ KMeans::calculateCentroids(std::vector<Cluster> clusters){
 int
 KMeans::findNearestCluster(std::vector<XnPoint3D> centroids, XnPoint3D point){
   double min = 999999999, dist = 0.0;
-  int k = -1;
+  int k = 0;
   for (int i = 0; i < centroids.size(); i++) {
     dist = MathUtil::getArcLength(point, centroids[i]);
     if(dist < min){
