@@ -16,7 +16,7 @@
 #include "../util/ConstantsUtil.h"
 #include "../geometry/Bezier.h"
 #include "../geometry/BSpline.h"
-#include "../geometry/DTW.h"
+#include "../classify/DTW.h"
 
 using namespace std;
 

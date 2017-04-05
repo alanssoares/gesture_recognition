@@ -1,5 +1,5 @@
 #include "Test.h"
-#include "../../Commons/hmm/KMeans.h"
+#include "../../Commons/cluster/KMeans.h"
 
 Test::Test(){
 	m_PercentTest = 0.7;

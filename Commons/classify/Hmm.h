@@ -11,8 +11,8 @@
 //
 /////////////////////////////////////////////////////////////////////////
 
-#include "Str2IdMap.h"
-#include "Tables.h"
+#include "../util/Str2IdMap.h"
+#include "../util/Tables.h"
 
 class HmmNode;
 class Hmm;

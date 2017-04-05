@@ -17,8 +17,8 @@
 #include <cstdlib>
 
 #include "Hmm.h"
-#include "LogProbs.h"
-#include "Tables.h"
+#include "../util/LogProbs.h"
+#include "../util/Tables.h"
 
 Transition::Transition(HmmNode* from, HmmNode* to, unsigned long obs)
 {
