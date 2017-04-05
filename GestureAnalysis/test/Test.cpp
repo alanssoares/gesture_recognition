@@ -1,4 +1,5 @@
 #include "Test.h"
+#include "../../Commons/hmm/KMeans.h"
 
 Test::Test(){
 	m_PercentTest = 0.7;
@@ -272,4 +273,12 @@ Test::applyProcess(int env, type_gesture* gesture){
 		default:
 			break;
 	}
+}
+
+void
+Test::train(int algorithm) {
+	// Load samples
+  init();
+	// Create K-means
+	KMeans kmeans;
 }

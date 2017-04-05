@@ -30,6 +30,7 @@ include_directories ("${PROJECT_SOURCE_DIR}")
 include_directories ("${PROJECT_SOURCE_DIR}/geometry")
 include_directories ("${PROJECT_SOURCE_DIR}/logger")
 include_directories ("${PROJECT_SOURCE_DIR}/util")
+include_directories ("${PROJECT_SOURCE_DIR}/hmm")
 include_directories ("${PROJECT_SOURCE_DIR}/test")
 
 # Inclui todas libraries nas pastas do projeto
@@ -37,6 +38,7 @@ file(GLOB SOURCES
 	"../Commons/geometry/*.cpp"
 	"../Commons/logger/*.cpp"
 	"../Commons/util/*.cpp"
+	"../Commons/hmm/*.cpp"
 	"test/*.cpp"
 	"util/*.cpp"
 	"*.cpp")

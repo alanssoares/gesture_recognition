@@ -14,6 +14,9 @@
 #include "Str2IdMap.h"
 #include "Tables.h"
 
+class HmmNode;
+class Hmm;
+
 /** A transition between two Hmm nodes. */
 struct Transition {
   unsigned long _obs;

@@ -15,18 +15,14 @@
 
 #include "../commons.hpp"
 
-class Cluster {
+// Definitions of the classes
+class Cluster;
+class KMeans;
 
-public:
-
-  Cluster() {};
-  ~Cluster() {};
-
-  void assignPoints(std::vector<XnPoint3D> points);
-
-  std::vector<XnPoint3D> mCollection;
-};
-
+/**
+* Implementation of the K-Means algorithm
+* Author - Alan Soares
+*/
 class KMeans {
 
 public:
@@ -34,14 +30,52 @@ public:
   KMeans() {};
   ~KMeans() {};
 
-  std::vector<Cluster> cluster(std::vector<type_gesture> gestures, int K);
+  /**
+  * Cluster the points
+  * @param points
+  * @param K number of clusters
+  */
+  std::vector<Cluster> cluster(std::vector<XnPoint3D> points, int K);
 
+  /**
+  * Init a set of K clusters
+  * @param K
+  */
   std::vector<Cluster> createClusters(int K);
 
+  /**
+  * Calculates the cluster centroids
+  * @param clusters
+  */
   std::vector<XnPoint3D> calculateCentroids(std::vector<Cluster> clusters);
 
-  size_t findNearestCluster(std::vector<XnPoint3D> centroids, XnPoint3D point);
+  /**
+  * Find the nearest cluster according with the centroid and the point
+  * @param centroids
+  * @param point
+  */
+  int findNearestCluster(std::vector<XnPoint3D> centroids, XnPoint3D point);
 
+};
+
+/**
+* Implementation of the Cluster used in K-Means
+* @author Alan Soares
+*/
+class Cluster {
+
+public:
+
+  Cluster() {};
+  ~Cluster() {};
+
+  /**
+  * Assign a collection of points to collection
+  * @param points
+  */
+  void addCollection(std::vector<XnPoint3D> points);
+
+  std::vector<XnPoint3D> mCollection;
 };
 
 #endif /* defined(__KMeans__) */

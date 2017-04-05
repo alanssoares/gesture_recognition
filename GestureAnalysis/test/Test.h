@@ -54,7 +54,8 @@ public:
 	void process5(type_gesture* gesture);
 	//Create the specific result file, apply procees and execute all tests
 	void experiment(int env, std::string nameFile);
-
+	//Train the classifier according with the algorithm
+	void train(int algorithm);
 public:
 	std::vector<type_gesture> m_MedianGestures;
 	std::vector<type_gesture> m_GesturesTemplate;

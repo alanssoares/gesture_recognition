@@ -15,16 +15,13 @@
 #include "KMeans.h"
 
 std::vector<Cluster>
-KMeans::cluster(std::vector<type_gesture> gestures, int K){
+KMeans::cluster(std::vector<XnPoint3D> points, int K){
 
   // Init clusters according with the number of K
   std::vector<Cluster> clusters = createClusters(K);
 
   // Assigns all the points of the trajectories to one of the k clusters
-  for (size_t i = 0; i < gestures.size(); i++) {
-    clusters[0].assignPoints(gestures[i].handOne.positions);
-    clusters[0].assignPoints(gestures[i].handTwo.positions);
-  }
+  clusters[0].addCollection(points);
 
   // Calculates the centroid of all the points in the cluster
   std::vector<XnPoint3D> centroids = calculateCentroids(clusters);
@@ -45,7 +42,6 @@ KMeans::cluster(std::vector<type_gesture> gestures, int K){
       }
       // Recalculate all centroids
       centroids = calculateCentroids(clusters);
-      std::cout << "C " << i << " N = " << clusters[i].mCollection.size() << '\n';
     }
   }
 
@@ -55,7 +51,7 @@ KMeans::cluster(std::vector<type_gesture> gestures, int K){
 std::vector<Cluster>
 KMeans::createClusters(int K){
   std::vector<Cluster> clusters;
-  for (size_t i = 0; i < K; i++) {
+  for (int i = 0; i < K; i++) {
     Cluster randCluster;
     clusters.push_back(randCluster);
   }
@@ -65,17 +61,17 @@ KMeans::createClusters(int K){
 std::vector<XnPoint3D>
 KMeans::calculateCentroids(std::vector<Cluster> clusters){
   std::vector<XnPoint3D> centroids;
-  for (size_t i = 0; i < clusters.size(); i++) {
+  for (int i = 0; i < clusters.size(); i++) {
       centroids.push_back(MathUtil::calcCentroid(clusters[i].mCollection));
   }
   return centroids;
 }
 
-size_t
+int
 KMeans::findNearestCluster(std::vector<XnPoint3D> centroids, XnPoint3D point){
   double min = 999999999, dist = 0.0;
-  size_t k = -1;
-  for (size_t i = 0; i < centroids.size(); i++) {
+  int k = -1;
+  for (int i = 0; i < centroids.size(); i++) {
     dist = MathUtil::getArcLength(point, centroids[i]);
     if(dist < min){
       dist = min;
@@ -86,8 +82,6 @@ KMeans::findNearestCluster(std::vector<XnPoint3D> centroids, XnPoint3D point){
 }
 
 void
-Cluster::assignPoints(std::vector<XnPoint3D> points) {
-  for (size_t i = 0; i < points.size(); i++) {
-    mCollection.push_back(points[i]);
-  }
+Cluster::addCollection(std::vector<XnPoint3D> points) {
+  mCollection.insert(mCollection.end(), points.begin(), points.end());
 }
