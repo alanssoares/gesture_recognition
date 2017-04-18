@@ -3,6 +3,7 @@
 
 #include "../../Commons/commons.hpp"
 #include "../util/Util.h"
+#include "../../Commons/classify/CKmeans.h"
 
 class Test {
 

@@ -27,7 +27,7 @@ Test::loadAll(){
 	m_AllGestures.reserve(futil.mGesturesOneHand.size() + futil.mGesturesTwoHands.size());
 	m_AllGestures.insert( m_AllGestures.end(), futil.mGesturesOneHand.begin(), futil.mGesturesOneHand.end() );
 	m_AllGestures.insert( m_AllGestures.end(), futil.mGesturesTwoHands.begin(), futil.mGesturesTwoHands.end() );
-	std::sort(m_AllGestures.begin(), m_AllGestures.end(), Util::sortByName);
+	std::sort(m_AllGestures.begin(), m_AllGestures.end(), MathUtil::sortByName);
 }
 
 void
@@ -37,7 +37,7 @@ Test::loadMedian(){
 	m_MedianGestures.reserve(futil.mGesturesOneHand.size() + futil.mGesturesTwoHands.size());
 	m_MedianGestures.insert( m_MedianGestures.end(), futil.mGesturesOneHand.begin(), futil.mGesturesOneHand.end() );
 	m_MedianGestures.insert( m_MedianGestures.end(), futil.mGesturesTwoHands.begin(), futil.mGesturesTwoHands.end() );
-	std::sort(m_MedianGestures.begin(), m_MedianGestures.end(), Util::sortByName);
+	std::sort(m_MedianGestures.begin(), m_MedianGestures.end(), MathUtil::sortByName);
 }
 
 void
@@ -90,8 +90,8 @@ Test::splitDataset(){
 			m_GesturesTemplate.push_back(m_AllGestures[i++]);
 		}
 	}
-	std::sort(m_GesturesTest.begin(), m_GesturesTest.end(), Util::sortByName);
-	std::sort(m_GesturesTemplate.begin(), m_GesturesTemplate.end(), Util::sortByName);
+	std::sort(m_GesturesTest.begin(), m_GesturesTest.end(), MathUtil::sortByName);
+	std::sort(m_GesturesTemplate.begin(), m_GesturesTemplate.end(), MathUtil::sortByName);
 	//Verifica e preenche o vetor com os gestos médios
 	if(m_isMedianTest){
 		addMedianTemplates();
@@ -279,6 +279,14 @@ void
 Test::train(int algorithm) {
 	// Load samples
   init();
+	// Split train and template
+	splitDataset();
 	// Create K-means
-	KMeans kmeans;
+	CKmeans kmeans;
+	kmeans.createClusters(m_GesturesTemplate);
+	// Test all
+	for (size_t i = 0; i < m_GesturesTest.size(); i++) {
+		kmeans.createClusters(m_GesturesTemplate);
+		kmeans.classify(m_GesturesTest[i]);
+	}
 }

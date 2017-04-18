@@ -9,8 +9,6 @@ public:
 	Util();
 	~Util();
 
-	static bool sortByName(const type_gesture &g1, const type_gesture &g2) { return g1.name < g2.name; }
-
 	//Print all informations of the gesture
 	void printGesture(const type_gesture gesture);
 	//Get the mean number of points of an set of gestures of the same type

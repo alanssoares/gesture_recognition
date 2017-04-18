@@ -1,12 +1,12 @@
 //
-//  CKMeans.h
+//  CKmeans.h
 //
 //  Created by Alan Santos on 02/04/17.
 //  Copyright (c) 2017 Alan Santos. All rights reserved.
 //
 
-#ifndef __CKMeans__
-#define __CKMeans__
+#ifndef __CKmeans__
+#define __CKmeans__
 
 #include <stdio.h>
 #include <iostream>
@@ -15,12 +15,12 @@
 
 #include "../commons.hpp"
 
-class Cluster {
+class ClusterCKmeans {
 
 public:
 
-  Cluster() {};
-  ~Cluster() {};
+  ClusterCKmeans() {};
+  ~ClusterCKmeans() {};
 
   /**
   * Assign gesture to cluster collection
@@ -32,35 +32,54 @@ public:
   type_gesture mBaseCluster;
 };
 
-class CKMeans {
+/*
+ - Busca nos n clusters qual possui a melhor possibilidade de classificação
+ - Para o cluster encontrado, efetua a busca do gesto até que ele seja aceito ou rejeitado pelo cluster de acordo com a probabilidade
+ - Caso seja rejeitado, o cluster é descartado e um novo é buscado
+ - Continua o loop com n - 1 clusters até que o gesto seja classificado ou rejeitado pela classificação (não encontrou nenhum)
+*/
+class CKmeans {
 
 public:
 
-  CKMeans() {};
-  ~CKMeans() {};
+  CKmeans() { m_RecThreshold = 0.5; };
+  ~CKmeans() {};
 
   /**
-  * Execute K-Means using a set of gestures
-  * @param gestures to be clustered
-  * @param medians with initial centroids
+  * Classify gesture using an adaptative K-Means
+  * @param gesture to be classified
+  * @return type_gesture that best match
   */
-  std::vector<Cluster> cluster(std::vector<type_gesture> gestures, std::vector<type_gesture> medians);
+  type_gesture classify(type_gesture gesture);
 
   /**
-  * Init a set of K Clusters with median gestures
+  * Init a set of K Clusters according with gestures class
   * @param gestures
   * @return std::vector<Cluster> with K clusters
   */
-  std::vector<Cluster> createClusters(std::vector<type_gesture> gestures);
+  void createClusters(std::vector<type_gesture> gestures);
 
   /**
-  * Fin the nearest cluster according with the point
-  * @param clusters
+  * Find nearest cluster according with the gesture
   * @param gesture
+  * @param totalParticle
   * @return size_t
   */
-  size_t findNearestCluster(std::vector<Cluster> clusters, type_gesture gesture);
+  size_t findNearestCluster(type_gesture gesture, size_t totalParticle);
+
+  /**
+  * Check the distance matching between gA and gB using DTW
+  * @param gA
+  * @param gB
+  * @return bool
+  */
+  bool isCloseCluster(type_gesture gA, type_gesture gB);
+
+public:
+
+  std::vector<ClusterCKmeans> mClusters;
+  double m_RecThreshold;
 
 };
 
-#endif /* defined(__CKMeans__) */
+#endif /* defined(__CKmeans__) */
