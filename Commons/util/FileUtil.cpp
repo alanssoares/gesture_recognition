@@ -333,3 +333,25 @@ FileUtil::createFile(std::string nameFile){
     std::ofstream fileCreate(nameFile.c_str());
     fileCreate.close();
 }
+
+void
+FileUtil::saveFeatureGestures(std::vector<type_gesture> gestures, std::string nameFile) {
+  std::fstream fileOut;
+  type_gesture sample;
+  XnPoint3D pl, pr;
+  fileOut.open(nameFile.c_str(), ios::out | ios::ate);
+  size_t n = gestures.size(), nPos;
+  // std::cout << "NSº = " << n << std::endl;
+  for (size_t i = 0; i < n; i++) {
+    sample = gestures[i];
+    nPos = sample.handOne.positions.size();
+    // std::cout << "NPº = " << nPos << std::endl;
+    for (size_t j = 0; j < nPos; j++) {
+      pl = sample.handOne.positions[j];
+      pr = sample.handTwo.positions[j];
+      fileOut << pl.X << " " << pl.Y << " " << pl.Z << " " << pr.X << " " << pr.Y << " " << pr.Z << " ";
+    }
+    fileOut << std::endl;
+    // std::cout << "-------" << std::endl;
+  }
+}

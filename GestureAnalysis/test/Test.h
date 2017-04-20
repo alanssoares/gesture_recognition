@@ -57,6 +57,8 @@ public:
 	void experiment(int env, std::string nameFile);
 	//Train the classifier according with the algorithm
 	void train(int algorithm);
+	//Save gestures as feature format
+	void saveFeatureFormat();
 public:
 	std::vector<type_gesture> m_MedianGestures;
 	std::vector<type_gesture> m_GesturesTemplate;

@@ -290,3 +290,17 @@ Test::train(int algorithm) {
 		kmeans.classify(m_GesturesTest[i]);
 	}
 }
+
+void
+Test::saveFeatureFormat() {
+	CKmeans kmeans;
+	FileUtil& fileUtil = FileUtil::getInstance();
+	// Load samples
+  init();
+	// Create K-means
+	kmeans.createClusters(m_AllGestures);
+	// Save files
+	for (size_t i = 0; i < kmeans.mClusters.size(); i++) {
+		fileUtil.saveFeatureGestures(kmeans.mClusters[i].mCollection, "feature_" + kmeans.mClusters[i].mCollection[0].name + ".txt");
+	}
+}

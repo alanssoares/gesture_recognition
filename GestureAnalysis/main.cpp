@@ -359,6 +359,11 @@ int main(int argc, char* argv[])
     return 0;
   }
 
+  if(pcl::console::find_argument (argc, argv, "-features") >= 0){
+    g_Test.saveFeatureFormat();
+    return 0;
+  }
+
   boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer = viewCurvesVis();
   while (!viewer->wasStopped ()){
     viewer->spinOnce (100);
