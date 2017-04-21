@@ -102,10 +102,18 @@ public:
     void saveTrack();
 
     /**
-     Save file with gesture in a new format
+     * Save file with gesture in a new format
+     * @param gestures
+     * @param nameFile
     */
     void saveFeatureGestures(std::vector<type_gesture> gestures, std::string nameFile);
 
+    /**
+    * Save gestures as format used in https://github.com/nickgillian/grt/
+    * @param gestures
+    * @param nameFile
+    */
+    void saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string nameFile);
     /*
      Create a new file and return the name of the file
      @return std::string

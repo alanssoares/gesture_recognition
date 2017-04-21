@@ -301,6 +301,9 @@ Test::saveFeatureFormat() {
 	kmeans.createClusters(m_AllGestures);
 	// Save files
 	for (size_t i = 0; i < kmeans.mClusters.size(); i++) {
-		fileUtil.saveFeatureGestures(kmeans.mClusters[i].mCollection, "feature_" + kmeans.mClusters[i].mCollection[0].name + ".txt");
+		std::cout << "G " << kmeans.mClusters[i].mCollection[0].name << " N " << kmeans.mClusters[i].mCollection.size() << std::endl;
+		// fileUtil.saveFeatureGestures(kmeans.mClusters[i].mCollection, "feature_" + kmeans.mClusters[i].mCollection[0].name + ".txt");
 	}
+	// Save file with features grt nickgillian
+	// fileUtil.saveFeauresToToolkit(m_AllGestures, "grt_ufbagre_dataset.txt");
 }
