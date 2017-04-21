@@ -394,7 +394,7 @@ FileUtil::saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string n
     }
     for (size_t j = 0; j < sample.handTwo.positions.size(); j++) {
       pr = sample.handTwo.positions[j];
-      fileOut << pl.X << " " << pl.Y << " " << pl.Z << " " << pr.X << " " << pr.Y << " " << pr.Z << " ";
+      fileOut << pr.X << " " << pr.Y << " " << pr.Z << std::endl;
     }
   }
 }
