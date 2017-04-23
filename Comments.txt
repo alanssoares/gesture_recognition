@@ -11,6 +11,10 @@ Observações:
   <li>Verificar o motivo dos gestos conterem valores nan no arquivo de samples</li>
 </ul>
 
+Compilar código grt https://github.com/nickgillian/grt
+g++ -std=c++11 -c Example.cpp -I/usr/local/include
+g++ Example.o -o main -I/usr/local/include -L/usr/local/lib -lgrt
+
 <b>Anotações sobre Experimentação:</b>
 
 1 - Templates
