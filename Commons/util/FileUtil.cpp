@@ -386,7 +386,7 @@ FileUtil::saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string n
     sample = gestures[i];
     fileOut << "************TIME_SERIES************" << std::endl;
     fileOut << "ClassID: " << sample.name << std::endl;
-    fileOut << "TimeSeriesLength: " << sample.handOne.positions.size() << std::endl;
+    fileOut << "TimeSeriesLength: " << sample.handOne.positions.size() * 2 << std::endl;
     fileOut << "TimeSeriesData: " << std::endl;
     for (size_t j = 0; j < sample.handOne.positions.size(); j++) {
       pl = sample.handOne.positions[j];
