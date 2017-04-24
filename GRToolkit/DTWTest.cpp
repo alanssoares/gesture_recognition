@@ -62,9 +62,8 @@ int main (int argc, const char * argv[])
 		return EXIT_FAILURE;
 	}
 
-	std::cout << "Load file" << '\n';
-	//Use 20% of the training dataset to create a test dataset
-	TimeSeriesClassificationData testData = trainingData.split( 80 );
+	//Use 30% of the training dataset to create a test dataset
+	TimeSeriesClassificationData testData = trainingData.split( 70 );
 
 	//Trim the training data for any sections of non-movement at the start or end of the recordings
 	dtw.enableTrimTrainingData(true,0.1,90);

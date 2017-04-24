@@ -82,15 +82,15 @@ int main(int argc, const char * argv[])
     dTree.setMinNumSamplesPerNode( 10 );
 
     //Load some training data to train the classifier
-    TimeSeriesClassificationData trainingData;
+    ClassificationData trainingData;
 
     if( !trainingData.load( filename ) ){
         cout << "Failed to load training data: " << filename << endl;
         return EXIT_FAILURE;
     }
 
-    //Use 20% of the training dataset to create a test dataset
-    TimeSeriesClassificationData testData = trainingData.split( 80 );
+    //Use 30% of the training dataset to create a test dataset
+    ClassificationData testData = trainingData.split( 70 );
 
     //Train the classifier
     if( !dTree.train( trainingData ) ){
@@ -118,10 +118,10 @@ int main(int argc, const char * argv[])
     for(UINT i=0; i<testData.getNumSamples(); i++){
         //Get the i'th test sample
         UINT classLabel = testData[i].getClassLabel();
-        MatrixDouble timeseries = testData[i].getData();
+        VectorFloat inputVector = testData[i].getSample();
 
         //Perform a prediction using the classifier
-        bool predictSuccess = dTree.predict( timeseries );
+        bool predictSuccess = dTree.predict( inputVector );
 
         if( !predictSuccess ){
             cout << "Failed to perform prediction for test sampel: " << i <<"\n";

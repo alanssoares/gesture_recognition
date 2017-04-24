@@ -357,7 +357,7 @@ FileUtil::saveFeatureGestures(std::vector<type_gesture> gestures, std::string na
 }
 
 void
-FileUtil::saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string nameFile) {
+FileUtil::saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string nameFile, bool series) {
   std::fstream fileOut;
   type_gesture sample;
   XnPoint3D pl, pr;
@@ -365,36 +365,58 @@ FileUtil::saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string n
 
   fileOut.open(nameFile.c_str(), ios::out | ios::ate);
 
-  fileOut << "GRT_LABELLED_TIME_SERIES_CLASSIFICATION_DATA_FILE_V1.0" << std::endl;
+  if(series) {
+    fileOut << "GRT_LABELLED_TIME_SERIES_CLASSIFICATION_DATA_FILE_V1.0" << std::endl;
+  } else {
+    fileOut << "GRT_LABELLED_CLASSIFICATION_DATA_FILE_V1.0" << std::endl;
+  }
+
   fileOut << "DatasetName: UFBAGRDataset" << std::endl;
-  fileOut << "InfoText: This dataset contains 7 gestures (g1,g2,g3,g4,g5,g6,g7), totalizing 1099 executions." << std::endl;
+  fileOut << "InfoText: This dataset contains 7 gestures, totalizing 1099 executions." << std::endl;
   fileOut << "NumDimensions: 3" << std::endl;
   fileOut << "TotalNumTrainingExamples: 700" << std::endl;
   fileOut << "NumberOfClasses: 7" << std::endl;
   fileOut << "ClassIDsAndCounters:" << std::endl;
-  fileOut << "g1 " << std::endl;
-  fileOut << "g2 " << std::endl;
-  fileOut << "g3 " << std::endl;
-  fileOut << "g4 " << std::endl;
-  fileOut << "g5 " << std::endl;
-  fileOut << "g6 " << std::endl;
-  fileOut << "g7 " << std::endl;
+  fileOut << "1 " << std::endl;
+  fileOut << "2 " << std::endl;
+  fileOut << "3 " << std::endl;
+  fileOut << "4 " << std::endl;
+  fileOut << "5 " << std::endl;
+  fileOut << "6 " << std::endl;
+  fileOut << "7 " << std::endl;
   fileOut << "UseExternalRanges: 0 " << std::endl;
-  fileOut << "LabelledTimeSeriesTrainingData: " << std::endl;
 
-  for (size_t i = 0; i < n; i++) {
-    sample = gestures[i];
-    fileOut << "************TIME_SERIES************" << std::endl;
-    fileOut << "ClassID: " << sample.name << std::endl;
-    fileOut << "TimeSeriesLength: " << sample.handOne.positions.size() * 2 << std::endl;
-    fileOut << "TimeSeriesData: " << std::endl;
-    for (size_t j = 0; j < sample.handOne.positions.size(); j++) {
-      pl = sample.handOne.positions[j];
-      fileOut << pl.X << " " << pl.Y << " " << pl.Z << std::endl;
+  if(series) {
+    fileOut << "LabelledTimeSeriesTrainingData: " << std::endl;
+    for (size_t i = 0; i < n; i++) {
+      sample = gestures[i];
+      if(series) {
+        fileOut << "************TIME_SERIES************" << std::endl;
+        fileOut << "ClassID: " << sample.name[1] << std::endl;
+        fileOut << "TimeSeriesLength: " << sample.handOne.positions.size() * 2 << std::endl;
+        fileOut << "TimeSeriesData: " << std::endl;
+      }
+      for (size_t j = 0; j < sample.handOne.positions.size(); j++) {
+        pl = sample.handOne.positions[j];
+        fileOut << pl.X << " " << pl.Y << " " << pl.Z << std::endl;
+      }
+      for (size_t j = 0; j < sample.handTwo.positions.size(); j++) {
+        pr = sample.handTwo.positions[j];
+        fileOut << pr.X << " " << pr.Y << " " << pr.Z << std::endl;
+      }
     }
-    for (size_t j = 0; j < sample.handTwo.positions.size(); j++) {
-      pr = sample.handTwo.positions[j];
-      fileOut << pr.X << " " << pr.Y << " " << pr.Z << std::endl;
+  } else {
+    fileOut << "LabelledTrainingData: " << std::endl;
+    for (size_t i = 0; i < n; i++) {
+      sample = gestures[i];
+      for (size_t j = 0; j < sample.handOne.positions.size(); j++) {
+        pl = sample.handOne.positions[j];
+        fileOut << sample.name[1] << " " << pl.X << " " << pl.Y << " " << pl.Z << std::endl;
+      }
+      for (size_t j = 0; j < sample.handTwo.positions.size(); j++) {
+        pr = sample.handTwo.positions[j];
+        fileOut << sample.name[1] << " "<< pr.X << " " << pr.Y << " " << pr.Z << std::endl;
+      }
     }
   }
 }

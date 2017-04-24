@@ -112,8 +112,9 @@ public:
     * Save gestures as format used in https://github.com/nickgillian/grt/
     * @param gestures
     * @param nameFile
+    * @param series
     */
-    void saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string nameFile);
+    void saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string nameFile, bool series);
     /*
      Create a new file and return the name of the file
      @return std::string
