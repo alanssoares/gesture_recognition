@@ -115,6 +115,14 @@ public:
     * @param series
     */
     void saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string nameFile, bool series);
+
+    /**
+    * Save gestures as format used in https://github.com/nickgillian/grt/ with centroids
+    * @param gestures
+    * @param nameFile
+    */
+    void saveFeauresAsCentroidToolkit(std::vector<type_gesture> gestures, std::string nameFile);
+
     /*
      Create a new file and return the name of the file
      @return std::string

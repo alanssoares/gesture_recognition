@@ -305,5 +305,6 @@ Test::saveFeatureFormat() {
 		// fileUtil.saveFeatureGestures(kmeans.mClusters[i].mCollection, "feature_" + kmeans.mClusters[i].mCollection[0].name + ".txt");
 	}
 	// Save file with features grt nickgillian
-	fileUtil.saveFeauresToToolkit(m_AllGestures, "grt_ufbagre_dataset.grt", false);
+	// fileUtil.saveFeauresToToolkit(m_AllGestures, "grt_ufbagre_dataset.grt", false);
+	fileUtil.saveFeauresAsCentroidToolkit(m_AllGestures, "grt_ufbagre_dataset_centroid.grt");
 }
