@@ -1,0 +1,384 @@
+[TRAINING DecisionTree] numTrainingIterationsToConverge 1 useValidationSet: 0
+[TRAINING DecisionTree] Depth: 0 FeatureIndex: 0 MinError: 0.610279 Class Probabilities: 0.236735 0.0897959 0.334694 0.191837 0.146939 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 1 NumSamples: 83 Class Probabilities: 1 0 0 0 0 0 0 
+[TRAINING DecisionTree] Depth: 1 FeatureIndex: 2 MinError: 0.56408 Class Probabilities: 0.0810811 0.108108 0.402948 0.230958 0.176904 0 0 
+[TRAINING DecisionTree] Depth: 2 FeatureIndex: 2 MinError: 0.404862 Class Probabilities: 0.11828 0.157706 0.587814 0.136201 0 0 0 
+[TRAINING DecisionTree] Depth: 3 FeatureIndex: 0 MinError: 0.192275 Class Probabilities: 0.0591716 0 0.887574 0.0532544 0 0 0 
+[TRAINING DecisionTree] Depth: 4 FeatureIndex: 1 MinError: 0 Class Probabilities: 0.208333 0 0.791667 0 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 5 NumSamples: 38 Class Probabilities: 0 0 1 0 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 5 NumSamples: 10 Class Probabilities: 1 0 0 0 0 0 0 
+[TRAINING DecisionTree] Depth: 4 FeatureIndex: 2 MinError: 0.116106 Class Probabilities: 0 0 0.92562 0.0743802 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 5 NumSamples: 80 Class Probabilities: 0 0 1 0 0 0 0 
+[TRAINING DecisionTree] Depth: 5 FeatureIndex: 1 MinError: 0.219512 Class Probabilities: 0 0 0.780488 0.219512 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 6 NumSamples: 23 Class Probabilities: 0 0 1 0 0 0 0 
+[TRAINING DecisionTree] Depth: 6 FeatureIndex: 2 MinError: 0.181818 Class Probabilities: 0 0 0.5 0.5 0 0 0 
+[TRAINING DecisionTree] Depth: 7 FeatureIndex: 2 MinError: 0.121212 Class Probabilities: 0 0 0.818182 0.181818 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 8 NumSamples: 8 Class Probabilities: 0 0 1 0 0 0 0 
+[TRAINING DecisionTree] Reached leaf node, hit min-samples-per-node limit. Depth: 8 NumSamples: 3 Class Probabilities: 0 0 0.333333 0.666667 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 7 NumSamples: 7 Class Probabilities: 0 0 0 1 0 0 0 
+[TRAINING DecisionTree] Depth: 3 FeatureIndex: 1 MinError: 0.536299 Class Probabilities: 0.209091 0.4 0.127273 0.263636 0 0 0 
+[TRAINING DecisionTree] Depth: 4 FeatureIndex: 0 MinError: 0.178723 Class Probabilities: 0 0.702128 0.297872 0 0 0 0 
+[TRAINING DecisionTree] Depth: 5 FeatureIndex: 2 MinError: 0.272727 Class Probabilities: 0 0.3 0.7 0 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 6 NumSamples: 9 Class Probabilities: 0 0 1 0 0 0 0 
+[TRAINING DecisionTree] Depth: 6 FeatureIndex: 2 MinError: 0 Class Probabilities: 0 0.545455 0.454545 0 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 7 NumSamples: 5 Class Probabilities: 0 0 1 0 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 7 NumSamples: 6 Class Probabilities: 0 1 0 0 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 5 NumSamples: 27 Class Probabilities: 0 1 0 0 0 0 0 
+[TRAINING DecisionTree] Depth: 4 FeatureIndex: 1 MinError: 0.236228 Class Probabilities: 0.365079 0.174603 0 0.460317 0 0 0 
+[TRAINING DecisionTree] Depth: 5 FeatureIndex: 1 MinError: 0.156109 Class Probabilities: 0.676471 0.323529 0 0 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 6 NumSamples: 8 Class Probabilities: 0 1 0 0 0 0 0 
+[TRAINING DecisionTree] Depth: 6 FeatureIndex: 1 MinError: 0.0923077 Class Probabilities: 0.884615 0.115385 0 0 0 0 0 
+[TRAINING DecisionTree] Reached leaf node, hit min-samples-per-node limit. Depth: 7 NumSamples: 5 Class Probabilities: 0.4 0.6 0 0 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 7 NumSamples: 21 Class Probabilities: 1 0 0 0 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 5 NumSamples: 29 Class Probabilities: 0 0 0 1 0 0 0 
+[TRAINING DecisionTree] Depth: 2 FeatureIndex: 2 MinError: 0.149096 Class Probabilities: 0 0 0 0.4375 0.5625 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 3 NumSamples: 45 Class Probabilities: 0 0 0 1 0 0 0 
+[TRAINING DecisionTree] Depth: 3 FeatureIndex: 2 MinError: 0.16452 Class Probabilities: 0 0 0 0.13253 0.86747 0 0 
+[TRAINING DecisionTree] Depth: 4 FeatureIndex: 2 MinError: 0.269865 Class Probabilities: 0 0 0 0.37931 0.62069 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 5 NumSamples: 6 Class Probabilities: 0 0 0 1 0 0 0 
+[TRAINING DecisionTree] Depth: 5 FeatureIndex: 1 MinError: 0.267559 Class Probabilities: 0 0 0 0.217391 0.782609 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 6 NumSamples: 10 Class Probabilities: 0 0 0 0 1 0 0 
+[TRAINING DecisionTree] Depth: 6 FeatureIndex: 0 MinError: 0.21978 Class Probabilities: 0 0 0 0.384615 0.615385 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 7 NumSamples: 6 Class Probabilities: 0 0 0 0 1 0 0 
+[TRAINING DecisionTree] Reached leaf node, hit min-samples-per-node limit. Depth: 7 NumSamples: 7 Class Probabilities: 0 0 0 0.714286 0.285714 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 4 NumSamples: 54 Class Probabilities: 0 0 0 0 1 0 0 
+[TRAINING DecisionTree] Training set accuracy: 98.9796
+depth: 0 nodeSize: 490 featureIndex: 0 threshold -0.508229 isLeafNode: 0
+ClassProbabilities: 0.236735	0.0897959	0.334694	0.191837	0.146939	0	0	
+LeftChild: 
+	depth: 1 nodeSize: 83 featureIndex: 0 threshold 0 isLeafNode: 1
+	ClassProbabilities: 1	0	0	0	0	0	0	
+RightChild: 
+	depth: 1 nodeSize: 407 featureIndex: 2 threshold -0.533452 isLeafNode: 0
+	ClassProbabilities: 0.0810811	0.108108	0.402948	0.230958	0.176904	0	0	
+	LeftChild: 
+		depth: 2 nodeSize: 279 featureIndex: 2 threshold -0.540658 isLeafNode: 0
+		ClassProbabilities: 0.11828	0.157706	0.587814	0.136201	0	0	0	
+		LeftChild: 
+			depth: 3 nodeSize: 169 featureIndex: 0 threshold -0.49669 isLeafNode: 0
+			ClassProbabilities: 0.0591716	0	0.887574	0.0532544	0	0	0	
+			LeftChild: 
+				depth: 4 nodeSize: 48 featureIndex: 1 threshold -0.498001 isLeafNode: 0
+				ClassProbabilities: 0.208333	0	0.791667	0	0	0	0	
+				LeftChild: 
+					depth: 5 nodeSize: 38 featureIndex: 0 threshold 0 isLeafNode: 1
+					ClassProbabilities: 0	0	1	0	0	0	0	
+				RightChild: 
+					depth: 5 nodeSize: 10 featureIndex: 0 threshold 0 isLeafNode: 1
+					ClassProbabilities: 1	0	0	0	0	0	0	
+			RightChild: 
+				depth: 4 nodeSize: 121 featureIndex: 2 threshold -0.543882 isLeafNode: 0
+				ClassProbabilities: 0	0	0.92562	0.0743802	0	0	0	
+				LeftChild: 
+					depth: 5 nodeSize: 80 featureIndex: 0 threshold 0 isLeafNode: 1
+					ClassProbabilities: 0	0	1	0	0	0	0	
+				RightChild: 
+					depth: 5 nodeSize: 41 featureIndex: 1 threshold -0.485263 isLeafNode: 0
+					ClassProbabilities: 0	0	0.780488	0.219512	0	0	0	
+					LeftChild: 
+						depth: 6 nodeSize: 23 featureIndex: 0 threshold 0 isLeafNode: 1
+						ClassProbabilities: 0	0	1	0	0	0	0	
+					RightChild: 
+						depth: 6 nodeSize: 18 featureIndex: 2 threshold -0.542597 isLeafNode: 0
+						ClassProbabilities: 0	0	0.5	0.5	0	0	0	
+						LeftChild: 
+							depth: 7 nodeSize: 11 featureIndex: 2 threshold -0.543269 isLeafNode: 0
+							ClassProbabilities: 0	0	0.818182	0.181818	0	0	0	
+							LeftChild: 
+								depth: 8 nodeSize: 8 featureIndex: 0 threshold 0 isLeafNode: 1
+								ClassProbabilities: 0	0	1	0	0	0	0	
+							RightChild: 
+								depth: 8 nodeSize: 3 featureIndex: 0 threshold 0 isLeafNode: 1
+								ClassProbabilities: 0	0	0.333333	0.666667	0	0	0	
+						RightChild: 
+							depth: 7 nodeSize: 7 featureIndex: 0 threshold 0 isLeafNode: 1
+							ClassProbabilities: 0	0	0	1	0	0	0	
+		RightChild: 
+			depth: 3 nodeSize: 110 featureIndex: 1 threshold -0.50251 isLeafNode: 0
+			ClassProbabilities: 0.209091	0.4	0.127273	0.263636	0	0	0	
+			LeftChild: 
+				depth: 4 nodeSize: 47 featureIndex: 0 threshold -0.497994 isLeafNode: 0
+				ClassProbabilities: 0	0.702128	0.297872	0	0	0	0	
+				LeftChild: 
+					depth: 5 nodeSize: 20 featureIndex: 2 threshold -0.538001 isLeafNode: 0
+					ClassProbabilities: 0	0.3	0.7	0	0	0	0	
+					LeftChild: 
+						depth: 6 nodeSize: 9 featureIndex: 0 threshold 0 isLeafNode: 1
+						ClassProbabilities: 0	0	1	0	0	0	0	
+					RightChild: 
+						depth: 6 nodeSize: 11 featureIndex: 2 threshold -0.536896 isLeafNode: 0
+						ClassProbabilities: 0	0.545455	0.454545	0	0	0	0	
+						LeftChild: 
+							depth: 7 nodeSize: 5 featureIndex: 0 threshold 0 isLeafNode: 1
+							ClassProbabilities: 0	0	1	0	0	0	0	
+						RightChild: 
+							depth: 7 nodeSize: 6 featureIndex: 0 threshold 0 isLeafNode: 1
+							ClassProbabilities: 0	1	0	0	0	0	0	
+				RightChild: 
+					depth: 5 nodeSize: 27 featureIndex: 0 threshold 0 isLeafNode: 1
+					ClassProbabilities: 0	1	0	0	0	0	0	
+			RightChild: 
+				depth: 4 nodeSize: 63 featureIndex: 1 threshold -0.486485 isLeafNode: 0
+				ClassProbabilities: 0.365079	0.174603	0	0.460317	0	0	0	
+				LeftChild: 
+					depth: 5 nodeSize: 34 featureIndex: 1 threshold -0.496366 isLeafNode: 0
+					ClassProbabilities: 0.676471	0.323529	0	0	0	0	0	
+					LeftChild: 
+						depth: 6 nodeSize: 8 featureIndex: 0 threshold 0 isLeafNode: 1
+						ClassProbabilities: 0	1	0	0	0	0	0	
+					RightChild: 
+						depth: 6 nodeSize: 26 featureIndex: 1 threshold -0.493586 isLeafNode: 0
+						ClassProbabilities: 0.884615	0.115385	0	0	0	0	0	
+						LeftChild: 
+							depth: 7 nodeSize: 5 featureIndex: 0 threshold 0 isLeafNode: 1
+							ClassProbabilities: 0.4	0.6	0	0	0	0	0	
+						RightChild: 
+							depth: 7 nodeSize: 21 featureIndex: 0 threshold 0 isLeafNode: 1
+							ClassProbabilities: 1	0	0	0	0	0	0	
+				RightChild: 
+					depth: 5 nodeSize: 29 featureIndex: 0 threshold 0 isLeafNode: 1
+					ClassProbabilities: 0	0	0	1	0	0	0	
+	RightChild: 
+		depth: 2 nodeSize: 128 featureIndex: 2 threshold -0.526523 isLeafNode: 0
+		ClassProbabilities: 0	0	0	0.4375	0.5625	0	0	
+		LeftChild: 
+			depth: 3 nodeSize: 45 featureIndex: 0 threshold 0 isLeafNode: 1
+			ClassProbabilities: 0	0	0	1	0	0	0	
+		RightChild: 
+			depth: 3 nodeSize: 83 featureIndex: 2 threshold -0.523735 isLeafNode: 0
+			ClassProbabilities: 0	0	0	0.13253	0.86747	0	0	
+			LeftChild: 
+				depth: 4 nodeSize: 29 featureIndex: 2 threshold -0.525512 isLeafNode: 0
+				ClassProbabilities: 0	0	0	0.37931	0.62069	0	0	
+				LeftChild: 
+					depth: 5 nodeSize: 6 featureIndex: 0 threshold 0 isLeafNode: 1
+					ClassProbabilities: 0	0	0	1	0	0	0	
+				RightChild: 
+					depth: 5 nodeSize: 23 featureIndex: 1 threshold -0.484029 isLeafNode: 0
+					ClassProbabilities: 0	0	0	0.217391	0.782609	0	0	
+					LeftChild: 
+						depth: 6 nodeSize: 10 featureIndex: 0 threshold 0 isLeafNode: 1
+						ClassProbabilities: 0	0	0	0	1	0	0	
+					RightChild: 
+						depth: 6 nodeSize: 13 featureIndex: 0 threshold -0.495779 isLeafNode: 0
+						ClassProbabilities: 0	0	0	0.384615	0.615385	0	0	
+						LeftChild: 
+							depth: 7 nodeSize: 6 featureIndex: 0 threshold 0 isLeafNode: 1
+							ClassProbabilities: 0	0	0	0	1	0	0	
+						RightChild: 
+							depth: 7 nodeSize: 7 featureIndex: 0 threshold 0 isLeafNode: 1
+							ClassProbabilities: 0	0	0	0.714286	0.285714	0	0	
+			RightChild: 
+				depth: 4 nodeSize: 54 featureIndex: 0 threshold 0 isLeafNode: 1
+				ClassProbabilities: 0	0	0	0	1	0	0	
+0 5 5 1 1
+1 5 5 1 1
+2 1 1 1 1
+3 1 1 1 1
+4 3 3 1 1
+5 1 1 1 1
+6 4 4 1 1
+7 3 3 1 1
+8 5 5 1 1
+9 1 1 1 1
+10 1 1 1 1
+11 3 3 1 1
+12 4 4 1 1
+13 4 4 1 1
+14 4 4 1 1
+15 1 1 1 1
+16 3 3 1 1
+17 3 3 1 1
+18 1 1 1 1
+19 1 1 1 1
+20 2 2 1 1
+21 5 5 1 1
+22 1 1 1 1
+23 5 5 1 1
+24 1 1 1 1
+25 1 1 1 1
+26 1 1 1 1
+27 1 1 1 1
+28 1 1 1 1
+29 3 3 1 1
+30 3 3 1 1
+31 1 1 1 1
+32 1 1 1 1
+33 5 5 1 1
+34 1 1 1 1
+35 1 1 1 1
+36 1 1 1 1
+37 3 3 1 1
+38 4 4 1 1
+39 3 3 1 1
+40 4 4 1 1
+41 3 3 1 1
+42 4 4 1 1
+43 1 1 1 1
+44 5 5 1 1
+45 2 2 1 1
+46 1 1 1 1
+47 3 3 1 1
+48 1 1 1 1
+49 5 5 1 1
+50 2 2 1 1
+51 5 5 1 1
+52 1 1 1 1
+53 3 3 1 1
+54 3 2 0.6 0
+55 5 5 1 1
+56 5 5 1 1
+57 1 1 1 1
+58 1 1 1 1
+59 1 1 1 1
+60 4 4 0.714286 1
+61 4 4 1 1
+62 4 4 1 1
+63 4 4 1 1
+64 3 3 1 1
+65 5 5 1 1
+66 1 1 1 1
+67 5 5 1 1
+68 3 3 1 1
+69 2 2 1 1
+70 3 3 1 1
+71 4 4 1 1
+72 3 3 1 1
+73 3 3 1 1
+74 4 4 1 1
+75 4 4 1 1
+76 3 3 1 1
+77 3 3 1 1
+78 1 1 1 1
+79 5 5 1 1
+80 5 5 1 1
+81 1 1 1 1
+82 4 4 1 1
+83 3 3 1 1
+84 4 4 1 1
+85 1 1 1 1
+86 1 1 1 1
+87 4 4 1 1
+88 3 3 1 1
+89 1 1 1 1
+90 5 5 1 1
+91 2 2 1 1
+92 4 4 1 1
+93 3 3 1 1
+94 4 4 1 1
+95 1 1 1 1
+96 3 3 1 1
+97 3 3 1 1
+98 5 5 1 1
+99 4 4 1 1
+100 3 3 1 1
+101 2 2 1 1
+102 3 3 1 1
+103 4 4 1 1
+104 1 1 1 1
+105 4 4 1 1
+106 3 3 1 1
+107 4 4 1 1
+108 1 1 1 1
+109 3 3 1 1
+110 2 2 0.6 1
+111 3 3 1 1
+112 1 1 1 1
+113 1 1 1 1
+114 2 2 1 1
+115 1 1 1 1
+116 4 4 1 1
+117 1 1 1 1
+118 1 1 1 1
+119 4 4 1 1
+120 2 1 1 0
+121 1 1 1 1
+122 5 5 1 1
+123 3 3 1 1
+124 1 1 1 1
+125 4 4 1 1
+126 4 4 1 1
+127 3 3 1 1
+128 3 3 1 1
+129 3 3 1 1
+130 3 3 1 1
+131 5 5 1 1
+132 3 3 1 1
+133 3 3 1 1
+134 4 4 1 1
+135 4 4 1 1
+136 3 3 1 1
+137 3 3 1 1
+138 1 1 1 1
+139 4 4 0.714286 1
+140 4 4 1 1
+141 1 1 1 1
+142 3 3 1 1
+143 5 5 1 1
+144 4 4 1 1
+145 1 1 1 1
+146 3 3 1 1
+147 2 2 1 1
+148 1 1 1 1
+149 5 5 1 1
+150 1 1 1 1
+151 2 2 1 1
+152 3 3 1 1
+153 1 1 1 1
+154 3 3 1 1
+155 3 3 1 1
+156 4 4 1 1
+157 5 5 1 1
+158 4 4 1 1
+159 2 2 1 1
+160 3 3 1 1
+161 1 1 1 1
+162 4 4 1 1
+163 3 3 1 1
+164 2 2 1 1
+165 5 5 1 1
+166 3 3 1 1
+167 1 1 1 1
+168 2 2 1 1
+169 3 3 1 1
+170 3 3 1 1
+171 1 1 1 1
+172 4 4 1 1
+173 3 3 1 1
+174 1 1 1 1
+175 2 2 1 1
+176 3 3 1 1
+177 5 5 1 1
+178 1 1 1 1
+179 4 4 1 1
+180 1 1 1 1
+181 2 2 1 1
+182 3 3 1 1
+183 4 4 1 1
+184 2 2 1 1
+185 1 1 1 1
+186 3 3 1 1
+187 1 1 1 1
+188 4 4 1 1
+189 4 4 1 1
+190 4 4 1 1
+191 1 1 1 1
+192 1 1 1 1
+193 2 2 1 1
+194 5 5 1 1
+195 1 1 1 1
+196 1 1 1 1
+197 5 5 1 1
+198 1 1 1 1
+199 5 5 1 1
+200 1 1 1 1
+201 1 1 1 1
+202 3 3 1 1
+203 2 2 1 1
+204 5 5 1 1
+205 3 3 1 1
+206 3 3 1 1
+207 1 1 1 1
+208 1 1 1 1
+209 1 1 1 1
+Test Accuracy: 99.0476%

@@ -55,11 +55,12 @@ using namespace std;
 int main(int argc, const char * argv[])
 {
     //Parse the data filename from the argument list
-    if( argc != 2 ){
+    if( argc < 2 ){
         cout << "Error: failed to parse data filename from command line. You should run this example with one argument pointing to the data filename!\n";
         return EXIT_FAILURE;
     }
     const string filename = argv[1];
+    const string typeDtree = argv[2];
 
     //Create a new DecisionTree instance
     DecisionTree dTree;
@@ -67,9 +68,10 @@ int main(int argc, const char * argv[])
     //Set the node that the DecisionTree will use - different nodes may result in different decision boundaries
     //and some nodes may provide better accuracy than others on specific classification tasks
     //The current node options are:
-    //- DecisionTreeClusterNode
-    //- DecisionTreeThresholdNode
-    dTree.setDecisionTreeNode( DecisionTreeClusterNode() );
+    //- DecisionTreeClusterNode - 1
+    //- DecisionTreeThresholdNode - 2
+    if (typeDtree.compare("1") == 0) dTree.setDecisionTreeNode( DecisionTreeClusterNode() );
+    else if(typeDtree.compare("2") == 0) dTree.setDecisionTreeNode( DecisionTreeThresholdNode() );
 
     //Set the number of steps that will be used to choose the best splitting values
     //More steps will give you a better model, but will take longer to train
@@ -115,6 +117,7 @@ int main(int argc, const char * argv[])
 
     //Test the accuracy of the model on the test data
     double accuracy = 0;
+    int isRecognized = 0;
     for(UINT i=0; i<testData.getNumSamples(); i++){
         //Get the i'th test sample
         UINT classLabel = testData[i].getClassLabel();
@@ -132,11 +135,17 @@ int main(int argc, const char * argv[])
         UINT predictedClassLabel = dTree.getPredictedClassLabel();
         VectorDouble classLikelihoods = dTree.getClassLikelihoods();
         VectorDouble classDistances = dTree.getClassDistances();
+        Float maximumLikelihood = dTree.getMaximumLikelihood();
 
         //Update the accuracy
-        if( classLabel == predictedClassLabel ) accuracy++;
+        if( classLabel == predictedClassLabel ) {
+            accuracy++;
+            isRecognized = 1;
+        } else {
+            isRecognized = 0;
+        }
 
-        cout << "TestSample: " << i <<  " ClassLabel: " << classLabel << " PredictedClassLabel: " << predictedClassLabel << endl;
+        cout << i <<  " " << classLabel << " " << predictedClassLabel << " " << maximumLikelihood << " " << isRecognized << endl;
     }
 
     cout << "Test Accuracy: " << accuracy/double(testData.getNumSamples())*100.0 << "%" << endl;
