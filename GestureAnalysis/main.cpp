@@ -360,7 +360,8 @@ int main(int argc, char* argv[])
   }
 
   if(pcl::console::find_argument (argc, argv, "-features") >= 0){
-    g_Test.saveFeatureFormat();
+    // g_Test.saveFeatureFormat();
+    g_Test.createDatasets();
     return 0;
   }
 

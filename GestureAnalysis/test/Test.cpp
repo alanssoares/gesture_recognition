@@ -24,6 +24,7 @@ void
 Test::loadAll(){
 	FileUtil& futil = FileUtil::getInstance();
 	futil.loadGestures(NAME_FILE_DATA_NORMALIZED);
+	m_AllGestures.clear();
 	m_AllGestures.reserve(futil.mGesturesOneHand.size() + futil.mGesturesTwoHands.size());
 	m_AllGestures.insert( m_AllGestures.end(), futil.mGesturesOneHand.begin(), futil.mGesturesOneHand.end() );
 	m_AllGestures.insert( m_AllGestures.end(), futil.mGesturesTwoHands.begin(), futil.mGesturesTwoHands.end() );
@@ -34,6 +35,7 @@ void
 Test::loadMedian(){
 	FileUtil& futil = FileUtil::getInstance();
 	futil.loadGestures(NAME_FILE_DATA_MEDIAN);
+	m_MedianGestures.clear();
 	m_MedianGestures.reserve(futil.mGesturesOneHand.size() + futil.mGesturesTwoHands.size());
 	m_MedianGestures.insert( m_MedianGestures.end(), futil.mGesturesOneHand.begin(), futil.mGesturesOneHand.end() );
 	m_MedianGestures.insert( m_MedianGestures.end(), futil.mGesturesTwoHands.begin(), futil.mGesturesTwoHands.end() );
@@ -296,7 +298,7 @@ Test::saveFeatureFormat() {
 	CKmeans kmeans;
 	FileUtil& fileUtil = FileUtil::getInstance();
 	// Load samples
-  init();
+  	init();
 	// Create K-means
 	kmeans.createClusters(m_AllGestures);
 	// Save files
@@ -305,6 +307,52 @@ Test::saveFeatureFormat() {
 		// fileUtil.saveFeatureGestures(kmeans.mClusters[i].mCollection, "feature_" + kmeans.mClusters[i].mCollection[0].name + ".txt");
 	}
 	// Save file with features grt nickgillian
-	// fileUtil.saveFeauresToToolkit(m_AllGestures, "grt_ufbagre_dataset.grt", false);
-	fileUtil.saveFeauresAsCentroidToolkit(m_AllGestures, "grt_ufbagre_dataset_centroid.grt");
+	fileUtil.saveFeauresToToolkit(m_AllGestures, "ufbagre_dataset.grt", false);
+}
+
+void
+Test::createDatasets() {
+	FileUtil& fileUtil = FileUtil::getInstance();
+
+	// carrega todos e salva
+	loadAll();
+	for(size_t i = 0; i < m_AllGestures.size(); i++){
+		applyProcess(0, &m_AllGestures[i]);
+	}
+	fileUtil.saveFeauresAsCentroidToolkit(m_AllGestures, "ufbagre_dataset_0.grt");
+
+	// carrega todos, aplica o processamento laplacian e salva
+	// loadAll();
+	// for(size_t i = 0; i < m_AllGestures.size(); i++){
+	// 	applyProcess(1, &m_AllGestures[i]);
+	// }
+	// fileUtil.saveFeauresAsCentroidToolkit(m_AllGestures, "ufbagre_dataset_1.grt");
+
+	// // carrega todos, aplica o processamento curvature e salva
+	// loadAll();
+	// for(size_t i = 0; i < m_AllGestures.size(); i++){
+	// 	applyProcess(2, &m_AllGestures[i]);
+	// }
+	// fileUtil.saveFeauresAsCentroidToolkit(m_AllGestures, "ufbagre_dataset_2.grt");
+
+	// // carrega todos, aplica o processamento douglas-peucker e salva
+	// loadAll();
+	// for(size_t i = 0; i < m_AllGestures.size(); i++){
+	// 	applyProcess(3, &m_AllGestures[i]);
+	// }
+	// fileUtil.saveFeauresAsCentroidToolkit(m_AllGestures, "ufbagre_dataset_3.grt");
+
+	// // carrega todos, aplica o processamento laplacian + curvature e salva
+	// loadAll();
+	// for(size_t i = 0; i < m_AllGestures.size(); i++){
+	// 	applyProcess(4, &m_AllGestures[i]);
+	// }
+	// fileUtil.saveFeauresAsCentroidToolkit(m_AllGestures, "ufbagre_dataset_4.grt");
+
+	// // carrega todos, aplica o processamento laplacian + douglas-peucker e salva
+	// loadAll();
+	// for(size_t i = 0; i < m_AllGestures.size(); i++){
+	// 	applyProcess(5, &m_AllGestures[i]);
+	// }
+	// fileUtil.saveFeauresAsCentroidToolkit(m_AllGestures, "ufbagre_dataset_5.grt");
 }

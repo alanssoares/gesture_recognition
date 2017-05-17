@@ -59,6 +59,8 @@ public:
 	void train(int algorithm);
 	//Save gestures as feature format
 	void saveFeatureFormat();
+	//Create datasets
+	void createDatasets();
 public:
 	std::vector<type_gesture> m_MedianGestures;
 	std::vector<type_gesture> m_GesturesTemplate;

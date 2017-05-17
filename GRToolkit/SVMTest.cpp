@@ -45,15 +45,29 @@ using namespace std;
 int main (int argc, const char * argv[])
 {
     //Parse the data filename from the argument list
-    if( argc != 2 ){
+    if( argc < 2 ){
         cout << "Error: failed to parse data filename from command line. You should run this example with one argument pointing to the data filename!\n";
         return EXIT_FAILURE;
     }
     const string filename = argv[1];
+    const string kernel = argv[2];
 
+    SVM svm;
+
+    // **** KERNEL ***** 
+    // 1 - LINEAR
+    // 2 - POLY_KERNEL
+    // 3 - RBF_KERNEL
+    // 4 - SIGMOID_KERNEL
+    // 5 - PRECOMPUTED_KERNEL
     //Create a new SVM classifier with a linear kernel
     //Other kernel options you could choose are: POLY_KERNEL, RBF_KERNEL, SIGMOID_KERNEL, PRECOMPUTED_KERNEL
-    SVM svm(SVM::LINEAR_KERNEL);
+    if(kernel.compare("1") == 0) svm.setKernelType(SVM::LINEAR_KERNEL);
+    else if(kernel.compare("2") == 0) svm.setKernelType(SVM::POLY_KERNEL);
+    else if(kernel.compare("3") == 0) svm.setKernelType(SVM::RBF_KERNEL);
+    else if(kernel.compare("4") == 0) svm.setKernelType(SVM::SIGMOID_KERNEL);
+    else if(kernel.compare("5") == 0) svm.setKernelType(SVM::PRECOMPUTED_KERNEL);
+    else svm.setKernelType(SVM::LINEAR_KERNEL);
 
     //The SVM will typically work much better if we scale the training and prediction data, so turn scaling on
     svm.enableScaling( true );
@@ -89,6 +103,7 @@ int main (int argc, const char * argv[])
 
     //Use the test dataset to test the SVM model
     double accuracy = 0;
+    int isRecognized = 0;
     for(UINT i=0; i<testData.getNumSamples(); i++){
         //Get the i'th test sample
         UINT classLabel = testData[i].getClassLabel();
@@ -106,11 +121,17 @@ int main (int argc, const char * argv[])
         UINT predictedClassLabel = svm.getPredictedClassLabel();
         VectorFloat classLikelihoods = svm.getClassLikelihoods();
         VectorFloat classDistances = svm.getClassDistances();
+        Float maximumLikelihood = svm.getMaximumLikelihood();
 
         //Update the accuracy
-        if( classLabel == predictedClassLabel ) accuracy++;
+        if( classLabel == predictedClassLabel ) {
+            accuracy++;
+            isRecognized = 1;
+        } else {
+            isRecognized = 0;
+        }
 
-        cout << "TestSample: " << i <<  " ClassLabel: " << classLabel << " PredictedClassLabel: " << predictedClassLabel << endl;
+        cout << i <<  " " << classLabel << " " << predictedClassLabel << " " << maximumLikelihood << " " << isRecognized << endl;
     }
 
     cout << "Test Accuracy: " << accuracy/double(testData.getNumSamples())*100.0 << "%" << endl;
