@@ -6,7 +6,7 @@
 
 <p>This project was developed from research conducted to obtain a master's degree in computer science. It was developed using as an example codebase nite for hand tracking.</p>
 
-<h4>Dependencies</h4>
+## Dependencies
 <ul>
   <li>GCC 4.x</li>
   <li>Python 2.6+/3.x</li>
@@ -14,14 +14,23 @@
   <li>OpenNI v1.5.7.10</li>
 </ul>
 
-<h4>Commons</h4>
-<h4>Datasets</h4>
-<h4>Gesture Analysis</h4>
-<h4>Gesture One Hand</h4>
-<h4>Gesture Two Hand</h4>
-<h4>Gesture Record</h4>
+## Commons
+This folder contains a set of commons implementations that are used by the projects developed.
 
-<h4>Matlab</h4>
-<h4>GRToolkit</h4>
+## Datasets
+This folder contains a set of dataset files created with gestures samples.
 
-<h4>Experimental Results</h4>
+## Gesture Analysis
+This folder contains a project that is used to analyze the samples using the <a href="http://pointclouds.org/" target="_blank">PCL Library</a>.
+
+## Gesture One Hand
+
+## Gesture Two Hand
+
+## Gesture Record
+
+## Matlab
+
+## GRToolkit
+
+## Experimental Results
