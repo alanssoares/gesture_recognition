@@ -4,7 +4,7 @@
 
 <p><strong>Federal University of Bahia</strong> - Institute of Mathematics</p>
 
-<p>This project was developed from research conducted to obtain a master's degree in computer science. It was developed using as an example codebase nite for hand tracking.</p>
+<p><strong>Description</strong> - This project was developed from research conducted to obtain a master's degree in computer science. It was developed using as an example codebase nite for hand tracking.</p>
 
 ## Dependencies
 <ul>
