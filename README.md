@@ -1,6 +1,6 @@
 # README #
 
-<p><strong>Author</strong> - Alan Santos</p>
+<p><strong>Author</strong> - <a href="http://lattes.cnpq.br/7167745236106180" target="_blank">Alan Soares</a></p>
 
 <p><strong>Federal University of Bahia</strong> - Institute of Mathematics</p>
 
