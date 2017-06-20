@@ -1,7 +1,8 @@
 #include "Test.h"
+#include "../../Commons/cluster/KMeans.h"
 
 Test::Test(){
-	m_PercentTest = 1.0;
+	m_PercentTest = 0.7;
 	m_RecThreshold = 0.5;
 	m_isMedianTest = false;
 }
@@ -23,20 +24,22 @@ void
 Test::loadAll(){
 	FileUtil& futil = FileUtil::getInstance();
 	futil.loadGestures(NAME_FILE_DATA_NORMALIZED);
+	m_AllGestures.clear();
 	m_AllGestures.reserve(futil.mGesturesOneHand.size() + futil.mGesturesTwoHands.size());
 	m_AllGestures.insert( m_AllGestures.end(), futil.mGesturesOneHand.begin(), futil.mGesturesOneHand.end() );
 	m_AllGestures.insert( m_AllGestures.end(), futil.mGesturesTwoHands.begin(), futil.mGesturesTwoHands.end() );
-	std::sort(m_AllGestures.begin(), m_AllGestures.end(), Util::sortByName);
+	std::sort(m_AllGestures.begin(), m_AllGestures.end(), MathUtil::sortByName);
 }
 
 void
 Test::loadMedian(){
 	FileUtil& futil = FileUtil::getInstance();
 	futil.loadGestures(NAME_FILE_DATA_MEDIAN);
+	m_MedianGestures.clear();
 	m_MedianGestures.reserve(futil.mGesturesOneHand.size() + futil.mGesturesTwoHands.size());
 	m_MedianGestures.insert( m_MedianGestures.end(), futil.mGesturesOneHand.begin(), futil.mGesturesOneHand.end() );
 	m_MedianGestures.insert( m_MedianGestures.end(), futil.mGesturesTwoHands.begin(), futil.mGesturesTwoHands.end() );
-	std::sort(m_MedianGestures.begin(), m_MedianGestures.end(), Util::sortByName);
+	std::sort(m_MedianGestures.begin(), m_MedianGestures.end(), MathUtil::sortByName);
 }
 
 void
@@ -89,8 +92,8 @@ Test::splitDataset(){
 			m_GesturesTemplate.push_back(m_AllGestures[i++]);
 		}
 	}
-	std::sort(m_GesturesTest.begin(), m_GesturesTest.end(), Util::sortByName);
-	std::sort(m_GesturesTemplate.begin(), m_GesturesTemplate.end(), Util::sortByName);
+	std::sort(m_GesturesTest.begin(), m_GesturesTest.end(), MathUtil::sortByName);
+	std::sort(m_GesturesTemplate.begin(), m_GesturesTemplate.end(), MathUtil::sortByName);
 	//Verifica e preenche o vetor com os gestos médios
 	if(m_isMedianTest){
 		addMedianTemplates();
@@ -112,27 +115,43 @@ Test::saveResults(std::string nameFile, type_gesture gestureExecuted, type_gestu
 void
 Test::recognize(const int env, const type_gesture gesture, const std::string nameFile) {
     float isRecognized = 0;
-    double distanceA, distanceB, bestDistanceB = 999999999, bestDistanceA = 999999999;
+    double distanceA, distanceB, bestDistanceB = 999999999, bestDistanceA = 999999999, bestDistance = 0;
     size_t n = m_GesturesTemplate.size();
     type_gesture gestureTemplate, gcompare;
 
     for (int i = 0; i < n; i++) {
 				gcompare = m_GesturesTemplate[i];
 				applyProcess(env, &gcompare);
-        distanceA = MathUtil::computeDistanceBetweenTwoTrajectories(gcompare.handOne.positions, gesture.handOne.positions);
-        distanceB = MathUtil::computeDistanceBetweenTwoTrajectories(gcompare.handTwo.positions, gesture.handTwo.positions);
-        if (distanceA < bestDistanceA && distanceB < bestDistanceB){
-            bestDistanceA = distanceA;
-            bestDistanceB = distanceB;
-            gestureTemplate = m_GesturesTemplate[i];
-        }
-    }
-    if(bestDistanceA < m_RecThreshold
-			&& bestDistanceB < m_RecThreshold){
-    	isRecognized = 1;
+				if(gesture.numHands == 1){
+					distanceB = MathUtil::computeDistanceBetweenTwoTrajectories(gcompare.handTwo.positions, gesture.handTwo.positions);
+					if (distanceB < bestDistanceB){
+							bestDistanceB = distanceB;
+							gestureTemplate = m_GesturesTemplate[i];
+					}
+				} else if(gesture.numHands == 2){
+					distanceA = MathUtil::computeDistanceBetweenTwoTrajectories(gcompare.handOne.positions, gesture.handOne.positions);
+					distanceB = MathUtil::computeDistanceBetweenTwoTrajectories(gcompare.handTwo.positions, gesture.handTwo.positions);
+					if (distanceA < bestDistanceA && distanceB < bestDistanceB){
+							bestDistanceA = distanceA;
+							bestDistanceB = distanceB;
+							gestureTemplate = m_GesturesTemplate[i];
+					}
+				}
     }
 
-    saveResults(nameFile, gesture, gestureTemplate, getFinalTime(m_Start_s), (bestDistanceA + bestDistanceB)/2, isRecognized);
+		if(gesture.numHands == 1){
+			bestDistance = bestDistanceB;
+			if(bestDistanceB < m_RecThreshold){
+				isRecognized = 1;
+			}
+		} else if(gesture.numHands == 2){
+			bestDistance = (bestDistanceA + bestDistanceB) / 2;
+			if(bestDistanceA < m_RecThreshold && bestDistanceB < m_RecThreshold){
+					isRecognized = 1;
+			}
+    }
+
+    saveResults(nameFile, gesture, gestureTemplate, getFinalTime(m_Start_s), bestDistance, isRecognized);
 }
 
 void
@@ -147,13 +166,13 @@ Test::executeAll(){
 	//m_Util.applyNormalization(&m_MedianGestures);
 
   //Execute experiments using normal gestures
-	// executeNormal(baseFolder + "normal_");
+	executeNormal(baseFolder + "normal_");
 
 	//Execute experiments using gestures with equal number of points
 	// executeWithEqualSize(baseFolder + "equal_");
 
 	//Execute experiments using median gestures as template
-	executeWithMedian(baseFolder + "median_");
+	// executeWithMedian(baseFolder + "median_");
 }
 
 void
@@ -256,4 +275,84 @@ Test::applyProcess(int env, type_gesture* gesture){
 		default:
 			break;
 	}
+}
+
+void
+Test::train(int algorithm) {
+	// Load samples
+  init();
+	// Split train and template
+	splitDataset();
+	// Create K-means
+	CKmeans kmeans;
+	kmeans.createClusters(m_GesturesTemplate);
+	// Test all
+	for (size_t i = 0; i < m_GesturesTest.size(); i++) {
+		kmeans.createClusters(m_GesturesTemplate);
+		kmeans.classify(m_GesturesTest[i]);
+	}
+}
+
+void
+Test::saveFeatureFormat() {
+	CKmeans kmeans;
+	FileUtil& fileUtil = FileUtil::getInstance();
+	// Load samples
+  	init();
+	// Create K-means
+	kmeans.createClusters(m_AllGestures);
+	// Save files
+	for (size_t i = 0; i < kmeans.mClusters.size(); i++) {
+		std::cout << "G " << kmeans.mClusters[i].mCollection[0].name << " N " << kmeans.mClusters[i].mCollection.size() << std::endl;
+		// fileUtil.saveFeatureGestures(kmeans.mClusters[i].mCollection, "feature_" + kmeans.mClusters[i].mCollection[0].name + ".txt");
+	}
+	// Save file with features grt nickgillian
+	fileUtil.saveFeauresToToolkit(m_AllGestures, "ufbagre_dataset.grt", false);
+}
+
+void
+Test::createDatasets() {
+	FileUtil& fileUtil = FileUtil::getInstance();
+
+	// carrega todos e salva
+	loadAll();
+	for(size_t i = 0; i < m_AllGestures.size(); i++){
+		applyProcess(0, &m_AllGestures[i]);
+	}
+	fileUtil.saveFeauresAsCentroidToolkit(m_AllGestures, "ufbagre_dataset_0.grt");
+
+	// carrega todos, aplica o processamento laplacian e salva
+	// loadAll();
+	// for(size_t i = 0; i < m_AllGestures.size(); i++){
+	// 	applyProcess(1, &m_AllGestures[i]);
+	// }
+	// fileUtil.saveFeauresAsCentroidToolkit(m_AllGestures, "ufbagre_dataset_1.grt");
+
+	// // carrega todos, aplica o processamento curvature e salva
+	// loadAll();
+	// for(size_t i = 0; i < m_AllGestures.size(); i++){
+	// 	applyProcess(2, &m_AllGestures[i]);
+	// }
+	// fileUtil.saveFeauresAsCentroidToolkit(m_AllGestures, "ufbagre_dataset_2.grt");
+
+	// // carrega todos, aplica o processamento douglas-peucker e salva
+	// loadAll();
+	// for(size_t i = 0; i < m_AllGestures.size(); i++){
+	// 	applyProcess(3, &m_AllGestures[i]);
+	// }
+	// fileUtil.saveFeauresAsCentroidToolkit(m_AllGestures, "ufbagre_dataset_3.grt");
+
+	// // carrega todos, aplica o processamento laplacian + curvature e salva
+	// loadAll();
+	// for(size_t i = 0; i < m_AllGestures.size(); i++){
+	// 	applyProcess(4, &m_AllGestures[i]);
+	// }
+	// fileUtil.saveFeauresAsCentroidToolkit(m_AllGestures, "ufbagre_dataset_4.grt");
+
+	// // carrega todos, aplica o processamento laplacian + douglas-peucker e salva
+	// loadAll();
+	// for(size_t i = 0; i < m_AllGestures.size(); i++){
+	// 	applyProcess(5, &m_AllGestures[i]);
+	// }
+	// fileUtil.saveFeauresAsCentroidToolkit(m_AllGestures, "ufbagre_dataset_5.grt");
 }

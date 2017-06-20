@@ -352,6 +352,19 @@ int main(int argc, char* argv[])
     g_Methods = atoi(argv[2]);
   }
 
+  if(pcl::console::find_argument (argc, argv, "-train") >= 0){
+    if(pcl::console::find_argument (argc, argv, "hmm") >= 0){
+      g_Test.train(0);// HMM using K-means
+    }
+    return 0;
+  }
+
+  if(pcl::console::find_argument (argc, argv, "-features") >= 0){
+    // g_Test.saveFeatureFormat();
+    g_Test.createDatasets();
+    return 0;
+  }
+
   boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer = viewCurvesVis();
   while (!viewer->wasStopped ()){
     viewer->spinOnce (100);

@@ -189,7 +189,7 @@ Util::generateMedianGestures(){
 	gestures.reserve(futil.mGesturesOneHand.size() + futil.mGesturesTwoHands.size());
 	gestures.insert( gestures.end(), futil.mGesturesOneHand.begin(), futil.mGesturesOneHand.end() );
 	gestures.insert( gestures.end(), futil.mGesturesTwoHands.begin(), futil.mGesturesTwoHands.end() );
-	std::sort(gestures.begin(), gestures.end(), sortByName);
+	std::sort(gestures.begin(), gestures.end(), MathUtil::sortByName);
 
 	size_t n = gestures.size(), i = 0, j = 0, m1, m2, count;
 	futil.clearHandGestures();

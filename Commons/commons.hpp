@@ -1,6 +1,5 @@
 #include "geometry/Bezier.h"
 #include "geometry/BSpline.h"
-#include "geometry/DTW.h"
 #include "geometry/Geometry.h"
 #include "geometry/HomogMatrix.h"
 #include "geometry/Matrix4D.h"

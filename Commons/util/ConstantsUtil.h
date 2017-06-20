@@ -85,6 +85,7 @@ typedef struct type_hand {
     int id_hand;
     int side_hand;
     vector<XnPoint3D> positions;
+    XnPoint3D centroid;
 } type_hand;
 
 typedef struct type_gesture {

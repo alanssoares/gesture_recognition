@@ -333,3 +333,129 @@ FileUtil::createFile(std::string nameFile){
     std::ofstream fileCreate(nameFile.c_str());
     fileCreate.close();
 }
+
+void
+FileUtil::saveFeatureGestures(std::vector<type_gesture> gestures, std::string nameFile) {
+  std::fstream fileOut;
+  type_gesture sample;
+  XnPoint3D pl, pr;
+  fileOut.open(nameFile.c_str(), ios::out | ios::ate);
+  size_t n = gestures.size(), nPos;
+  // std::cout << "NSº = " << n << std::endl;
+  for (size_t i = 0; i < n; i++) {
+    sample = gestures[i];
+    nPos = sample.handOne.positions.size();
+    // std::cout << "NPº = " << nPos << std::endl;
+    for (size_t j = 0; j < nPos; j++) {
+      pl = sample.handOne.positions[j];
+      pr = sample.handTwo.positions[j];
+      fileOut << pl.X << " " << pl.Y << " " << pl.Z << " " << pr.X << " " << pr.Y << " " << pr.Z << " ";
+    }
+    fileOut << std::endl;
+    // std::cout << "-------" << std::endl;
+  }
+}
+
+void
+FileUtil::saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string nameFile, bool series) {
+  std::fstream fileOut;
+  type_gesture sample;
+  XnPoint3D pl, pr;
+  size_t n = gestures.size(), nPos;
+
+  fileOut.open(nameFile.c_str(), ios::out | ios::ate);
+
+  if(series) {
+    fileOut << "GRT_LABELLED_TIME_SERIES_CLASSIFICATION_DATA_FILE_V1.0" << std::endl;
+  } else {
+    fileOut << "GRT_LABELLED_CLASSIFICATION_DATA_FILE_V1.0" << std::endl;
+  }
+
+  fileOut << "DatasetName: UFBAGRDataset" << std::endl;
+  fileOut << "InfoText: This dataset contains 7 gestures, totalizing 1099 executions." << std::endl;
+  fileOut << "NumDimensions: 3" << std::endl;
+  fileOut << "TotalNumTrainingExamples: 700" << std::endl;
+  fileOut << "NumberOfClasses: 7" << std::endl;
+  fileOut << "ClassIDsAndCounters:" << std::endl;
+  fileOut << "1 " << std::endl;
+  fileOut << "2 " << std::endl;
+  fileOut << "3 " << std::endl;
+  fileOut << "4 " << std::endl;
+  fileOut << "5 " << std::endl;
+  fileOut << "6 " << std::endl;
+  fileOut << "7 " << std::endl;
+  fileOut << "UseExternalRanges: 0 " << std::endl;
+
+  if(series) {
+    fileOut << "LabelledTimeSeriesTrainingData: " << std::endl;
+    for (size_t i = 0; i < n; i++) {
+      sample = gestures[i];
+      if(series) {
+        fileOut << "************TIME_SERIES************" << std::endl;
+        fileOut << "ClassID: " << sample.name[1] << std::endl;
+        fileOut << "TimeSeriesLength: " << sample.handOne.positions.size() * 2 << std::endl;
+        fileOut << "TimeSeriesData: " << std::endl;
+      }
+      for (size_t j = 0; j < sample.handOne.positions.size(); j++) {
+        pl = sample.handOne.positions[j];
+        fileOut << pl.X << " " << pl.Y << " " << pl.Z << std::endl;
+      }
+      for (size_t j = 0; j < sample.handTwo.positions.size(); j++) {
+        pr = sample.handTwo.positions[j];
+        fileOut << pr.X << " " << pr.Y << " " << pr.Z << std::endl;
+      }
+    }
+  } else {
+    fileOut << "LabelledTrainingData: " << std::endl;
+    for (size_t i = 0; i < n; i++) {
+      sample = gestures[i];
+      for (size_t j = 0; j < sample.handOne.positions.size(); j++) {
+        pl = sample.handOne.positions[j];
+        fileOut << sample.name[1] << " " << pl.X << " " << pl.Y << " " << pl.Z << std::endl;
+      }
+      for (size_t j = 0; j < sample.handTwo.positions.size(); j++) {
+        pr = sample.handTwo.positions[j];
+        fileOut << sample.name[1] << " "<< pr.X << " " << pr.Y << " " << pr.Z << std::endl;
+      }
+    }
+  }
+}
+
+void
+FileUtil::saveFeauresAsCentroidToolkit(std::vector<type_gesture> gestures, std::string nameFile) {
+  std::fstream fileOut;
+  type_gesture sample;
+  XnPoint3D centroid;
+  std::vector<XnPoint3D> positions;
+  size_t n = gestures.size();
+
+  fileOut.open(nameFile.c_str(), ios::out | ios::ate);
+
+  fileOut << "GRT_LABELLED_CLASSIFICATION_DATA_FILE_V1.0" << std::endl;
+  fileOut << "DatasetName: UFBAGRDataset" << std::endl;
+  fileOut << "InfoText: This dataset contains 7 gestures, totalizing 1099 executions." << std::endl;
+  fileOut << "NumDimensions: 3" << std::endl;
+  fileOut << "TotalNumTrainingExamples: 700" << std::endl;
+  fileOut << "NumberOfClasses: 7" << std::endl;
+  fileOut << "ClassIDsAndCounters:" << std::endl;
+  fileOut << "1 " << std::endl;
+  fileOut << "2 " << std::endl;
+  fileOut << "3 " << std::endl;
+  fileOut << "4 " << std::endl;
+  fileOut << "5 " << std::endl;
+  fileOut << "6 " << std::endl;
+  fileOut << "7 " << std::endl;
+  fileOut << "UseExternalRanges: 0 " << std::endl;
+  fileOut << "LabelledTrainingData: " << std::endl;
+  for (size_t i = 0; i < n; i++) {
+    sample = gestures[i];
+     
+    positions.reserve(sample.handOne.positions.size() + sample.handTwo.positions.size());
+	positions.insert( positions.end(), sample.handOne.positions.begin(), sample.handOne.positions.end() );
+	positions.insert( positions.end(), sample.handTwo.positions.begin(), sample.handTwo.positions.end() );
+
+    centroid = MathUtil::calcCentroid(positions);
+
+    fileOut << sample.name[1] << " " << centroid.X << " " << centroid.Y << " " << centroid.Z << std::endl;
+  }
+}

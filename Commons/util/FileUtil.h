@@ -25,10 +25,10 @@
 
  Exemple: How to remove the first line in a text file:
   awk '{$1=""; sub("",""); print}' gesture35.txt > output.txt
- 
+
  */
 class FileUtil {
-    
+
 private:
 
     FileUtil();
@@ -44,7 +44,7 @@ public:
      @return std::vector<std::string>
     */
     std::vector<std::string>& split(const std::string &s, char delim, std::vector<std::string> &elems);
-    
+
     /*
      Clear the hands tracking
     */
@@ -65,7 +65,7 @@ public:
         @param nameFile
     */
     void createFile(std::string nameFile);
-    
+
     /*
      Set the gesture info like name and num of hands
      @param std::string
@@ -100,6 +100,28 @@ public:
      Save the tracking with the tracking positions
     */
     void saveTrack();
+
+    /**
+     * Save file with gesture in a new format
+     * @param gestures
+     * @param nameFile
+    */
+    void saveFeatureGestures(std::vector<type_gesture> gestures, std::string nameFile);
+
+    /**
+    * Save gestures as format used in https://github.com/nickgillian/grt/
+    * @param gestures
+    * @param nameFile
+    * @param series
+    */
+    void saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string nameFile, bool series);
+
+    /**
+    * Save gestures as format used in https://github.com/nickgillian/grt/ with centroids
+    * @param gestures
+    * @param nameFile
+    */
+    void saveFeauresAsCentroidToolkit(std::vector<type_gesture> gestures, std::string nameFile);
 
     /*
      Create a new file and return the name of the file
@@ -166,7 +188,7 @@ public:
      @return type_gesture
     */
     type_gesture getNewGesture() { return m_NewGesture; };
-    
+
     /*
      Read the num of the last file saved
      @param int
@@ -181,7 +203,7 @@ public:
 
     static FileUtil& getInstance();
     static FileUtil* m_Instance;
-    
+
     bool                        m_StartingStorage;
     type_gesture                m_NewGesture;
     std::vector<type_gesture>   mGesturesOneHand;
