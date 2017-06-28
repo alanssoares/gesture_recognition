@@ -104,6 +104,19 @@ typedef struct Descriptor {
     vector<XnPoint3D> positions;
 } Descriptor;
 
+typedef struct FeatureDescriptor {
+
+    double mean; // length of the mean
+    double centroidLength; // the centroid length of the gesture
+    double sumVariance; // sum of the variance
+    double sumCurvature; // sum of the curvatures
+    double sumOrientation; // orientation feature
+    double standardDeviation; // the standard deviation
+    double lc; // location feature
+    double lsc; // location feature
+
+} FeatureDescriptor;
+
 /* Check the result and return 1 if XN_STATUS is not ok */
 #define CHECK_RC(rc, message){ if(rc != XN_STATUS_OK){ printf(message, xnGetStatusString(rc)); return 1; }}
 /* Check the result and return if XN_STATUS is not ok */

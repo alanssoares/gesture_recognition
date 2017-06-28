@@ -19,6 +19,7 @@
 #include "../util/ConstantsUtil.h"
 #include "../logger/Logger.h"
 #include "MathUtil.h"
+#include "FeatureExtractor.h"
 
 /*
   Class created to read and write in files
@@ -121,7 +122,7 @@ public:
     * @param gestures
     * @param nameFile
     */
-    void saveFeauresAsCentroidToolkit(std::vector<type_gesture> gestures, std::string nameFile);
+    void saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::string nameFile);
 
     /*
      Create a new file and return the name of the file

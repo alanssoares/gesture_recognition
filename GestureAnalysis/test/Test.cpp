@@ -316,10 +316,10 @@ Test::createDatasets() {
 
 	// carrega todos e salva
 	loadAll();
-	for(size_t i = 0; i < m_AllGestures.size(); i++){
-		applyProcess(0, &m_AllGestures[i]);
-	}
-	fileUtil.saveFeauresAsCentroidToolkit(m_AllGestures, "ufbagre_dataset_0.grt");
+	// for(size_t i = 0; i < m_AllGestures.size(); i++){
+	// 	applyProcess(0, &m_AllGestures[i]);
+	// }
+	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, "ufbagre_dataset_descriptor.grt");
 
 	// carrega todos, aplica o processamento laplacian e salva
 	// loadAll();

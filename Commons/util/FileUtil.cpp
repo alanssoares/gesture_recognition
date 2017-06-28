@@ -422,11 +422,10 @@ FileUtil::saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string n
 }
 
 void
-FileUtil::saveFeauresAsCentroidToolkit(std::vector<type_gesture> gestures, std::string nameFile) {
+FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::string nameFile) {
   std::fstream fileOut;
-  type_gesture sample;
-  XnPoint3D centroid;
-  std::vector<XnPoint3D> positions;
+  FeatureExtractor featureExtractor;
+  FeatureDescriptor descriptor;
   size_t n = gestures.size();
 
   fileOut.open(nameFile.c_str(), ios::out | ios::ate);
@@ -434,7 +433,7 @@ FileUtil::saveFeauresAsCentroidToolkit(std::vector<type_gesture> gestures, std::
   fileOut << "GRT_LABELLED_CLASSIFICATION_DATA_FILE_V1.0" << std::endl;
   fileOut << "DatasetName: UFBAGRDataset" << std::endl;
   fileOut << "InfoText: This dataset contains 7 gestures, totalizing 1099 executions." << std::endl;
-  fileOut << "NumDimensions: 3" << std::endl;
+  fileOut << "NumDimensions: 8" << std::endl;
   fileOut << "TotalNumTrainingExamples: 700" << std::endl;
   fileOut << "NumberOfClasses: 7" << std::endl;
   fileOut << "ClassIDsAndCounters:" << std::endl;
@@ -447,15 +446,16 @@ FileUtil::saveFeauresAsCentroidToolkit(std::vector<type_gesture> gestures, std::
   fileOut << "7 " << std::endl;
   fileOut << "UseExternalRanges: 0 " << std::endl;
   fileOut << "LabelledTrainingData: " << std::endl;
+
   for (size_t i = 0; i < n; i++) {
-    sample = gestures[i];
-     
-    positions.reserve(sample.handOne.positions.size() + sample.handTwo.positions.size());
-	positions.insert( positions.end(), sample.handOne.positions.begin(), sample.handOne.positions.end() );
-	positions.insert( positions.end(), sample.handTwo.positions.begin(), sample.handTwo.positions.end() );
-
-    centroid = MathUtil::calcCentroid(positions);
-
-    fileOut << sample.name[1] << " " << centroid.X << " " << centroid.Y << " " << centroid.Z << std::endl;
+    descriptor = featureExtractor.extractDescriptor(gestures[i]);
+    fileOut << descriptor.mean << " ";
+    fileOut << descriptor.centroidLength << " ";
+    fileOut << descriptor.sumVariance << " ";
+    fileOut << descriptor.sumCurvature << " ";
+    fileOut << descriptor.sumOrientation << " ";
+    fileOut << descriptor.standardDeviation << " ";
+    fileOut << descriptor.lc << " ";
+    fileOut << descriptor.lsc << std::endl;
   }
 }

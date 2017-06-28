@@ -12,6 +12,7 @@
 #include "util/ConstantsUtil.h"
 #include "util/FileUtil.h"
 #include "util/MathUtil.h"
+#include "util/FeatureExtractor.h"
 
 #include <algorithm>
 #include <ctime>
