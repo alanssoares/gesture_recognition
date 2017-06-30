@@ -433,7 +433,7 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
   fileOut << "GRT_LABELLED_CLASSIFICATION_DATA_FILE_V1.0" << std::endl;
   fileOut << "DatasetName: UFBAGRDataset" << std::endl;
   fileOut << "InfoText: This dataset contains 7 gestures, totalizing 1099 executions." << std::endl;
-  fileOut << "NumDimensions: 8" << std::endl;
+  fileOut << "NumDimensions: 2" << std::endl;
   fileOut << "TotalNumTrainingExamples: 700" << std::endl;
   fileOut << "NumberOfClasses: 7" << std::endl;
   fileOut << "ClassIDsAndCounters:" << std::endl;
@@ -449,6 +449,7 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
 
   for (size_t i = 0; i < n; i++) {
     descriptor = featureExtractor.extractDescriptor(gestures[i]);
+    fileOut << gestures[i].name[1] << " ";
     fileOut << descriptor.mean << " ";
     fileOut << descriptor.centroidLength << " ";
     fileOut << descriptor.sumVariance << " ";
@@ -456,6 +457,7 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
     fileOut << descriptor.sumOrientation << " ";
     fileOut << descriptor.standardDeviation << " ";
     fileOut << descriptor.lc << " ";
-    fileOut << descriptor.lsc << std::endl;
+    fileOut << descriptor.lsc;
+    fileOut << std::endl;
   }
 }
