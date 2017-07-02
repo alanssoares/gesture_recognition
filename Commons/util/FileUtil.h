@@ -197,6 +197,12 @@ public:
     int readNumLastFile(int typeFile);
 
     /**
+     Change name gesture to number
+     @param name
+    */
+    std::string changeNameGesture(std::string name);
+    
+    /**
      Save all gestures in an file the was processed in the analysis
     */
     void saveAll();

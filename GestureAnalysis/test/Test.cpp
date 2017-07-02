@@ -314,45 +314,47 @@ void
 Test::createDatasets() {
 	FileUtil& fileUtil = FileUtil::getInstance();
 
+	std:string nameDataset = "msrc_descriptor";
+
 	// carrega todos e salva
 	loadAll();
 	for(size_t i = 0; i < m_AllGestures.size(); i++){
 		applyProcess(0, &m_AllGestures[i]);
 	}
-	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, "ufbagre_dataset_descriptor_0.grt");
+	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_0.grt");
 
 	// carrega todos, aplica o processamento laplacian e salva
 	loadAll();
 	for(size_t i = 0; i < m_AllGestures.size(); i++){
 		applyProcess(1, &m_AllGestures[i]);
 	}
-	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, "ufbagre_dataset_descriptor_1.grt");
+	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_1.grt");
 
 	// carrega todos, aplica o processamento curvature e salva
 	loadAll();
 	for(size_t i = 0; i < m_AllGestures.size(); i++){
 		applyProcess(2, &m_AllGestures[i]);
 	}
-	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, "ufbagre_dataset_descriptor_2.grt");
+	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_2.grt");
 
 	// carrega todos, aplica o processamento douglas-peucker e salva
 	loadAll();
 	for(size_t i = 0; i < m_AllGestures.size(); i++){
 		applyProcess(3, &m_AllGestures[i]);
 	}
-	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, "ufbagre_dataset_descriptor_3.grt");
+	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_3.grt");
 
 	// carrega todos, aplica o processamento laplacian + curvature e salva
 	loadAll();
 	for(size_t i = 0; i < m_AllGestures.size(); i++){
 		applyProcess(4, &m_AllGestures[i]);
 	}
-	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, "ufbagre_dataset_descriptor_4.grt");
+	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_4.grt");
 
 	// carrega todos, aplica o processamento laplacian + douglas-peucker e salva
 	loadAll();
 	for(size_t i = 0; i < m_AllGestures.size(); i++){
 		applyProcess(5, &m_AllGestures[i]);
 	}
-	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, "ufbagre_dataset_descriptor_5.grt");
+	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_5.grt");
 }

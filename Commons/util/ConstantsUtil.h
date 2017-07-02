@@ -163,9 +163,11 @@ typedef struct FeatureDescriptor {
 /* ========= End Douglas-Peucker Radial ========= */
 
 #define GESTURE "gesture"
-#define NAME_FILE_DATA "../../Commons/Samples.txt"
-#define NAME_FILE_DATA_NORMALIZED "../../Commons/SamplesNormalized.txt"
-#define NAME_FILE_DATA_MEDIAN "../../Commons/SamplesMedian.txt"
+// #define NAME_FILE_DATA "../../Datasets/msrc_12/msrc_origin.txt"
+// #define NAME_FILE_DATA_NORMALIZED "../../Datasets/msrc_12/msrc_origin.txt"
+#define NAME_FILE_DATA "../../Datasets/grufba_16/grufba_raw.txt"
+#define NAME_FILE_DATA_NORMALIZED "../../Datasets/grufba_16/grufba_normalized.txt"
+#define NAME_FILE_DATA_MEDIAN "../../Datasets/grufba_16/grufba_median.txt"
 #define NAME_WINDOW_GR "Project GRS"
 #define GAP_WINDOW      25
 #define GL_WIN_SIZE_X   1024 // 512 to gesture record

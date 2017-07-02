@@ -427,29 +427,48 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
   FeatureExtractor featureExtractor;
   FeatureDescriptor descriptor;
   size_t n = gestures.size();
-
+  bool msrc = true, grufba = false;
   fileOut.open(nameFile.c_str(), ios::out | ios::ate);
 
   fileOut << "GRT_LABELLED_CLASSIFICATION_DATA_FILE_V1.0" << std::endl;
-  fileOut << "DatasetName: UFBAGRDataset" << std::endl;
-  fileOut << "InfoText: This dataset contains 7 gestures, totalizing 1099 executions." << std::endl;
-  fileOut << "NumDimensions: 2" << std::endl;
-  fileOut << "TotalNumTrainingExamples: 700" << std::endl;
-  fileOut << "NumberOfClasses: 7" << std::endl;
-  fileOut << "ClassIDsAndCounters:" << std::endl;
-  fileOut << "1 " << std::endl;
-  fileOut << "2 " << std::endl;
-  fileOut << "3 " << std::endl;
-  fileOut << "4 " << std::endl;
-  fileOut << "5 " << std::endl;
-  fileOut << "6 " << std::endl;
-  fileOut << "7 " << std::endl;
+
+  if (msrc) {
+    fileOut << "DatasetName: msrc_12" << std::endl;
+    fileOut << "InfoText: This dataset contains 8 gestures, totalizing 406 executions." << std::endl;
+    fileOut << "NumDimensions: 8" << std::endl;
+    fileOut << "TotalNumTrainingExamples: 300" << std::endl;
+    fileOut << "NumberOfClasses: 8" << std::endl;
+    fileOut << "ClassIDsAndCounters:" << std::endl;
+    fileOut << "1 51 NOT_SET" << std::endl;
+    fileOut << "11 50 NOT_SET" << std::endl;
+    fileOut << "2 51 NOT_SET" << std::endl;
+    fileOut << "3 51 NOT_SET" << std::endl;
+    fileOut << "4 49 NOT_SET" << std::endl;
+    fileOut << "5 51 NOT_SET" << std::endl;
+    fileOut << "6 51 NOT_SET" << std::endl;
+    fileOut << "9 52 NOT_SET" << std::endl;
+  } else if (grufba) {
+    fileOut << "DatasetName: grufba_16" << std::endl;
+    fileOut << "InfoText: This dataset contains 7 gestures, totalizing 1099 executions." << std::endl;
+    fileOut << "NumDimensions: 8" << std::endl;
+    fileOut << "TotalNumTrainingExamples: 700" << std::endl;
+    fileOut << "NumberOfClasses: 7" << std::endl;
+    fileOut << "ClassIDsAndCounters:" << std::endl;
+    fileOut << "1 182 NOT_SET" << std::endl;
+    fileOut << "2 63 NOT_SET" << std::endl;
+    fileOut << "3 220 NOT_SET" << std::endl;
+    fileOut << "4 135 NOT_SET" << std::endl;
+    fileOut << "5 194 NOT_SET" << std::endl;
+    fileOut << "6 147 NOT_SET" << std::endl;
+    fileOut << "7 158 NOT_SET" << std::endl;
+  }
+
   fileOut << "UseExternalRanges: 0 " << std::endl;
   fileOut << "LabelledTrainingData: " << std::endl;
 
   for (size_t i = 0; i < n; i++) {
     descriptor = featureExtractor.extractDescriptor(gestures[i]);
-    fileOut << gestures[i].name[1] << " ";
+    fileOut << changeNameGesture(gestures[i].name) << " ";
     fileOut << descriptor.mean << " ";
     fileOut << descriptor.centroidLength << " ";
     fileOut << descriptor.sumVariance << " ";
@@ -460,4 +479,36 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
     fileOut << descriptor.lsc;
     fileOut << std::endl;
   }
+}
+
+std::string
+FileUtil::changeNameGesture(std::string name) {
+
+  if (name == "g1") {
+    return "1";
+  } else if (name == "g2") {
+    return "2";
+  } else if (name == "g2A") {
+    return "2";
+  } else if (name == "g3A") {
+    return "3";
+  } else if (name == "g3") {
+    return "3";
+  } else if (name == "g4") {
+    return "4";
+  } else if (name == "g5") {
+    return "5";
+  } else if (name == "g6A") {
+    return "6";
+  } else if (name == "g6") {
+    return "6";
+  } else if (name == "g7") {
+    return "7";
+  } else if (name == "g9") {
+    return "9";
+  } else if (name == "g11") {
+    return "11";
+  }
+
+  return "none";
 }
