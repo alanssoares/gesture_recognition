@@ -24,3 +24,5 @@ for i=1:total_gestures
     % initialize
     m = [];
 end
+
+end

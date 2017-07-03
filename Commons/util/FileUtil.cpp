@@ -427,7 +427,7 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
   FeatureExtractor featureExtractor;
   FeatureDescriptor descriptor;
   size_t n = gestures.size();
-  bool msrc = true, grufba = false;
+  bool msrc = false, grufba = false, msr_action_3d = true;
   fileOut.open(nameFile.c_str(), ios::out | ios::ate);
 
   fileOut << "GRT_LABELLED_CLASSIFICATION_DATA_FILE_V1.0" << std::endl;
@@ -461,6 +461,33 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
     fileOut << "5 194 NOT_SET" << std::endl;
     fileOut << "6 147 NOT_SET" << std::endl;
     fileOut << "7 158 NOT_SET" << std::endl;
+  } else if (msr_action_3d) {
+    fileOut << "DatasetName: msr_action_3d" << std::endl;
+    fileOut << "InfoText: This dataset contains 20 gestures, totalizing 566 executions." << std::endl;
+    fileOut << "NumDimensions: 8" << std::endl;
+    fileOut << "TotalNumTrainingExamples: 400" << std::endl;
+    fileOut << "NumberOfClasses: 20" << std::endl;
+    fileOut << "ClassIDsAndCounters:" << std::endl;
+    fileOut << "12 27 NOT_SET" << std::endl;
+    fileOut << "13 27 NOT_SET" << std::endl;
+    fileOut << "14 27 NOT_SET" << std::endl;
+    fileOut << "15 26 NOT_SET" << std::endl;
+    fileOut << "16 26 NOT_SET" << std::endl;
+    fileOut << "17 26 NOT_SET" << std::endl;
+    fileOut << "18 28 NOT_SET" << std::endl;
+    fileOut << "19 30 NOT_SET" << std::endl;
+    fileOut << "20 30 NOT_SET" << std::endl;
+    fileOut << "21 30 NOT_SET" << std::endl;
+    fileOut << "22 30 NOT_SET" << std::endl;
+    fileOut << "23 30 NOT_SET" << std::endl;
+    fileOut << "24 29 NOT_SET" << std::endl;
+    fileOut << "25 30 NOT_SET" << std::endl;
+    fileOut << "26 20 NOT_SET" << std::endl;
+    fileOut << "27 30 NOT_SET" << std::endl;
+    fileOut << "28 30 NOT_SET" << std::endl;
+    fileOut << "29 30 NOT_SET" << std::endl;
+    fileOut << "30 30 NOT_SET" << std::endl;
+    fileOut << "31 30 NOT_SET" << std::endl;
   }
 
   fileOut << "UseExternalRanges: 0 " << std::endl;
@@ -508,6 +535,49 @@ FileUtil::changeNameGesture(std::string name) {
     return "9";
   } else if (name == "g11") {
     return "11";
+  }
+
+  // MSR Action 3D
+  if (name == "a01") {
+    return "12";
+  } else if (name == "a02") {
+    return "13";
+  } else if (name == "a03") {
+    return "14";
+  } else if (name == "a04") {
+    return "15";
+  } else if (name == "a05") {
+    return "16";
+  } else if (name == "a06") {
+    return "17";
+  } else if (name == "a07") {
+    return "18";
+  } else if (name == "a08") {
+    return "19";
+  } else if (name == "a09") {
+    return "20";
+  } else if (name == "a10") {
+    return "21";
+  } else if (name == "a11") {
+    return "22";
+  } else if (name == "a12") {
+    return "23";
+  } else if (name == "a13") {
+    return "24";
+  } else if (name == "a14") {
+    return "25";
+  } else if (name == "a15") {
+    return "26";
+  } else if (name == "a16") {
+    return "27";
+  } else if (name == "a17") {
+    return "28";
+  } else if (name == "a18") {
+    return "29";
+  } else if (name == "a19") {
+    return "30";
+  } else if (name == "a20") {
+    return "31";
   }
 
   return "none";

@@ -314,7 +314,7 @@ void
 Test::createDatasets() {
 	FileUtil& fileUtil = FileUtil::getInstance();
 
-	std:string nameDataset = "msrc_descriptor";
+	std:string nameDataset = "msr_action_3d_descriptor";
 
 	// carrega todos e salva
 	loadAll();
