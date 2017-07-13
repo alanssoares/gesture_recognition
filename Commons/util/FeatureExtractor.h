@@ -29,6 +29,11 @@ public:
   FeatureExtractor();
   ~FeatureExtractor();
 
+  XnPoint3D centroid(type_gesture gesture);
+  XnPoint3D centroidDerivative(type_gesture gA, type_gesture gB);
+  double centroidAngle2D(type_gesture gA, type_gesture gB);
+  double centroidAngle3D(type_gesture gA, type_gesture gB);
+
   double mean(type_gesture gesture); // OK
   double centroidLength(type_gesture gesture); // OK
   double sumVariance(type_gesture gesture); // OK

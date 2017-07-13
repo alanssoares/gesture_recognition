@@ -130,3 +130,28 @@ FeatureExtractor::extractDescriptor(type_gesture sample) {
   descriptor.lsc = locationLSC(sample);
   return descriptor;
 }
+
+XnPoint3D
+FeatureExtractor::centroid(type_gesture sample) {
+  std::vector<XnPoint3D> positions = merge(sample);
+  return MathUtil::calcCentroid(positions);
+}
+
+XnPoint3D
+FeatureExtractor::centroidDerivative(type_gesture gA, type_gesture gB) {
+  std::vector<XnPoint3D> posA = merge(gA);
+  std::vector<XnPoint3D> posB = merge(gB);
+  XnPoint3D cA = MathUtil::calcCentroid(posA);
+  XnPoint3D cB = MathUtil::calcCentroid(posB);
+  return MathUtil::subtract(cA, cB);
+}
+
+double
+FeatureExtractor::centroidAngle2D(type_gesture gA, type_gesture gB) {
+
+}
+
+double
+FeatureExtractor::centroidAngle3D(type_gesture gA, type_gesture gB) {
+
+}
