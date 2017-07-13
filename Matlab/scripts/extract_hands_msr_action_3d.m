@@ -22,7 +22,7 @@ for i=1:total_gestures
                      file_gesture(j, 1), ...
                      file_gesture(j, 2), ...
                      file_gesture(j, 3));
-        j = j + 12;
+        j = j + 20;
         end
         if (j + 1 >= l)
             break;
