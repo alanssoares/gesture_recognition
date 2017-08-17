@@ -131,19 +131,31 @@ FeatureExtractor::extractDescriptor(type_gesture sample) {
   return descriptor;
 }
 
-XnPoint3D
-FeatureExtractor::centroid(type_gesture sample) {
-  std::vector<XnPoint3D> positions = merge(sample);
-  return MathUtil::calcCentroid(positions);
+std::vector<FeatureDescriptor>
+FeatureExtractor::extractDescriptors(std::vector<type_gesture> dataset) {
+  std::vector<FeatureDescriptor> features;
+  FeatureDescriptor desc;
+  size_t n = dataset.size();
+  for (size_t i = 0; i < n; i++) {
+    desc.name = dataset[i].name;
+    if (i + 1 < n && dataset[i].name == dataset[i + 1].name) {
+      desc.centroidDerivative = centroidDerivative(dataset[i], dataset[i + 1]);
+    }
+    desc.centroidLength = centroidLength(dataset[i]);
+    desc.lc = locationLC(dataset[i]);
+    desc.lsc = locationLSC(dataset[i]);
+    features.push_back(desc);
+  }
+  return features;
 }
 
-XnPoint3D
+double
 FeatureExtractor::centroidDerivative(type_gesture gA, type_gesture gB) {
   std::vector<XnPoint3D> posA = merge(gA);
   std::vector<XnPoint3D> posB = merge(gB);
   XnPoint3D cA = MathUtil::calcCentroid(posA);
   XnPoint3D cB = MathUtil::calcCentroid(posB);
-  return MathUtil::subtract(cA, cB);
+  return MathUtil::length(MathUtil::subtract(cA, cB));
 }
 
 double

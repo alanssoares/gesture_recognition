@@ -143,7 +143,7 @@ DTW2::compute(){
 
     if(isinf(accumulatedDistance)) accumulatedDistance = INF;
 
-    mWarpingDistance = accumulatedDistance / mK;
+    mWarpingDistance = ((accumulatedDistance + 1) / (mK + 1)) - 1;
 }
 
 int

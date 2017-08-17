@@ -29,19 +29,19 @@ public:
   FeatureExtractor();
   ~FeatureExtractor();
 
-  XnPoint3D centroid(type_gesture gesture);
-  XnPoint3D centroidDerivative(type_gesture gA, type_gesture gB);
+  double centroidLength(type_gesture gesture);
+  double centroidDerivative(type_gesture gA, type_gesture gB);
   double centroidAngle2D(type_gesture gA, type_gesture gB);
   double centroidAngle3D(type_gesture gA, type_gesture gB);
+  double mean(type_gesture gesture);
+  double sumVariance(type_gesture gesture);
+  double sumCurvature(type_gesture gesture);
+  double sumOrientation(type_gesture gesture);
+  double standardDeviation(type_gesture gesture);
+  double locationLC(type_gesture gesture);
+  double locationLSC(type_gesture gesture);
 
-  double mean(type_gesture gesture); // OK
-  double centroidLength(type_gesture gesture); // OK
-  double sumVariance(type_gesture gesture); // OK
-  double sumCurvature(type_gesture gesture); // OK
-  double sumOrientation(type_gesture gesture); // OK
-  double standardDeviation(type_gesture gesture); // OK
-  double locationLC(type_gesture gesture); // OK
-  double locationLSC(type_gesture gesture); // OK
+  std::vector<FeatureDescriptor> extractDescriptors(std::vector<type_gesture> dataset);
   FeatureDescriptor extractDescriptor(type_gesture sample);
   std::vector<XnPoint3D> merge(type_gesture sample);
 };
