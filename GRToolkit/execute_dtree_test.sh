@@ -1,24 +1,41 @@
 #!/bin/bash
 
+dataset="grufba_dtree"
+# dataset="msrc12_dtree"
+# dataset="utkinect_dtree"
+# dataset="msr3d_dtree"
+
+# feature="centroid_derivative"
+feature="centroid_length"
+# feature="curvature"
+# feature="lc"
+# feature="lsc"
+# feature="variance"
+
+features="grufba_16/features/"$feature/grufba_descriptor
+# features="msrc_12/features/"$feature/msrc_12_descriptor
+# features="msr_action_3d/features/"$feature/msr_action_3d_descriptor
+# features="utkinect_action/features/"$feature/utkinect_descriptor
+
 echo "***** Remove folder result_dtree ****** "
-rm -r result_dtree
+rm -r $dataset
 
 echo "***** Create folder result_dtree ****** "
-mkdir result_dtree
+mkdir $dataset
 
 echo "***** Testing DTree with DecisionTreeClusterNode - 1 ****** "
 
-./startDecisionTree ../Datasets/ufbagre_dataset_0.grt 1 > result_dtree/result_dtree_1_0.txt
-./startDecisionTree ../Datasets/ufbagre_dataset_1.grt 1 > result_dtree/result_dtree_1_1.txt
-./startDecisionTree ../Datasets/ufbagre_dataset_2.grt 1 > result_dtree/result_dtree_1_2.txt
-./startDecisionTree ../Datasets/ufbagre_dataset_3.grt 1 > result_dtree/result_dtree_1_3.txt
-./startDecisionTree ../Datasets/ufbagre_dataset_4.grt 1 > result_dtree/result_dtree_1_4.txt
-./startDecisionTree ../Datasets/ufbagre_dataset_5.grt 1 > result_dtree/result_dtree_1_5.txt
+./startDecisionTree ../Datasets/$features\_0.grt 1 > $dataset/result_dtree_1_0.txt
+./startDecisionTree ../Datasets/$features\_1.grt 1 > $dataset/result_dtree_1_1.txt
+./startDecisionTree ../Datasets/$features\_2.grt 1 > $dataset/result_dtree_1_2.txt
+./startDecisionTree ../Datasets/$features\_3.grt 1 > $dataset/result_dtree_1_3.txt
+./startDecisionTree ../Datasets/$features\_4.grt 1 > $dataset/result_dtree_1_4.txt
+./startDecisionTree ../Datasets/$features\_5.grt 1 > $dataset/result_dtree_1_5.txt
 
 echo "***** Testing DTree with DecisionTreeThresholdNode - 2 ****** "
-./startDecisionTree ../Datasets/ufbagre_dataset_0.grt 2 > result_dtree/result_dtree_2_0.txt
-./startDecisionTree ../Datasets/ufbagre_dataset_1.grt 2 > result_dtree/result_dtree_2_1.txt
-./startDecisionTree ../Datasets/ufbagre_dataset_2.grt 2 > result_dtree/result_dtree_2_2.txt
-./startDecisionTree ../Datasets/ufbagre_dataset_3.grt 2 > result_dtree/result_dtree_2_3.txt
-./startDecisionTree ../Datasets/ufbagre_dataset_4.grt 2 > result_dtree/result_dtree_2_4.txt
-./startDecisionTree ../Datasets/ufbagre_dataset_5.grt 2 > result_dtree/result_dtree_2_5.txt
+./startDecisionTree ../Datasets/$features\_0.grt 2 > $dataset/result_dtree_2_0.txt
+./startDecisionTree ../Datasets/$features\_1.grt 2 > $dataset/result_dtree_2_1.txt
+./startDecisionTree ../Datasets/$features\_2.grt 2 > $dataset/result_dtree_2_2.txt
+./startDecisionTree ../Datasets/$features\_3.grt 2 > $dataset/result_dtree_2_3.txt
+./startDecisionTree ../Datasets/$features\_4.grt 2 > $dataset/result_dtree_2_4.txt
+./startDecisionTree ../Datasets/$features\_5.grt 2 > $dataset/result_dtree_2_5.txt

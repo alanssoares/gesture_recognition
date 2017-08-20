@@ -1,7 +1,7 @@
 GRT_LABELLED_CLASSIFICATION_DATA_FILE_V1.0
 DatasetName: grufba
 InfoText: This dataset contains 7 gestures, totalizing 1099 executions.
-NumDimensions: 4
+NumDimensions: 1
 TotalNumTrainingExamples: 769
 NumberOfClasses: 7
 ClassIDsAndCounters:

@@ -429,28 +429,34 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
   size_t n = gestures.size();
   bool msrc = false, grufba = true, msr_action_3d = false, utkinect = false;
   fileOut.open(nameFile.c_str(), ios::out | ios::ate);
+  long numDimensions = 1;
 
   fileOut << "GRT_LABELLED_CLASSIFICATION_DATA_FILE_V1.0" << std::endl;
 
   if (msrc) {
     fileOut << "DatasetName: msrc_12" << std::endl;
-    fileOut << "InfoText: This dataset contains 8 gestures, totalizing 406 executions." << std::endl;
-    fileOut << "NumDimensions: 4" << std::endl;
-    fileOut << "TotalNumTrainingExamples: 300" << std::endl;
-    fileOut << "NumberOfClasses: 8" << std::endl;
+    fileOut << "InfoText: This dataset contains 12 gestures, totalizing 594 executions." << std::endl;
+    fileOut << "NumDimensions: " << numDimensions << std::endl;
+    fileOut << "TotalNumTrainingExamples: 400" << std::endl;
+    fileOut << "NumberOfClasses: 12" << std::endl;
     fileOut << "ClassIDsAndCounters:" << std::endl;
-    fileOut << "1 51 NOT_SET" << std::endl;
-    fileOut << "11 50 NOT_SET" << std::endl;
-    fileOut << "2 51 NOT_SET" << std::endl;
-    fileOut << "3 51 NOT_SET" << std::endl;
-    fileOut << "4 49 NOT_SET" << std::endl;
-    fileOut << "5 51 NOT_SET" << std::endl;
-    fileOut << "6 51 NOT_SET" << std::endl;
-    fileOut << "9 52 NOT_SET" << std::endl;
+    fileOut << "1 30 NOT_SET" << std::endl;
+    fileOut << "10 48 NOT_SET" << std::endl;
+    fileOut << "11 49 NOT_SET" << std::endl;
+    fileOut << "12 50 NOT_SET" << std::endl;
+    fileOut << "1 20 NOT_SET" << std::endl;
+    fileOut << "2 50 NOT_SET" << std::endl;
+    fileOut << "3 50 NOT_SET" << std::endl;
+    fileOut << "4 50 NOT_SET" << std::endl;
+    fileOut << "5 48 NOT_SET" << std::endl;
+    fileOut << "6 49 NOT_SET" << std::endl;
+    fileOut << "7 50 NOT_SET" << std::endl;
+    fileOut << "8 50 NOT_SET" << std::endl;
+    fileOut << "9 50 NOT_SET" << std::endl;
   } else if (grufba) {
     fileOut << "DatasetName: grufba" << std::endl;
     fileOut << "InfoText: This dataset contains 7 gestures, totalizing 1099 executions." << std::endl;
-    fileOut << "NumDimensions: 4" << std::endl;
+    fileOut << "NumDimensions: " << numDimensions << std::endl;
     fileOut << "TotalNumTrainingExamples: 769" << std::endl;
     fileOut << "NumberOfClasses: 7" << std::endl;
     fileOut << "ClassIDsAndCounters:" << std::endl;
@@ -463,8 +469,8 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
     fileOut << "7 158 NOT_SET" << std::endl;
   } else if (msr_action_3d) {
     fileOut << "DatasetName: msr_action_3d" << std::endl;
-    fileOut << "InfoText: This dataset contains 20 gestures, totalizing 566 executions." << std::endl;
-    fileOut << "NumDimensions: 4" << std::endl;
+    fileOut << "InfoText: This dataset contains 20 gestures, totalizing 567 executions." << std::endl;
+    fileOut << "NumDimensions: " << numDimensions << std::endl;
     fileOut << "TotalNumTrainingExamples: 400" << std::endl;
     fileOut << "NumberOfClasses: 20" << std::endl;
     fileOut << "ClassIDsAndCounters:" << std::endl;
@@ -480,7 +486,7 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
     fileOut << "21 30 NOT_SET" << std::endl;
     fileOut << "22 30 NOT_SET" << std::endl;
     fileOut << "23 30 NOT_SET" << std::endl;
-    fileOut << "24 29 NOT_SET" << std::endl;
+    fileOut << "24 30 NOT_SET" << std::endl;
     fileOut << "25 30 NOT_SET" << std::endl;
     fileOut << "26 20 NOT_SET" << std::endl;
     fileOut << "27 30 NOT_SET" << std::endl;
@@ -491,7 +497,7 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
   } else if (utkinect) {
     fileOut << "DatasetName: utkinect" << std::endl;
     fileOut << "InfoText: This dataset contains 10 gestures performed by 10 subjects twice, totalizing 200 executions." << std::endl;
-    fileOut << "NumDimensions: 4" << std::endl;
+    fileOut << "NumDimensions: " << numDimensions << std::endl;
     fileOut << "TotalNumTrainingExamples: 140" << std::endl;
     fileOut << "NumberOfClasses: 10" << std::endl;
     fileOut << "ClassIDsAndCounters:" << std::endl;
@@ -518,6 +524,13 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
     fileOut << descriptors[i].centroidLength << " ";
     fileOut << descriptors[i].lc << " ";
     fileOut << descriptors[i].lsc;
+
+    // fileOut << descriptors[i].lc;
+    // fileOut << descriptors[i].lsc;
+    // fileOut << descriptors[i].sumVariance;
+    // fileOut << descriptors[i].sumCurvature;
+    // fileOut << descriptors[i].centroidDerivative;
+    // fileOut << descriptors[i].centroidLength;
     fileOut << std::endl;
   }
 }
@@ -549,6 +562,33 @@ FileUtil::changeNameGesture(std::string name) {
     return "9";
   } else if (name == "g11") {
     return "11";
+  }
+
+  // MSC 12
+  if (name == "10A") {
+    return "10";
+  } else if (name == "11A") {
+    return "11";
+  } else if (name == "12A") {
+    return "12";
+  } else if (name == "1A") {
+    return "1";
+  } else if (name == "2A") {
+    return "2";
+  } else if (name == "3A") {
+    return "3";
+  } else if (name == "4A") {
+    return "4";
+  } else if (name == "5A") {
+    return "5";
+  } else if (name == "6A") {
+    return "6";
+  } else if (name == "7A") {
+    return "7";
+  } else if (name == "8A") {
+    return "8";
+  } else if (name == "9A") {
+    return "9";
   }
 
   // MSR Action 3D
@@ -594,5 +634,5 @@ FileUtil::changeNameGesture(std::string name) {
     return "31";
   }
 
-  return "none";
+  return name;
 }

@@ -5,9 +5,17 @@ dataset="grufba_svm"
 # dataset="utkinect_svm"
 # dataset="msr3d_svm"
 
-features="grufba_16/features/grufba_descriptor"
-# features="msr_action_3d/features/msr_action_3d_descriptor"
-# features="utkinect_action/features/utkinect_descriptor"
+# feature="centroid_derivative"
+feature="centroid_length"
+# feature="curvature"
+# feature="lc"
+# feature="lsc"
+# feature="variance"
+
+features="grufba_16/features/"$feature/grufba_descriptor
+# features="msrc_12/features/"$feature/msrc_12_descriptor
+# features="msr_action_3d/features/"$feature/msr_action_3d_descriptor
+# features="utkinect_action/features/"$feature/utkinect_descriptor
 
 echo "***** Remove folder result_svm ****** "
 rm -r $dataset
