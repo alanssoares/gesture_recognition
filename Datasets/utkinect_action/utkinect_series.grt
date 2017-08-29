@@ -5,22 +5,22 @@ NumDimensions: 3
 TotalNumTrainingExamples: 140
 NumberOfClasses: 10
 ClassIDsAndCounters:
-30 20 NOT_SET
-31 20 NOT_SET
-32 20 NOT_SET
-33 20 NOT_SET
-34 20 NOT_SET
-35 20 NOT_SET
-36 20 NOT_SET
-37 20 NOT_SET
-38 20 NOT_SET
-39 20 NOT_SET
-UseExternalRanges: 0 
-LabelledTimeSeriesTrainingData: 
+30 20
+31 20
+32 20
+33 20
+34 20
+35 20
+36 20
+37 20
+38 20
+39 20
+UseExternalRanges: 0
+LabelledTimeSeriesTrainingData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 140
-TimeSeriesData: 
+TimeSeriesData:
 1.00785 1.42501 0.934575
 1.01787 1.4238 0.934069
 1.03491 1.42348 0.933965
@@ -164,7 +164,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 142
-TimeSeriesData: 
+TimeSeriesData:
 1.25382 0.967453 1.0264
 1.2538 0.970771 1.00712
 1.25377 0.972876 0.995085
@@ -310,7 +310,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 154
-TimeSeriesData: 
+TimeSeriesData:
 1.51175 0.804774 1.06025
 1.51545 0.80459 1.05094
 1.51693 0.803476 1.04707
@@ -468,7 +468,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 92
-TimeSeriesData: 
+TimeSeriesData:
 1.26255 1.66111 0.966479
 1.00856 1.59968 0.849336
 0.988802 1.59965 0.849084
@@ -564,7 +564,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 356
-TimeSeriesData: 
+TimeSeriesData:
 0.98462 1.0448 1.16525
 0.974393 1.11656 1.13412
 0.929011 1.2128 1.17041
@@ -924,7 +924,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 164
-TimeSeriesData: 
+TimeSeriesData:
 0.715359 1.38633 1.12714
 0.715952 1.38938 1.12939
 0.713754 1.39778 1.13169
@@ -1092,7 +1092,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 324
-TimeSeriesData: 
+TimeSeriesData:
 0.930509 1.15539 0.969006
 0.932629 1.1475 0.993035
 0.933208 1.14483 1.00208
@@ -1420,7 +1420,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 132
-TimeSeriesData: 
+TimeSeriesData:
 0.922788 0.981187 1.04323
 0.938537 0.95458 1.11488
 0.985595 0.899837 1.18973
@@ -1556,7 +1556,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 86
-TimeSeriesData: 
+TimeSeriesData:
 0.917489 1.51369 0.943516
 0.91967 1.51165 0.941964
 0.90918 1.50064 0.911078
@@ -1646,7 +1646,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 196
-TimeSeriesData: 
+TimeSeriesData:
 0.791574 1.45518 0.911287
 0.78382 1.45344 0.952649
 0.77529 1.44061 0.982085
@@ -1846,7 +1846,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 98
-TimeSeriesData: 
+TimeSeriesData:
 0.795061 0.720323 0.944703
 0.817933 0.725721 0.945001
 0.850582 0.733216 0.944858
@@ -1948,7 +1948,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 486
-TimeSeriesData: 
+TimeSeriesData:
 0.726482 1.67385 1.13171
 0.735916 1.66826 1.10066
 0.812577 1.62959 1.01257
@@ -2438,7 +2438,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 158
-TimeSeriesData: 
+TimeSeriesData:
 1.58008 0.890673 1.26755
 1.57932 0.870519 1.23183
 1.5773 0.855662 1.20822
@@ -2600,7 +2600,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 204
-TimeSeriesData: 
+TimeSeriesData:
 1.41557 0.92246 1.04514
 1.41624 0.920774 1.05624
 1.41639 0.923103 1.05005
@@ -2808,7 +2808,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 132
-TimeSeriesData: 
+TimeSeriesData:
 1.56153 0.189375 1.06659
 1.57 0.202287 1.10754
 1.56051 0.212979 1.11949
@@ -2944,7 +2944,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 146
-TimeSeriesData: 
+TimeSeriesData:
 1.2737 0.248875 0.965904
 1.28159 0.233468 1.12008
 1.30868 0.231992 1.15003
@@ -3094,7 +3094,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 160
-TimeSeriesData: 
+TimeSeriesData:
 1.33259 0.487114 1.05569
 1.33256 0.457103 1.07899
 1.33219 0.458876 1.07579
@@ -3258,7 +3258,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 136
-TimeSeriesData: 
+TimeSeriesData:
 1.62029 0.0827304 1.16386
 1.60843 0.0863734 1.17051
 1.58857 0.0981934 1.17927
@@ -3398,7 +3398,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 128
-TimeSeriesData: 
+TimeSeriesData:
 1.72018 1.31958 1.01829
 1.69561 1.31372 1.03717
 1.66191 1.31129 1.05814
@@ -3530,7 +3530,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 30
 TimeSeriesLength: 144
-TimeSeriesData: 
+TimeSeriesData:
 0.267089 1.49467 0.96739
 0.289936 1.47233 0.931518
 0.342243 1.43865 0.89896
@@ -3678,7 +3678,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 326
-TimeSeriesData: 
+TimeSeriesData:
 0.742476 1.42393 0.953791
 0.765348 1.42933 0.954089
 0.797997 1.43682 0.953946
@@ -4008,7 +4008,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 416
-TimeSeriesData: 
+TimeSeriesData:
 0.462833 1.55929 1.04151
 0.48568 1.53695 1.00564
 0.537987 1.50326 0.973084
@@ -4428,7 +4428,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 260
-TimeSeriesData: 
+TimeSeriesData:
 0.695785 1.94597 1.0385
 0.441794 1.88455 0.921359
 0.422039 1.88452 0.921107
@@ -4692,7 +4692,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 404
-TimeSeriesData: 
+TimeSeriesData:
 1.37293 0.762507 1.08993
 1.37664 0.762323 1.08062
 1.37812 0.761209 1.07675
@@ -5100,7 +5100,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 574
-TimeSeriesData: 
+TimeSeriesData:
 0.929854 1.2134 1.20503
 0.919627 1.28516 1.17389
 0.874245 1.3814 1.21019
@@ -5678,7 +5678,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 446
-TimeSeriesData: 
+TimeSeriesData:
 0.586354 1.85043 1.24389
 0.586947 1.85348 1.24614
 0.584749 1.86188 1.24844
@@ -6128,7 +6128,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 474
-TimeSeriesData: 
+TimeSeriesData:
 0.852797 1.20314 1.01325
 0.854917 1.19526 1.03728
 0.855496 1.19258 1.04632
@@ -6606,7 +6606,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 362
-TimeSeriesData: 
+TimeSeriesData:
 0.859186 0.39951 1.17524
 0.874935 0.372903 1.24688
 0.921993 0.31816 1.32173
@@ -6972,7 +6972,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 606
-TimeSeriesData: 
+TimeSeriesData:
 0.759951 1.64731 1.04592
 0.762132 1.64527 1.04437
 0.751642 1.63425 1.01348
@@ -7582,7 +7582,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 446
-TimeSeriesData: 
+TimeSeriesData:
 0.689717 1.54672 0.990677
 0.681963 1.54499 1.03204
 0.673433 1.53216 1.06147
@@ -8032,7 +8032,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 598
-TimeSeriesData: 
+TimeSeriesData:
 0.699043 1.62654 1.16444
 0.708477 1.62094 1.13339
 0.785138 1.58227 1.0453
@@ -8634,7 +8634,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 344
-TimeSeriesData: 
+TimeSeriesData:
 1.87737 1.54964 1.10586
 1.85281 1.54378 1.12474
 1.81911 1.54134 1.14571
@@ -8982,7 +8982,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 344
-TimeSeriesData: 
+TimeSeriesData:
 0.90752 2.10634 0.960888
 0.917534 2.10513 0.960382
 0.934579 2.10481 0.960278
@@ -9330,7 +9330,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 352
-TimeSeriesData: 
+TimeSeriesData:
 2.09774 0.474171 1.43787
 2.09698 0.454017 1.40214
 2.09495 0.43916 1.37854
@@ -9686,7 +9686,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 392
-TimeSeriesData: 
+TimeSeriesData:
 1.32897 0.920324 1.11304
 1.32894 0.923642 1.09376
 1.32891 0.925747 1.08172
@@ -10082,7 +10082,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 326
-TimeSeriesData: 
+TimeSeriesData:
 1.6402 0.638056 1.08699
 1.64087 0.63637 1.09809
 1.64102 0.638699 1.0919
@@ -10412,7 +10412,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 560
-TimeSeriesData: 
+TimeSeriesData:
 1.32816 -0.051554 1.0471
 1.33663 -0.0386419 1.08804
 1.32714 -0.0279499 1.09999
@@ -10976,7 +10976,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 248
-TimeSeriesData: 
+TimeSeriesData:
 1.35344 -0.138708 1.01168
 1.36132 -0.154115 1.16586
 1.38842 -0.155591 1.1958
@@ -11228,7 +11228,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 390
-TimeSeriesData: 
+TimeSeriesData:
 1.14843 -0.144637 1.10745
 1.1484 -0.174648 1.13075
 1.14803 -0.172875 1.12756
@@ -11622,7 +11622,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 31
 TimeSeriesLength: 252
-TimeSeriesData: 
+TimeSeriesData:
 1.5131 -0.210448 1.26523
 1.50125 -0.206805 1.27188
 1.48139 -0.194985 1.28064
@@ -11878,7 +11878,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 380
-TimeSeriesData: 
+TimeSeriesData:
 0.881032 2.13958 0.969909
 0.891046 2.13837 0.969403
 0.908091 2.13805 0.969299
@@ -12262,7 +12262,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 376
-TimeSeriesData: 
+TimeSeriesData:
 0.704284 1.44941 0.971522
 0.727156 1.45481 0.97182
 0.759805 1.4623 0.971677
@@ -12642,7 +12642,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 352
-TimeSeriesData: 
+TimeSeriesData:
 1.42248 -0.269211 1.28382
 1.41063 -0.265568 1.29046
 1.39077 -0.253748 1.29923
@@ -12998,7 +12998,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 446
-TimeSeriesData: 
+TimeSeriesData:
 1.23903 0.928338 1.11069
 1.239 0.931656 1.09141
 1.23897 0.933761 1.07938
@@ -13448,7 +13448,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 382
-TimeSeriesData: 
+TimeSeriesData:
 1.57866 0.57465 1.10504
 1.57933 0.572964 1.11613
 1.57948 0.575293 1.10995
@@ -13834,7 +13834,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 436
-TimeSeriesData: 
+TimeSeriesData:
 0.726973 0.352417 1.20125
 0.742722 0.32581 1.27289
 0.78978 0.271067 1.34774
@@ -14274,7 +14274,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 518
-TimeSeriesData: 
+TimeSeriesData:
 0.839023 1.26117 1.03479
 0.841143 1.25328 1.05882
 0.841722 1.25061 1.06786
@@ -14796,7 +14796,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 734
-TimeSeriesData: 
+TimeSeriesData:
 1.09683 -0.174982 1.06125
 1.1053 -0.16207 1.10219
 1.09581 -0.151378 1.11414
@@ -15534,7 +15534,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 406
-TimeSeriesData: 
+TimeSeriesData:
 2.04318 0.421874 1.45645
 2.04242 0.40172 1.42073
 2.0404 0.386863 1.39712
@@ -15944,7 +15944,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 680
-TimeSeriesData: 
+TimeSeriesData:
 0.621245 1.60373 1.04796
 0.623426 1.60168 1.04641
 0.612936 1.59067 1.01552
@@ -16628,7 +16628,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 628
-TimeSeriesData: 
+TimeSeriesData:
 0.907988 1.21727 1.21441
 0.897761 1.28903 1.18327
 0.852379 1.38527 1.21957
@@ -17260,7 +17260,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 410
-TimeSeriesData: 
+TimeSeriesData:
 1.80659 1.58804 1.12701
 1.78202 1.58218 1.14589
 1.74833 1.57974 1.16686
@@ -17674,7 +17674,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 480
-TimeSeriesData: 
+TimeSeriesData:
 1.00138 -0.220837 1.12218
 1.00135 -0.250848 1.14548
 1.00098 -0.249075 1.14229
@@ -18158,7 +18158,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 470
-TimeSeriesData: 
+TimeSeriesData:
 1.25235 0.768241 1.08585
 1.25606 0.768057 1.07654
 1.25753 0.766943 1.07267
@@ -18632,7 +18632,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 520
-TimeSeriesData: 
+TimeSeriesData:
 0.546018 1.50216 1.00081
 0.538264 1.50042 1.04217
 0.529734 1.48759 1.07161
@@ -19156,7 +19156,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 532
-TimeSeriesData: 
+TimeSeriesData:
 0.503762 1.97399 1.26247
 0.504354 1.97704 1.26472
 0.502156 1.98544 1.26702
@@ -19692,7 +19692,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 320
-TimeSeriesData: 
+TimeSeriesData:
 1.17836 -0.243755 1.02092
 1.18624 -0.259162 1.1751
 1.21334 -0.260638 1.20504
@@ -20016,7 +20016,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 492
-TimeSeriesData: 
+TimeSeriesData:
 0.380999 1.61719 1.06093
 0.403846 1.59485 1.02506
 0.456153 1.56117 0.992502
@@ -20512,7 +20512,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 340
-TimeSeriesData: 
+TimeSeriesData:
 0.562841 1.93799 1.0594
 0.30885 1.87656 0.942261
 0.289095 1.87653 0.942009
@@ -20856,7 +20856,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 32
 TimeSeriesLength: 648
-TimeSeriesData: 
+TimeSeriesData:
 0.634227 1.61225 1.17522
 0.643661 1.60666 1.14417
 0.720322 1.56799 1.05609
@@ -21508,7 +21508,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 726
-TimeSeriesData: 
+TimeSeriesData:
 0.576624 1.63698 1.19204
 0.586058 1.63139 1.16099
 0.662719 1.59272 1.07291
@@ -22238,7 +22238,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 548
-TimeSeriesData: 
+TimeSeriesData:
 0.492768 1.77153 1.08156
 0.238777 1.7101 0.964413
 0.219022 1.71007 0.964161
@@ -22790,7 +22790,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 656
-TimeSeriesData: 
+TimeSeriesData:
 0.524741 1.94752 1.27599
 0.525334 1.95057 1.27824
 0.523136 1.95897 1.28054
@@ -23450,7 +23450,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 418
-TimeSeriesData: 
+TimeSeriesData:
 1.12212 -0.131055 1.04938
 1.13001 -0.146462 1.20356
 1.1571 -0.147938 1.2335
@@ -23872,7 +23872,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 678
-TimeSeriesData: 
+TimeSeriesData:
 1.02977 -0.228403 1.137
 1.02974 -0.258414 1.1603
 1.02937 -0.256641 1.15711
@@ -24554,7 +24554,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 640
-TimeSeriesData: 
+TimeSeriesData:
 0.449971 1.5216 1.01015
 0.442217 1.51987 1.05151
 0.433687 1.50704 1.08095
@@ -25198,7 +25198,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 600
-TimeSeriesData: 
+TimeSeriesData:
 1.12874 0.688068 1.09412
 1.13245 0.687884 1.08481
 1.13393 0.68677 1.08094
@@ -25802,7 +25802,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 496
-TimeSeriesData: 
+TimeSeriesData:
 0.89572 2.04407 1.00639
 0.905734 2.04286 1.00589
 0.922779 2.04253 1.00578
@@ -26302,7 +26302,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 632
-TimeSeriesData: 
+TimeSeriesData:
 0.46875 1.58348 1.08321
 0.491597 1.56114 1.04733
 0.543904 1.52745 1.01478
@@ -26938,7 +26938,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 656
-TimeSeriesData: 
+TimeSeriesData:
 1.10578 0.923541 1.10004
 1.10576 0.926859 1.08075
 1.10573 0.928964 1.06872
@@ -27598,7 +27598,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 546
-TimeSeriesData: 
+TimeSeriesData:
 1.97213 0.434809 1.5044
 1.97137 0.414655 1.46867
 1.96934 0.399798 1.44507
@@ -28148,7 +28148,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 768
-TimeSeriesData: 
+TimeSeriesData:
 0.573616 1.64021 1.06557
 0.575797 1.63816 1.06402
 0.565307 1.62715 1.03314
@@ -28920,7 +28920,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 650
-TimeSeriesData: 
+TimeSeriesData:
 0.9086 1.25493 1.0683
 0.91072 1.24704 1.09233
 0.911299 1.24437 1.10138
@@ -29574,7 +29574,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 990
-TimeSeriesData: 
+TimeSeriesData:
 1.13707 -0.11893 1.06052
 1.14554 -0.106018 1.10147
 1.13605 -0.0953261 1.11342
@@ -30568,7 +30568,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 584
-TimeSeriesData: 
+TimeSeriesData:
 1.8328 1.56717 1.12712
 1.80824 1.56131 1.146
 1.77454 1.55887 1.16696
@@ -31156,7 +31156,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 768
-TimeSeriesData: 
+TimeSeriesData:
 0.960013 1.18719 1.23628
 0.949786 1.25895 1.20515
 0.904404 1.35519 1.24145
@@ -31928,7 +31928,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 482
-TimeSeriesData: 
+TimeSeriesData:
 1.53673 0.529156 1.15035
 1.5374 0.52747 1.16144
 1.53755 0.529799 1.15526
@@ -32414,7 +32414,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 536
-TimeSeriesData: 
+TimeSeriesData:
 0.726588 0.435292 1.25667
 0.742337 0.408685 1.32832
 0.789395 0.353942 1.40317
@@ -32954,7 +32954,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 630
-TimeSeriesData: 
+TimeSeriesData:
 0.495319 1.33153 0.940376
 0.518191 1.33693 0.940674
 0.55084 1.34442 0.940531
@@ -33588,7 +33588,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 33
 TimeSeriesLength: 536
-TimeSeriesData: 
+TimeSeriesData:
 1.41822 -0.226117 1.29417
 1.40636 -0.222474 1.30081
 1.3865 -0.210654 1.30958
@@ -34128,7 +34128,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 882
-TimeSeriesData: 
+TimeSeriesData:
 1.23794 0.540267 1.02903
 1.24165 0.540083 1.01972
 1.24313 0.538969 1.01585
@@ -35014,7 +35014,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 638
-TimeSeriesData: 
+TimeSeriesData:
 0.868366 1.9642 0.924381
 0.87838 1.96299 0.923875
 0.895425 1.96267 0.923771
@@ -35656,7 +35656,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 948
-TimeSeriesData: 
+TimeSeriesData:
 0.316678 1.70967 0.913795
 0.308924 1.70794 0.955156
 0.300394 1.69511 0.984593
@@ -36608,7 +36608,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 608
-TimeSeriesData: 
+TimeSeriesData:
 0.757525 0.441501 1.24492
 0.773274 0.414894 1.31656
 0.820332 0.360151 1.39141
@@ -37220,7 +37220,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 614
-TimeSeriesData: 
+TimeSeriesData:
 1.68322 0.521836 1.11281
 1.68389 0.52015 1.12391
 1.68404 0.522479 1.11772
@@ -37838,7 +37838,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 792
-TimeSeriesData: 
+TimeSeriesData:
 0.592103 1.85168 0.973036
 0.338112 1.79026 0.855893
 0.318357 1.79023 0.855641
@@ -38634,7 +38634,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 818
-TimeSeriesData: 
+TimeSeriesData:
 1.53148 -0.339801 1.22414
 1.51963 -0.336158 1.23078
 1.49977 -0.324338 1.23955
@@ -39456,7 +39456,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 1004
-TimeSeriesData: 
+TimeSeriesData:
 1.1106 1.19815 1.17199
 1.10037 1.26992 1.14085
 1.05499 1.36615 1.17715
@@ -40464,7 +40464,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 790
-TimeSeriesData: 
+TimeSeriesData:
 1.01982 -0.193065 1.0884
 1.01979 -0.223076 1.1117
 1.01941 -0.221303 1.1085
@@ -41258,7 +41258,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 830
-TimeSeriesData: 
+TimeSeriesData:
 1.94497 1.54244 1.07898
 1.9204 1.53658 1.09786
 1.8867 1.53414 1.11883
@@ -42092,7 +42092,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 826
-TimeSeriesData: 
+TimeSeriesData:
 0.577893 1.61796 1.05222
 0.580074 1.61592 1.05067
 0.569584 1.6049 1.01978
@@ -42922,7 +42922,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 1168
-TimeSeriesData: 
+TimeSeriesData:
 1.16902 -0.0976323 1.03213
 1.17749 -0.0847203 1.07307
 1.168 -0.0740283 1.08502
@@ -44094,7 +44094,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 814
-TimeSeriesData: 
+TimeSeriesData:
 0.619412 1.88556 1.24479
 0.620005 1.88861 1.24705
 0.617807 1.89701 1.24935
@@ -44912,7 +44912,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 696
-TimeSeriesData: 
+TimeSeriesData:
 0.530752 1.27636 0.919537
 0.553624 1.28176 0.919835
 0.586273 1.28926 0.919692
@@ -45612,7 +45612,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 668
-TimeSeriesData: 
+TimeSeriesData:
 2.0822 0.423327 1.46007
 2.08144 0.403173 1.42435
 2.07941 0.388316 1.40074
@@ -46284,7 +46284,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 784
-TimeSeriesData: 
+TimeSeriesData:
 0.58695 1.64969 1.18084
 0.596384 1.6441 1.14979
 0.673045 1.60542 1.06171
@@ -47072,7 +47072,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 754
-TimeSeriesData: 
+TimeSeriesData:
 1.13718 0.901429 1.09223
 1.13716 0.904747 1.07295
 1.13713 0.906852 1.06091
@@ -47830,7 +47830,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 816
-TimeSeriesData: 
+TimeSeriesData:
 1.04787 1.22031 1.04579
 1.04999 1.21242 1.06982
 1.05057 1.20975 1.07886
@@ -48650,7 +48650,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 740
-TimeSeriesData: 
+TimeSeriesData:
 0.516506 1.58166 1.05447
 0.539353 1.55932 1.0186
 0.59166 1.52563 0.986044
@@ -49394,7 +49394,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 34
 TimeSeriesLength: 616
-TimeSeriesData: 
+TimeSeriesData:
 1.22587 -0.121177 0.99933
 1.23376 -0.136584 1.15351
 1.26085 -0.13806 1.18345
@@ -50014,7 +50014,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 1122
-TimeSeriesData: 
+TimeSeriesData:
 2.0546 1.33123 1.05623
 2.03003 1.32537 1.07511
 1.99634 1.32293 1.09607
@@ -51140,7 +51140,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 778
-TimeSeriesData: 
+TimeSeriesData:
 1.34412 -0.252689 0.993512
 1.35201 -0.268096 1.14769
 1.3791 -0.269572 1.17764
@@ -51922,7 +51922,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 932
-TimeSeriesData: 
+TimeSeriesData:
 0.742379 1.26665 0.898886
 0.765251 1.27205 0.899184
 0.7979 1.27954 0.899041
@@ -52858,7 +52858,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 1470
-TimeSeriesData: 
+TimeSeriesData:
 1.2004 0.487864 0.99271
 1.20411 0.48768 0.9834
 1.20559 0.486566 0.979533
@@ -54332,7 +54332,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 746
-TimeSeriesData: 
+TimeSeriesData:
 2.16727 0.388739 1.44291
 2.1665 0.368585 1.40718
 2.16448 0.353728 1.38357
@@ -55082,7 +55082,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 904
-TimeSeriesData: 
+TimeSeriesData:
 0.638325 1.58347 1.19099
 0.647759 1.57788 1.15994
 0.72442 1.5392 1.07186
@@ -55990,7 +55990,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 916
-TimeSeriesData: 
+TimeSeriesData:
 1.06131 1.18912 1.03326
 1.06343 1.18123 1.05729
 1.06401 1.17855 1.06634
@@ -56910,7 +56910,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 1128
-TimeSeriesData: 
+TimeSeriesData:
 0.713038 1.56665 1.03925
 0.715219 1.56461 1.0377
 0.704729 1.55359 1.00682
@@ -58042,7 +58042,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 894
-TimeSeriesData: 
+TimeSeriesData:
 0.630869 1.85378 1.22284
 0.631462 1.85682 1.22509
 0.629264 1.86523 1.22739
@@ -58940,7 +58940,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 1196
-TimeSeriesData: 
+TimeSeriesData:
 1.53102 -0.235617 1.18619
 1.51916 -0.231974 1.19283
 1.4993 -0.220154 1.20159
@@ -60140,7 +60140,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 1430
-TimeSeriesData: 
+TimeSeriesData:
 1.22891 1.00893 1.11758
 1.21868 1.0807 1.08645
 1.1733 1.17693 1.12274
@@ -61574,7 +61574,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 1126
-TimeSeriesData: 
+TimeSeriesData:
 0.999305 -0.00774848 1.07024
 0.999275 -0.0377595 1.09354
 0.998902 -0.0359865 1.09034
@@ -62704,7 +62704,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 1424
-TimeSeriesData: 
+TimeSeriesData:
 1.21929 -0.116715 1.00611
 1.22776 -0.103803 1.04705
 1.21827 -0.0931106 1.059
@@ -64132,7 +64132,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 998
-TimeSeriesData: 
+TimeSeriesData:
 2.00815 0.492163 1.13069
 2.00883 0.490477 1.14179
 2.00898 0.492806 1.1356
@@ -65134,7 +65134,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 820
-TimeSeriesData: 
+TimeSeriesData:
 0.869819 0.423194 1.26494
 0.885568 0.396587 1.33658
 0.932626 0.341844 1.41143
@@ -65958,7 +65958,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 1118
-TimeSeriesData: 
+TimeSeriesData:
 0.38883 1.61678 0.930711
 0.381076 1.61505 0.972072
 0.372546 1.60222 1.00151
@@ -67080,7 +67080,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 1012
-TimeSeriesData: 
+TimeSeriesData:
 0.63268 1.69487 0.972474
 0.378689 1.63344 0.855331
 0.358934 1.63341 0.855079
@@ -68096,7 +68096,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 822
-TimeSeriesData: 
+TimeSeriesData:
 0.514789 1.53249 1.04507
 0.537636 1.51015 1.0092
 0.589943 1.47646 0.976641
@@ -68922,7 +68922,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 754
-TimeSeriesData: 
+TimeSeriesData:
 0.875284 1.91283 0.901972
 0.885298 1.91162 0.901466
 0.902343 1.91129 0.901362
@@ -69680,7 +69680,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 35
 TimeSeriesLength: 894
-TimeSeriesData: 
+TimeSeriesData:
 1.18384 0.870018 1.09935
 1.18381 0.873336 1.08007
 1.18378 0.875441 1.06803
@@ -70578,7 +70578,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 1086
-TimeSeriesData: 
+TimeSeriesData:
 0.767529 1.28387 0.898917
 0.790401 1.28927 0.899215
 0.82305 1.29676 0.899072
@@ -71668,7 +71668,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 1024
-TimeSeriesData: 
+TimeSeriesData:
 1.07344 1.17558 1.01824
 1.07556 1.16769 1.04227
 1.07614 1.16502 1.05132
@@ -72696,7 +72696,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 1528
-TimeSeriesData: 
+TimeSeriesData:
 1.19417 0.492198 0.992417
 1.19788 0.492014 0.983107
 1.19936 0.4909 0.97924
@@ -74228,7 +74228,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 1198
-TimeSeriesData: 
+TimeSeriesData:
 0.4077 1.60481 0.939449
 0.399946 1.60308 0.98081
 0.391416 1.59025 1.01025
@@ -75430,7 +75430,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 1262
-TimeSeriesData: 
+TimeSeriesData:
 1.03758 -0.0192738 1.07119
 1.03755 -0.0492848 1.09449
 1.03718 -0.0475118 1.0913
@@ -76696,7 +76696,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 962
-TimeSeriesData: 
+TimeSeriesData:
 0.625603 1.84949 1.22544
 0.626196 1.85253 1.22769
 0.623998 1.86094 1.22999
@@ -77662,7 +77662,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 1374
-TimeSeriesData: 
+TimeSeriesData:
 0.764479 1.56804 1.0197
 0.76666 1.566 1.01815
 0.75617 1.55498 0.987261
@@ -79040,7 +79040,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 1016
-TimeSeriesData: 
+TimeSeriesData:
 0.643823 1.59546 1.1772
 0.653257 1.58986 1.14615
 0.729918 1.55119 1.05807
@@ -80060,7 +80060,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 852
-TimeSeriesData: 
+TimeSeriesData:
 1.31375 -0.269928 0.979396
 1.32164 -0.285335 1.13358
 1.34873 -0.286811 1.16352
@@ -80916,7 +80916,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 854
-TimeSeriesData: 
+TimeSeriesData:
 2.20198 0.408249 1.44232
 2.20122 0.388095 1.4066
 2.19919 0.373238 1.38299
@@ -81774,7 +81774,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 1140
-TimeSeriesData: 
+TimeSeriesData:
 0.616165 1.63675 0.963778
 0.362174 1.57533 0.846635
 0.342419 1.57529 0.846383
@@ -82918,7 +82918,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 1304
-TimeSeriesData: 
+TimeSeriesData:
 1.53447 -0.246569 1.18396
 1.52261 -0.242926 1.1906
 1.50275 -0.231106 1.19937
@@ -84226,7 +84226,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 1218
-TimeSeriesData: 
+TimeSeriesData:
 2.06843 1.3257 1.06045
 2.04386 1.31984 1.07933
 2.01017 1.3174 1.10029
@@ -85448,7 +85448,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 1156
-TimeSeriesData: 
+TimeSeriesData:
 2.02798 0.492712 1.10871
 2.02865 0.491026 1.1198
 2.0288 0.493355 1.11362
@@ -86608,7 +86608,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 1528
-TimeSeriesData: 
+TimeSeriesData:
 1.2122 -0.102925 1.00418
 1.22067 -0.0900126 1.04513
 1.21118 -0.0793205 1.05708
@@ -88140,7 +88140,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 1914
-TimeSeriesData: 
+TimeSeriesData:
 1.14626 0.962213 1.08841
 1.13603 1.03398 1.05727
 1.09065 1.13021 1.09357
@@ -90058,7 +90058,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 982
-TimeSeriesData: 
+TimeSeriesData:
 0.913955 0.493778 1.27887
 0.929704 0.467171 1.35051
 0.976762 0.412428 1.42536
@@ -91044,7 +91044,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 900
-TimeSeriesData: 
+TimeSeriesData:
 0.531797 1.51969 1.04558
 0.554644 1.49735 1.00971
 0.606951 1.46366 0.977149
@@ -91948,7 +91948,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 876
-TimeSeriesData: 
+TimeSeriesData:
 0.889186 1.95449 0.909805
 0.8992 1.95328 0.909299
 0.916245 1.95295 0.909195
@@ -92828,7 +92828,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 36
 TimeSeriesLength: 968
-TimeSeriesData: 
+TimeSeriesData:
 1.16564 0.871479 1.09074
 1.16562 0.874797 1.07146
 1.16559 0.876902 1.05942
@@ -93800,7 +93800,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 1564
-TimeSeriesData: 
+TimeSeriesData:
 1.19053 0.494333 0.992241
 1.19424 0.494149 0.982931
 1.19572 0.493035 0.979064
@@ -95368,7 +95368,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 1028
-TimeSeriesData: 
+TimeSeriesData:
 0.925045 0.505 1.28271
 0.940794 0.478393 1.35435
 0.987852 0.42365 1.4292
@@ -96400,7 +96400,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 946
-TimeSeriesData: 
+TimeSeriesData:
 0.542042 1.52736 1.04721
 0.564889 1.50502 1.01134
 0.617196 1.47133 0.978779
@@ -97350,7 +97350,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 848
-TimeSeriesData: 
+TimeSeriesData:
 0.882511 1.95102 0.907607
 0.892525 1.94981 0.907101
 0.90957 1.94948 0.906997
@@ -98202,7 +98202,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 1180
-TimeSeriesData: 
+TimeSeriesData:
 0.604211 1.62369 0.963629
 0.35022 1.56226 0.846486
 0.330465 1.56223 0.846234
@@ -99386,7 +99386,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 1432
-TimeSeriesData: 
+TimeSeriesData:
 0.762714 1.57154 1.02291
 0.764895 1.5695 1.02135
 0.754405 1.55849 0.990467
@@ -100822,7 +100822,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 1338
-TimeSeriesData: 
+TimeSeriesData:
 1.53276 -0.245884 1.18431
 1.5209 -0.242241 1.19096
 1.50104 -0.230421 1.19972
@@ -102164,7 +102164,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 1064
-TimeSeriesData: 
+TimeSeriesData:
 1.06653 1.16838 1.01702
 1.06865 1.16049 1.04105
 1.06923 1.15782 1.0501
@@ -103232,7 +103232,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 1336
-TimeSeriesData: 
+TimeSeriesData:
 1.04525 -0.0179433 1.07289
 1.04522 -0.0479543 1.09619
 1.04485 -0.0461813 1.093
@@ -104572,7 +104572,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 1274
-TimeSeriesData: 
+TimeSeriesData:
 2.0715 1.32671 1.06479
 2.04694 1.32085 1.08367
 2.01324 1.31841 1.10463
@@ -105850,7 +105850,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 890
-TimeSeriesData: 
+TimeSeriesData:
 1.29631 -0.273721 0.97864
 1.30419 -0.289128 1.13282
 1.33129 -0.290604 1.16276
@@ -106744,7 +106744,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 1238
-TimeSeriesData: 
+TimeSeriesData:
 0.414121 1.60047 0.943427
 0.406367 1.59873 0.984788
 0.397837 1.5859 1.01423
@@ -107986,7 +107986,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 992
-TimeSeriesData: 
+TimeSeriesData:
 1.16349 0.871209 1.08825
 1.16347 0.874527 1.06897
 1.16344 0.876632 1.05693
@@ -108982,7 +108982,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 1978
-TimeSeriesData: 
+TimeSeriesData:
 1.12891 0.960702 1.08848
 1.11869 1.03247 1.05734
 1.0733 1.1287 1.09364
@@ -110964,7 +110964,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 1592
-TimeSeriesData: 
+TimeSeriesData:
 1.2058 -0.0907738 1.00397
 1.21427 -0.0778618 1.04491
 1.20479 -0.0671698 1.05686
@@ -112560,7 +112560,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 1204
-TimeSeriesData: 
+TimeSeriesData:
 2.02769 0.497519 1.10846
 2.02836 0.495833 1.11955
 2.02852 0.498162 1.11337
@@ -113768,7 +113768,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 1068
-TimeSeriesData: 
+TimeSeriesData:
 0.63904 1.60849 1.17931
 0.648474 1.6029 1.14825
 0.725135 1.56423 1.06017
@@ -114840,7 +114840,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 1004
-TimeSeriesData: 
+TimeSeriesData:
 0.62094 1.84926 1.22787
 0.621533 1.85231 1.23013
 0.619335 1.86071 1.23242
@@ -115848,7 +115848,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 834
-TimeSeriesData: 
+TimeSeriesData:
 2.19703 0.404851 1.44221
 2.19627 0.384697 1.40649
 2.19425 0.36984 1.38288
@@ -116686,7 +116686,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 37
 TimeSeriesLength: 1106
-TimeSeriesData: 
+TimeSeriesData:
 0.770075 1.29309 0.900255
 0.792947 1.29849 0.900553
 0.825596 1.30598 0.90041
@@ -117796,7 +117796,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 1206
-TimeSeriesData: 
+TimeSeriesData:
 0.767838 1.31508 0.861115
 0.79071 1.32048 0.861413
 0.823359 1.32797 0.86127
@@ -119006,7 +119006,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 1000
-TimeSeriesData: 
+TimeSeriesData:
 2.25767 0.436295 1.38126
 2.25691 0.416141 1.34553
 2.25488 0.401284 1.32193
@@ -120010,7 +120010,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 1102
-TimeSeriesData: 
+TimeSeriesData:
 0.633414 1.85754 1.17139
 0.634007 1.86059 1.17365
 0.631809 1.86899 1.17594
@@ -121116,7 +121116,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 1404
-TimeSeriesData: 
+TimeSeriesData:
 2.05985 0.520458 1.01914
 2.06053 0.518772 1.03024
 2.06068 0.521101 1.02405
@@ -122524,7 +122524,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 1224
-TimeSeriesData: 
+TimeSeriesData:
 0.642788 1.66095 1.10769
 0.652222 1.65535 1.07663
 0.728883 1.61668 0.98855
@@ -123752,7 +123752,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 1812
-TimeSeriesData: 
+TimeSeriesData:
 1.19774 -0.0415528 0.9389
 1.20621 -0.0286407 0.979842
 1.19672 -0.0179487 0.991794
@@ -125568,7 +125568,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 1826
-TimeSeriesData: 
+TimeSeriesData:
 1.19316 0.5436 0.917245
 1.19687 0.543416 0.907935
 1.19835 0.542302 0.904068
@@ -127398,7 +127398,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 1160
-TimeSeriesData: 
+TimeSeriesData:
 0.971468 0.555195 1.21101
 0.987217 0.528588 1.28265
 1.03428 0.473845 1.3575
@@ -128562,7 +128562,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 2296
-TimeSeriesData: 
+TimeSeriesData:
 1.10744 0.963529 1.03072
 1.09721 1.03529 0.999583
 1.05183 1.13153 1.03588
@@ -130862,7 +130862,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 984
-TimeSeriesData: 
+TimeSeriesData:
 1.26875 -0.268621 0.922617
 1.27663 -0.284029 1.0768
 1.30373 -0.285504 1.10674
@@ -131850,7 +131850,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 1358
-TimeSeriesData: 
+TimeSeriesData:
 0.449731 1.59071 0.90723
 0.441977 1.58898 0.948591
 0.433447 1.57614 0.978028
@@ -133212,7 +133212,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 1020
-TimeSeriesData: 
+TimeSeriesData:
 0.938278 1.98472 0.853455
 0.948292 1.98351 0.852949
 0.965337 1.98318 0.852845
@@ -134236,7 +134236,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 1472
-TimeSeriesData: 
+TimeSeriesData:
 1.07918 -0.00740278 1.0095
 1.07915 -0.0374138 1.0328
 1.07877 -0.0356408 1.02961
@@ -135712,7 +135712,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 1176
-TimeSeriesData: 
+TimeSeriesData:
 1.07084 1.1596 0.972253
 1.07296 1.15171 0.996282
 1.07354 1.14904 1.00533
@@ -136892,7 +136892,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 1388
-TimeSeriesData: 
+TimeSeriesData:
 2.07862 1.35197 1.02428
 2.05405 1.34611 1.04316
 2.02035 1.34367 1.06413
@@ -138284,7 +138284,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 1412
-TimeSeriesData: 
+TimeSeriesData:
 1.54076 -0.236478 1.15478
 1.5289 -0.232835 1.16142
 1.50904 -0.221015 1.17018
@@ -139700,7 +139700,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 1020
-TimeSeriesData: 
+TimeSeriesData:
 0.559777 1.54621 1.01652
 0.582624 1.52387 0.980643
 0.634931 1.49018 0.948085
@@ -140724,7 +140724,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 1590
-TimeSeriesData: 
+TimeSeriesData:
 0.777157 1.58932 0.979568
 0.779338 1.58727 0.978016
 0.768848 1.57626 0.94713
@@ -142318,7 +142318,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 2502
-TimeSeriesData: 
+TimeSeriesData:
 0.464475 1.56858 0.626739
 0.210484 1.50716 0.509596
 0.190729 1.50712 0.509344
@@ -144824,7 +144824,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 38
 TimeSeriesLength: 1108
-TimeSeriesData: 
+TimeSeriesData:
 1.16995 0.900175 1.01234
 1.16993 0.903493 0.993064
 1.1699 0.905598 0.981026
@@ -145936,7 +145936,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 2564
-TimeSeriesData: 
+TimeSeriesData:
 0.451735 1.57002 0.623174
 0.197744 1.50859 0.506031
 0.177989 1.50856 0.505779
@@ -148504,7 +148504,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 2594
-TimeSeriesData: 
+TimeSeriesData:
 1.09665 0.9498 1.0262
 1.08643 1.02156 0.995057
 1.04104 1.1178 1.03136
@@ -151102,7 +151102,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 1150
-TimeSeriesData: 
+TimeSeriesData:
 0.638988 1.85819 1.15739
 0.639581 1.86124 1.15964
 0.637383 1.86964 1.16194
@@ -152256,7 +152256,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 1212
-TimeSeriesData: 
+TimeSeriesData:
 1.07713 1.15198 0.964292
 1.07925 1.1441 0.988321
 1.07983 1.14142 0.997365
@@ -153472,7 +153472,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 1224
-TimeSeriesData: 
+TimeSeriesData:
 0.993131 0.574181 1.19578
 1.00888 0.547574 1.26742
 1.05594 0.492831 1.34227
@@ -154700,7 +154700,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 1680
-TimeSeriesData: 
+TimeSeriesData:
 0.791039 1.5934 0.971004
 0.79322 1.59136 0.969452
 0.78273 1.58034 0.938566
@@ -156384,7 +156384,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 1418
-TimeSeriesData: 
+TimeSeriesData:
 0.465637 1.57758 0.89217
 0.457883 1.57585 0.933531
 0.449353 1.56302 0.962968
@@ -157806,7 +157806,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 1092
-TimeSeriesData: 
+TimeSeriesData:
 0.963788 1.9895 0.84731
 0.973802 1.98829 0.846804
 0.990847 1.98796 0.8467
@@ -158902,7 +158902,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 1314
-TimeSeriesData: 
+TimeSeriesData:
 0.638448 1.67867 1.09703
 0.647882 1.67308 1.06597
 0.724543 1.6344 0.97789
@@ -160220,7 +160220,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 1876
-TimeSeriesData: 
+TimeSeriesData:
 1.19301 0.543062 0.912189
 1.19672 0.542878 0.902879
 1.19819 0.541764 0.899012
@@ -162100,7 +162100,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 1030
-TimeSeriesData: 
+TimeSeriesData:
 2.26762 0.437644 1.37328
 2.26686 0.41749 1.33756
 2.26483 0.402633 1.31395
@@ -163134,7 +163134,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 1632
-TimeSeriesData: 
+TimeSeriesData:
 2.09316 0.533635 0.980081
 2.09383 0.531949 0.991176
 2.09398 0.534278 0.98499
@@ -164770,7 +164770,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 2066
-TimeSeriesData: 
+TimeSeriesData:
 1.18919 -0.00378573 0.921678
 1.19766 0.00912631 0.96262
 1.18817 0.0198183 0.974572
@@ -166840,7 +166840,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 1044
-TimeSeriesData: 
+TimeSeriesData:
 1.25576 -0.270353 0.906274
 1.26364 -0.28576 1.06045
 1.29073 -0.287236 1.0904
@@ -167888,7 +167888,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 1640
-TimeSeriesData: 
+TimeSeriesData:
 1.11481 -0.0105591 0.990924
 1.11478 -0.0405701 1.01423
 1.11441 -0.0387971 1.01103
@@ -169532,7 +169532,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 1484
-TimeSeriesData: 
+TimeSeriesData:
 1.55078 -0.238128 1.14847
 1.53892 -0.234485 1.15511
 1.51906 -0.222665 1.16387
@@ -171020,7 +171020,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 1468
-TimeSeriesData: 
+TimeSeriesData:
 2.07402 1.3624 1.01293
 2.04946 1.35654 1.03181
 2.01576 1.35411 1.05277
@@ -172492,7 +172492,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 1150
-TimeSeriesData: 
+TimeSeriesData:
 0.589999 1.53902 0.998611
 0.612846 1.51668 0.962739
 0.665153 1.483 0.930181
@@ -173646,7 +173646,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 1278
-TimeSeriesData: 
+TimeSeriesData:
 0.761585 1.32001 0.848029
 0.784457 1.3254 0.848327
 0.817106 1.3329 0.848184
@@ -174928,7 +174928,7 @@ TimeSeriesData:
 ************TIME_SERIES************
 ClassID: 39
 TimeSeriesLength: 1208
-TimeSeriesData: 
+TimeSeriesData:
 1.18072 0.900931 0.976892
 1.18069 0.904249 0.957611
 1.18066 0.906354 0.945573
