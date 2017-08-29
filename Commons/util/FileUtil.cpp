@@ -361,7 +361,9 @@ FileUtil::saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string n
   std::fstream fileOut;
   type_gesture sample;
   XnPoint3D pl, pr;
+  bool msrc = false, grufba = false, msr_action_3d = false, utkinect = true;
   size_t n = gestures.size(), nPos;
+  long numDimensions = 3;
 
   fileOut.open(nameFile.c_str(), ios::out | ios::ate);
 
@@ -371,19 +373,86 @@ FileUtil::saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string n
     fileOut << "GRT_LABELLED_CLASSIFICATION_DATA_FILE_V1.0" << std::endl;
   }
 
-  fileOut << "DatasetName: UFBAGRDataset" << std::endl;
-  fileOut << "InfoText: This dataset contains 7 gestures, totalizing 1099 executions." << std::endl;
-  fileOut << "NumDimensions: 3" << std::endl;
-  fileOut << "TotalNumTrainingExamples: 700" << std::endl;
-  fileOut << "NumberOfClasses: 7" << std::endl;
-  fileOut << "ClassIDsAndCounters:" << std::endl;
-  fileOut << "1 " << std::endl;
-  fileOut << "2 " << std::endl;
-  fileOut << "3 " << std::endl;
-  fileOut << "4 " << std::endl;
-  fileOut << "5 " << std::endl;
-  fileOut << "6 " << std::endl;
-  fileOut << "7 " << std::endl;
+  if (msrc) {
+    fileOut << "DatasetName: msrc_12" << std::endl;
+    fileOut << "InfoText: This dataset contains 12 gestures, totalizing 594 executions." << std::endl;
+    fileOut << "NumDimensions: " << numDimensions << std::endl;
+    fileOut << "TotalNumTrainingExamples: 400" << std::endl;
+    fileOut << "NumberOfClasses: 12" << std::endl;
+    fileOut << "ClassIDsAndCounters:" << std::endl;
+    fileOut << "1 30 NOT_SET" << std::endl;
+    fileOut << "10 48 NOT_SET" << std::endl;
+    fileOut << "11 49 NOT_SET" << std::endl;
+    fileOut << "12 50 NOT_SET" << std::endl;
+    fileOut << "1 20 NOT_SET" << std::endl;
+    fileOut << "2 50 NOT_SET" << std::endl;
+    fileOut << "3 50 NOT_SET" << std::endl;
+    fileOut << "4 50 NOT_SET" << std::endl;
+    fileOut << "5 48 NOT_SET" << std::endl;
+    fileOut << "6 49 NOT_SET" << std::endl;
+    fileOut << "7 50 NOT_SET" << std::endl;
+    fileOut << "8 50 NOT_SET" << std::endl;
+    fileOut << "9 50 NOT_SET" << std::endl;
+  } else if (grufba) {
+    fileOut << "DatasetName: grufba" << std::endl;
+    fileOut << "InfoText: This dataset contains 7 gestures, totalizing 1099 executions." << std::endl;
+    fileOut << "NumDimensions: " << numDimensions << std::endl;
+    fileOut << "TotalNumTrainingExamples: 769" << std::endl;
+    fileOut << "NumberOfClasses: 7" << std::endl;
+    fileOut << "ClassIDsAndCounters:" << std::endl;
+    fileOut << "1 182 NOT_SET" << std::endl;
+    fileOut << "2 63 NOT_SET" << std::endl;
+    fileOut << "3 220 NOT_SET" << std::endl;
+    fileOut << "4 135 NOT_SET" << std::endl;
+    fileOut << "5 194 NOT_SET" << std::endl;
+    fileOut << "6 147 NOT_SET" << std::endl;
+    fileOut << "7 158 NOT_SET" << std::endl;
+  } else if (msr_action_3d) {
+    fileOut << "DatasetName: msr_action_3d" << std::endl;
+    fileOut << "InfoText: This dataset contains 20 gestures, totalizing 567 executions." << std::endl;
+    fileOut << "NumDimensions: " << numDimensions << std::endl;
+    fileOut << "TotalNumTrainingExamples: 400" << std::endl;
+    fileOut << "NumberOfClasses: 20" << std::endl;
+    fileOut << "ClassIDsAndCounters:" << std::endl;
+    fileOut << "12 27 NOT_SET" << std::endl;
+    fileOut << "13 27 NOT_SET" << std::endl;
+    fileOut << "14 27 NOT_SET" << std::endl;
+    fileOut << "15 26 NOT_SET" << std::endl;
+    fileOut << "16 26 NOT_SET" << std::endl;
+    fileOut << "17 26 NOT_SET" << std::endl;
+    fileOut << "18 28 NOT_SET" << std::endl;
+    fileOut << "19 30 NOT_SET" << std::endl;
+    fileOut << "20 30 NOT_SET" << std::endl;
+    fileOut << "21 30 NOT_SET" << std::endl;
+    fileOut << "22 30 NOT_SET" << std::endl;
+    fileOut << "23 30 NOT_SET" << std::endl;
+    fileOut << "24 30 NOT_SET" << std::endl;
+    fileOut << "25 30 NOT_SET" << std::endl;
+    fileOut << "26 20 NOT_SET" << std::endl;
+    fileOut << "27 30 NOT_SET" << std::endl;
+    fileOut << "28 30 NOT_SET" << std::endl;
+    fileOut << "29 30 NOT_SET" << std::endl;
+    fileOut << "30 30 NOT_SET" << std::endl;
+    fileOut << "31 30 NOT_SET" << std::endl;
+  } else if (utkinect) {
+    fileOut << "DatasetName: utkinect" << std::endl;
+    fileOut << "InfoText: This dataset contains 10 gestures performed by 10 subjects twice, totalizing 200 executions." << std::endl;
+    fileOut << "NumDimensions: " << numDimensions << std::endl;
+    fileOut << "TotalNumTrainingExamples: 140" << std::endl;
+    fileOut << "NumberOfClasses: 10" << std::endl;
+    fileOut << "ClassIDsAndCounters:" << std::endl;
+    fileOut << "30 20 NOT_SET" << std::endl;
+    fileOut << "31 20 NOT_SET" << std::endl;
+    fileOut << "32 20 NOT_SET" << std::endl;
+    fileOut << "33 20 NOT_SET" << std::endl;
+    fileOut << "34 20 NOT_SET" << std::endl;
+    fileOut << "35 20 NOT_SET" << std::endl;
+    fileOut << "36 20 NOT_SET" << std::endl;
+    fileOut << "37 20 NOT_SET" << std::endl;
+    fileOut << "38 20 NOT_SET" << std::endl;
+    fileOut << "39 20 NOT_SET" << std::endl;
+  }
+
   fileOut << "UseExternalRanges: 0 " << std::endl;
 
   if(series) {
@@ -392,7 +461,7 @@ FileUtil::saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string n
       sample = gestures[i];
       if(series) {
         fileOut << "************TIME_SERIES************" << std::endl;
-        fileOut << "ClassID: " << sample.name[1] << std::endl;
+        fileOut << "ClassID: " << changeNameGesture(sample.name) << std::endl;
         fileOut << "TimeSeriesLength: " << sample.handOne.positions.size() * 2 << std::endl;
         fileOut << "TimeSeriesData: " << std::endl;
       }
