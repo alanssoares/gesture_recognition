@@ -12,10 +12,10 @@ echo "Finish ->>>>>> Decision Tree..."
 # g++ GMMTest.o -o startGMM -I/usr/local/include -L/usr/local/lib -lgrt
 # echo "Finish ->>>>>> GMM..."
 
-# echo "Start ->>>>>>> DTW..."
-# g++ -std=c++11 -c DTWTest.cpp -I/usr/local/include
-# g++ DTWTest.o -o startDTW -I/usr/local/include -L/usr/local/lib -lgrt
-# echo "Finish ->>>>>> DTW..."
+echo "Start ->>>>>>> DTW..."
+g++ -std=c++11 -c DTWTest.cpp -I/usr/local/include
+g++ DTWTest.o -o startDTW -I/usr/local/include -L/usr/local/lib -lgrt
+echo "Finish ->>>>>> DTW..."
 
 # echo "Start ->>>>>>> HMM..."
 # g++ -std=c++11 -c HMMTest.cpp -I/usr/local/include

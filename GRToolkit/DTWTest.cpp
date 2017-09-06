@@ -49,20 +49,35 @@ int main (int argc, const char * argv[])
 	// TEMPLATE_THRESHOLDS=0,CLASS_LIKELIHOODS,THRESHOLDS_AND_LIKELIHOODS
 	// ABSOLUTE_DIST=0, EUCLIDEAN_DIST, NORM_ABSOLUTE_DIST
 
-	// @param useScaling: sets if the training and prediction data should be scaled to a specific range.  Default value is useScaling = false
-	// @param useNullRejection: sets if null rejection will be used for the realtime prediction.  If useNullRejection is set to true then the predictedClassLabel will be set to 0 (which is the default null label) if the distance between the inputVector and the closest template is greater than the null rejection threshold for the top predicted class.  The null rejection threshold is computed for each class during the training phase. Default value is useNullRejection = false
-	// @param nullRejectionCoeff: sets the null rejection coefficient, this is a multipler controlling the null rejection threshold for each class.  This will only be used if the useNullRejection parameter is set to true.  Default value is nullRejectionCoeff = 3.0
-	// @param rejectionMode: sets the method used for null rejection. The options are TEMPLATE_THRESHOLDS, CLASS_LIKELIHOODS or THRESHOLDS_AND_LIKELIHOODS.  Default = TEMPLATE_THRESHOLDS
-	// @param dtwConstrain: sets if the DTW warping path should be constrained within a specific distance from the main radius of the cost matrix.  Default value = true
-	// @param radius: controls the radius of the warping path, which is used if the dtwConstrain is set to true. Should be a value between [0 1]. Default value = 0.2
-	// @param offsetUsingFirstSample: sets if each timeseries should be offset by the first sample in the timeseries. Default value = false
-	// @param useSmoothing: sets if the input timeseries should be smoothed (i.e. averaged and downsampled). Default value = false
-	// @param smoothingFactor: controls the amount of downsampling if the useSmoothing parameter is set to true. Default value = 5
-	// @param nullRejectionLikelihoodThreshold: set the null rejection threshold for likelihoods when CLASS_LIKELIHOODS or THRESHOLDS_AND_LIKELIHOODS modes are used for rejectionMode. Default value = 0.99
+	// Sets if the training and prediction data should be scaled to a specific range.  Default value is useScaling = false
+	bool useScaling = true;
 
-	bool useScaling = false, useNullRejection = false, constrainWarpingPath = false, offsetUsingFirstSample = false, useSmoothing = false;
-	float nullRejectionCoeff = 3.0, radius = 0.2, nullRejectionLikelihoodThreshold = 0.99;
-	UINT rejectionMode = DTW::THRESHOLDS_AND_LIKELIHOODS, smoothingFactor = 5;
+	// Sets if null rejection will be used for the realtime prediction.  If useNullRejection is set to true then the predictedClassLabel will be set to 0 (which is the default null label) if the distance between the inputVector and the closest template is greater than the null rejection threshold for the top predicted class.  The null rejection threshold is computed for each class during the training phase. Default value is useNullRejection = false
+	bool useNullRejection = false;
+
+	// Sets if the DTW warping path should be constrained within a specific distance from the main radius of the cost matrix.  Default value = true
+	bool constrainWarpingPath = false;
+
+	// Sets if each timeseries should be offset by the first sample in the timeseries. Default value = false
+	bool offsetUsingFirstSample = false;
+
+	// Sets if the input timeseries should be smoothed (i.e. averaged and downsampled). Default value = false
+	bool useSmoothing = false;
+
+	// Sets the null rejection coefficient, this is a multipler controlling the null rejection threshold for each class.  This will only be used if the useNullRejection parameter is set to true.  Default value is nullRejectionCoeff = 3.0
+	float nullRejectionCoeff = 3.0;
+
+	// Controls the radius of the warping path, which is used if the dtwConstrain is set to true. Should be a value between [0 1]. Default value = 0.2
+	float radius = 0.2;
+
+	// Set the null rejection threshold for likelihoods when CLASS_LIKELIHOODS or THRESHOLDS_AND_LIKELIHOODS modes are used for rejectionMode. Default value = 0.99
+	float nullRejectionLikelihoodThreshold = 0.99;
+
+	// Sets the method used for null rejection. The options are TEMPLATE_THRESHOLDS, CLASS_LIKELIHOODS or THRESHOLDS_AND_LIKELIHOODS.  Default = TEMPLATE_THRESHOLDS
+	UINT rejectionMode = DTW::THRESHOLDS_AND_LIKELIHOODS;
+
+	// Controls the amount of downsampling if the useSmoothing parameter is set to true. Default value = 5
+	UINT smoothingFactor = 5;
 
 	// constrainWarpingPath -> radius
 	// useSmoothing -> smoothingFactor

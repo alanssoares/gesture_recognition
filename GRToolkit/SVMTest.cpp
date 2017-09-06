@@ -52,9 +52,41 @@ int main (int argc, const char * argv[])
     const string filename = argv[1];
     const string kernel = argv[2];
 
-    SVM svm;
+    // Parameters
+    // This sets the SVM kernelType. Options are LINEAR_KERNEL, POLY_KERNEL, RBF_KERNEL, SIGMOID_KERNEL, PRECOMPUTED_KERNEL. The default kernelType is kernelType=LINEAR_KERNEL
+    KernelType kernelType = SVM::LINEAR_KERNEL;
 
-    // **** KERNEL ***** 
+    // This sets the SVM type. Options are C_SVC, NU_SVC, ONE_CLASS, EPSILON_SVR, NU_SVR. The default svmType is svmType=C_SVC
+    SVMType svmType = C_SVC;
+
+    // Sets if the training/prediction data will be scaled to the default range of [-1. 1.]. The SVM algorithm commonly achieves a better classification result if scaling is turned on. The default useScaling value is useScaling=true
+    // The SVM will typically work much better if we scale the training and prediction data, so turn scaling on
+    bool useScaling = true;
+
+    // Sets if a predicted class will be rejected if the classes' probability is below the classificationThreshold. The default value is useNullRejection=false
+    bool useNullRejection = false;
+
+    // Sets if the SVM gamma parameter will automatically be computed, if set to true then gamma will be set to (1.0/numFeatures), where numFeatures is the number of features in the training data. The default value is useAutoGamma=true
+    bool useAutoGamma = true;
+
+    // Sets if the SVM model will be trained using cross validation. The default value is useCrossValidation=false
+    bool useCrossValidation = false;
+
+    // Sets the SVM gamma parameter. The default value is gamma=0.1
+    Float gamma = 0.1;
+
+    // Sets the SVM degree parameter. The default value is degree=3
+    UINT degree = 3;
+
+    // coef0: sets the SVM coef0 parameter. The default value is coef0=0
+    // nu: sets the SVM nu parameter. The default value is nu=0.5
+    // C: sets the SVM C parameter. The default value is C=1
+    Float coef0 = 0, nu = 0.5, C = 1;
+
+    // Sets the number of folds that will be used for cross validation. The default value is kFoldValue=10
+    UINT kFoldValue = 10;
+
+    // **** KERNEL *****
     // 1 - LINEAR
     // 2 - POLY_KERNEL
     // 3 - RBF_KERNEL
@@ -62,15 +94,14 @@ int main (int argc, const char * argv[])
     // 5 - PRECOMPUTED_KERNEL
     //Create a new SVM classifier with a linear kernel
     //Other kernel options you could choose are: POLY_KERNEL, RBF_KERNEL, SIGMOID_KERNEL, PRECOMPUTED_KERNEL
-    if(kernel.compare("1") == 0) svm.setKernelType(SVM::LINEAR_KERNEL);
-    else if(kernel.compare("2") == 0) svm.setKernelType(SVM::POLY_KERNEL);
-    else if(kernel.compare("3") == 0) svm.setKernelType(SVM::RBF_KERNEL);
-    else if(kernel.compare("4") == 0) svm.setKernelType(SVM::SIGMOID_KERNEL);
-    else if(kernel.compare("5") == 0) svm.setKernelType(SVM::PRECOMPUTED_KERNEL);
-    else svm.setKernelType(SVM::LINEAR_KERNEL);
+    if(kernel.compare("1") == 0) kernelType = SVM::LINEAR_KERNEL;
+    else if(kernel.compare("2") == 0) kernelType = SVM::POLY_KERNEL;
+    else if(kernel.compare("3") == 0) kernelType = SVM::RBF_KERNEL;
+    else if(kernel.compare("4") == 0) kernelType = SVM::SIGMOID_KERNEL;
+    else if(kernel.compare("5") == 0) kernelType = SVM::PRECOMPUTED_KERNEL;
+    else kernelType = SVM::LINEAR_KERNEL;
 
-    //The SVM will typically work much better if we scale the training and prediction data, so turn scaling on
-    svm.enableScaling( true );
+    SVM svm(kernelType, svmType, useScaling, useNullRejection, useAutoGamma, gamma, degree, coef0, nu, C, useCrossValidation,kFoldValue);
 
     //Train the classifier with some training data
     ClassificationData trainingData;

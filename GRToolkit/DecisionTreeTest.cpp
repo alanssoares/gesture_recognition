@@ -62,26 +62,36 @@ int main(int argc, const char * argv[])
     const string filename = argv[1];
     const string typeDtree = argv[2];
 
-    //Create a new DecisionTree instance
-    DecisionTree dTree;
+    const DecisionTreeNode &decisionTreeNode;
 
-    //Set the node that the DecisionTree will use - different nodes may result in different decision boundaries
-    //and some nodes may provide better accuracy than others on specific classification tasks
+    // The minimum number of samples that are allowed per node, if the number of samples is below that, the node will become a leafNode.  Default value = 5
+    const UINT minNumSamplesPerNode = 10;
+
+    // The maximum depth of the tree. Default value = 10
+    const UINT maxDepth = 10;
+
+    // Sets if a feature is removed at each split so it can not be used again. Default value = false
+    const bool removeFeaturesAtEachSplit = false;
+
+    // Sets the training mode, this should be one of the TrainingMode enums. Default value = BEST_ITERATIVE_SPILT
+    const Tree::TrainingMode trainingMode = Tree::TrainingMode::BEST_ITERATIVE_SPILT;
+
+    // Set the number of steps that will be used to choose the best splitting values more steps will give you a better model, but will take longer to train
+    const UINT numSplittingSteps = 100;
+
+    // Sets if the training and real-time data should be scaled between [0 1]. Default value = false
+    const bool useScaling = true;
+
+    // Set the node that the DecisionTree will use - different nodes may result in different decision boundaries and some nodes may provide better accuracy than others on specific classification tasks
     //The current node options are:
     //- DecisionTreeClusterNode - 1
     //- DecisionTreeThresholdNode - 2
-    if (typeDtree.compare("1") == 0) dTree.setDecisionTreeNode( DecisionTreeClusterNode() );
-    else if(typeDtree.compare("2") == 0) dTree.setDecisionTreeNode( DecisionTreeThresholdNode() );
+    if (typeDtree.compare("1") == 0) decisionTreeNode = DecisionTreeClusterNode();
+    else if(typeDtree.compare("2") == 0) decisionTreeNode = DecisionTreeThresholdNode();
 
-    //Set the number of steps that will be used to choose the best splitting values
-    //More steps will give you a better model, but will take longer to train
-    dTree.setNumSplittingSteps( 1000 );
-
-    //Set the maximum depth of the tree
-    dTree.setMaxDepth( 10 );
-
-    //Set the minimum number of samples allowed per node
-    dTree.setMinNumSamplesPerNode( 10 );
+    //Create a new DecisionTree instance
+    DecisionTree dTree(decisionTreeNode, minNumSamplesPerNode, maxDepth,
+      removeFeaturesAtEachSplit, trainingMode, numSplittingSteps, useScaling);
 
     //Load some training data to train the classifier
     ClassificationData trainingData;

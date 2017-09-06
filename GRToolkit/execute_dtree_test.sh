@@ -1,7 +1,6 @@
 #!/bin/bash
 
 dataset="grufba_dtree"
-# dataset="msrc12_dtree"
 # dataset="utkinect_dtree"
 # dataset="msr3d_dtree"
 
@@ -13,7 +12,6 @@ feature="centroid_length"
 # feature="variance"
 
 features="grufba_16/features/"$feature/grufba_descriptor
-# features="msrc_12/features/"$feature/msrc_12_descriptor
 # features="msr_action_3d/features/"$feature/msr_action_3d_descriptor
 # features="utkinect_action/features/"$feature/utkinect_descriptor
 
