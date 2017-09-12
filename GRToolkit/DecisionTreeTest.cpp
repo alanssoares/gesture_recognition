@@ -60,9 +60,13 @@ int main(int argc, const char * argv[])
         return EXIT_FAILURE;
     }
     const string filename = argv[1];
-    const string typeDtree = argv[2];
 
-    const DecisionTreeNode &decisionTreeNode;
+    // Set the node that the DecisionTree will use - different nodes may result in different decision boundaries and some nodes may provide better accuracy than others on specific classification tasks
+    //The current node options are:
+    //- DecisionTreeClusterNode - 1
+    //- DecisionTreeThresholdNode - 2
+    const DecisionTreeNode &decisionTreeNode = DecisionTreeClusterNode();
+    // const DecisionTreeNode &decisionTreeNode = DecisionTreeThresholdNode();
 
     // The minimum number of samples that are allowed per node, if the number of samples is below that, the node will become a leafNode.  Default value = 5
     const UINT minNumSamplesPerNode = 25;
@@ -81,13 +85,6 @@ int main(int argc, const char * argv[])
 
     // Sets if the training and real-time data should be scaled between [0 1]. Default value = false
     const bool useScaling = true;
-
-    // Set the node that the DecisionTree will use - different nodes may result in different decision boundaries and some nodes may provide better accuracy than others on specific classification tasks
-    //The current node options are:
-    //- DecisionTreeClusterNode - 1
-    //- DecisionTreeThresholdNode - 2
-    if (typeDtree.compare("1") == 0) decisionTreeNode = DecisionTreeClusterNode();
-    else if(typeDtree.compare("2") == 0) decisionTreeNode = DecisionTreeThresholdNode();
 
     //Create a new DecisionTree instance
     DecisionTree dTree(decisionTreeNode, minNumSamplesPerNode, maxDepth,
@@ -155,10 +152,10 @@ int main(int argc, const char * argv[])
             isRecognized = 0;
         }
 
-        cout << i <<  " " << classLabel << " " << predictedClassLabel << " " << maximumLikelihood << " " << isRecognized << endl;
+        cout << i <<  ";" << classLabel << ";" << predictedClassLabel << ";" << maximumLikelihood << ";" << isRecognized << endl;
     }
 
-    cout << "Test Accuracy: " << accuracy/double(testData.getNumSamples())*100.0 << "%" << endl;
+    // cout << "Test Accuracy: " << accuracy/double(testData.getNumSamples())*100.0 << "%" << endl;
 
     return EXIT_SUCCESS;
 }

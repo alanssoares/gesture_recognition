@@ -54,10 +54,10 @@ int main (int argc, const char * argv[])
 
     // Parameters
     // This sets the SVM kernelType. Options are LINEAR_KERNEL, POLY_KERNEL, RBF_KERNEL, SIGMOID_KERNEL, PRECOMPUTED_KERNEL. The default kernelType is kernelType=LINEAR_KERNEL
-    KernelType kernelType = SVM::LINEAR_KERNEL;
+    SVM::KernelType kernelType = SVM::LINEAR_KERNEL;
 
     // This sets the SVM type. Options are C_SVC, NU_SVC, ONE_CLASS, EPSILON_SVR, NU_SVR. The default svmType is svmType=C_SVC
-    SVMType svmType = C_SVC;
+    SVM::SVMType svmType = SVM::C_SVC;
 
     // Sets if the training/prediction data will be scaled to the default range of [-1. 1.]. The SVM algorithm commonly achieves a better classification result if scaling is turned on. The default useScaling value is useScaling=true
     // The SVM will typically work much better if we scale the training and prediction data, so turn scaling on
@@ -162,10 +162,10 @@ int main (int argc, const char * argv[])
             isRecognized = 0;
         }
 
-        cout << i <<  " " << classLabel << " " << predictedClassLabel << " " << maximumLikelihood << " " << isRecognized << endl;
+        cout << i <<  ";" << classLabel << ";" << predictedClassLabel << ";" << maximumLikelihood << ";" << isRecognized << endl;
     }
 
-    cout << "Test Accuracy: " << accuracy/double(testData.getNumSamples())*100.0 << "%" << endl;
+    // cout << "Test Accuracy: " << accuracy/double(testData.getNumSamples())*100.0 << "%" << endl;
 
     return EXIT_SUCCESS;
 }
