@@ -65,7 +65,7 @@ int main(int argc, const char * argv[])
     const DecisionTreeNode &decisionTreeNode;
 
     // The minimum number of samples that are allowed per node, if the number of samples is below that, the node will become a leafNode.  Default value = 5
-    const UINT minNumSamplesPerNode = 10;
+    const UINT minNumSamplesPerNode = 25;
 
     // The maximum depth of the tree. Default value = 10
     const UINT maxDepth = 10;
@@ -77,7 +77,7 @@ int main(int argc, const char * argv[])
     const Tree::TrainingMode trainingMode = Tree::TrainingMode::BEST_ITERATIVE_SPILT;
 
     // Set the number of steps that will be used to choose the best splitting values more steps will give you a better model, but will take longer to train
-    const UINT numSplittingSteps = 100;
+    const UINT numSplittingSteps = 150;
 
     // Sets if the training and real-time data should be scaled between [0 1]. Default value = false
     const bool useScaling = true;

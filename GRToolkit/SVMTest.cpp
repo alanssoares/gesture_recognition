@@ -70,7 +70,7 @@ int main (int argc, const char * argv[])
     bool useAutoGamma = true;
 
     // Sets if the SVM model will be trained using cross validation. The default value is useCrossValidation=false
-    bool useCrossValidation = false;
+    bool useCrossValidation = true;
 
     // Sets the SVM gamma parameter. The default value is gamma=0.1
     Float gamma = 0.1;

@@ -110,6 +110,7 @@ int main(int argc, const char * argv[]){
     //Compute the accuracy of the HMM models using the test data
     double numCorrect = 0;
     double numTests = 0;
+    int isRecognized = 0;
     for(UINT i=0; i<testData.getNumSamples(); i++){
 
         UINT classLabel = testData[i].getClassLabel();
@@ -118,23 +119,15 @@ int main(int argc, const char * argv[]){
         if( classLabel == hmm.getPredictedClassLabel() ) numCorrect++;
         numTests++;
 
-        VectorFloat classLikelihoods = hmm.getClassLikelihoods();
-        VectorFloat classDistances = hmm.getClassDistances();
-
-        cout << "ClassLabel: " << classLabel;
-        cout << " PredictedClassLabel: " << hmm.getPredictedClassLabel();
-        cout << " MaxLikelihood: " << hmm.getMaximumLikelihood();
-
-        cout << "  ClassLikelihoods: ";
-        for(UINT k=0; k<classLikelihoods.size(); k++){
-            cout << classLikelihoods[k] << "\t";
+        //Update the accuracy
+        if( classLabel == predictedClassLabel ) {
+            accuracy++;
+            isRecognized = 1;
+        } else {
+            isRecognized = 0;
         }
 
-        cout << "ClassDistances: ";
-        for(UINT k=0; k<classDistances.size(); k++){
-            cout << classDistances[k] << "\t";
-        }
-        cout << endl;
+        cout << i <<  " " << classLabel << " " << hmm.getPredictedClassLabel() << " " << hmm.getMaximumLikelihood() << " " << isRecognized << endl;
     }
 
     cout << "Test Accuracy: " << numCorrect/numTests*100.0 << endl;
