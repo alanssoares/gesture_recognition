@@ -65,7 +65,7 @@ int main (int argc, const char * argv[])
     }
 
     //Use 30% of the training dataset to create a test dataset
-    ClassificationData testData = trainingData.split( 70 );
+    ClassificationData testData = trainingData.split( 70, true );
 
     //Train the classifier
     if( !gmm.train( trainingData ) ){

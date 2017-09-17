@@ -2,7 +2,7 @@ GRT_LABELLED_TIME_SERIES_CLASSIFICATION_DATA_FILE_V1.0
 DatasetName: msr_action_3d
 InfoText: This dataset contains 20 gestures, totalizing 567 executions.
 NumDimensions: 3
-TotalNumTrainingExamples: 400
+TotalNumTrainingExamples: 567
 NumberOfClasses: 20
 ClassIDsAndCounters:
 12 27

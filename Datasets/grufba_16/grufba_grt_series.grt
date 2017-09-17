@@ -2,7 +2,7 @@ GRT_LABELLED_TIME_SERIES_CLASSIFICATION_DATA_FILE_V1.0
 DatasetName: UFBAGRDataset
 InfoText: This dataset contains 7 gestures (1,2,3,4,5,6,7), totalizing 1099 executions.
 NumDimensions: 3
-TotalNumTrainingExamples: 770
+TotalNumTrainingExamples: 1099
 NumberOfClasses: 7
 ClassIDsAndCounters:
 1 182

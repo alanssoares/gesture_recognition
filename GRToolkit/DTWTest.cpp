@@ -74,7 +74,7 @@ int main (int argc, const char * argv[])
 	float nullRejectionLikelihoodThreshold = 0.99;
 
 	// Sets the method used for null rejection. The options are TEMPLATE_THRESHOLDS, CLASS_LIKELIHOODS or THRESHOLDS_AND_LIKELIHOODS.  Default = TEMPLATE_THRESHOLDS
-	UINT rejectionMode = DTW::THRESHOLDS_AND_LIKELIHOODS;
+	UINT rejectionMode = DTW::TEMPLATE_THRESHOLDS;
 
 	// Controls the amount of downsampling if the useSmoothing parameter is set to true. Default value = 5
 	UINT smoothingFactor = 5;
@@ -103,10 +103,10 @@ int main (int argc, const char * argv[])
 	}
 
 	//Use 30% of the training dataset to create a test dataset
-	TimeSeriesClassificationData testData = trainingData.split( 70 );
+	TimeSeriesClassificationData testData = trainingData.split( 70, true );
 
 	//Trim the training data for any sections of non-movement at the start or end of the recordings
-	dtw.enableTrimTrainingData(true,0.1,90);
+	dtw.enableTrimTrainingData(false, 0.1, 90);
 
 	//Train the classifier
 	if( !dtw.train( trainingData ) ){

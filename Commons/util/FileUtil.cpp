@@ -377,7 +377,7 @@ FileUtil::saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string n
     fileOut << "DatasetName: msrc_12" << std::endl;
     fileOut << "InfoText: This dataset contains 12 gestures, totalizing 594 executions." << std::endl;
     fileOut << "NumDimensions: " << numDimensions << std::endl;
-    fileOut << "TotalNumTrainingExamples: 400" << std::endl;
+    fileOut << "TotalNumTrainingExamples: 594" << std::endl;
     fileOut << "NumberOfClasses: 12" << std::endl;
     fileOut << "ClassIDsAndCounters:" << std::endl;
     fileOut << "1 30 NOT_SET" << std::endl;
@@ -397,7 +397,7 @@ FileUtil::saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string n
     fileOut << "DatasetName: grufba" << std::endl;
     fileOut << "InfoText: This dataset contains 7 gestures, totalizing 1099 executions." << std::endl;
     fileOut << "NumDimensions: " << numDimensions << std::endl;
-    fileOut << "TotalNumTrainingExamples: 769" << std::endl;
+    fileOut << "TotalNumTrainingExamples: 1099" << std::endl;
     fileOut << "NumberOfClasses: 7" << std::endl;
     fileOut << "ClassIDsAndCounters:" << std::endl;
     fileOut << "1 182 NOT_SET" << std::endl;
@@ -411,7 +411,7 @@ FileUtil::saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string n
     fileOut << "DatasetName: msr_action_3d" << std::endl;
     fileOut << "InfoText: This dataset contains 20 gestures, totalizing 567 executions." << std::endl;
     fileOut << "NumDimensions: " << numDimensions << std::endl;
-    fileOut << "TotalNumTrainingExamples: 400" << std::endl;
+    fileOut << "TotalNumTrainingExamples: 567" << std::endl;
     fileOut << "NumberOfClasses: 20" << std::endl;
     fileOut << "ClassIDsAndCounters:" << std::endl;
     fileOut << "12 27 NOT_SET" << std::endl;
@@ -438,7 +438,7 @@ FileUtil::saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string n
     fileOut << "DatasetName: utkinect" << std::endl;
     fileOut << "InfoText: This dataset contains 10 gestures performed by 10 subjects twice, totalizing 200 executions." << std::endl;
     fileOut << "NumDimensions: " << numDimensions << std::endl;
-    fileOut << "TotalNumTrainingExamples: 140" << std::endl;
+    fileOut << "TotalNumTrainingExamples: 200" << std::endl;
     fileOut << "NumberOfClasses: 10" << std::endl;
     fileOut << "ClassIDsAndCounters:" << std::endl;
     fileOut << "30 20 NOT_SET" << std::endl;
@@ -506,7 +506,7 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
     fileOut << "DatasetName: msrc_12" << std::endl;
     fileOut << "InfoText: This dataset contains 12 gestures, totalizing 594 executions." << std::endl;
     fileOut << "NumDimensions: " << numDimensions << std::endl;
-    fileOut << "TotalNumTrainingExamples: 400" << std::endl;
+    fileOut << "TotalNumTrainingExamples: 594" << std::endl;
     fileOut << "NumberOfClasses: 12" << std::endl;
     fileOut << "ClassIDsAndCounters:" << std::endl;
     fileOut << "1 30 NOT_SET" << std::endl;
@@ -526,7 +526,7 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
     fileOut << "DatasetName: grufba" << std::endl;
     fileOut << "InfoText: This dataset contains 7 gestures, totalizing 1099 executions." << std::endl;
     fileOut << "NumDimensions: " << numDimensions << std::endl;
-    fileOut << "TotalNumTrainingExamples: 769" << std::endl;
+    fileOut << "TotalNumTrainingExamples: 1099" << std::endl;
     fileOut << "NumberOfClasses: 7" << std::endl;
     fileOut << "ClassIDsAndCounters:" << std::endl;
     fileOut << "1 182 NOT_SET" << std::endl;
@@ -540,7 +540,7 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
     fileOut << "DatasetName: msr_action_3d" << std::endl;
     fileOut << "InfoText: This dataset contains 20 gestures, totalizing 567 executions." << std::endl;
     fileOut << "NumDimensions: " << numDimensions << std::endl;
-    fileOut << "TotalNumTrainingExamples: 400" << std::endl;
+    fileOut << "TotalNumTrainingExamples: 567" << std::endl;
     fileOut << "NumberOfClasses: 20" << std::endl;
     fileOut << "ClassIDsAndCounters:" << std::endl;
     fileOut << "12 27 NOT_SET" << std::endl;
@@ -567,7 +567,7 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
     fileOut << "DatasetName: utkinect" << std::endl;
     fileOut << "InfoText: This dataset contains 10 gestures performed by 10 subjects twice, totalizing 200 executions." << std::endl;
     fileOut << "NumDimensions: " << numDimensions << std::endl;
-    fileOut << "TotalNumTrainingExamples: 140" << std::endl;
+    fileOut << "TotalNumTrainingExamples: 200" << std::endl;
     fileOut << "NumberOfClasses: 10" << std::endl;
     fileOut << "ClassIDsAndCounters:" << std::endl;
     fileOut << "30 20 NOT_SET" << std::endl;

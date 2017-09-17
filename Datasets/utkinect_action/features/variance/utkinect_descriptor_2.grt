@@ -2,7 +2,7 @@ GRT_LABELLED_CLASSIFICATION_DATA_FILE_V1.0
 DatasetName: utkinect
 InfoText: This dataset contains 10 gestures performed by 10 subjects twice, totalizing 200 executions.
 NumDimensions: 1
-TotalNumTrainingExamples: 140
+TotalNumTrainingExamples: 200
 NumberOfClasses: 10
 ClassIDsAndCounters:
 30 20 NOT_SET
@@ -15,8 +15,8 @@ ClassIDsAndCounters:
 37 20 NOT_SET
 38 20 NOT_SET
 39 20 NOT_SET
-UseExternalRanges: 0 
-LabelledTrainingData: 
+UseExternalRanges: 0
+LabelledTrainingData:
 30 6.93941e-310
 30 6.93941e-310
 30 6.93941e-310

@@ -1,4 +1,9 @@
 #!/bin/bash
+echo "***** Removing Models ****** "
+
+rm DTWModel.grt
+rm SVMModel.grt
+rm DecisionTreeModel.grt
 
 echo "***** Compiling ****** "
 

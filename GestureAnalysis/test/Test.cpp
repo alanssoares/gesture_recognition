@@ -141,16 +141,20 @@ Test::recognize(const int env, const type_gesture gesture, const std::string nam
 
 		if(gesture.numHands == 1){
 			bestDistance = bestDistanceB;
-			if(bestDistanceB < m_RecThreshold){
-				isRecognized = 1;
-			}
+			// if(bestDistanceB < m_RecThreshold){
+			// 	isRecognized = 1;
+			// }
 		} else if(gesture.numHands == 2){
 			bestDistance = (bestDistanceA + bestDistanceB) / 2;
-			if(bestDistanceA < m_RecThreshold && bestDistanceB < m_RecThreshold){
-					isRecognized = 1;
-			}
+			// if(bestDistanceA < m_RecThreshold && bestDistanceB < m_RecThreshold){
+			// 		isRecognized = 1;
+			// }
     }
 
+		if (gestureTemplate.name == gesture.name) {
+			isRecognized = 1;
+		}
+		
     saveResults(nameFile, gesture, gestureTemplate, getFinalTime(m_Start_s), bestDistance, isRecognized);
 }
 
