@@ -4,6 +4,9 @@ echo "***** Removing Models ****** "
 rm DTWModel.grt
 rm SVMModel.grt
 rm DecisionTreeModel.grt
+rm startDTW
+rm startDecisionTree
+rm startSVM
 
 echo "***** Compiling ****** "
 
@@ -17,10 +20,10 @@ echo "Finish ->>>>>> Decision Tree..."
 # g++ GMMTest.o -o startGMM -I/usr/local/include -L/usr/local/lib -lgrt
 # echo "Finish ->>>>>> GMM..."
 
-echo "Start ->>>>>>> DTW..."
-g++ -std=c++11 -c DTWTest.cpp -I/usr/local/include
-g++ DTWTest.o -o startDTW -I/usr/local/include -L/usr/local/lib -lgrt
-echo "Finish ->>>>>> DTW..."
+# echo "Start ->>>>>>> DTW..."
+# g++ -std=c++11 -c DTWTest.cpp -I/usr/local/include
+# g++ DTWTest.o -o startDTW -I/usr/local/include -L/usr/local/lib -lgrt
+# echo "Finish ->>>>>> DTW..."
 
 # echo "Start ->>>>>>> HMM..."
 # g++ -std=c++11 -c HMMTest.cpp -I/usr/local/include
@@ -32,10 +35,10 @@ echo "Finish ->>>>>> DTW..."
 # g++ KNNTest.o -o startKNN -I/usr/local/include -L/usr/local/lib -lgrt
 # echo "Finish ->>>>>> KNN..."
 
-echo "Start ->>>>>>> SVM..."
-g++ -std=c++11 -c SVMTest.cpp -I/usr/local/include
-g++ SVMTest.o -o startSVM -I/usr/local/include -L/usr/local/lib -lgrt
-echo "Finish ->>>>>> SVM..."
+# echo "Start ->>>>>>> SVM..."
+# g++ -std=c++11 -c SVMTest.cpp -I/usr/local/include
+# g++ SVMTest.o -o startSVM -I/usr/local/include -L/usr/local/lib -lgrt
+# echo "Finish ->>>>>> SVM..."
 
 # echo "Start ->>>>>>> Random Forests..."
 # g++ -std=c++11 -c RandomForestsTest.cpp -I/usr/local/include

@@ -59,101 +59,128 @@ int main(int argc, const char * argv[])
         cout << "Error: failed to parse data filename from command line. You should run this example with one argument pointing to the data filename!\n";
         return EXIT_FAILURE;
     }
+
     const string filename = argv[1];
+    double accuracy = 0, bestAccuracy = 0;
+    int isRecognized = 0;
+    UINT bestMinNumSamplesPerNode = 5, bestMaxDepth = 20, bestSplittingSteps = 150;
 
     // Set the node that the DecisionTree will use - different nodes may result in different decision boundaries and some nodes may provide better accuracy than others on specific classification tasks
     //The current node options are:
     //- DecisionTreeClusterNode - 1
     //- DecisionTreeThresholdNode - 2
-    const DecisionTreeNode &decisionTreeNode = DecisionTreeClusterNode();
-    // const DecisionTreeNode &decisionTreeNode = DecisionTreeThresholdNode();
+    // const DecisionTreeNode &decisionTreeNode = DecisionTreeClusterNode();
+    const DecisionTreeNode &decisionTreeNode = DecisionTreeThresholdNode();
 
-    // The minimum number of samples that are allowed per node, if the number of samples is below that, the node will become a leafNode.  Default value = 5
-    const UINT minNumSamplesPerNode = 25;
+    for (size_t mD = 20; mD < 100; mD+= 5) { // maxDepth
+      for (size_t mS = 5; mS < 25; mS+= 1) { // minNumSamplesPerNode
+        for (size_t mT = 150; mT < 1000; mT+= 150) { // minNumSamplesPerNode
+          // The minimum number of samples that are allowed per node, if the number of samples is below that, the node will become a leafNode.  Default value = 5
+          const UINT minNumSamplesPerNode = mS;
 
-    // The maximum depth of the tree. Default value = 10
-    const UINT maxDepth = 10;
+          // The maximum depth of the tree. Default value = 10
+          const UINT maxDepth = mD;
 
-    // Sets if a feature is removed at each split so it can not be used again. Default value = false
-    const bool removeFeaturesAtEachSplit = false;
+          // Sets if a feature is removed at each split so it can not be used again. Default value = false
+          const bool removeFeaturesAtEachSplit = false;
 
-    // Sets the training mode, this should be one of the TrainingMode enums. Default value = BEST_ITERATIVE_SPILT
-    const Tree::TrainingMode trainingMode = Tree::TrainingMode::BEST_ITERATIVE_SPILT;
+          // Sets the training mode, this should be one of the TrainingMode enums. Default value = BEST_ITERATIVE_SPILT
+          // If the trainingMode is set to BEST_ITERATIVE_SPILT, then the numSplittingSteps controls how many iterative steps there will be per feature.
+          // If the trainingMode is set to BEST_RANDOM_SPLIT, then the numSplittingSteps controls how many random searches there will be per feature.
+          // const Tree::TrainingMode trainingMode = Tree::TrainingMode::BEST_ITERATIVE_SPILT;
+          const Tree::TrainingMode trainingMode = Tree::TrainingMode::BEST_RANDOM_SPLIT;
 
-    // Set the number of steps that will be used to choose the best splitting values more steps will give you a better model, but will take longer to train
-    const UINT numSplittingSteps = 150;
+          // Set the number of steps that will be used to choose the best splitting values more steps will give you a better model, but will take longer to train
+          const UINT numSplittingSteps = mT;
 
-    // Sets if the training and real-time data should be scaled between [0 1]. Default value = false
-    const bool useScaling = true;
+          // Sets if the training and real-time data should be scaled between [0 1]. Default value = false
+          const bool useScaling = false;
 
-    //Create a new DecisionTree instance
-    DecisionTree dTree(decisionTreeNode, minNumSamplesPerNode, maxDepth,
-      removeFeaturesAtEachSplit, trainingMode, numSplittingSteps, useScaling);
+          //Create a new DecisionTree instance
+          DecisionTree dTree(decisionTreeNode, minNumSamplesPerNode, maxDepth,
+            removeFeaturesAtEachSplit, trainingMode, numSplittingSteps, useScaling);
 
-    //Load some training data to train the classifier
-    ClassificationData trainingData;
+          //Load some training data to train the classifier
+          ClassificationData trainingData;
 
-    if( !trainingData.load( filename ) ){
-        cout << "Failed to load training data: " << filename << endl;
-        return EXIT_FAILURE;
-    }
+          if( !trainingData.load( filename ) ){
+              cout << "Failed to load training data: " << filename << endl;
+              return EXIT_FAILURE;
+          }
 
-    //Use 30% of the training dataset to create a test dataset
-    ClassificationData testData = trainingData.split( 70, true );
+          //Use 30% of the training dataset to create a test dataset
+          ClassificationData testData = trainingData.split( 70, true );
 
-    //Train the classifier
-    if( !dTree.train( trainingData ) ){
-        cout << "Failed to train classifier!\n";
-        return EXIT_FAILURE;
-    }
+          //Train the classifier
+          if( !dTree.train( trainingData ) ){
+              cout << "Failed to train classifier!\n";
+              return EXIT_FAILURE;
+          }
 
-    //Print the tree
-    dTree.print();
+          //Print the tree
+          // dTree.print();
 
-    //Save the model to a file
-    if( !dTree.save("DecisionTreeModel.grt") ){
-        cout << "Failed to save the classifier model!\n";
-        return EXIT_FAILURE;
-    }
+          //Save the model to a file
+          if( !dTree.save("DecisionTreeModel.grt") ){
+              cout << "Failed to save the classifier model!\n";
+              return EXIT_FAILURE;
+          }
 
-    //Load the model from a file
-    if( !dTree.load("DecisionTreeModel.grt") ){
-        cout << "Failed to load the classifier model!\n";
-        return EXIT_FAILURE;
-    }
+          //Load the model from a file
+          if( !dTree.load("DecisionTreeModel.grt") ){
+              cout << "Failed to load the classifier model!\n";
+              return EXIT_FAILURE;
+          }
 
-    //Test the accuracy of the model on the test data
-    double accuracy = 0;
-    int isRecognized = 0;
-    for(UINT i=0; i<testData.getNumSamples(); i++){
-        //Get the i'th test sample
-        UINT classLabel = testData[i].getClassLabel();
-        VectorFloat inputVector = testData[i].getSample();
+          //Test the accuracy of the model on the test data
+          accuracy = 0;
+          isRecognized = 0;
 
-        //Perform a prediction using the classifier
-        bool predictSuccess = dTree.predict( inputVector );
+          for(UINT i=0; i<testData.getNumSamples(); i++){
+              //Get the i'th test sample
+              UINT classLabel = testData[i].getClassLabel();
+              VectorFloat inputVector = testData[i].getSample();
 
-        if( !predictSuccess ){
-            cout << "Failed to perform prediction for test sampel: " << i <<"\n";
-            return EXIT_FAILURE;
+              //Perform a prediction using the classifier
+              bool predictSuccess = dTree.predict( inputVector );
+
+              if( !predictSuccess ){
+                  cout << "Failed to perform prediction for test sampel: " << i <<"\n";
+                  return EXIT_FAILURE;
+              }
+
+              //Get the predicted class label
+              UINT predictedClassLabel = dTree.getPredictedClassLabel();
+              VectorDouble classLikelihoods = dTree.getClassLikelihoods();
+              VectorDouble classDistances = dTree.getClassDistances();
+              Float maximumLikelihood = dTree.getMaximumLikelihood();
+
+              //Update the accuracy
+              if( classLabel == predictedClassLabel ) {
+                  accuracy++;
+                  isRecognized = 1;
+              } else {
+                  isRecognized = 0;
+              }
+
+              // cout << i <<  ";" << classLabel << ";" << predictedClassLabel << ";" << maximumLikelihood << ";" << isRecognized << endl;
+          }
+
+          accuracy = accuracy/double(testData.getNumSamples())*100.0;
+          if (accuracy > bestAccuracy) {
+            bestAccuracy = accuracy;
+            bestMinNumSamplesPerNode = minNumSamplesPerNode;
+            bestMaxDepth = maxDepth;
+            bestSplittingSteps = numSplittingSteps;
+          }
         }
-
-        //Get the predicted class label
-        UINT predictedClassLabel = dTree.getPredictedClassLabel();
-        VectorDouble classLikelihoods = dTree.getClassLikelihoods();
-        VectorDouble classDistances = dTree.getClassDistances();
-        Float maximumLikelihood = dTree.getMaximumLikelihood();
-
-        //Update the accuracy
-        if( classLabel == predictedClassLabel ) {
-            accuracy++;
-            isRecognized = 1;
-        } else {
-            isRecognized = 0;
-        }
-
-        cout << i <<  ";" << classLabel << ";" << predictedClassLabel << ";" << maximumLikelihood << ";" << isRecognized << endl;
+      }
     }
+
+    std::cout << "Accuracy: " << bestAccuracy << endl;
+    std::cout << "MaxDepth: " << bestMaxDepth << endl;
+    std::cout << "MinNumSamplesPerNode: " << bestMinNumSamplesPerNode << endl;
+    std::cout << "BestSplittingSteps: " << bestSplittingSteps << endl;
 
     // cout << "Test Accuracy: " << accuracy/double(testData.getNumSamples())*100.0 << "%" << endl;
 
