@@ -115,8 +115,8 @@ Util::generateGestureEqualSize(std::vector<type_gesture> *gestures){
 	while(j < n){
 		j = i + 1;
 		while((j < n) && (gestures->at(i).name.compare(gestures->at(j).name) == 0)) j++;
-		mean = getMeanPoints(*gestures, i, j);
-		for(int k = i; k < j - 1; k++){
+		mean = getMeanPoints(*gestures, i, j - 1);
+		for(int k = i; k < j; k++){
 			diff = mean - gestures->at(k).handOne.positions.size();
 			if(diff > 0){
 				MathUtil::insertPoints(&gestures->at(k).handOne.positions, diff);
@@ -130,17 +130,89 @@ Util::generateGestureEqualSize(std::vector<type_gesture> *gestures){
 	}
 }
 
+void
+Util::equalizeDatasetFromMin(std::vector<type_gesture> *gestures){
+	FileUtil& futil = FileUtil::getInstance();
+	int n = gestures->size(), min = 0, diff = 0;
+	min = getMinPoints(*gestures, 0, n - 1);
+
+	futil.clearHandGestures();
+
+	for(int i = 0; i < n; i++){
+		diff = min - gestures->at(i).handOne.positions.size();
+		if(diff > 0){
+			MathUtil::insertPoints(&gestures->at(i).handOne.positions, diff);
+			MathUtil::insertPoints(&gestures->at(i).handTwo.positions, diff);
+		} else if(diff < 0) {
+			MathUtil::removePoints(&gestures->at(i).handOne.positions, diff);
+			MathUtil::removePoints(&gestures->at(i).handTwo.positions, diff);
+		}
+	}
+
+	for (int i = 0; i < n; i++){
+		if(gestures->at(i).numHands == 1){
+			futil.mGesturesOneHand.push_back(gestures->at(i));
+		} else {
+			futil.mGesturesTwoHands.push_back(gestures->at(i));
+		}
+	}
+
+	futil.saveAll();
+}
+
+void
+Util::equalizeDatasetFromMean(std::vector<type_gesture> *gestures){
+	FileUtil& futil = FileUtil::getInstance();
+	int n = gestures->size(), min = 0, diff = 0;
+	min = getMeanPoints(*gestures, 0, n - 1);
+
+	futil.clearHandGestures();
+
+	for(int i = 0; i < n; i++){
+		diff = min - gestures->at(i).handOne.positions.size();
+		if(diff > 0){
+			MathUtil::insertPoints(&gestures->at(i).handOne.positions, diff);
+			MathUtil::insertPoints(&gestures->at(i).handTwo.positions, diff);
+		} else if(diff < 0) {
+			MathUtil::removePoints(&gestures->at(i).handOne.positions, diff);
+			MathUtil::removePoints(&gestures->at(i).handTwo.positions, diff);
+		}
+	}
+
+	for (int i = 0; i < n; i++){
+		if(gestures->at(i).numHands == 1){
+			futil.mGesturesOneHand.push_back(gestures->at(i));
+		} else {
+			futil.mGesturesTwoHands.push_back(gestures->at(i));
+		}
+	}
+
+	futil.saveAll();
+}
+
 int
-Util::getMeanPoints(vector<type_gesture> gestures, int i, int j){
+Util::getMinPoints(vector<type_gesture> gestures, int i, int j) {
+    int min = 99999999, n;
+    for( ; i < j; i++) {
+    	n = gestures[i].handOne.positions.size();
+      if(min > n){
+      	min = n;
+      }
+    }
+    return min;
+}
+
+int
+Util::getMeanPoints(vector<type_gesture> gestures, int i, int j) {
     int max = 0, min = 99999999, n;
     for( ; i < j; i++){
     	n = gestures[i].handOne.positions.size();
-        if(max < n){
-        	max = n;
-        }
-        if(min > n){
-        	min = n;
-        }
+      if(max < n){
+      	max = n;
+      }
+      if(min > n){
+      	min = n;
+      }
     }
     return (max + min) / 2;
 }
@@ -195,7 +267,7 @@ Util::generateMedianGestures(){
 	futil.clearHandGestures();
 
 	/* Generate all gestures with equal length */
-	applyUniformByArcLength(&gestures);
+	// applyUniformByArcLength(&gestures);
 	generateGestureEqualSize(&gestures);
 
 	while(j < n){

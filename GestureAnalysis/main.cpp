@@ -199,6 +199,7 @@ void keyboardEventOccurred (const pcl::visualization::KeyboardEvent &event, void
     } else if(event.getKeySym() == "m" && id_Gesture < n){
         id_Gesture += 1;
     } else if(event.getKeySym() == "d" && isEditSamples){
+        std::cout << "Removed " << id_Gesture << '\n';
         g_Gestures.erase(g_Gestures.begin() + id_Gesture);
         g_Test.m_AllGestures.clear();
         g_Test.m_AllGestures.insert(g_Test.m_AllGestures.end(), g_Gestures.begin(), g_Gestures.end());
@@ -227,8 +228,10 @@ boost::shared_ptr<pcl::visualization::PCLVisualizer> viewCurvesVis()
   g_Test.init();
 
   if(isEqualSize){
-    g_Util.applyUniformByArcLength(&g_Test.m_AllGestures);
+    // g_Util.applyUniformByArcLength(&g_Test.m_AllGestures);
     g_Util.generateGestureEqualSize(&g_Test.m_AllGestures);
+    // g_Util.equalizeDatasetFromMin(&g_Test.m_AllGestures);
+    // g_Util.equalizeDatasetFromMean(&g_Test.m_AllGestures);
   }
 
   viewer->initCameraParameters ();
@@ -338,6 +341,18 @@ int main(int argc, char* argv[])
     return 0;
   }
 
+  if(pcl::console::find_argument (argc, argv, "-eqmin") >= 0){
+    g_Test.init();
+    g_Util.equalizeDatasetFromMin(&g_Test.m_AllGestures);
+    return 0;
+  }
+
+  if(pcl::console::find_argument (argc, argv, "-eqmean") >= 0){
+    g_Test.init();
+    g_Util.equalizeDatasetFromMean(&g_Test.m_AllGestures);
+    return 0;
+  }
+
   if(pcl::console::find_argument (argc, argv, "-origin") >= 0){
     g_Util.centerOriginGestures();
     return 0;
@@ -360,8 +375,8 @@ int main(int argc, char* argv[])
   }
 
   if(pcl::console::find_argument (argc, argv, "-features") >= 0){
-    g_Test.saveFeatureFormat();
-    // g_Test.createDatasets();
+    // g_Test.saveFeatureFormat();
+    g_Test.createDatasets();
     return 0;
   }
 

@@ -154,7 +154,7 @@ Test::recognize(const int env, const type_gesture gesture, const std::string nam
 		if (gestureTemplate.name == gesture.name) {
 			isRecognized = 1;
 		}
-		
+
     saveResults(nameFile, gesture, gestureTemplate, getFinalTime(m_Start_s), bestDistance, isRecognized);
 }
 
@@ -300,23 +300,23 @@ Test::train(int algorithm) {
 void
 Test::saveFeatureFormat() {
 	CKmeans kmeans;
-	// std:string nameDataset = "msr_action_3d_series.grt";
+	std:string nameDataset = "msr_action_3d_series.grt";
 	// std:string nameDataset = "msrc_12_series.grt";
 	// std:string nameDataset = "utkinect_series.grt";
-	std:string nameDataset = "grufba_series.grt";
+	// std:string nameDataset = "grufba_series.grt";
 
 	FileUtil& fileUtil = FileUtil::getInstance();
 	// Load samples
   init();
 	// Create K-means
-	// kmeans.createClusters(m_AllGestures);
+	kmeans.createClusters(m_AllGestures);
 	// Save files
-	// for (size_t i = 0; i < kmeans.mClusters.size(); i++) {
-	// 	std::cout << "G " << kmeans.mClusters[i].mCollection[0].name << " N " << kmeans.mClusters[i].mCollection.size() << std::endl;
-	// 	// fileUtil.saveFeatureGestures(kmeans.mClusters[i].mCollection, "feature_" + kmeans.mClusters[i].mCollection[0].name + ".txt");
-	// }
+	for (size_t i = 0; i < kmeans.mClusters.size(); i++) {
+		std::cout << "G " << kmeans.mClusters[i].mCollection[0].name << " N " << kmeans.mClusters[i].mCollection.size() << " S " << kmeans.mClusters[i].mCollection[0].handTwo.positions.size() << std::endl;
+		// fileUtil.saveFeatureGestures(kmeans.mClusters[i].mCollection, "feature_" + kmeans.mClusters[i].mCollection[0].name + ".txt");
+	}
 	// Save file with features grt nickgillian
-	fileUtil.saveFeauresToToolkit(m_AllGestures, nameDataset, true);
+	// fileUtil.saveFeauresToToolkit(m_AllGestures, nameDataset, true);
 }
 
 void
@@ -333,7 +333,7 @@ Test::createDatasets() {
 	for(size_t i = 0; i < m_AllGestures.size(); i++){
 		applyProcess(0, &m_AllGestures[i]);
 	}
-	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_0.grt");
+	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + ".grt");
 
 	// carrega todos, aplica o processamento laplacian e salva
 	loadAll();

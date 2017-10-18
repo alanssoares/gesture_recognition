@@ -82,30 +82,41 @@ FeatureExtractor::centroidLength(type_gesture sample) {
   return MathUtil::length(centroid);
 }
 
-double
+std::vector<double>
+FeatureExtractor::velocity(type_gesture sample) {
+  std::vector<XnPoint3D> positions = merge(sample);
+  std::vector<double> features;
+  size_t n = positions.size();
+  for (int i = 0; i < n - 1; i++) {
+    features.push_back(MathUtil::length(MathUtil::subtract(positions[i], positions[i + 1])));
+  }
+  return features;
+}
+
+std::vector<double>
 FeatureExtractor::locationLC(type_gesture sample) {
   std::vector<XnPoint3D> positions = merge(sample);
   size_t n = positions.size();
   XnPoint3D centroid = MathUtil::calcCentroid(positions), diff;
-  double lc = 0.0;
+  std::vector<double> features;
   for (int i = 0; i < n; i++) {
     diff = MathUtil::subtract(centroid, positions[i]);
-    lc += MathUtil::length(diff);
+    features.push_back(MathUtil::length(diff));
   }
-  return lc;
+  return features;
 }
 
-double
+std::vector<double>
 FeatureExtractor::locationLSC(type_gesture sample) {
   std::vector<XnPoint3D> positions = merge(sample);
   size_t n = positions.size();
   XnPoint3D start = positions[0], diff;
-  double lsc = 0.0;
+  std::vector<double> features;
   for (int i = 1; i < n; i++) {
     diff = MathUtil::subtract(start, positions[i]);
-    lsc += MathUtil::length(diff);
+    features.push_back(MathUtil::length(diff));
   }
-  return lsc;
+  return features;
 }
 
 std::vector<XnPoint3D>
@@ -126,8 +137,8 @@ FeatureExtractor::extractDescriptor(type_gesture sample) {
   descriptor.sumCurvature = sumCurvature(sample);
   descriptor.sumOrientation = sumOrientation(sample);
   descriptor.standardDeviation = standardDeviation(sample);
-  descriptor.lc = locationLC(sample);
-  descriptor.lsc = locationLSC(sample);
+  // descriptor.lc = locationLC(sample);
+  // descriptor.lsc = locationLSC(sample);
   return descriptor;
 }
 
@@ -144,6 +155,7 @@ FeatureExtractor::extractDescriptors(std::vector<type_gesture> dataset) {
     desc.centroidLength = centroidLength(dataset[i]);
     desc.lc = locationLC(dataset[i]);
     desc.lsc = locationLSC(dataset[i]);
+    desc.velocity = velocity(dataset[i]);
     features.push_back(desc);
   }
   return features;

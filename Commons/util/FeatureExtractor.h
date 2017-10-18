@@ -38,8 +38,9 @@ public:
   double sumCurvature(type_gesture gesture);
   double sumOrientation(type_gesture gesture);
   double standardDeviation(type_gesture gesture);
-  double locationLC(type_gesture gesture);
-  double locationLSC(type_gesture gesture);
+  std::vector<double> locationLC(type_gesture gesture);
+  std::vector<double> locationLSC(type_gesture gesture);
+  std::vector<double> velocity(type_gesture sample);
 
   std::vector<FeatureDescriptor> extractDescriptors(std::vector<type_gesture> dataset);
   FeatureDescriptor extractDescriptor(type_gesture sample);

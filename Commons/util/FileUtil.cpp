@@ -409,9 +409,9 @@ FileUtil::saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string n
     fileOut << "7 158 NOT_SET" << std::endl;
   } else if (msr_action_3d) {
     fileOut << "DatasetName: msr_action_3d" << std::endl;
-    fileOut << "InfoText: This dataset contains 20 gestures, totalizing 567 executions." << std::endl;
+    fileOut << "InfoText: This dataset contains 19 gestures, totalizing 519 executions." << std::endl;
     fileOut << "NumDimensions: " << numDimensions << std::endl;
-    fileOut << "TotalNumTrainingExamples: 567" << std::endl;
+    fileOut << "TotalNumTrainingExamples: 519" << std::endl;
     fileOut << "NumberOfClasses: 20" << std::endl;
     fileOut << "ClassIDsAndCounters:" << std::endl;
     fileOut << "12 27 NOT_SET" << std::endl;
@@ -538,10 +538,10 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
     fileOut << "7 158 NOT_SET" << std::endl;
   } else if (msr_action_3d) {
     fileOut << "DatasetName: msr_action_3d" << std::endl;
-    fileOut << "InfoText: This dataset contains 20 gestures, totalizing 567 executions." << std::endl;
+    fileOut << "InfoText: This dataset contains 19 gestures, totalizing 519 executions." << std::endl;
     fileOut << "NumDimensions: " << numDimensions << std::endl;
-    fileOut << "TotalNumTrainingExamples: 567" << std::endl;
-    fileOut << "NumberOfClasses: 20" << std::endl;
+    fileOut << "TotalNumTrainingExamples: 519" << std::endl;
+    fileOut << "NumberOfClasses: 19" << std::endl;
     fileOut << "ClassIDsAndCounters:" << std::endl;
     fileOut << "12 27 NOT_SET" << std::endl;
     fileOut << "13 27 NOT_SET" << std::endl;
@@ -549,20 +549,20 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
     fileOut << "15 26 NOT_SET" << std::endl;
     fileOut << "16 26 NOT_SET" << std::endl;
     fileOut << "17 26 NOT_SET" << std::endl;
-    fileOut << "18 28 NOT_SET" << std::endl;
+    fileOut << "18 27 NOT_SET" << std::endl;
     fileOut << "19 30 NOT_SET" << std::endl;
     fileOut << "20 30 NOT_SET" << std::endl;
     fileOut << "21 30 NOT_SET" << std::endl;
     fileOut << "22 30 NOT_SET" << std::endl;
     fileOut << "23 30 NOT_SET" << std::endl;
     fileOut << "24 30 NOT_SET" << std::endl;
-    fileOut << "25 30 NOT_SET" << std::endl;
+    // fileOut << "25 30 NOT_SET" << std::endl;
     fileOut << "26 20 NOT_SET" << std::endl;
     fileOut << "27 30 NOT_SET" << std::endl;
     fileOut << "28 30 NOT_SET" << std::endl;
     fileOut << "29 30 NOT_SET" << std::endl;
     fileOut << "30 30 NOT_SET" << std::endl;
-    fileOut << "31 30 NOT_SET" << std::endl;
+    fileOut << "31 24 NOT_SET" << std::endl;
   } else if (utkinect) {
     fileOut << "DatasetName: utkinect" << std::endl;
     fileOut << "InfoText: This dataset contains 10 gestures performed by 10 subjects twice, totalizing 200 executions." << std::endl;
@@ -589,10 +589,36 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
 
   for (size_t i = 0; i < descriptors.size(); i++) {
     fileOut << changeNameGesture(descriptors[i].name) << " ";
-    fileOut << descriptors[i].centroidDerivative << " ";
-    fileOut << descriptors[i].centroidLength << " ";
-    fileOut << descriptors[i].lc << " ";
-    fileOut << descriptors[i].lsc;
+    // fileOut << descriptors[i].centroidDerivative << " ";
+    // fileOut << descriptors[i].centroidLength << " ";
+
+    size_t n1 = descriptors[i].lc.size();
+    for (size_t j = 0; j < n1; j++) {
+      fileOut << descriptors[i].lc[j];
+      if (j + 1 < n1) {
+        fileOut << " ";
+      }
+    }
+
+    fileOut << " ";
+
+    size_t n2 = descriptors[i].lsc.size();
+    for (size_t j = 0; j < n2; j++) {
+      fileOut << descriptors[i].lsc[j];
+      if (j + 1 < n2) {
+        fileOut << " ";
+      }
+    }
+
+    fileOut << " ";
+
+    size_t n3 = descriptors[i].velocity.size();
+    for (size_t j = 0; j < n3; j++) {
+      fileOut << descriptors[i].velocity[j];
+      if (j + 1 < n3) {
+        fileOut << " ";
+      }
+    }
 
     // fileOut << descriptors[i].lc;
     // fileOut << descriptors[i].lsc;

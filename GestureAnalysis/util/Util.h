@@ -11,12 +11,18 @@ public:
 
 	//Print all informations of the gesture
 	void printGesture(const type_gesture gesture);
+	// Get the min of points from a range of gestures
+	int  getMinPoints(vector<type_gesture> gestures, int i, int j);
 	//Get the mean number of points of an set of gestures of the same type
 	int  getMeanPoints(vector<type_gesture> gestures, int i, int j);
 	//Generate a file with median gestures
 	void generateMedianGestures();
-	//Generate gestures with equal number of points
+	//Generate gestures with equal number of points from mean
 	void generateGestureEqualSize(std::vector<type_gesture> *gestures);
+	//Equalize gestures with equal number of points from min
+	void equalizeDatasetFromMin(std::vector<type_gesture> *gestures);
+	//Equalize gestures with equal number of points from mean
+	void equalizeDatasetFromMean(std::vector<type_gesture> *gestures);
 	//Generate a file with gestures centered in the origin using centroid
 	void normCenterOriginGesture(type_gesture *gesture);
 	//Apply uniform distance by arc length
