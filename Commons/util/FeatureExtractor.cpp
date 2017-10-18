@@ -90,6 +90,7 @@ FeatureExtractor::velocity(type_gesture sample) {
   for (int i = 0; i < n - 1; i++) {
     features.push_back(MathUtil::length(MathUtil::subtract(positions[i], positions[i + 1])));
   }
+  features.push_back(0.0);
   return features;
 }
 
@@ -112,7 +113,7 @@ FeatureExtractor::locationLSC(type_gesture sample) {
   size_t n = positions.size();
   XnPoint3D start = positions[0], diff;
   std::vector<double> features;
-  for (int i = 1; i < n; i++) {
+  for (int i = 0; i < n; i++) {
     diff = MathUtil::subtract(start, positions[i]);
     features.push_back(MathUtil::length(diff));
   }
