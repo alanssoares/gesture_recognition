@@ -20,9 +20,9 @@ public:
 	//Generate gestures with equal number of points from mean
 	void generateGestureEqualSize(std::vector<type_gesture> *gestures);
 	//Equalize gestures with equal number of points from min
-	void equalizeDatasetFromMin(std::vector<type_gesture> *gestures);
+	void equalizeDatasetFromMin(std::vector<type_gesture> *gestures, std::string name);
 	//Equalize gestures with equal number of points from mean
-	void equalizeDatasetFromMean(std::vector<type_gesture> *gestures);
+	void equalizeDatasetFromMean(std::vector<type_gesture> *gestures, std::string name);
 	//Generate a file with gestures centered in the origin using centroid
 	void normCenterOriginGesture(type_gesture *gesture);
 	//Apply uniform distance by arc length

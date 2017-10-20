@@ -213,7 +213,7 @@ void keyboardEventOccurred (const pcl::visualization::KeyboardEvent &event, void
           futil.mGesturesTwoHands.push_back(g_Test.m_AllGestures[i]);
         }
       }
-      futil.saveAll();
+      futil.saveAll("resampled");
       exit(1);
     }
     viewShapes(viewer);
@@ -343,13 +343,13 @@ int main(int argc, char* argv[])
 
   if(pcl::console::find_argument (argc, argv, "-eqmin") >= 0){
     g_Test.init();
-    g_Util.equalizeDatasetFromMin(&g_Test.m_AllGestures);
+    g_Util.equalizeDatasetFromMin(&g_Test.m_AllGestures, "min");
     return 0;
   }
 
   if(pcl::console::find_argument (argc, argv, "-eqmean") >= 0){
     g_Test.init();
-    g_Util.equalizeDatasetFromMean(&g_Test.m_AllGestures);
+    g_Util.equalizeDatasetFromMean(&g_Test.m_AllGestures, "mean");
     return 0;
   }
 
@@ -377,6 +377,11 @@ int main(int argc, char* argv[])
   if(pcl::console::find_argument (argc, argv, "-features") >= 0){
     // g_Test.saveFeatureFormat();
     g_Test.createDatasets();
+    return 0;
+  }
+
+  if(pcl::console::find_argument (argc, argv, "-dataset") >= 0){
+    g_Test.createDatasetEqualized();
     return 0;
   }
 

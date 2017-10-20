@@ -745,18 +745,23 @@ MathUtil::insertPoints(std::vector<XnPoint3D> *points, int diff){
         n = points->size();
         for (i = 0; i < n - 2; i+=2){
             curv = calcCurvature(points->at(i), points->at(i + 1), points->at(i + 2));
-            if(curv < minCurv){
+            if (curv < minCurv){
                 minCurv = curv;
                 index = i + 1;
             }
         }
-        if(index >= 0 && index + 1 < n){
+        if(index > 0){
+          if (index + 1 < n) {
             newPoint = interpolate(points->at(index), points->at(index + 1), 0.5);
             points->insert(points->begin() + index, newPoint);
+          } else {
+            newPoint = interpolate(points->at(index - 1), points->at(index), 0.5);
+            points->insert(points->begin() + index - 1, newPoint);
+          }
         }
+        diff--;
         minCurv = 99999999;
         index = -1;
-        diff--;
     }
 }
 
@@ -768,17 +773,21 @@ MathUtil::removePoints(std::vector<XnPoint3D> *points, int diff){
         n = points->size();
         for (i = 0; i < n - 2; i+=2){
             curv = calcCurvature(points->at(i), points->at(i + 1), points->at(i + 2));
-            if(curv < minCurv){
+            if (curv < minCurv){
                 minCurv = curv;
                 index = i + 1;
             }
         }
-        if(index >= 0 && index + 1 < n){
+        if (index > 0){
+          if (index + 1 < n) {
             points->erase(points->begin() + index);
+          } else {
+            points->erase(points->begin() + index - 1);
+          }
         }
+        diff++;
         minCurv = 99999999;
         index = -1;
-        diff++;
     }
 }
 

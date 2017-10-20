@@ -131,7 +131,7 @@ Util::generateGestureEqualSize(std::vector<type_gesture> *gestures){
 }
 
 void
-Util::equalizeDatasetFromMin(std::vector<type_gesture> *gestures){
+Util::equalizeDatasetFromMin(std::vector<type_gesture> *gestures, std::string name){
 	FileUtil& futil = FileUtil::getInstance();
 	int n = gestures->size(), min = 0, diff = 0;
 	min = getMinPoints(*gestures, 0, n - 1);
@@ -157,11 +157,11 @@ Util::equalizeDatasetFromMin(std::vector<type_gesture> *gestures){
 		}
 	}
 
-	futil.saveAll();
+	futil.saveAll(name);
 }
 
 void
-Util::equalizeDatasetFromMean(std::vector<type_gesture> *gestures){
+Util::equalizeDatasetFromMean(std::vector<type_gesture> *gestures, std::string name){
 	FileUtil& futil = FileUtil::getInstance();
 	int n = gestures->size(), min = 0, diff = 0;
 	min = getMeanPoints(*gestures, 0, n - 1);
@@ -187,7 +187,7 @@ Util::equalizeDatasetFromMean(std::vector<type_gesture> *gestures){
 		}
 	}
 
-	futil.saveAll();
+	futil.saveAll(name);
 }
 
 int
@@ -234,7 +234,7 @@ Util::scaleGestures(){
 		fileUtil.mGesturesTwoHands[i].handOne.positions = MathUtil::normalizeTrajectory(fileUtil.mGesturesTwoHands[i].handOne.positions, min, max);
 		fileUtil.mGesturesTwoHands[i].handTwo.positions = MathUtil::normalizeTrajectory(fileUtil.mGesturesTwoHands[i].handTwo.positions, min, max);
 	}
-	fileUtil.saveAll();
+	fileUtil.saveAll("scaled");
 }
 
 void
@@ -249,7 +249,7 @@ Util::centerOriginGestures(){
     	fileUtil.mGesturesTwoHands[i].handOne.positions = MathUtil::translateToOrigin(fileUtil.mGesturesTwoHands[i].handOne.positions);
 			fileUtil.mGesturesTwoHands[i].handTwo.positions = MathUtil::translateToOrigin(fileUtil.mGesturesTwoHands[i].handTwo.positions);
     }
-    fileUtil.saveAll();
+    fileUtil.saveAll("origin");
 }
 
 void
@@ -316,7 +316,7 @@ Util::generateMedianGestures(){
 		}
 	}
 
-	futil.saveAll();
+	futil.saveAll("median");
 }
 
 void

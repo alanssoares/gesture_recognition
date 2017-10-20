@@ -320,53 +320,118 @@ Test::saveFeatureFormat() {
 }
 
 void
+Test::createDatasetEqualized() {
+
+	std::string dataset = "grufba";
+	// std::string dataset = "msr_3d_action";
+
+	loadAll();
+	m_Util.equalizeDatasetFromMin(&m_AllGestures, dataset + "_min_lp");
+	loadAll();
+	m_Util.equalizeDatasetFromMean(&m_AllGestures, dataset + "_mean_lp");
+
+	// loadAll();
+	// m_Util.equalizeDatasetFromMin(&m_AllGestures, dataset + "_min_cv");
+	// loadAll();
+	// m_Util.equalizeDatasetFromMean(&m_AllGestures, dataset + "_mean_cv");
+
+	// loadAll();
+	// m_Util.equalizeDatasetFromMin(&m_AllGestures, dataset + "_min_dp");
+	// loadAll();
+	// m_Util.equalizeDatasetFromMean(&m_AllGestures, dataset + "_mean_dp");
+
+	// loadAll();
+	// m_Util.equalizeDatasetFromMin(&m_AllGestures, dataset + "_min_lp_cv");
+	// loadAll();
+	// m_Util.equalizeDatasetFromMean(&m_AllGestures, dataset + "_mean_lp_cv");
+
+	// loadAll();
+	// m_Util.equalizeDatasetFromMin(&m_AllGestures, dataset + "_min_lp_dp");
+	// loadAll();
+	// m_Util.equalizeDatasetFromMean(&m_AllGestures, dataset + "_mean_lp_dp");
+
+}
+
+void
+Test::saveToFile(std::vector<type_gesture> gestures, std::string name) {
+	FileUtil& fileUtil = FileUtil::getInstance();
+	fileUtil.clearHandGestures();
+
+	size_t n = gestures.size();
+	for (int i = 0; i < n; i++){
+		if(gestures[i].numHands == 1){
+			fileUtil.mGesturesOneHand.push_back(gestures[i]);
+		} else {
+			fileUtil.mGesturesTwoHands.push_back(gestures[i]);
+		}
+	}
+
+	fileUtil.saveAll(name);
+}
+
+void
 Test::createDatasets() {
 	FileUtil& fileUtil = FileUtil::getInstance();
 
-	std:string nameDataset = "msr_action_3d_min_";
+	// std:string nameDataset = "msr_3d_action_min_lp_cv_";
 	// std:string nameDataset = "msrc_12_descriptor";
 	// std:string nameDataset = "utkinect_descriptor";
-	// std:string nameDataset = "grufba_descriptor";
+	std:string nameDataset = "grufba_mean_lp_dp_";
+
+	loadAll();
+	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + ".grt");
+	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "lsc.grt");
+	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "lc.grt");
+	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "lc_lsc_velocity.grt");
+	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "lc_lsc.grt");
+	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "lc_velocity.grt");
+	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "lsc_velocity.grt");
 
 	// carrega todos e salva
-	loadAll();
-	for(size_t i = 0; i < m_AllGestures.size(); i++){
-		applyProcess(0, &m_AllGestures[i]);
-	}
-	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + ".grt");
+	// loadAll();
+	// for(size_t i = 0; i < m_AllGestures.size(); i++){
+	// 	applyProcess(0, &m_AllGestures[i]);
+	// }
+	// saveToFile(m_AllGestures, "_raw");
+	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + ".grt");
 
 	// carrega todos, aplica o processamento laplacian e salva
-	loadAll();
-	for(size_t i = 0; i < m_AllGestures.size(); i++){
-		applyProcess(1, &m_AllGestures[i]);
-	}
-	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_1.grt");
+	// loadAll();
+	// for(size_t i = 0; i < m_AllGestures.size(); i++){
+	// 	applyProcess(1, &m_AllGestures[i]);
+	// }
+	// saveToFile(m_AllGestures, nameDataset + "_lp");
+	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_1.grt");
 
 	// carrega todos, aplica o processamento curvature e salva
-	loadAll();
-	for(size_t i = 0; i < m_AllGestures.size(); i++){
-		applyProcess(2, &m_AllGestures[i]);
-	}
-	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_2.grt");
+	// loadAll();
+	// for(size_t i = 0; i < m_AllGestures.size(); i++){
+	// 	applyProcess(2, &m_AllGestures[i]);
+	// }
+	// saveToFile(m_AllGestures, nameDataset + "_cv");
+	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_2.grt");
 
 	// carrega todos, aplica o processamento douglas-peucker e salva
-	loadAll();
-	for(size_t i = 0; i < m_AllGestures.size(); i++){
-		applyProcess(3, &m_AllGestures[i]);
-	}
-	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_3.grt");
+	// loadAll();
+	// for(size_t i = 0; i < m_AllGestures.size(); i++){
+	// 	applyProcess(3, &m_AllGestures[i]);
+	// }
+	// saveToFile(m_AllGestures, nameDataset + "_dp");
+	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_3.grt");
 
 	// carrega todos, aplica o processamento laplacian + curvature e salva
-	loadAll();
-	for(size_t i = 0; i < m_AllGestures.size(); i++){
-		applyProcess(4, &m_AllGestures[i]);
-	}
-	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_4.grt");
+	// loadAll();
+	// for(size_t i = 0; i < m_AllGestures.size(); i++){
+	// 	applyProcess(4, &m_AllGestures[i]);
+	// }
+	// saveToFile(m_AllGestures, nameDataset + "_lp_cv");
+	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_4.grt");
 
 	// carrega todos, aplica o processamento laplacian + douglas-peucker e salva
-	loadAll();
-	for(size_t i = 0; i < m_AllGestures.size(); i++){
-		applyProcess(5, &m_AllGestures[i]);
-	}
-	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_5.grt");
+	// loadAll();
+	// for(size_t i = 0; i < m_AllGestures.size(); i++){
+	// 	applyProcess(5, &m_AllGestures[i]);
+	// }
+	// saveToFile(m_AllGestures, nameDataset + "_lp_dp");
+	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_5.grt");
 }
