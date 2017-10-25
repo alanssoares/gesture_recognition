@@ -496,7 +496,7 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
   FeatureExtractor featureExtractor;
   FeatureDescriptor descriptor;
   size_t n = gestures.size();
-  bool msrc = false, grufba = true, msr_action_3d = false, utkinect = false;
+  bool msrc = false, grufba = false, msr_action_3d = true, utkinect = false;
   fileOut.open(nameFile.c_str(), ios::out | ios::ate);
   long numDimensions = 1;
 
@@ -592,41 +592,41 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
     // fileOut << descriptors[i].centroidDerivative << " ";
     // fileOut << descriptors[i].centroidLength << " ";
 
-    size_t n1 = descriptors[i].lc.size();
-    size_t n2 = descriptors[i].lsc.size();
-    size_t n3 = descriptors[i].velocity.size();
-
-    std::cout << "LC = " << n1 << '\n';
-    std::cout << "LSC = " << n2 << '\n';
-    std::cout << "VEL = " << n3 << '\n';
-
     // size_t n1 = descriptors[i].lc.size();
-    // for (size_t j = 0; j < n1; j++) {
-    //   fileOut << descriptors[i].lc[j];
-    //   if (j + 1 < n1) {
-    //     fileOut << " ";
-    //   }
-    // }
-    //
-    // fileOut << " ";
-
     // size_t n2 = descriptors[i].lsc.size();
-    // for (size_t j = 0; j < n2; j++) {
-    //   fileOut << descriptors[i].lsc[j];
-    //   if (j + 1 < n2) {
-    //     fileOut << " ";
-    //   }
-    // }
-    //
-    // fileOut << " ";
-    //
     // size_t n3 = descriptors[i].velocity.size();
-    // for (size_t j = 0; j < n3; j++) {
-    //   fileOut << descriptors[i].velocity[j];
-    //   if (j + 1 < n3) {
-    //     fileOut << " ";
-    //   }
-    // }
+    //
+    // std::cout << "LC = " << n1 << '\n';
+    // std::cout << "LSC = " << n2 << '\n';
+    // std::cout << "VEL = " << n3 << '\n';
+
+    size_t n1 = descriptors[i].lc.size();
+    for (size_t j = 0; j < n1; j++) {
+      fileOut << descriptors[i].lc[j];
+      if (j + 1 < n1) {
+        fileOut << " ";
+      }
+    }
+
+    fileOut << " ";
+
+    size_t n2 = descriptors[i].lsc.size();
+    for (size_t j = 0; j < n2; j++) {
+      fileOut << descriptors[i].lsc[j];
+      if (j + 1 < n2) {
+        fileOut << " ";
+      }
+    }
+
+    fileOut << " ";
+
+    size_t n3 = descriptors[i].velocity.size();
+    for (size_t j = 0; j < n3; j++) {
+      fileOut << descriptors[i].velocity[j];
+      if (j + 1 < n3) {
+        fileOut << " ";
+      }
+    }
 
     // fileOut << descriptors[i].lc;
     // fileOut << descriptors[i].lsc;

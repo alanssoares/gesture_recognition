@@ -312,8 +312,14 @@ Test::saveFeatureFormat() {
 	kmeans.createClusters(m_AllGestures);
 	// Save files
 	for (size_t i = 0; i < kmeans.mClusters.size(); i++) {
-		std::cout << "G " << kmeans.mClusters[i].mCollection[0].name << " N " << kmeans.mClusters[i].mCollection.size() << " S " << kmeans.mClusters[i].mCollection[0].handTwo.positions.size() << std::endl;
+		// std::cout << "G " << kmeans.mClusters[i].mCollection[0].name << " N " << kmeans.mClusters[i].mCollection.size() << " S " << kmeans.mClusters[i].mCollection[0].handTwo.positions.size() << std::endl;
 		// fileUtil.saveFeatureGestures(kmeans.mClusters[i].mCollection, "feature_" + kmeans.mClusters[i].mCollection[0].name + ".txt");
+		size_t mean = 0;
+		for (size_t j = 0; j < kmeans.mClusters[i].mCollection.size(); j++) {
+			mean += kmeans.mClusters[i].mCollection[j].handTwo.positions.size();
+		}
+		mean /= kmeans.mClusters[i].mCollection.size();
+		std::cout << "G " << kmeans.mClusters[i].mCollection[0].name << " " << mean << '\n';
 	}
 	// Save file with features grt nickgillian
 	// fileUtil.saveFeauresToToolkit(m_AllGestures, nameDataset, true);
@@ -373,10 +379,10 @@ void
 Test::createDatasets() {
 	FileUtil& fileUtil = FileUtil::getInstance();
 
-	// std:string nameDataset = "msr_3d_action_min_lp_cv_";
+	std:string nameDataset = "msr_3d_action_min_lp_dp_";
 	// std:string nameDataset = "msrc_12_descriptor";
 	// std:string nameDataset = "utkinect_descriptor";
-	std:string nameDataset = "grufba_mean_lp_dp_";
+	// std:string nameDataset = "grufba_mean_lp_dp_";
 
 	loadAll();
 	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + ".grt");

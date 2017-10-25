@@ -116,16 +116,13 @@ int main(int argc, const char * argv[]){
         UINT classLabel = testData[i].getClassLabel();
         hmm.predict( testData[i].getData() );
 
-        if( classLabel == hmm.getPredictedClassLabel() ) numCorrect++;
-        numTests++;
-
-        //Update the accuracy
-        if( classLabel == predictedClassLabel ) {
-            accuracy++;
-            isRecognized = 1;
-        } else {
-            isRecognized = 0;
+        if( classLabel == hmm.getPredictedClassLabel() ) {
+          numCorrect++;
+          isRecognized = 1;
+        }  else {
+          isRecognized = 0;
         }
+        numTests++;
 
         cout << i <<  " " << classLabel << " " << hmm.getPredictedClassLabel() << " " << hmm.getMaximumLikelihood() << " " << isRecognized << endl;
     }

@@ -131,7 +131,7 @@ int main(int argc, const char * argv[])
     				isRecognized = 0;
     		}
 
-    		cout << i <<  " " << classLabel << " " << predictedClassLabel << " " << maximumLikelihood << " " << isRecognized << endl;
+    		// cout << i <<  " " << classLabel << " " << predictedClassLabel << " " << maximumLikelihood << " " << isRecognized << endl;
     }
 
     cout << "Test Accuracy: " << accuracy/double(testData.getNumSamples())*100.0 << "%" << endl;
