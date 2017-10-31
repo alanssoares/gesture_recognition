@@ -4,9 +4,12 @@ echo "***** Removing Models ****** "
 rm DTWModel.grt
 rm SVMModel.grt
 rm DecisionTreeModel.grt
+rm RandomForestsModel.grt
 rm startDTW
 rm startDecisionTree
 rm startSVM
+rm startRandomForests
+rm startHMM
 
 echo "***** Compiling ****** "
 

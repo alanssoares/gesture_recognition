@@ -46,12 +46,16 @@ dataset="msr3d_dtree"
 # lsc
 # variance"
 
+# listFeatures="lc
+# lsc
+# vel
+# lc_lsc_vel
+# lc_vel
+# lsc_vel
+# lc_lsc"
+
 listFeatures="lc
 lsc
-vel
-lc_lsc_vel
-lc_vel
-lsc_vel
 lc_lsc"
 
 rm -r $dataset
@@ -59,8 +63,8 @@ mkdir $dataset
 
 for feature in $listFeatures
 do
-  features="grufba_16/features_lp_dp/grufba_mean_lp_dp_"$feature
-  # features="msr_action_3d/features_lp_dp/msr_3d_action_min_lp_dp_"$feature
+  # features="grufba_16/features_lp_dp/grufba_mean_lp_dp_"$feature
+  features="msr_action_3d/features_lp/msr_3d_action_min_lp_"$feature
   # features="utkinect_action/features/"$feature/utkinect_descriptor
   ./startDecisionTree ../Datasets/$features.grt > $dataset/$feature\_result_dtree.txt
   # ./startRandomForests ../Datasets/$features.grt > $dataset/$feature\_result_dtree.txt

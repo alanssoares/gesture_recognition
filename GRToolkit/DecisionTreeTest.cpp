@@ -71,10 +71,12 @@ int main(int argc, const char * argv[])
     //- DecisionTreeThresholdNode - 2
     // const DecisionTreeNode &decisionTreeNode = DecisionTreeClusterNode();
     const DecisionTreeNode &decisionTreeNode = DecisionTreeThresholdNode();
-
-    for (size_t mD = 20; mD < 100; mD+= 5) { // maxDepth
-      for (size_t mS = 5; mS < 25; mS+= 1) { // minNumSamplesPerNode
-        for (size_t mT = 150; mT < 1000; mT+= 150) { // minNumSamplesPerNode
+    size_t mD = 20;
+    size_t mS = 5;
+    size_t mT = 450;
+    // for (size_t mD = 20; mD < 100; mD+= 5) { // maxDepth
+      // for (size_t mS = 5; mS < 25; mS+= 1) { // minNumSamplesPerNode
+        // for (size_t mT = 150; mT < 1000; mT+= 150) { // minNumSamplesPerNode
           // The minimum number of samples that are allowed per node, if the number of samples is below that, the node will become a leafNode.  Default value = 5
           const UINT minNumSamplesPerNode = mS;
 
@@ -163,8 +165,10 @@ int main(int argc, const char * argv[])
                   isRecognized = 0;
               }
 
-              // cout << i <<  ";" << classLabel << ";" << predictedClassLabel << ";" << maximumLikelihood << ";" << isRecognized << endl;
+              cout << i <<  ";" << classLabel << ";" << predictedClassLabel << ";" << maximumLikelihood << ";" << isRecognized << endl;
           }
+
+          // std::cout << "T " << accuracy << " S " << testData.getNumSamples() << " Ac " << accuracy/double(testData.getNumSamples()) * 100.0<< '\n';
 
           accuracy = accuracy/double(testData.getNumSamples())*100.0;
           if (accuracy > bestAccuracy) {
@@ -173,15 +177,14 @@ int main(int argc, const char * argv[])
             bestMaxDepth = maxDepth;
             bestSplittingSteps = numSplittingSteps;
           }
-        }
-      }
-    }
+        // }
+      // }
+    // }
 
-    std::cout << "Accuracy: " << bestAccuracy << endl;
-    std::cout << "MaxDepth: " << bestMaxDepth << endl;
-    std::cout << "MinNumSamplesPerNode: " << bestMinNumSamplesPerNode << endl;
-    std::cout << "BestSplittingSteps: " << bestSplittingSteps << endl;
-
+    // std::cout << "Accuracy: " << bestAccuracy << endl;
+    // std::cout << "MaxDepth: " << bestMaxDepth << endl;
+    // std::cout << "MinNumSamplesPerNode: " << bestMinNumSamplesPerNode << endl;
+    // std::cout << "BestSplittingSteps: " << bestSplittingSteps << endl;
     // cout << "Test Accuracy: " << accuracy/double(testData.getNumSamples())*100.0 << "%" << endl;
 
     return EXIT_SUCCESS;
