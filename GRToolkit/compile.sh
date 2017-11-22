@@ -10,13 +10,19 @@ rm startDecisionTree
 rm startSVM
 rm startRandomForests
 rm startHMM
+rm startDTreePCAPipeline
 
 echo "***** Compiling ****** "
 
-echo "Start ->>>>>>> Decision Tree..."
-g++ -std=c++11 -c DecisionTreeTest.cpp -I/usr/local/include
-g++ DecisionTreeTest.o -o startDecisionTree -I/usr/local/include -L/usr/local/lib -lgrt
-echo "Finish ->>>>>> Decision Tree..."
+echo "Start ->>>>>>> Decision Tree + PCA ..."
+g++ -std=c++11 -c DTreePCAPipeline.cpp -I/usr/local/include
+g++ DTreePCAPipeline.o -o startDTreePCAPipeline -I/usr/local/include -L/usr/local/lib -lgrt
+echo "Finish ->>>>>> Decision Tree + PCA ..."
+
+# echo "Start ->>>>>>> Decision Tree..."
+# g++ -std=c++11 -c DecisionTreeTest.cpp -I/usr/local/include
+# g++ DecisionTreeTest.o -o startDecisionTree -I/usr/local/include -L/usr/local/lib -lgrt
+# echo "Finish ->>>>>> Decision Tree..."
 
 # echo "Start ->>>>>>> GMM..."
 # g++ -std=c++11 -c GMMTest.cpp -I/usr/local/include
