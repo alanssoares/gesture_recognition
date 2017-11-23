@@ -34,8 +34,8 @@ int main (int argc, const char * argv[]) {
   //The current node options are:
   //- DecisionTreeClusterNode - 1
   //- DecisionTreeThresholdNode - 2
-  const DecisionTreeNode &decisionTreeNode = DecisionTreeClusterNode();
-  // const DecisionTreeNode &decisionTreeNode = DecisionTreeThresholdNode();
+  // const DecisionTreeNode &decisionTreeNode = DecisionTreeClusterNode();
+  const DecisionTreeNode &decisionTreeNode = DecisionTreeThresholdNode();
   size_t mD = 20;
   size_t mS = 5;
   size_t mT = 1000;
@@ -81,26 +81,23 @@ int main (int argc, const char * argv[]) {
 
   const UINT numSamples = trainingData.getNumSamples();
   const UINT numInputDimensions = trainingData.getNumDimensions();
-  const UINT numOutputDimensions = numInputDimensions * 0.7;  // This is the number of principal components
+  const UINT numOutputDimensions = numInputDimensions * 0.4;
 
-  info << "Data loaded. Num Samples: " << numSamples;
-  info << " Num Input Dimensions: " << numInputDimensions;
-  info << " Num Output Dimensions: " << numOutputDimensions << std::endl;
+  info << "Data loaded. Num Samples: " << numSamples << std::endl;
+  info << "Num Input Dimensions: " << numInputDimensions << std::endl;
+  info << "Num Output Dimensions (Principal Components): " << numOutputDimensions << std::endl;
 
   // Create an instance of the PCA feature extraction module and add it to the pipeline
   pipeline << PCA(numInputDimensions, numOutputDimensions);
 
-  info << "PCA created!" << std::endl;
-
   // Add a DTree Classifier to the pipeline
   pipeline << dTree;
-
-  info << "DTree add to the pipeline!" << std::endl;
 
   // Get a pointer to the PCA module we just added to the pipeline so we can train it
   // This is a little bit of a hack until the pipeline supports automatic training of the feature modules
   {
     PCA *pca = pipeline.getFeatureExtractionModule<PCA>(0);
+    info << "Training PCA..." << std::endl;
     if (!pca->train(trainingData)) {
       info << "Failed to train PCA model!" << std::endl;
       return EXIT_FAILURE;
@@ -150,6 +147,8 @@ int main (int argc, const char * argv[]) {
 
       info << i <<  ";" << classLabel << ";" << predictedClassLabel << ";" << maximumLikelihood << ";" << isRecognized << std::endl;
   }
+
+  info << "T " << accuracy << " S " << testData.getNumSamples() << " Ac " << accuracy/double(testData.getNumSamples()) * 100.0<< '\n';
 
   return EXIT_SUCCESS;
 }
