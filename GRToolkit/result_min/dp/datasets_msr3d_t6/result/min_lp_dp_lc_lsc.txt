@@ -1,0 +1,100 @@
+ Loading data...
+ Data loaded. Num Samples: 36
+ Num Input Dimensions: 35
+ Num Output Dimensions (Principal Components): 14
+ Training model...
+[TRAINING DecisionTree] numTrainingIterationsToConverge 1 useValidationSet: 0
+[TRAINING DecisionTree] Depth: 0 FeatureIndex: 2 MinError: 0.5 Class Probabilities: 0.25 0.25 0.25 0.25 
+[TRAINING DecisionTree] Depth: 1 FeatureIndex: 19 MinError: 0.333333 Class Probabilities: 0.333333 0.333333 0.333333 0 
+[TRAINING DecisionTree] Depth: 2 FeatureIndex: 31 MinError: 0 Class Probabilities: 0.5 0 0.5 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 3 NumSamples: 9 Class Probabilities: 0 0 1 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 3 NumSamples: 9 Class Probabilities: 1 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 2 NumSamples: 9 Class Probabilities: 0 1 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 1 NumSamples: 9 Class Probabilities: 0 0 0 1 
+[TRAINING DecisionTree] Training set accuracy: 100
+ Model trained.
+ 0;21;27;1;0
+ 1;21;21;1;1
+ 2;21;21;1;1
+ 3;21;22;1;0
+ 4;21;27;1;0
+ 5;21;21;1;1
+ 6;21;21;1;1
+ 7;21;27;1;0
+ 8;21;22;1;0
+ 9;21;28;1;0
+ 10;21;21;1;1
+ 11;21;22;1;0
+ 12;21;21;1;1
+ 13;21;21;1;1
+ 14;21;21;1;1
+ 15;21;21;1;1
+ 16;21;21;1;1
+ 17;21;21;1;1
+ 18;21;27;1;0
+ 19;21;27;1;0
+ 20;21;27;1;0
+ 21;22;22;1;1
+ 22;22;22;1;1
+ 23;22;22;1;1
+ 24;22;22;1;1
+ 25;22;22;1;1
+ 26;22;28;1;0
+ 27;22;22;1;1
+ 28;22;21;1;0
+ 29;22;22;1;1
+ 30;22;22;1;1
+ 31;22;28;1;0
+ 32;22;22;1;1
+ 33;22;28;1;0
+ 34;22;21;1;0
+ 35;22;22;1;1
+ 36;22;22;1;1
+ 37;22;22;1;1
+ 38;22;22;1;1
+ 39;22;22;1;1
+ 40;22;22;1;1
+ 41;22;22;1;1
+ 42;27;27;1;1
+ 43;27;27;1;1
+ 44;27;21;1;0
+ 45;27;21;1;0
+ 46;27;27;1;1
+ 47;27;21;1;0
+ 48;27;21;1;0
+ 49;27;27;1;1
+ 50;27;27;1;1
+ 51;27;27;1;1
+ 52;27;27;1;1
+ 53;27;21;1;0
+ 54;27;21;1;0
+ 55;27;21;1;0
+ 56;27;21;1;0
+ 57;27;27;1;1
+ 58;27;21;1;0
+ 59;27;27;1;1
+ 60;27;21;1;0
+ 61;27;21;1;0
+ 62;27;27;1;1
+ 63;28;28;1;1
+ 64;28;28;1;1
+ 65;28;28;1;1
+ 66;28;28;1;1
+ 67;28;28;1;1
+ 68;28;28;1;1
+ 69;28;28;1;1
+ 70;28;27;1;0
+ 71;28;28;1;1
+ 72;28;28;1;1
+ 73;28;28;1;1
+ 74;28;28;1;1
+ 75;28;27;1;0
+ 76;28;28;1;1
+ 77;28;28;1;1
+ 78;28;21;1;0
+ 79;28;28;1;1
+ 80;28;28;1;1
+ 81;28;28;1;1
+ 82;28;28;1;1
+ 83;28;28;1;1
+ T 55 S 84 Ac 65.4762

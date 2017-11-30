@@ -1,0 +1,10 @@
+gestures: G10,G11,G12,G13,G16,G17,G18,G19,G20
+dataset_type: min
+dataset_simplification: lp
+dataset_samples: 254
+dataset_train: 30%
+pca_output: 0.4
+tree_type: threshold
+tree_depth: 20
+tree_samples_node: 5
+tree_mode: iterative split

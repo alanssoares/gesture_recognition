@@ -1,0 +1,77 @@
+ Loading data...
+ Data loaded. Num Samples: 27
+ Num Input Dimensions: 35
+ Num Output Dimensions (Principal Components): 14
+ Training model...
+[TRAINING DecisionTree] numTrainingIterationsToConverge 1 useValidationSet: 0
+[TRAINING DecisionTree] Depth: 0 FeatureIndex: 29 MinError: 0.333333 Class Probabilities: 0.333333 0.333333 0.333333 
+[TRAINING DecisionTree] Depth: 1 FeatureIndex: 2 MinError: 0 Class Probabilities: 0.5 0 0.5 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 2 NumSamples: 9 Class Probabilities: 1 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 2 NumSamples: 9 Class Probabilities: 0 0 1 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 1 NumSamples: 9 Class Probabilities: 0 1 0 
+[TRAINING DecisionTree] Training set accuracy: 100
+ Model trained.
+ 0;21;21;1;1
+ 1;21;21;1;1
+ 2;21;21;1;1
+ 3;21;21;1;1
+ 4;21;21;1;1
+ 5;21;21;1;1
+ 6;21;21;1;1
+ 7;21;21;1;1
+ 8;21;22;1;0
+ 9;21;22;1;0
+ 10;21;21;1;1
+ 11;21;22;1;0
+ 12;21;21;1;1
+ 13;21;21;1;1
+ 14;21;21;1;1
+ 15;21;28;1;0
+ 16;21;21;1;1
+ 17;21;21;1;1
+ 18;21;21;1;1
+ 19;21;21;1;1
+ 20;21;21;1;1
+ 21;22;22;1;1
+ 22;22;22;1;1
+ 23;22;22;1;1
+ 24;22;22;1;1
+ 25;22;22;1;1
+ 26;22;22;1;1
+ 27;22;22;1;1
+ 28;22;22;1;1
+ 29;22;22;1;1
+ 30;22;22;1;1
+ 31;22;22;1;1
+ 32;22;22;1;1
+ 33;22;28;1;0
+ 34;22;21;1;0
+ 35;22;22;1;1
+ 36;22;22;1;1
+ 37;22;22;1;1
+ 38;22;22;1;1
+ 39;22;22;1;1
+ 40;22;22;1;1
+ 41;22;22;1;1
+ 42;28;28;1;1
+ 43;28;28;1;1
+ 44;28;21;1;0
+ 45;28;28;1;1
+ 46;28;28;1;1
+ 47;28;28;1;1
+ 48;28;28;1;1
+ 49;28;28;1;1
+ 50;28;28;1;1
+ 51;28;28;1;1
+ 52;28;28;1;1
+ 53;28;28;1;1
+ 54;28;28;1;1
+ 55;28;28;1;1
+ 56;28;28;1;1
+ 57;28;28;1;1
+ 58;28;28;1;1
+ 59;28;28;1;1
+ 60;28;28;1;1
+ 61;28;28;1;1
+ 62;28;28;1;1
+ T 56 S 63 Ac 88.8889

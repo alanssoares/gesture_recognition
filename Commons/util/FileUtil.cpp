@@ -555,7 +555,7 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
     fileOut << "21 30 NOT_SET" << std::endl;
     fileOut << "22 30 NOT_SET" << std::endl;
     fileOut << "23 30 NOT_SET" << std::endl;
-    fileOut << "24 30 NOT_SET" << std::endl;
+    fileOut << "24 20 NOT_SET" << std::endl;
     // fileOut << "25 30 NOT_SET" << std::endl;
     fileOut << "26 20 NOT_SET" << std::endl;
     fileOut << "27 30 NOT_SET" << std::endl;
