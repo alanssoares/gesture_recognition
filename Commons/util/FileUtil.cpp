@@ -361,7 +361,7 @@ FileUtil::saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string n
   std::fstream fileOut;
   type_gesture sample;
   XnPoint3D pl, pr;
-  bool msrc = false, grufba = false, msr_action_3d = false, utkinect = true;
+  bool msrc = false, grufba = false, msr_action_3d = false, utkinect = true, asl = false;
   size_t n = gestures.size(), nPos;
   long numDimensions = 3;
 
@@ -451,6 +451,111 @@ FileUtil::saveFeauresToToolkit(std::vector<type_gesture> gestures, std::string n
     fileOut << "37 20 NOT_SET" << std::endl;
     fileOut << "38 20 NOT_SET" << std::endl;
     fileOut << "39 20 NOT_SET" << std::endl;
+  } else if (asl) {
+    fileOut << "DatasetName: asl" << std::endl;
+    fileOut << "InfoText: This dataset contains 98 gestures, totalizing 6723 executions." << std::endl;
+    fileOut << "NumDimensions: " << numDimensions << std::endl;
+    fileOut << "TotalNumTrainingExamples: 6723" << std::endl;
+    fileOut << "NumberOfClasses: 98" << std::endl;
+    fileOut << "ClassIDsAndCounters:" << std::endl;
+    fileOut << "1 70 NOT_SET" << std::endl;
+    fileOut << "2 70 NOT_SET" << std::endl;
+    fileOut << "3 70 NOT_SET" << std::endl;
+    fileOut << "4 70 NOT_SET" << std::endl;
+    fileOut << "5 70 NOT_SET" << std::endl;
+    fileOut << "6 70 NOT_SET" << std::endl;
+    fileOut << "7 70 NOT_SET" << std::endl;
+    fileOut << "8 70 NOT_SET" << std::endl;
+    fileOut << "9 70 NOT_SET" << std::endl;
+    fileOut << "10 36 NOT_SET" << std::endl;
+    fileOut << "11 36 NOT_SET" << std::endl;
+    fileOut << "12 36 NOT_SET" << std::endl;
+    fileOut << "13 70 NOT_SET" << std::endl;
+    fileOut << "14 70 NOT_SET" << std::endl;
+    fileOut << "15 70 NOT_SET" << std::endl;
+    fileOut << "16 70 NOT_SET" << std::endl;
+    fileOut << "17 70 NOT_SET" << std::endl;
+    fileOut << "18 70 NOT_SET" << std::endl;
+    fileOut << "19 70 NOT_SET" << std::endl;
+    fileOut << "20 70 NOT_SET" << std::endl;
+    fileOut << "21 70 NOT_SET" << std::endl;
+    fileOut << "22 70 NOT_SET" << std::endl;
+    fileOut << "23 70 NOT_SET" << std::endl;
+    fileOut << "24 70 NOT_SET" << std::endl;
+    fileOut << "25 70 NOT_SET" << std::endl;
+    fileOut << "26 70 NOT_SET" << std::endl;
+    fileOut << "27 70 NOT_SET" << std::endl;
+    fileOut << "28 70 NOT_SET" << std::endl;
+    fileOut << "29 70 NOT_SET" << std::endl;
+    fileOut << "30 70 NOT_SET" << std::endl;
+    fileOut << "31 70 NOT_SET" << std::endl;
+    fileOut << "32 69 NOT_SET" << std::endl;
+    fileOut << "33 70 NOT_SET" << std::endl;
+    fileOut << "34 70 NOT_SET" << std::endl;
+    fileOut << "35 70 NOT_SET" << std::endl;
+    fileOut << "36 70 NOT_SET" << std::endl;
+    fileOut << "37 70 NOT_SET" << std::endl;
+    fileOut << "38 70 NOT_SET" << std::endl;
+    fileOut << "39 70 NOT_SET" << std::endl;
+    fileOut << "40 70 NOT_SET" << std::endl;
+    fileOut << "41 70 NOT_SET" << std::endl;
+    fileOut << "42 70 NOT_SET" << std::endl;
+    fileOut << "43 70 NOT_SET" << std::endl;
+    fileOut << "44 70 NOT_SET" << std::endl;
+    fileOut << "45 70 NOT_SET" << std::endl;
+    fileOut << "46 70 NOT_SET" << std::endl;
+    fileOut << "47 70 NOT_SET" << std::endl;
+    fileOut << "48 70 NOT_SET" << std::endl;
+    fileOut << "49 70 NOT_SET" << std::endl;
+    fileOut << "50 70 NOT_SET" << std::endl;
+    fileOut << "51 70 NOT_SET" << std::endl;
+    fileOut << "52 70 NOT_SET" << std::endl;
+    fileOut << "53 70 NOT_SET" << std::endl;
+    fileOut << "54 70 NOT_SET" << std::endl;
+    fileOut << "55 70 NOT_SET" << std::endl;
+    fileOut << "56 70 NOT_SET" << std::endl;
+    fileOut << "57 70 NOT_SET" << std::endl;
+    fileOut << "58 70 NOT_SET" << std::endl;
+    fileOut << "59 70 NOT_SET" << std::endl;
+    fileOut << "60 70 NOT_SET" << std::endl;
+    fileOut << "61 70 NOT_SET" << std::endl;
+    fileOut << "62 70 NOT_SET" << std::endl;
+    fileOut << "63 70 NOT_SET" << std::endl;
+    fileOut << "64 70 NOT_SET" << std::endl;
+    fileOut << "65 70 NOT_SET" << std::endl;
+    fileOut << "66 70 NOT_SET" << std::endl;
+    fileOut << "67 70 NOT_SET" << std::endl;
+    fileOut << "68 70 NOT_SET" << std::endl;
+    fileOut << "69 70 NOT_SET" << std::endl;
+    fileOut << "70 70 NOT_SET" << std::endl;
+    fileOut << "71 70 NOT_SET" << std::endl;
+    fileOut << "72 70 NOT_SET" << std::endl;
+    fileOut << "73 70 NOT_SET" << std::endl;
+    fileOut << "74 70 NOT_SET" << std::endl;
+    fileOut << "75 70 NOT_SET" << std::endl;
+    fileOut << "76 70 NOT_SET" << std::endl;
+    fileOut << "77 70 NOT_SET" << std::endl;
+    fileOut << "78 70 NOT_SET" << std::endl;
+    fileOut << "79 70 NOT_SET" << std::endl;
+    fileOut << "80 70 NOT_SET" << std::endl;
+    fileOut << "81 70 NOT_SET" << std::endl;
+    fileOut << "82 70 NOT_SET" << std::endl;
+    fileOut << "83 70 NOT_SET" << std::endl;
+    fileOut << "84 70 NOT_SET" << std::endl;
+    fileOut << "85 70 NOT_SET" << std::endl;
+    fileOut << "86 70 NOT_SET" << std::endl;
+    fileOut << "87 70 NOT_SET" << std::endl;
+    fileOut << "88 70 NOT_SET" << std::endl;
+    fileOut << "89 70 NOT_SET" << std::endl;
+    fileOut << "90 70 NOT_SET" << std::endl;
+    fileOut << "91 70 NOT_SET" << std::endl;
+    fileOut << "92 66 NOT_SET" << std::endl;
+    fileOut << "93 65 NOT_SET" << std::endl;
+    fileOut << "94 65 NOT_SET" << std::endl;
+    fileOut << "95 65 NOT_SET" << std::endl;
+    fileOut << "96 65 NOT_SET" << std::endl;
+    fileOut << "97 65 NOT_SET" << std::endl;
+    fileOut << "98 65 NOT_SET" << std::endl;
   }
 
   fileOut << "UseExternalRanges: 0 " << std::endl;
@@ -496,7 +601,7 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
   FeatureExtractor featureExtractor;
   FeatureDescriptor descriptor;
   size_t n = gestures.size();
-  bool msrc = false, grufba = false, msr_action_3d = true, utkinect = false;
+  bool msrc = false, grufba = false, msr_action_3d = false, utkinect = false, asl = true;
   fileOut.open(nameFile.c_str(), ios::out | ios::ate);
   long numDimensions = 1;
 
@@ -580,6 +685,111 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
     fileOut << "37 20 NOT_SET" << std::endl;
     fileOut << "38 20 NOT_SET" << std::endl;
     fileOut << "39 20 NOT_SET" << std::endl;
+  } else if (asl) {
+    fileOut << "DatasetName: asl" << std::endl;
+    fileOut << "InfoText: This dataset contains 98 gestures, totalizing 6723 executions." << std::endl;
+    fileOut << "NumDimensions: " << numDimensions << std::endl;
+    fileOut << "TotalNumTrainingExamples: 6723" << std::endl;
+    fileOut << "NumberOfClasses: 98" << std::endl;
+    fileOut << "ClassIDsAndCounters:" << std::endl;
+    fileOut << "1 70 NOT_SET" << std::endl;
+    fileOut << "2 70 NOT_SET" << std::endl;
+    fileOut << "3 70 NOT_SET" << std::endl;
+    fileOut << "4 70 NOT_SET" << std::endl;
+    fileOut << "5 70 NOT_SET" << std::endl;
+    fileOut << "6 70 NOT_SET" << std::endl;
+    fileOut << "7 70 NOT_SET" << std::endl;
+    fileOut << "8 70 NOT_SET" << std::endl;
+    fileOut << "9 70 NOT_SET" << std::endl;
+    fileOut << "10 36 NOT_SET" << std::endl;
+    fileOut << "11 36 NOT_SET" << std::endl;
+    fileOut << "12 36 NOT_SET" << std::endl;
+    fileOut << "13 70 NOT_SET" << std::endl;
+    fileOut << "14 70 NOT_SET" << std::endl;
+    fileOut << "15 70 NOT_SET" << std::endl;
+    fileOut << "16 70 NOT_SET" << std::endl;
+    fileOut << "17 70 NOT_SET" << std::endl;
+    fileOut << "18 70 NOT_SET" << std::endl;
+    fileOut << "19 70 NOT_SET" << std::endl;
+    fileOut << "20 70 NOT_SET" << std::endl;
+    fileOut << "21 70 NOT_SET" << std::endl;
+    fileOut << "22 70 NOT_SET" << std::endl;
+    fileOut << "23 70 NOT_SET" << std::endl;
+    fileOut << "24 70 NOT_SET" << std::endl;
+    fileOut << "25 70 NOT_SET" << std::endl;
+    fileOut << "26 70 NOT_SET" << std::endl;
+    fileOut << "27 70 NOT_SET" << std::endl;
+    fileOut << "28 70 NOT_SET" << std::endl;
+    fileOut << "29 70 NOT_SET" << std::endl;
+    fileOut << "30 70 NOT_SET" << std::endl;
+    fileOut << "31 70 NOT_SET" << std::endl;
+    fileOut << "32 69 NOT_SET" << std::endl;
+    fileOut << "33 70 NOT_SET" << std::endl;
+    fileOut << "34 70 NOT_SET" << std::endl;
+    fileOut << "35 70 NOT_SET" << std::endl;
+    fileOut << "36 70 NOT_SET" << std::endl;
+    fileOut << "37 70 NOT_SET" << std::endl;
+    fileOut << "38 70 NOT_SET" << std::endl;
+    fileOut << "39 70 NOT_SET" << std::endl;
+    fileOut << "40 70 NOT_SET" << std::endl;
+    fileOut << "41 70 NOT_SET" << std::endl;
+    fileOut << "42 70 NOT_SET" << std::endl;
+    fileOut << "43 70 NOT_SET" << std::endl;
+    fileOut << "44 70 NOT_SET" << std::endl;
+    fileOut << "45 70 NOT_SET" << std::endl;
+    fileOut << "46 70 NOT_SET" << std::endl;
+    fileOut << "47 70 NOT_SET" << std::endl;
+    fileOut << "48 70 NOT_SET" << std::endl;
+    fileOut << "49 70 NOT_SET" << std::endl;
+    fileOut << "50 70 NOT_SET" << std::endl;
+    fileOut << "51 70 NOT_SET" << std::endl;
+    fileOut << "52 70 NOT_SET" << std::endl;
+    fileOut << "53 70 NOT_SET" << std::endl;
+    fileOut << "54 70 NOT_SET" << std::endl;
+    fileOut << "55 70 NOT_SET" << std::endl;
+    fileOut << "56 70 NOT_SET" << std::endl;
+    fileOut << "57 70 NOT_SET" << std::endl;
+    fileOut << "58 70 NOT_SET" << std::endl;
+    fileOut << "59 70 NOT_SET" << std::endl;
+    fileOut << "60 70 NOT_SET" << std::endl;
+    fileOut << "61 70 NOT_SET" << std::endl;
+    fileOut << "62 70 NOT_SET" << std::endl;
+    fileOut << "63 70 NOT_SET" << std::endl;
+    fileOut << "64 70 NOT_SET" << std::endl;
+    fileOut << "65 70 NOT_SET" << std::endl;
+    fileOut << "66 70 NOT_SET" << std::endl;
+    fileOut << "67 70 NOT_SET" << std::endl;
+    fileOut << "68 70 NOT_SET" << std::endl;
+    fileOut << "69 70 NOT_SET" << std::endl;
+    fileOut << "70 70 NOT_SET" << std::endl;
+    fileOut << "71 70 NOT_SET" << std::endl;
+    fileOut << "72 70 NOT_SET" << std::endl;
+    fileOut << "73 70 NOT_SET" << std::endl;
+    fileOut << "74 70 NOT_SET" << std::endl;
+    fileOut << "75 70 NOT_SET" << std::endl;
+    fileOut << "76 70 NOT_SET" << std::endl;
+    fileOut << "77 70 NOT_SET" << std::endl;
+    fileOut << "78 70 NOT_SET" << std::endl;
+    fileOut << "79 70 NOT_SET" << std::endl;
+    fileOut << "80 70 NOT_SET" << std::endl;
+    fileOut << "81 70 NOT_SET" << std::endl;
+    fileOut << "82 70 NOT_SET" << std::endl;
+    fileOut << "83 70 NOT_SET" << std::endl;
+    fileOut << "84 70 NOT_SET" << std::endl;
+    fileOut << "85 70 NOT_SET" << std::endl;
+    fileOut << "86 70 NOT_SET" << std::endl;
+    fileOut << "87 70 NOT_SET" << std::endl;
+    fileOut << "88 70 NOT_SET" << std::endl;
+    fileOut << "89 70 NOT_SET" << std::endl;
+    fileOut << "90 70 NOT_SET" << std::endl;
+    fileOut << "91 70 NOT_SET" << std::endl;
+    fileOut << "92 66 NOT_SET" << std::endl;
+    fileOut << "93 65 NOT_SET" << std::endl;
+    fileOut << "94 65 NOT_SET" << std::endl;
+    fileOut << "95 65 NOT_SET" << std::endl;
+    fileOut << "96 65 NOT_SET" << std::endl;
+    fileOut << "97 65 NOT_SET" << std::endl;
+    fileOut << "98 65 NOT_SET" << std::endl;
   }
 
   fileOut << "UseExternalRanges: 0 " << std::endl;
@@ -592,41 +802,41 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
     // fileOut << descriptors[i].centroidDerivative << " ";
     // fileOut << descriptors[i].centroidLength << " ";
 
-    // size_t n1 = descriptors[i].lc.size();
-    // size_t n2 = descriptors[i].lsc.size();
+    size_t n1 = descriptors[i].lc.size();
+    size_t n2 = descriptors[i].lsc.size();
     // size_t n3 = descriptors[i].velocity.size();
-    //
-    // std::cout << "LC = " << n1 << '\n';
-    // std::cout << "LSC = " << n2 << '\n';
+    
+    std::cout << "LC = " << n1 << '\n';
+    std::cout << "LSC = " << n2 << '\n';
     // std::cout << "VEL = " << n3 << '\n';
 
-    size_t n1 = descriptors[i].lc.size();
-    for (size_t j = 0; j < n1; j++) {
-      fileOut << descriptors[i].lc[j];
-      if (j + 1 < n1) {
-        fileOut << " ";
-      }
-    }
+    // size_t n1 = descriptors[i].lc.size();
+    // for (size_t j = 0; j < n1; j++) {
+    //   fileOut << descriptors[i].lc[j];
+    //   if (j + 1 < n1) {
+    //     fileOut << " ";
+    //   }
+    // }
+    //
+    // fileOut << " ";
+    //
+    // size_t n2 = descriptors[i].lsc.size();
+    // for (size_t j = 0; j < n2; j++) {
+    //   fileOut << descriptors[i].lsc[j];
+    //   if (j + 1 < n2) {
+    //     fileOut << " ";
+    //   }
+    // }
 
-    fileOut << " ";
-
-    size_t n2 = descriptors[i].lsc.size();
-    for (size_t j = 0; j < n2; j++) {
-      fileOut << descriptors[i].lsc[j];
-      if (j + 1 < n2) {
-        fileOut << " ";
-      }
-    }
-
-    fileOut << " ";
-
-    size_t n3 = descriptors[i].velocity.size();
-    for (size_t j = 0; j < n3; j++) {
-      fileOut << descriptors[i].velocity[j];
-      if (j + 1 < n3) {
-        fileOut << " ";
-      }
-    }
+    // fileOut << " ";
+    //
+    // size_t n3 = descriptors[i].velocity.size();
+    // for (size_t j = 0; j < n3; j++) {
+    //   fileOut << descriptors[i].velocity[j];
+    //   if (j + 1 < n3) {
+    //     fileOut << " ";
+    //   }
+    // }
 
     // fileOut << descriptors[i].lc;
     // fileOut << descriptors[i].lsc;
@@ -736,6 +946,206 @@ FileUtil::changeNameGesture(std::string name) {
   } else if (name == "a20") {
     return "31";
   }
+
+  // asl
+  if (name == "God") {
+    return "1";
+  } else if (name == "I") {
+    return "2";
+  } else if (name == "Norway") {
+    return "3";
+  } else if (name == "alive") {
+    return "4";
+  } else if (name == "all") {
+    return "5";
+  } else if (name == "answer") {
+    return "6";
+  } else if (name == "boy") {
+    return "7";
+  } else if (name == "building") {
+    return "8";
+  } else if (name == "buy") {
+    return "9";
+  } else if (name == "cal-full-forward") {
+    return "10";
+  } else if (name == "cal-full-right") {
+    return "11";
+  } else if (name == "cal-full-up") {
+    return "12";
+  } else if (name == "change(mind)") {
+    return "13";
+  } else if (name == "cold") {
+    return "14";
+  } else if (name == "come") {
+    return "15";
+  } else if (name == "computer(PC)") {
+    return "16";
+  } else if (name == "cost") {
+    return "17";
+  } else if (name == "crazy") {
+    return "18";
+  } else if (name == "danger") {
+    return "19";
+  } else if (name == "deaf") {
+    return "20";
+  } else if (name == "different") {
+    return "21";
+  } else if (name == "draw") {
+    return "22";
+  } else if (name == "drink") {
+    return "23";
+  } else if (name == "eat") {
+    return "24";
+  } else if (name == "exit") {
+    return "25";
+  } else if (name == "flash-light") {
+    return "26";
+  } else if (name == "forget") {
+    return "27";
+  } else if (name == "girl") {
+    return "28";
+  } else if (name == "give") {
+    return "29";
+  } else if (name == "glove") {
+    return "30";
+  } else if (name == "go") {
+    return "31";
+  } else if (name == "happy") {
+    return "32";
+  } else if (name == "head") {
+    return "33";
+  } else if (name == "hear") {
+    return "34";
+  } else if (name == "hello") {
+    return "35";
+  } else if (name == "her") {
+    return "36";
+  } else if (name == "hot") {
+    return "37";
+  } else if (name == "how") {
+    return "38";
+  } else if (name == "hurry") {
+    return "39";
+  } else if (name == "hurt") {
+    return "40";
+  } else if (name == "innocent") {
+    return "41";
+  } else if (name == "is(true)") {
+    return "42";
+  } else if (name == "joke") {
+    return "43";
+  } else if (name == "juice") {
+    return "44";
+  } else if (name == "know") {
+    return "45";
+  } else if (name == "later") {
+    return "46";
+  } else if (name == "lose") {
+    return "47";
+  } else if (name == "love") {
+    return "48";
+  } else if (name == "make") {
+    return "49";
+  } else if (name == "man") {
+    return "50";
+  } else if (name == "maybe") {
+    return "51";
+  } else if (name == "mine") {
+    return "52";
+  } else if (name == "money") {
+    return "53";
+  } else if (name == "more") {
+    return "54";
+  } else if (name == "name") {
+    return "55";
+  } else if (name == "no") {
+    return "56";
+  } else if (name == "not-my-problem") {
+    return "57";
+  } else if (name == "paper") {
+    return "58";
+  } else if (name == "pen") {
+    return "59";
+  } else if (name == "please") {
+    return "60";
+  } else if (name == "polite") {
+    return "61";
+  } else if (name == "question") {
+    return "62";
+  } else if (name == "read") {
+    return "63";
+  } else if (name == "ready") {
+    return "64";
+  } else if (name == "research") {
+    return "65";
+  } else if (name == "responsible") {
+    return "66";
+  } else if (name == "right") {
+    return "67";
+  } else if (name == "sad") {
+    return "68";
+  } else if (name == "same") {
+    return "69";
+  } else if (name == "science") {
+    return "70";
+  } else if (name == "share") {
+    return "71";
+  } else if (name == "shop") {
+    return "72";
+  } else if (name == "soon") {
+    return "73";
+  } else if (name == "sorry") {
+    return "74";
+  } else if (name == "spend") {
+    return "75";
+  } else if (name == "stubborn") {
+    return "76";
+  } else if (name == "surprise") {
+    return "77";
+  } else if (name == "take") {
+    return "78";
+  } else if (name == "temper") {
+    return "79";
+  } else if (name == "thank") {
+    return "80";
+  } else if (name == "think") {
+    return "81";
+  } else if (name == "tray") {
+    return "82";
+  } else if (name == "us") {
+    return "83";
+  } else if (name == "voluntary") {
+    return "84";
+  } else if (name == "wait(notyet)") {
+    return "85";
+  } else if (name == "what") {
+    return "86";
+  } else if (name == "when") {
+    return "87";
+  } else if (name == "where") {
+    return "88";
+  } else if (name == "which") {
+    return "89";
+  } else if (name == "who") {
+    return "90";
+  } else if (name == "why") {
+    return "91";
+  } else if (name == "wild") {
+    return "92";
+  } else if (name == "will") {
+    return "93";
+  } else if (name == "write") {
+    return "94";
+  } else if (name == "wrong") {
+    return "95";
+  } else if (name == "yes") {
+    return "96";
+  } else if (name == "you") {
+    return "97";
+  } else if (name == "zero") {
+    return "98";
+  }
+
 
   return name;
 }

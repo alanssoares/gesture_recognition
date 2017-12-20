@@ -148,7 +148,7 @@ int main (int argc, const char * argv[]) {
       info << i <<  ";" << classLabel << ";" << predictedClassLabel << ";" << maximumLikelihood << ";" << isRecognized << std::endl;
   }
 
-  info << "T " << accuracy << " S " << testData.getNumSamples() << " Ac " << accuracy/double(testData.getNumSamples()) * 100.0<< '\n';
+  info << "Nº Training = " << trainingData.getNumSamples() << ", Nº Test = " << testData.getNumSamples() << ", Accuracy = " << accuracy/double(testData.getNumSamples()) * 100.0<< '\n';
 
   return EXIT_SUCCESS;
 }
