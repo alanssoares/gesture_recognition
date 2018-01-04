@@ -102,7 +102,11 @@ FeatureExtractor::locationLC(type_gesture sample) {
   std::vector<double> features;
   for (int i = 0; i < n; i++) {
     diff = MathUtil::subtract(centroid, positions[i]);
-    features.push_back(MathUtil::length(diff));
+    if (diff.X == 0 && diff.Y == 0 && diff.Z == 0) {
+      features.push_back(1.0);
+    } else {
+      features.push_back(MathUtil::length(diff));
+    }
   }
   return features;
 }
@@ -113,9 +117,14 @@ FeatureExtractor::locationLSC(type_gesture sample) {
   size_t n = positions.size();
   XnPoint3D start = positions[0], diff;
   std::vector<double> features;
-  for (int i = 0; i < n; i++) {
+  features.push_back(MathUtil::length(start));
+  for (int i = 1; i < n; i++) {
     diff = MathUtil::subtract(start, positions[i]);
-    features.push_back(MathUtil::length(diff));
+    if (diff.X == 0 && diff.Y == 0 && diff.Z == 0) {
+      features.push_back(1.0);
+    } else {
+      features.push_back(MathUtil::length(diff));
+    }
   }
   return features;
 }
@@ -124,8 +133,8 @@ std::vector<XnPoint3D>
 FeatureExtractor::merge(type_gesture sample) {
   std::vector<XnPoint3D> positions;
   positions.reserve(sample.handOne.positions.size() + sample.handTwo.positions.size());
-  positions.insert( positions.end(), sample.handOne.positions.begin(), sample.handOne.positions.end() );
   positions.insert( positions.end(), sample.handTwo.positions.begin(), sample.handTwo.positions.end() );
+  positions.insert( positions.end(), sample.handOne.positions.begin(), sample.handOne.positions.end() );
   return positions;
 }
 
@@ -138,8 +147,8 @@ FeatureExtractor::extractDescriptor(type_gesture sample) {
   descriptor.sumCurvature = sumCurvature(sample);
   descriptor.sumOrientation = sumOrientation(sample);
   descriptor.standardDeviation = standardDeviation(sample);
-  // descriptor.lc = locationLC(sample);
-  // descriptor.lsc = locationLSC(sample);
+  descriptor.lc = locationLC(sample);
+  descriptor.lsc = locationLSC(sample);
   return descriptor;
 }
 

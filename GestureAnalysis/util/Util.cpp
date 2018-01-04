@@ -101,6 +101,24 @@ Util::applyDouglasPeucker(type_gesture* gesture){
 	gesture->handTwo.positions = MathUtil::simplify(gesture->handTwo.positions, m_DougThreshold, false);
 }
 
+type_gesture
+Util::cleanZeroPositions(type_gesture gesture) {
+	type_gesture newGesture = gesture;
+	size_t n = gesture.handOne.positions.size();
+	newGesture.handOne.positions.clear();
+	newGesture.handTwo.positions.clear();
+	for (int i = 0; i < n; i++) {
+		if (gesture.handOne.positions[i].X == 0 && gesture.handOne.positions[i].Y == 0 && gesture.handOne.positions[i].Z == 0 &&
+				gesture.handTwo.positions[i].X == 0 && gesture.handTwo.positions[i].Y == 0 && gesture.handTwo.positions[i].Z == 0) {
+			continue;
+		} else {
+			newGesture.handOne.positions.push_back(gesture.handOne.positions[i]);
+			newGesture.handTwo.positions.push_back(gesture.handTwo.positions[i]);
+		}
+	}
+	return newGesture;
+}
+
 void
 Util::applyDouglasPeucker(std::vector<type_gesture>* gestures){
 	size_t n = gestures->size();

@@ -9,6 +9,8 @@ public:
 	Util();
 	~Util();
 
+	//Clear all zero positions
+	type_gesture cleanZeroPositions(type_gesture gesture);
 	//Print all informations of the gesture
 	void printGesture(const type_gesture gesture);
 	// Get the min of points from a range of gestures
