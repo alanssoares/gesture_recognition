@@ -2,3 +2,9 @@ GestureAnalysis/build
 GestureAnalysis/results
 GestureOneHand/build
 GestureTwoHand/build
+GRToolkit/startDecisionTree
+GRToolkit/startDTreePCAPipeline
+GRToolkit/startRandomForests
+GRToolkit/startHMM
+GRToolkit/startSVM
+GRToolkit/startDTW
