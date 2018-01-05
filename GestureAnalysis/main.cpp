@@ -374,14 +374,20 @@ int main(int argc, char* argv[])
     return 0;
   }
 
-  if(pcl::console::find_argument (argc, argv, "-features") >= 0){
-    // g_Test.saveFeatureFormat();
-    g_Test.createDatasets();
+  if(pcl::console::find_argument (argc, argv, "-feature") >= 0){
+    int i = pcl::console::find_argument (argc, argv, "-feature");
+    g_Test.createFeatureDataset(argv[i + 1], atoi(argv[i + 2]));
     return 0;
   }
 
   if(pcl::console::find_argument (argc, argv, "-dataset") >= 0){
-    g_Test.createDatasetEqualized();
+    if (pcl::console::find_argument (argc, argv, "min") >= 0){
+      int i = pcl::console::find_argument (argc, argv, "min");
+      g_Test.createDatasetEqualizedFromMin(argv[i + 1]);
+    } else if (pcl::console::find_argument (argc, argv, "mean") >= 0){
+      int i = pcl::console::find_argument (argc, argv, "mean");
+      g_Test.createDatasetEqualizedFromMean(argv[i + 1]);
+    }
     return 0;
   }
 

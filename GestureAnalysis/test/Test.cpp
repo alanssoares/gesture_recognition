@@ -300,10 +300,11 @@ Test::train(int algorithm) {
 void
 Test::saveFeatureFormat() {
 	CKmeans kmeans;
-	std:string nameDataset = "msr_action_3d_series.grt";
+	// std:string nameDataset = "msr_action_3d_series.grt";
 	// std:string nameDataset = "msrc_12_series.grt";
 	// std:string nameDataset = "utkinect_series.grt";
 	// std:string nameDataset = "grufba_series.grt";
+	std:string nameDataset = "asl_series.grt";
 
 	FileUtil& fileUtil = FileUtil::getInstance();
 	// Load samples
@@ -313,49 +314,29 @@ Test::saveFeatureFormat() {
 	// Save files
 	for (size_t i = 0; i < kmeans.mClusters.size(); i++) {
 		// std::cout << "G " << kmeans.mClusters[i].mCollection[0].name << " N " << kmeans.mClusters[i].mCollection.size() << " S " << kmeans.mClusters[i].mCollection[0].handTwo.positions.size() << std::endl;
+		// std::cout << "fileOut << \"" << kmeans.mClusters[i].mCollection[0].name << " " << kmeans.mClusters[i].mCollection.size() << " NOT_SET\" << std::endl; " << std::endl;
 		// fileUtil.saveFeatureGestures(kmeans.mClusters[i].mCollection, "feature_" + kmeans.mClusters[i].mCollection[0].name + ".txt");
 		size_t mean = 0;
 		for (size_t j = 0; j < kmeans.mClusters[i].mCollection.size(); j++) {
 			mean += kmeans.mClusters[i].mCollection[j].handTwo.positions.size();
 		}
 		mean /= kmeans.mClusters[i].mCollection.size();
-		std::cout << "G " << kmeans.mClusters[i].mCollection[0].name << " " << mean << '\n';
+		std::cout << kmeans.mClusters[i].mCollection[0].name << " " << mean << '\n';
 	}
 	// Save file with features grt nickgillian
 	// fileUtil.saveFeauresToToolkit(m_AllGestures, nameDataset, true);
 }
 
 void
-Test::createDatasetEqualized() {
-
-	std::string dataset = "grufba";
-	// std::string dataset = "msr_3d_action";
-
+Test::createDatasetEqualizedFromMin(std::string name) {
 	loadAll();
-	m_Util.equalizeDatasetFromMin(&m_AllGestures, dataset + "_min_lp");
+	m_Util.equalizeDatasetFromMin(&m_AllGestures, name);
+}
+
+void
+Test::createDatasetEqualizedFromMean(std::string name) {
 	loadAll();
-	m_Util.equalizeDatasetFromMean(&m_AllGestures, dataset + "_mean_lp");
-
-	// loadAll();
-	// m_Util.equalizeDatasetFromMin(&m_AllGestures, dataset + "_min_cv");
-	// loadAll();
-	// m_Util.equalizeDatasetFromMean(&m_AllGestures, dataset + "_mean_cv");
-
-	// loadAll();
-	// m_Util.equalizeDatasetFromMin(&m_AllGestures, dataset + "_min_dp");
-	// loadAll();
-	// m_Util.equalizeDatasetFromMean(&m_AllGestures, dataset + "_mean_dp");
-
-	// loadAll();
-	// m_Util.equalizeDatasetFromMin(&m_AllGestures, dataset + "_min_lp_cv");
-	// loadAll();
-	// m_Util.equalizeDatasetFromMean(&m_AllGestures, dataset + "_mean_lp_cv");
-
-	// loadAll();
-	// m_Util.equalizeDatasetFromMin(&m_AllGestures, dataset + "_min_lp_dp");
-	// loadAll();
-	// m_Util.equalizeDatasetFromMean(&m_AllGestures, dataset + "_mean_lp_dp");
-
+	m_Util.equalizeDatasetFromMean(&m_AllGestures, name);
 }
 
 void
@@ -366,9 +347,9 @@ Test::saveToFile(std::vector<type_gesture> gestures, std::string name) {
 	size_t n = gestures.size();
 	for (int i = 0; i < n; i++){
 		if(gestures[i].numHands == 1){
-			fileUtil.mGesturesOneHand.push_back(gestures[i]);
+			fileUtil.mGesturesOneHand.push_back(m_Util.cleanZeroPositions(gestures[i]));
 		} else {
-			fileUtil.mGesturesTwoHands.push_back(gestures[i]);
+			fileUtil.mGesturesTwoHands.push_back(m_Util.cleanZeroPositions(gestures[i]));
 		}
 	}
 
@@ -376,68 +357,13 @@ Test::saveToFile(std::vector<type_gesture> gestures, std::string name) {
 }
 
 void
-Test::createDatasets() {
+Test::createFeatureDataset(std::string name, int method) {
 	FileUtil& fileUtil = FileUtil::getInstance();
 
-	std:string nameDataset = "msr_3d_action_min_lp_dp_";
-	// std:string nameDataset = "msrc_12_descriptor";
-	// std:string nameDataset = "utkinect_descriptor";
-	// std:string nameDataset = "grufba_mean_lp_dp_";
-
 	loadAll();
-	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + ".grt");
-	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "lsc.grt");
-	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "lc.grt");
-	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "lc_lsc_velocity.grt");
-	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "lc_lsc.grt");
-	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "lc_velocity.grt");
-	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "lsc_velocity.grt");
-
-	// carrega todos e salva
-	// loadAll();
-	// for(size_t i = 0; i < m_AllGestures.size(); i++){
-	// 	applyProcess(0, &m_AllGestures[i]);
-	// }
-	// saveToFile(m_AllGestures, "_raw");
-	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + ".grt");
-
-	// carrega todos, aplica o processamento laplacian e salva
-	// loadAll();
-	// for(size_t i = 0; i < m_AllGestures.size(); i++){
-	// 	applyProcess(1, &m_AllGestures[i]);
-	// }
-	// saveToFile(m_AllGestures, nameDataset + "_lp");
-	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_1.grt");
-
-	// carrega todos, aplica o processamento curvature e salva
-	// loadAll();
-	// for(size_t i = 0; i < m_AllGestures.size(); i++){
-	// 	applyProcess(2, &m_AllGestures[i]);
-	// }
-	// saveToFile(m_AllGestures, nameDataset + "_cv");
-	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_2.grt");
-
-	// carrega todos, aplica o processamento douglas-peucker e salva
-	// loadAll();
-	// for(size_t i = 0; i < m_AllGestures.size(); i++){
-	// 	applyProcess(3, &m_AllGestures[i]);
-	// }
-	// saveToFile(m_AllGestures, nameDataset + "_dp");
-	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_3.grt");
-
-	// carrega todos, aplica o processamento laplacian + curvature e salva
-	// loadAll();
-	// for(size_t i = 0; i < m_AllGestures.size(); i++){
-	// 	applyProcess(4, &m_AllGestures[i]);
-	// }
-	// saveToFile(m_AllGestures, nameDataset + "_lp_cv");
-	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_4.grt");
-
-	// carrega todos, aplica o processamento laplacian + douglas-peucker e salva
-	// loadAll();
-	// for(size_t i = 0; i < m_AllGestures.size(); i++){
-	// 	applyProcess(5, &m_AllGestures[i]);
-	// }
-	// saveToFile(m_AllGestures, nameDataset + "_lp_dp");
-	// fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, nameDataset + "_5.grt");
+	for(size_t i = 0; i < m_AllGestures.size(); i++){
+		applyProcess(method, &m_AllGestures[i]);
+	}
+	saveToFile(m_AllGestures, name);
+	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, name + ".grt");
 }

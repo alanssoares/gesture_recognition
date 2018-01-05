@@ -60,11 +60,14 @@ public:
 	//Save gestures as feature format
 	void saveFeatureFormat();
 	//Create datasets
-	void createDatasets();
+	void createFeatureDataset(std::string name, int method);
 
 	void saveToFile(std::vector<type_gesture> gestures, std::string name);
 
-	void createDatasetEqualized();
+	void createDatasetEqualizedFromMin(std::string name);
+
+	void createDatasetEqualizedFromMean(std::string name);
+
 public:
 	std::vector<type_gesture> m_MedianGestures;
 	std::vector<type_gesture> m_GesturesTemplate;
