@@ -68,6 +68,7 @@ public:
 
 	void createDatasetEqualizedFromMean(std::string name);
 
+	void createGroupsToTest();
 public:
 	std::vector<type_gesture> m_MedianGestures;
 	std::vector<type_gesture> m_GesturesTemplate;

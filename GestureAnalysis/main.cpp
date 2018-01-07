@@ -387,6 +387,8 @@ int main(int argc, char* argv[])
     } else if (pcl::console::find_argument (argc, argv, "mean") >= 0){
       int i = pcl::console::find_argument (argc, argv, "mean");
       g_Test.createDatasetEqualizedFromMean(argv[i + 1]);
+    } else if (pcl::console::find_argument (argc, argv, "group") >= 0) {
+      g_Test.createGroupsToTest();
     }
     return 0;
   }

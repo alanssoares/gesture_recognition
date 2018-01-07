@@ -367,3 +367,37 @@ Test::createFeatureDataset(std::string name, int method) {
 	saveToFile(m_AllGestures, name);
 	fileUtil.saveDescriptorFeauresToolkit(m_AllGestures, name + ".grt");
 }
+
+void
+Test::createGroupsToTest() {
+	FileUtil& fileUtil = FileUtil::getInstance();
+	std::vector<type_gesture> as1, as2, as3;
+
+	loadAll();
+
+	for (size_t i = 0; i < m_AllGestures.size(); i++){
+		if (m_AllGestures[i].name == "a02" || m_AllGestures[i].name == "a03" ||
+			m_AllGestures[i].name == "a05" || m_AllGestures[i].name == "a06" ||
+			m_AllGestures[i].name == "a10" || m_AllGestures[i].name == "a13" ||
+			m_AllGestures[i].name == "a20") {
+				as1.push_back(m_AllGestures[i]);
+		}
+		if (m_AllGestures[i].name == "a01" || m_AllGestures[i].name == "a04" ||
+			m_AllGestures[i].name == "a07" || m_AllGestures[i].name == "a08" ||
+			m_AllGestures[i].name == "a09" || m_AllGestures[i].name == "a11" ||
+			m_AllGestures[i].name == "a12") {
+				as2.push_back(m_AllGestures[i]);
+		}
+		if (m_AllGestures[i].name == "a06" || m_AllGestures[i].name == "a14" ||
+			m_AllGestures[i].name == "a15" || m_AllGestures[i].name == "a16" ||
+			m_AllGestures[i].name == "a17" || m_AllGestures[i].name == "a18" ||
+			m_AllGestures[i].name == "a20"){
+				as3.push_back(m_AllGestures[i]);
+		}
+	}
+
+	saveToFile(as1, "msr3d_action_as1");
+	saveToFile(as2, "msr3d_action_as2");
+	saveToFile(as3, "msr3d_action_as3");
+
+}
