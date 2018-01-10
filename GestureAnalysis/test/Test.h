@@ -66,9 +66,11 @@ public:
 
 	void createDatasetEqualizedFromMin(std::string name);
 
+	void createDatasetEqualizedFromMax(std::string name);
+
 	void createDatasetEqualizedFromMean(std::string name);
 
-	void createGroupsToTest();
+	void createGroupsToTest(int method);
 public:
 	std::vector<type_gesture> m_MedianGestures;
 	std::vector<type_gesture> m_GesturesTemplate;

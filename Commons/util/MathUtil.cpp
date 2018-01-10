@@ -739,28 +739,27 @@ MathUtil::pointsEqual(XnPoint3D p1, XnPoint3D p2){
 void
 MathUtil::insertPoints(std::vector<XnPoint3D> *points, int diff){
     int i, n, index = -1;
-    double curv = 0.0, minCurv = 0;
+    double curv = 0.0, maxCurv = 0.0;
     XnPoint3D newPoint;
     while(diff > 0){
         n = points->size();
         for (i = 0; i < n - 2; i+=2){
             curv = calcCurvature(points->at(i), points->at(i + 1), points->at(i + 2));
-            if (curv > minCurv){
-                minCurv = curv;
+            if (curv > maxCurv){
+                maxCurv = curv;
                 index = i + 1;
             }
         }
         if(index > 0){
           if (index + 1 < n) {
-            newPoint = interpolate(points->at(index), points->at(index + 1), 0.5);
-            points->insert(points->begin() + index, newPoint);
+            newPoint = interpolate(points->at(index - 1), points->at(index + 1), 0.5);
           } else {
             newPoint = interpolate(points->at(index - 1), points->at(index), 0.5);
-            points->insert(points->begin() + index - 1, newPoint);
           }
+          points->insert(points->begin() + index, newPoint);
         }
         diff--;
-        minCurv = 99999999;
+        maxCurv = 0.0;
         index = -1;
     }
 }

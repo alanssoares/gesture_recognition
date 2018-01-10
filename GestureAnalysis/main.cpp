@@ -384,11 +384,15 @@ int main(int argc, char* argv[])
     if (pcl::console::find_argument (argc, argv, "min") >= 0){
       int i = pcl::console::find_argument (argc, argv, "min");
       g_Test.createDatasetEqualizedFromMin(argv[i + 1]);
+    } else if (pcl::console::find_argument (argc, argv, "max") >= 0){
+      int i = pcl::console::find_argument (argc, argv, "max");
+      g_Test.createDatasetEqualizedFromMax(argv[i + 1]);
     } else if (pcl::console::find_argument (argc, argv, "mean") >= 0){
       int i = pcl::console::find_argument (argc, argv, "mean");
       g_Test.createDatasetEqualizedFromMean(argv[i + 1]);
     } else if (pcl::console::find_argument (argc, argv, "group") >= 0) {
-      g_Test.createGroupsToTest();
+      int i = pcl::console::find_argument (argc, argv, "group");
+      g_Test.createGroupsToTest(atoi(argv[i + 1]));
     }
     return 0;
   }

@@ -334,6 +334,12 @@ Test::createDatasetEqualizedFromMin(std::string name) {
 }
 
 void
+Test::createDatasetEqualizedFromMax(std::string name) {
+	loadAll();
+	m_Util.equalizeDatasetFromMax(&m_AllGestures, name);
+}
+
+void
 Test::createDatasetEqualizedFromMean(std::string name) {
 	loadAll();
 	m_Util.equalizeDatasetFromMean(&m_AllGestures, name);
@@ -369,11 +375,15 @@ Test::createFeatureDataset(std::string name, int method) {
 }
 
 void
-Test::createGroupsToTest() {
+Test::createGroupsToTest(int method) {
 	FileUtil& fileUtil = FileUtil::getInstance();
 	std::vector<type_gesture> as1, as2, as3;
 
 	loadAll();
+
+	for(size_t i = 0; i < m_AllGestures.size(); i++){
+		applyProcess(method, &m_AllGestures[i]);
+	}
 
 	for (size_t i = 0; i < m_AllGestures.size(); i++){
 		if (m_AllGestures[i].name == "a02" || m_AllGestures[i].name == "a03" ||

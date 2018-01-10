@@ -149,6 +149,38 @@ Util::generateGestureEqualSize(std::vector<type_gesture> *gestures){
 }
 
 void
+Util::equalizeDatasetFromMax(std::vector<type_gesture> *gestures, std::string name){
+	FileUtil& futil = FileUtil::getInstance();
+	int n = gestures->size(), max, diff = 0;
+	max = getMaxPoints(*gestures, 0, n - 1);
+
+	futil.clearHandGestures();
+
+	for(int i = 0; i < n; i++){
+		diff = max - gestures->at(i).handOne.positions.size();
+		// std::cout << "Diff = " << diff << " S = " << gestures->at(i).handOne.positions.size() << " M " << max << '\n';
+		if(diff > 0){
+			MathUtil::insertPoints(&gestures->at(i).handOne.positions, diff);
+			MathUtil::insertPoints(&gestures->at(i).handTwo.positions, diff);
+		} else if (diff < 0) {
+			MathUtil::removePoints(&gestures->at(i).handOne.positions, diff);
+			MathUtil::removePoints(&gestures->at(i).handTwo.positions, diff);
+		}
+	}
+
+	for (int i = 0; i < n; i++){
+		// std::cout << "S " << gestures->at(i).handOne.positions.size() << '\n';
+		if(gestures->at(i).numHands == 1){
+			futil.mGesturesOneHand.push_back(gestures->at(i));
+		} else {
+			futil.mGesturesTwoHands.push_back(gestures->at(i));
+		}
+	}
+
+	futil.saveAll(name);
+}
+
+void
 Util::equalizeDatasetFromMin(std::vector<type_gesture> *gestures, std::string name){
 	FileUtil& futil = FileUtil::getInstance();
 	int n = gestures->size(), min = 0, diff = 0;
@@ -218,6 +250,18 @@ Util::getMinPoints(vector<type_gesture> gestures, int i, int j) {
       }
     }
     return min;
+}
+
+int
+Util::getMaxPoints(vector<type_gesture> gestures, int i, int j) {
+    int max = 0, n;
+    for( ; i < j; i++) {
+    	n = gestures[i].handOne.positions.size();
+      if(max < n){
+      	max = n;
+      }
+    }
+    return max;
 }
 
 int
