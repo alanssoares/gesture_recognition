@@ -79,11 +79,13 @@ int main (int argc, const char * argv[]) {
   //Create a new pipeline
   GestureRecognitionPipeline pipeline;
 
-  const UINT numSamples = trainingData.getNumSamples();
+  const UINT numTestSamples = testData.getNumSamples();
+  const UINT numTrainSamples = trainingData.getNumSamples();
   const UINT numInputDimensions = trainingData.getNumDimensions();
   const UINT numOutputDimensions = numInputDimensions * 0.4;
 
-  info << "Data loaded. Num Samples: " << numSamples << std::endl;
+  info << "Num Test Samples: " << numTestSamples << std::endl;
+  info << "Num Train Samples: " << numTrainSamples << std::endl;
   info << "Num Input Dimensions: " << numInputDimensions << std::endl;
   info << "Num Output Dimensions (Principal Components): " << numOutputDimensions << std::endl;
 
