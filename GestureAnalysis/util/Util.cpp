@@ -158,7 +158,6 @@ Util::equalizeDatasetFromMax(std::vector<type_gesture> *gestures, std::string na
 
 	for(int i = 0; i < n; i++){
 		diff = max - gestures->at(i).handOne.positions.size();
-		// std::cout << "Diff = " << diff << " S = " << gestures->at(i).handOne.positions.size() << " M " << max << '\n';
 		if(diff > 0){
 			MathUtil::insertPoints(&gestures->at(i).handOne.positions, diff);
 			MathUtil::insertPoints(&gestures->at(i).handTwo.positions, diff);
@@ -169,7 +168,6 @@ Util::equalizeDatasetFromMax(std::vector<type_gesture> *gestures, std::string na
 	}
 
 	for (int i = 0; i < n; i++){
-		// std::cout << "S " << gestures->at(i).handOne.positions.size() << '\n';
 		if(gestures->at(i).numHands == 1){
 			futil.mGesturesOneHand.push_back(gestures->at(i));
 		} else {
