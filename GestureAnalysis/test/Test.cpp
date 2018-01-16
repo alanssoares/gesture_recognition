@@ -411,3 +411,17 @@ Test::createGroupsToTest(int method) {
 	saveToFile(as3, "msr3d_action_as3");
 
 }
+
+void
+Test::reduceGesturesByCurvature(std::string name) {
+	FileUtil& fileUtil = FileUtil::getInstance();
+
+	loadAll();
+
+	for (size_t i = 0; i < m_AllGestures.size(); i++) {
+		m_AllGestures[i].handOne.positions = MathUtil::reduceByCurvature(m_AllGestures[i].handOne.positions, 0.05);
+		m_AllGestures[i].handTwo.positions = MathUtil::reduceByCurvature(m_AllGestures[i].handTwo.positions, 0.05);
+	}
+
+	saveToFile(m_AllGestures, name);
+}
