@@ -353,9 +353,9 @@ Test::saveToFile(std::vector<type_gesture> gestures, std::string name) {
 	size_t n = gestures.size();
 	for (int i = 0; i < n; i++){
 		if(gestures[i].numHands == 1){
-			fileUtil.mGesturesOneHand.push_back(m_Util.cleanZeroPositions(gestures[i]));
+			fileUtil.mGesturesOneHand.push_back(gestures[i]);
 		} else {
-			fileUtil.mGesturesTwoHands.push_back(m_Util.cleanZeroPositions(gestures[i]));
+			fileUtil.mGesturesTwoHands.push_back(gestures[i]);
 		}
 	}
 
@@ -406,21 +406,29 @@ Test::createGroupsToTest(int method) {
 		}
 	}
 
-	saveToFile(as1, "msr3d_action_as1");
-	saveToFile(as2, "msr3d_action_as2");
-	saveToFile(as3, "msr3d_action_as3");
+	saveToFile(as1, "msr3d_action_origin_as1");
+	saveToFile(as2, "msr3d_action_origin_as2");
+	saveToFile(as3, "msr3d_action_origin_as3");
 
 }
 
 void
 Test::reduceGesturesByCurvature(std::string name) {
 	FileUtil& fileUtil = FileUtil::getInstance();
+	size_t n1, n2;
 
 	loadAll();
 
 	for (size_t i = 0; i < m_AllGestures.size(); i++) {
-		m_AllGestures[i].handOne.positions = MathUtil::reduceByCurvature(m_AllGestures[i].handOne.positions, 0.05);
-		m_AllGestures[i].handTwo.positions = MathUtil::reduceByCurvature(m_AllGestures[i].handTwo.positions, 0.05);
+		m_AllGestures[i].handOne.positions = MathUtil::reduceByCurvature(m_AllGestures[i].handOne.positions, 0.025);
+		m_AllGestures[i].handTwo.positions = MathUtil::reduceByCurvature(m_AllGestures[i].handTwo.positions, 0.025);
+		n1 = m_AllGestures[i].handOne.positions.size();
+		n2 = m_AllGestures[i].handTwo.positions.size();
+		if (n1 < n2) {
+			MathUtil::insertPoints(&m_AllGestures[i].handOne.positions, n2 - n1);
+		} else if (n1 > n2){
+			MathUtil::insertPoints(&m_AllGestures[i].handTwo.positions, n1 - n2);
+		}
 	}
 
 	saveToFile(m_AllGestures, name);
