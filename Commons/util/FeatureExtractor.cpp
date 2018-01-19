@@ -102,11 +102,7 @@ FeatureExtractor::locationLC(type_gesture sample) {
   std::vector<double> features;
   for (int i = 0; i < n; i++) {
     diff = MathUtil::subtract(centroid, positions[i]);
-    if (diff.X == 0 && diff.Y == 0 && diff.Z == 0) {
-      features.push_back(1.0);
-    } else {
-      features.push_back(MathUtil::length(diff));
-    }
+    features.push_back(MathUtil::length(diff));
   }
   return features;
 }
@@ -120,11 +116,7 @@ FeatureExtractor::locationLSC(type_gesture sample) {
   features.push_back(MathUtil::length(start));
   for (int i = 1; i < n; i++) {
     diff = MathUtil::subtract(start, positions[i]);
-    if (diff.X == 0 && diff.Y == 0 && diff.Z == 0) {
-      features.push_back(1.0);
-    } else {
-      features.push_back(MathUtil::length(diff));
-    }
+    features.push_back(MathUtil::length(diff));
   }
   return features;
 }
