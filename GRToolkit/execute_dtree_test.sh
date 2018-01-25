@@ -2,7 +2,7 @@
 
 # dataset="grufba_dtree"
 # dataset="utkinect_dtree"
-dataset="msr3d_dtree"
+# dataset="msr3d_dtree"
 
 # feature="centroid_derivative"
 # feature="centroid_length"
@@ -54,19 +54,32 @@ dataset="msr3d_dtree"
 # lsc_vel
 # lc_lsc"
 
-listFeatures="lc
-lsc
-lc_lsc"
+# listFeatures="
+# lc_lsc"
 
-rm -r $dataset
-mkdir $dataset
+# rm -r $dataset
+# mkdir $dataset
 
-for feature in $listFeatures
-do
-  # features="grufba_16/features_lp_dp/grufba_mean_lp_dp_"$feature
-  features="msr_action_3d/features_lp/msr_3d_action_min_lp_"$feature
+# for feature in $listFeatures
+# do
+  # features="grufba_16/features_lp_dp/grufba_min_lp_dp_"$feature
+  # features="msr_action_3d/features_lp_dp/msr_3d_action_min_lp_dp_"$feature
   # features="utkinect_action/features/"$feature/utkinect_descriptor
-  ./startDecisionTree ../Datasets/$features.grt > $dataset/$feature\_result_dtree.txt
+  # ./startDecisionTree ../Datasets/$features.grt > $dataset/$feature\_result_dtree.txt
+  # ./startDTreePCAPipeline ../Datasets/$features.grt > $dataset/$feature\_result_dtree.txt
+  # ./startPCAExample ../Datasets/$features.grt > $dataset/$feature\_result_dtree.txt
   # ./startRandomForests ../Datasets/$features.grt > $dataset/$feature\_result_dtree.txt
   # ./startHMM ../Datasets/$features.grt > $dataset/$feature\_result_dtree.txt
-done
+# done
+
+feature="msr3d_action_origin_as1_arc_crv_max.grt"
+
+./startDecisionTree ../Datasets/msr_action_3d/group/features/$feature > result_msr3d/as1_dtree.txt
+./startRandomForests ../Datasets/msr_action_3d/group/features/$feature > result_msr3d/as1_random_forests.txt
+./startDTreePCAPipeline ../Datasets/msr_action_3d/group/features/$feature > result_msr3d/as1_dtree_pca.txt
+
+# ./startDTreePCAPipeline ../Datasets/asl/features/asl_raw_min_lc_lsc.grt > result_asl_min/min_lc_lsc.txt
+# ./startDTreePCAPipeline ../GRToolkit/result_min/cv/datasets_msr3d_t7/min_lp_cv_lc_lsc.grt > result_min/cv/datasets_msr3d_t7/result/min_lp_cv_lc_lsc.txt
+# ./startDTreePCAPipeline ../GRToolkit/result_min/lp/datasets_msr3d_t8/min_lp_lc_lsc.grt > result_min/lp/datasets_msr3d_t8/result/min_lp_lc_lsc.txt
+# ./startDTreePCAPipeline ../GRToolkit/datasets_msr3d_t1/min_lp_cv_lc_lsc.grt > datasets_msr3d_t1/result/min_lp_cv_lc_lsc.txt
+# ./startDTreePCAPipeline ../GRToolkit/datasets_msr3d_t1/min_lp_dp_lc_lsc.grt > datasets_msr3d_t1/result/min_lp_dp_lc_lsc.txt
