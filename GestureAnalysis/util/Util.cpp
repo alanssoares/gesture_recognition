@@ -9,16 +9,16 @@ Util::Util(){
 Util::~Util(){}
 
 void
-Util::applyUniformByArcLength(type_gesture *gesture){
-	MathUtil::uniformCurveByArcLength(&gesture->handOne.positions, 0.1);
-	MathUtil::uniformCurveByArcLength(&gesture->handTwo.positions, 0.1);
+Util::applyUniformByArcLength(type_gesture *gesture, double factor){
+	MathUtil::uniformCurveByArcLength(&gesture->handOne.positions, factor);
+	MathUtil::uniformCurveByArcLength(&gesture->handTwo.positions, factor);
 }
 
 void
-Util::applyUniformByArcLength(std::vector<type_gesture> *gestures){
+Util::applyUniformByArcLength(std::vector<type_gesture> *gestures, double factor){
 	size_t n = gestures->size();
 	for (int i = 0; i < n; i++){
-		applyUniformByArcLength(&gestures->at(i));
+		applyUniformByArcLength(&gestures->at(i), factor);
 	}
 }
 

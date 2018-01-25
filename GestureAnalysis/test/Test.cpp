@@ -187,7 +187,7 @@ Test::executeNormal(std::string folder){
 void
 Test::executeWithEqualSize(std::string folder){
 	//Resample all templates to equal size according with the type
-	m_Util.applyUniformByArcLength(&m_AllGestures);
+	m_Util.applyUniformByArcLength(&m_AllGestures, 0.1);
 	m_Util.generateGestureEqualSize(&m_AllGestures);
 	//Execute all experiments
 	execute(folder);
@@ -419,9 +419,11 @@ Test::reduceGesturesByCurvature(std::string name) {
 
 	loadAll();
 
+	m_Util.applyUniformByArcLength(&m_AllGestures, 0.03);
+
 	for (size_t i = 0; i < m_AllGestures.size(); i++) {
-		m_AllGestures[i].handOne.positions = MathUtil::reduceByCurvature(m_AllGestures[i].handOne.positions, 0.025);
-		m_AllGestures[i].handTwo.positions = MathUtil::reduceByCurvature(m_AllGestures[i].handTwo.positions, 0.025);
+		m_AllGestures[i].handOne.positions = MathUtil::reduceByCurvature(m_AllGestures[i].handOne.positions, 0.005);
+		m_AllGestures[i].handTwo.positions = MathUtil::reduceByCurvature(m_AllGestures[i].handTwo.positions, 0.005);
 		n1 = m_AllGestures[i].handOne.positions.size();
 		n2 = m_AllGestures[i].handTwo.positions.size();
 		if (n1 < n2) {
