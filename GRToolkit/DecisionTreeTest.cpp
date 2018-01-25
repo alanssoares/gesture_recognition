@@ -73,7 +73,7 @@ int main(int argc, const char * argv[])
     const DecisionTreeNode &decisionTreeNode = DecisionTreeThresholdNode();
     size_t mD = 20;
     size_t mS = 5;
-    size_t mT = 450;
+    size_t mT = 1000;
     // for (size_t mD = 20; mD < 100; mD+= 5) { // maxDepth
       // for (size_t mS = 5; mS < 25; mS+= 1) { // minNumSamplesPerNode
         // for (size_t mT = 150; mT < 1000; mT+= 150) { // minNumSamplesPerNode
@@ -89,8 +89,8 @@ int main(int argc, const char * argv[])
           // Sets the training mode, this should be one of the TrainingMode enums. Default value = BEST_ITERATIVE_SPILT
           // If the trainingMode is set to BEST_ITERATIVE_SPILT, then the numSplittingSteps controls how many iterative steps there will be per feature.
           // If the trainingMode is set to BEST_RANDOM_SPLIT, then the numSplittingSteps controls how many random searches there will be per feature.
-          // const Tree::TrainingMode trainingMode = Tree::TrainingMode::BEST_ITERATIVE_SPILT;
-          const Tree::TrainingMode trainingMode = Tree::TrainingMode::BEST_RANDOM_SPLIT;
+          const Tree::TrainingMode trainingMode = Tree::TrainingMode::BEST_ITERATIVE_SPILT;
+          // const Tree::TrainingMode trainingMode = Tree::TrainingMode::BEST_RANDOM_SPLIT;
 
           // Set the number of steps that will be used to choose the best splitting values more steps will give you a better model, but will take longer to train
           const UINT numSplittingSteps = mT;
@@ -168,7 +168,7 @@ int main(int argc, const char * argv[])
               cout << i <<  ";" << classLabel << ";" << predictedClassLabel << ";" << maximumLikelihood << ";" << isRecognized << endl;
           }
 
-          // std::cout << "T " << accuracy << " S " << testData.getNumSamples() << " Ac " << accuracy/double(testData.getNumSamples()) * 100.0<< '\n';
+          std::cout << "T " << accuracy << " S " << testData.getNumSamples() << " Ac " << accuracy/double(testData.getNumSamples()) * 100.0<< '\n';
 
           accuracy = accuracy/double(testData.getNumSamples())*100.0;
           if (accuracy > bestAccuracy) {

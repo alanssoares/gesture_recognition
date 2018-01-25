@@ -74,7 +74,7 @@ int main (int argc, const char * argv[]) {
   }
 
   //Use 30% of the training dataset to create a test dataset
-  ClassificationData testData = trainingData.split( 30, true );
+  ClassificationData testData = trainingData.split( 70, true );
 
   //Create a new pipeline
   GestureRecognitionPipeline pipeline;
@@ -82,7 +82,7 @@ int main (int argc, const char * argv[]) {
   const UINT numTestSamples = testData.getNumSamples();
   const UINT numTrainSamples = trainingData.getNumSamples();
   const UINT numInputDimensions = trainingData.getNumDimensions();
-  const UINT numOutputDimensions = numInputDimensions * 0.4;
+  const UINT numOutputDimensions = numInputDimensions * 0.3;
 
   info << "Num Test Samples: " << numTestSamples << std::endl;
   info << "Num Train Samples: " << numTrainSamples << std::endl;

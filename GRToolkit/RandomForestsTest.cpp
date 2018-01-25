@@ -53,21 +53,33 @@ int main(int argc, const char * argv[])
     }
     const string filename = argv[1];
 
+    InfoLog info("");
+
     //Create a new RandomForests instance
     RandomForests forest;
 
-    //Set the number of trees in the forest
-    forest.setForestSize( 10 );
+    //Set the number of trees in the forest - 10, 30 or 100
+    //https://stats.stackexchange.com/questions/36165/does-the-optimal-number-of-trees-in-a-random-forest-depend-on-the-number-of-pred
+    forest.setForestSize( 100 );
 
     //Set the number of random candidate splits that will be used to choose the best splitting values
     //More steps will give you a better model, but will take longer to train
-    forest.setNumRandomSplits( 100 );
+    forest.setNumRandomSplits( 1000 );
 
     //Set the maximum depth of the tree
-    forest.setMaxDepth( 10 );
+    forest.setMaxDepth( 20 );
 
     //Set the minimum number of samples allowed per node
-    forest.setMinNumSamplesPerNode( 10 );
+    forest.setMinNumSamplesPerNode( 5 );
+
+    //Set the training mode
+    forest.setTrainingMode(Tree::TrainingMode::BEST_ITERATIVE_SPILT);
+
+    //Set if remove features at split
+    forest.setRemoveFeaturesAtEachSplit(false);
+
+    //Set tree node type
+    forest.setDecisionTreeNode(DecisionTreeThresholdNode());
 
     //Load some training data to train the classifier
     ClassificationData trainingData;
@@ -81,60 +93,82 @@ int main(int argc, const char * argv[])
     //Use 30% of the training dataset to create a test dataset
     ClassificationData testData = trainingData.split( 70, true );
 
-    //Train the classifier
-    if( !forest.train( trainingData ) ){
-        cout << "Failed to train classifier!\n";
-        return EXIT_FAILURE;
-    }
+    const UINT numTestSamples = testData.getNumSamples();
+    const UINT numTrainSamples = trainingData.getNumSamples();
+    const UINT numInputDimensions = trainingData.getNumDimensions();
+    const UINT numOutputDimensions = numInputDimensions * 0.3;
 
-    //Print the forest
-    forest.print();
+    info << "Num Test Samples: " << numTestSamples << std::endl;
+    info << "Num Train Samples: " << numTrainSamples << std::endl;
+    info << "Num Input Dimensions: " << numInputDimensions << std::endl;
+    info << "Num Output Dimensions (Principal Components): " << numOutputDimensions << std::endl;
 
-    //Save the model to a file
-    if( !forest.save("RandomForestsModel.grt") ){
-        cout << "Failed to save the classifier model!\n";
-        return EXIT_FAILURE;
-    }
+    double median = 0.0;
+    size_t crossValid = 3;
+    for (size_t i = 0; i < crossValid; i++) {
 
-    //Load the model from a file
-    if( !forest.load("RandomForestsModel.grt") ){
-        cout << "Failed to load the classifier model!\n";
-        return EXIT_FAILURE;
-    }
+      //Create a new pipeline
+      GestureRecognitionPipeline pipeline;
 
-    //Test the accuracy of the model on the test data
-    double accuracy = 0;
-    int isRecognized = 0;
-    for(UINT i=0; i<testData.getNumSamples(); i++){
-        //Get the i'th test sample
-        UINT classLabel = testData[i].getClassLabel();
-        VectorFloat inputVector = testData[i].getSample();
+      // Create an instance of the PCA feature extraction module and add it to the pipeline
+      pipeline << PCA(numInputDimensions, numOutputDimensions);
 
-        //Perform a prediction using the classifier
-        bool predictSuccess = forest.predict( inputVector );
+      // Add classifier to the pipeline
+      pipeline << forest;
 
-        if( !predictSuccess ){
-            cout << "Failed to perform prediction for test sampel: " << i <<"\n";
-            return EXIT_FAILURE;
+      // Get a pointer to the PCA module we just added to the pipeline so we can train it
+      {
+        PCA *pca = pipeline.getFeatureExtractionModule<PCA>(0);
+        info << "Training PCA..." << std::endl;
+        if (!pca->train(trainingData)) {
+          info << "Failed to train PCA model!" << std::endl;
+          return EXIT_FAILURE;
         }
+      }
 
-        //Get the predicted class label
-        UINT predictedClassLabel = forest.getPredictedClassLabel();
-        VectorDouble classLikelihoods = forest.getClassLikelihoods();
-        VectorDouble classDistances = forest.getClassDistances();
-        Float maximumLikelihood = forest.getMaximumLikelihood();
-        //Update the accuracy
-    		if( classLabel == predictedClassLabel ) {
-    				accuracy++;
-    				isRecognized = 1;
-    		} else {
-    				isRecognized = 0;
-    		}
+      //Train the classifier
+      if( !pipeline.train( trainingData ) ){
+          cout << "Failed to train classifier!\n";
+          return EXIT_FAILURE;
+      }
 
-    		cout << i <<  " " << classLabel << " " << predictedClassLabel << " " << maximumLikelihood << " " << isRecognized << endl;
+      //Test the accuracy of the model on the test data
+      double accuracy = 0;
+      int isRecognized = 0;
+      for(UINT i=0; i<testData.getNumSamples(); i++){
+          //Get the i'th test sample
+          UINT classLabel = testData[i].getClassLabel();
+          VectorFloat inputVector = testData[i].getSample();
+
+          //Perform a prediction using the classifier
+          bool predictSuccess = pipeline.predict( inputVector );
+
+          if( !predictSuccess ){
+              cout << "Failed to perform prediction for test sampel: " << i <<"\n";
+              return EXIT_FAILURE;
+          }
+
+          //Get the predicted class label
+          UINT predictedClassLabel = pipeline.getPredictedClassLabel();
+          VectorDouble classLikelihoods = pipeline.getClassLikelihoods();
+          VectorDouble classDistances = pipeline.getClassDistances();
+          Float maximumLikelihood = pipeline.getMaximumLikelihood();
+          //Update the accuracy
+      		if( classLabel == predictedClassLabel ) {
+      				accuracy++;
+      				isRecognized = 1;
+      		} else {
+      				isRecognized = 0;
+      		}
+
+      		// cout << i <<  " " << classLabel << " " << predictedClassLabel << " " << maximumLikelihood << " " << isRecognized << endl;
+      }
+
+      median += accuracy/double(testData.getNumSamples())*100.0;
+      // cout << "Test Accuracy: " << accuracy/double(testData.getNumSamples())*100.0 << "%" << endl;
     }
 
-    cout << "Test Accuracy: " << accuracy/double(testData.getNumSamples())*100.0 << "%" << endl;
+    info << "A = " << median / crossValid << endl;
 
     return EXIT_SUCCESS;
 }
