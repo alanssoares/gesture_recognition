@@ -13,10 +13,8 @@ find_package(GLUT REQUIRED)
 find_package(PCL 1.8 REQUIRED COMPONENTS common io visualization console)
 
 #Acha e linka diretorios do openni
-FIND_PATH(OPEN_NI_INCLUDE "XnOpenNI.h" "OpenNIConfig.h" HINTS "$ENV{OPEN_NI_INCLUDE}" "/usr/include/ni" "/usr/include/openni" "/opt/ros/groovy/include/openni_camera" "/opt/local/include/ni")
 FIND_LIBRARY(OPEN_NI_LIBRARY NAMES OpenNI libOpenNI HINTS $ENV{OPEN_NI_LIB} "/usr/lib" "/opt/local/lib")
 LINK_DIRECTORIES($ENV{OPEN_NI_LIB} ${PCL_LIBRARY_DIRS})
-INCLUDE_DIRECTORIES(${OPEN_NI_INCLUDE})
 LINK_LIBRARIES(${OPEN_NI_LIBRARY})
 
 # Inclui diretorios necessarios já encontrados
