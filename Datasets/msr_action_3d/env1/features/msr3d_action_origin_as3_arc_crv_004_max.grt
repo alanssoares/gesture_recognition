@@ -1,7 +1,7 @@
 GRT_LABELLED_CLASSIFICATION_DATA_FILE_V1.0
 DatasetName: msr_action_3d
 InfoText: This dataset contains 6 gestures, totalizing 160 executions.
-NumDimensions: 132
+NumDimensions: 120
 TotalNumTrainingExamples: 160
 NumberOfClasses: 6
 ClassIDsAndCounters:
