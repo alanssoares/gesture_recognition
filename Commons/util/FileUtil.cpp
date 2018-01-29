@@ -805,21 +805,27 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
     // size_t n1 = descriptors[i].lc.size();
     // size_t n2 = descriptors[i].lsc.size();
     // size_t n3 = descriptors[i].velocity.size();
+    // size_t n4 = descriptors[i].curvature.size();
+    // size_t n5 = descriptors[i].angles.size();
 
     // std::cout << "LC = " << n1 << '\n';
     // std::cout << "LSC = " << n2 << '\n';
     // std::cout << "VEL = " << n3 << '\n';
+    // std::cout << "CURV = " << n4 << '\n';
+    // std::cout << "ANGL = " << n5 << '\n';
 
-    size_t n1 = descriptors[i].lc.size();
-    for (size_t j = 0; j < n1; j++) {
-      fileOut << descriptors[i].lc[j];
-      if (j + 1 < n1) {
-        fileOut << " ";
-      }
-    }
-
-    fileOut << " ";
-
+    // // Feature LC
+    // size_t n1 = descriptors[i].lc.size();
+    // for (size_t j = 0; j < n1; j++) {
+    //   fileOut << descriptors[i].lc[j];
+    //   if (j + 1 < n1) {
+    //     fileOut << " ";
+    //   }
+    // }
+    //
+    // fileOut << " ";
+    //
+    // Feature LSC
     size_t n2 = descriptors[i].lsc.size();
     for (size_t j = 0; j < n2; j++) {
       fileOut << descriptors[i].lsc[j];
@@ -828,12 +834,32 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
       }
     }
 
+    fileOut << " ";
+    // Feature Velocity
+    size_t n3 = descriptors[i].velocity.size();
+    for (size_t j = 0; j < n3; j++) {
+      fileOut << descriptors[i].velocity[j];
+      if (j + 1 < n3) {
+        fileOut << " ";
+      }
+    }
+
+    // fileOut << " ";
+
+    // size_t n4 = descriptors[i].curvature.size();
+    // for (size_t j = 0; j < n4; j++) {
+    //   fileOut << descriptors[i].curvature[j];
+    //   if (j + 1 < n4) {
+    //     fileOut << " ";
+    //   }
+    // }
+
     // fileOut << " ";
     //
-    // size_t n3 = descriptors[i].velocity.size();
-    // for (size_t j = 0; j < n3; j++) {
-    //   fileOut << descriptors[i].velocity[j];
-    //   if (j + 1 < n3) {
+    // size_t n5 = descriptors[i].angles.size();
+    // for (size_t j = 0; j < n5; j++) {
+    //   fileOut << descriptors[i].angles[j];
+    //   if (j + 1 < n5) {
     //     fileOut << " ";
     //   }
     // }

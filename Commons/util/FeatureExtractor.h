@@ -31,13 +31,13 @@ public:
 
   double centroidLength(type_gesture gesture);
   double centroidDerivative(type_gesture gA, type_gesture gB);
-  double centroidAngle2D(type_gesture gA, type_gesture gB);
-  double centroidAngle3D(type_gesture gA, type_gesture gB);
   double mean(type_gesture gesture);
   double sumVariance(type_gesture gesture);
   double sumCurvature(type_gesture gesture);
   double sumOrientation(type_gesture gesture);
   double standardDeviation(type_gesture gesture);
+  std::vector<double> angles(type_gesture sample);
+  std::vector<double> curvature(type_gesture sample);
   std::vector<double> locationLC(type_gesture gesture);
   std::vector<double> locationLSC(type_gesture gesture);
   std::vector<double> velocity(type_gesture sample);

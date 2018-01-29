@@ -83,6 +83,29 @@ FeatureExtractor::centroidLength(type_gesture sample) {
 }
 
 std::vector<double>
+FeatureExtractor::angles(type_gesture sample) {
+  std::vector<XnPoint3D> positions = merge(sample);
+  std::vector<double> features;
+  size_t n = positions.size();
+  for (int i = 0; i < n - 1; i++) {
+    features.push_back(MathUtil::getAngleBetween2Points(positions[i], positions[i + 1]));
+  }
+  return features;
+}
+
+std::vector<double>
+FeatureExtractor::curvature(type_gesture sample) {
+  std::vector<XnPoint3D> positions = merge(sample);
+  std::vector<double> features;
+  size_t n = positions.size();
+  if (n < 3) return features;
+  for (int i = 0; i < n - 2; i += 2) {
+    features.push_back(MathUtil::calcCurvature(positions[i], positions[i + 1], positions[i + 2]));
+  }
+  return features;
+}
+
+std::vector<double>
 FeatureExtractor::velocity(type_gesture sample) {
   std::vector<XnPoint3D> positions = merge(sample);
   std::vector<double> features;
@@ -141,6 +164,8 @@ FeatureExtractor::extractDescriptor(type_gesture sample) {
   descriptor.standardDeviation = standardDeviation(sample);
   descriptor.lc = locationLC(sample);
   descriptor.lsc = locationLSC(sample);
+  descriptor.curvature = curvature(sample);
+  descriptor.angles = angles(sample);
   return descriptor;
 }
 
@@ -158,6 +183,8 @@ FeatureExtractor::extractDescriptors(std::vector<type_gesture> dataset) {
     desc.lc = locationLC(dataset[i]);
     desc.lsc = locationLSC(dataset[i]);
     desc.velocity = velocity(dataset[i]);
+    desc.curvature = curvature(dataset[i]);
+    desc.angles = angles(dataset[i]);
     features.push_back(desc);
   }
   return features;
@@ -170,14 +197,4 @@ FeatureExtractor::centroidDerivative(type_gesture gA, type_gesture gB) {
   XnPoint3D cA = MathUtil::calcCentroid(posA);
   XnPoint3D cB = MathUtil::calcCentroid(posB);
   return MathUtil::length(MathUtil::subtract(cA, cB));
-}
-
-double
-FeatureExtractor::centroidAngle2D(type_gesture gA, type_gesture gB) {
-
-}
-
-double
-FeatureExtractor::centroidAngle3D(type_gesture gA, type_gesture gB) {
-
 }
