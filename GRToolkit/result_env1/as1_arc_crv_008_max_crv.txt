@@ -1,0 +1,127 @@
+[TRAINING DecisionTree] numTrainingIterationsToConverge 1 useValidationSet: 0
+[TRAINING DecisionTree] Depth: 0 FeatureIndex: 12 MinError: 0.784255 Class Probabilities: 0.146341 0.146341 0.146341 0.146341 0.170732 0.113821 0.130081 
+[TRAINING DecisionTree] Depth: 1 FeatureIndex: 20 MinError: 0.584901 Class Probabilities: 0.0487805 0 0.0731707 0 0.390244 0.292683 0.195122 
+[TRAINING DecisionTree] Depth: 2 FeatureIndex: 6 MinError: 0.292857 Class Probabilities: 0.05 0 0.05 0 0.7 0.15 0.05 
+[TRAINING DecisionTree] Depth: 3 FeatureIndex: 12 MinError: 0.333333 Class Probabilities: 0.166667 0 0 0 0.166667 0.5 0.166667 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 4 NumSamples: 3 Class Probabilities: 0 0 0 0 0 1 0 
+[TRAINING DecisionTree] Reached leaf node, hit min-samples-per-node limit. Depth: 4 NumSamples: 3 Class Probabilities: 0.333333 0 0 0 0.333333 0 0.333333 
+[TRAINING DecisionTree] Depth: 3 FeatureIndex: 18 MinError: 0 Class Probabilities: 0 0 0.0714286 0 0.928571 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 4 NumSamples: 13 Class Probabilities: 0 0 0 0 1 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 4 NumSamples: 1 Class Probabilities: 0 0 1 0 0 0 0 
+[TRAINING DecisionTree] Depth: 2 FeatureIndex: 12 MinError: 0.544218 Class Probabilities: 0.047619 0 0.0952381 0 0.0952381 0.428571 0.333333 
+[TRAINING DecisionTree] Depth: 3 FeatureIndex: 11 MinError: 0.341991 Class Probabilities: 0.0714286 0 0 0 0.0714286 0.642857 0.214286 
+[TRAINING DecisionTree] Reached leaf node, hit min-samples-per-node limit. Depth: 4 NumSamples: 3 Class Probabilities: 0.333333 0 0 0 0 0 0.666667 
+[TRAINING DecisionTree] Depth: 4 FeatureIndex: 14 MinError: 0.0909091 Class Probabilities: 0 0 0 0 0.0909091 0.818182 0.0909091 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 5 NumSamples: 9 Class Probabilities: 0 0 0 0 0 1 0 
+[TRAINING DecisionTree] Reached leaf node, hit min-samples-per-node limit. Depth: 5 NumSamples: 2 Class Probabilities: 0 0 0 0 0.5 0 0.5 
+[TRAINING DecisionTree] Depth: 3 FeatureIndex: 16 MinError: 0.190476 Class Probabilities: 0 0 0.285714 0 0.142857 0 0.571429 
+[TRAINING DecisionTree] Reached leaf node, hit min-samples-per-node limit. Depth: 4 NumSamples: 3 Class Probabilities: 0 0 0.666667 0 0.333333 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 4 NumSamples: 4 Class Probabilities: 0 0 0 0 0 0 1 
+[TRAINING DecisionTree] Depth: 1 FeatureIndex: 9 MinError: 0.76571 Class Probabilities: 0.195122 0.219512 0.182927 0.219512 0.0609756 0.0243902 0.097561 
+[TRAINING DecisionTree] Depth: 2 FeatureIndex: 13 MinError: 0.70625 Class Probabilities: 0.25 0.25 0.234375 0.21875 0.03125 0 0.015625 
+[TRAINING DecisionTree] Depth: 3 FeatureIndex: 3 MinError: 0.696143 Class Probabilities: 0.296296 0.296296 0.148148 0.203704 0.037037 0 0.0185185 
+[TRAINING DecisionTree] Depth: 4 FeatureIndex: 10 MinError: 0.456111 Class Probabilities: 0.4 0.48 0.04 0.08 0 0 0 
+[TRAINING DecisionTree] Depth: 5 FeatureIndex: 22 MinError: 0.467949 Class Probabilities: 0.5625 0.25 0.0625 0.125 0 0 0 
+[TRAINING DecisionTree] Depth: 6 FeatureIndex: 23 MinError: 0.251748 Class Probabilities: 0.692308 0.153846 0 0.153846 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 7 NumSamples: 2 Class Probabilities: 0 1 0 0 0 0 0 
+[TRAINING DecisionTree] Depth: 7 FeatureIndex: 9 MinError: 0.121212 Class Probabilities: 0.818182 0 0 0.181818 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 8 NumSamples: 8 Class Probabilities: 1 0 0 0 0 0 0 
+[TRAINING DecisionTree] Reached leaf node, hit min-samples-per-node limit. Depth: 8 NumSamples: 3 Class Probabilities: 0.333333 0 0 0.666667 0 0 0 
+[TRAINING DecisionTree] Reached leaf node, hit min-samples-per-node limit. Depth: 6 NumSamples: 3 Class Probabilities: 0 0.666667 0.333333 0 0 0 0 
+[TRAINING DecisionTree] Depth: 5 FeatureIndex: 3 MinError: 0 Class Probabilities: 0.111111 0.888889 0 0 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 6 NumSamples: 8 Class Probabilities: 0 1 0 0 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 6 NumSamples: 1 Class Probabilities: 1 0 0 0 0 0 0 
+[TRAINING DecisionTree] Depth: 4 FeatureIndex: 20 MinError: 0.69065 Class Probabilities: 0.206897 0.137931 0.241379 0.310345 0.0689655 0 0.0344828 
+[TRAINING DecisionTree] Depth: 5 FeatureIndex: 0 MinError: 0.538462 Class Probabilities: 0.0625 0.25 0.375 0.1875 0.125 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 6 NumSamples: 3 Class Probabilities: 0 0 0 1 0 0 0 
+[TRAINING DecisionTree] Depth: 6 FeatureIndex: 4 MinError: 0.52381 Class Probabilities: 0.0769231 0.307692 0.461538 0 0.153846 0 0 
+[TRAINING DecisionTree] Depth: 7 FeatureIndex: 23 MinError: 0.142857 Class Probabilities: 0.142857 0.142857 0.714286 0 0 0 0 
+[TRAINING DecisionTree] Reached leaf node, hit min-samples-per-node limit. Depth: 8 NumSamples: 2 Class Probabilities: 0.5 0.5 0 0 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 8 NumSamples: 5 Class Probabilities: 0 0 1 0 0 0 0 
+[TRAINING DecisionTree] Depth: 7 FeatureIndex: 7 MinError: 0.4 Class Probabilities: 0 0.5 0.166667 0 0.333333 0 0 
+[TRAINING DecisionTree] Depth: 8 FeatureIndex: 1 MinError: 0.266667 Class Probabilities: 0 0.6 0 0 0.4 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 9 NumSamples: 2 Class Probabilities: 0 1 0 0 0 0 0 
+[TRAINING DecisionTree] Reached leaf node, hit min-samples-per-node limit. Depth: 9 NumSamples: 3 Class Probabilities: 0 0.333333 0 0 0.666667 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 8 NumSamples: 1 Class Probabilities: 0 0 1 0 0 0 0 
+[TRAINING DecisionTree] Depth: 5 FeatureIndex: 18 MinError: 0.358974 Class Probabilities: 0.384615 0 0.0769231 0.461538 0 0 0.0769231 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 6 NumSamples: 4 Class Probabilities: 1 0 0 0 0 0 0 
+[TRAINING DecisionTree] Depth: 6 FeatureIndex: 7 MinError: 0.301587 Class Probabilities: 0.111111 0 0.111111 0.666667 0 0 0.111111 
+[TRAINING DecisionTree] Depth: 7 FeatureIndex: 1 MinError: 0 Class Probabilities: 0 0 0.142857 0.857143 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 8 NumSamples: 1 Class Probabilities: 0 0 1 0 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 8 NumSamples: 6 Class Probabilities: 0 0 0 1 0 0 0 
+[TRAINING DecisionTree] Reached leaf node, hit min-samples-per-node limit. Depth: 7 NumSamples: 2 Class Probabilities: 0.5 0 0 0 0 0 0.5 
+[TRAINING DecisionTree] Depth: 3 FeatureIndex: 9 MinError: 0.15 Class Probabilities: 0 0 0.7 0.3 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 4 NumSamples: 6 Class Probabilities: 0 0 1 0 0 0 0 
+[TRAINING DecisionTree] Reached leaf node, hit min-samples-per-node limit. Depth: 4 NumSamples: 4 Class Probabilities: 0 0 0.25 0.75 0 0 0 
+[TRAINING DecisionTree] Depth: 2 FeatureIndex: 14 MinError: 0.592593 Class Probabilities: 0 0.111111 0 0.222222 0.166667 0.111111 0.388889 
+[TRAINING DecisionTree] Depth: 3 FeatureIndex: 3 MinError: 0.301587 Class Probabilities: 0 0.222222 0 0 0.111111 0 0.666667 
+[TRAINING DecisionTree] Depth: 4 FeatureIndex: 12 MinError: 0 Class Probabilities: 0 0.142857 0 0 0 0 0.857143 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 5 NumSamples: 1 Class Probabilities: 0 1 0 0 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 5 NumSamples: 6 Class Probabilities: 0 0 0 0 0 0 1 
+[TRAINING DecisionTree] Reached leaf node, hit min-samples-per-node limit. Depth: 4 NumSamples: 2 Class Probabilities: 0 0.5 0 0 0.5 0 0 
+[TRAINING DecisionTree] Depth: 3 FeatureIndex: 2 MinError: 0.444444 Class Probabilities: 0 0 0 0.444444 0.222222 0.222222 0.111111 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 4 NumSamples: 2 Class Probabilities: 0 0 0 0 0 1 0 
+[TRAINING DecisionTree] Depth: 4 FeatureIndex: 10 MinError: 0.228571 Class Probabilities: 0 0 0 0.571429 0.285714 0 0.142857 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 5 NumSamples: 2 Class Probabilities: 0 0 0 0 1 0 0 
+[TRAINING DecisionTree] Depth: 5 FeatureIndex: 1 MinError: 0 Class Probabilities: 0 0 0 0.8 0 0 0.2 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 6 NumSamples: 4 Class Probabilities: 0 0 0 1 0 0 0 
+[TRAINING DecisionTree] Reached pure leaf node. Depth: 6 NumSamples: 1 Class Probabilities: 0 0 0 0 0 0 1 
+[TRAINING DecisionTree] Training set accuracy: 90.2439
+0;13;21;0.666667;0
+1;13;17;1;0
+2;13;13;1;1
+3;13;16;1;0
+4;13;16;1;0
+5;13;16;1;0
+6;13;14;1;0
+7;13;16;1;0
+8;13;16;0.666667;0
+9;14;17;1;0
+10;14;21;1;0
+11;14;21;1;0
+12;14;13;0.5;0
+13;14;14;1;1
+14;14;16;0.666667;0
+15;14;21;1;0
+16;14;17;1;0
+17;14;31;1;0
+18;16;16;1;1
+19;16;14;1;0
+20;16;13;1;0
+21;16;14;1;0
+22;16;16;1;1
+23;16;17;1;0
+24;16;14;1;0
+25;16;16;0.666667;1
+26;17;17;0.75;1
+27;17;16;1;0
+28;17;16;1;0
+29;17;31;1;0
+30;17;14;1;0
+31;17;17;1;1
+32;17;14;1;0
+33;17;17;1;1
+34;21;24;1;0
+35;21;21;1;1
+36;21;17;1;0
+37;21;17;1;0
+38;21;21;1;1
+39;21;31;1;0
+40;21;24;1;0
+41;21;21;1;1
+42;21;16;0.666667;0
+43;24;24;1;1
+44;24;31;0.666667;0
+45;24;13;0.333333;0
+46;24;21;0.5;0
+47;24;24;1;1
+48;24;13;0.333333;0
+49;31;21;1;0
+50;31;14;0.666667;0
+51;31;14;1;0
+52;31;17;1;0
+53;31;31;1;1
+54;31;31;1;1
+55;31;31;1;1
+56;31;21;1;0
+T 16 S 57 Ac 28.0702
