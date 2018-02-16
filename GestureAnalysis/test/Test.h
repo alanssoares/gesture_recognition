@@ -74,6 +74,8 @@ public:
 
 	void reduceGesturesByCurvature(std::string name);
 
+	void reduceGesturesByDouglasPeucker(std::string name);
+	
 public:
 	std::vector<type_gesture> m_MedianGestures;
 	std::vector<type_gesture> m_GesturesTemplate;

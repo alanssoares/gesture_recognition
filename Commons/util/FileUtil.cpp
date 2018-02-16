@@ -814,17 +814,17 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
     // std::cout << "CURV = " << n4 << '\n';
     // std::cout << "ANGL = " << n5 << '\n';
 
-    // // Feature LC
-    // size_t n1 = descriptors[i].lc.size();
-    // for (size_t j = 0; j < n1; j++) {
-    //   fileOut << descriptors[i].lc[j];
-    //   if (j + 1 < n1) {
-    //     fileOut << " ";
-    //   }
-    // }
-    //
-    // fileOut << " ";
-    //
+    // Feature LC
+    size_t n1 = descriptors[i].lc.size();
+    for (size_t j = 0; j < n1; j++) {
+      fileOut << descriptors[i].lc[j];
+      if (j + 1 < n1) {
+        fileOut << " ";
+      }
+    }
+
+    fileOut << " ";
+
     // Feature LSC
     size_t n2 = descriptors[i].lsc.size();
     for (size_t j = 0; j < n2; j++) {
@@ -834,15 +834,15 @@ FileUtil::saveDescriptorFeauresToolkit(std::vector<type_gesture> gestures, std::
       }
     }
 
-    fileOut << " ";
-    // Feature Velocity
-    size_t n3 = descriptors[i].velocity.size();
-    for (size_t j = 0; j < n3; j++) {
-      fileOut << descriptors[i].velocity[j];
-      if (j + 1 < n3) {
-        fileOut << " ";
-      }
-    }
+    // fileOut << " ";
+    // // Feature Velocity
+    // size_t n3 = descriptors[i].velocity.size();
+    // for (size_t j = 0; j < n3; j++) {
+    //   fileOut << descriptors[i].velocity[j];
+    //   if (j + 1 < n3) {
+    //     fileOut << " ";
+    //   }
+    // }
 
     // fileOut << " ";
 

@@ -340,7 +340,7 @@ MathUtil::reduceByCurvature(std::vector<XnPoint3D> points, double threshold){
 
     newPoints.push_back(points.front());
 
-    for (int i = 0; i < n - 2; i+=2){
+    for (int i = 0; i < n - 1; i += 1){
         curvature = calcCurvature(points[i], points[i + 1], points[i + 2]);
         if(curvature > threshold){
             newPoints.push_back(points[i + 1]);

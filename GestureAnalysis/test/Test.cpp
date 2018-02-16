@@ -435,3 +435,27 @@ Test::reduceGesturesByCurvature(std::string name) {
 
 	saveToFile(m_AllGestures, name);
 }
+
+void
+Test::reduceGesturesByDouglasPeucker(std::string name) {
+	FileUtil& fileUtil = FileUtil::getInstance();
+	size_t n1, n2;
+
+	loadAll();
+
+	m_Util.applyUniformByArcLength(&m_AllGestures, 0.03);
+
+	for (size_t i = 0; i < m_AllGestures.size(); i++) {
+		m_AllGestures[i].handOne.positions = MathUtil::simplifyDouglasPeucker(m_AllGestures[i].handOne.positions, 0.0001);
+		m_AllGestures[i].handTwo.positions = MathUtil::simplifyDouglasPeucker(m_AllGestures[i].handTwo.positions, 0.0001);
+		n1 = m_AllGestures[i].handOne.positions.size();
+		n2 = m_AllGestures[i].handTwo.positions.size();
+		if (n1 < n2) {
+			MathUtil::insertPoints(&m_AllGestures[i].handOne.positions, n2 - n1);
+		} else if (n1 > n2){
+			MathUtil::insertPoints(&m_AllGestures[i].handTwo.positions, n1 - n2);
+		}
+	}
+
+	saveToFile(m_AllGestures, name);
+}

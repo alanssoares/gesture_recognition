@@ -364,6 +364,12 @@ int main(int argc, char* argv[])
     return 0;
   }
 
+  if(pcl::console::find_argument (argc, argv, "-dp") >= 0){
+    int i = pcl::console::find_argument (argc, argv, "-dp");
+    g_Test.reduceGesturesByDouglasPeucker(argv[i + 1]);
+    return 0;
+  }
+
   if(pcl::console::find_argument (argc, argv, "-scale") >= 0){
     g_Util.scaleGestures();
     return 0;
