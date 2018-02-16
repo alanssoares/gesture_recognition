@@ -89,8 +89,8 @@ typedef struct type_hand {
 } type_hand;
 
 typedef struct type_gesture {
-    int numHands = 0;
-    std::string name = "none";
+    int numHands;
+    std::string name;
     type_hand handOne;
     type_hand handTwo;
 } type_gesture;
@@ -118,6 +118,8 @@ typedef struct FeatureDescriptor {
     std::vector<double> lc;
     std::vector<double> lsc;
     std::vector<double> velocity;
+    std::vector<double> angles;
+    std::vector<double> curvature;
 
 } FeatureDescriptor;
 
@@ -167,12 +169,15 @@ typedef struct FeatureDescriptor {
 /* ========= End Douglas-Peucker Radial ========= */
 
 #define GESTURE "gesture"
+// #define NAME_FILE_DATA "../../Datasets/asl/asl_raw.txt"
+// #define NAME_FILE_DATA_NORMALIZED "../../Datasets/asl/asl_raw_min.txt"
 // #define NAME_FILE_DATA "../../Datasets/msrc_12/msrc_raw.txt"
 // #define NAME_FILE_DATA_NORMALIZED "../../Datasets/msrc_12/msrc_raw.txt"
-// #define NAME_FILE_DATA "../../Datasets/msr_action_3d/msr_3d_action_raw.txt"
-// #define NAME_FILE_DATA_NORMALIZED "../../Datasets/msr_action_3d/msr_3d_action_raw.txt"
-#define NAME_FILE_DATA "../../Datasets/grufba_16/grufba_raw.txt"
-#define NAME_FILE_DATA_NORMALIZED "../../Datasets/grufba_16/grufba_origin.txt"
+#define NAME_FILE_DATA "../../Datasets/msr_action_3d/msr_3d_action_raw.txt"
+#define NAME_FILE_DATA_NORMALIZED "../../Datasets/msr_action_3d/msr_3d_action_origin.txt"
+// #define NAME_FILE_DATA_NORMALIZED "../../Datasets/msr_action_3d/env1/group/as3/msr3d_action_origin_arc_dp_max.txt"
+// #define NAME_FILE_DATA "../../Datasets/grufba_16/grufba_raw.txt"
+// #define NAME_FILE_DATA_NORMALIZED "../../Datasets/grufba_16/grufba_origin.txt"
 // #define NAME_FILE_DATA "../../Datasets/utkinect_action/ut_kinect_action_raw.txt"
 // #define NAME_FILE_DATA_NORMALIZED "../../Datasets/utkinect_action/ut_kinect_action_origin.txt"
 #define NAME_FILE_DATA_MEDIAN "../../Datasets/grufba_16/grufba_median.txt"
